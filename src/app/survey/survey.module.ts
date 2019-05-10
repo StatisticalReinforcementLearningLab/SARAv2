@@ -5,7 +5,7 @@ import { MorningReportComponent } from './morning-report/morning-report.componen
 import { InitiatedDrinkComponent } from './initiated-drink/initiated-drink.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [InitiatedDrinkComponent,MorningReportComponent,PromptedSurveyComponent],
   imports: [
     CommonModule
   ],
