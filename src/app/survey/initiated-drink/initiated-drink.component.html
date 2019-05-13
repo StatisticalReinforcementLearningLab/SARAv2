@@ -1,3 +1,27 @@
-<p>
-  initiated-drink works!
-</p>
+<ion-header>
+    <ion-toolbar>
+    <ion-title>
+      Initiated Drinking EMA Survey
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="ion-padding">
+      <ion-label>Are you starting your first drink?</ion-label>
+      <ion-item >
+        <ion-label>Yes</ion-label>
+        <ion-checkbox  slot="start" [(ngModel)]="isCheckedYes"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>No</ion-label>
+        <ion-checkbox slot="start" [(ngModel)]="isCheckedNo"></ion-checkbox>
+      </ion-item>
+
+    </div>
+</ion-content>
+
+
+<!--div class="card">
+    <div class="card-body"></div>
+</div-->
