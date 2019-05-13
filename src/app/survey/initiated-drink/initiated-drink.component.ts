@@ -9,6 +9,10 @@ import { HttpClient } from '@angular/common/http';
 export class InitiatedDrinkComponent implements OnInit {
   //response: any; 
 
+  private isSelectedYes : boolean; 
+  private isSelectedNo : boolean;
+
+
   constructor(private httpClient: HttpClient
     ) { }
 
