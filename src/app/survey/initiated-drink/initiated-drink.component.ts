@@ -10,7 +10,7 @@ export class InitiatedDrinkComponent implements OnInit {
   //response: any; 
 
   private isSelectedYes : boolean; 
-  private isSelectedNo : boolean;
+  private isSelectedNo : boolean; 
 
 
   constructor(private httpClient: HttpClient
@@ -25,6 +25,10 @@ export class InitiatedDrinkComponent implements OnInit {
     // console.log(response);
     //});
 
+  }
+
+  storeData(){
+    
   }
 
 }
