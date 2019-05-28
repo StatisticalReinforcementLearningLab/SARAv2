@@ -7,6 +7,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { File } from '@ionic-native/file/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,10 +23,12 @@ import { IncentiveModule } from './incentive/incentive.module';
     AppRoutingModule,
     HttpClientModule,
     SurveyModule,
-    IncentiveModule],
+    IncentiveModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,
+    File,
     OneSignal,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
