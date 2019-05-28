@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { File } from '@ionic-native/file/ngx';
+import { StoreToFirebaseService } from '../../storage/store-to-firebase.service';
+
+declare var cordova: any;
 
 @Component({
   selector: 'app-initiated-drink',
@@ -13,7 +17,10 @@ export class InitiatedDrinkComponent implements OnInit {
   private isSelectedNo : boolean; 
 
 
-  constructor(private httpClient: HttpClient
+  constructor(
+    private httpClient: HttpClient,
+    private file: File,
+    private storeToFirebaseService: StoreToFirebaseService
     ) { }
 
   ngOnInit() {}
@@ -28,7 +35,21 @@ export class InitiatedDrinkComponent implements OnInit {
   }
 
   storeData(){
+    console.log("Inside storeData");
+    var surveyResult = {
+      ID: "Q1",
+      Result1: this.isSelectedYes,
+      Result2: this.isSelectedNo};  
+    //var jsonString = JSON.stringify(surveyResult);
+    //var fileDir = cordova.file.externalApplicationStorageDirectory; 
+    //var filename = "result.json";
+    //var file = new File([jsonString], fileDir+filename, {type: "text/plain;charset=utf-8"});
+    //this.file.writeFile(fileDir, filename, jsonString, {replace: true}) ; 
+    //this.file.readAsArrayBuffer(fileDir, filename).then(async(buffer) => {
+    //  await this.upload(buffer, filename);
+    //});
     
+    this.storeToFirebaseService.storeTofirebase(surveyResult);
   }
 
 }

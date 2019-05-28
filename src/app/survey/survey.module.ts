@@ -5,13 +5,15 @@ import { MorningReportComponent } from './morning-report/morning-report.componen
 import { InitiatedDrinkComponent } from './initiated-drink/initiated-drink.component';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
+import { StorageModule } from '../storage/storage.module';
 
 @NgModule({
   declarations: [InitiatedDrinkComponent,MorningReportComponent,PromptedSurveyComponent],
   imports: [
     CommonModule,
     IonicModule.forRoot(),
-    FormsModule
+    FormsModule,
+    StorageModule
   ],
   exports:[
     InitiatedDrinkComponent,
