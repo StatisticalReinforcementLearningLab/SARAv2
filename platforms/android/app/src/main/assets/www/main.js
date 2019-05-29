@@ -4230,7 +4230,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _survey_initiated_drink_initiated_drink_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./survey/initiated-drink/initiated-drink.component */ "./src/app/survey/initiated-drink/initiated-drink.component.ts");
-/* harmony import */ var _incentive_award_award_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./incentive/award/award.component */ "./src/app/incentive/award/award.component.ts");
+/* harmony import */ var _incentive_award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./incentive/award-memes/award-memes.component */ "./src/app/incentive/award-memes/award-memes.component.ts");
 
 
 
@@ -4240,7 +4240,7 @@ var routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', loadChildren: './home/home.module#HomePageModule' },
     { path: 'survey/initated-drink', component: _survey_initiated_drink_initiated_drink_component__WEBPACK_IMPORTED_MODULE_3__["InitiatedDrinkComponent"] },
-    { path: 'incentive/award', component: _incentive_award_award_component__WEBPACK_IMPORTED_MODULE_4__["AwardComponent"] }
+    { path: 'incentive/award', component: _incentive_award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__["AwardMemesComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -4417,6 +4417,65 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/incentive/award-memes/award-memes.component.html":
+/*!******************************************************************!*\
+  !*** ./src/app/incentive/award-memes/award-memes.component.html ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n<div id=\"container\">\r\n  <div class=\"ion-padding\" id=\"link\">\r\n    <a href=\"/home\">Home</a> \r\n  </div>\r\n  <img [src]=\"whichImage\" *ngIf=\"whichImage\" />\r\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/incentive/award-memes/award-memes.component.scss":
+/*!******************************************************************!*\
+  !*** ./src/app/incentive/award-memes/award-memes.component.scss ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "img {\n  border: 2px solid black;\n  top: 85px;\n  position: absolute; }\n\n#container {\n  position: relative; }\n\n#link {\n  position: absolute;\n  top: 10px;\n  left: 10px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaW5jZW50aXZlL2F3YXJkLW1lbWVzL0M6XFxJb25pY1Byb2plY3RcXFNBUkF2Mi9zcmNcXGFwcFxcaW5jZW50aXZlXFxhd2FyZC1tZW1lc1xcYXdhcmQtbWVtZXMuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSx1QkFBdUI7RUFDdkIsU0FBUztFQUNULGtCQUFrQixFQUFBOztBQUl0QjtFQUNJLGtCQUFrQixFQUFBOztBQUd0QjtFQUNHLGtCQUFrQjtFQUNsQixTQUFTO0VBQ1QsVUFBVSxFQUFBIiwiZmlsZSI6InNyYy9hcHAvaW5jZW50aXZlL2F3YXJkLW1lbWVzL2F3YXJkLW1lbWVzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW1nIHtcclxuICAgIGJvcmRlcjogMnB4IHNvbGlkIGJsYWNrOyBcclxuICAgIHRvcDogODVweDtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTsgIFxyXG4gIFxyXG59XHJcblxyXG4jY29udGFpbmVyIHtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTsgICAgXHJcbn1cclxuXHJcbiNsaW5rIHtcclxuICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICB0b3A6IDEwcHg7XHJcbiAgIGxlZnQ6IDEwcHg7IFxyXG4gICAgXHJcbn0iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/incentive/award-memes/award-memes.component.ts":
+/*!****************************************************************!*\
+  !*** ./src/app/incentive/award-memes/award-memes.component.ts ***!
+  \****************************************************************/
+/*! exports provided: AwardMemesComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AwardMemesComponent", function() { return AwardMemesComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var AwardMemesComponent = /** @class */ (function () {
+    //src="{{whichImage}}"
+    function AwardMemesComponent() {
+    }
+    AwardMemesComponent.prototype.ngOnInit = function () {
+        var randomInt = Math.floor(Math.random() * 5) + 1;
+        this.whichImage = "./assets/memes/" + randomInt + ".jpg";
+    };
+    AwardMemesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-award-memes',
+            template: __webpack_require__(/*! ./award-memes.component.html */ "./src/app/incentive/award-memes/award-memes.component.html"),
+            styles: [__webpack_require__(/*! ./award-memes.component.scss */ "./src/app/incentive/award-memes/award-memes.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], AwardMemesComponent);
+    return AwardMemesComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/incentive/award/award.component.html":
 /*!******************************************************!*\
   !*** ./src/app/incentive/award/award.component.html ***!
@@ -4486,6 +4545,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _award_award_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./award/award.component */ "./src/app/incentive/award/award.component.ts");
+/* harmony import */ var _award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./award-memes/award-memes.component */ "./src/app/incentive/award-memes/award-memes.component.ts");
+
 
 
 
@@ -4495,14 +4556,119 @@ var IncentiveModule = /** @class */ (function () {
     }
     IncentiveModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_award_award_component__WEBPACK_IMPORTED_MODULE_3__["AwardComponent"]],
+            declarations: [_award_award_component__WEBPACK_IMPORTED_MODULE_3__["AwardComponent"], _award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__["AwardMemesComponent"]],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]
             ],
-            exports: [_award_award_component__WEBPACK_IMPORTED_MODULE_3__["AwardComponent"]]
+            exports: [_award_award_component__WEBPACK_IMPORTED_MODULE_3__["AwardComponent"], _award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__["AwardMemesComponent"]]
         })
     ], IncentiveModule);
     return IncentiveModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/storage/storage.module.ts":
+/*!*******************************************!*\
+  !*** ./src/app/storage/storage.module.ts ***!
+  \*******************************************/
+/*! exports provided: StorageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StorageModule", function() { return StorageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _store_to_firebase_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store-to-firebase.service */ "./src/app/storage/store-to-firebase.service.ts");
+
+
+
+
+var StorageModule = /** @class */ (function () {
+    function StorageModule() {
+    }
+    StorageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            declarations: [],
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]
+            ],
+            providers: [_store_to_firebase_service__WEBPACK_IMPORTED_MODULE_3__["StoreToFirebaseService"]]
+        })
+    ], StorageModule);
+    return StorageModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/storage/store-to-firebase.service.ts":
+/*!******************************************************!*\
+  !*** ./src/app/storage/store-to-firebase.service.ts ***!
+  \******************************************************/
+/*! exports provided: StoreToFirebaseService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StoreToFirebaseService", function() { return StoreToFirebaseService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.cjs.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! firebase/auth */ "./node_modules/firebase/auth/dist/index.esm.js");
+/* harmony import */ var firebase_firestore__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! firebase/firestore */ "./node_modules/firebase/firestore/dist/index.esm.js");
+
+
+
+
+
+//import { StorageModule } from '../storage/storage.module';
+var StoreToFirebaseService = /** @class */ (function () {
+    function StoreToFirebaseService() {
+        // TODO: Replace the following with your app's Firebase project configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDlTFW_FVZQJxm_IBZwlIvWaTwBysN2Wrs",
+            authDomain: "sarav2.firebaseapp.com",
+            databaseURL: "https://sarav2.firebaseio.com",
+            projectId: "sarav2",
+            storageBucket: "sarav2.appspot.com",
+            messagingSenderId: "899903481432",
+            appId: "1:899903481432:web:fd409012bf1966ce"
+        };
+        // Initialize Firebase
+        firebase_app__WEBPACK_IMPORTED_MODULE_2__["initializeApp"](firebaseConfig);
+    }
+    StoreToFirebaseService.prototype.storeTofirebase = function (surveyResult) {
+        var db = firebase_app__WEBPACK_IMPORTED_MODULE_2__["firestore"]();
+        db.collection("test").add(surveyResult)
+            .then(function (docRef) {
+            console.log("Document written with ID: ", docRef.id);
+        })
+            .catch(function (error) {
+            console.error("Error adding document: ", error);
+        });
+        var database = firebase_app__WEBPACK_IMPORTED_MODULE_2__["database"]();
+        database.ref('result').set(surveyResult);
+        // Get a key for a new Post.
+        //var newPostKey = firebase.database().ref().child('posts').push().key;
+        // Write the new post's data simultaneously in the posts list and the user's post list.
+        //var updates = {};
+        //updates['/posts/' + newPostKey] = surveyResult;
+        //return firebase.database().ref().update(updates);
+    };
+    StoreToFirebaseService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root',
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], StoreToFirebaseService);
+    return StoreToFirebaseService;
 }());
 
 
@@ -4545,14 +4711,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/file/ngx */ "./node_modules/@ionic-native/file/ngx/index.js");
+/* harmony import */ var _storage_store_to_firebase_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../storage/store-to-firebase.service */ "./src/app/storage/store-to-firebase.service.ts");
+
 
 
 
 
 var InitiatedDrinkComponent = /** @class */ (function () {
-    function InitiatedDrinkComponent(httpClient, file) {
+    function InitiatedDrinkComponent(httpClient, file, storeToFirebaseService) {
         this.httpClient = httpClient;
         this.file = file;
+        this.storeToFirebaseService = storeToFirebaseService;
     }
     InitiatedDrinkComponent.prototype.ngOnInit = function () { };
     InitiatedDrinkComponent.prototype.loadJson = function () {
@@ -4564,18 +4733,20 @@ var InitiatedDrinkComponent = /** @class */ (function () {
     };
     InitiatedDrinkComponent.prototype.storeData = function () {
         console.log("Inside storeData");
-        var jsonString = JSON.stringify({
+        var surveyResult = {
             ID: "Q1",
             Result1: this.isSelectedYes,
             Result2: this.isSelectedNo
-        });
-        var fileDir = cordova.file.externalApplicationStorageDirectory;
-        var filename = "result.json";
+        };
+        //var jsonString = JSON.stringify(surveyResult);
+        //var fileDir = cordova.file.externalApplicationStorageDirectory; 
+        //var filename = "result.json";
         //var file = new File([jsonString], fileDir+filename, {type: "text/plain;charset=utf-8"});
-        this.file.writeFile(fileDir, filename, jsonString, { replace: true });
+        //this.file.writeFile(fileDir, filename, jsonString, {replace: true}) ; 
         //this.file.readAsArrayBuffer(fileDir, filename).then(async(buffer) => {
         //  await this.upload(buffer, filename);
         //});
+        this.storeToFirebaseService.storeTofirebase(surveyResult);
     };
     InitiatedDrinkComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -4584,7 +4755,8 @@ var InitiatedDrinkComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./initiated-drink.component.scss */ "./src/app/survey/initiated-drink/initiated-drink.component.scss")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
-            _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_3__["File"]])
+            _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_3__["File"],
+            _storage_store_to_firebase_service__WEBPACK_IMPORTED_MODULE_4__["StoreToFirebaseService"]])
     ], InitiatedDrinkComponent);
     return InitiatedDrinkComponent;
 }());
@@ -4721,6 +4893,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _initiated_drink_initiated_drink_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./initiated-drink/initiated-drink.component */ "./src/app/survey/initiated-drink/initiated-drink.component.ts");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _storage_storage_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../storage/storage.module */ "./src/app/storage/storage.module.ts");
+
 
 
 
@@ -4738,7 +4912,8 @@ var SurveyModule = /** @class */ (function () {
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicModule"].forRoot(),
-                _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"]
+                _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"],
+                _storage_storage_module__WEBPACK_IMPORTED_MODULE_8__["StorageModule"]
             ],
             exports: [
                 _initiated_drink_initiated_drink_component__WEBPACK_IMPORTED_MODULE_5__["InitiatedDrinkComponent"],
