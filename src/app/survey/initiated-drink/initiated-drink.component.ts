@@ -49,6 +49,7 @@ export class InitiatedDrinkComponent implements OnInit {
     //  await this.upload(buffer, filename);
     //});
     
+    this.storeToFirebaseService.initFirebase();
     this.storeToFirebaseService.storeTofirebase(surveyResult);
   }
 

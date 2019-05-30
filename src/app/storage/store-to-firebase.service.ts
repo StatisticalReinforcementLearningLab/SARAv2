@@ -11,6 +11,9 @@ import "firebase/firestore";
 export class StoreToFirebaseService {
 
   constructor() { 
+  }
+
+  initFirebase(){
     // TODO: Replace the following with your app's Firebase project configuration
     const firebaseConfig = {
       apiKey: "AIzaSyDlTFW_FVZQJxm_IBZwlIvWaTwBysN2Wrs",
@@ -24,12 +27,16 @@ export class StoreToFirebaseService {
 
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+    console.log("firebase.initializeApp");
 
   }
 
   storeTofirebase(surveyResult){
-    var db = firebase.firestore();
+    console.log("Inside storeTofirebase");
 
+    /*var db = firebase.firestore();
+
+    console.log("firestore created");
     db.collection("test").add(surveyResult)
     .then(function(docRef) {
         console.log("Document written with ID: ", docRef.id);
@@ -37,8 +44,11 @@ export class StoreToFirebaseService {
     .catch(function(error) {
         console.error("Error adding document: ", error);
     });
+
+    console.log("saved to firestore");*/
   
     var database = firebase.database();
+    console.log("firestore database created");
     database.ref('result').set(surveyResult);
 
        // Get a key for a new Post.
