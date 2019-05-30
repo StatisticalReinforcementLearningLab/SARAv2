@@ -4631,6 +4631,8 @@ __webpack_require__.r(__webpack_exports__);
 //import { StorageModule } from '../storage/storage.module';
 var StoreToFirebaseService = /** @class */ (function () {
     function StoreToFirebaseService() {
+    }
+    StoreToFirebaseService.prototype.initFirebase = function () {
         // TODO: Replace the following with your app's Firebase project configuration
         var firebaseConfig = {
             apiKey: "AIzaSyDlTFW_FVZQJxm_IBZwlIvWaTwBysN2Wrs",
@@ -4643,17 +4645,24 @@ var StoreToFirebaseService = /** @class */ (function () {
         };
         // Initialize Firebase
         firebase_app__WEBPACK_IMPORTED_MODULE_2__["initializeApp"](firebaseConfig);
-    }
+        console.log("firebase.initializeApp");
+    };
     StoreToFirebaseService.prototype.storeTofirebase = function (surveyResult) {
-        var db = firebase_app__WEBPACK_IMPORTED_MODULE_2__["firestore"]();
+        console.log("Inside storeTofirebase");
+        /*var db = firebase.firestore();
+    
+        console.log("firestore created");
         db.collection("test").add(surveyResult)
-            .then(function (docRef) {
+        .then(function(docRef) {
             console.log("Document written with ID: ", docRef.id);
         })
-            .catch(function (error) {
+        .catch(function(error) {
             console.error("Error adding document: ", error);
         });
+    
+        console.log("saved to firestore");*/
         var database = firebase_app__WEBPACK_IMPORTED_MODULE_2__["database"]();
+        console.log("firestore database created");
         database.ref('result').set(surveyResult);
         // Get a key for a new Post.
         //var newPostKey = firebase.database().ref().child('posts').push().key;
@@ -4746,6 +4755,7 @@ var InitiatedDrinkComponent = /** @class */ (function () {
         //this.file.readAsArrayBuffer(fileDir, filename).then(async(buffer) => {
         //  await this.upload(buffer, filename);
         //});
+        this.storeToFirebaseService.initFirebase();
         this.storeToFirebaseService.storeTofirebase(surveyResult);
     };
     InitiatedDrinkComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

@@ -28,20 +28,20 @@
         "source": "C:\\Users\\admin_lxh37\\.gradle\\caches\\transforms-1\\files-1.1\\OneSignal-3.10.8.aar\\ab0840f1c54673c6c1263c80f5cb57b6\\res\\drawable-xhdpi-v4\\ic_os_notification_fallback_white_24dp.png"
     },
     {
-        "merged": "C:\\IonicProject\\SARAv2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_big_media_narrow_custom.xml.flat",
-        "source": "C:\\Users\\admin_lxh37\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.1.1.aar\\3dfe70a2e90976b615a435e2dfa22fa1\\res\\layout\\notification_template_big_media_narrow_custom.xml"
-    },
-    {
         "merged": "C:\\IonicProject\\SARAv2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_dark_focused.xml.flat",
         "source": "C:\\Users\\admin_lxh37\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-12.0.1.aar\\4c24cc576d157022f8f241eec32eaef4\\res\\drawable\\common_google_signin_btn_text_dark_focused.xml"
     },
     {
-        "merged": "C:\\IonicProject\\SARAv2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
-        "source": "C:\\Users\\admin_lxh37\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-12.0.1.aar\\4c24cc576d157022f8f241eec32eaef4\\res\\drawable-mdpi-v4\\common_google_signin_btn_icon_dark_normal_background.9.png"
+        "merged": "C:\\IonicProject\\SARAv2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_big_media_narrow_custom.xml.flat",
+        "source": "C:\\Users\\admin_lxh37\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.1.1.aar\\3dfe70a2e90976b615a435e2dfa22fa1\\res\\layout\\notification_template_big_media_narrow_custom.xml"
     },
     {
         "merged": "C:\\IonicProject\\SARAv2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
         "source": "C:\\Users\\admin_lxh37\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-12.0.1.aar\\4c24cc576d157022f8f241eec32eaef4\\res\\drawable-xhdpi-v4\\common_google_signin_btn_icon_dark_normal_background.9.png"
+    },
+    {
+        "merged": "C:\\IonicProject\\SARAv2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
+        "source": "C:\\Users\\admin_lxh37\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-12.0.1.aar\\4c24cc576d157022f8f241eec32eaef4\\res\\drawable-mdpi-v4\\common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "C:\\IonicProject\\SARAv2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
@@ -56,12 +56,12 @@
         "source": "C:\\Users\\admin_lxh37\\.gradle\\caches\\transforms-1\\files-1.1\\OneSignal-3.10.8.aar\\ab0840f1c54673c6c1263c80f5cb57b6\\res\\drawable-xxhdpi-v4\\ic_os_notification_fallback_white_24dp.png"
     },
     {
-        "merged": "C:\\IonicProject\\SARAv2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_light.xml.flat",
-        "source": "C:\\Users\\admin_lxh37\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-12.0.1.aar\\4c24cc576d157022f8f241eec32eaef4\\res\\drawable\\common_google_signin_btn_text_light.xml"
-    },
-    {
         "merged": "C:\\IonicProject\\SARAv2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_action.xml.flat",
         "source": "C:\\Users\\admin_lxh37\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\aba30dfeedc45e0012e583a4cab529b8\\res\\layout\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\IonicProject\\SARAv2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_light.xml.flat",
+        "source": "C:\\Users\\admin_lxh37\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-12.0.1.aar\\4c24cc576d157022f8f241eec32eaef4\\res\\drawable\\common_google_signin_btn_text_light.xml"
     },
     {
         "merged": "C:\\IonicProject\\SARAv2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notification_bg_low_normal.9.png.flat",
@@ -168,20 +168,20 @@
         "source": "C:\\Users\\admin_lxh37\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-12.0.1.aar\\4c24cc576d157022f8f241eec32eaef4\\res\\drawable\\common_google_signin_btn_text_dark_normal.xml"
     },
     {
-        "merged": "C:\\IonicProject\\SARAv2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
-        "source": "C:\\Users\\admin_lxh37\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-12.0.1.aar\\4c24cc576d157022f8f241eec32eaef4\\res\\drawable-xhdpi-v4\\common_google_signin_btn_icon_light_normal_background.9.png"
-    },
-    {
         "merged": "C:\\IonicProject\\SARAv2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-land-hdpi_screen.png.flat",
         "source": "C:\\IonicProject\\SARAv2\\platforms\\android\\app\\src\\main\\res\\drawable-land-hdpi\\screen.png"
     },
     {
-        "merged": "C:\\IonicProject\\SARAv2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_icon_group.xml.flat",
-        "source": "C:\\Users\\admin_lxh37\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\aba30dfeedc45e0012e583a4cab529b8\\res\\layout\\notification_template_icon_group.xml"
+        "merged": "C:\\IonicProject\\SARAv2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
+        "source": "C:\\Users\\admin_lxh37\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-12.0.1.aar\\4c24cc576d157022f8f241eec32eaef4\\res\\drawable-xhdpi-v4\\common_google_signin_btn_icon_light_normal_background.9.png"
     },
     {
         "merged": "C:\\IonicProject\\SARAv2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_googleg_disabled_color_18.png.flat",
         "source": "C:\\Users\\admin_lxh37\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-12.0.1.aar\\4c24cc576d157022f8f241eec32eaef4\\res\\drawable-xhdpi-v4\\googleg_disabled_color_18.png"
+    },
+    {
+        "merged": "C:\\IonicProject\\SARAv2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_icon_group.xml.flat",
+        "source": "C:\\Users\\admin_lxh37\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\aba30dfeedc45e0012e583a4cab529b8\\res\\layout\\notification_template_icon_group.xml"
     },
     {
         "merged": "C:\\IonicProject\\SARAv2\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_normal.9.png.flat",
