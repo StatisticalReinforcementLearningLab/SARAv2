@@ -6,9 +6,10 @@ import { InitiatedDrinkComponent } from './initiated-drink/initiated-drink.compo
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { StorageModule } from '../storage/storage.module';
+import { ActivetaskComponent } from './activetask/activetask.component';
 
 @NgModule({
-  declarations: [InitiatedDrinkComponent,MorningReportComponent,PromptedSurveyComponent],
+  declarations: [InitiatedDrinkComponent,MorningReportComponent,PromptedSurveyComponent,ActivetaskComponent],
   imports: [
     CommonModule,
     IonicModule.forRoot(),
@@ -18,7 +19,8 @@ import { StorageModule } from '../storage/storage.module';
   exports:[
     InitiatedDrinkComponent,
     MorningReportComponent,
-    PromptedSurveyComponent
+    PromptedSurveyComponent,
+    ActivetaskComponent
   ]
 })
 export class SurveyModule { }

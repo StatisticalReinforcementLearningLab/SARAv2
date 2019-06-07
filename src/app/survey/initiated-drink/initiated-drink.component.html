@@ -8,21 +8,21 @@
 
 <ion-content>
     <div class="ion-padding">
-      <ion-label>Are you starting your first drink?</ion-label>
+      <ion-label>{{question.label}}</ion-label>
       <ion-item >
         <ion-label>Yes</ion-label>
-        <ion-checkbox  slot="start" [(ngModel)]="isCheckedYes"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="question.result1"></ion-checkbox>
       </ion-item>
       <ion-item>
         <ion-label>No</ion-label>
-        <ion-checkbox slot="start" [(ngModel)]="isCheckedNo"></ion-checkbox>
+        <ion-checkbox  [(ngModel)]="question.result2"></ion-checkbox>
       </ion-item>
 
     </div>
 </ion-content>
 
 <div class="ion-padding">
-    <ion-button href="/incentive/award" (click)="storeData()">Submit</ion-button> 
+    <ion-button (click)="storeData()">Submit</ion-button> 
 </div>
 
 <!--div class="card">

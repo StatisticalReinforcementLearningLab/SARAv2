@@ -4584,6 +4584,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _store_to_firebase_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store-to-firebase.service */ "./src/app/storage/store-to-firebase.service.ts");
+/* harmony import */ var angularfire2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! angularfire2 */ "./node_modules/angularfire2/index.js");
+/* harmony import */ var angularfire2__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(angularfire2__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var angularfire2_firestore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! angularfire2/firestore */ "./node_modules/angularfire2/firestore/index.js");
+/* harmony import */ var angularfire2_firestore__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(angularfire2_firestore__WEBPACK_IMPORTED_MODULE_6__);
+
+
+
 
 
 
@@ -4595,7 +4603,9 @@ var StorageModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [],
             imports: [
-                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]
+                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+                angularfire2__WEBPACK_IMPORTED_MODULE_4__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].firebaseConfig),
+                angularfire2_firestore__WEBPACK_IMPORTED_MODULE_6__["AngularFirestoreModule"]
             ],
             providers: [_store_to_firebase_service__WEBPACK_IMPORTED_MODULE_3__["StoreToFirebaseService"]]
         })
@@ -4623,25 +4633,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! firebase/auth */ "./node_modules/firebase/auth/dist/index.esm.js");
 /* harmony import */ var firebase_firestore__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! firebase/firestore */ "./node_modules/firebase/firestore/dist/index.esm.js");
+/* harmony import */ var angularfire2_firestore__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! angularfire2/firestore */ "./node_modules/angularfire2/firestore/index.js");
+/* harmony import */ var angularfire2_firestore__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(angularfire2_firestore__WEBPACK_IMPORTED_MODULE_5__);
 
 
 
 
 
-//import { StorageModule } from '../storage/storage.module';
+
 var StoreToFirebaseService = /** @class */ (function () {
-    function StoreToFirebaseService() {
+    function StoreToFirebaseService(afs) {
+        this.afs = afs;
     }
     StoreToFirebaseService.prototype.initFirebase = function () {
         // TODO: Replace the following with your app's Firebase project configuration
         var firebaseConfig = {
-            apiKey: "AIzaSyDlTFW_FVZQJxm_IBZwlIvWaTwBysN2Wrs",
-            authDomain: "sarav2.firebaseapp.com",
-            databaseURL: "https://sarav2.firebaseio.com",
-            projectId: "sarav2",
-            storageBucket: "sarav2.appspot.com",
-            messagingSenderId: "899903481432",
-            appId: "1:899903481432:web:fd409012bf1966ce"
+            apiKey: "AIzaSyBK_PwjnsC01Q-a-sV7LsA7qIeIhCx4ts0",
+            authDomain: "sarav2-6a033.firebaseapp.com",
+            databaseURL: "https://sarav2-6a033.firebaseio.com",
+            projectId: "sarav2-6a033",
+            storageBucket: "sarav2-6a033.appspot.com",
+            messagingSenderId: "489827689493",
+            appId: "1:489827689493:web:7f72eb7033e9acf5"
         };
         // Initialize Firebase
         firebase_app__WEBPACK_IMPORTED_MODULE_2__["initializeApp"](firebaseConfig);
@@ -4671,11 +4684,32 @@ var StoreToFirebaseService = /** @class */ (function () {
         //updates['/posts/' + newPostKey] = surveyResult;
         //return firebase.database().ref().update(updates);
     };
+    StoreToFirebaseService.prototype.addSurvey = function (surveyResult) {
+        console.log("Inside addSurvey!");
+        this.afs.collection('/sarav2-6a033').add({
+            ID: "Q2",
+            Result1: false,
+            Result2: false
+        });
+        /*      return new Promise<any>((resolve, reject) => {
+               this.afs.collection('/result').add({
+                 ID: "Q2",
+                 Result1: false,
+                 Result2: false
+               })
+               .then(
+                 (res) => {
+                   resolve(res)
+                 },
+                 err => reject(err)
+               )
+             }) */
+    };
     StoreToFirebaseService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root',
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [angularfire2_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"]])
     ], StoreToFirebaseService);
     return StoreToFirebaseService;
 }());
@@ -4755,8 +4789,9 @@ var InitiatedDrinkComponent = /** @class */ (function () {
         //this.file.readAsArrayBuffer(fileDir, filename).then(async(buffer) => {
         //  await this.upload(buffer, filename);
         //});
-        this.storeToFirebaseService.initFirebase();
-        this.storeToFirebaseService.storeTofirebase(surveyResult);
+        //this.storeToFirebaseService.initFirebase();
+        //this.storeToFirebaseService.storeTofirebase(surveyResult);
+        this.storeToFirebaseService.addSurvey(surveyResult);
     };
     InitiatedDrinkComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -4953,7 +4988,16 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 var environment = {
-    production: false
+    production: false,
+    firebaseConfig: {
+        apiKey: "AIzaSyBK_PwjnsC01Q-a-sV7LsA7qIeIhCx4ts0",
+        authDomain: "sarav2-6a033.firebaseapp.com",
+        databaseURL: "https://sarav2-6a033.firebaseio.com",
+        projectId: "sarav2-6a033",
+        storageBucket: "sarav2-6a033.appspot.com",
+        messagingSenderId: "489827689493",
+        appId: "1:489827689493:web:7f72eb7033e9acf5"
+    }
 };
 /*
  * For easier debugging in development mode, you can import the following file

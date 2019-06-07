@@ -1,28 +1,28 @@
 import { Injectable } from '@angular/core';
 
-import * as firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/firestore";
-//import { StorageModule } from '../storage/storage.module';
+import { AngularFirestore } from '@angular/fire/firestore';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class StoreToFirebaseService {
 
-  constructor() { 
+  constructor(
+    private afs: AngularFirestore
+  ) { 
   }
 
-  initFirebase(){
+  /*initFirebase(){
     // TODO: Replace the following with your app's Firebase project configuration
     const firebaseConfig = {
-      apiKey: "AIzaSyDlTFW_FVZQJxm_IBZwlIvWaTwBysN2Wrs",
-      authDomain: "sarav2.firebaseapp.com",
-      databaseURL: "https://sarav2.firebaseio.com",
-      projectId: "sarav2",
-      storageBucket: "sarav2.appspot.com",
-      messagingSenderId: "899903481432",
-      appId: "1:899903481432:web:fd409012bf1966ce"
+      apiKey: "AIzaSyBK_PwjnsC01Q-a-sV7LsA7qIeIhCx4ts0",
+      authDomain: "sarav2-6a033.firebaseapp.com",
+      databaseURL: "https://sarav2-6a033.firebaseio.com",
+      projectId: "sarav2-6a033",
+      storageBucket: "sarav2-6a033.appspot.com",
+      messagingSenderId: "489827689493",
+      appId: "1:489827689493:web:7f72eb7033e9acf5"
     };
 
     // Initialize Firebase
@@ -34,8 +34,9 @@ export class StoreToFirebaseService {
   storeTofirebase(surveyResult){
     console.log("Inside storeTofirebase");
 
-    /*var db = firebase.firestore();
-
+    var db = firebase.firestore();
+    console.log("firestore database created");
+ 
     console.log("firestore created");
     db.collection("test").add(surveyResult)
     .then(function(docRef) {
@@ -45,12 +46,8 @@ export class StoreToFirebaseService {
         console.error("Error adding document: ", error);
     });
 
-    console.log("saved to firestore");*/
+    console.log("saved to firestore");
   
-    var database = firebase.database();
-    console.log("firestore database created");
-    database.ref('result').set(surveyResult);
-
        // Get a key for a new Post.
       //var newPostKey = firebase.database().ref().child('posts').push().key;
 
@@ -60,5 +57,19 @@ export class StoreToFirebaseService {
     
       //return firebase.database().ref().update(updates);
       
-    }
+  }*/
+
+    addSurvey(surveyResult){
+      console.log("Start to addSurvey!");
+      return new Promise<any>((resolve, reject) => {
+        this.afs.collection('/results').add(surveyResult.getData())
+        .then(
+          (res) => {
+            resolve(res)
+          },
+          err => reject(err)
+        )
+      }) 
+    }    
+
 }
