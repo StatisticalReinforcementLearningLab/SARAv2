@@ -5,289 +5,708 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48280a9f-a63d-4c09-a81f-0217dbdb7697" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.1/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.1/fileContent/fileContent.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/firestore/dist/index.cjs.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/firestore/dist/index.cjs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/firestore/dist/index.cjs.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/firestore/dist/index.cjs.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/firestore/dist/index.esm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/firestore/dist/index.esm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/firestore/dist/index.esm.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/firestore/dist/index.esm.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/firestore/dist/index.esm2017.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/firestore/dist/index.esm2017.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/firestore/dist/index.esm2017.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/firestore/dist/index.esm2017.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/firestore/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/firestore/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/functions/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/functions/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/code/cache/2e84ab1bd6fc8ad972fbe2539df9c54f3a949025" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/code/cache/402e8fdc6a24cc1903bfcd6fede6c9194ffaee83" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/code/cache/56498a729bf96946f06078ef9d0b55c1ea2a17f5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/code/cache/5bf3b229fa06dc97e8bfa113e417b4352354d8d2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/code/cache/62964e606b4d3a63d1a2faeb78218a57ee11245a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/code/cache/6e7df3642ebe0cb4316b44375948c90d97cb195d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/code/cache/6efb9a0766f58a6cb9fcb8c51f2220a9c064ca39" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/code/cache/79e2fd2b44c849d4ffcdfa407cc3ae7b3aadd7b5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/code/cache/7ef1a22a270c8ae5b1acd84c68c5c65319e3a536" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/code/cache/810db089bc26dee45bb5d2b4b8dc0af55858e66e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/code/cache/94c20dc60e59439d0c82230b1f11b86a7567ab6f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/code/cache/c95b7c134be76411efa1f7eeb36a7bad69e19110" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/code/cache/cc9e0b6ec7531eb9a0ab7df4bafdea6242e7b2fa" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/code/cache/de643f232bb0f0d12068d8951cfbd091cbbbef51" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/code/cache/e923c42fffd51b6e329c0811823f531c8cb3fd4c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/code/cache/f1fd8980e63398f78bba3e289e045643941a454b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/code/cache/f70c04ce7608ba5ae1d5b4f96b8b12d6d9c7302f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/semanticDiagnostics/cache/2e84ab1bd6fc8ad972fbe2539df9c54f3a949025" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/semanticDiagnostics/cache/402e8fdc6a24cc1903bfcd6fede6c9194ffaee83" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/semanticDiagnostics/cache/56498a729bf96946f06078ef9d0b55c1ea2a17f5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/semanticDiagnostics/cache/5bf3b229fa06dc97e8bfa113e417b4352354d8d2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/semanticDiagnostics/cache/62964e606b4d3a63d1a2faeb78218a57ee11245a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/semanticDiagnostics/cache/6e7df3642ebe0cb4316b44375948c90d97cb195d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/semanticDiagnostics/cache/6efb9a0766f58a6cb9fcb8c51f2220a9c064ca39" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/semanticDiagnostics/cache/79e2fd2b44c849d4ffcdfa407cc3ae7b3aadd7b5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/semanticDiagnostics/cache/7ef1a22a270c8ae5b1acd84c68c5c65319e3a536" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/semanticDiagnostics/cache/810db089bc26dee45bb5d2b4b8dc0af55858e66e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/semanticDiagnostics/cache/94c20dc60e59439d0c82230b1f11b86a7567ab6f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/semanticDiagnostics/cache/c95b7c134be76411efa1f7eeb36a7bad69e19110" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/semanticDiagnostics/cache/cc9e0b6ec7531eb9a0ab7df4bafdea6242e7b2fa" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/semanticDiagnostics/cache/de643f232bb0f0d12068d8951cfbd091cbbbef51" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/semanticDiagnostics/cache/e923c42fffd51b6e329c0811823f531c8cb3fd4c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/semanticDiagnostics/cache/f1fd8980e63398f78bba3e289e045643941a454b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/semanticDiagnostics/cache/f70c04ce7608ba5ae1d5b4f96b8b12d6d9c7302f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/syntacticDiagnostics/cache/2e84ab1bd6fc8ad972fbe2539df9c54f3a949025" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/syntacticDiagnostics/cache/402e8fdc6a24cc1903bfcd6fede6c9194ffaee83" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/syntacticDiagnostics/cache/56498a729bf96946f06078ef9d0b55c1ea2a17f5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/syntacticDiagnostics/cache/5bf3b229fa06dc97e8bfa113e417b4352354d8d2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/syntacticDiagnostics/cache/62964e606b4d3a63d1a2faeb78218a57ee11245a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/syntacticDiagnostics/cache/6e7df3642ebe0cb4316b44375948c90d97cb195d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/syntacticDiagnostics/cache/6efb9a0766f58a6cb9fcb8c51f2220a9c064ca39" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/syntacticDiagnostics/cache/79e2fd2b44c849d4ffcdfa407cc3ae7b3aadd7b5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/syntacticDiagnostics/cache/7ef1a22a270c8ae5b1acd84c68c5c65319e3a536" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/syntacticDiagnostics/cache/810db089bc26dee45bb5d2b4b8dc0af55858e66e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/syntacticDiagnostics/cache/94c20dc60e59439d0c82230b1f11b86a7567ab6f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/syntacticDiagnostics/cache/c95b7c134be76411efa1f7eeb36a7bad69e19110" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/syntacticDiagnostics/cache/cc9e0b6ec7531eb9a0ab7df4bafdea6242e7b2fa" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/syntacticDiagnostics/cache/de643f232bb0f0d12068d8951cfbd091cbbbef51" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/syntacticDiagnostics/cache/e923c42fffd51b6e329c0811823f531c8cb3fd4c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/syntacticDiagnostics/cache/f1fd8980e63398f78bba3e289e045643941a454b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/syntacticDiagnostics/cache/f70c04ce7608ba5ae1d5b4f96b8b12d6d9c7302f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/02c27a8c2845466044db51cd31cf9eb9c8b7aecf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/037b4500e1c28e34cb3a20be2e16f20070f02988" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/182dbe315415f0311b3e3b469fbf1cfaa48e7c77" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/24597d6d5a0d45b84cb21625547dd1cecb882a7e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/251877bba4437259852c93e4223566815ed47e93" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/2679bee18e4f4bef2c54c701b2e3987d4bbfdc33" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/27597f62490819b6d4b1d36dfe839baf2a9215d9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/3113908f931f8f875fe51bccb544a2b137e76063" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/384b24cfaf0d7166cd2d4450d45253a9289f96fd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/3a7bf76636ae5fc53e24f0073c785f06d3e808db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/3ca1b3ee42105f38bb33d2c0ddac41bdc06ec8d5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/4d2649bd8c67b084792cb1c0fa828ea1cc4f1248" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/4f2cf487af881d3ce0a9a138d6bc7133389373b5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/5edf6fe3cdc1f62be4c7d3661caf3c659c2ad261" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/6790787dc5a69c6cf69c5bddc373002b136b5f60" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/6c910e8f9b5c9820611e6e57b55b32b152b32a7a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/78863fc12e6241f0335c0785f0616e326fd2836e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/80dd16d84a299d5e8aaf43df5c5810ab4de650cb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/82b8a6a5d93414339ec2e393f350970ed3a08d9b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/8c1ca7501449440ee87015d116c7ebacc9b8d58e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/9e10bac438c562b2dbd05ef4464f416fcba28f83" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/cb7256a2f6766f0496facce9177d2ccf32863bfb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/d50ce04744483bc3f49e4bdb7fd27c7c3cb89347" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/d780762c537ad00ebb0083e8dec4a4c586a5a563" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/da1f103c69f690f8ed16f314a9bad48756731f40" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/df606d971b426dc71cdfa6cc3de81fe7a19d7ec2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/e49eec3a7bfdbcf88744ef1b73ee7eec0aca87f7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/e7ec3d345c8d126942f261ba677546dd48259b0d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/e8e33457d16b6c032b9aaf980a28560fbd301d5b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/eb8d56073696a13d47f8d17176ba45c083776f68" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/f206cef151de50e193b7e0ee25263d196bb1f6a9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_06f4cd3ec943b2ed11954e4b8ebe0ea0739dfc4b/types/cache/faf4cc2c584322588cb7595b4b30f3e3d0573cb5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/code/cache/2e84ab1bd6fc8ad972fbe2539df9c54f3a949025" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/code/cache/402e8fdc6a24cc1903bfcd6fede6c9194ffaee83" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/code/cache/56498a729bf96946f06078ef9d0b55c1ea2a17f5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/code/cache/5bf3b229fa06dc97e8bfa113e417b4352354d8d2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/code/cache/62964e606b4d3a63d1a2faeb78218a57ee11245a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/code/cache/6e7df3642ebe0cb4316b44375948c90d97cb195d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/code/cache/6efb9a0766f58a6cb9fcb8c51f2220a9c064ca39" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/code/cache/79e2fd2b44c849d4ffcdfa407cc3ae7b3aadd7b5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/code/cache/7ef1a22a270c8ae5b1acd84c68c5c65319e3a536" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/code/cache/810db089bc26dee45bb5d2b4b8dc0af55858e66e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/code/cache/94c20dc60e59439d0c82230b1f11b86a7567ab6f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/code/cache/c95b7c134be76411efa1f7eeb36a7bad69e19110" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/code/cache/cc9e0b6ec7531eb9a0ab7df4bafdea6242e7b2fa" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/code/cache/de643f232bb0f0d12068d8951cfbd091cbbbef51" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/code/cache/e923c42fffd51b6e329c0811823f531c8cb3fd4c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/code/cache/f1fd8980e63398f78bba3e289e045643941a454b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/code/cache/f70c04ce7608ba5ae1d5b4f96b8b12d6d9c7302f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/semanticDiagnostics/cache/2e84ab1bd6fc8ad972fbe2539df9c54f3a949025" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/semanticDiagnostics/cache/402e8fdc6a24cc1903bfcd6fede6c9194ffaee83" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/semanticDiagnostics/cache/56498a729bf96946f06078ef9d0b55c1ea2a17f5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/semanticDiagnostics/cache/5bf3b229fa06dc97e8bfa113e417b4352354d8d2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/semanticDiagnostics/cache/62964e606b4d3a63d1a2faeb78218a57ee11245a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/semanticDiagnostics/cache/6e7df3642ebe0cb4316b44375948c90d97cb195d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/semanticDiagnostics/cache/6efb9a0766f58a6cb9fcb8c51f2220a9c064ca39" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/semanticDiagnostics/cache/79e2fd2b44c849d4ffcdfa407cc3ae7b3aadd7b5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/semanticDiagnostics/cache/7ef1a22a270c8ae5b1acd84c68c5c65319e3a536" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/semanticDiagnostics/cache/810db089bc26dee45bb5d2b4b8dc0af55858e66e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/semanticDiagnostics/cache/94c20dc60e59439d0c82230b1f11b86a7567ab6f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/semanticDiagnostics/cache/c95b7c134be76411efa1f7eeb36a7bad69e19110" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/semanticDiagnostics/cache/cc9e0b6ec7531eb9a0ab7df4bafdea6242e7b2fa" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/semanticDiagnostics/cache/de643f232bb0f0d12068d8951cfbd091cbbbef51" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/semanticDiagnostics/cache/e923c42fffd51b6e329c0811823f531c8cb3fd4c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/semanticDiagnostics/cache/f1fd8980e63398f78bba3e289e045643941a454b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/semanticDiagnostics/cache/f70c04ce7608ba5ae1d5b4f96b8b12d6d9c7302f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/syntacticDiagnostics/cache/2e84ab1bd6fc8ad972fbe2539df9c54f3a949025" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/syntacticDiagnostics/cache/402e8fdc6a24cc1903bfcd6fede6c9194ffaee83" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/syntacticDiagnostics/cache/56498a729bf96946f06078ef9d0b55c1ea2a17f5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/syntacticDiagnostics/cache/5bf3b229fa06dc97e8bfa113e417b4352354d8d2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/syntacticDiagnostics/cache/62964e606b4d3a63d1a2faeb78218a57ee11245a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/syntacticDiagnostics/cache/6e7df3642ebe0cb4316b44375948c90d97cb195d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/syntacticDiagnostics/cache/6efb9a0766f58a6cb9fcb8c51f2220a9c064ca39" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/syntacticDiagnostics/cache/79e2fd2b44c849d4ffcdfa407cc3ae7b3aadd7b5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/syntacticDiagnostics/cache/7ef1a22a270c8ae5b1acd84c68c5c65319e3a536" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/syntacticDiagnostics/cache/810db089bc26dee45bb5d2b4b8dc0af55858e66e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/syntacticDiagnostics/cache/94c20dc60e59439d0c82230b1f11b86a7567ab6f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/syntacticDiagnostics/cache/c95b7c134be76411efa1f7eeb36a7bad69e19110" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/syntacticDiagnostics/cache/cc9e0b6ec7531eb9a0ab7df4bafdea6242e7b2fa" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/syntacticDiagnostics/cache/de643f232bb0f0d12068d8951cfbd091cbbbef51" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/syntacticDiagnostics/cache/e923c42fffd51b6e329c0811823f531c8cb3fd4c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/syntacticDiagnostics/cache/f1fd8980e63398f78bba3e289e045643941a454b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/syntacticDiagnostics/cache/f70c04ce7608ba5ae1d5b4f96b8b12d6d9c7302f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/02c27a8c2845466044db51cd31cf9eb9c8b7aecf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/037b4500e1c28e34cb3a20be2e16f20070f02988" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/182dbe315415f0311b3e3b469fbf1cfaa48e7c77" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/24597d6d5a0d45b84cb21625547dd1cecb882a7e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/251877bba4437259852c93e4223566815ed47e93" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/2679bee18e4f4bef2c54c701b2e3987d4bbfdc33" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/27597f62490819b6d4b1d36dfe839baf2a9215d9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/3113908f931f8f875fe51bccb544a2b137e76063" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/384b24cfaf0d7166cd2d4450d45253a9289f96fd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/3a7bf76636ae5fc53e24f0073c785f06d3e808db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/3ca1b3ee42105f38bb33d2c0ddac41bdc06ec8d5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/4d2649bd8c67b084792cb1c0fa828ea1cc4f1248" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/4f2cf487af881d3ce0a9a138d6bc7133389373b5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/5edf6fe3cdc1f62be4c7d3661caf3c659c2ad261" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/6790787dc5a69c6cf69c5bddc373002b136b5f60" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/6c910e8f9b5c9820611e6e57b55b32b152b32a7a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/78863fc12e6241f0335c0785f0616e326fd2836e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/80dd16d84a299d5e8aaf43df5c5810ab4de650cb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/82b8a6a5d93414339ec2e393f350970ed3a08d9b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/8c1ca7501449440ee87015d116c7ebacc9b8d58e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/9e10bac438c562b2dbd05ef4464f416fcba28f83" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/cb7256a2f6766f0496facce9177d2ccf32863bfb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/d50ce04744483bc3f49e4bdb7fd27c7c3cb89347" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/d780762c537ad00ebb0083e8dec4a4c586a5a563" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/da1f103c69f690f8ed16f314a9bad48756731f40" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/df606d971b426dc71cdfa6cc3de81fe7a19d7ec2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/e49eec3a7bfdbcf88744ef1b73ee7eec0aca87f7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/e7ec3d345c8d126942f261ba677546dd48259b0d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/e8e33457d16b6c032b9aaf980a28560fbd301d5b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/eb8d56073696a13d47f8d17176ba45c083776f68" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/f206cef151de50e193b7e0ee25263d196bb1f6a9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/.rpt2_cache/rpt2_c7be9077c82ddd6720575e682b43f7d947c3ba7f/types/cache/faf4cc2c584322588cb7595b4b30f3e3d0573cb5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/api/common.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/api/common.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/api/create-installation.test.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/api/create-installation.test.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/api/create-installation.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/api/create-installation.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/api/delete-installation.test.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/api/delete-installation.test.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/api/delete-installation.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/api/delete-installation.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/api/generate-auth-token.test.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/api/generate-auth-token.test.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/api/generate-auth-token.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/api/generate-auth-token.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/api/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/api/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/functions/delete-installation.test.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/functions/delete-installation.test.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/functions/delete-installation.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/functions/delete-installation.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/functions/get-id.test.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/functions/get-id.test.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/functions/get-id.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/functions/get-id.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/functions/get-token.test.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/functions/get-token.test.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/functions/get-token.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/functions/get-token.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/functions/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/functions/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/helpers/buffer-to-base64-url-safe.test.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/helpers/buffer-to-base64-url-safe.test.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/helpers/buffer-to-base64-url-safe.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/helpers/buffer-to-base64-url-safe.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/helpers/extract-app-config.test.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/helpers/extract-app-config.test.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/helpers/extract-app-config.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/helpers/extract-app-config.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/helpers/generate-fid.test.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/helpers/generate-fid.test.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/helpers/generate-fid.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/helpers/generate-fid.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/helpers/get-installation-entry.test.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/helpers/get-installation-entry.test.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/helpers/get-installation-entry.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/helpers/get-installation-entry.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/helpers/idb-manager.test.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/helpers/idb-manager.test.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/helpers/idb-manager.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/helpers/idb-manager.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/helpers/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/helpers/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/lcov.info" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/lcov.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/testing/compare-headers.test.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/testing/compare-headers.test.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/testing/compare-headers.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/testing/compare-headers.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/testing/get-fake-app.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/testing/get-fake-app.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/testing/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/testing/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/testing/setup.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/testing/setup.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/util/constants.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/util/constants.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/util/errors.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/util/errors.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/util/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/util/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/util/sleep.test.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/util/sleep.test.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/util/sleep.ts.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/coverage/browser/HeadlessChrome 74.0.3729 (Linux 0.0.0)/util/sleep.ts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/dist/index.cjs.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/dist/index.cjs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/dist/index.cjs.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/dist/index.cjs.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/dist/index.esm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/dist/index.esm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/dist/index.esm.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/dist/index.esm.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/dist/index.esm2017.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/dist/index.esm2017.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/dist/index.esm2017.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/dist/index.esm2017.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/src/api/create-installation.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/src/api/create-installation.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/src/api/create-installation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/src/api/create-installation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/src/api/delete-installation.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/src/api/delete-installation.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/src/api/delete-installation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/src/api/delete-installation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/src/api/generate-auth-token.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/src/api/generate-auth-token.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/installations/src/api/generate-auth-token.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/installations/src/api/generate-auth-token.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/messaging-types/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/messaging-types/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/messaging-types/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/messaging-types/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/messaging/dist/index.cjs.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/messaging/dist/index.cjs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/messaging/dist/index.cjs.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/messaging/dist/index.cjs.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/messaging/dist/index.esm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/messaging/dist/index.esm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/messaging/dist/index.esm.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/messaging/dist/index.esm.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/messaging/dist/index.esm2017.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/messaging/dist/index.esm2017.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/messaging/dist/index.esm2017.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/messaging/dist/index.esm2017.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/messaging/dist/src/controllers/base-controller.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/messaging/dist/src/controllers/base-controller.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/messaging/dist/src/controllers/window-controller.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/messaging/dist/src/controllers/window-controller.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/messaging/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/messaging/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/performance/dist/index.cjs.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/performance/dist/index.cjs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/performance/dist/index.esm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/performance/dist/index.esm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/performance/dist/index.esm2017.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/performance/dist/index.esm2017.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/performance/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/performance/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/storage-types/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/storage-types/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/storage-types/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/storage-types/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/storage/dist/index.cjs.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/storage/dist/index.cjs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/storage/dist/index.cjs.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/storage/dist/index.cjs.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/storage/dist/index.esm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/storage/dist/index.esm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/storage/dist/index.esm.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/storage/dist/index.esm.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/storage/dist/index.esm2017.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/storage/dist/index.esm2017.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/storage/dist/index.esm2017.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/storage/dist/index.esm2017.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/storage/dist/src/implementation/args.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/storage/dist/src/implementation/args.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/storage/dist/src/implementation/location.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/storage/dist/src/implementation/location.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/storage/dist/src/implementation/requests.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/storage/dist/src/implementation/requests.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/storage/dist/src/implementation/type.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/storage/dist/src/implementation/type.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/storage/dist/src/reference.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/storage/dist/src/reference.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/@firebase/storage/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/@firebase/storage/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/firebase/firebase-app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/firebase/firebase-app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/firebase/firebase-auth.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/firebase/firebase-auth.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/firebase/firebase-firestore.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/firebase/firebase-firestore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/firebase/firebase-firestore.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/firebase/firebase-firestore.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/firebase/firebase-installations.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/firebase/firebase-installations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/firebase/firebase-installations.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/firebase/firebase-installations.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/firebase/firebase-messaging.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/firebase/firebase-messaging.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/firebase/firebase-performance-standalone.es2017.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/firebase/firebase-performance-standalone.es2017.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/firebase/firebase-performance-standalone.es2017.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/firebase/firebase-performance-standalone.es2017.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/firebase/firebase-performance-standalone.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/firebase/firebase-performance-standalone.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/firebase/firebase-performance-standalone.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/firebase/firebase-performance-standalone.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/firebase/firebase-performance.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/firebase/firebase-performance.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/firebase/firebase-performance.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/firebase/firebase-performance.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/firebase/firebase-storage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/firebase/firebase-storage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/firebase/firebase-storage.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/firebase/firebase-storage.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/firebase/firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/firebase/firebase.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/firebase/firebase.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/firebase/firebase.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/firebase/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/firebase/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/firebase/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/firebase/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/protobufjs/node_modules/@types/node/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/protobufjs/node_modules/@types/node/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/protobufjs/node_modules/@types/node/inspector.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/protobufjs/node_modules/@types/node/inspector.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../node_modules/protobufjs/node_modules/@types/node/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../node_modules/protobufjs/node_modules/@types/node/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/CordovaLib/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/main.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/debug.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/debug.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugAssets/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/vendor.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/vendor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/vendor.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/assets/debug/www/vendor.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/build-info/debug/build-info.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/build-info/debug/build-info.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/debug/dex-renamer-state.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/debug/file-input-save-data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/debug/file-input-save-data.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/debug/zip-cache/FY5nh8j+OWe2Nw7Mq4DpMoyLCIc=" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/debug/zip-cache/FY5nh8j+OWe2Nw7Mq4DpMoyLCIc=" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/debug/zip-cache/kbC2c7AHYaNXMWrbCz81a2St6Ms=" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/debug/zip-cache/kbC2c7AHYaNXMWrbCz81a2St6Ms=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageInstantRunResourcesDebug/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageInstantRunResourcesDebug/debug/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageInstantRunResourcesDebug/debug/file-input-save-data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageInstantRunResourcesDebug/debug/file-input-save-data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/package_dependencies/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/package_dependencies/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/package_slice_0/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/package_slice_0/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/package_slice_1/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/package_slice_1/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/package_slice_2/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/package_slice_2/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/package_slice_3/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/package_slice_3/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/package_slice_4/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/package_slice_4/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/package_slice_5/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/package_slice_5/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/package_slice_6/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/package_slice_6/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/package_slice_7/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/package_slice_7/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/package_slice_8/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/package_slice_8/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/package_slice_9/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/instant-run-support/debug/package_slice_9/dex-renamer-state.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/debug/resources-debug.ap_" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/arch/core/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/arch/lifecycle/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/arch/lifecycle/livedata/core/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/arch/lifecycle/viewmodel/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/compat/R$attr.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/compat/R$bool.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/compat/R$color.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/compat/R$dimen.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/compat/R$drawable.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/compat/R$id.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/compat/R$integer.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/compat/R$layout.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/compat/R$string.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/compat/R$style.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/compat/R$styleable.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/compat/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreui/R$attr.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreui/R$bool.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreui/R$color.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreui/R$dimen.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreui/R$drawable.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreui/R$id.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreui/R$integer.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreui/R$layout.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreui/R$string.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreui/R$style.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreui/R$styleable.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreui/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreutils/R$attr.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreutils/R$bool.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreutils/R$color.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreutils/R$dimen.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreutils/R$drawable.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreutils/R$id.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreutils/R$integer.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreutils/R$layout.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreutils/R$string.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreutils/R$style.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreutils/R$styleable.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/coreutils/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/customtabs/R$attr.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/customtabs/R$bool.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/customtabs/R$color.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/customtabs/R$dimen.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/customtabs/R$drawable.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/customtabs/R$id.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/customtabs/R$integer.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/customtabs/R$layout.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/customtabs/R$string.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/customtabs/R$style.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/customtabs/R$styleable.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/customtabs/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/fragment/R$attr.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/fragment/R$bool.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/fragment/R$color.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/fragment/R$dimen.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/fragment/R$drawable.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/fragment/R$id.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/fragment/R$integer.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/fragment/R$layout.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/fragment/R$string.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/fragment/R$style.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/fragment/R$styleable.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/fragment/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/mediacompat/R$attr.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/mediacompat/R$bool.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/mediacompat/R$color.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/mediacompat/R$dimen.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/mediacompat/R$drawable.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/mediacompat/R$id.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/mediacompat/R$integer.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/mediacompat/R$layout.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/mediacompat/R$string.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/mediacompat/R$style.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/mediacompat/R$styleable.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/mediacompat/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/v4/R$attr.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/v4/R$bool.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/v4/R$color.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/v4/R$dimen.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/v4/R$drawable.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/v4/R$id.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/v4/R$integer.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/v4/R$layout.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/v4/R$string.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/v4/R$style.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/v4/R$styleable.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/v4/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/android/gms/R$attr.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/android/gms/R$color.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/android/gms/R$drawable.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/android/gms/R$id.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/android/gms/R$integer.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/android/gms/R$string.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/android/gms/R$styleable.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/android/gms/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/android/gms/base/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/android/gms/base/license/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/android/gms/common/license/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/android/gms/location/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/android/gms/location/license/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/android/gms/tasks/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/android/gms/tasks/license/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/firebase/firebase/common/license/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/firebase/firebase/iid/license/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/firebase/firebase/messaging/license/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/firebase/firebase_common/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/firebase/iid/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/firebase/messaging/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/ionicframework/cordova/webview/AndroidProtocolHandler.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/ionicframework/cordova/webview/IonicWebView$1.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/ionicframework/cordova/webview/IonicWebView.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/ionicframework/cordova/webview/IonicWebViewEngine$ServerClient.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/ionicframework/cordova/webview/IonicWebViewEngine.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/ionicframework/cordova/webview/UriMatcher.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/ionicframework/cordova/webview/WebViewLocalServer$1.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/ionicframework/cordova/webview/WebViewLocalServer$2.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/ionicframework/cordova/webview/WebViewLocalServer$AssetHostingDetails.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/ionicframework/cordova/webview/WebViewLocalServer$LazyInputStream.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/ionicframework/cordova/webview/WebViewLocalServer$LollipopLazyInputStream.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/ionicframework/cordova/webview/WebViewLocalServer$PathHandler.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/ionicframework/cordova/webview/WebViewLocalServer.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/onesignal/R$attr.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/onesignal/R$bool.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/onesignal/R$color.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/onesignal/R$dimen.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/onesignal/R$drawable.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/onesignal/R$id.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/onesignal/R$integer.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/onesignal/R$layout.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/onesignal/R$raw.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/onesignal/R$string.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/onesignal/R$style.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/onesignal/R$styleable.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/onesignal/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/plugin/gcm/OneSignalPush$1.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/plugin/gcm/OneSignalPush$2.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/plugin/gcm/OneSignalPush$3.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/plugin/gcm/OneSignalPush$4.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/plugin/gcm/OneSignalPush$5.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/plugin/gcm/OneSignalPush$6.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/plugin/gcm/OneSignalPush$7.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/plugin/gcm/OneSignalPush$8.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/plugin/gcm/OneSignalPush$9.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/plugin/gcm/OneSignalPush$CordovaNotificationOpenedHandler.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/plugin/gcm/OneSignalPush$CordovaNotificationReceivedHandler.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/plugin/gcm/OneSignalPush.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/keyboard/IonicKeyboard$1.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/keyboard/IonicKeyboard$2.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/keyboard/IonicKeyboard$3$1.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/keyboard/IonicKeyboard$3.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/keyboard/IonicKeyboard.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/starter/BuildConfig.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/starter/MainActivity.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/starter/Manifest$permission.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/starter/Manifest.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/starter/R$attr.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/starter/R$bool.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/starter/R$color.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/starter/R$dimen.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/starter/R$drawable.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/starter/R$id.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/starter/R$integer.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/starter/R$layout.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/starter/R$mipmap.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/starter/R$raw.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/starter/R$string.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/starter/R$style.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/starter/R$styleable.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/starter/R$xml.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/io/ionic/starter/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/R.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/device/Device.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/AssetFilesystem.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/ContentFilesystem.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/DirectoryManager.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/EncodingException.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileExistsException.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$1.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$10.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$11.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$12.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$13.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$14.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$15.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$16.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$17.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$18.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$19.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$2.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$20.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$21.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$22.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$23.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$24.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$25.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$26.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$27.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$28.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$29.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$3.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$4.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$5.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$6.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$7.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$8.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$9.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils$FileOp.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/FileUtils.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/Filesystem$LimitedInputStream.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/Filesystem$ReadFileCallback.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/Filesystem.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/InvalidModificationException.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/LocalFilesystem.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/LocalFilesystemURL.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/NoModificationAllowedException.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/PendingRequests$1.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/PendingRequests$Request.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/PendingRequests.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/file/TypeMismatchException.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/splashscreen/SplashScreen$1.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/splashscreen/SplashScreen$2.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/splashscreen/SplashScreen$3.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/splashscreen/SplashScreen$4$1.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/splashscreen/SplashScreen$4.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/splashscreen/SplashScreen$5$1.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/splashscreen/SplashScreen$5.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/splashscreen/SplashScreen$6$1.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/splashscreen/SplashScreen$6.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/splashscreen/SplashScreen$7.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/splashscreen/SplashScreen.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/statusbar/StatusBar$1.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/statusbar/StatusBar$2.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/statusbar/StatusBar$3.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/statusbar/StatusBar$4.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/statusbar/StatusBar$5.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/statusbar/StatusBar$6.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/statusbar/StatusBar$7.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/statusbar/StatusBar$8.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/statusbar/StatusBar$9.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/statusbar/StatusBar.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/whitelist/WhitelistPlugin$1.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/whitelist/WhitelistPlugin$CustomConfigXmlParser.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/org/apache/cordova/whitelist/WhitelistPlugin.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_2.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_2.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_3.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_3.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_6.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_6.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_7.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_7.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_8.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_8.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_9.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/split-apk/debug/slices/slice_9.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/61.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/62.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/63.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/64.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/65.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/67.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/arch/lifecycle/livedata/core/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/compat/R$attr.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/compat/R$bool.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/compat/R$color.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/compat/R$dimen.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/compat/R$drawable.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/compat/R$id.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/compat/R$integer.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/compat/R$layout.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/compat/R$string.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/compat/R$style.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/compat/R$styleable.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/compat/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/fragment/R$attr.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/fragment/R$bool.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/fragment/R$color.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/fragment/R$dimen.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/fragment/R$drawable.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/fragment/R$id.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/fragment/R$integer.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/fragment/R$layout.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/fragment/R$string.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/fragment/R$style.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/fragment/R$styleable.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/fragment/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/mediacompat/R$attr.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/mediacompat/R$bool.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/mediacompat/R$color.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/mediacompat/R$dimen.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/mediacompat/R$drawable.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/mediacompat/R$id.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/mediacompat/R$integer.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/mediacompat/R$layout.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/mediacompat/R$string.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/mediacompat/R$style.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/mediacompat/R$styleable.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/android/support/mediacompat/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/com/android/tools/ir/dummy/slice_0.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/com/google/android/gms/base/license/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/71/com/google/firebase/firebase/common/license/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/72/android/arch/lifecycle/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/72/com/android/tools/ir/dummy/slice_1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/72/com/google/android/gms/tasks/license/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/coreutils/R$attr.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/coreutils/R$bool.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/coreutils/R$color.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/coreutils/R$dimen.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/coreutils/R$drawable.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/coreutils/R$id.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/coreutils/R$integer.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/coreutils/R$layout.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/coreutils/R$string.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/coreutils/R$style.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/coreutils/R$styleable.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/coreutils/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/v4/R$attr.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/v4/R$bool.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/v4/R$color.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/v4/R$dimen.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/v4/R$drawable.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/v4/R$id.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/v4/R$integer.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/v4/R$layout.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/v4/R$string.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/v4/R$style.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/v4/R$styleable.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/android/support/v4/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/com/android/tools/ir/dummy/slice_2.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/org/apache/cordova/engine/SystemCookieManager.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/org/apache/cordova/engine/SystemExposedJsApi.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/org/apache/cordova/engine/SystemWebChromeClient$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/org/apache/cordova/engine/SystemWebChromeClient$2.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/org/apache/cordova/engine/SystemWebChromeClient$3.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/org/apache/cordova/engine/SystemWebChromeClient$4.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/org/apache/cordova/engine/SystemWebChromeClient$5.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/org/apache/cordova/engine/SystemWebChromeClient.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/org/apache/cordova/engine/SystemWebView.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/org/apache/cordova/engine/SystemWebViewClient.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/org/apache/cordova/engine/SystemWebViewEngine$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/org/apache/cordova/engine/SystemWebViewEngine$2.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/73/org/apache/cordova/engine/SystemWebViewEngine.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/74/com/android/tools/ir/dummy/slice_3.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/74/com/google/firebase/firebase/iid/license/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/75/android/arch/core/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/75/com/android/tools/ir/dummy/slice_4.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/75/com/google/android/gms/R$attr.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/75/com/google/android/gms/R$color.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/75/com/google/android/gms/R$drawable.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/75/com/google/android/gms/R$id.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/75/com/google/android/gms/R$integer.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/75/com/google/android/gms/R$string.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/75/com/google/android/gms/R$styleable.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/75/com/google/android/gms/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/75/com/google/android/gms/location/license/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/75/com/google/android/gms/tasks/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/android/arch/lifecycle/viewmodel/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/android/support/customtabs/R$attr.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/android/support/customtabs/R$bool.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/android/support/customtabs/R$color.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/android/support/customtabs/R$dimen.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/android/support/customtabs/R$drawable.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/android/support/customtabs/R$id.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/android/support/customtabs/R$integer.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/android/support/customtabs/R$layout.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/android/support/customtabs/R$string.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/android/support/customtabs/R$style.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/android/support/customtabs/R$styleable.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/android/support/customtabs/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/com/android/tools/ir/dummy/slice_5.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/76/com/google/android/gms/location/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/77/com/android/tools/ir/dummy/slice_6.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/77/org/apache/cordova/device/Device.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/android/support/coreui/R$attr.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/android/support/coreui/R$bool.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/android/support/coreui/R$color.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/android/support/coreui/R$dimen.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/android/support/coreui/R$drawable.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/android/support/coreui/R$id.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/android/support/coreui/R$integer.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/android/support/coreui/R$layout.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/android/support/coreui/R$string.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/android/support/coreui/R$style.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/android/support/coreui/R$styleable.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/android/support/coreui/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/com/android/tools/ir/dummy/slice_7.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/com/google/firebase/iid/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/com/google/firebase/messaging/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/com/plugin/gcm/OneSignalPush$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/com/plugin/gcm/OneSignalPush$2.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/com/plugin/gcm/OneSignalPush$3.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/com/plugin/gcm/OneSignalPush$4.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/com/plugin/gcm/OneSignalPush$5.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/com/plugin/gcm/OneSignalPush$6.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/com/plugin/gcm/OneSignalPush$7.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/com/plugin/gcm/OneSignalPush$8.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/com/plugin/gcm/OneSignalPush$9.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/com/plugin/gcm/OneSignalPush$CordovaNotificationOpenedHandler.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/com/plugin/gcm/OneSignalPush$CordovaNotificationReceivedHandler.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/com/plugin/gcm/OneSignalPush.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/io/ionic/starter/BuildConfig.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/io/ionic/starter/MainActivity.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/io/ionic/starter/Manifest$permission.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/io/ionic/starter/Manifest.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/io/ionic/starter/R$attr.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/io/ionic/starter/R$bool.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/io/ionic/starter/R$color.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/io/ionic/starter/R$dimen.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/io/ionic/starter/R$drawable.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/io/ionic/starter/R$id.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/io/ionic/starter/R$integer.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/io/ionic/starter/R$layout.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/io/ionic/starter/R$mipmap.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/io/ionic/starter/R$raw.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/io/ionic/starter/R$string.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/io/ionic/starter/R$style.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/io/ionic/starter/R$styleable.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/io/ionic/starter/R$xml.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/io/ionic/starter/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/org/apache/cordova/splashscreen/SplashScreen$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/org/apache/cordova/splashscreen/SplashScreen$2.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/org/apache/cordova/splashscreen/SplashScreen$3.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/org/apache/cordova/splashscreen/SplashScreen$4$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/org/apache/cordova/splashscreen/SplashScreen$4.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/org/apache/cordova/splashscreen/SplashScreen$5$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/org/apache/cordova/splashscreen/SplashScreen$5.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/org/apache/cordova/splashscreen/SplashScreen$6$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/org/apache/cordova/splashscreen/SplashScreen$6.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/org/apache/cordova/splashscreen/SplashScreen$7.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/org/apache/cordova/splashscreen/SplashScreen.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/org/apache/cordova/whitelist/WhitelistPlugin$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/org/apache/cordova/whitelist/WhitelistPlugin$CustomConfigXmlParser.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/78/org/apache/cordova/whitelist/WhitelistPlugin.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/com/android/tools/ir/dummy/slice_8.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/com/google/android/gms/common/license/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/com/google/firebase/firebase_common/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/com/ionicframework/cordova/webview/AndroidProtocolHandler.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/com/ionicframework/cordova/webview/IonicWebView$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/com/ionicframework/cordova/webview/IonicWebView.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/com/ionicframework/cordova/webview/IonicWebViewEngine$ServerClient.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/com/ionicframework/cordova/webview/IonicWebViewEngine.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/com/ionicframework/cordova/webview/UriMatcher.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/com/ionicframework/cordova/webview/WebViewLocalServer$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/com/ionicframework/cordova/webview/WebViewLocalServer$2.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/com/ionicframework/cordova/webview/WebViewLocalServer$AssetHostingDetails.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/com/ionicframework/cordova/webview/WebViewLocalServer$LazyInputStream.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/com/ionicframework/cordova/webview/WebViewLocalServer$LollipopLazyInputStream.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/com/ionicframework/cordova/webview/WebViewLocalServer$PathHandler.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/com/ionicframework/cordova/webview/WebViewLocalServer.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/AuthenticationToken.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/BuildConfig.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/BuildHelper.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CallbackContext.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CallbackMap.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/Config.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/ConfigXmlParser.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaActivity$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaActivity$2.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaActivity$3.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaActivity$4$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaActivity$4.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaActivity.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaArgs.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaBridge.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaClientCertRequest.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaDialogsHelper$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaDialogsHelper$2.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaDialogsHelper$3.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaDialogsHelper$4.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaDialogsHelper$5.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaDialogsHelper$6.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaDialogsHelper$7.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaDialogsHelper$8.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaDialogsHelper$9.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaDialogsHelper$Result.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaDialogsHelper.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaHttpAuthHandler.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaInterface.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaInterfaceImpl$ActivityResultHolder.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaInterfaceImpl.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaPlugin.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaPreferences.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaResourceApi$OpenForReadResult.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaResourceApi.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaWebView.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaWebViewEngine$Client.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaWebViewEngine$EngineView.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaWebViewEngine.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaWebViewImpl$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaWebViewImpl$2.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaWebViewImpl$3.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaWebViewImpl$EngineClient$1$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaWebViewImpl$EngineClient$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaWebViewImpl$EngineClient.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CordovaWebViewImpl.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CoreAndroid$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CoreAndroid$2.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CoreAndroid$3.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CoreAndroid$4.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CoreAndroid$5.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/CoreAndroid.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/ExposedJsApi.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/ICordovaClientCertRequest.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/ICordovaCookieManager.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/ICordovaHttpAuthHandler.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/LOG.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/NativeToJsMessageQueue$BridgeMode.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/NativeToJsMessageQueue$EvalBridgeMode$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/NativeToJsMessageQueue$EvalBridgeMode.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/NativeToJsMessageQueue$JsMessage.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/NativeToJsMessageQueue$LoadUrlBridgeMode$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/NativeToJsMessageQueue$LoadUrlBridgeMode.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/NativeToJsMessageQueue$NoOpBridgeMode.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/NativeToJsMessageQueue$OnlineEventsBridgeMode$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/NativeToJsMessageQueue$OnlineEventsBridgeMode$2.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/NativeToJsMessageQueue$OnlineEventsBridgeMode$OnlineEventsBridgeModeDelegate.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/NativeToJsMessageQueue$OnlineEventsBridgeMode.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/NativeToJsMessageQueue.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/PermissionHelper.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/PluginEntry.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/PluginManager.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/PluginResult$Status.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/PluginResult.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/ResumeCallback.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/Whitelist$URLPattern.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/Whitelist.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/AssetFilesystem.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/ContentFilesystem.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/DirectoryManager.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/EncodingException.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileExistsException.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$10.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$11.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$12.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$13.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$14.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$15.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$16.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$17.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$18.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$19.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$2.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$20.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$21.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$22.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$23.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$24.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$25.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$26.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$27.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$28.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$29.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$3.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$4.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$5.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$6.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$7.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$8.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$9.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils$FileOp.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/FileUtils.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/Filesystem$LimitedInputStream.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/Filesystem$ReadFileCallback.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/Filesystem.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/InvalidModificationException.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/LocalFilesystem.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/LocalFilesystemURL.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/NoModificationAllowedException.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/PendingRequests$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/PendingRequests$Request.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/PendingRequests.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/79/org/apache/cordova/file/TypeMismatchException.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/com/android/tools/ir/dummy/slice_9.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/com/google/android/gms/base/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/com/google/firebase/firebase/messaging/license/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/com/onesignal/R$attr.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/com/onesignal/R$bool.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/com/onesignal/R$color.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/com/onesignal/R$dimen.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/com/onesignal/R$drawable.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/com/onesignal/R$id.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/com/onesignal/R$integer.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/com/onesignal/R$layout.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/com/onesignal/R$raw.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/com/onesignal/R$string.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/com/onesignal/R$style.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/com/onesignal/R$styleable.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/com/onesignal/R.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/io/ionic/keyboard/IonicKeyboard$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/io/ionic/keyboard/IonicKeyboard$2.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/io/ionic/keyboard/IonicKeyboard$3$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/io/ionic/keyboard/IonicKeyboard$3.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/io/ionic/keyboard/IonicKeyboard.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/org/apache/cordova/statusbar/StatusBar$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/org/apache/cordova/statusbar/StatusBar$2.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/org/apache/cordova/statusbar/StatusBar$3.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/org/apache/cordova/statusbar/StatusBar$4.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/org/apache/cordova/statusbar/StatusBar$5.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/org/apache/cordova/statusbar/StatusBar$6.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/org/apache/cordova/statusbar/StatusBar$7.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/org/apache/cordova/statusbar/StatusBar$8.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/org/apache/cordova/statusbar/StatusBar$9.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/80/org/apache/cordova/statusbar/StatusBar.dex" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/__content__.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/__content__.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/0/classes.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/20/classes.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/21/classes.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/22/classes.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/23/classes.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/24/classes.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/25/classes.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/26/classes.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/27/classes.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/28/classes.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/29/classes.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/30/classes.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/31/classes.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/32/classes.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/33/classes.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/34/classes.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/35/classes.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/36/classes.dex" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/__content__.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexMerger/debug/__content__.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/mergeJavaRes/debug/0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/mergeJavaRes/debug/0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/assets/www/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/www/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/assets/www/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/www/main.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/www/vendor.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/www/vendor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/www/vendor.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/www/vendor.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/app/home/home.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/app/home/home.page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/app/home/home.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/app/home/home.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/app/storage/storage.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/app/storage/storage.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/app/storage/store-to-firebase.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/app/storage/store-to-firebase.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/app/survey/initiated-drink/initiated-drink.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/app/survey/initiated-drink/initiated-drink.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/app/survey/initiated-drink/initiated-drink.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/app/survey/initiated-drink/initiated-drink.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/app/survey/initiated-drink/initiated-drink.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/app/survey/initiated-drink/initiated-drink.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/app/survey/survey.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/app/survey/survey.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../src/environments/environment.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../www/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../www/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../www/main.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../www/main.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../www/vendor.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../www/vendor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../www/vendor.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../www/vendor.js.map" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -323,15 +742,27 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="android" type="b2602c69:ProjectViewProjectNode" />
+              <item name="android" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="device.picker.selection" value="077d1186d008351b" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../testFire2/platforms/android" />
     <property name="not.eligible.for.single.variant.sync" value="true" />
+    <property name="show.do.not.ask.upgrade.gradle.plugin" value="3.0.1" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -423,29 +854,29 @@
   <component name="ToolWindowManager">
     <frame x="46" y="54" width="1236" height="604" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" visible="true" weight="0.32993197" />
-      <window_info id="Structure" side_tool="true" />
-      <window_info id="Build Variants" side_tool="true" />
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Resources Explorer" />
-      <window_info id="Favorites" side_tool="true" />
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Run" />
-      <window_info active="true" anchor="bottom" id="Logcat" visible="true" weight="0.5190678" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="TODO" />
-      <window_info anchor="bottom" id="Android Profiler" />
-      <window_info anchor="bottom" id="Debug" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Build" weight="0.32838982" />
-      <window_info anchor="right" id="Device File Explorer" side_tool="true" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Gradle" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Palette&#9;" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.3293718" />
+      <window_info id="Structure" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Build Variants" order="4" side_tool="true" />
+      <window_info id="Image Layers" order="5" />
+      <window_info id="Designer" order="6" />
+      <window_info id="Resources Explorer" order="7" />
+      <window_info id="Capture Tool" order="8" />
+      <window_info anchor="bottom" id="Run" order="0" />
+      <window_info anchor="bottom" id="Logcat" order="1" weight="0.5179704" />
+      <window_info anchor="bottom" id="TODO" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" />
+      <window_info anchor="bottom" id="Terminal" order="4" />
+      <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="6" />
+      <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.32838982" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
+      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Gradle" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
     </layout>
   </component>
 </project>

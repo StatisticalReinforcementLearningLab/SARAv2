@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { File } from '@ionic-native/file/ngx';
+import { SaveDataService } from '../save-data.service';
 import { StoreToFirebaseService } from '../../storage/store-to-firebase.service';
+import { Question } from '../question';
 
 declare var cordova: any;
 
@@ -10,18 +13,26 @@ declare var cordova: any;
   templateUrl: './initiated-drink.component.html',
   styleUrls: ['./initiated-drink.component.scss'],
 })
+
 export class InitiatedDrinkComponent implements OnInit {
+  @Input() question: Question;
   //response: any; 
-
-  private isSelectedYes : boolean; 
-  private isSelectedNo : boolean; 
-
 
   constructor(
     private httpClient: HttpClient,
     private file: File,
+    private router: Router,
+    private saveDataService : SaveDataService,
     private storeToFirebaseService: StoreToFirebaseService
-    ) { }
+    ) {
+
+      this.question = new Question({
+        ID: 'Q1',
+        label: 'Are you starting your first drink?',
+        result1: false,
+        result2: false
+        });
+     }
 
   ngOnInit() {}
 
@@ -36,10 +47,10 @@ export class InitiatedDrinkComponent implements OnInit {
 
   storeData(){
     console.log("Inside storeData");
-    var surveyResult = {
-      ID: "Q1",
-      Result1: this.isSelectedYes,
-      Result2: this.isSelectedNo};  
+    console.log(this.question);
+    console.log(JSON.stringify(this.question));
+    this.saveDataService.saveData("SurveyResult", this.question);
+
     //var jsonString = JSON.stringify(surveyResult);
     //var fileDir = cordova.file.externalApplicationStorageDirectory; 
     //var filename = "result.json";
@@ -49,8 +60,23 @@ export class InitiatedDrinkComponent implements OnInit {
     //  await this.upload(buffer, filename);
     //});
     
-    this.storeToFirebaseService.initFirebase();
-    this.storeToFirebaseService.storeTofirebase(surveyResult);
+    //this.storeToFirebaseService.initFirebase();
+    //this.storeToFirebaseService.storeTofirebase(surveyResult);
+    this.storeToFirebaseService.addSurvey(this.question);
+    console.log("End of storeData");
+
+    this.displayRewardComponent();
+
   }
 
+  printValue(){
+    console.log('Checked:' + this.question.result1);
+  }
+
+  //href="/incentive/award"
+
+  displayRewardComponent(){
+    this.router.navigateByUrl('/incentive/award');
+
+  }
 }
