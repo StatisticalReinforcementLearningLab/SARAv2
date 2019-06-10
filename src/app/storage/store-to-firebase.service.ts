@@ -59,10 +59,10 @@ export class StoreToFirebaseService {
       
   }*/
 
-    addSurvey(surveyResult){
+    addSurvey(path, obj: object){
       console.log("Start to addSurvey!");
       return new Promise<any>((resolve, reject) => {
-        this.afs.collection('/results').add(surveyResult.getData())
+        this.afs.collection(path).add(obj)
         .then(
           (res) => {
             resolve(res)

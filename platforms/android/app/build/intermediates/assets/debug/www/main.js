@@ -4231,6 +4231,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _survey_initiated_drink_initiated_drink_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./survey/initiated-drink/initiated-drink.component */ "./src/app/survey/initiated-drink/initiated-drink.component.ts");
 /* harmony import */ var _incentive_award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./incentive/award-memes/award-memes.component */ "./src/app/incentive/award-memes/award-memes.component.ts");
+/* harmony import */ var _survey_activetask_activetask_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./survey/activetask/activetask.component */ "./src/app/survey/activetask/activetask.component.ts");
+
 
 
 
@@ -4240,7 +4242,8 @@ var routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', loadChildren: './home/home.module#HomePageModule' },
     { path: 'survey/initated-drink', component: _survey_initiated_drink_initiated_drink_component__WEBPACK_IMPORTED_MODULE_3__["InitiatedDrinkComponent"] },
-    { path: 'incentive/award', component: _incentive_award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__["AwardMemesComponent"] }
+    { path: 'incentive/award', component: _incentive_award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__["AwardMemesComponent"] },
+    { path: 'survey/activetask', component: _survey_activetask_activetask_component__WEBPACK_IMPORTED_MODULE_5__["ActivetaskComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -4584,11 +4587,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _store_to_firebase_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store-to-firebase.service */ "./src/app/storage/store-to-firebase.service.ts");
-/* harmony import */ var angularfire2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! angularfire2 */ "./node_modules/angularfire2/index.js");
-/* harmony import */ var angularfire2__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(angularfire2__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _angular_fire__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/fire */ "./node_modules/@angular/fire/index.js");
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var angularfire2_firestore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! angularfire2/firestore */ "./node_modules/angularfire2/firestore/index.js");
-/* harmony import */ var angularfire2_firestore__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(angularfire2_firestore__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/index.js");
 
 
 
@@ -4604,8 +4605,8 @@ var StorageModule = /** @class */ (function () {
             declarations: [],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
-                angularfire2__WEBPACK_IMPORTED_MODULE_4__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].firebaseConfig),
-                angularfire2_firestore__WEBPACK_IMPORTED_MODULE_6__["AngularFirestoreModule"]
+                _angular_fire__WEBPACK_IMPORTED_MODULE_4__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].firebaseConfig),
+                _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_6__["AngularFirestoreModule"]
             ],
             providers: [_store_to_firebase_service__WEBPACK_IMPORTED_MODULE_3__["StoreToFirebaseService"]]
         })
@@ -4629,15 +4630,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StoreToFirebaseService", function() { return StoreToFirebaseService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.cjs.js");
-/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! firebase/auth */ "./node_modules/firebase/auth/dist/index.esm.js");
-/* harmony import */ var firebase_firestore__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! firebase/firestore */ "./node_modules/firebase/firestore/dist/index.esm.js");
-/* harmony import */ var angularfire2_firestore__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! angularfire2/firestore */ "./node_modules/angularfire2/firestore/index.js");
-/* harmony import */ var angularfire2_firestore__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(angularfire2_firestore__WEBPACK_IMPORTED_MODULE_5__);
-
-
-
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/index.js");
 
 
 
@@ -4645,73 +4638,141 @@ var StoreToFirebaseService = /** @class */ (function () {
     function StoreToFirebaseService(afs) {
         this.afs = afs;
     }
-    StoreToFirebaseService.prototype.initFirebase = function () {
-        // TODO: Replace the following with your app's Firebase project configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyBK_PwjnsC01Q-a-sV7LsA7qIeIhCx4ts0",
-            authDomain: "sarav2-6a033.firebaseapp.com",
-            databaseURL: "https://sarav2-6a033.firebaseio.com",
-            projectId: "sarav2-6a033",
-            storageBucket: "sarav2-6a033.appspot.com",
-            messagingSenderId: "489827689493",
-            appId: "1:489827689493:web:7f72eb7033e9acf5"
-        };
-        // Initialize Firebase
-        firebase_app__WEBPACK_IMPORTED_MODULE_2__["initializeApp"](firebaseConfig);
-        console.log("firebase.initializeApp");
-    };
-    StoreToFirebaseService.prototype.storeTofirebase = function (surveyResult) {
-        console.log("Inside storeTofirebase");
-        /*var db = firebase.firestore();
+    /*initFirebase(){
+      // TODO: Replace the following with your app's Firebase project configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBK_PwjnsC01Q-a-sV7LsA7qIeIhCx4ts0",
+        authDomain: "sarav2-6a033.firebaseapp.com",
+        databaseURL: "https://sarav2-6a033.firebaseio.com",
+        projectId: "sarav2-6a033",
+        storageBucket: "sarav2-6a033.appspot.com",
+        messagingSenderId: "489827689493",
+        appId: "1:489827689493:web:7f72eb7033e9acf5"
+      };
+  
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      console.log("firebase.initializeApp");
+  
+    }
+  
+    storeTofirebase(surveyResult){
+      console.log("Inside storeTofirebase");
+  
+      var db = firebase.firestore();
+      console.log("firestore database created");
+   
+      console.log("firestore created");
+      db.collection("test").add(surveyResult)
+      .then(function(docRef) {
+          console.log("Document written with ID: ", docRef.id);
+      })
+      .catch(function(error) {
+          console.error("Error adding document: ", error);
+      });
+  
+      console.log("saved to firestore");
     
-        console.log("firestore created");
-        db.collection("test").add(surveyResult)
-        .then(function(docRef) {
-            console.log("Document written with ID: ", docRef.id);
-        })
-        .catch(function(error) {
-            console.error("Error adding document: ", error);
-        });
-    
-        console.log("saved to firestore");*/
-        var database = firebase_app__WEBPACK_IMPORTED_MODULE_2__["database"]();
-        console.log("firestore database created");
-        database.ref('result').set(surveyResult);
-        // Get a key for a new Post.
+         // Get a key for a new Post.
         //var newPostKey = firebase.database().ref().child('posts').push().key;
+  
         // Write the new post's data simultaneously in the posts list and the user's post list.
         //var updates = {};
         //updates['/posts/' + newPostKey] = surveyResult;
+      
         //return firebase.database().ref().update(updates);
-    };
-    StoreToFirebaseService.prototype.addSurvey = function (surveyResult) {
-        console.log("Inside addSurvey!");
-        this.afs.collection('/sarav2-6a033').add({
-            ID: "Q2",
-            Result1: false,
-            Result2: false
+        
+    }*/
+    StoreToFirebaseService.prototype.addSurvey = function (path, obj) {
+        var _this = this;
+        console.log("Start to addSurvey!");
+        return new Promise(function (resolve, reject) {
+            _this.afs.collection(path).add(obj)
+                .then(function (res) {
+                resolve(res);
+            }, function (err) { return reject(err); });
         });
-        /*      return new Promise<any>((resolve, reject) => {
-               this.afs.collection('/result').add({
-                 ID: "Q2",
-                 Result1: false,
-                 Result2: false
-               })
-               .then(
-                 (res) => {
-                   resolve(res)
-                 },
-                 err => reject(err)
-               )
-             }) */
     };
     StoreToFirebaseService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root',
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [angularfire2_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"]])
     ], StoreToFirebaseService);
     return StoreToFirebaseService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/survey/activetask/activetask.component.html":
+/*!*************************************************************!*\
+  !*** ./src/app/survey/activetask/activetask.component.html ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n  <ion-title>\r\n    Active Task\r\n  </ion-title>\r\n</ion-toolbar>\r\n</ion-header>\r\n\r\n\r\n<div class=\"ion-padding\">\r\n  <ion-button (click)=\"incrementCount()\">Click the button</ion-button> \r\n  <ion-button (click)=\"storeData()\" *ngIf=\"count >= 10\">Done</ion-button> \r\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/survey/activetask/activetask.component.scss":
+/*!*************************************************************!*\
+  !*** ./src/app/survey/activetask/activetask.component.scss ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3N1cnZleS9hY3RpdmV0YXNrL2FjdGl2ZXRhc2suY29tcG9uZW50LnNjc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/survey/activetask/activetask.component.ts":
+/*!***********************************************************!*\
+  !*** ./src/app/survey/activetask/activetask.component.ts ***!
+  \***********************************************************/
+/*! exports provided: ActivetaskComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ActivetaskComponent", function() { return ActivetaskComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _save_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../save-data.service */ "./src/app/survey/save-data.service.ts");
+/* harmony import */ var _storage_store_to_firebase_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../storage/store-to-firebase.service */ "./src/app/storage/store-to-firebase.service.ts");
+
+
+
+
+var ActivetaskComponent = /** @class */ (function () {
+    function ActivetaskComponent(saveDataService, storeToFirebaseService) {
+        this.saveDataService = saveDataService;
+        this.storeToFirebaseService = storeToFirebaseService;
+        this.count = 0;
+    }
+    ActivetaskComponent.prototype.ngOnInit = function () { };
+    ActivetaskComponent.prototype.incrementCount = function () {
+        this.count = this.count + 1;
+    };
+    ActivetaskComponent.prototype.storeData = function () {
+        this.saveDataService.saveData("Count", this.count);
+        var countObj = { "count": this.count };
+        this.storeToFirebaseService.addSurvey('/counts', countObj);
+        this.count = 0;
+        this.saveDataService.browseToReward();
+    };
+    ActivetaskComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-activetask',
+            template: __webpack_require__(/*! ./activetask.component.html */ "./src/app/survey/activetask/activetask.component.html"),
+            styles: [__webpack_require__(/*! ./activetask.component.scss */ "./src/app/survey/activetask/activetask.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_save_data_service__WEBPACK_IMPORTED_MODULE_2__["SaveDataService"],
+            _storage_store_to_firebase_service__WEBPACK_IMPORTED_MODULE_3__["StoreToFirebaseService"]])
+    ], ActivetaskComponent);
+    return ActivetaskComponent;
 }());
 
 
@@ -4725,7 +4786,7 @@ var StoreToFirebaseService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n    <ion-toolbar>\r\n    <ion-title>\r\n      Initiated Drinking EMA Survey\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n    <div class=\"ion-padding\">\r\n      <ion-label>Are you starting your first drink?</ion-label>\r\n      <ion-item >\r\n        <ion-label>Yes</ion-label>\r\n        <ion-checkbox  slot=\"start\" [(ngModel)]=\"isCheckedYes\"></ion-checkbox>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label>No</ion-label>\r\n        <ion-checkbox slot=\"start\" [(ngModel)]=\"isCheckedNo\"></ion-checkbox>\r\n      </ion-item>\r\n\r\n    </div>\r\n</ion-content>\r\n\r\n<div class=\"ion-padding\">\r\n    <ion-button href=\"/incentive/award\" (click)=\"storeData()\">Submit</ion-button> \r\n</div>\r\n\r\n<!--div class=\"card\">\r\n    <div class=\"card-body\"></div>\r\n</div-->\r\n"
+module.exports = "<ion-header>\r\n    <ion-toolbar>\r\n    <ion-title>\r\n      Initiated Drinking EMA Survey\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n    <div class=\"ion-padding\">\r\n      <ion-label>{{question.label}}</ion-label>\r\n      <ion-item >\r\n        <ion-label>Yes</ion-label>\r\n        <ion-checkbox [(ngModel)]=\"question.result1\"></ion-checkbox>\r\n      </ion-item>\r\n      <ion-item>\r\n        <ion-label>No</ion-label>\r\n        <ion-checkbox  [(ngModel)]=\"question.result2\"></ion-checkbox>\r\n      </ion-item>\r\n\r\n    </div>\r\n</ion-content>\r\n\r\n<div class=\"ion-padding\">\r\n    <ion-button (click)=\"storeData()\">Submit</ion-button> \r\n</div>\r\n\r\n<!--div class=\"card\">\r\n    <div class=\"card-body\"></div>\r\n</div-->\r\n"
 
 /***/ }),
 
@@ -4754,17 +4815,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/file/ngx */ "./node_modules/@ionic-native/file/ngx/index.js");
-/* harmony import */ var _storage_store_to_firebase_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../storage/store-to-firebase.service */ "./src/app/storage/store-to-firebase.service.ts");
+/* harmony import */ var _save_data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../save-data.service */ "./src/app/survey/save-data.service.ts");
+/* harmony import */ var _storage_store_to_firebase_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../storage/store-to-firebase.service */ "./src/app/storage/store-to-firebase.service.ts");
+/* harmony import */ var _question__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../question */ "./src/app/survey/question.ts");
+
+
 
 
 
 
 
 var InitiatedDrinkComponent = /** @class */ (function () {
-    function InitiatedDrinkComponent(httpClient, file, storeToFirebaseService) {
+    //response: any; 
+    function InitiatedDrinkComponent(httpClient, file, saveDataService, storeToFirebaseService) {
         this.httpClient = httpClient;
         this.file = file;
+        this.saveDataService = saveDataService;
         this.storeToFirebaseService = storeToFirebaseService;
+        this.question = new _question__WEBPACK_IMPORTED_MODULE_6__["Question"]({
+            ID: 'Q1',
+            label: 'Are you starting your first drink?',
+            result1: false,
+            result2: false
+        });
     }
     InitiatedDrinkComponent.prototype.ngOnInit = function () { };
     InitiatedDrinkComponent.prototype.loadJson = function () {
@@ -4776,11 +4849,9 @@ var InitiatedDrinkComponent = /** @class */ (function () {
     };
     InitiatedDrinkComponent.prototype.storeData = function () {
         console.log("Inside storeData");
-        var surveyResult = {
-            ID: "Q1",
-            Result1: this.isSelectedYes,
-            Result2: this.isSelectedNo
-        };
+        console.log(this.question);
+        console.log(JSON.stringify(this.question));
+        this.saveDataService.saveData("SurveyResult", this.question);
         //var jsonString = JSON.stringify(surveyResult);
         //var fileDir = cordova.file.externalApplicationStorageDirectory; 
         //var filename = "result.json";
@@ -4791,8 +4862,17 @@ var InitiatedDrinkComponent = /** @class */ (function () {
         //});
         //this.storeToFirebaseService.initFirebase();
         //this.storeToFirebaseService.storeTofirebase(surveyResult);
-        this.storeToFirebaseService.addSurvey(surveyResult);
+        this.storeToFirebaseService.addSurvey('/results', this.question.getData());
+        console.log("End of storeData");
+        this.saveDataService.browseToReward();
     };
+    InitiatedDrinkComponent.prototype.printValue = function () {
+        console.log('Checked:' + this.question.result1);
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _question__WEBPACK_IMPORTED_MODULE_6__["Question"])
+    ], InitiatedDrinkComponent.prototype, "question", void 0);
     InitiatedDrinkComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-initiated-drink',
@@ -4801,7 +4881,8 @@ var InitiatedDrinkComponent = /** @class */ (function () {
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"],
             _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_3__["File"],
-            _storage_store_to_firebase_service__WEBPACK_IMPORTED_MODULE_4__["StoreToFirebaseService"]])
+            _save_data_service__WEBPACK_IMPORTED_MODULE_4__["SaveDataService"],
+            _storage_store_to_firebase_service__WEBPACK_IMPORTED_MODULE_5__["StoreToFirebaseService"]])
     ], InitiatedDrinkComponent);
     return InitiatedDrinkComponent;
 }());
@@ -4920,6 +5001,76 @@ var PromptedSurveyComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/survey/question.ts":
+/*!************************************!*\
+  !*** ./src/app/survey/question.ts ***!
+  \************************************/
+/*! exports provided: Question */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Question", function() { return Question; });
+var Question = /** @class */ (function () {
+    function Question(options) {
+        if (options === void 0) { options = {}; }
+        this.ID = options.ID;
+        this.label = options.label || '';
+        this.result1 = !!options.result1;
+        this.result2 = !!options.result2;
+    }
+    Question.prototype.getData = function () {
+        var _this = this;
+        var result = {};
+        Object.keys(this).map(function (key) { return result[key] = _this[key]; });
+        return result;
+    };
+    return Question;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/survey/save-data.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/survey/save-data.service.ts ***!
+  \*********************************************/
+/*! exports provided: SaveDataService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SaveDataService", function() { return SaveDataService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
+
+var SaveDataService = /** @class */ (function () {
+    function SaveDataService(router) {
+        this.router = router;
+    }
+    SaveDataService.prototype.saveData = function (key, obj) {
+        localStorage.setItem(key, obj);
+    };
+    SaveDataService.prototype.browseToReward = function () {
+        this.router.navigateByUrl('/incentive/award');
+    };
+    SaveDataService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], SaveDataService);
+    return SaveDataService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/survey/survey.module.ts":
 /*!*****************************************!*\
   !*** ./src/app/survey/survey.module.ts ***!
@@ -4939,6 +5090,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _storage_storage_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../storage/storage.module */ "./src/app/storage/storage.module.ts");
+/* harmony import */ var _activetask_activetask_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./activetask/activetask.component */ "./src/app/survey/activetask/activetask.component.ts");
+
 
 
 
@@ -4953,7 +5106,7 @@ var SurveyModule = /** @class */ (function () {
     }
     SurveyModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_initiated_drink_initiated_drink_component__WEBPACK_IMPORTED_MODULE_5__["InitiatedDrinkComponent"], _morning_report_morning_report_component__WEBPACK_IMPORTED_MODULE_4__["MorningReportComponent"], _prompted_survey_prompted_survey_component__WEBPACK_IMPORTED_MODULE_3__["PromptedSurveyComponent"]],
+            declarations: [_initiated_drink_initiated_drink_component__WEBPACK_IMPORTED_MODULE_5__["InitiatedDrinkComponent"], _morning_report_morning_report_component__WEBPACK_IMPORTED_MODULE_4__["MorningReportComponent"], _prompted_survey_prompted_survey_component__WEBPACK_IMPORTED_MODULE_3__["PromptedSurveyComponent"], _activetask_activetask_component__WEBPACK_IMPORTED_MODULE_9__["ActivetaskComponent"]],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicModule"].forRoot(),
@@ -4963,7 +5116,8 @@ var SurveyModule = /** @class */ (function () {
             exports: [
                 _initiated_drink_initiated_drink_component__WEBPACK_IMPORTED_MODULE_5__["InitiatedDrinkComponent"],
                 _morning_report_morning_report_component__WEBPACK_IMPORTED_MODULE_4__["MorningReportComponent"],
-                _prompted_survey_prompted_survey_component__WEBPACK_IMPORTED_MODULE_3__["PromptedSurveyComponent"]
+                _prompted_survey_prompted_survey_component__WEBPACK_IMPORTED_MODULE_3__["PromptedSurveyComponent"],
+                _activetask_activetask_component__WEBPACK_IMPORTED_MODULE_9__["ActivetaskComponent"]
             ]
         })
     ], SurveyModule);

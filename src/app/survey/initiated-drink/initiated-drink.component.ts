@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { File } from '@ionic-native/file/ngx';
 import { SaveDataService } from '../save-data.service';
 import { StoreToFirebaseService } from '../../storage/store-to-firebase.service';
@@ -21,8 +20,7 @@ export class InitiatedDrinkComponent implements OnInit {
   constructor(
     private httpClient: HttpClient,
     private file: File,
-    private router: Router,
-    private saveDataService : SaveDataService,
+     private saveDataService : SaveDataService,
     private storeToFirebaseService: StoreToFirebaseService
     ) {
 
@@ -62,11 +60,10 @@ export class InitiatedDrinkComponent implements OnInit {
     
     //this.storeToFirebaseService.initFirebase();
     //this.storeToFirebaseService.storeTofirebase(surveyResult);
-    this.storeToFirebaseService.addSurvey(this.question);
+    this.storeToFirebaseService.addSurvey('/results',this.question.getData());
     console.log("End of storeData");
 
-    this.displayRewardComponent();
-
+    this.saveDataService.browseToReward();
   }
 
   printValue(){
@@ -75,8 +72,5 @@ export class InitiatedDrinkComponent implements OnInit {
 
   //href="/incentive/award"
 
-  displayRewardComponent(){
-    this.router.navigateByUrl('/incentive/award');
 
-  }
 }
