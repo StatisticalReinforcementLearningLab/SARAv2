@@ -57,7 +57,7 @@ var HomePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>\r\n      Select Survey\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header-->\r\n\r\n  <div class=\"ion-padding\">\r\n    <ion-button href=\"/survey/initated-drink\" (click)=\"activateInitiatedSurvey()\">Initiated Drink</ion-button> \r\n  </div>\r\n\r\n"
+module.exports = "<!--ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>\r\n      Select Survey\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header-->\r\n\r\n  <div class=\"ion-padding\">\r\n    <ion-button href=\"/survey/initated-drink\" >Initiated Drink</ion-button> \r\n    <ion-button href=\"/survey/activetask\">Active Task</ion-button> \r\n  </div>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -89,8 +89,6 @@ __webpack_require__.r(__webpack_exports__);
 var HomePage = /** @class */ (function () {
     function HomePage() {
     }
-    HomePage.prototype.activateInitiatedSurvey = function () {
-    };
     HomePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-home',

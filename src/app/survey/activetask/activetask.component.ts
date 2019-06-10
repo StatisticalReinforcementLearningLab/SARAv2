@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SaveDataService } from '../save-data.service'
+import { StoreToFirebaseService } from '../../storage/store-to-firebase.service';
 
 @Component({
   selector: 'app-activetask',
@@ -10,7 +11,8 @@ export class ActivetaskComponent implements OnInit {
 
   private count: number;
 
-  constructor(private saveDataService: SaveDataService) { 
+  constructor(private saveDataService: SaveDataService,
+    private storeToFirebaseService: StoreToFirebaseService) { 
     this.count = 0;
   }
 
@@ -22,6 +24,10 @@ export class ActivetaskComponent implements OnInit {
 
   storeData(){
     this.saveDataService.saveData("Count", this.count);
+    var countObj = {"count": this.count};
+    this.storeToFirebaseService.addSurvey('/counts', countObj);
     this.count = 0;
+    this.saveDataService.browseToReward();
   }
+
 }
