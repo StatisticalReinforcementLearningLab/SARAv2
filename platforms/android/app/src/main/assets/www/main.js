@@ -4232,6 +4232,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _survey_initiated_drink_initiated_drink_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./survey/initiated-drink/initiated-drink.component */ "./src/app/survey/initiated-drink/initiated-drink.component.ts");
 /* harmony import */ var _incentive_award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./incentive/award-memes/award-memes.component */ "./src/app/incentive/award-memes/award-memes.component.ts");
 /* harmony import */ var _survey_activetask_activetask_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./survey/activetask/activetask.component */ "./src/app/survey/activetask/activetask.component.ts");
+/* harmony import */ var _survey_active_task2_active_task2_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./survey/active-task2/active-task2.component */ "./src/app/survey/active-task2/active-task2.component.ts");
+
 
 
 
@@ -4243,7 +4245,8 @@ var routes = [
     { path: 'home', loadChildren: './home/home.module#HomePageModule' },
     { path: 'survey/initated-drink', component: _survey_initiated_drink_initiated_drink_component__WEBPACK_IMPORTED_MODULE_3__["InitiatedDrinkComponent"] },
     { path: 'incentive/award', component: _incentive_award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__["AwardMemesComponent"] },
-    { path: 'survey/activetask', component: _survey_activetask_activetask_component__WEBPACK_IMPORTED_MODULE_5__["ActivetaskComponent"] }
+    { path: 'survey/activetask', component: _survey_activetask_activetask_component__WEBPACK_IMPORTED_MODULE_5__["ActivetaskComponent"] },
+    { path: 'survey/activetask2', component: _survey_active_task2_active_task2_component__WEBPACK_IMPORTED_MODULE_6__["ActiveTask2Component"] },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -4706,6 +4709,61 @@ var StoreToFirebaseService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/survey/active-task2/active-task2.component.html":
+/*!*****************************************************************!*\
+  !*** ./src/app/survey/active-task2/active-task2.component.html ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"ion-padding\">\r\n<ion-button >Start</ion-button>  \r\n</div>\r\n<div class=\"ion-padding\">\r\n  <ion-button shape=\"round\" (click)=\"leftTapped()\">Tap</ion-button>\r\n  <ion-button shape=\"round\" (click)=\"rightTapped()\">Tap</ion-button> \r\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/survey/active-task2/active-task2.component.scss":
+/*!*****************************************************************!*\
+  !*** ./src/app/survey/active-task2/active-task2.component.scss ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3N1cnZleS9hY3RpdmUtdGFzazIvYWN0aXZlLXRhc2syLmNvbXBvbmVudC5zY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/survey/active-task2/active-task2.component.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/survey/active-task2/active-task2.component.ts ***!
+  \***************************************************************/
+/*! exports provided: ActiveTask2Component */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ActiveTask2Component", function() { return ActiveTask2Component; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var ActiveTask2Component = /** @class */ (function () {
+    function ActiveTask2Component() {
+    }
+    ActiveTask2Component.prototype.ngOnInit = function () { };
+    ActiveTask2Component = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-active-task2',
+            template: __webpack_require__(/*! ./active-task2.component.html */ "./src/app/survey/active-task2/active-task2.component.html"),
+            styles: [__webpack_require__(/*! ./active-task2.component.scss */ "./src/app/survey/active-task2/active-task2.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], ActiveTask2Component);
+    return ActiveTask2Component;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/survey/activetask/activetask.component.html":
 /*!*************************************************************!*\
   !*** ./src/app/survey/activetask/activetask.component.html ***!
@@ -5091,6 +5149,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _storage_storage_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../storage/storage.module */ "./src/app/storage/storage.module.ts");
 /* harmony import */ var _activetask_activetask_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./activetask/activetask.component */ "./src/app/survey/activetask/activetask.component.ts");
+/* harmony import */ var _active_task2_active_task2_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./active-task2/active-task2.component */ "./src/app/survey/active-task2/active-task2.component.ts");
+
 
 
 
@@ -5106,7 +5166,7 @@ var SurveyModule = /** @class */ (function () {
     }
     SurveyModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_initiated_drink_initiated_drink_component__WEBPACK_IMPORTED_MODULE_5__["InitiatedDrinkComponent"], _morning_report_morning_report_component__WEBPACK_IMPORTED_MODULE_4__["MorningReportComponent"], _prompted_survey_prompted_survey_component__WEBPACK_IMPORTED_MODULE_3__["PromptedSurveyComponent"], _activetask_activetask_component__WEBPACK_IMPORTED_MODULE_9__["ActivetaskComponent"]],
+            declarations: [_initiated_drink_initiated_drink_component__WEBPACK_IMPORTED_MODULE_5__["InitiatedDrinkComponent"], _morning_report_morning_report_component__WEBPACK_IMPORTED_MODULE_4__["MorningReportComponent"], _prompted_survey_prompted_survey_component__WEBPACK_IMPORTED_MODULE_3__["PromptedSurveyComponent"], _activetask_activetask_component__WEBPACK_IMPORTED_MODULE_9__["ActivetaskComponent"], _active_task2_active_task2_component__WEBPACK_IMPORTED_MODULE_10__["ActiveTask2Component"]],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicModule"].forRoot(),
@@ -5117,7 +5177,8 @@ var SurveyModule = /** @class */ (function () {
                 _initiated_drink_initiated_drink_component__WEBPACK_IMPORTED_MODULE_5__["InitiatedDrinkComponent"],
                 _morning_report_morning_report_component__WEBPACK_IMPORTED_MODULE_4__["MorningReportComponent"],
                 _prompted_survey_prompted_survey_component__WEBPACK_IMPORTED_MODULE_3__["PromptedSurveyComponent"],
-                _activetask_activetask_component__WEBPACK_IMPORTED_MODULE_9__["ActivetaskComponent"]
+                _activetask_activetask_component__WEBPACK_IMPORTED_MODULE_9__["ActivetaskComponent"],
+                _active_task2_active_task2_component__WEBPACK_IMPORTED_MODULE_10__["ActiveTask2Component"]
             ]
         })
     ], SurveyModule);
