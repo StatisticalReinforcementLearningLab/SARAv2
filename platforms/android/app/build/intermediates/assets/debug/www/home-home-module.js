@@ -57,7 +57,7 @@ var HomePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>\r\n      Select Survey\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header-->\r\n\r\n  <div class=\"ion-padding\">\r\n    <ion-button href=\"/survey/initated-drink\" >Initiated Drink</ion-button> \r\n    <ion-button href=\"/survey/activetask\">Active Task</ion-button> \r\n  </div>\r\n\r\n\r\n"
+module.exports = "<!--ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>\r\n      Select Survey\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header-->\r\n\r\n  <div class=\"ion-padding\">\r\n    <ion-button href=\"/survey/initated-drink\" >Initiated Drink</ion-button> \r\n    <ion-button href=\"/survey/activetask2\">Active Task</ion-button> \r\n  </div>\r\n\r\n\r\n"
 
 /***/ }),
 
