@@ -14,7 +14,9 @@ export class SaveDataService {
     localStorage.setItem(key, obj);
   }
 
-  browseToReward(){
-      this.router.navigateByUrl('/incentive/award');
+  browseToReward(path){
+      this.router.navigateByUrl(path);
   }
+
+
 }

@@ -27,7 +27,7 @@ export class ActivetaskComponent implements OnInit {
     var countObj = {"count": this.count};
     this.storeToFirebaseService.addSurvey('/counts', countObj);
     this.count = 0;
-    this.saveDataService.browseToReward();
+    this.saveDataService.browseToReward('/incentive/award');
   }
 
 }
