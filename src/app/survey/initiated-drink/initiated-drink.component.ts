@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { File } from '@ionic-native/file/ngx';
 import { SaveDataService } from '../save-data.service';
 import { StoreToFirebaseService } from '../../storage/store-to-firebase.service';
+import { AwsS3Service } from '../../storage/aws-s3.service';
 import { Question } from '../question';
 
 declare var cordova: any;
@@ -20,8 +21,9 @@ export class InitiatedDrinkComponent implements OnInit {
   constructor(
     private httpClient: HttpClient,
     private file: File,
-     private saveDataService : SaveDataService,
-    private storeToFirebaseService: StoreToFirebaseService
+    private saveDataService : SaveDataService,
+    private storeToFirebaseService: StoreToFirebaseService,
+    private awsS3Service: AwsS3Service
     ) {
 
       this.question = new Question({
@@ -60,10 +62,13 @@ export class InitiatedDrinkComponent implements OnInit {
     
     //this.storeToFirebaseService.initFirebase();
     //this.storeToFirebaseService.storeTofirebase(surveyResult);
-    this.storeToFirebaseService.addSurvey('/results',this.question.getData());
+
+    //this.storeToFirebaseService.addSurvey('/results',this.question.getData());
+    this.awsS3Service.upload(this.question.getData());
     console.log("End of storeData");
 
-    this.saveDataService.browseToReward();
+    //this.saveDataService.browseToReward('/incentive/award');
+    this.saveDataService.browseToReward('incentive/visualization');
   }
 
   printValue(){
