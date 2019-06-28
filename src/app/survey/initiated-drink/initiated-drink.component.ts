@@ -5,6 +5,7 @@ import { SaveDataService } from '../save-data.service';
 import { StoreToFirebaseService } from '../../storage/store-to-firebase.service';
 import { AwsS3Service } from '../../storage/aws-s3.service';
 import { Question } from '../question';
+import { AzureService } from '../../storage/azure.service';
 
 declare var cordova: any;
 
@@ -23,7 +24,8 @@ export class InitiatedDrinkComponent implements OnInit {
     private file: File,
     private saveDataService : SaveDataService,
     private storeToFirebaseService: StoreToFirebaseService,
-    private awsS3Service: AwsS3Service
+    private awsS3Service: AwsS3Service,
+    private azureService: AzureService
     ) {
 
       this.question = new Question({
@@ -64,8 +66,13 @@ export class InitiatedDrinkComponent implements OnInit {
     //this.storeToFirebaseService.storeTofirebase(surveyResult);
 
     //this.storeToFirebaseService.addSurvey('/results',this.question.getData());
+    
+    //save to Amazon AWS S3
     this.awsS3Service.upload(this.question.getData());
     console.log("End of storeData");
+
+    //save to azure 
+    this.azureService.upload(this.question.getData());
 
     //this.saveDataService.browseToReward('/incentive/award');
     this.saveDataService.browseToReward('incentive/visualization');

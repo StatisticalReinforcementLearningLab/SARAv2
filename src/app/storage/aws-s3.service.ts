@@ -35,11 +35,12 @@ export class AwsS3Service {
       Body: this.currentFile,
       ACL: 'public-read'
     }, function(err, data) {
-      /*if (err) {
-        return alert('There was an error uploading your photo: '+err.message);
+      if (err) {
+        //return alert('There was an error uploading your photo: '+err.message);
+        console.log('There was an error uploading your photo: '+err.message);
       }
-      alert('Successfully uploaded photo.');*/
+      console.log('Successfully uploaded photo.');
     });  
   }
-  
+
 }
