@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild, ViewContainerRef, NgModule, Compiler, Injector, NgModuleRef,ElementRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { StoreToFirebaseService } from '../../storage/store-to-firebase.service';
+import { EncrDecrService } from '../../storage/encrdecrservice.service';
+import { Platform } from '@ionic/angular';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-dynamic-survey',
@@ -53,7 +56,10 @@ export class DynamicSurveyComponent implements OnInit {
 
   constructor(private _compiler: Compiler,
     private _injector: Injector,
-    private _m: NgModuleRef<any>, private storeToFirebaseService: StoreToFirebaseService) {
+    private _m: NgModuleRef<any>, 
+    private storeToFirebaseService: StoreToFirebaseService,
+    private EncrDecr: EncrDecrService,
+    public plt: Platform) {
   }
 
   ngOnInit() { }
@@ -98,9 +104,12 @@ export class DynamicSurveyComponent implements OnInit {
       
       survey2 = {};
       storeToFirebaseService: StoreToFirebaseService;
+      EncrDecr: EncrDecrService;
+      plt: Platform;
 
       constructor() {
         //self2=this;
+        this.survey2['starttimeUTC'] = new Date().getTime();
       }
       ngOnInit() {}
 
@@ -109,7 +118,8 @@ export class DynamicSurveyComponent implements OnInit {
       }
 
       drawMoodGrid(self2){
-        var c = document.getElementById("myCanvas");
+        
+        var c = <HTMLCanvasElement>document.getElementById("myCanvas");
         if (c == null){
           console.log("is null");
           return;
@@ -174,6 +184,7 @@ export class DynamicSurveyComponent implements OnInit {
           ctx.strokeStyle = 'red';
           ctx.stroke();
         }, false);
+        
       }
       modelChanged(newObj) {
         // do something with new value
@@ -200,7 +211,34 @@ export class DynamicSurveyComponent implements OnInit {
         
         //this.storeToFirebaseService.initFirebase();
         //this.storeToFirebaseService.storeTofirebase(this.survey2);
-    
+        
+        //var encrypted = this.EncrDecr.set('123456$#@$^@1ERF', 'password@123456');
+        //var decrypted = this.EncrDecr.get('123456$#@$^@1ERF', encrypted);
+        //data = JSON.stringify(data);
+        //var encrypted = encrypt(data, "Z&wz=BGw;%q49/<)");
+        //var decrypted = decrypt(encrypted, "Z&wz=BGw;%q49/<)");
+
+        this.survey2['endtimeUTC'] = new Date().getTime();
+        this.survey2['ts'] = moment().format('MMMM Do YYYY, h:mm:ss a Z');
+
+        // Get a key for a new Post.
+        //var newPostKey = firebase.database().ref().child('SARA').child('Daily').push().key;
+
+        // Write the new post's data simultaneously in the posts list and the user's post list.
+        //var updates = {};
+        //$scope.survey.reponse_ts = $scope.reponse_ts;
+        this.survey2['devicInfo'] = this.plt.platforms();
+        //$scope.survey.id = $scope.email;
+
+
+        var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.survey2), "Z&wz=BGw;%q49/<)");
+        //var encrypted = this.EncrDecr.encrypt("holla", "Z&wz=BGw;%q49/<)");
+        var decrypted = this.EncrDecr.decrypt(encrypted, "Z&wz=BGw;%q49/<)");
+
+        console.log('Encrypted :' + encrypted);
+        console.log('Decrypted :' + decrypted);
+        this.survey2['encrypted'] = encrypted;
+
         this.storeToFirebaseService.addSurvey('/results',this.survey2);
         
         //save to Amazon AWS S3
@@ -224,6 +262,8 @@ export class DynamicSurveyComponent implements OnInit {
         const f = factories.componentFactories[0];
         const cmpRef = this.vc.createComponent(f);
         cmpRef.instance.storeToFirebaseService = this.storeToFirebaseService;
+        cmpRef.instance.EncrDecr = this.EncrDecr;
+        cmpRef.instance.plt = this.plt;
         cmpRef.instance.name = 'dynamic';
         //console.log('called');
     })
