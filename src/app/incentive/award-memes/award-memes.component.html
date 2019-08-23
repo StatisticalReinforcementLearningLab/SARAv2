@@ -1,7 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Meme</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-<div id="container">
-  <div class="ion-padding" id="link">
-    <a href="/home">Home</a> 
+<ion-content>
+  
+  <div id="container">
+    <div class="ion-padding" id="link">
+      <a href="/home">Home</a> 
+    </div>
+    <img [src]="whichImage" *ngIf="whichImage" />
   </div>
-  <img [src]="whichImage" *ngIf="whichImage" />
-</div>
+  <!--
+  <ion-card> 
+    <div class="quetiontextstyle">
+        This is the question
+    </div>
+    <div class="radiovertical">
+      <ul>
+        <li>
+          <input type="radio" id="ff-option" name="selector" (click)="modelChanged(2)">
+          <label for="ff-option">Pizza</label> 
+          <div class="check"></div>
+        </li>
+        
+        <li>
+          <input type="radio" id="ss-option" name="selector" (click)="modelChanged(3)">
+          <label for="ss-option">Boyfriend</label>
+          <div class="check"><div class="inside"></div></div>
+        </li>
+        
+        <li>
+          <input type="radio" id="tt-option" name="selector" (click)="modelChanged(4)">
+          <label for="tt-option">Cats</label>
+          <div class="check"><div class="inside"></div></div>
+        </li>
+      </ul>
+    </div>
+  </ion-card>
+  -->
+
+</ion-content>

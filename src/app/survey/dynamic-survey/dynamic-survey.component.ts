@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, NgModule, Compiler, Injector, NgModuleRef,ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, NgModule, Compiler, Injector, NgModuleRef, ElementRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { StoreToFirebaseService } from '../../storage/store-to-firebase.service';
 import { EncrDecrService } from '../../storage/encrdecrservice.service';

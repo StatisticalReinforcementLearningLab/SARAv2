@@ -1,0 +1,84 @@
+{"frames": [
+
+{
+	"filename": "frame_0_delay-0.12s.gif",
+	"frame": {"x":0,"y":0,"w":166,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":166,"h":85},
+	"sourceSize": {"w":166,"h":85},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "frame_1_delay-0.12s.gif",
+	"frame": {"x":166,"y":0,"w":166,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":166,"h":85},
+	"sourceSize": {"w":166,"h":85},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "frame_2_delay-0.12s.gif",
+	"frame": {"x":332,"y":0,"w":166,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":166,"h":85},
+	"sourceSize": {"w":166,"h":85},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "frame_3_delay-0.12s.gif",
+	"frame": {"x":0,"y":85,"w":166,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":166,"h":85},
+	"sourceSize": {"w":166,"h":85},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "frame_4_delay-0.12s.gif",
+	"frame": {"x":166,"y":85,"w":166,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":166,"h":85},
+	"sourceSize": {"w":166,"h":85},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "frame_5_delay-0.12s.gif",
+	"frame": {"x":332,"y":85,"w":166,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":166,"h":85},
+	"sourceSize": {"w":166,"h":85},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "frame_6_delay-0.12s.gif",
+	"frame": {"x":0,"y":170,"w":166,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":166,"h":85},
+	"sourceSize": {"w":166,"h":85},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "frame_7_delay-0.12s.gif",
+	"frame": {"x":166,"y":170,"w":166,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":166,"h":85},
+	"sourceSize": {"w":166,"h":85},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "clownfish.png",
+	"format": "RGBA8888",
+	"size": {"w":498,"h":255},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:027f7754d3abeeed6e864f0a9b086df0:89f2801c984b49cdca81a2d2aaade25e:0731d3de4a1b0544ba4343648bea46b1$"
+}
+}
