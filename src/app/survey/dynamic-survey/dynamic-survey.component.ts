@@ -58,8 +58,6 @@ export class DynamicSurveyComponent implements OnInit {
 
   @ViewChild('vc', { read: ViewContainerRef }) vc: ViewContainerRef;
 
-
-
   constructor(private _compiler: Compiler,
     private _injector: Injector,
     private _m: NgModuleRef<any>, 
@@ -67,7 +65,6 @@ export class DynamicSurveyComponent implements OnInit {
     private EncrDecr: EncrDecrService,
     private router: Router,
     public plt: Platform) {
-      
   }
 
   ngOnInit() { }
