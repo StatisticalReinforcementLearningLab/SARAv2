@@ -5,7 +5,7 @@
       "type": "radiobutton",
       "extra": {
         "choices": ["Not<br>at all", "A<br>lot"],
-        "orientation": "horzontal",
+        "orientation": "horizontal",
         "levels": 5
       }
     }
