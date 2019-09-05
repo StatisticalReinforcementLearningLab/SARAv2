@@ -5,7 +5,7 @@
       "type": "radiobutton",
       "extra": {
         "choices": ["Not<br>at all", "A<br>lot"],
-        "orientation": "horzontal",
+        "orientation": "horizontal",
         "levels": 5
       }
     },
@@ -22,13 +22,5 @@
       "name": "Q2d",
       "text": "How are you feeling today? Please click on the spot that best represents your mood",
       "type": "moodgrid2"
-    },
-    {
-      "name": "Q3d",
-      "text": "How much free time have you had today?",
-      "type": "range2",
-      "extra": {
-        "choices": ["0<br>hour", "600<br>min", 0, 1440, 60]
-      }
     }
 ]
