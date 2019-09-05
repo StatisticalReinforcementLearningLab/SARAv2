@@ -8,6 +8,7 @@ import { ActiveTask2Component } from './survey/active-task2/active-task2.compone
 import { VisualizationComponent } from './incentive/visualization/visualization.component';
 import { DynamicSurveyComponent } from './survey/dynamic-survey/dynamic-survey.component';
 import { DemoAquariumComponent } from './incentive/aquarium/demo-aquarium/demo-aquarium.component';
+import { SampleSurveyComponent } from './survey/sample-survey/sample-survey.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'survey/activetask', component: ActivetaskComponent },
   { path: 'survey/activetask2', component: ActiveTask2Component },
   { path: 'survey/dynamicsurvey', component: DynamicSurveyComponent }, 
+  { path: 'survey/samplesurvey', component: SampleSurveyComponent }, 
   { path: 'incentive/aquariumone', component: DemoAquariumComponent },  
 ];
 

@@ -1,0 +1,92 @@
+{"frames": [
+
+{
+	"filename": "jellyfish_01.png",
+	"frame": {"x":1,"y":1,"w":194,"h":408},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":26,"y":3,"w":194,"h":408},
+	"sourceSize": {"w":246,"h":417}
+},
+{
+	"filename": "jellyfish_02.png",
+	"frame": {"x":240,"y":1626,"w":194,"h":406},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":26,"y":3,"w":194,"h":406},
+	"sourceSize": {"w":246,"h":417}
+},
+{
+	"filename": "jellyfish_03.png",
+	"frame": {"x":235,"y":400,"w":194,"h":406},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":26,"y":3,"w":194,"h":406},
+	"sourceSize": {"w":246,"h":417}
+},
+{
+	"filename": "jellyfish_04.png",
+	"frame": {"x":218,"y":1227,"w":206,"h":397},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":3,"w":206,"h":397},
+	"sourceSize": {"w":246,"h":417}
+},
+{
+	"filename": "jellyfish_05.png",
+	"frame": {"x":1,"y":819,"w":215,"h":406},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":3,"w":215,"h":406},
+	"sourceSize": {"w":246,"h":417}
+},
+{
+	"filename": "jellyfish_06.png",
+	"frame": {"x":1,"y":411,"w":232,"h":406},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":3,"w":232,"h":406},
+	"sourceSize": {"w":246,"h":417}
+},
+{
+	"filename": "jellyfish_07.png",
+	"frame": {"x":1,"y":1635,"w":237,"h":392},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":3,"w":237,"h":392},
+	"sourceSize": {"w":246,"h":417}
+},
+{
+	"filename": "jellyfish_08.png",
+	"frame": {"x":197,"y":1,"w":232,"h":397},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":3,"w":232,"h":397},
+	"sourceSize": {"w":246,"h":417}
+},
+{
+	"filename": "jellyfish_09.png",
+	"frame": {"x":1,"y":1227,"w":215,"h":406},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":3,"w":215,"h":406},
+	"sourceSize": {"w":246,"h":417}
+},
+{
+	"filename": "jellyfish_10.png",
+	"frame": {"x":218,"y":819,"w":206,"h":406},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":3,"w":206,"h":406},
+	"sourceSize": {"w":246,"h":417}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "jellyfish.png",
+	"format": "RGBA8888",
+	"size": {"w":435,"h":2033},
+	"scale": "0.41667",
+	"smartupdate": "$TexturePacker:SmartUpdate:70bf079ee5a2b9f23ef2fe9b28c4261c:a69e983ff597c1676f4368cd534a1004:e98cb7c489c84b0c8f3f0e33fffe31f3$"
+}
+}
