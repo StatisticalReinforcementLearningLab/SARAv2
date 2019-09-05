@@ -1,0 +1,34 @@
+[
+    {
+      "name": "Q1d",
+      "text": "How stressed are you today?",
+      "type": "radiobutton",
+      "extra": {
+        "choices": ["Not<br>at all", "A<br>lot"],
+        "orientation": "horzontal",
+        "levels": 5
+      }
+    },
+    {
+      "name": "Q3",
+      "text": "This past week, did you concentrate easily?",
+      "type": "radiobutton",
+      "extra": {
+        "choices": ["Rarely/Never", "Occasionally", "Often", "Almost Always/Always"],
+        "orientation": "vertical"
+      }
+    },
+    {
+      "name": "Q2d",
+      "text": "How are you feeling today? Please click on the spot that best represents your mood",
+      "type": "moodgrid2"
+    },
+    {
+      "name": "Q3d",
+      "text": "How much free time have you had today?",
+      "type": "range2",
+      "extra": {
+        "choices": ["0<br>hour", "600<br>min", 0, 1440, 60]
+      }
+    }
+]

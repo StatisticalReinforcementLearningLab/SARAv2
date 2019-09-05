@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, NgModule, Compiler, Injector, NgModuleRef, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, NgModule, Compiler, Injector, NgModuleRef, ElementRef, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { StoreToFirebaseService } from '../../storage/store-to-firebase.service';
 import { EncrDecrService } from '../../storage/encrdecrservice.service';
@@ -12,7 +12,10 @@ import * as moment from 'moment';
 })
 export class DynamicSurveyComponent implements OnInit {
 
+  @Input() fileLink: string;
+
   title = "mash is here";
+  /*
   survey_data = [
     {
       "name": "Q1d",
@@ -47,8 +50,10 @@ export class DynamicSurveyComponent implements OnInit {
       }
     }
   ];
+  */
   survey_string = "";
   survey = {};
+  survey_data: any;
 
   @ViewChild('vc', { read: ViewContainerRef }) vc: ViewContainerRef;
 
@@ -60,11 +65,21 @@ export class DynamicSurveyComponent implements OnInit {
     private storeToFirebaseService: StoreToFirebaseService,
     private EncrDecr: EncrDecrService,
     public plt: Platform) {
+      
   }
 
   ngOnInit() { }
 
   ngAfterViewInit() {
+      console.log('Reading local json files: ' + this.fileLink);
+      fetch('../../../assets/data/'+this.fileLink+'.json').then(async res => {
+        this.survey_data = await res.json();
+        this.init();
+      });
+  }
+
+  //
+  init() {  
 
     //TODO: Two-way binding, and call functions. Multiple choice/affect-grid.
     //TODO: Ask Liying to do the JSON.

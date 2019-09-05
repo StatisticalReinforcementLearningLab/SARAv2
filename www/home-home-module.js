@@ -57,7 +57,7 @@ var HomePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>\r\n      Select Survey\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header-->\r\n\r\n  <div class=\"ion-padding\">\r\n    <ion-button href=\"/survey/initated-drink\" >Initiated Drink</ion-button> \r\n    <ion-button href=\"/survey/activetask2\">Active Task</ion-button> \r\n  </div>\r\n\r\n\r\n"
+module.exports = "<!--ion-header>\n  <ion-toolbar>\n    <ion-title>\n      Select Survey\n    </ion-title>\n  </ion-toolbar>\n</ion-header-->\n\n\n<ion-header>\n  <ion-toolbar>\n    <ion-title>\n      SARA modular \n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n\n\n\n<ion-content>\n  <div class=\"ion-padding\">\n    <ion-button href=\"/survey/initated-drink\" >Survey 1</ion-button> <br>\n    <ion-button href=\"/survey/activetask2\">Active Task 1</ion-button> <br>\n    <ion-button href=\"/survey/dynamicsurvey\">Dynamic survey (demo)</ion-button> <br>\n    <ion-button href=\"/incentive/award-memes\" >Incentive: meme</ion-button> <br>\n    <ion-button href=\"/incentive/visualization\">Incentive: Life-inisight</ion-button> <br>\n    <ion-button href=\"/incentive/aquariumone\">Incentive: Aquarium 1</ion-button> \n  </div>\n\n  <!--    <app-demo-aquarium></app-demo-aquarium>   -->\n</ion-content>\n\n"
 
 /***/ }),
 

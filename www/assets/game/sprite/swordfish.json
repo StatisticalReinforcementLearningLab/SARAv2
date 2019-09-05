@@ -1,0 +1,140 @@
+{"frames": [
+
+{
+	"filename": "swordfish-rest__000.png",
+	"frame": {"x":1,"y":1,"w":430,"h":173},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":430,"h":173},
+	"sourceSize": {"w":430,"h":173}
+},
+{
+	"filename": "swordfish-rest__001.png",
+	"frame": {"x":1,"y":176,"w":429,"h":173},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":429,"h":173},
+	"sourceSize": {"w":430,"h":173}
+},
+{
+	"filename": "swordfish-rest__002.png",
+	"frame": {"x":432,"y":176,"w":427,"h":173},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":427,"h":173},
+	"sourceSize": {"w":430,"h":173}
+},
+{
+	"filename": "swordfish-rest__003.png",
+	"frame": {"x":432,"y":351,"w":425,"h":173},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":425,"h":173},
+	"sourceSize": {"w":430,"h":173}
+},
+{
+	"filename": "swordfish-rest__004.png",
+	"frame": {"x":861,"y":176,"w":423,"h":173},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":423,"h":173},
+	"sourceSize": {"w":430,"h":173}
+},
+{
+	"filename": "swordfish-rest__005.png",
+	"frame": {"x":1,"y":526,"w":420,"h":172},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":172},
+	"sourceSize": {"w":430,"h":173}
+},
+{
+	"filename": "swordfish-rest__006.png",
+	"frame": {"x":844,"y":526,"w":418,"h":172},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":418,"h":172},
+	"sourceSize": {"w":430,"h":173}
+},
+{
+	"filename": "swordfish-rest__007.png",
+	"frame": {"x":1285,"y":351,"w":416,"h":171},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":416,"h":171},
+	"sourceSize": {"w":430,"h":173}
+},
+{
+	"filename": "swordfish-rest__008.png",
+	"frame": {"x":1286,"y":174,"w":414,"h":171},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":414,"h":171},
+	"sourceSize": {"w":430,"h":173}
+},
+{
+	"filename": "swordfish-rest__009.png",
+	"frame": {"x":1286,"y":1,"w":415,"h":171},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":415,"h":171},
+	"sourceSize": {"w":430,"h":173}
+},
+{
+	"filename": "swordfish-rest__010.png",
+	"frame": {"x":1264,"y":526,"w":417,"h":172},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":417,"h":172},
+	"sourceSize": {"w":430,"h":173}
+},
+{
+	"filename": "swordfish-rest__011.png",
+	"frame": {"x":423,"y":526,"w":419,"h":172},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":419,"h":172},
+	"sourceSize": {"w":430,"h":173}
+},
+{
+	"filename": "swordfish-rest__012.png",
+	"frame": {"x":862,"y":1,"w":422,"h":173},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":422,"h":173},
+	"sourceSize": {"w":430,"h":173}
+},
+{
+	"filename": "swordfish-rest__013.png",
+	"frame": {"x":859,"y":351,"w":424,"h":173},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":424,"h":173},
+	"sourceSize": {"w":430,"h":173}
+},
+{
+	"filename": "swordfish-rest__014.png",
+	"frame": {"x":433,"y":1,"w":427,"h":173},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":427,"h":173},
+	"sourceSize": {"w":430,"h":173}
+},
+{
+	"filename": "swordfish-rest__015.png",
+	"frame": {"x":1,"y":351,"w":429,"h":173},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":429,"h":173},
+	"sourceSize": {"w":430,"h":173}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "swordfish.png",
+	"format": "RGBA8888",
+	"size": {"w":1702,"h":699},
+	"scale": "0.41667",
+	"smartupdate": "$TexturePacker:SmartUpdate:d334171a63834e5c2a4e234605d62872:49020a2c6f2af01fb222b627f0d96c4d:a7299e791bbbe0a7d023f85a430f2272$"
+}
+}
