@@ -1,0 +1,221 @@
+[
+  {
+    "name" : "The clown fish",
+    "level" : 1,
+    "text" : "Story 1",
+    "points" : 30,
+    "img" : "img/nemo.png",
+    "trivia": "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"
+  },
+  {
+    "name" : "Butterfly fish",
+    "level" : 1,
+    "text" : "Story 1",
+    "points" : 60,
+    "img" : "img/butterfly.png",
+    "trivia": "Do you know there are 114 species of butterfly fish?"
+  },
+  {
+    "name" : "Gold fish",
+    "level" : 1,
+    "text" : "Story 1",
+    "points" : 90,
+    "img" : "img/goldfish.png",
+    "trivia": "Do you know gold fishes can recognize faces?"
+  },
+  {
+    "name" : "Tiger barb",
+    "level" : 1,
+    "text" : "Story 1",
+    "points" : 120,
+    "img" : "img/tigerbarb.png",
+    "trivia": "Tiger barbs can swim fast and  they like to spend their time by chasing other tiger barbs."
+  },
+  {
+    "name" : "Squid",
+    "level" : 1,
+    "text" : "Story 1",
+    "points" : 180,
+    "img" : "img/squid.png",
+    "trivia": "Some species of squid can swim at speeds up to 25 miles per hour, as fast as some sharks."
+  },
+  {
+    "name" : "Octopus",
+    "level" : 1,
+    "text" : "Story 1",
+    "points" : 300, 
+    "img" : "img/octopus.png",
+    "trivia": "Do you know octopuses have 3 hearts and they have blue blood?"
+  },
+  {
+    "name" : "Angel fish",
+    "level" : 1,
+    "text" : "Story 1",
+    "points" : 360, 
+    "trivia" : "Do you know if an angelfish's partner dies, then it has no interest in finding another partner?",
+    "img" : "img/angelfish.png"
+  },
+  {
+    "name" : "Crab",
+    "level" : 1,
+    "text" : "Story 1",
+    "points" : 470, 
+    "trivia" : "Do you know a crab's eyestalks can move in different directions which allow it to see all around?",
+    "img" : "img/crabfish.png"
+  },
+  {
+    "name" : "Star fish",
+    "level" : 1,
+    "text" : "Story 1",
+    "points" : 590, 
+    "img" : "img/starfish.png",
+    "trivia": "Do you know starfishes have 2 stomachs and can regenerate their arms."
+  },
+  {
+    "name" : "Carp fish",
+    "level" : 1,
+    "text" : "Story 1",
+    "points" : 650,
+    "trivia" : "Do you know carp fish can grow very big? The largest carp on record weighs 222lbs.",
+    "img" : "img/greenfish.png"
+  },
+  {
+    "name" : "Electric fish",
+    "level" : 1,
+    "text" : "Story 1",
+    "points" : 770,
+    "trivia" : "Electric fishes have large brain-to-body size ratios and can use their electric discharge to communicate social status",
+    "img" : "img/electricfish.png"
+  },
+  {
+    "name" : "Discus fish",
+    "level" : 1,
+    "text" : "Story 1",
+    "points" : 830,
+    "trivia" : "Discus fish is a perhaps the most beautiful tropical fish and known as the King of the Aquarium",
+    "img" : "img/discus.png"
+  },
+  {
+    "name" : "Betta fish",
+    "level" : 1,
+    "text" : "Story 1",
+    "points" : 940,
+    "trivia" : "Most Betta fish in aquariums are red and blue in color. But, wild bettas are brown or green.",
+    "img" : "img/betta.png"
+  },
+  {
+    "name" : "Sea horse",
+    "level" : 1,
+    "text" : "Story 1",
+    "points" : 1000,
+    "trivia" : "Did you know the male sea horse bears the unborn young? This is rare in the animal kingdom.",
+    "img" : "img/seahorseyellow.png"
+  },
+  {
+    "name" : "Sea environment",
+    "level" : 2,
+    "text" : "Story 1",
+    "points" : 1060,
+    "trivia" : "Sea is a new level. You can unlock new fishes for the sea.",
+    "img" : "img/sea.png"
+  },
+  {
+    "name" : "Blue tang",
+    "level" : 2,
+    "text" : "Story 1",
+    "points" : 1060,
+    "trivia" : "If you are a shark, never eat blue tang fish. Blue tang is Paracanthurus hepatus, a poisonous fish.",
+    "img" : "img/nemodori.png"
+  },
+  {
+    "name" : "Jelly fish",
+    "level" : 2,
+    "text" : "Story 1",
+    "points" : 1120,
+    "trivia" : "Do you know jellyfish have been on Earth for millions of years, even before dinosaurs?",
+    "img" : "img/jellyfish.png"
+  },
+  {
+    "name" : "Green Crab",
+    "level" : 2,
+    "text" : "Story 1",
+    "points" : 1180,
+    "trivia" : "A carb's shell protects the soft abdomen, and hydrates the gills so that it can breathe well.",
+    "img" : "img/greencrab.png"
+  },
+  {
+    "name" : "Red Crab",
+    "level" : 2,
+    "text" : "Story 1",
+    "points" : 1180,
+    "trivia" : "Do you know a crab somtimes wants another crab's shell, then a shell fight triggers?",
+    "img" : "img/redcrab.png"
+  },
+  {
+    "name" : "Achovies",
+    "level" : 2,
+    "text" : "Story 1",
+    "points" : 1240,
+    "trivia" : "Anchovies are found in temperate waters, and are rare in very cold or very warm seas.",
+    "img" : "img/achovies.png"
+  },
+  {
+    "name" : "Bubbles",
+    "level" : 2,
+    "text" : "Story 1",
+    "points" : 1360,
+    "trivia" : "Bubbles is in the fishtank gang. Like a playful puppy obsessed with a toy, he is enamored with bubbles.",
+    "img" : "img/bubbles.png"
+  },
+  {
+    "name" : "Salmon",
+    "level" : 2,
+    "text" : "Story 1",
+    "points" : 1530,
+    "trivia" : "Do you know salmons can jump two yards into the air?",
+    "img" : "img/salmon.png"
+  },{
+    "name" : "Deep undersea fish",
+    "level" : 2,
+    "text" : "Story 1",
+    "points" : 1650,
+    "trivia" : "Deepsea fishes live below 1000 meter of the sea level where no sunlight can reach. They can generate light biologically",
+    "img" : "img/angryfish.png"
+  },{
+    "name" : "Sword fish",
+    "level" : 2,
+    "text" : "Story 1",
+    "points" : 1710,
+    "trivia" : "Do you sword fishes can swim up to 60 miles per hour",
+    "img" : "img/swordfish.png"
+  },{
+    "name" : "Shark",
+    "level" : 2,
+    "text" : "Story 1",
+    "points" : 1830,
+    "trivia" : "Do you most sharks species will drown if they stop moving?",
+    "img" : "img/shark.png"
+  },{
+    "name" : "Dophin",
+    "level" : 2,
+    "text" : "Story 1",
+    "points" : 1940,
+    "trivia" : "Dolphins communicate with each other by clicking, whistling and other sounds.",
+    "img" : "img/dolphin.png"
+  },{
+    "name" : "Whale",
+    "level" : 2,
+    "text" : "Story 1",
+    "points" : 2000,
+    "trivia" : "Do you know that many whales are toothless?",
+    "img" : "img/whale.png"
+  },{
+    "name" : "Stingray fish",
+    "level" : 2,
+    "text" : "Story 1",
+    "points" : 2060,
+    "trivia" : "Ancient Greeks extracted venom from stingray spines and use it as an anaesthetic.",
+    "img" : "img/kitefish.png"
+  }
+  
+]

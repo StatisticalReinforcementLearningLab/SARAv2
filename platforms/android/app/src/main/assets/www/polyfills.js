@@ -5776,6 +5776,8 @@ __webpack_require__.r(__webpack_exports__);
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+// aws-sdk requires global to exist
+window.global = window;
 
 
 /***/ }),
@@ -5796,18 +5798,18 @@ window.__Zone_disable_customElements = true;
 
 /***/ }),
 
-/***/ 2:
+/***/ 3:
 /*!***************************************************************************************************************************!*\
   !*** multi ./src/polyfills.ts ./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js ***!
   \***************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\IonicProject\SARAv2\src\polyfills.ts */"./src/polyfills.ts");
-module.exports = __webpack_require__(/*! C:\IonicProject\SARAv2\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
+__webpack_require__(/*! /Users/mash2/Dropbox (PAC LAB)/codes/ionic_projects/SARAV3/SARA_modular/src/polyfills.ts */"./src/polyfills.ts");
+module.exports = __webpack_require__(/*! /Users/mash2/Dropbox (PAC LAB)/codes/ionic_projects/SARAV3/SARA_modular/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js */"./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js");
 
 
 /***/ })
 
-},[[2,"runtime"]]]);
+},[[3,"runtime"]]]);
 //# sourceMappingURL=polyfills.js.map

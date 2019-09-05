@@ -9,9 +9,10 @@ import { StorageModule } from '../storage/storage.module';
 import { ActivetaskComponent } from './activetask/activetask.component';
 import { ActiveTask2Component } from './active-task2/active-task2.component';
 import { DynamicSurveyComponent } from './dynamic-survey/dynamic-survey.component';
+import { SampleSurveyComponent } from './sample-survey/sample-survey.component';
 
 @NgModule({
-  declarations: [InitiatedDrinkComponent,MorningReportComponent,PromptedSurveyComponent,ActivetaskComponent,DynamicSurveyComponent,ActiveTask2Component],
+  declarations: [InitiatedDrinkComponent,MorningReportComponent,PromptedSurveyComponent,ActivetaskComponent,DynamicSurveyComponent,ActiveTask2Component,SampleSurveyComponent],
   imports: [
     CommonModule,
     IonicModule.forRoot(),
@@ -24,7 +25,8 @@ import { DynamicSurveyComponent } from './dynamic-survey/dynamic-survey.componen
     PromptedSurveyComponent,
     ActivetaskComponent,
     ActiveTask2Component,
-    DynamicSurveyComponent
+    DynamicSurveyComponent,
+    SampleSurveyComponent
   ]
 })
 export class SurveyModule { }

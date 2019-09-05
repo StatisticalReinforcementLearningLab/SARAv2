@@ -26,6 +26,9 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
+      //link for one signal tutorial ==========> https://devdactic.com/push-notifications-ionic-onesignal/
+      
+      //call back for notification
       var notificationOpenedCallback = function(jsonData) {
         console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
         if (jsonData.notification.payload.additionalData != null) {
@@ -37,16 +40,19 @@ export class AppComponent {
         }
       };
 
+      //this.oneSignal.startInit('YOUR ONESIGNAL APP ID', 'YOUR ANDROID ID');
       this.oneSignal.startInit('f9c4370d-cbcb-4e6f-ab1f-25d1c41b8f3a', '851185487102');
 
       this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
       
-      this.oneSignal.handleNotificationReceived().subscribe(() => {
+      this.oneSignal.handleNotificationReceived().subscribe(data => {
        // do something when notification is received
+       console.log("notification is received");
       });
       
-      this.oneSignal.handleNotificationOpened().subscribe(() => {
+      this.oneSignal.handleNotificationOpened().subscribe(data => {
         // do something when a notification is opened
+        console.log("notification is opened");
       });
       
       this.oneSignal.endInit();
