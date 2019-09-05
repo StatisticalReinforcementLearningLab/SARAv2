@@ -1,0 +1,144 @@
+[
+    {
+      "name":"Q1d",
+      "text":"Where were you right before you received this text message?",
+      "type":"radiobutton",
+      "extra":{
+        "choices":["Home (indoors)", 
+          "School", 
+          "Car/van/truck", 
+          "Outdoors", 
+          "Restaurant", 
+          "Store/mall", 
+          "Someone else’s house", 
+          "Gym/Recreational center", 
+          "Someplace else"],
+        "orientation": "vertical"
+      }
+    },
+  
+    {
+      "name":"Q2d",
+      "text": "Who were you with just before you received this text message?",
+      "type":"radiobutton",
+      "extra":{
+        "choices":["Alone", 
+          "Mom/Dad", 
+          "Sister(s)/Brother(s)", 
+          "Other family", 
+          "Friend(s)", 
+          "Classmates", 
+          "Someone else"],
+        "orientation": "vertical"
+      }
+  
+    },
+    
+    {
+      "name": "Q3d",
+      "text": "How much pain are you currently experiencing?",
+      "type": "radiobutton",
+      "extra":{
+        "choices": ["No<br>Pain", "Worst<br>Pain"],
+        "orientation": "horizontal",
+        "levels": 5
+      }
+    },
+  
+    {
+      "name": "Q4d",
+      "text": "How much fatigue are you currently experiencing?",
+      "type": "radiobutton",
+      "extra":{
+        "choices": ["No<br>Fatigue", "Worst<br>Fatigue"],
+        "orientation": "horizontal",
+        "levels": 5
+      }
+    },
+  
+    {
+      "name": "Q5d",
+      "text": "How much nausea are you currently experiencing?",
+      "type": "radiobutton",
+      "extra":{
+        "choices": ["No<br>Nausea", "Worst<br>Nausea"],
+        "orientation": "horizontal",
+        "levels": 5
+      }
+    },
+  
+    {
+      "name":"Q6d",
+      "text": "How positive were you feeling (for example, happy or joyful) just before you received this text message?",
+      "type":"radiobutton",
+      "extra":{
+        "choices":["Not at all", 
+          "A little", 
+          "Quite a bit", 
+          "Extremely"],
+        "orientation": "vertical"
+      }
+  
+    },
+  
+    {
+      "name": "Q7d",
+      "text": "How negative were you feeling (for example, stressed, mad/angry, nervous/anxious, or sad) were you feeling just before you received this text message?",
+      "type": "radiobutton",
+      "extra":{
+        "choices":["Not at all", 
+          "A little", 
+          "Quite a bit", 
+          "Extremely"],
+        "orientation": "vertical"
+      }
+    },
+  
+    {
+      "name":"Q8d",
+      "text":"How motivated are you to take 6MP today?",
+      "type":"radiobutton",
+      "extra":{
+        "choices": ["No<br>Nausea", "Extremely<br>Motivated"],
+        "orientation": "horizontal",
+        "levels": 5
+      }
+      
+    },
+  
+    {
+      "name": "Q9d",
+      "text": "In the past 24 hours, have you… Had a misunderstanding or disagreement with your parents?",
+      "type": "radiobutton",
+      "extra":{
+        "choices":["Yes",
+           "No"],
+        "orientation": "vertical"
+      }
+    },
+  
+  
+    {
+      "name": "Q10",
+      "text": "In the past 24 hours, have you found it easy to talk to your parents about your thoughts and feelings?",
+      "type": "radiobutton",
+      "extra":{
+        "choices":["Yes",
+           "No"],
+        "orientation": "vertical"
+      }
+    },
+  
+    {
+      "name": "Q11",
+      "text": "Felt lonely?",
+      "type": "radiobutton",
+      "extra":{
+        "choices":["Yes",
+           "No"],
+        "orientation": "vertical"
+      }
+    }
+  ]
+  
+  
