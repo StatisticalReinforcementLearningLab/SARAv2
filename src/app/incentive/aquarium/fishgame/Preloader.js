@@ -138,10 +138,11 @@ export class Preloader extends Phaser.State {
 			this.ionic_scope.total_days = 5;
             console.log("Days: " + this.ionic_scope.total_days + ", isStudyParticipant: " + this.isStudyParticipant);
             if((this.ionic_scope.total_days > 30) && this.isStudyParticipant){
-            	this.state.start('Gameover');
+            	this.state.start('GameOver');
             }else{
 	            if(this.ionic_scope.total_points <770){
-	            	this.state.start('GameSmall');
+					this.state.start('GameSmall');
+					//this.state.start('GameOver');
 	            	this.ionic_scope.current_level = 'GameSmall';
 	            	console.log("post loading sea");
 	            	//this.loadSea();

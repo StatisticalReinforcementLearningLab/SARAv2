@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Boot } from '../fishgame/Boot';
 import { Preloader } from '../fishgame/Preloader';
 import { GameSmall } from '../fishgame/GamesSmall2';
+import { GameOver } from '../fishgame/GameOver';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
@@ -27,11 +28,12 @@ export class DemoAquariumComponent implements OnInit {
     this.game.state.add('Boot', Boot);
     this.game.state.add('Preloader', Preloader);
     this.game.state.add('GameSmall', GameSmall);
+    this.game.state.add('GameOver', GameOver);
     this.game.state.start('Boot');
     //self = this;
 
     this.game.state.states["GameSmall"].assignscope(this);
-  
+
   }
 
 
