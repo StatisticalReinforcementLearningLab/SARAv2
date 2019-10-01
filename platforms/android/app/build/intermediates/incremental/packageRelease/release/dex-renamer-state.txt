@@ -1,4 +1,0 @@
-#Fri Jun 07 16:17:07 EDT 2019
-base.0=C\:\\IonicProject\\SARAv2\\platforms\\android\\app\\build\\intermediates\\transforms\\dex\\release\\0
-path.0=classes.dex
-renamed.0=classes.dex
