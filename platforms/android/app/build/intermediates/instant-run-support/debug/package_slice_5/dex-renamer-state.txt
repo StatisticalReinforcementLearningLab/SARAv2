@@ -1,4 +1,0 @@
-#Wed Jun 12 16:29:28 EDT 2019
-base.0=C\:\\IonicProject\\SARAv2\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\120
-path.0=classes.dex
-renamed.0=classes.dex
