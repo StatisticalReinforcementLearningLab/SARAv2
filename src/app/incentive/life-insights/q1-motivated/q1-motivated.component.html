@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Sample life-insight (demo)</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <br>
+    <div style="text-align: center; font-size: 24px;line-height: 25px;padding-bottom:10px;">Congratulations!!</div>
+    <div style="text-align: center; font-size: 20px;line-height: 25px;padding-bottom:10px;">You unlocked a life-insight</div>
+    <br>
+
+    <div class="card">
+        <div style="position: absolute;top:4px; left:4px; z-index: 20;" >
+            <img src={{imgloc}} style="width:75px;height:auto;">
+        </div>
+        <div class="item item-avatar" style="background: #c9e8e6;border-left: 2px solid #004D40; padding-left: 90px;">
+          <span [innerHtml]="title"></span>
+          <p ng-hide="lifeinsight.showTopBottom">{{subtext}}</p> 
+        </div>
+
+        <div style="margin-left:0px; margin-right:0px;margin-top:0px; background:#eef7f7; padding:5px; padding-left:15px; border-left: 0px solid #004D40; color:black; text-align:center; font-size: 14px;">
+            <span [innerHtml]="topSubtext"></span>
+        </div> 
+        
+
+        <div id="{{label}}" class="chart-container" style="position: relative; height:30vh; width:95vw">
+            <!--
+            <div>
+              <nvd3 [options]="options" [data]="data"></nvd3>
+            </div>
+            -->
+            <canvas style="height:750;" #lineCanvas></canvas>
+        </div>
+        
+        <div style="margin-left:0px; margin-right:0px;margin-top:5px; background:#eef7f7; padding-left:15px; border-left: 0px solid #004D40; color:black; text-align:center; font-size: 14px;">
+            <span [innerHtml]="bottomSubtext"></span>
+        </div> 
+   
+  
+
+    </div>
+</ion-content>
+
+
+
+
