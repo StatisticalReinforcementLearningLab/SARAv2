@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SurveyModule } from './survey/survey.module';
 import { IncentiveModule } from './incentive/incentive.module';
-
+import { LifeInsightsModule } from './incentive/life-insights/life-insights.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +26,8 @@ import { IncentiveModule } from './incentive/incentive.module';
     HttpClientModule,
     SurveyModule,
     IncentiveModule,
-    BlobModule.forRoot()
+    BlobModule.forRoot(),
+    LifeInsightsModule
   ],
   providers: [
     StatusBar,
