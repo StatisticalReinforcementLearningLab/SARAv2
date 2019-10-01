@@ -3,7 +3,7 @@ export class Preloader extends Phaser.State {
     //this.titleText = null;
     //ready = false;
     //ionic_scope;
-    //isStudyParticipant;
+	//isStudyParticipant;
 	
 	preload(){
 
@@ -34,7 +34,7 @@ export class Preloader extends Phaser.State {
 		this.load.image('gift', 'assets/img/gift.png');
 
 		//
-		this.load.image('gameover', 'assets/img/Fireworks.png');
+		this.load.image('GameOver', 'assets/img/Fireworks.png');
 
 
 		//this.load.atlasJSONArray('blackdiver', 'sprite/black-diver-sprite.png', 'sprite/black-diver-sprite.json');
@@ -50,6 +50,7 @@ export class Preloader extends Phaser.State {
 		this.load.image('pirate', 'assets/img/pirate-' + rand_num + '.png');
 
 		var	username = window.localStorage['username'] || 'unknown';
+
         this.isStudyParticipant = username.indexOf('-study-') !== -1; // !== -1;
         //-- this.isStudyParticipant = true;
         //-- 
@@ -66,6 +67,7 @@ export class Preloader extends Phaser.State {
 		}
 		*/
 		this.loadFishBowl(); //temporarility use this
+		this.loadSea();
 
 		//--- RedBanner.png
 		//this.load.atlasJSONArray('banner', 'sprite/RedBanner.png', 'sprite/RedBanner.json');
@@ -125,9 +127,8 @@ export class Preloader extends Phaser.State {
     //this is how to handle progress bar 
     //--- See on file complete http://technotip.com/4897/progress-bar-phaser/
 
+	/*
 	update(){
-
-		//
 		console.log("Preloader: update called");
 
 		//this.cache.isSoundDecoded('game_audio') && 
@@ -135,14 +136,15 @@ export class Preloader extends Phaser.State {
             //this.ionic_scope.total_points = 1650;  	
 			this.ionic_scope = {};
 			this.ionic_scope.total_points = 50;
-			this.ionic_scope.total_days = 5;
+			this.ionic_scope.total_days = 35;
+			this.isStudyParticipant = true;
+
             console.log("Days: " + this.ionic_scope.total_days + ", isStudyParticipant: " + this.isStudyParticipant);
             if((this.ionic_scope.total_days > 30) && this.isStudyParticipant){
             	this.state.start('GameOver');
             }else{
 	            if(this.ionic_scope.total_points <770){
-					this.state.start('GameSmall');
-					//this.state.start('GameOver');
+	            	this.state.start('GameSmall');
 	            	this.ionic_scope.current_level = 'GameSmall';
 	            	console.log("post loading sea");
 	            	//this.loadSea();
@@ -181,7 +183,22 @@ export class Preloader extends Phaser.State {
             //this.state.start('Game');
             //this.state.start('Level1');
             //this.state.start('Level1Small');
-        }
+        } 
+	} 
+	*/
+
+	update()
+	{
+		console.log("update: "+ this.pickedGame);
+		// if(this.pickedGame != 'GameOver') {
+		// 	this.current_level = this.pickedGame;
+		// }
+		this.state.start(this.pickedGame);
+	
+	}
+
+	setGameName(pickedGame){
+		this.pickedGame = pickedGame;
 	}
 
 	onLoadComplete(){
@@ -190,11 +207,10 @@ export class Preloader extends Phaser.State {
 	}
 
 	loadFishBowl(){
+		console.log("Inside loadFishBowl");
 		this.load.image('titlescreen', 'assets/img/TitleBG4.png');    	
         this.load.image('journal', 'assets/img/fishjournal.png');
-        
-
-        
+               
         this.load.image('fish', 'assets/img/fish.png');
 		this.load.image('treasure', 'assets/img/treasure.png');
 		this.load.atlasXML('octopus', 'assets/game/sprite/octopus.png', 'assets/game/sprite/octopus.xml');
@@ -225,8 +241,6 @@ export class Preloader extends Phaser.State {
 		this.load.image('diver', 'assets/img/diver-0.png');
 		this.load.image('fatdiver2', 'assets/img/fatdiver2.png');
 
-		
-
 	}
 
 	loadSea(){
@@ -234,12 +248,13 @@ export class Preloader extends Phaser.State {
 
         //second aquarium
         //-- fish_journal
-        this.load.image('fish_journal', 'img/fish_journal.png');
+		console.log("Inside loadSea");
+        this.load.image('fish_journal', 'assets/img/fish_journal.png');
 
          //--- sea
-        this.load.image('undersea', 'img/underwaterbr.jpg');
-        this.load.image('treasuresea', 'img/treasuresea.png');
-        this.load.image('coral', 'img/seabed.png');
+		this.load.image('undersea', 'assets/img/underwaterbr.jpg');    	
+        this.load.image('treasuresea', 'assets/img/treasuresea.png');
+        this.load.image('coral', 'assets/img/seabed.png');
         this.load.atlasJSONArray('sharkswim', 'assets/game/sprite/sharkswimming.png', 'assets/game/sprite/sharkswimming.json');
         this.load.atlasJSONArray('nemo', 'assets/game/sprite/clownfish.png', 'assets/game/sprite/clownfish.json');
 		this.load.atlasJSONArray('dori', 'assets/game/sprite/dory2.png', 'assets/game/sprite/dory2.json');
@@ -259,10 +274,10 @@ export class Preloader extends Phaser.State {
 
 		
 		//
-		this.load.image('gotosea', 'img/gotosea.png');
+		this.load.image('gotosea', 'assets/img/gotosea.png');
 
 		//first_aq
-		this.load.image('first_aq', 'img/first_aq.png');
+		this.load.image('first_aq', 'assets/img/first_aq.png');
 
 		
 
@@ -276,6 +291,6 @@ export class Preloader extends Phaser.State {
 
 	loadGameover(){
 		//
-		//this.load.image('gameover', 'img/Fireworks.png');
+		//this.load.image('gameover', 'assets/img/Fireworks.png');
 	}
 }

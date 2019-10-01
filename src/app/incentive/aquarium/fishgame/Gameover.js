@@ -6,7 +6,7 @@ export class GameOver extends Phaser.State {
     }
     create() {
         this.stage.backgroundColor = '#000000';
-        var s = this.add.sprite(this.world.centerX, this.world.centerY, 'gameover');
+        var s = this.add.sprite(this.world.centerX, this.world.centerY, 'GameOver');
         s.anchor.setTo(.5,.5);
     }
 
@@ -16,4 +16,9 @@ export class GameOver extends Phaser.State {
         //    this.filter.update(this.game.input.activePointer);
 
     }
+
+    assignscope(scope) {
+        this.ionic_scope = scope;
+    }
+
 }

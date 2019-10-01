@@ -1,25 +1,14 @@
-FishGame.Level1 = function(game) {
-    this.totalClicks;
-    this.totalPoints;
-    this.fishGroup;
-    this.gameover;
-    this.overmessage;
-    this.music;
-    this.game = game;
-    this.ionic_scope;
-    this.progress_sprite;
-    this.prgress_bar_width;
-    this.banner_object;
-    this.CANVAS_WIDTH;
-    this.badgecount;
-};
-
-FishGame.Level1.prototype = {
-    
-    create: function() {
+export class Level1 extends Phaser.State {
+    //componentObject;
+    constructor(){
+        super();
+        this.componentObject;
+    }
+        
+    create(){
         this.gameover = false;
         this.totalClicks = 0;
-        this.totalPoints = this.ionic_scope.total_points;
+        //this.totalPoints = this.ionic_scope.total_points;
         //this.music = this.add.audio('game_audio');
         //this.music.play('', 0, 1.0, true);
         
@@ -34,9 +23,10 @@ FishGame.Level1.prototype = {
 
         Phaser.Canvas.setTouchAction(this.game.canvas, "auto");
         this.game.input.touch.preventDefault = false;
-    },
+    }
     
-    buildWorld: function() {
+    buildWorld() {
+        console.log("Inside Level1 buildWorld()");
         this.height = this.game.height;
         var undersea = this.add.image(0, 0, 'undersea');
         undersea.scale.setTo(0.8, 0.8);
@@ -63,14 +53,6 @@ FishGame.Level1.prototype = {
         treasure.events.onInputDown.add(this.showunlockables, this);
         treasure.angle += 10;
 
-        //
-        this.active_task_connected = this.add.image(10, 40, 'disconnected');
-        this.active_task_connected.set
-        this.active_task_connected.scale.setTo(0.15, 0.15);
-        this.active_task_connected.inputEnabled = true;
-        this.active_task_connected.events.onInputDown.add(this.logdata, this);
-        this.active_task_connected.visible = false;
-
         this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
 
         //
@@ -83,6 +65,7 @@ FishGame.Level1.prototype = {
         pouch.scale.setTo(0.4, 0.4);
         pouch.anchor.setTo(.5,.5);
 
+        //this.totalPoints = 1800;
         this.badgecount = this.add.bitmapText(30, 73, 'eightbitwonder', "" + 2, 12);
 
         //this.buildFish();
@@ -131,47 +114,47 @@ FishGame.Level1.prototype = {
         this.game.onPause.add(this.yourGamePausedFunc, this);
         this.game.onResume.add(this.yourGameResumedFunc, this);
 
-        this.checkReinforcement();
-    },
+        //this.checkReinforcement();
+    }
 
-    yourGamePausedFunc: function(){
+    yourGamePausedFunc(){
         console.log("Game paused");
         //this.isPaused = true;
         this.game.lockRender = true;
         //this.filter.destroy();
         //this.sprite.destroy();
-    },
+    }
 
-    yourGameResumedFunc: function(){
+    yourGameResumedFunc() {
         console.log("Game resumed");
         //this.addWater();
         //this.isPaused = false;
         this.game.lockRender = false;
-    },
+    }
 
-    changebadgecount: function(badge_count){
+    changebadgecount(badge_count){
         console.log("Game resumed");
         this.badgecount.setText('' + badge_count);
-    },
+    } 
 
-    earlyaquarium: function() {
+    earlyaquarium() {
         //this.totalClicks = this.totalClicks + 1;
         //this.countdown.setText('Fishes Fed: ' + this.totalClicks);
         //this.ionic_scope.$emit('survey:logdata', this.ionic_scope);
         //console.log("Came here");
 
         this.state.start('Gamelast');
-    },
+    }
 
     //show the reward
-    checkReinforcement: function(){
+    checkReinforcement(){
         this.ionic_scope.$emit('show:checkReinforcement',this.ionic_scope);
-    },
+    }
 
-    showBanner: function(){
+    showBanner(){
         this.banner_object = this.add.group();
         //--- banner
-        var banner = this.add.image(00, this.height-180, 'banner');
+        var banner = this.add.image(0, this.height-180, 'banner');
         banner.scale.setTo(.6, .75);
         banner.inputEnabled = true;
         //banner.events.onInputDown.add(this.hideBanner, this);
@@ -206,35 +189,35 @@ FishGame.Level1.prototype = {
         //make a left ot right animation.
 
 
-    },
+    }
 
-    hideBanner:function(elem){
+    hideBanner(elem){
         console.log("clicked");
         this.banner_object.destroy(true);
         window.localStorage['banner_shown_2'] = "1";
         //deleted all the elements
-    },
+    }
 
 
-    logdata: function() {
+    logdata() {
         //this.totalClicks = this.totalClicks + 1;
         //this.countdown.setText('Fishes Fed: ' + this.totalClicks);
         this.ionic_scope.$emit('survey:logdata', this.ionic_scope);
         //console.log("Came here");
-    },
+    }
 
     //update the connected and disconnected things
-    updateconnectivity: function(state) {
+    updateconnectivity(state) {
         //console.log("Is connected: " +  state);
         this.active_task_connected.visible = state;
-    },
+    }
 
-    assignscope: function(scope) {
+    assignscope(scope) {
         this.ionic_scope = scope;
-    },
+    }
 
 
-    showBubbles2: function(){
+    showBubbles2(){
         //add.tween(purplediver).to({ x: this.world.centerX-20 }, 800 + Math.floor(this.rnd.realInRange(0, 2000)), Phaser.Easing.Quadratic.InOut, true, 0);
 
         var blackdiver = this.add.sprite(-100, 303, 'submarine_at');
@@ -245,9 +228,9 @@ FishGame.Level1.prototype = {
         var t = this.add.tween(blackdiver).to({ x: this.world.centerX}, 800 + Math.floor(this.rnd.realInRange(0, 2000)), Phaser.Easing.Quadratic.InOut, true, 0);
         t.onComplete.add(this.addBubbles2, this);
         
-    },
+    }
 
-    addBubbles2: function(){    
+    addBubbles2(){    
         var delay = 0;
         for (var i = 0; i < 100; i++)
         {
@@ -265,9 +248,9 @@ FishGame.Level1.prototype = {
                 delay += 100;
                 //this.checkLastBubble(sprite);
         }
-    },
+    }
 
-    checkLastBubble2: function(b) {
+    checkLastBubble2(b) {
         /*
         if(b.x > window.innerWidth){ 
             //console.log('right to left, ' + b.x);
@@ -324,11 +307,11 @@ FishGame.Level1.prototype = {
         
 
         //
-        console.log("don't know " + b.y);
-    },
+        //console.log("don't know " + b.y);
+    }
 
 
-    showBubbles: function(){
+    showBubbles(){
         //add.tween(purplediver).to({ x: this.world.centerX-20 }, 800 + Math.floor(this.rnd.realInRange(0, 2000)), Phaser.Easing.Quadratic.InOut, true, 0);
 
         var blackdiver = this.add.sprite(this.CANVAS_WIDTH+100, 303, 'submarine');
@@ -338,11 +321,11 @@ FishGame.Level1.prototype = {
         blackdiver.scale.setTo(-1.3, 1.3);
         var t = this.add.tween(blackdiver).to({ x: this.world.centerX+20 }, 800 + Math.floor(this.rnd.realInRange(0, 2000)), Phaser.Easing.Quadratic.InOut, true, 0);
         t.onComplete.add(this.addBubbles, this);
-    },
+    }
 
 
 
-    addBubbles: function(){    
+    addBubbles(){    
         var delay = 0;
         for (var i = 0; i < 100; i++)
         {
@@ -360,9 +343,9 @@ FishGame.Level1.prototype = {
                 delay += 100;
                 //this.checkLastBubble(sprite);
         }
-    },
+    }
 
-    checkLastBubble: function(b) {
+    checkLastBubble(b) {
         /*
         if(b.x > window.innerWidth){ 
             //console.log('right to left, ' + b.x);
@@ -423,15 +406,15 @@ FishGame.Level1.prototype = {
 
         //
         console.log("don't know " + b.y);
-    },
+    }
 
     //show the reward
-    showReward: function(){
+    showReward(){
         this.ionic_scope.$emit('show:reinforcement',this.ionic_scope);
-    },
+    }
 
 
-    buildAquarium: function() {
+    buildAquarium() {
 
         var phaserJSON = this.game.cache.getJSON('fishpoints');
 
@@ -512,9 +495,9 @@ FishGame.Level1.prototype = {
 
           console.log("Width, " + rect.width  + "," + this.progress_sprite.width);
           this.progress_sprite.crop(rect);
-    },
+    }
 
-    addAFish: function(added_point){
+    addAFish(added_point){
 
           var phaserJSON = this.game.cache.getJSON('fishpoints');
           //console.log(JSON.stringify(phaserJSON));
@@ -595,10 +578,10 @@ FishGame.Level1.prototype = {
           rect.width = 1 * percent * this.progress_sprite.width;
           this.progress_sprite.crop(rect);
 
-    },
+    }
 
     
-    addShark: function() {    
+    addShark() {    
         this.sharkfish = this.add.sprite(this.CANVAS_WIDTH + 100, 130, 'sharkswim');
         this.sharkfish.anchor.setTo(.5,.5);
         this.sharkfish.animations.add('swim');
@@ -606,10 +589,10 @@ FishGame.Level1.prototype = {
         this.sharkfish.scale.setTo(0.3, 0.22);
         this.sharkfish.name = "sharkswim";
         this.gobothways(this.sharkfish);
-    },
+    }
 
 
-    addSwordFish: function() {   
+    addSwordFish() {   
         //swordfish
         this.swordfish = this.add.sprite(-150, 70, 'swordfish');
         this.swordfish.anchor.setTo(-.5,.6);
@@ -618,10 +601,10 @@ FishGame.Level1.prototype = {
         this.swordfish.scale.setTo(0.3, 0.3);
         this.swordfish.name = "swordfishswim";
         this.gobothways(this.swordfish);
-    },
+    }
 
 
-    addDolphin: function() {   
+    addDolphin() {   
         this.dolphin = this.add.sprite(-150, 70, 'dolphin');
         this.dolphin.anchor.setTo(.9,.6);
         this.dolphin.animations.add('swim');
@@ -630,9 +613,9 @@ FishGame.Level1.prototype = {
         this.dolphin.name = "dolphinswim";
         this.dolphin.angle -= 3;
         this.gobothways(this.dolphin);
-    },
+    }
 
-    addDori: function() {    
+    addDori() {    
         ////////////////////////////////////////////////////////////
         // mid aquarium
         ////////////////////////////////////////////////////////////
@@ -668,9 +651,9 @@ FishGame.Level1.prototype = {
         this.clownFish.name = "clownFish";
         this.gobothways(this.clownFish);
 
-    },
+    }
 
-    addYellowTang: function() {  
+    addYellowTang() {  
         var yellowtang = this.add.sprite(this.CANVAS_WIDTH+100, this.height/3 + 55, 'yellowtang');
         yellowtang.animations.add('swim');
         yellowtang.animations.play('swim', 10, true);
@@ -678,20 +661,20 @@ FishGame.Level1.prototype = {
         //yellowtang.angle -= 10;
         yellowtang.anchor.setTo(.5,.5);
         this.gobothways(yellowtang);
-    },
+    }
 
 
-    addJellyFish: function() {  
+    addJellyFish() {  
         //
         var jellyfish = this.add.sprite(this.CANVAS_WIDTH - 80, this.height/3 + 0, 'jellyfish');
         jellyfish.animations.add('swim');
         jellyfish.animations.play('swim', 15, true);
         jellyfish.scale.setTo(0.12, 0.12);
         this.add.tween(jellyfish).to({ y: 300 }, 2000, Phaser.Easing.Quadratic.InOut, true, 0, 1000, true);
-    },
+    }
 
 
-    addSalmon: function() { 
+    addSalmon() { 
         /*
         var salmon = this.add.sprite(window.innerWidth - 100, this.height/3 + 70, 'salmon');
         salmon.animations.add('swim');
@@ -708,7 +691,7 @@ FishGame.Level1.prototype = {
         //yellowtang.angle -= 10;
         yellowtang.anchor.setTo(.5,.5);
         this.gobothways(yellowtang);
-    },
+    }
 
         ////////////////////////////////////////////////////////////
         // bottom aquarium
@@ -718,7 +701,7 @@ FishGame.Level1.prototype = {
         /*
         */
 
-    addWhale: function() { 
+    addWhale() { 
         var whale = this.add.sprite(this.CANVAS_WIDTH+150, this.height-120, 'whale');
         whale.animations.add('swim');
         whale.animations.play('swim', 12, true);
@@ -727,10 +710,10 @@ FishGame.Level1.prototype = {
         whale.angle += 5;
         whale.name = "whaleswim";
         this.gobothways(whale);
-    },
+    }
 
 
-    addCrab: function() { 
+    addCrab() { 
         var redcrab = this.add.sprite(225, this.height-65, 'redcrab');
         redcrab.animations.add('swim');
         redcrab.animations.play('swim', 15, true);
@@ -742,15 +725,15 @@ FishGame.Level1.prototype = {
         greencrab.animations.add('swim');
         greencrab.animations.play('swim', 15, true);
         greencrab.scale.setTo(0.2, 0.2);
-    },
+    }
     
 
-    addKiteFish: function() { 
+    addKiteFish() { 
         var kitefish = this.add.sprite(this.CANVAS_WIDTH-120, this.height-85, 'kitefish');
         kitefish.animations.add('swim');
         kitefish.animations.play('swim', 15, true);
         kitefish.scale.setTo(0.5, 0.5);
-    },
+    }
 
 
 
@@ -760,7 +743,7 @@ FishGame.Level1.prototype = {
         //angryfish.animations.play('swim', 15, true);
         //angryfish.scale.setTo(0.35, 0.35);
 
-    addAngryFish: function() { 
+    addAngryFish() { 
         this.angryfish = this.add.sprite(-100, this.height-250, 'angryfish');
         this.angryfish.anchor.setTo(2.2,-0.1);
         this.angryfish.animations.add('swim');
@@ -768,9 +751,9 @@ FishGame.Level1.prototype = {
         this.angryfish.scale.setTo(0.25, 0.25);
         this.angryfish.name = "angryfishswim";
         this.gobothways(this.angryfish);
-    },
+    }
 
-    addAnchovies: function() { 
+    addAnchovies() { 
         //
         this.blueanchovy = this.add.sprite(-100, this.height-250, 'blueanchovy');
         this.blueanchovy.anchor.setTo(.9,.9);
@@ -795,17 +778,17 @@ FishGame.Level1.prototype = {
         this.pinkanchovy.scale.setTo(0.12, 0.12);
         this.pinkanchovy.name = "pinkanchovyswim";
         this.gobothways(this.pinkanchovy);
-    },
+    }
     
 
-    addCoral: function() { 
+    addCoral() { 
         //
         var coral = this.add.image(0, this.height-60, 'coral');
         coral.scale.setTo(0.5, 0.5);
         
-    },  
+    }
 
-    showunlockables: function() {
+    showunlockables() {
         //this.totalClicks = this.totalClicks + 1;
         //this.countdown.setText('Fishes Fed: ' + this.totalClicks);
         //this.ionic_scope.$emit('survey:logdata');
@@ -830,9 +813,9 @@ FishGame.Level1.prototype = {
 
         //this.ionic_scope.reoutetored(this.ionic_scope);
 
-    },
+    }
 
-    gobothways: function(b){
+    gobothways(b){
 
         //console.log('start again ' + b.name);
         var change_amount = Math.floor(this.rnd.realInRange(0, 50));
@@ -844,14 +827,14 @@ FishGame.Level1.prototype = {
         }
 
 
-
+        var t;
         //if()
         if(b.x > this.CANVAS_WIDTH){ 
             //console.log('right to left, ' + b.x);
             //b.scale.setTo(-0.4, 0.4);//b.scale.x * (-1);
             b.scale.x = -1*b.scale.x;
             //t= this.add.tween(b).to({ x: -200 }, 10500, Phaser.Easing.Quadratic.InOut, true, 0);
-            t= this.add.tween(b).to({ x: -100+Math.floor(this.rnd.realInRange(0, 50)), y: pos_y }, 7500 + Math.floor(this.rnd.realInRange(0000, 4000)), Phaser.Easing.Quadratic.InOut, true, 0);
+            t= this.add.tween(b).to({ x: -100+Math.floor(this.rnd.realInRange(0, 50)), y: pos_y }, 7500 + Math.floor(this.rnd.realInRange(0, 4000)), Phaser.Easing.Quadratic.InOut, true, 0);
             t.onComplete.add(this.stopFish, this); 
         }
 
@@ -859,7 +842,7 @@ FishGame.Level1.prototype = {
             //console.log('left to right, ' + b.x);
             b.scale.x = -1*b.scale.x;
             //t = this.add.tween(b).to({ x: window.innerWidth + 200 }, 10500, Phaser.Easing.Quadratic.InOut, true, 0);
-            t = this.add.tween(b).to({ x: this.CANVAS_WIDTH + 100 - Math.floor(this.rnd.realInRange(0, 50)), y: pos_y }, 7500 + Math.floor(this.rnd.realInRange(0000, 4000)), Phaser.Easing.Quadratic.InOut, true, 0);
+            t = this.add.tween(b).to({ x: this.CANVAS_WIDTH + 100 - Math.floor(this.rnd.realInRange(0, 50)), y: pos_y }, 7500 + Math.floor(this.rnd.realInRange(0, 4000)), Phaser.Easing.Quadratic.InOut, true, 0);
             t.onComplete.add(this.stopFish, this);
         }
 
@@ -879,9 +862,9 @@ FishGame.Level1.prototype = {
             t.onComplete.add(this.stopFish, this);
         }
         */
-    },      
+    }     
     
-    buildFish: function() {
+    buildFish() {
         
         //assign number of fish
         numfish = 5;
@@ -899,9 +882,9 @@ FishGame.Level1.prototype = {
             this.assignFishMovement(b);
         }
 
-    },
+    }
     
-    assignFishMovement: function(b) {
+    assignFishMovement(b) {
         xposition = Math.floor(this.rnd.realInRange(50, this.world.width-50));
         yposition = Math.floor(this.rnd.realInRange(100, this.world.height-200));
         bdelay = this.rnd.integerInRange(2000, 6000);
@@ -912,22 +895,26 @@ FishGame.Level1.prototype = {
         }
         t = this.add.tween(b).to({x:xposition, y:yposition}, 3500, Phaser.Easing.Quadratic.InOut, true, bdelay);
         t.onComplete.add(this.stopFish, this);
-    },
+    }
     
-    stopFish: function(b) {
+    stopFish(b) {
         //this.assignFishMovement(b);
         this.gobothways(b);
-    },
+    }
     
-    addTally: function() {
+    addTally() {
         this.totalClicks = this.totalClicks + 1;
         this.countdown.setText('Fishes Fed: ' + this.totalClicks);
-    },
+    }
 
-    updatescore: function (added_points) {
+    updatescore(added_points) {
         console.log("Update score called inside game, " + this.ionic_scope.total_points);
-        this.totalPoints = this.ionic_scope.total_points;
+        //this.totalPoints = this.ionic_scope.total_points;
         this.addAFish(added_points);
         this.countdown.setText('Points: ' + this.totalPoints);
     }
-};
+
+	setTotalPoints(totalPoints){
+		this.totalPoints = totalPoints;
+	}    
+}

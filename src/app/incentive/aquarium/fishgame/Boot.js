@@ -20,6 +20,7 @@ export class Boot extends Phaser.State {
 		//-- http://www.w3schools.com/colors/colors_picker.asp
 		this.stage.backgroundColor = '#095e98';
         
-        this.state.start('Preloader');
+		this.state.start('Preloader');
+	
     }
 }
