@@ -12,7 +12,7 @@ import { DemoAquariumComponent } from './aquarium/demo-aquarium/demo-aquarium.co
     CommonModule,
     IonicModule.forRoot()
   ],
-  exports:[AwardComponent, AwardMemesComponent, VisualizationComponent],
+  exports:[AwardComponent, AwardMemesComponent, VisualizationComponent, DemoAquariumComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class IncentiveModule { }
