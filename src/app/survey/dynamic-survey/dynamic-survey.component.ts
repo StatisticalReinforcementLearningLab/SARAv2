@@ -11,6 +11,7 @@ import * as moment from 'moment';
   templateUrl: './dynamic-survey.component.html',
   styleUrls: ['./dynamic-survey.component.scss'],
 })
+
 export class DynamicSurveyComponent implements OnInit {
 
   @Input() fileLink: string;
@@ -256,8 +257,7 @@ export class DynamicSurveyComponent implements OnInit {
 
         this.storeToFirebaseService.addSurvey('/results',this.survey2);
 
-        //
-        this.router.navigate(['/home']);
+        this.router.navigate(['incentive/sample-life-insight']);
         
         //save to Amazon AWS S3
         //this.awsS3Service.upload(this.question.getData());
