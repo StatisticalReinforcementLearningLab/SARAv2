@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { PreLoad } from '../../../PreLoad';
 
 @Component({
   selector: 'app-sample-life-insights',
   templateUrl: './sample-life-insights.component.html',
   styleUrls: ['./sample-life-insights.component.scss'],
 })
+
+//@PreLoad('q1lifeinsight')
 export class SampleLifeInsightsComponent implements OnInit {
 
   questions;

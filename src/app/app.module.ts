@@ -9,12 +9,15 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { File } from '@ionic-native/file/ngx';
+import { Injector } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SurveyModule } from './survey/survey.module';
-import { IncentiveModule } from './incentive/incentive.module';
-import { LifeInsightsModule } from './incentive/life-insights/life-insights.module';
+//import { SurveyModule } from './survey/survey.module';
+import { NotificationModule } from './notification/notification.module';
+//import { IncentiveModule } from './incentive/incentive.module';
+//import { LifeInsightsModule } from './incentive/life-insights/life-insights.module';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,11 +26,11 @@ import { LifeInsightsModule } from './incentive/life-insights/life-insights.modu
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
+    //IncentiveModule,
+    //LifeInsightsModule,
+    NotificationModule,
     HttpClientModule,
-    SurveyModule,
-    IncentiveModule,
-    BlobModule.forRoot(),
-    LifeInsightsModule
+    BlobModule.forRoot()
   ],
   providers: [
     StatusBar,
@@ -38,4 +41,10 @@ import { LifeInsightsModule } from './incentive/life-insights/life-insights.modu
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+
+export class AppModule {
+  static injector: Injector;
+  constructor(private injector: Injector) {
+    AppModule.injector = injector;
+  }
+}
