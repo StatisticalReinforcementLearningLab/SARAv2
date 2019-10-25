@@ -3,16 +3,16 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { IncentiveModule } from '../incentive/incentive.module';
 
 import { HomePage } from './home.page';
+import { AquariumModule } from '../incentive/aquarium/aquarium.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    IncentiveModule,
+    AquariumModule,
     RouterModule.forChild([
       {
         path: '',

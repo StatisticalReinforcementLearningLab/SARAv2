@@ -6,9 +6,10 @@ import { GameOver } from '../fishgame/GameOver';
 import { Game } from '../fishgame/Game';
 import { Level1 } from '../fishgame/Level1';
 import { Level1Small } from '../fishgame/Level1Small';
-import { FormsModule } from '@angular/forms';
+//import { FormsModule } from '@angular/forms';
 //import { PickGameService } from './pick-game.service';
 import { ActivatedRoute, Router } from '@angular/router';
+//import { PreLoad } from '../../../PreLoad';
 
 declare let Phaser: any;
 
@@ -17,6 +18,8 @@ declare let Phaser: any;
   templateUrl: './demo-aquarium.component.html',
   styleUrls: ['./demo-aquarium.component.scss'],
 })
+
+//@PreLoad('survey')
 export class DemoAquariumComponent implements OnInit {
 
   game;
@@ -51,12 +54,29 @@ export class DemoAquariumComponent implements OnInit {
 
   //gets executed after preload
   create(){
+    console.log(window.localStorage['TotalPoints']);
+    //this.totalPoints = parseInt(window.localStorage['TotalPoints'] || "0");
+    if(window.localStorage['TotalPoints'] == undefined)
+        this.totalPoints = 0;
+    else
+        this.totalPoints = parseInt(window.localStorage['TotalPoints']);
+    console.log("Inside Aquarium totalPoints: "+this.totalPoints);
+
     console.log("create called");
     var s = this.game.add.sprite(80,9,'einstein');
     s.rotation = 0.14;
   }
 
   ngOnInit() {
+
+    console.log(window.localStorage['TotalPoints']);
+    //this.totalPoints = parseInt(window.localStorage['TotalPoints'] || "0");
+     if(window.localStorage['TotalPoints'] == undefined)
+        this.totalPoints = 0;
+    else
+        this.totalPoints = parseInt(window.localStorage['TotalPoints']);
+    console.log("Inside Aquarium totalPoints: "+this.totalPoints);
+ 
     this.game =  new Phaser.Game(
       window.innerWidth, 700,
       Phaser.AUTO,

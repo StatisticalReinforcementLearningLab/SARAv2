@@ -1,16 +1,24 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
-import { DynamicSurveyComponent } from 'src/app/survey/dynamic-survey/dynamic-survey.component';
+import { DemoAquariumComponent } from './demo-aquarium/demo-aquarium.component';
+import { SurveyModule } from '../../survey/survey.module';
+import { Routes, RouterModule } from '@angular/router';
+
+const routes: Routes = [
+     { path: 'aquariumone', component: DemoAquariumComponent }
+];
 
 @NgModule({
-  declarations: [DynamicSurveyComponent],
+  declarations: [DemoAquariumComponent],
   imports: [
     CommonModule,
-    IonicModule.forRoot()
+    SurveyModule,
+    IonicModule.forRoot(),
+    RouterModule.forChild(routes)
   ],
   exports:[
-    DynamicSurveyComponent
+    DemoAquariumComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

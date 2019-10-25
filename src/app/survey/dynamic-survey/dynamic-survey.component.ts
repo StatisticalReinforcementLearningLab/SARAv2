@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild, ViewContainerRef, NgModule, Compiler, Injector, NgModuleRef, ElementRef, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { StoreToFirebaseService } from '../../storage/store-to-firebase.service';
+import { AwsS3Service } from '../../storage/aws-s3.service';
 import { EncrDecrService } from '../../storage/encrdecrservice.service';
 import { Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
+//import { PreLoad } from '../../PreLoad';
 
 @Component({
   selector: 'app-dynamic-survey',
@@ -12,6 +14,7 @@ import * as moment from 'moment';
   styleUrls: ['./dynamic-survey.component.scss'],
 })
 
+//@PreLoad('life-insights')
 export class DynamicSurveyComponent implements OnInit {
 
   @Input() fileLink: string;
@@ -62,6 +65,7 @@ export class DynamicSurveyComponent implements OnInit {
   constructor(private _compiler: Compiler,
     private _injector: Injector,
     private _m: NgModuleRef<any>, 
+    private awsS3Service: AwsS3Service,
     private storeToFirebaseService: StoreToFirebaseService,
     private EncrDecr: EncrDecrService,
     private router: Router,
@@ -120,6 +124,9 @@ export class DynamicSurveyComponent implements OnInit {
       survey2 = {};
       storeToFirebaseService: StoreToFirebaseService;
       EncrDecr: EncrDecrService;
+      awsS3Service: AwsS3Service;
+      totalPoints = 0;
+
       plt: Platform;
       router: Router;
 
@@ -255,14 +262,25 @@ export class DynamicSurveyComponent implements OnInit {
         console.log('Decrypted :' + decrypted);
         this.survey2['encrypted'] = encrypted;
 
-        this.storeToFirebaseService.addSurvey('/results',this.survey2);
+        if(window.localStorage['TotalPoints'] == undefined)
+          this.totalPoints = 0;
+        else
+          this.totalPoints = parseInt(window.localStorage['TotalPoints']);
+        this.totalPoints = this.totalPoints + 100;
+        window.localStorage.setItem("TotalPoints", ""+this.totalPoints);
 
-        this.router.navigate(['incentive/sample-life-insight']);
+        //this.storeToFirebaseService.addSurvey('/results',this.survey2);
         
         //save to Amazon AWS S3
-        //this.awsS3Service.upload(this.question.getData());
+        this.awsS3Service.upload(this.survey2);
         //console.log("End of storeData");
-    
+        
+        if(Math.random() > 0.5 ){
+          this.router.navigate(['incentive/award-memes']);
+       } else {
+         this.router.navigate(['incentive/aquarium/aquariumone']);
+       }    
+           
         //save to azure 
         //this.azureService.upload(this.question.getData());
     
@@ -279,6 +297,7 @@ export class DynamicSurveyComponent implements OnInit {
       .then((factories) => {
         const f = factories.componentFactories[0];
         const cmpRef = this.vc.createComponent(f);
+        cmpRef.instance.awsS3Service = this.awsS3Service;
         cmpRef.instance.storeToFirebaseService = this.storeToFirebaseService;
         cmpRef.instance.EncrDecr = this.EncrDecr;
         cmpRef.instance.plt = this.plt;
