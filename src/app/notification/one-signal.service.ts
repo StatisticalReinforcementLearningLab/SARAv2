@@ -28,7 +28,7 @@ export class OneSignalService {
       this.oneSignal.handleNotificationReceived().subscribe(data => {
         this.time = new Date().getTime();
         this.formattedTime = moment().format('MMMM Do YYYY, h:mm:ss a Z');
-        //console.log("notification is received at: "+this.time+" formatted: "+this.formattedTime);
+        console.log("notification is received at: "+this.time+" formatted: "+this.formattedTime);
 
         let title = data.payload.title;
         let msg = data.payload.body;
