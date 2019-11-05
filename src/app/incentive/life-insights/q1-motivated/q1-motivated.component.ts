@@ -23,6 +23,7 @@ export class Q1MotivatedComponent implements OnInit {
   label;
   data;
   options;
+  labels;
 
   private lineChart: Chart;
 
@@ -43,12 +44,13 @@ export class Q1MotivatedComponent implements OnInit {
     this.bottomSubtext = this.jsonObj.bottomSubtext;
     this.label = this.jsonObj.label;
     this.data = this.jsonObj.data;  
+    this.labels = this.jsonObj.labels;
 
 
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {
       type: "line",
       data: {
-        labels: ["9/13", "9/14", "9/15", "9/16", "9/17", "9/18", "Today"], //x-label
+        labels: this.labels,  //["9/13", "9/14", "9/15", "9/16", "9/17", "9/18", "Today"], //x-label
         datasets: [
           {
             label: "My First dataset",
