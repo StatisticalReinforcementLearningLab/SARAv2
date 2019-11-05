@@ -122,6 +122,7 @@ export class DynamicSurveyComponent implements OnInit {
     const tmpCmp = Component({ template: this.survey_string })(class implements OnInit{
       
       survey2 = {};
+      lifeInsightObj = {};
       storeToFirebaseService: StoreToFirebaseService;
       EncrDecr: EncrDecrService;
       awsS3Service: AwsS3Service;
@@ -269,10 +270,52 @@ export class DynamicSurveyComponent implements OnInit {
         this.totalPoints = this.totalPoints + 100;
         window.localStorage.setItem("TotalPoints", ""+this.totalPoints);
 
+        if(window.localStorage['lifeInsight'] == undefined) {
+          this.lifeInsightObj['Q3d'] = {};
+          this.lifeInsightObj['Q3d']['dates'] = [moment().format("DD-MM-YYYY")];
+          if(this.survey2.hasOwnProperty('Q3d')) {
+            this.lifeInsightObj['Q3d']['data'] = [parseInt(this.survey2['Q3d'])];
+          }
+          else {
+            this.lifeInsightObj['Q3d']['data'] = [null];
+          }
+
+          this.lifeInsightObj['Q4d'] = {};
+          this.lifeInsightObj['Q4d']['dates'] = [moment().format("DD-MM-YYYY")];
+          if(this.survey2.hasOwnProperty('Q4d')) {
+            this.lifeInsightObj['Q4d']['data'] = [parseInt(this.survey2['Q4d'])];
+          }
+          else {
+            this.lifeInsightObj['Q4d']['data'] = [null];
+          }
+         
+        }
+        else {
+           this.lifeInsightObj= JSON.parse(window.localStorage.getItem("lifeInsight"));
+           this.lifeInsightObj['Q3d']['dates'].push(moment().format("DD-MM-YYYY"));
+           if(this.survey2.hasOwnProperty('Q3d')) {
+              this.lifeInsightObj['Q3d']['data'].push(parseInt(this.survey2['Q3d']));
+            }
+            else {
+              this.lifeInsightObj['Q3d']['data'].push(null);
+            }
+
+            this.lifeInsightObj['Q4d']['dates'].push(moment().format("DD-MM-YYYY"));
+            if(this.survey2.hasOwnProperty('Q4d')) {
+               this.lifeInsightObj['Q4d']['data'].push(parseInt(this.survey2['Q4d']));
+             }
+             else {
+               this.lifeInsightObj['Q4d']['data'].push(null);
+             }
+ 
+        }
+        console.log("lifeInsightObj: "+JSON.stringify(this.lifeInsightObj));
+        window.localStorage.setItem("lifeInsight", JSON.stringify(this.lifeInsightObj));
+
         //this.storeToFirebaseService.addSurvey('/results',this.survey2);
         
         //save to Amazon AWS S3
-        this.awsS3Service.upload(this.survey2);
+        //this.awsS3Service.upload(this.survey2);
         //console.log("End of storeData");
         
         if(Math.random() > 0.5 ){
