@@ -12,7 +12,7 @@ import { AwardMemesComponent } from './incentive/award-memes/award-memes.compone
 import { DemoAquariumComponent } from './incentive/aquarium/demo-aquarium/demo-aquarium.component';
 //import { Q1MotivatedComponent } from './incentive/life-insights/q1-motivated/q1-motivated.component';
 //import { SampleSurveyComponent } from './survey/sample-survey/sample-survey.component';
-//import { SampleLifeInsightsComponent } from './incentive/life-insights/sample-life-insights/sample-life-insights.component';
+import { SampleLifeInsightsComponent } from './incentive/life-insights/sample-life-insights/sample-life-insights.component';
 
 const routes: Routes = [
 /*   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -27,10 +27,10 @@ const routes: Routes = [
   { path: 'incentive/visualization', component: VisualizationComponent},
   { path: 'incentive/aquariumone', component: DemoAquariumComponent },  
   { path: 'life-insight/q1lifeinsight', component: Q1MotivatedComponent },
-  { path: 'incentive/sample-life-insight', component: SampleLifeInsightsComponent } 
  */
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+  { path: 'incentive/sample-life-insight', component: SampleLifeInsightsComponent },
   //{ path: 'incentive/award-memes', component: AwardMemesComponent },
   //{ path: 'incentive/aquariumone', component: DemoAquariumComponent },  
 

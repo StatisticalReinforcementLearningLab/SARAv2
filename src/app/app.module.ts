@@ -16,7 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 //import { SurveyModule } from './survey/survey.module';
 import { NotificationModule } from './notification/notification.module';
 //import { IncentiveModule } from './incentive/incentive.module';
-//import { LifeInsightsModule } from './incentive/life-insights/life-insights.module';
+import { LifeInsightsModule } from './incentive/life-insights/life-insights.module';
 
 
 @NgModule({
@@ -27,7 +27,7 @@ import { NotificationModule } from './notification/notification.module';
     IonicModule.forRoot(), 
     AppRoutingModule,
     //IncentiveModule,
-    //LifeInsightsModule,
+    LifeInsightsModule,
     NotificationModule,
     HttpClientModule,
     BlobModule.forRoot()
