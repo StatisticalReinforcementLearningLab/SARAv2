@@ -32,7 +32,9 @@ If you are interested in causal inference with binary outcome in a time-varying 
 The manuscript is in preparation. For an early draft, please contact
 mrabbi@fas.harvard.edu or qiantianchen.thu@gmail.com 
 
-For an informal description of the method see the "analysis_code" folder at\\ https://github.com/StatisticalReinforcementLearningLab/SARA-Version1/tree/master/analysis_code.
+For an informal description of the method see the "analysis_code" folder at the following link
+
+https://github.com/StatisticalReinforcementLearningLab/SARA-Version1/tree/master/analysis_code.
 ```
 
 
