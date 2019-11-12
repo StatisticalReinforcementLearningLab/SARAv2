@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { PreLoad } from '../../../PreLoad';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Chart } from 'chart.js';
 import * as moment from 'moment';
+
+import * as lifeInsightProfile from "../../../../assets/data/life_insight.json";
+//import { PreLoad } from '../../../PreLoad';
+
 
 @Component({
   selector: 'app-sample-life-insights',
@@ -11,89 +15,171 @@ import * as moment from 'moment';
 //@PreLoad('q1lifeinsight')
 export class SampleLifeInsightsComponent implements OnInit {
 
-  questions;
-  qimgs;
-  lifeInsightsTitle;
+  @ViewChild('lineCanvas') lineCanvas: ElementRef<HTMLDivElement>;
+  //@Input() jsonObj : any;
+  //private _jsonObj: any;
+
+  //jsonObj;
+
+  imgloc;
+  title;
+  subtext;
+  bottomSubtext;
+  topSubtext;
+  question;
+  data;
+  options;
+  labels;
   qYaxis;
-  qSubText;
-  lifeInsightsHighStress;
-  lifeInsightsLowStress;
-  index = 1;
-  inputJson = {};
-  //inputString;
 
-  constructor() {
-    this.questions = ["Q3d","Q4d","Q5d","Q8d","Q10d"];// ,"Q7d"];
-    this.qimgs = ["assets/img/stress.png","assets/img/freetime.png","assets/img/dance2.png","assets/img/social.png","assets/img/exciting.png"];
-    this.lifeInsightsTitle = ["How <b>relaxed</b> did you feel this week?", 
-                "How much <b>free time</b> did you have this week?", 
-                "How much <b>fun</b> did you have this week?  <i class='em em-tada'></i>", 
-                "How <b>lonely</b> did you feel this week?", 
-                "How <b>new</b> and <b>exciting</b> was your week?"];
+  qYaxisArray;
+  index = 0;
+  //inputJson = {};
+  selectedValue;
+  
 
-    this.qYaxis = ["Stress level","Hours free","Level of fun","Degree of loneliness","Level of exicitement"];        
-    this.qSubText = ["0 = low stress, 4 = high stress", 
-                    "Hours of free time everyday",
-                    "0 = low fun, 4 = a lot of fun",
-                    "0 = very social, 4 = very lonely",
-                    "0 = low excitment, 4 = very exciting"];   
 
-    this.lifeInsightsHighStress = ["Stressed <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>", 
-                                    "15 hours <i class='em em-clock10'></i>", 
-                                    "day was fun <i class='em em-balloon'></i>", 
-                                    "day was like <i class='em em-person_frowning'></i", 
-                                    "day was like <i class='em em-fire'></i><i class='em em-dancers'></i><i class='em em-palm_tree'></i>"];
+  private lineChart: Chart;
 
-    this.lifeInsightsLowStress = ["Relaxed <i class='em em-sunglasses'></i><i class='em em-boat'></i>", 
-                                    "0 hour <i class='em em-clock12'></i>", 
-                                    "day was lame  <i class='em em--1'></i>", 
-                                    "day was like <i class='em em-two_women_holding_hands'>", 
-                                    "day was like <i class='em em-zzz'></i>"];
-    
-    this.inputJson["imgloc"] = this.qimgs[this.index];
-    this.inputJson["title"] = this.lifeInsightsTitle[this.index];
-    this.inputJson["subtext"] = this.qSubText[this.index];
-    this.inputJson["topSubtext"] = this.lifeInsightsHighStress[this.index];
-    this.inputJson["bottomSubtext"] = this.lifeInsightsLowStress[this.index];
-    this.inputJson["label"] = this.questions[this.index];
+  constructor() {          
+  }
 
-    //read data from localStorage
+/*   get jsonObj(): any {
+    // transform value for display
+    return this._jsonObj;
+  }
+  
+  @Input()
+  set jsonObj(jsonObj: any) {
+    console.log('prev _jsonObj: ', this._jsonObj);
+    console.log('got jsonObj: ', jsonObj);
+    this._jsonObj = jsonObj;
+  } */
 
-    if(window.localStorage['lifeInsight'] == undefined) {
-      this.inputJson["data"] = [0, 1, 3, 4, null, 3, 1];
+  ngOnInit(){
+    this.init(this.index);
+  }
+
+  init(index: number){
+    //console.log(this.inputStr);
+    //this.jsonObj = JSON.parse(this.inputStr);
+    this.question = lifeInsightProfile.questions[this.index]; 
+    this.imgloc = lifeInsightProfile.qimgs[this.index];
+    this.title = lifeInsightProfile.lifeInsightsTitle[this.index];
+    this.qYaxis = lifeInsightProfile.qYaxis[this.index];
+    this.subtext = lifeInsightProfile.qSubText[this.index];
+    this.topSubtext = lifeInsightProfile.lifeInsightsHighStress[this.index];
+    this.bottomSubtext = lifeInsightProfile.lifeInsightsLowStress[this.index];
+
+    this.qYaxisArray = lifeInsightProfile.qYaxis;
+    this.selectedValue = lifeInsightProfile.qYaxis[this.index];
+
+    //read data from localStorage 
+    if(window.localStorage.getItem("lifeInsight") == undefined) {
+      console.log("Undefined!");
+       this.data = [0, 1, 3, 4, null, 3, 1];
       //this.inputString = JSON.stringify(this.inputJson);
-      //console.log(JSON.stringify(this.inputJson));
-    }
+     }
     else {
       var lifeInsightObj= JSON.parse(window.localStorage.getItem("lifeInsight"));
-      var question = this.inputJson["label"];
-      this.inputJson["data"] = [];
-      this.inputJson["labels"]=[];
+      this.data = [];
+      this.labels = [];
       for(var i = 6; i>= 0; i--){
           var currentdate = moment().subtract(i, "days").format("DD-MM-YYYY");
+          //console.log("Inside loop: currentdate: "+currentdate);
           if(i==0) {
-            this.inputJson["labels"].push("Today");
+            this.labels.push("Today");
           } else {
-            this.inputJson["labels"].push(moment().subtract(i, "days").format("MM/DD"));
+            this.labels.push(moment().subtract(i, "days").format("MM/DD"));
           }
-          console.log("currentdate: "+currentdate);
-          var dates = lifeInsightObj[question]['dates'];
-          var index = dates.indexOf(currentdate);
-          if( index > -1) {
-            this.inputJson["data"].push(lifeInsightObj[question]['data'][index]);
+          //console.log("Local Storage save: "+question+" "+JSON.stringify(lifeInsightObj[question]));
+          var dates = lifeInsightObj[this.question]["dates"];
+          var dateIndex = dates.indexOf(currentdate);
+          if( dateIndex > -1) {
+            this.data.push(lifeInsightObj[this.question]['data'][dateIndex]);
           }
           else{
-            this.inputJson["data"].push(null);
+            this.data.push(null);
           }
       }
-      console.log("this.inputJson['data']: "+this.inputJson["data"]);
-
+      
     }
 
-   }
 
-  ngOnInit() {
-  
+    this.lineChart = new Chart(this.lineCanvas.nativeElement, {
+      type: "line",
+      data: {
+        labels: this.labels,  //["9/13", "9/14", "9/15", "9/16", "9/17", "9/18", "Today"], //x-label
+        datasets: [
+          {
+            label: "My First dataset",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(75,192,192,0.4)",
+            borderColor: "rgba(75,192,192,1)",
+            borderCapStyle: "butt",
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: "miter",
+            pointBorderColor: "rgba(75,192,192,1)",
+            pointBackgroundColor: "rgba(75,192,192,1)",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 4,
+            pointHitRadius: 10,
+            data: this.data, //y-label
+            spanGaps: false
+          }
+        ]
+      },
+      options: {
+        tooltips: {enabled: false},
+        hover: {mode: null},
+        legend: {
+            display: false
+        },
+        maintainAspectRatio: false,
+        layout: {
+          padding: {
+              left: 5,
+              right: 5,
+              top: 15,
+              bottom: 5
+          }
+        },
+        scales: {
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: this.qYaxis,
+              fontColor: "#000"
+            },
+            ticks: {
+              max: 4,
+              min: 0,
+              stepSize: 1,
+              display: true
+            }
+          }],
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Day',
+              fontColor: "#000"
+            }
+          }],
+        }
+      }
+    });
+  }
+
+  onChangeCategorySelect(){
+    console.log("onChangeCategorySelect: "+this.selectedValue);
+    this.index =  this.qYaxisArray.indexOf(this.selectedValue);
+    this.init(this.index);   
   }
 
 }

@@ -11,7 +11,8 @@ export class Q1MotivatedComponent implements OnInit {
 
   @ViewChild('lineCanvas') lineCanvas: ElementRef<HTMLDivElement>;
   //@Input() inputStr : string;
-  @Input() jsonObj : any;
+  //@Input() jsonObj : any;
+  private _jsonObj: any;
 
   //jsonObj;
 
@@ -20,31 +21,45 @@ export class Q1MotivatedComponent implements OnInit {
   subtext;
   bottomSubtext;
   topSubtext;
-  label;
+  question;
   data;
   options;
   labels;
+  qYaxis;
+
 
   private lineChart: Chart;
 
   constructor() {          
   }
 
+  get jsonObj(): any {
+    // transform value for display
+    return this._jsonObj;
+  }
   
+  @Input()
+  set jsonObj(jsonObj: any) {
+    console.log('prev _jsonObj: ', this._jsonObj);
+    console.log('got jsonObj: ', jsonObj);
+    this._jsonObj = jsonObj;
+  }
 
   ngOnInit(){
 
     //console.log(this.inputStr);
     //this.jsonObj = JSON.parse(this.inputStr);
-    //console.log("Q1MotivatedComponent "+JSON.stringify(this.jsonObj));
-    this.imgloc = this.jsonObj.imgloc;
-    this.title = this.jsonObj.title;
-    this.subtext = this.jsonObj.subtext;
-    this.topSubtext = this.jsonObj.topSubtext;
-    this.bottomSubtext = this.jsonObj.bottomSubtext;
-    this.label = this.jsonObj.label;
-    this.data = this.jsonObj.data;  
-    this.labels = this.jsonObj.labels;
+    console.log("Q1MotivatedComponent "+JSON.stringify(this._jsonObj));
+    this.imgloc = this._jsonObj.imgloc;
+    this.title = this._jsonObj.title;
+    this.subtext = this._jsonObj.subtext;
+    this.topSubtext = this._jsonObj.topSubtext;
+    this.bottomSubtext = this._jsonObj.bottomSubtext;
+    this.question =this._jsonObj.question;
+    this.data = this._jsonObj.data;  
+    this.labels = this._jsonObj.labels;
+    this.qYaxis = this._jsonObj.qYaxis;
+
 
 
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {
@@ -95,7 +110,7 @@ export class Q1MotivatedComponent implements OnInit {
           yAxes: [{
             scaleLabel: {
               display: true,
-              labelString: 'probability',
+              labelString: this.qYaxis,
               fontColor: "#000"
             },
             ticks: {
@@ -108,7 +123,7 @@ export class Q1MotivatedComponent implements OnInit {
           xAxes: [{
             scaleLabel: {
               display: true,
-              labelString: 'hola',
+              labelString: 'Day',
               fontColor: "#000"
             }
           }],
