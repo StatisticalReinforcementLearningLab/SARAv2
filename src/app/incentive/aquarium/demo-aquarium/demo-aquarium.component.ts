@@ -10,6 +10,7 @@ import { Level1Small } from '../fishgame/Level1Small';
 //import { PickGameService } from './pick-game.service';
 import { ActivatedRoute, Router } from '@angular/router';
 //import { PreLoad } from '../../../PreLoad';
+import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
 declare let Phaser: any;
 
@@ -28,15 +29,16 @@ export class DemoAquariumComponent implements OnInit {
 
   constructor(private router: Router, 
     //private pickGameService: PickGameService,
+    private ga: GoogleAnalytics,
     private route: ActivatedRoute) { 
     console.log("Constructor called");
     
-    this.route.queryParams.subscribe(params => {
+ /*    this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.totalPoints = this.router.getCurrentNavigation().extras.state.totalPoints;
         console.log("Pass totalPoints: "+this.totalPoints);
       }
-    });
+    }); */
   }
 
 
@@ -69,6 +71,10 @@ export class DemoAquariumComponent implements OnInit {
 
   ngOnInit() {
 
+    this.ga.trackView('Aquarium')
+    .then(() => {console.log("trackView at Aquarium!")})
+    .catch(e => console.log(e));
+    
     console.log(window.localStorage['TotalPoints']);
     //this.totalPoints = parseInt(window.localStorage['TotalPoints'] || "0");
      if(window.localStorage['TotalPoints'] == undefined)
@@ -126,6 +132,15 @@ export class DemoAquariumComponent implements OnInit {
  
   ionViewDidLeave(){
     this.game.destroy();
+  }
+
+  startSurvey(){
+    this.router.navigate(['survey/samplesurvey']);
+    this.ga.trackEvent('Start survey Button', 'Tapped Action', 'Loading survey', 0)
+    .then(() => {console.log("trackEvent for Start survey Button!")})
+    .catch(e => alert("trackEvent for Start survey Button=="+e));
+;
+  
   }
 
 }

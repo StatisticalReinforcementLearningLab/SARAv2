@@ -18,6 +18,7 @@ import { NotificationModule } from './notification/notification.module';
 //import { IncentiveModule } from './incentive/incentive.module';
 import { LifeInsightsModule } from './incentive/life-insights/life-insights.module';
 
+import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,6 +38,7 @@ import { LifeInsightsModule } from './incentive/life-insights/life-insights.modu
     SplashScreen,
     File,
     OneSignal,
+    GoogleAnalytics,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
