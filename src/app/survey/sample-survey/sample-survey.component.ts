@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 //import { PreLoad } from '../../PreLoad';
+import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
 @Component({
   selector: 'app-sample-survey',
@@ -10,8 +11,13 @@ import { Component, OnInit } from '@angular/core';
 //@PreLoad('life-insights')
 export class SampleSurveyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ga: GoogleAnalytics) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.ga.trackView('Survey')
+    .then(() => {console.log("trackView at Survey!")})
+    .catch(e => alert("Error trackView of Survey =="+e));
+
+  }
 
 }

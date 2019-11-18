@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 import * as AWS from 'aws-sdk';
 
@@ -11,9 +12,11 @@ export class AwsS3Service {
   constructor() { }
 
   upload(result){
-    var bucketName = 'sara-testv';
-    var bucketRegion = 'us-east-2';
-    var IdentityPoolId = 'us-east-2:c9617754-1d3e-4058-bfa4-d54230cb72cf';
+    var bucketName =  environment.awsConfig.bucketName;
+    var bucketRegion = environment.awsConfig.bucketRegion;
+    var IdentityPoolId = environment.awsConfig.IdentityPoolId;
+    var accessKeyId = environment.awsConfig.accessKeyId;
+    var secretAccessKey = environment.awsConfig.secretAccessKey;
     
     AWS.config.update({
       region: bucketRegion,
@@ -24,9 +27,11 @@ export class AwsS3Service {
     
     var s3 = new AWS.S3({
       apiVersion: '2006-03-01',
-      params: {Bucket: bucketName}
+      params: {Bucket: bucketName},
+      //accessKeyId: accessKeyId,
+      //secretAccessKey: secretAccessKey
     });  
-    
+
     this.currentFile = new File([JSON.stringify(result)], "result.json", {type: "text/plain"});
 
     s3.upload({
@@ -37,7 +42,7 @@ export class AwsS3Service {
     }, function(err, data) {
       if (err) {
         //return alert('There was an error uploading your photo: '+err.message);
-        console.log('There was an error uploading your photo: '+err.message);
+        console.log('There was an error uploading your file: '+err.message);
       }
       console.log('Successfully uploaded photo.');
     });  

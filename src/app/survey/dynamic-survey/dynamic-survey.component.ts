@@ -9,6 +9,7 @@ import * as moment from 'moment';
 //import { PreLoad } from '../../PreLoad';
 
 import * as lifeInsightProfile from "../../../assets/data/life_insight.json";
+import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
 @Component({
   selector: 'app-dynamic-survey',
@@ -71,6 +72,7 @@ export class DynamicSurveyComponent implements OnInit {
     private storeToFirebaseService: StoreToFirebaseService,
     private EncrDecr: EncrDecrService,
     private router: Router,
+    private ga: GoogleAnalytics,
     public plt: Platform) {
   }
 
@@ -126,6 +128,7 @@ export class DynamicSurveyComponent implements OnInit {
       survey2 = {};
       lifeInsightObj = {};
       storeToFirebaseService: StoreToFirebaseService;
+      ga: GoogleAnalytics;
       EncrDecr: EncrDecrService;
       awsS3Service: AwsS3Service;
       totalPoints = 0;
@@ -222,8 +225,11 @@ export class DynamicSurveyComponent implements OnInit {
       }
 
       storeData(){
-        console.log("Inside storeData");
+        //console.log("Inside storeData");
         console.log(JSON.stringify(this.survey2));
+        this.ga.trackEvent('Submit Button', 'Tapped Action', 'Submit the completed survey', 0);
+  
+
         //this.saveDataService.saveData("SurveyResult", this.question);
     
         //var jsonString = JSON.stringify(surveyResult);
@@ -326,7 +332,7 @@ export class DynamicSurveyComponent implements OnInit {
         console.log(this.survey2);
         
         //save to Amazon AWS S3
-        //this.awsS3Service.upload(this.survey2);
+        this.awsS3Service.upload(this.survey2);
         //console.log("End of storeData");
         
         if(Math.random() > 0.5 ){
@@ -354,6 +360,7 @@ export class DynamicSurveyComponent implements OnInit {
         cmpRef.instance.awsS3Service = this.awsS3Service;
         cmpRef.instance.storeToFirebaseService = this.storeToFirebaseService;
         cmpRef.instance.EncrDecr = this.EncrDecr;
+        cmpRef.instance.ga = this.ga;
         cmpRef.instance.plt = this.plt;
         cmpRef.instance.router = this.router;// Router,
         cmpRef.instance.name = 'dynamic';
