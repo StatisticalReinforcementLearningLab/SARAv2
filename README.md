@@ -3,14 +3,15 @@ Substance Abuse Research Assistant V2
 
 
 # Project Description
-SARA is a novel app to engage users with ongoing tracking using timely rewards thereby reinforcing users for data input. SARA is developed for adolescents and emerging adults at risk for substance abuse. The rewards in SARA are designed to be developmentally and culturally appropriate to the target demographic. For more details please check out the following paper or contact mrabbi@fas.harvard.edu
+SARA is a mobile health app to engage participants with ongoing self-reporting (e.g., completing a daily survey) using timely rewards thereby reinforcing participants for data input. "SARA version 1" was initially developed for adolescents and emerging adults at high-risk of substance abuse, and the reinforcement strategies are developmentally and culturally appropriate for target population. SARA version 2 is extending version 1 in a number of important ways: (i) it is focusing on self-report-engagement problems for health issues in general faced by youth (e.g., younger adults with cancer). (ii) it is creating a modularized and open-source version so that other research groups can to code easily and adapt the code for their own problem (iii) it is focusing on developing reinforcement algorithms to develiver the right reinforcement at the right time so that people stay engaged.  
+
+The current contributors of this project are Harvard University, University of Michigan, and Children Hospital of Philadelphia.
+
+For more details, please check out the paper linked below or contact mrabbi@fas.harvard.edu
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/StatisticalReinforcementLearningLab/sara/master/app_code/9850-169539-1-SP.png" width="650"/>
 </p>
-
-The code is divided into two folder. One folder contains the SARA mobile app code. The other folder contain the code to analyze the causal effect of the SARA app. If you want to cite our work then you can use the following two links:
-
 
 For the SARA app:
 
