@@ -64,6 +64,11 @@ SARA version 2 code is designed to be modular and extendible. The following diag
   <img src="https://raw.githubusercontent.com/StatisticalReinforcementLearningLab/SARAv2/master/modular_sara.png" width="650"/>
 </p>
 
+Direct links to readme files for each of the modules are below:
+- [Survey](https://github.com/StatisticalReinforcementLearningLab/SARAv2/tree/master/src/app/survey)
+- [Incentive](https://github.com/StatisticalReinforcementLearningLab/SARAv2/tree/master/src/app/incentive)
+- [Storage](https://github.com/StatisticalReinforcementLearningLab/SARAv2/tree/master/src/app/storage)
+
 Our code heavily uses modules, components and service architecture from Angular 2 or above. If you are new to this architecture, we found [this Udemy course](https://www.udemy.com/course/the-complete-angular-master-class/) to be very helpful.  
 
 
