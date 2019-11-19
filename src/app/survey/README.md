@@ -13,7 +13,6 @@ In SARA, self-reporting happens in the surveys. The content of the survey is dep
 ### Technical details
 As already mentioned, the surveys are defined using a JSON formatted file. The `./dynamic-survey/dynamic-survey.component.ts` file converts the JSON into visual form.
 
-You can see the links to the JSON file and `dynamic-survey.component.ts` below. 
 We also created a sample survey in the link `./sample-survey/sample-survey.component.ts` 
 and `./sample-survey/sample-survey.component.html`. The `sample-survey.component.html` shows 
 the 'one line code' that you can change to point to the survey you want to populate from `/assets/data/` directory.
