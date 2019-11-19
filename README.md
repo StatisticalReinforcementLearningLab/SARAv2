@@ -42,6 +42,9 @@ https://github.com/StatisticalReinforcementLearningLab/SARA-Version1/tree/master
 ```
 
 
+
+
+
 # How to run this code 
 We are using Angular 8 and ionic 4 for this project. Ionic is easy to setup. The ionic [starter project guideline](https://ionicframework.com/getting-started) is excellent and it is great point start.  
 
@@ -50,6 +53,8 @@ Once you get used the ionic starter project, you can clone our repo and all you 
 ```
 ionic serve
 ```
+
+
 
 
 
