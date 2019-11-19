@@ -1,10 +1,10 @@
 ## A brief intro to surveys in SARA
-In SARA, self-reporting happens in the surveys. The content of the survey is dependent on a researcher's scientific interests. The goal of SARA is to increase these surveys with incentives. 
+In SARA, self-reporting happens in the surveys. The content of the survey is dependent on a researcher's scientific interests. The goal of SARA is to increase these surveys with incentives. <br />
 
 
 ## Key features of the survey module
 - The survey module contains a survey generator which takes a JSON formatted questionaire and generates a survey. Typically, a domain scientist decides what questions they want to ask. 
-- It is easy to create your own survey as a component/form by only specifying a link to the JSON survey.  
+- It is easy to create your own survey as a component/form by only specifying a link to the JSON survey.  <br />
 
 
 
@@ -19,7 +19,7 @@ the 'one line code'
 <app-dynamic-survey fileLink="alex_survey"></app-dynamic-survey>
 ```
 
-that you can change to point to the survey you want to populate from `/assets/data/` directory.<br>
+that you can change to point to the survey you want to populate from `/assets/data/` directory.<br />
 
 
 
@@ -29,7 +29,7 @@ that you can change to point to the survey you want to populate from `/assets/da
 1. Survey questions are stored in `/assets/data/questions.json`
 2. `./dynamic-survey/dynamic-survey.component.ts` generates
 survey, uses services in storage module to encrpt data and upload to
-cloud.
+cloud.<br />
 
 
 
