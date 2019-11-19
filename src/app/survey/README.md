@@ -3,7 +3,7 @@ In SARA, self-reporting happens in the surveys. The content of the survey is dep
 
 
 ## Key features of the survey module
-- The survey module contains a survey generator which takes a JSON formatted questionaire and generate a survey. Typically, a domain scientist decides what questions they want to ask. 
+- The survey module contains a survey generator which takes a JSON formatted questionaire and generates a survey. Typically, a domain scientist decides what questions they want to ask. 
 - It is easy to create your own survey as a component/form by only specifying a link to the JSON survey.  
 
 
