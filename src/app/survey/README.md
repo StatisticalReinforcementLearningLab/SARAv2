@@ -26,3 +26,8 @@ Summary of important files in the survey module:
 2. `./dynamic-survey/dynamic-survey.component.ts` generates
 survey, uses services in storage module to encrpt data and upload to
 cloud.
+
+
+
+## In progress:
+Active tasks
