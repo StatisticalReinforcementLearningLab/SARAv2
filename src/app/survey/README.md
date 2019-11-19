@@ -15,7 +15,7 @@ As already mentioned, the surveys are defined using a JSON formatted file. The `
 
 We also created a sample survey in the link `./sample-survey/sample-survey.component.ts` 
 and `./sample-survey/sample-survey.component.html`. The `sample-survey.component.html` shows 
-the 'one line code' that you can change to point to the survey you want to populate from `/assets/data/` directory.
+the 'one line code' `<app-dynamic-survey fileLink="alex_survey"></app-dynamic-survey>` that you can change to point to the survey you want to populate from `/assets/data/` directory.
 
 Summary of important files in the survey module:
 1. Survey questions are stored in `/assets/data/questions.json`
