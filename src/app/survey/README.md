@@ -1,5 +1,5 @@
 ## A brief intro to surveys in SARA
-In SARA, self-reporting happens in the surveys. The content of the survey is dependent on a researcher's scientific interests. The goal of SARA is to increase adherence to these surveys with incentives. 
+In SARA, self-reporting happens in the surveys. The content of the survey is dependent on a researcher's scientific interests. The goal of SARA is to increase these surveys with incentives. 
 
 
 ## Key features of the survey module
