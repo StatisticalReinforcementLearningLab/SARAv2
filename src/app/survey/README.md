@@ -21,11 +21,16 @@ the 'one line code'
 
 that you can change to point to the survey you want to populate from `/assets/data/` directory.
 
+
+
+
+
 #### Summary of important files in the survey module:
 1. Survey questions are stored in `/assets/data/questions.json`
 2. `./dynamic-survey/dynamic-survey.component.ts` generates
 survey, uses services in storage module to encrpt data and upload to
 cloud.
+
 
 
 
