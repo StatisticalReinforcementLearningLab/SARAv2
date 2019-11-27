@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BlobService, UploadConfig, UploadParams } from 'angular-azure-blob-service'
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/enivornment';
 
 //angular-azure-blob-service
 const Config: UploadParams = {

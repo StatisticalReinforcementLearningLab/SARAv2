@@ -1,14 +1,25 @@
-
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Meme</ion-title>
+    </ion-toolbar>
+  </ion-header>
+   
 
 <ion-content>
-  
-  <div id="container">
-    <div class="ion-padding" id="link">
-      <a href="/incentive/aquarium/aquariumone">Aquarium</a> 
-    </div>
-    <img [src]="whichImage" *ngIf="whichImage" />
-  </div>
-  <!--
+  <br/>
+  <div style="font-size: 24px;line-height: 25px;padding-bottom:10px;text-align:center">Congratulations!!</div>
+  <div style="font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center">You unlocked a meme</div>
+  <br/>
+  <br/>
+  <img [src]="whichImage" *ngIf="whichImage" style="height: auto;width: 100%;padding-top:20px; border: 0px solid #fff;position: absolute;"/>
+
+
+
+
+<!--
   <ion-card> 
     <div class="quetiontextstyle">
         This is the question
@@ -35,6 +46,18 @@
       </ul>
     </div>
   </ion-card>
-  -->
+-->
 
 </ion-content>
+<ion-footer align="right" no-border>
+    <ion-toolbar style="background:#fff;border: 0px solid #fff;height:120px;">
+        <button style="height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:20px;font-size:24px;color:#fff;background:#D32F2F;" 
+        (click)="ratingChanged(0)">
+            <ion-icon name="ios-thumbs-down" style="height: 50px;width: 50px;"></ion-icon>
+        </button>
+        <button style="height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:10px;font-size:24px;color:#fff;background:#33691E;" 
+        (click)="ratingChanged(1)">
+            <ion-icon name="ios-thumbs-up" style="height: 50px;width: 50px;"></ion-icon>
+        </button>
+    </ion-toolbar>
+</ion-footer>

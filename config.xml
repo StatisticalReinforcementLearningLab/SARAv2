@@ -24,6 +24,7 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="AndroidExtraFilesystems" value="files,cache, sdcard, cache-external, files-external" />
     <platform name="android">
         <allow-intent href="market:*" />

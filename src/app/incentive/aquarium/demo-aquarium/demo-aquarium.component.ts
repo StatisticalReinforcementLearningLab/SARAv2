@@ -24,7 +24,7 @@ declare let Phaser: any;
 export class DemoAquariumComponent implements OnInit {
 
   game;
-  pickedGame ;
+  pickedGame;
   totalPoints = 0;
 
   constructor(private router: Router, 
@@ -33,7 +33,8 @@ export class DemoAquariumComponent implements OnInit {
     private route: ActivatedRoute) { 
     console.log("Constructor called");
     
- /*    this.route.queryParams.subscribe(params => {
+    /*    
+      this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.totalPoints = this.router.getCurrentNavigation().extras.state.totalPoints;
         console.log("Pass totalPoints: "+this.totalPoints);
@@ -136,10 +137,9 @@ export class DemoAquariumComponent implements OnInit {
 
   startSurvey(){
     this.router.navigate(['survey/samplesurvey']);
-    this.ga.trackEvent('Start survey Button', 'Tapped Action', 'Loading survey', 0)
-    .then(() => {console.log("trackEvent for Start survey Button!")})
-    .catch(e => alert("trackEvent for Start survey Button=="+e));
-;
+    //this.ga.trackEvent('Start survey Button', 'Tapped Action', 'Loading survey', 0)
+    //.then(() => {console.log("trackEvent for Start survey Button!")})
+    //.catch(e => alert("trackEvent for Start survey Button=="+e));
   
   }
 
