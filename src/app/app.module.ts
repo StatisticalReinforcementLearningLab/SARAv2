@@ -13,12 +13,12 @@ import { Injector } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-//import { SurveyModule } from './survey/survey.module';
 import { NotificationModule } from './notification/notification.module';
-//import { IncentiveModule } from './incentive/incentive.module';
+import { IncentiveModule } from './incentive/incentive.module';
 import { LifeInsightsModule } from './incentive/life-insights/life-insights.module';
 
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
+import { SurveyModule } from './survey/survey.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +27,8 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
-    //IncentiveModule,
+    SurveyModule,
+    IncentiveModule,
     LifeInsightsModule,
     NotificationModule,
     HttpClientModule,

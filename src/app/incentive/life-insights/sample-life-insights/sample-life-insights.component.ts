@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Chart } from 'chart.js';
 import * as moment from 'moment';
 
-import * as lifeInsightProfile from "../../../../assets/data/life_insight.json";
+//import * as lifeInsightProfile from "../../../../assets/data/lifeInsight.json";
 //import { PreLoad } from '../../../PreLoad';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
@@ -70,6 +70,31 @@ export class SampleLifeInsightsComponent implements OnInit {
   init(index: number){
     //console.log(this.inputStr);
     //this.jsonObj = JSON.parse(this.inputStr);
+
+      var lifeInsightProfile = {
+        "questions":["Q3d","Q4d","Q5d","Q8d"],
+        "qimgs": ["assets/img/stress.png","assets/img/freetime.png","assets/img/dance2.png","assets/img/social.png"],
+        "lifeInsightsTitle": ["How much <b>pain</b> are you currently experiencing?", 
+            "How much <b>fatigue</b> are you currently experiencing?", 
+            "How much <b>nausea</b> are you currently experiencing?", 
+            "How <b>motivated</b> are you to take 6MP today?"],
+        "qYaxis": ["Pain level","Fatigue level","Nausea level","Degree of motivation"],
+        "qSubText": ["0 = low pain, 4 = severe pain", 
+                "0 = low fatigue, 4 = severe fatigue",
+                "0 = low nausea, 4 = severe nausea",
+                "0 = less motivated, 4 = highly motivated"],
+        "lifeInsightsHighStress": [
+            "Stressed <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>", 
+            "Fatigued <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>", 
+            "Nausea <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>",
+            "Motivated <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>"],
+        "lifeInsightsLowStress": [
+            "Relaxed <i class='em em-sunglasses'></i><i class='em em-boat'></i>",  
+            "Fatigued <i class='em em-sunglasses'></i><i class='em em-boat'></i>", 
+            "Nausea <i class='em em-sunglasses'></i><i class='em em-boat'></i>", 
+            "Motivated <i class='em em-sunglasses'></i><i class='em em-boat'></i>"]          
+    
+    };
     this.question = lifeInsightProfile.questions[this.index]; 
     this.imgloc = lifeInsightProfile.qimgs[this.index];
     this.title = lifeInsightProfile.lifeInsightsTitle[this.index];

@@ -1,8 +1,14 @@
+<div *ngIf="isLoading">
+    <p>Loading survey...</p>
+</div>
+<div *ngIf="loadingComplete">
+    <ng-container #vc></ng-container>
+</div>
 
-  <div #vc></div>
-  
-  
+
+
   <!--
+  <p>Holla</p>
 
   <ion-header>
   <ion-toolbar>

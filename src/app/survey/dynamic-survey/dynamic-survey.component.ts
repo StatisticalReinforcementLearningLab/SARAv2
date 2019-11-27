@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild, ViewContainerRef, NgModule, Compiler, Injector, NgModuleRef, ElementRef, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, NgModule, Compiler, Injector, NgModuleRef, ElementRef, Input, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { StoreToFirebaseService } from '../../storage/store-to-firebase.service';
+//import { StoreToFirebaseService } from '../../storage/store-to-firebase.service';
 import { AwsS3Service } from '../../storage/aws-s3.service';
 import { EncrDecrService } from '../../storage/encrdecrservice.service';
 import { Platform } from '@ionic/angular';
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import * as moment from 'moment';
 //import { PreLoad } from '../../PreLoad';
 
-import * as lifeInsightProfile from "../../../assets/data/life_insight.json";
+//import * as lifeInsightProfile from "../../../assets/data/life_insight.json";
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
 @Component({
@@ -23,6 +23,9 @@ export class DynamicSurveyComponent implements OnInit {
   @Input() fileLink: string;
 
   title = "mash is here";
+  private isLoading = true;
+  private loadingComplete = false;
+  
   /*
   survey_data = [
     {
@@ -65,14 +68,17 @@ export class DynamicSurveyComponent implements OnInit {
 
   @ViewChild('vc', { read: ViewContainerRef }) vc: ViewContainerRef;
 
+  //private vc: ViewContainerRef;
+
   constructor(private _compiler: Compiler,
     private _injector: Injector,
     private _m: NgModuleRef<any>, 
     private awsS3Service: AwsS3Service,
-    private storeToFirebaseService: StoreToFirebaseService,
+    //private storeToFirebaseService: StoreToFirebaseService,
     private EncrDecr: EncrDecrService,
     private router: Router,
     private ga: GoogleAnalytics,
+    private changeDetector : ChangeDetectorRef,
     public plt: Platform) {
   }
 
@@ -127,7 +133,7 @@ export class DynamicSurveyComponent implements OnInit {
       
       survey2 = {};
       lifeInsightObj = {};
-      storeToFirebaseService: StoreToFirebaseService;
+      //storeToFirebaseService: StoreToFirebaseService;
       ga: GoogleAnalytics;
       EncrDecr: EncrDecrService;
       awsS3Service: AwsS3Service;
@@ -278,6 +284,30 @@ export class DynamicSurveyComponent implements OnInit {
         this.totalPoints = this.totalPoints + 100;
         window.localStorage.setItem("TotalPoints", ""+this.totalPoints);
 
+        var lifeInsightProfile = {
+            "questions":["Q3d","Q4d","Q5d","Q8d"],
+            "qimgs": ["assets/img/stress.png","assets/img/freetime.png","assets/img/dance2.png","assets/img/social.png"],
+            "lifeInsightsTitle": ["How much <b>pain</b> are you currently experiencing?", 
+                "How much <b>fatigue</b> are you currently experiencing?", 
+                "How much <b>nausea</b> are you currently experiencing?", 
+                "How <b>motivated</b> are you to take 6MP today?"],
+            "qYaxis": ["Pain level","Fatigue level","Nausea level","Degree of motivation"],
+            "qSubText": ["0 = low pain, 4 = severe pain", 
+                    "0 = low fatigue, 4 = severe fatigue",
+                    "0 = low nausea, 4 = severe nausea",
+                    "0 = less motivated, 4 = highly motivated"],
+            "lifeInsightsHighStress": [
+                "Stressed <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>", 
+                "Fatigued <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>", 
+                "Nausea <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>",
+                "Motivated <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>"],
+            "lifeInsightsLowStress": [
+                "Relaxed <i class='em em-sunglasses'></i><i class='em em-boat'></i>",  
+                "Fatigued <i class='em em-sunglasses'></i><i class='em em-boat'></i>", 
+                "Nausea <i class='em em-sunglasses'></i><i class='em em-boat'></i>", 
+                "Motivated <i class='em em-sunglasses'></i><i class='em em-boat'></i>"]          
+        
+        };
         var questionsArray = lifeInsightProfile.questions;  //["Q3d","Q4d","Q5d","Q8d"]
         if(window.localStorage['lifeInsight'] == undefined) {
 
@@ -313,7 +343,7 @@ export class DynamicSurveyComponent implements OnInit {
                 else {
                   this.lifeInsightObj[question]['data'].push(null);
                 }
-            }
+           }
 
             // this.lifeInsightObj['Q4d']['dates'].push(moment().format("DD-MM-YYYY"));
             // if(this.survey2.hasOwnProperty('Q4d')) {
@@ -327,9 +357,9 @@ export class DynamicSurveyComponent implements OnInit {
         console.log("lifeInsightObj: "+JSON.stringify(this.lifeInsightObj));
         window.localStorage.setItem("lifeInsight", JSON.stringify(this.lifeInsightObj));
 
-        this.storeToFirebaseService.addSurvey('/results',this.survey2);
-        console.log("End of storeData");
-        console.log(this.survey2);
+        //this.storeToFirebaseService.addSurvey('/results',this.survey2);
+        //console.log("End of storeData");
+        //console.log(this.survey2);
         
         //save to Amazon AWS S3
         this.awsS3Service.upload(this.survey2);
@@ -339,7 +369,7 @@ export class DynamicSurveyComponent implements OnInit {
           this.router.navigate(['incentive/award-memes']);
        } else {
          this.router.navigate(['incentive/aquarium/aquariumone']);
-       }    
+       }
            
         //save to azure 
         //this.azureService.upload(this.question.getData());
@@ -350,22 +380,26 @@ export class DynamicSurveyComponent implements OnInit {
 
     });
 
-    const tmpModule = NgModule({ declarations: [tmpCmp], imports: [FormsModule], providers: [StoreToFirebaseService] })(class {
+    const tmpModule = NgModule({ declarations: [tmpCmp], imports: [FormsModule]})(class {
     });
 
     this._compiler.compileModuleAndAllComponentsAsync(tmpModule)
       .then((factories) => {
+        this.isLoading = false;
+        this.loadingComplete = true;
+        //setTimeout(function(){ console.log("holla") }, 3000);
+        this.changeDetector.detectChanges();
         const f = factories.componentFactories[0];
         const cmpRef = this.vc.createComponent(f);
         cmpRef.instance.awsS3Service = this.awsS3Service;
-        cmpRef.instance.storeToFirebaseService = this.storeToFirebaseService;
+        //cmpRef.instance.storeToFirebaseService = this.storeToFirebaseService;
         cmpRef.instance.EncrDecr = this.EncrDecr;
         cmpRef.instance.ga = this.ga;
         cmpRef.instance.plt = this.plt;
         cmpRef.instance.router = this.router;// Router,
         cmpRef.instance.name = 'dynamic';
         //console.log('called');
-    })
+    });
   }
 
   getTitle() {

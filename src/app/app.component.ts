@@ -7,7 +7,9 @@ import { HttpClient } from '@angular/common/http';
 import { OneSignalService } from './notification/one-signal.service';
 
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
-import { environment } from '../environments/environment';
+import { environment } from '../environments/enivornment';
+
+
 
 @Component({
   selector: 'app-root',
@@ -28,7 +30,18 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+      //this.statusBar.styleDefault();
+
+      // let status bar overlay webview
+      //this.statusBar.overlaysWebView(true);
+      // set status bar to white
+      //this.statusBar.backgroundColorByHexString('#ffffff');
+
+      if(this.platform.is('android')) {
+        this.statusBar.styleLightContent();
+        this.statusBar.backgroundColorByHexString("#C0C0C0");
+      }
+
       this.splashScreen.hide();
       this.oneSignalService.initOneSignal();
 
@@ -37,10 +50,17 @@ export class AppComponent {
         console.log('Google analytics is ready now');
         this.ga.setUserId("Liying");
         //this.ga.debugMode();
-      }).catch(e => alert('Error starting GoogleAnalytics == '+ e));
+      }).catch(e => console.log('Error starting GoogleAnalytics == '+ e));
 
     });
     //window.localStorage.setItem("TotalPoints", "0");
+
+    // let status bar overlay webview
+    //this.statusBar.overlaysWebView(true);
+
+    // set status bar to white
+    //this.statusBar.backgroundColorByHexString('#ffffff');
+
 
   }
 
