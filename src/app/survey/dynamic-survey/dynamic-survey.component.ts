@@ -368,7 +368,9 @@ export class DynamicSurveyComponent implements OnInit {
         if(Math.random() > 0.5 ){
           this.router.navigate(['incentive/award-memes']);
        } else {
-         this.router.navigate(['incentive/aquarium/aquariumone']);
+          this.router.navigate(['incentive/award-memes']);
+         //this.router.navigate(['incentive/aquarium/aquariumone']);
+         //this.router.navigate(['/home']);
        }
            
         //save to azure 

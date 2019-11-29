@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/enivornment';
+import { environment } from '../../environments/environment';
 
 import * as AWS from 'aws-sdk';
 

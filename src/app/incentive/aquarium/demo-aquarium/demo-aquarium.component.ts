@@ -14,6 +14,7 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
 declare let Phaser: any;
 
+
 @Component({
   selector: 'app-demo-aquarium',
   templateUrl: './demo-aquarium.component.html',
@@ -26,6 +27,7 @@ export class DemoAquariumComponent implements OnInit {
   game;
   pickedGame;
   totalPoints = 0;
+  isLoaded = false;
 
   constructor(private router: Router, 
     //private pickGameService: PickGameService,
@@ -71,11 +73,20 @@ export class DemoAquariumComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.ga.trackView('Aquarium')
     .then(() => {console.log("trackView at Aquarium!")})
     .catch(e => console.log(e));
+    this.loadFunction();
     
+  }
+
+  ionViewDidEnter(){
+    //if(this.isLoaded == true)
+    //    this.loadFunction();
+  }
+
+  loadFunction(){
+
     console.log(window.localStorage['TotalPoints']);
     //this.totalPoints = parseInt(window.localStorage['TotalPoints'] || "0");
      if(window.localStorage['TotalPoints'] == undefined)
@@ -132,7 +143,7 @@ export class DemoAquariumComponent implements OnInit {
   }
  
   ionViewDidLeave(){
-    this.game.destroy();
+    //this.game.destroy();
   }
 
   startSurvey(){
