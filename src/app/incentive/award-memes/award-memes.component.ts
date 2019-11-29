@@ -31,7 +31,9 @@ export class AwardMemesComponent implements OnInit {
     else
       console.log("thumbs up");
     
-    this.router.navigate(['incentive/aquarium/aquariumone']);
+    //this.router.navigate(['incentive/aquarium/aquariumone']);
+    //this.router.navigate(['/home']);
+    window.location.href = '/home';
   }
 
 }

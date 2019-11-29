@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { OneSignalService } from './notification/one-signal.service';
 
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
-import { environment } from '../environments/enivornment';
+import { environment } from '../environments/environment';
 
 
 
