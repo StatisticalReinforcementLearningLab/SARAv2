@@ -17,7 +17,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AwardComponent, AwardMemesComponent, DemoAquariumComponent],
+  declarations: [AwardComponent, AwardMemesComponent],
   imports: [
     CommonModule,
     IonicModule.forRoot(),

@@ -11,7 +11,7 @@ import { AwardMemesComponent } from './incentive/award-memes/award-memes.compone
 //import { DynamicSurveyComponent } from './survey/dynamic-survey/dynamic-survey.component';
 import { DemoAquariumComponent } from './incentive/aquarium/demo-aquarium/demo-aquarium.component';
 //import { Q1MotivatedComponent } from './incentive/life-insights/q1-motivated/q1-motivated.component';
-import { SampleSurveyComponent } from './survey/sample-survey/sample-survey.component';
+//import { SampleSurveyComponent } from './survey/sample-survey/sample-survey.component';
 import { SampleLifeInsightsComponent } from './incentive/life-insights/sample-life-insights/sample-life-insights.component';
 
 const routes: Routes = [
@@ -31,41 +31,32 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'incentive/sample-life-insight', component: SampleLifeInsightsComponent },
-  { path: 'survey/samplesurvey', component: SampleSurveyComponent }, 
-  { path: 'incentive/aquariumone', component: DemoAquariumComponent },
   //{ path: 'incentive/award-memes', component: AwardMemesComponent },
   //{ path: 'incentive/aquariumone', component: DemoAquariumComponent },  
 
-  /*
-  { 
-    path: 'survey', 
+  { path: 'survey', 
     //loadChildren: () => import('./survey/survey.module').then(mod => mod.SurveyModule)
     loadChildren: './survey/survey.module#SurveyModule',
     data: {
       //name: 'survey'
       preload: true
     }
-  },
-  */ 
-  
-  /*
-  { 
-    path: 'incentive/aquarium', 
-    loadChildren: './incentive/aquarium/aquarium.module#AquariumModule',
-    data: {
+  }, 
+
+  { path: 'incentive/aquarium', 
+       loadChildren: './incentive/aquarium/aquarium.module#AquariumModule',
+       data: {
         //name: 'survey'
         preload: true
-    }    
+      }    
   }, 
-  */
 
-  { 
-    path: 'incentive', 
-    loadChildren: './incentive/incentive.module#IncentiveModule',
-    data: {
+  { path: 'incentive', 
+      loadChildren: './incentive/incentive.module#IncentiveModule',
+     data: {
        //name: 'survey'
        preload: true
-    }    
+     }    
   }
       
   // { path: 'incentive/life-insights', 
@@ -85,7 +76,7 @@ const routes: Routes = [
   ],
   imports: [
     //RouterModule.forRoot(routes)
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: SimpleLoadingStrategy })
   ],
   exports: [RouterModule]
 })
