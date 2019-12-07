@@ -8,9 +8,10 @@ import { Level1 } from '../fishgame/Level1';
 import { Level1Small } from '../fishgame/Level1Small';
 //import { FormsModule } from '@angular/forms';
 //import { PickGameService } from './pick-game.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterEvent, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
 //import { PreLoad } from '../../../PreLoad';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
+import { Platform } from '@ionic/angular';
 
 declare let Phaser: any;
 
@@ -18,7 +19,7 @@ declare let Phaser: any;
 @Component({
   selector: 'app-demo-aquarium',
   templateUrl: './demo-aquarium.component.html',
-  styleUrls: ['./demo-aquarium.component.scss'],
+  styleUrls: ['./demo-aquarium.component.less'],
 })
 
 //@PreLoad('survey')
@@ -28,10 +29,13 @@ export class DemoAquariumComponent implements OnInit {
   pickedGame;
   totalPoints = 0;
   isLoaded = false;
+  public isShowingRouteLoadIndicator: boolean;
+  survey_text; 
 
   constructor(private router: Router, 
     //private pickGameService: PickGameService,
     private ga: GoogleAnalytics,
+    private platform: Platform,
     private route: ActivatedRoute) { 
     console.log("Constructor called");
     
@@ -42,12 +46,21 @@ export class DemoAquariumComponent implements OnInit {
         console.log("Pass totalPoints: "+this.totalPoints);
       }
     }); */
+
+    this.survey_text = "Start Survey";
   }
 
 
   goToRewardsPage(){
     console.log("rewards page");
-    this.router.navigate(['/home']);
+    //this.router.navigate(['/home']);
+    this.router.navigate(['incentive/treasurechest']);
+  }
+
+  goToSurveyPage(){
+    console.log("survey page");
+    //this.router.navigate(['/home']);
+    this.router.navigate(['survey/samplesurvey']);
   }
   
 
@@ -72,6 +85,8 @@ export class DemoAquariumComponent implements OnInit {
     s.rotation = 0.14;
   }
 
+  
+
   ngOnInit() {
     this.ga.trackView('Aquarium')
     .then(() => {console.log("trackView at Aquarium!")})
@@ -83,6 +98,7 @@ export class DemoAquariumComponent implements OnInit {
   ionViewDidEnter(){
     //if(this.isLoaded == true)
     //    this.loadFunction();
+    this.survey_text = "Start survey";
   }
 
   loadFunction(){
@@ -95,15 +111,38 @@ export class DemoAquariumComponent implements OnInit {
         this.totalPoints = parseInt(window.localStorage['TotalPoints']);
     console.log("Inside Aquarium totalPoints: "+this.totalPoints);
  
+
+    //height adjustment for different phone types
+    var GameApp = GameApp || {};
+    GameApp.CANVAS_WIDTH = 382.0;
+    console.log("w: " + window.innerWidth + ", h: " + window.innerHeight + ", dp: " + window.devicePixelRatio);
+    if(window.innerWidth > GameApp.CANVAS_WIDTH)
+        GameApp.CANVAS_WIDTH = window.innerWidth;
+    GameApp.CANVAS_HEIGHT = window.innerHeight;
+
+    //var game;
+    if(this.platform.is('ios')){
+        if(GameApp.CANVAS_HEIGHT < 642.0)//iphone SE fix.
+            GameApp.CANVAS_HEIGHT += 60;
+        this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 21*window.devicePixelRatio, Phaser.AUTO, 'gameDiv');
+    }else if(this.platform.is('android'))
+        this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 74, Phaser.AUTO, 'gameDiv');    
+    else
+        this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 100, Phaser.AUTO, 'gameDiv');
+
+    /*
     this.game =  new Phaser.Game(
       window.innerWidth, 700,
       Phaser.AUTO,
       'gameDiv'
     );
+    */
 
     this.game.state.add('Boot', Boot);
     var preLoader = new Preloader();
 
+
+    //this.totalPoints = 1070;
     if(this.totalPoints <770 && this.totalPoints >= 0){
       preLoader.setGameName(this.pickedGame = "GameSmall");
       this.game.state.add('Preloader', preLoader);
@@ -128,8 +167,7 @@ export class DemoAquariumComponent implements OnInit {
       var level1 = new Level1();
       level1.setTotalPoints(this.totalPoints);
       this.game.state.add('Level1', level1);
-    }
-    else {
+    } else {
       preLoader.setGameName(this.pickedGame = "GameOver");
       this.game.state.add('Preloader', preLoader);
     }
@@ -143,15 +181,24 @@ export class DemoAquariumComponent implements OnInit {
   }
  
   ionViewDidLeave(){
-    //this.game.destroy();
+    this.survey_text = "Start survey";
+    this.game.destroy();
   }
 
   startSurvey(){
-    this.router.navigate(['survey/samplesurvey']);
+    console.log('start survey');
+    this.survey_text = "loading survey";
+    this.openSurvey();
+
+    
     //this.ga.trackEvent('Start survey Button', 'Tapped Action', 'Loading survey', 0)
     //.then(() => {console.log("trackEvent for Start survey Button!")})
     //.catch(e => alert("trackEvent for Start survey Button=="+e));
   
+  }
+
+  async openSurvey(){
+    this.router.navigate(['survey/samplesurvey']);
   }
 
 }
