@@ -318,12 +318,17 @@ export class Game extends Phaser.State {
         this.active_task_connected.visible = state;
     }
 
+    assignscope(componentObject){
+        this.componentObject = componentObject;
+    }
 
     logdata() {
         //this.totalClicks = this.totalClicks + 1;
         //this.countdown.setText('Fishes Fed: ' + this.totalClicks);
-        this.ionic_scope.$emit('survey:logdata', this.ionic_scope);
+        //this.ionic_scope.$emit('survey:logdata', this.ionic_scope);
         //console.log("Came here");
+        console.log('show surveys');
+        this.componentObject.goToSurveyPage();
     }
 
 
@@ -331,6 +336,11 @@ export class Game extends Phaser.State {
         //this.totalClicks = this.totalClicks + 1;
         //this.countdown.setText('Fishes Fed: ' + this.totalClicks);
         //this.ionic_scope.$emit('survey:logdata');
+
+        console.log('treasure box clicked');
+        this.componentObject.goToRewardsPage();
+
+        /*
         console.log("Came here treasure");
         this.ionic_scope.$emit('show:red',this.ionic_scope);
 
@@ -350,6 +360,7 @@ export class Game extends Phaser.State {
             cache = null; 
 
         //this.ionic_scope.reoutetored(this.ionic_scope);
+        */
 
     }
 

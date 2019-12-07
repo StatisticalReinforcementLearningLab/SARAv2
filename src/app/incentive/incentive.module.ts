@@ -9,6 +9,7 @@ import { AwardMemesComponent } from './award-memes/award-memes.component';
 import { Routes, RouterModule } from '@angular/router';
 import { DemoAquariumComponent } from './aquarium/demo-aquarium/demo-aquarium.component';
 import { AwardComponent } from './award/award.component';
+import { TreasurechestComponent } from './treasurechest/treasurechest.component';
 
 const routes: Routes = [
 //  { path: 'award', component: AwardComponent },
@@ -17,7 +18,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AwardComponent, AwardMemesComponent],
+  declarations: [AwardComponent, AwardMemesComponent, TreasurechestComponent],
   imports: [
     CommonModule,
     IonicModule.forRoot(),

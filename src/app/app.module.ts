@@ -19,9 +19,10 @@ import { LifeInsightsModule } from './incentive/life-insights/life-insights.modu
 
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { SurveyModule } from './survey/survey.module';
+import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,LoadingSpinnerComponent,],
   entryComponents: [],
   imports: [
     BrowserModule, 

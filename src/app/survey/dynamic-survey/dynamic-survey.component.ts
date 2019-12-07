@@ -306,8 +306,8 @@ export class DynamicSurveyComponent implements OnInit {
                 "Fatigued <i class='em em-sunglasses'></i><i class='em em-boat'></i>", 
                 "Nausea <i class='em em-sunglasses'></i><i class='em em-boat'></i>", 
                 "Motivated <i class='em em-sunglasses'></i><i class='em em-boat'></i>"]          
-        
         };
+        
         var questionsArray = lifeInsightProfile.questions;  //["Q3d","Q4d","Q5d","Q8d"]
         if(window.localStorage['lifeInsight'] == undefined) {
 

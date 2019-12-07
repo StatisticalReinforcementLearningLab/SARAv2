@@ -256,8 +256,9 @@ export class Level1Small extends Phaser.State {
     logdata() {
         //this.totalClicks = this.totalClicks + 1;
         //this.countdown.setText('Fishes Fed: ' + this.totalClicks);
-        this.ionic_scope.$emit('survey:logdata', this.ionic_scope);
+        //this.ionic_scope.$emit('survey:logdata', this.ionic_scope);
         //console.log("Came here");
+        this.componentObject.goToSurveyPage();
     }
 
     earlyaquarium() {
@@ -809,32 +810,9 @@ export class Level1Small extends Phaser.State {
    
     }
 
-    showunlockables() {
-        //this.totalClicks = this.totalClicks + 1;
-        //this.countdown.setText('Fishes Fed: ' + this.totalClicks);
-        //this.ionic_scope.$emit('survey:logdata');
-        console.log("Came here treasure");
-        //this.game.destroy();
-        this.ionic_scope.$emit('show:red',this.ionic_scope);
-
-        /*
-        var cache = [];
-            JSON.stringify(this.ionic_scope, function(key, value) {
-                if (typeof value === 'object' && value !== null) {
-                    if (cache.indexOf(value) !== -1) {
-                        // Circular reference found, discard key
-                        return;
-                    }
-                    // Store value in our collection
-                    cache.push(value);
-                }
-                return value;
-            });
-            console.log(cache);
-            cache = null; 
-        */
-        //this.ionic_scope.reoutetored(this.ionic_scope);
-
+    showunlockables(){
+        console.log('treasure box clicked');
+        this.componentObject.goToRewardsPage();
     }
 
     gobothways(b){
@@ -958,5 +936,9 @@ export class Level1Small extends Phaser.State {
 
     setTotalPoints(totalPoints){
 		this.totalPoints = totalPoints;
-	}
+    }
+    
+    assignscope(componentObject){
+        this.componentObject = componentObject;
+    }
 }
