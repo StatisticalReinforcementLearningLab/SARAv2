@@ -469,6 +469,7 @@ export class GameSmall extends Phaser.State {
         //this.ionic_scope.$emit('survey:logdata', this.ionic_scope);
         //console.log("Came here");
         console.log('show surveys');
+        this.componentObject.goToSurveyPage();
     }
 
     update(){

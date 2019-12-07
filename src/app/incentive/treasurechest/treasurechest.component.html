@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Treasure chest</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+    <div>
+      <p style="margin-bottom:6px;">You have so far earned</p>
+      <p style="font-size:34px;">{{amount_earned}}</p>
+    </div>
+
+    <div style="clear: both;vertical-align: bottom;padding-top:30px;">
+      <p>Treasures earned for completing surveys</p>
+
+      <img *ngFor="let pearls of pearlsAndGems;" src={{pearls.img}} [style.width.px]="pearls.width" style="margin:5px;">
+    </div>
+
+    <div style="clear: both;vertical-align: bottom;padding-top:40px;">
+        <p style="padding-bottom:-40px;">Fishes for the aquarium</p>
+        <p style="font-size: 12px;line-height: 15px;padding-bottom:10px;color:#666666;">Double click in a unlocked fish to show its trivia</p>
+        
+        <img *ngFor="let x of pointsdata;" src={{x.img}} style="width:auto;height:75px;margin:5px;max-width:200px">
+        <!--
+        <img *ngFor="let x in pointsdata;" src={{x.img}} style="width:auto;height:75px;margin:5px;max-width:200px">
+        -->
+        
+    </div>  
+
+</ion-content>
+
+

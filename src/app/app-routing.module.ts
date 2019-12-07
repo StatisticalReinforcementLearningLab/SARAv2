@@ -13,6 +13,8 @@ import { DemoAquariumComponent } from './incentive/aquarium/demo-aquarium/demo-a
 //import { Q1MotivatedComponent } from './incentive/life-insights/q1-motivated/q1-motivated.component';
 //import { SampleSurveyComponent } from './survey/sample-survey/sample-survey.component';
 import { SampleLifeInsightsComponent } from './incentive/life-insights/sample-life-insights/sample-life-insights.component';
+import { TreasurechestComponent } from './incentive/treasurechest/treasurechest.component';
+
 
 const routes: Routes = [
 /*   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -31,15 +33,17 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'incentive/sample-life-insight', component: SampleLifeInsightsComponent },
+  { path: 'incentive/treasurechest', component: TreasurechestComponent },
   //{ path: 'incentive/award-memes', component: AwardMemesComponent },
   //{ path: 'incentive/aquariumone', component: DemoAquariumComponent },  
 
-  { path: 'survey', 
+  { 
+    path: 'survey', 
     //loadChildren: () => import('./survey/survey.module').then(mod => mod.SurveyModule)
     loadChildren: './survey/survey.module#SurveyModule',
     data: {
       //name: 'survey'
-      preload: true
+      preload: false
     }
   }, 
 

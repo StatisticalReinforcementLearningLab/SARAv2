@@ -16,7 +16,7 @@ export class SampleSurveyComponent implements OnInit {
   ngOnInit() {
     this.ga.trackView('Survey')
     .then(() => {console.log("trackView at Survey!")})
-    .catch(e => alert("Error trackView of Survey =="+e));
+    .catch(e => console.log('Error starting GoogleAnalytics == '+ e));
 
   }
 
