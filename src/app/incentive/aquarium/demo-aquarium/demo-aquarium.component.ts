@@ -187,7 +187,7 @@ export class DemoAquariumComponent implements OnInit {
 
   startSurvey(){
     console.log('start survey');
-    this.survey_text = "loading survey";
+    //this.survey_text = "loading survey";
     this.openSurvey();
 
     
