@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Chart } from 'chart.js';
 import * as moment from 'moment';
 
-//import * as lifeInsightProfile from "../../../../assets/data/lifeInsight.json";
+//import * as lifeInsightProfile from "../../../../assets/data/life_insight.json";
 //import { PreLoad } from '../../../PreLoad';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
@@ -93,8 +93,9 @@ export class SampleLifeInsightsComponent implements OnInit {
             "Fatigued <i class='em em-sunglasses'></i><i class='em em-boat'></i>", 
             "Nausea <i class='em em-sunglasses'></i><i class='em em-boat'></i>", 
             "Motivated <i class='em em-sunglasses'></i><i class='em em-boat'></i>"]          
-    
     };
+
+    this.index = Math.floor(Math.random() * lifeInsightProfile.questions.length);    
     this.question = lifeInsightProfile.questions[this.index]; 
     this.imgloc = lifeInsightProfile.qimgs[this.index];
     this.title = lifeInsightProfile.lifeInsightsTitle[this.index];
@@ -108,12 +109,13 @@ export class SampleLifeInsightsComponent implements OnInit {
 
     //read data from localStorage 
     if(window.localStorage.getItem("lifeInsight") == undefined) {
-      console.log("Undefined!");
+       console.log("Undefined!");
        this.data = [0, 1, 3, 4, null, 3, 1];
       //this.inputString = JSON.stringify(this.inputJson);
      }
     else {
       var lifeInsightObj= JSON.parse(window.localStorage.getItem("lifeInsight"));
+      console.log(JSON.stringify(lifeInsightObj));
       this.data = [];
       this.labels = [];
       for(var i = 6; i>= 0; i--){
@@ -126,7 +128,7 @@ export class SampleLifeInsightsComponent implements OnInit {
           }
           //console.log("Local Storage save: "+question+" "+JSON.stringify(lifeInsightObj[question]));
           var dates = lifeInsightObj[this.question]["dates"];
-          var dateIndex = dates.indexOf(currentdate);
+          var dateIndex = dates.lastIndexOf(currentdate);
           if( dateIndex > -1) {
             this.data.push(lifeInsightObj[this.question]['data'][dateIndex]);
           }
@@ -134,6 +136,8 @@ export class SampleLifeInsightsComponent implements OnInit {
             this.data.push(null);
           }
       }
+      //this.data = [null, null, null, null, null, null, 1];
+      console.log("Data, " + this.data);
       
     }
 
@@ -208,13 +212,24 @@ export class SampleLifeInsightsComponent implements OnInit {
     });
   }
 
-  onChangeCategorySelect(){
+  ratingChanged(rating){
+    if(rating==0)
+      console.log("thumbs down");
+    else
+      console.log("thumbs up");
+    
+    //this.router.navigate(['incentive/aquarium/aquariumone']);
+    //this.router.navigate(['/home']);
+    window.location.href = '/home';
+  }
+
+  /*onChangeCategorySelect(){
     console.log("onChangeCategorySelect: "+this.selectedValue);
     this.index =  this.qYaxisArray.indexOf(this.selectedValue);
     this.init(this.index);   
 
     this.ga.trackEvent('Select category for Life-insight', 'OnChange Action', 'Switch to display '+this.selectedValue, 0);
 
-  }
+  }*/
 
 }

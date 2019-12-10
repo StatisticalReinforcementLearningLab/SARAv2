@@ -14,6 +14,7 @@ import { DemoAquariumComponent } from './incentive/aquarium/demo-aquarium/demo-a
 //import { SampleSurveyComponent } from './survey/sample-survey/sample-survey.component';
 import { SampleLifeInsightsComponent } from './incentive/life-insights/sample-life-insights/sample-life-insights.component';
 import { TreasurechestComponent } from './incentive/treasurechest/treasurechest.component';
+import { SampleSurveyComponent } from './survey/sample-survey/sample-survey.component';
 
 
 const routes: Routes = [
@@ -37,6 +38,8 @@ const routes: Routes = [
   //{ path: 'incentive/award-memes', component: AwardMemesComponent },
   //{ path: 'incentive/aquariumone', component: DemoAquariumComponent },  
 
+  { path: 'survey/samplesurvey', component: SampleSurveyComponent }, 
+  /*
   { 
     path: 'survey', 
     //loadChildren: () => import('./survey/survey.module').then(mod => mod.SurveyModule)
@@ -46,23 +49,32 @@ const routes: Routes = [
       preload: false
     }
   }, 
+  */
 
-  { path: 'incentive/aquarium', 
+  { path: 'incentive/aquariumone', component: DemoAquariumComponent },
+  /*
+  { 
+    path: 'incentive/aquarium', 
        loadChildren: './incentive/aquarium/aquarium.module#AquariumModule',
        data: {
         //name: 'survey'
         preload: true
       }    
   }, 
+  */
 
-  { path: 'incentive', 
+  { path: 'incentive/award-memes', component: AwardMemesComponent },
+  /*
+  { 
+    path: 'incentive', 
       loadChildren: './incentive/incentive.module#IncentiveModule',
      data: {
        //name: 'survey'
        preload: true
      }    
   }
-      
+  */
+
   // { path: 'incentive/life-insights', 
   //   loadChildren: './incentive/life-insights/life-insights.module#LifeInsightsModule',
   //   data: {
@@ -73,6 +85,15 @@ const routes: Routes = [
 
 ];
 
+
+@NgModule({
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+  ],
+  exports: [RouterModule]
+})
+
+/*
 @NgModule({
   providers: [
     SimpleLoadingStrategy
@@ -84,4 +105,5 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
+*/
 export class AppRoutingModule { }
