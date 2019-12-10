@@ -352,7 +352,6 @@ export class DynamicSurveyComponent implements OnInit {
             //  else {
             //    this.lifeInsightObj['Q4d']['data'].push(null);
             //  }
- 
         }
         console.log("lifeInsightObj: "+JSON.stringify(this.lifeInsightObj));
         window.localStorage.setItem("lifeInsight", JSON.stringify(this.lifeInsightObj));
@@ -364,14 +363,24 @@ export class DynamicSurveyComponent implements OnInit {
         //save to Amazon AWS S3
         this.awsS3Service.upload(this.survey2);
         //console.log("End of storeData");
-        
+       
+        /*
         if(Math.random() > 0.5 ){
-          this.router.navigate(['incentive/award-memes']);
-       } else {
-          this.router.navigate(['incentive/award-memes']);
-         //this.router.navigate(['incentive/aquarium/aquariumone']);
-         //this.router.navigate(['/home']);
-       }
+            this.router.navigate(['incentive/award-memes']);
+        } else {
+            this.router.navigate(['incentive/award-memes']);
+          //this.router.navigate(['incentive/aquarium/aquariumone']);
+          //this.router.navigate(['/home']);
+        }
+        */
+
+        if(Math.random() > 0.5 ){
+            this.router.navigate(['incentive/award-memes']);
+            //this.router.navigate(['incentive/sample-life-insight']);
+        } else {
+            //this.router.navigate(['incentive/aquarium/aquariumone']);         
+            this.router.navigate(['incentive/sample-life-insight']);
+        }
            
         //save to azure 
         //this.azureService.upload(this.question.getData());

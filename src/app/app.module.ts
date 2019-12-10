@@ -20,9 +20,10 @@ import { LifeInsightsModule } from './incentive/life-insights/life-insights.modu
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { SurveyModule } from './survey/survey.module';
 import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
+import { AquariumModule } from './incentive/aquarium/aquarium.module';
 
 @NgModule({
-  declarations: [AppComponent,LoadingSpinnerComponent,],
+  declarations: [AppComponent,LoadingSpinnerComponent],
   entryComponents: [],
   imports: [
     BrowserModule, 
@@ -33,6 +34,7 @@ import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.co
     LifeInsightsModule,
     NotificationModule,
     HttpClientModule,
+    AquariumModule,
     BlobModule.forRoot()
   ],
   providers: [
