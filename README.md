@@ -13,7 +13,7 @@ The current contributors of this project are Harvard University, University of M
 For more details, please check out the paper linked below or contact mrabbi@fas.harvard.edu
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/StatisticalReinforcementLearningLab/sara/master/app_code/9850-169539-1-SP.png" width="650"/>
+  <img src="https://raw.githubusercontent.com/StatisticalReinforcementLearningLab/SARA-Version1/master/app_code/9850-169539-1-SP.png" width="650"/>
 </p>
 
 For the SARA app:
