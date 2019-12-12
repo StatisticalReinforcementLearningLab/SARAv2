@@ -4,7 +4,8 @@
 //
 //--- At a high level, this file does the following:
 //      (i) reads a JSON file in the "ngAfterViewInit" 
-//      (ii) reads a JSON file in the "ngAfterViewInit" 
+//      (ii) calls the "generateSurvey" function to create html codes for the survey
+//      (iii) creates a component dynamically and attached it to the "vc" component.
 
 
 import { Component, OnInit, ViewChild, ViewContainerRef, NgModule, Compiler, Injector, NgModuleRef, ElementRef, Input } from '@angular/core';
