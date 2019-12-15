@@ -120,7 +120,8 @@ export class Level1 extends Phaser.State {
     yourGamePausedFunc(){
         console.log("Game paused");
         //this.isPaused = true;
-        this.game.lockRender = true;
+        if(this.game.lockRender == false) 
+            this.game.lockRender = true;
         //this.filter.destroy();
         //this.sprite.destroy();
     }
@@ -129,7 +130,8 @@ export class Level1 extends Phaser.State {
         console.log("Game resumed");
         //this.addWater();
         //this.isPaused = false;
-        this.game.lockRender = false;
+        if(this.game.lockRender == true) 
+            this.game.lockRender = false;
     }
 
     changebadgecount(badge_count){
