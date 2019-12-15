@@ -45,7 +45,8 @@ export class DemoAquariumComponent implements OnInit {
         this.totalPoints = this.router.getCurrentNavigation().extras.state.totalPoints;
         console.log("Pass totalPoints: "+this.totalPoints);
       }
-    }); */
+    }); 
+    */
 
     this.survey_text = "Start Survey";
   }
@@ -91,7 +92,7 @@ export class DemoAquariumComponent implements OnInit {
     this.ga.trackView('Aquarium')
     .then(() => {console.log("trackView at Aquarium!")})
     .catch(e => console.log(e));
-    this.loadFunction();
+    //this.loadFunction();
     
   }
 
@@ -180,10 +181,21 @@ export class DemoAquariumComponent implements OnInit {
     //this.pickGameService.currentGame.subscribe(game => this.pickedGame = game)
   }
  
-  ionViewDidLeave(){
+  ionViewDidLeaveFunction(){
+    console.log("Aquarium, ionDidLeave");
     this.survey_text = "Start survey";
     this.game.destroy();
   }
+
+  pauseGameRendering(){
+    this.game.state.states[this.pickedGame].yourGamePausedFunc();
+  }
+
+  resumeGameRendering(){
+    this.game.state.states[this.pickedGame].yourGameResumedFunc();
+  }
+
+
 
   startSurvey(){
     console.log('start survey');
