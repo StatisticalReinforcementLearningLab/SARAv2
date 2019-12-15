@@ -38,8 +38,8 @@ export class HomePage implements OnInit {
   }
 
   ionViewWillUnload() {
-    //this.sub1$.unsubscribe();
-    //this.sub2$.unsubscribe();
+    this.sub1$.unsubscribe();
+    this.sub2$.unsubscribe();
   }
 
   ngOnInit(): void {
