@@ -23,8 +23,8 @@ export class DynamicSurveyComponent implements OnInit {
   @Input() fileLink: string;
 
   title = "mash is here";
-  private isLoading = true;
-  private loadingComplete = false;
+  public isLoading = true;
+  public loadingComplete = false;
   
   /*
   survey_data = [
@@ -123,7 +123,7 @@ export class DynamicSurveyComponent implements OnInit {
     //go through the questions
     for (var i = 0; i < this.survey_data.length; i++) {
       var obj = this.survey_data[i];
-      console.log("Done " + obj.text);
+      //console.log("Done " + obj.text);
       this.survey_string = this.process_survey(obj, this.survey_string, obj.name);
     }
     this.survey_string = this.survey_string + '<div class="ion-padding"><button class="buttonold button-positive" (click)="storeData()">Submit</button></div>';
