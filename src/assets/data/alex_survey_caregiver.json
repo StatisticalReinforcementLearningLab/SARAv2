@@ -1,0 +1,47 @@
+[
+    {
+      "name":"Q1p",
+      "text": "How <b>positive</b> were you feeling (for example, happy or joyful) just before you received this survey?",
+      "type":"radiobutton",
+      "extra":{
+        "choices": ["No<br>at all", "Extremely<br>positive"],
+        "orientation": "horizontal",
+        "levels": 5
+      }
+    },
+  
+    {
+      "name": "Q7d",
+      "text": "How <b>negative</b> were you feeling (for example, stressed, mad/angry, nervous/anxious, or sad) just before you received this survey?",
+      "type": "radiobutton",
+      "extra":{
+        "choices": ["No<br>at all", "Extremely<br>negative"],
+        "orientation": "horizontal",
+        "levels": 5
+      }
+    },
+  
+    {
+      "name": "Q9d",
+      "text": "In the past 24 hours, have you had a <b>misunderstanding or disagreement</b> with your child?",
+      "type": "radiobutton",
+      "extra":{
+        "choices":["Yes",
+           "No"],
+        "orientation": "vertical"
+      }
+    },
+  
+    {
+      "name": "Q10",
+      "text": "In the past 24 hours, have you found it <b>easy to talk</b> to your child about your thoughts and feelings?",
+      "type": "radiobutton",
+      "extra":{
+        "choices":["Yes",
+           "No"],
+        "orientation": "vertical"
+      }
+    }
+  ]
+  
+  

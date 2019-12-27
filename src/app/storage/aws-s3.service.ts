@@ -18,18 +18,25 @@ export class AwsS3Service {
     var accessKeyId = environment.awsConfig.accessKeyId;
     var secretAccessKey = environment.awsConfig.secretAccessKey;
     
+    /*
     AWS.config.update({
       region: bucketRegion,
       credentials: new AWS.CognitoIdentityCredentials({
         IdentityPoolId: IdentityPoolId
       })
     });
+    */
+
+    const myS3Credentials = {
+      accessKeyId: accessKeyId,
+      secretAcccessKey: secretAccessKey,
+    };
     
     var s3 = new AWS.S3({
       apiVersion: '2006-03-01',
       params: {Bucket: bucketName},
-      //accessKeyId: accessKeyId,
-      //secretAccessKey: secretAccessKey
+      accessKeyId: accessKeyId,
+      secretAccessKey: secretAccessKey
     });  
 
     this.currentFile = new File([JSON.stringify(result)], "result.json", {type: "text/plain"});
