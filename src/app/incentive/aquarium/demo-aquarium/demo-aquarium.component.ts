@@ -31,6 +31,7 @@ export class DemoAquariumComponent implements OnInit {
   isLoaded = false;
   public isShowingRouteLoadIndicator: boolean;
   survey_text; 
+  username;
 
   constructor(private router: Router, 
     //private pickGameService: PickGameService,
@@ -49,6 +50,7 @@ export class DemoAquariumComponent implements OnInit {
     */
 
     this.survey_text = "Start Survey";
+    this.username = "test";
   }
 
 
