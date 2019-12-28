@@ -379,7 +379,8 @@ export class DynamicSurveyComponent implements OnInit {
             //this.router.navigate(['incentive/sample-life-insight']);
         } else {
             //this.router.navigate(['incentive/aquarium/aquariumone']);         
-            this.router.navigate(['incentive/sample-life-insight']);
+            //this.router.navigate(['incentive/sample-life-insight']);
+            this.router.navigate(['incentive/award-altruism']);
         }
            
         //save to azure 

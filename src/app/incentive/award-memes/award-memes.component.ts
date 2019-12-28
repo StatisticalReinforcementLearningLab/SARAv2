@@ -8,9 +8,11 @@ import { Router } from '@angular/router';
   templateUrl: './award-memes.component.html',
   styleUrls: ['./award-memes.component.scss'],
 })
+
 export class AwardMemesComponent implements OnInit {
 
   whichImage: string;
+  meme_data: any;
   //src="{{whichImage}}"
   constructor(private ga: GoogleAnalytics,
     private router: Router) {
@@ -20,11 +22,24 @@ export class AwardMemesComponent implements OnInit {
     this.ga.trackView('Life-insight')
     .then(() => {console.log("trackView at Life-insight!")})
     .catch(e => console.log(e));
-
-    var randomInt = Math.floor(Math.random() * 5) + 1;
-    this.whichImage = "./assets/memes/"+randomInt+".jpg";
   }
 
+  ngAfterViewInit() {
+
+    //var randomInt = Math.floor(Math.random() * 5) + 1;
+    //this.whichImage = "./assets/memes/"+randomInt+".jpg";
+    //console.log('Reading local json files: ' + this.fileLink);
+    fetch('./assets/memes/memefile.json').then(async res => {
+      this.meme_data = await res.json();
+      this.showmemes();
+    });
+  }
+
+  showmemes(){
+    var randomInt = Math.floor(Math.random() * this.meme_data.length);
+    this.whichImage = "./assets/memes/"+this.meme_data[randomInt]["filename"];
+  }
+  
   ratingChanged(rating){
     if(rating==0)
       console.log("thumbs down");
@@ -33,6 +48,8 @@ export class AwardMemesComponent implements OnInit {
     
     //this.router.navigate(['incentive/aquarium/aquariumone']);
     //this.router.navigate(['/home']);
+
+    //
     window.location.href = '/home';
   }
 
