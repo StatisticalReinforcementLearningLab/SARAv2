@@ -15,6 +15,7 @@ import { DemoAquariumComponent } from './incentive/aquarium/demo-aquarium/demo-a
 import { SampleLifeInsightsComponent } from './incentive/life-insights/sample-life-insights/sample-life-insights.component';
 import { TreasurechestComponent } from './incentive/treasurechest/treasurechest.component';
 import { SampleSurveyComponent } from './survey/sample-survey/sample-survey.component';
+import { AwardAltruismComponent } from './incentive/award-altruism/award-altruism.component';
 
 
 const routes: Routes = [
@@ -64,6 +65,7 @@ const routes: Routes = [
   */
 
   { path: 'incentive/award-memes', component: AwardMemesComponent },
+  { path: 'incentive/award-altruism', component: AwardAltruismComponent },
   /*
   { 
     path: 'incentive', 
