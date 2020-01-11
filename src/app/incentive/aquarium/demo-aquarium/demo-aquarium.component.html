@@ -4,7 +4,12 @@
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons-->
     <ion-buttons slot="end">
-        <ion-button style="color:#fff;" (click)="startSurvey()">{{survey_text}}</ion-button> 
+        <ion-button style="color:#fff;" (click)="startCheatPage()">
+          <ion-icon name="alert"></ion-icon>
+        </ion-button>
+        <ion-button style="color:#fff;" (click)="startSurvey()">
+          <ion-icon name="journal"></ion-icon>
+        </ion-button> 
     </ion-buttons>
     <ion-title style="color:#fff;">SARA</ion-title>
   </ion-toolbar>
@@ -14,10 +19,13 @@
   <div id="gameDiv"></div>
   <p  style="padding-top:10px;padding-bottom:0px;padding-left:10px;"><b>Username</b>: {{username}}</p>  
 
+  
+
   <!--
 
-  <app-loading-spinner></app-loading-spinner>
+  <ion-button color="primary" (click)="startTundraLevel()">Tundra level</ion-button>
 
+  <app-loading-spinner></app-loading-spinner>
 
   <ion-card> 
     <div class="quetiontextstyle">
