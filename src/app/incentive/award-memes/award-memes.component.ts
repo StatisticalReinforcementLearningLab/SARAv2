@@ -36,8 +36,15 @@ export class AwardMemesComponent implements OnInit {
   }
 
   showmemes(){
-    var randomInt = Math.floor(Math.random() * this.meme_data.length);
-    this.whichImage = "./assets/memes/"+this.meme_data[randomInt]["filename"];
+    //var randomInt = Math.floor(Math.random() * this.meme_data.length);
+    //this.whichImage = "./assets/memes/"+this.meme_data[randomInt]["filename"];
+    console.log('Meme data: ' + JSON.stringify(this.meme_data));
+    this.meme_data = this.shuffle(this.meme_data);
+    console.log('Meme data: ' + JSON.stringify(this.meme_data));
+    var picked_meme = this.pick_meme(this.meme_data);
+    console.log('picked_meme: ' + JSON.stringify(picked_meme));
+    this.whichImage = "./assets/memes/"+picked_meme[0][0]["filename"];
+
   }
   
   ratingChanged(rating){
@@ -53,4 +60,40 @@ export class AwardMemesComponent implements OnInit {
     window.location.href = '/home';
   }
 
+  /**
+   * Shuffles array in place if it is not already shuffled
+   * @param {Array} a items An array containing the items.
+  */
+  shuffle(a) {
+
+    //
+    if(window.localStorage['meme_shuffle'] == undefined){
+      //
+      var j: number, x: number, i: number;
+      for (i = a.length - 1; i > 0; i--) {
+          j = Math.floor(Math.random() * (i + 1));
+          x = a[i];
+          a[i] = a[j];
+          a[j] = x;
+      }
+      //
+      window.localStorage['meme_shuffle'] = JSON.stringify(a);
+      return a;
+    }else{
+      a  = JSON.parse(window.localStorage['meme_shuffle']);
+      return a;
+    }
+
+  }
+
+  /**
+   * Shuffles array in place if it is not already shuffled
+   * @param {Array} a items An array containing the items.
+  */
+  pick_meme(a) {
+      var picked_meme = a.splice(0,1);
+      a.push(picked_meme);
+      window.localStorage['meme_shuffle'] = JSON.stringify(a);
+      return picked_meme;
+  }
 }

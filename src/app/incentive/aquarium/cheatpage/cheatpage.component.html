@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cheat points</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-item>
+      <ion-input placeholder="Input points here" type="number" name="totalPoints" [(ngModel)]="totalPoints" (ionInput)="logChange($event)"></ion-input>
+    </ion-item>
+    <br>
+    Current points: {{currentPoints}}
+    <br><br>
+    <ion-button color="primary" (click)="resetPoint()">Cheat</ion-button>
+    <br><br>
+    <ion-button color="primary" (click)="returnToAquarium()">Return</ion-button>
+    
+</ion-content>

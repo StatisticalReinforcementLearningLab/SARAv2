@@ -1,11 +1,44 @@
 import { Component, OnInit } from '@angular/core';
-import { Boot } from '../fishgame/Boot';
-import { Preloader } from '../fishgame/Preloader';
-import { GameSmall } from '../fishgame/GamesSmall2';
-import { GameOver } from '../fishgame/GameOver';
+
+
+
+import { BootL1 } from '../levels/FishBowlL1/Boot';
+import { PreloaderL1 } from '../levels/FishBowlL1/Preloader';
+import { FishBowlL1 } from '../levels/FishBowlL1/Game';
+
+
+import { BootL2 } from '../levels/FishBowlL2/Boot';
+import { PreloaderL2 } from '../levels/FishBowlL2/Preloader';
+import { FishBowlL2 } from '../levels/FishBowlL2/Game';
+
+
+import { BootL3 } from '../levels/SeaLevelL3/Boot';
+import { PreloaderL3 } from '../levels/SeaLevelL3/Preloader';
+import { SeaLevelL3 } from '../levels/SeaLevelL3/Game';
+
+
+import { BootL4 } from '../levels/SeaLevelL4/Boot';
+import { PreloaderL4 } from '../levels/SeaLevelL4/Preloader';
+import { SeaLevelL4 } from '../levels/SeaLevelL4/Game';
+
+
+import { BootGameOver } from '../levels/GameOver/Boot';
+import { PreloaderGameOver } from '../levels/GameOver/Preloader';
+import { GameOver } from '../levels/GameOver/GameOver';
+
+
+import { BootTundraL5 } from '../levels/TundraLevelL5/Boot';
+import { PreloaderTundraL5 } from '../levels/TundraLevelL5/Preloader';
+import { GameTundraL5 } from '../levels/TundraLevelL5//Game';
+
+
+
+
+//import { GameOver } from '../fishgame/GameOver';
 import { Game } from '../fishgame/Game';
 import { Level1 } from '../fishgame/Level1';
 import { Level1Small } from '../fishgame/Level1Small';
+import { TundraLevel1 } from '../demo-tundra/Tundra1';
 //import { FormsModule } from '@angular/forms';
 //import { PickGameService } from './pick-game.service';
 import { ActivatedRoute, Router, RouterEvent, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
@@ -60,10 +93,9 @@ export class DemoAquariumComponent implements OnInit {
     this.router.navigate(['incentive/treasurechest']);
   }
 
-  goToSurveyPage(){
-    console.log("survey page");
-    //this.router.navigate(['/home']);
-    this.router.navigate(['survey/samplesurvey']);
+  startCheatPage(){
+    //this.router.navigate(['incentive/tundra']);
+    this.router.navigate(['incentive/cheatpoints']);
   }
   
 
@@ -112,8 +144,8 @@ export class DemoAquariumComponent implements OnInit {
         this.totalPoints = 0;
     else
         this.totalPoints = parseInt(window.localStorage['TotalPoints']);
-    console.log("Inside Aquarium totalPoints: "+this.totalPoints);
- 
+    //console.log("Inside Aquarium totalPoints: "+this.totalPoints);
+    //this.game.destroy();
 
     //height adjustment for different phone types
     var GameApp = GameApp || {};
@@ -133,48 +165,86 @@ export class DemoAquariumComponent implements OnInit {
     else
         this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 100, Phaser.AUTO, 'gameDiv');
 
-    /*
-    this.game =  new Phaser.Game(
-      window.innerWidth, 700,
-      Phaser.AUTO,
-      'gameDiv'
-    );
-    */
 
-    this.game.state.add('Boot', Boot);
-    var preLoader = new Preloader();
+    
+    
 
 
-    //this.totalPoints = 1070;
-    if(this.totalPoints <770 && this.totalPoints >= 0){
-      preLoader.setGameName(this.pickedGame = "GameSmall");
+    //this.totalPoints = 2125;
+
+
+    if(this.totalPoints < 0){
+      this.game.state.add('Boot', BootGameOver);
+      this.pickedGame = 'GameOver';
+      var preLoader = new PreloaderGameOver();
       this.game.state.add('Preloader', preLoader);
-      var gameSmall = new GameSmall();
-      gameSmall.setTotalPoints(this.totalPoints);
-      this.game.state.add('GameSmall', gameSmall);
+      var gameover = new GameOver();
+      this.game.state.add('GameOver', gameover);
+
+    } else if(this.totalPoints <770 && this.totalPoints >= 0){
+
+      this.game.state.add('Boot', BootL1);
+      this.pickedGame = 'FishBowlL1';
+      var preLoader = new PreloaderL1();
+      this.game.state.add('Preloader', preLoader);
+      var fishBowlL1 = new FishBowlL1();
+      fishBowlL1.setTotalPoints(this.totalPoints);
+      this.game.state.add('FishBowlL1', fishBowlL1);
+
+
     } else if ( this.totalPoints >=770 && this.totalPoints <1060 ){
-      preLoader.setGameName(this.pickedGame = "Game");
+
+      this.game.state.add('Boot', BootL2);
+      this.pickedGame = 'FishBowlL2';
+      var preLoader = new PreloaderL2();
       this.game.state.add('Preloader', preLoader);
-      var game = new Game();
-      game.setTotalPoints(this.totalPoints);
-      this.game.state.add('Game', game);
+      var fishBowlL2 = new FishBowlL2();
+      fishBowlL2.setTotalPoints(this.totalPoints);
+      this.game.state.add('FishBowlL2', fishBowlL2);
+
+
     } else if( this.totalPoints >=1060 && this.totalPoints <1710 ){
-      preLoader.setGameName(this.pickedGame = "Level1Small");
+
+      this.game.state.add('Boot', BootL3);
+      this.pickedGame = 'SeaLevelL3';
+      var preLoader = new PreloaderL3();
       this.game.state.add('Preloader', preLoader);
-      var level1Small = new Level1Small();
-      level1Small.setTotalPoints(this.totalPoints);
-      this.game.state.add('Level1Small', level1Small);
-    } else if( this.totalPoints >=1710 ){
-      preLoader.setGameName(this.pickedGame = "Level1");
+      var seaLevelL3 = new SeaLevelL3();
+      seaLevelL3.setTotalPoints(this.totalPoints);
+      this.game.state.add('SeaLevelL3', seaLevelL3);
+
+    } else if( this.totalPoints >=1710 && this.totalPoints <2120){
+
+      this.game.state.add('Boot', BootL4);
+      this.pickedGame = 'SeaLevelL4';
+      var preLoader = new PreloaderL4();
       this.game.state.add('Preloader', preLoader);
-      var level1 = new Level1();
-      level1.setTotalPoints(this.totalPoints);
-      this.game.state.add('Level1', level1);
+      var seaLevelL4 = new SeaLevelL4();
+      seaLevelL4.setTotalPoints(this.totalPoints);
+      this.game.state.add('SeaLevelL4', seaLevelL4);
+
+    } else if( this.totalPoints >=2120){
+
+      this.game.state.add('Boot', BootTundraL5);
+      this.pickedGame = "TundraLevel1";
+      var preLoader = new PreloaderTundraL5();
+      this.game.state.add('Preloader', preLoader);
+      var level5 = new GameTundraL5();
+      level5.setTotalPoints(this.totalPoints);
+      this.game.state.add('TundraLevel1', level5);
+
+
+
     } else {
+      
+      //---
+      var preLoader = new PreloaderL1();
       preLoader.setGameName(this.pickedGame = "GameOver");
       this.game.state.add('Preloader', preLoader);
+
+
     }
-    this.game.state.add('GameOver', GameOver);
+    //this.game.state.add('GameOver', GameOver);
     this.game.state.start('Boot');
     //self = this;
 

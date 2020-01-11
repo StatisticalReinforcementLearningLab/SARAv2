@@ -216,6 +216,90 @@
     "points" : 2060,
     "trivia" : "Ancient Greeks extracted venom from stingray spines and use it as an anaesthetic.",
     "img" : "img/kitefish.png"
+  },{
+    "name" : "Igloo",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 2120,
+    "trivia" : "You unlocked the tundra level.",
+    "img" : "img/igloo.png"
+  },{
+    "name" : "Penguin",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 2120,
+    "trivia" : "No penguins live at the North Pole.",
+    "img" : "img/penguin.png"
+  },{
+    "name" : "Sealion",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 2180,
+    "trivia" : "Filler text",
+    "img" : "img/sealion.png"
+  },{
+    "name" : "Wolf",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 2240,
+    "trivia" : "filler text",
+    "img" : "img/wolf.png"
+  },{
+    "name" : "Bird",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 2300,
+    "trivia" : "filler text",
+    "img" : "img/bird.jpg"
+  },{
+    "name" : "Hare",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 2420,
+    "trivia" : "filler text",
+    "img" : "img/hare.jpg"
+  },{
+    "name" : "Pingu",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 2420,
+    "trivia" : "filler text",
+    "img" : "img/pingu.jpg"
+  },{
+    "name" : "Coyote",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 2480,
+    "trivia" : "filler text",
+    "img" : "img/coyote.jpg"
+  },{
+    "name" : "White Husky",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 2540,
+    "trivia" : "filler text",
+    "img" : "img/white-husky.jpg"
+  },{
+    "name" : "Grey Husky",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 2540,
+    "trivia" : "filler text",
+    "img" : "img/grey-husky.jpg"
+  },{
+    "name" : "Snow",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 2600,
+    "trivia" : "filler text",
+    "img" : "img/snowglobe.jpg"
+  },{
+    "name" : "Yeti",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 2600,
+    "trivia" : "filler text",
+    "img" : "img/yeti.jpg"
   }
   
 ]
