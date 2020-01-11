@@ -16,10 +16,13 @@ import { SampleLifeInsightsComponent } from './incentive/life-insights/sample-li
 import { TreasurechestComponent } from './incentive/treasurechest/treasurechest.component';
 import { SampleSurveyComponent } from './survey/sample-survey/sample-survey.component';
 import { AwardAltruismComponent } from './incentive/award-altruism/award-altruism.component';
+import { DemoTundraComponent } from './incentive/aquarium/demo-tundra/demo-tundra.component';
+import { CheatpageComponent } from './incentive/aquarium/cheatpage/cheatpage.component';
 
 
 const routes: Routes = [
-/*   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  /*   
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'survey/initated-drink', component: InitiatedDrinkComponent },
   { path: 'survey/activetask', component: ActivetaskComponent },
@@ -31,11 +34,14 @@ const routes: Routes = [
   { path: 'incentive/visualization', component: VisualizationComponent},
   { path: 'incentive/aquariumone', component: DemoAquariumComponent },  
   { path: 'life-insight/q1lifeinsight', component: Q1MotivatedComponent },
- */
+  */
+  
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'incentive/sample-life-insight', component: SampleLifeInsightsComponent },
   { path: 'incentive/treasurechest', component: TreasurechestComponent },
+  { path: 'incentive/tundra', component: DemoTundraComponent },
+  { path: 'incentive/cheatpoints', component: CheatpageComponent },
   //{ path: 'incentive/award-memes', component: AwardMemesComponent },
   //{ path: 'incentive/aquariumone', component: DemoAquariumComponent },  
 
