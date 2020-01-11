@@ -194,7 +194,6 @@ export class Preloader extends Phaser.State {
 		// 	this.current_level = this.pickedGame;
 		// }
 		this.state.start(this.pickedGame);
-	
 	}
 
 	setGameName(pickedGame){
@@ -222,7 +221,6 @@ export class Preloader extends Phaser.State {
 		this.load.atlasJSONArray('angelfish', 'assets/game/sprite/angelfish.png', 'assets/game/sprite/angelfish.json');
 		this.load.atlasJSONArray('discusfish', 'assets/game/sprite/discusfish.png', 'assets/game/sprite/discusfish.json');
 		this.load.atlasJSONArray('bettafish', 'assets/game/sprite/betta.png', 'assets/game/sprite/betta.json');
-		//this.load.atlasJSONArray('guppy', 'assets/game/sprite/guppy.png', 'assets/game/sprite/guppy.json');
 		this.load.atlasJSONArray('puffer', 'assets/game/sprite/pufferfish.png', 'assets/game/sprite/pufferfish.json');
 		this.load.atlasJSONArray('tigerbarb', 'assets/game/sprite/tigerbarb.png', 'assets/game/sprite/tigerbarb.json');
 		this.load.atlasJSONArray('butterfly', 'assets/game/sprite/butterfly.png', 'assets/game/sprite/butterfly.json');

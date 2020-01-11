@@ -65,7 +65,9 @@ export class TreasurechestComponent implements OnInit {
           data[i].class = 'nonshade';
           data[i].img = "assets/" + data[i].img.substring(0, data[i].img.length-4) + '_tn.jpg';
           data[i].fish_index = i; 
-          data[i].show_trivia = 1; 
+          data[i].show_trivia = 1;
+          
+          /*
           if(current_points < data[i].points){
             if(isNextAvailableStillMasked == false){
                //
@@ -83,6 +85,7 @@ export class TreasurechestComponent implements OnInit {
           if(data[i].name === 'Sea environment'){
             data[i].show_trivia = 0; 
           }
+          */
       }
        
       this.pointsdata = data;

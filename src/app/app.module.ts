@@ -21,10 +21,12 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { SurveyModule } from './survey/survey.module';
 import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
 import { AquariumModule } from './incentive/aquarium/aquarium.module';
+import { FormsModule } from '@angular/forms';
+import { CheatpageComponent } from './incentive/aquarium/cheatpage/cheatpage.component';
 
 @NgModule({
-  declarations: [AppComponent,LoadingSpinnerComponent],
-  entryComponents: [],
+  declarations: [AppComponent,LoadingSpinnerComponent,CheatpageComponent],
+  entryComponents: [CheatpageComponent],
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 
@@ -35,6 +37,7 @@ import { AquariumModule } from './incentive/aquarium/aquarium.module';
     NotificationModule,
     HttpClientModule,
     AquariumModule,
+    FormsModule,
     BlobModule.forRoot()
   ],
   providers: [

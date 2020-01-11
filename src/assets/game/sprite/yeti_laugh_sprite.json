@@ -1,0 +1,108 @@
+{"frames": {
+
+"yeti-17.png":
+{
+	"frame": {"x":1,"y":1728,"w":147,"h":151},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":9,"w":147,"h":151},
+	"sourceSize": {"w":160,"h":160}
+},
+"yeti-18.png":
+{
+	"frame": {"x":1,"y":1574,"w":148,"h":152},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":8,"w":148,"h":152},
+	"sourceSize": {"w":160,"h":160}
+},
+"yeti-19.png":
+{
+	"frame": {"x":1,"y":1255,"w":148,"h":158},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":2,"w":148,"h":158},
+	"sourceSize": {"w":160,"h":160}
+},
+"yeti-20.png":
+{
+	"frame": {"x":1,"y":1415,"w":148,"h":157},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":3,"w":148,"h":157},
+	"sourceSize": {"w":160,"h":160}
+},
+"yeti-21.png":
+{
+	"frame": {"x":1,"y":1,"w":152,"h":154},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":6,"w":152,"h":154},
+	"sourceSize": {"w":160,"h":160}
+},
+"yeti-22.png":
+{
+	"frame": {"x":1,"y":157,"w":152,"h":154},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":6,"w":152,"h":154},
+	"sourceSize": {"w":160,"h":160}
+},
+"yeti-23.png":
+{
+	"frame": {"x":1,"y":313,"w":152,"h":154},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":6,"w":152,"h":154},
+	"sourceSize": {"w":160,"h":160}
+},
+"yeti-24.png":
+{
+	"frame": {"x":1,"y":469,"w":152,"h":154},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":6,"w":152,"h":154},
+	"sourceSize": {"w":160,"h":160}
+},
+"yeti-25.png":
+{
+	"frame": {"x":1,"y":625,"w":152,"h":154},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":6,"w":152,"h":154},
+	"sourceSize": {"w":160,"h":160}
+},
+"yeti-26.png":
+{
+	"frame": {"x":1,"y":781,"w":152,"h":154},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":6,"w":152,"h":154},
+	"sourceSize": {"w":160,"h":160}
+},
+"yeti-27.png":
+{
+	"frame": {"x":1,"y":937,"w":152,"h":154},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":6,"w":152,"h":154},
+	"sourceSize": {"w":160,"h":160}
+},
+"yeti-28.png":
+{
+	"frame": {"x":1,"y":1093,"w":148,"h":160},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":0,"w":148,"h":160},
+	"sourceSize": {"w":160,"h":160}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "yeti_laugh_sprite.png",
+	"format": "RGBA8888",
+	"size": {"w":154,"h":1880},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:35c98504d81f30e99fdc5017c185f539:d4076fe728380056f410645ca0464cd6:bd8b4a25b7c5899b9657886f4f7c90bc$"
+}
+}
