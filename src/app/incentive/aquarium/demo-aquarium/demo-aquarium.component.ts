@@ -32,6 +32,9 @@ import { PreloaderTundraL5 } from '../levels/TundraLevelL5/Preloader';
 import { GameTundraL5 } from '../levels/TundraLevelL5//Game';
 
 
+import { BootRainforestL6 } from '../levels/RainforestL6/Boot';
+import { PreloaderRainforestL6 } from '../levels/RainforestL6/Preloader';
+import { GameRainforestL6 } from '../levels/RainforestL6/Game';
 
 
 //import { GameOver } from '../fishgame/GameOver';
@@ -223,7 +226,7 @@ export class DemoAquariumComponent implements OnInit {
       seaLevelL4.setTotalPoints(this.totalPoints);
       this.game.state.add('SeaLevelL4', seaLevelL4);
 
-    } else if( this.totalPoints >=2120){
+    } else if( this.totalPoints >=2120 && this.totalPoints <3000){
 
       this.game.state.add('Boot', BootTundraL5);
       this.pickedGame = "TundraLevel1";
@@ -233,7 +236,15 @@ export class DemoAquariumComponent implements OnInit {
       level5.setTotalPoints(this.totalPoints);
       this.game.state.add('TundraLevel1', level5);
 
+    }else if( this.totalPoints >=3000){
 
+        this.game.state.add('Boot', BootRainforestL6);
+        this.pickedGame = "RainforestLevel6";
+        var preLoader = new PreloaderRainforestL6();
+        this.game.state.add('Preloader', preLoader);
+        var level6 = new GameRainforestL6();
+        level6.setTotalPoints(this.totalPoints);
+        this.game.state.add('RainforestLevel6', level6);
 
     } else {
       

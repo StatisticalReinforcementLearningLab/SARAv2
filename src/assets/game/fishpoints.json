@@ -300,6 +300,105 @@
     "points" : 2600,
     "trivia" : "filler text",
     "img" : "img/yeti.jpg"
+  },{
+    "name" : "Rainforest",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 3000,
+    "trivia" : "filler text",
+    "img" : "img/rainforest.jpg"
+  },{
+    "name" : "Squirrel",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 3000,
+    "trivia" : "filler text",
+    "img" : "img/squirrel.jpg"
+  },{
+    "name" : "Ostrich",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 3180,
+    "trivia" : "filler text",
+    "img" : "img/ostrich.jpg"
+  },{
+    "name" : "Carnivore",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 3060,
+    "trivia" : "filler text",
+    "img" : "img/carnivore2.jpg"
+  },{
+    "name" : "Lion",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 3120,
+    "trivia" : "filler text",
+    "img" : "img/lion.jpg"
+  },{
+    "name" : "Triceratops",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 3240,
+    "trivia" : "filler text",
+    "img" : "img/triceratops.jpg"
+  },{
+    "name" : "Koala",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 3300,
+    "trivia" : "filler text",
+    "img" : "img/koala.jpg"
+  },{
+    "name" : "Corn",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 3360,
+    "trivia" : "filler text",
+    "img" : "img/corn.jpg"
+  },{
+    "name" : "Chicken",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 3420,
+    "trivia" : "filler text",
+    "img" : "img/chicken.jpg"
+  },{
+    "name" : "Duck",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 3480,
+    "trivia" : "filler text",
+    "img" : "img/duck.jpg"
+  },{
+    "name" : "Goose",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 3480,
+    "trivia" : "filler text",
+    "img" : "img/goose.jpg"
+  },{
+    "name" : "Owl",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 3540,
+    "trivia" : "filler text",
+    "img" : "img/owl.jpg"
+  },{
+    "name" : "Sparrow",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 3600,
+    "trivia" : "filler text",
+    "img" : "img/sparrow.jpg"
+  },{
+    "name" : "Vulture",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 3780,
+    "trivia" : "filler text",
+    "img" : "img/vulture.jpg"
   }
+  
   
 ]
