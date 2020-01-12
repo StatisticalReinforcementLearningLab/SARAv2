@@ -34,7 +34,7 @@ export class OneSignalService {
         let msg = data.payload.body;
         //let additionalData = data.payload.additionalData;
         //this.showAlert(title, msg, additionalData.task);
-        this.showAlert(title+" "+msg, "notification is received at: "+this.time+" formatted: "+this.formattedTime);
+        //this.showAlert(title+" "+msg, "notification is received at: "+this.time+" formatted: "+this.formattedTime);
 
       });
       
@@ -45,7 +45,7 @@ export class OneSignalService {
         console.log("notification is opened at: "+this.time+" formatted: "+this.formattedTime);
         let additionalData = data.notification.payload.additionalData;
         //this.showAlert('Notification opened', 'You already read this before', additionalData.task);     
-        this.showAlert('Notification opened',  "notification is opened at: "+this.time+" formatted: "+this.formattedTime);     
+        //this.showAlert('Notification opened',  "notification is opened at: "+this.time+" formatted: "+this.formattedTime);     
 
 
       });
