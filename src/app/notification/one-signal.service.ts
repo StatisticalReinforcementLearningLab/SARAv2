@@ -23,8 +23,11 @@ export class OneSignalService {
       //this.oneSignal.startInit('YOUR ONESIGNAL APP ID', 'YOUR ANDROID ID');
       this.oneSignal.startInit('f9c4370d-cbcb-4e6f-ab1f-25d1c41b8f3a', '851185487102');
 
-      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.None);
+      //this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
     
+      //Sets a notification received handler. Only called if the app is 
+      //running in the foreground at the time the notification was received.
       this.oneSignal.handleNotificationReceived().subscribe(data => {
         this.time = new Date().getTime();
         this.formattedTime = moment().format('MMMM Do YYYY, h:mm:ss a Z');
@@ -38,6 +41,11 @@ export class OneSignalService {
 
       });
       
+      //Sets a notification opened handler. The instance will be called when 
+      //a notification is tapped on from the notification shade (ANDROID) or 
+      //notification center (iOS), or when closing an Alert notification shown in the app 
+      //(if InAppAlert is enabled in inFocusDisplaying, below).
+
       this.oneSignal.handleNotificationOpened().subscribe(data => {
         // do something when a notification is opened
         this.time = new Date().getTime();
@@ -49,6 +57,9 @@ export class OneSignalService {
 
 
       });
+
+      //--- clearOneSignalNotifications
+      //--- https://documentation.onesignal.com/docs/cordova-sdk
       
       this.oneSignal.endInit();      
   }

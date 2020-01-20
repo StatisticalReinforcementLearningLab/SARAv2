@@ -14,21 +14,19 @@
       <p style="font-size:34px;">{{amount_earned}}</p>
     </div>
 
+    <div style="clear: both;vertical-align: bottom;padding-top:20px;">
+        <p style="padding-bottom:-40px;">Animals/Fish to unlock</p>
+        <img *ngFor="let x of pointsdata;" src={{x.img}} style="width:auto;height:75px;margin:5px;max-width:200px">
+        <!--
+        <p style="font-size: 12px;line-height: 15px;padding-bottom:10px;color:#666666;">Double click in a unlocked fish to show its trivia</p>
+        <img *ngFor="let x in pointsdata;" src={{x.img}} style="width:auto;height:75px;margin:5px;max-width:200px">
+        -->
+    </div>  
+
     <div style="clear: both;vertical-align: bottom;padding-top:30px;">
       <p>Treasures earned for completing surveys</p>
       <img *ngFor="let pearls of pearlsAndGems;" src={{pearls.img}} [style.width.px]="pearls.width" style="margin:5px;">
     </div>
-
-    <div style="clear: both;vertical-align: bottom;padding-top:40px;">
-        <p style="padding-bottom:-40px;">Fishes for the aquarium</p>
-        <p style="font-size: 12px;line-height: 15px;padding-bottom:10px;color:#666666;">Double click in a unlocked fish to show its trivia</p>
-        
-        <img *ngFor="let x of pointsdata;" src={{x.img}} style="width:auto;height:75px;margin:5px;max-width:200px">
-        <!--
-        <img *ngFor="let x in pointsdata;" src={{x.img}} style="width:auto;height:75px;margin:5px;max-width:200px">
-        -->
-        
-    </div>  
 
 </ion-content>
 
