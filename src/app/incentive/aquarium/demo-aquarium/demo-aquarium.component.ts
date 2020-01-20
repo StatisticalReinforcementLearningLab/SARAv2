@@ -282,18 +282,17 @@ export class DemoAquariumComponent implements OnInit {
 
   startSurvey(){
     console.log('start survey');
-    //this.survey_text = "loading survey";
-    this.openSurvey();
+    this.openSurvey('survey/samplesurvey');
+  }
 
-    
-    //this.ga.trackEvent('Start survey Button', 'Tapped Action', 'Loading survey', 0)
-    //.then(() => {console.log("trackEvent for Start survey Button!")})
-    //.catch(e => alert("trackEvent for Start survey Button=="+e));
+  async openSurvey(location){
+    this.router.navigate([location]);
+  }
+
+  startSurveyAYA(){
+    console.log('start survey');
+    this.openSurvey('survey/samplesurvey2');
+  }
   
-  }
-
-  async openSurvey(){
-    this.router.navigate(['survey/samplesurvey']);
-  }
 
 }
