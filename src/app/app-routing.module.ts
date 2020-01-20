@@ -18,6 +18,7 @@ import { SampleSurveyComponent } from './survey/sample-survey/sample-survey.comp
 import { AwardAltruismComponent } from './incentive/award-altruism/award-altruism.component';
 import { DemoTundraComponent } from './incentive/aquarium/demo-tundra/demo-tundra.component';
 import { CheatpageComponent } from './incentive/aquarium/cheatpage/cheatpage.component';
+import { AyaSampleSurveyComponent } from './survey/aya-sample-survey/aya-sample-survey.component';
 
 
 const routes: Routes = [
@@ -46,6 +47,7 @@ const routes: Routes = [
   //{ path: 'incentive/aquariumone', component: DemoAquariumComponent },  
 
   { path: 'survey/samplesurvey', component: SampleSurveyComponent }, 
+  { path: 'survey/samplesurvey2', component: AyaSampleSurveyComponent }, 
   /*
   { 
     path: 'survey', 

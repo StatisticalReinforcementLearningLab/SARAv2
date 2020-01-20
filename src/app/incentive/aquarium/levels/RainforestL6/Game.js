@@ -45,9 +45,8 @@ export class GameRainforestL6 extends Phaser.State {
 
 
         //add the rock to cover the carnivorous plant
-        var journal = this.add.image(10, this.game.height - 95, 'rock2');
-        //journal.scale.setTo(0.4, 0.4);
-        journal.scale.setTo(.3,.18);
+        var journal = this.add.image(-5, this.game.height - 195, 'rock2');
+        journal.scale.setTo(.3*0.8,.18*0.8);
         
 
         //
@@ -151,7 +150,7 @@ export class GameRainforestL6 extends Phaser.State {
     animateCarnivorePlant(){
         //
         console.log("adding thristy plant");
-        var thirstyplant = this.game.add.sprite(-30, this.game.height-300, 'thirstyplant');
+        var thirstyplant = this.game.add.sprite(-30, this.game.height-310, 'thirstyplant');
         thirstyplant.animations.add('swim');
         thirstyplant.animations.play('swim', 15, true);
         thirstyplant.scale.setTo(.72, .72);

@@ -17,8 +17,9 @@ export class FishBowlL1 extends Phaser.State {
         if(window.innerWidth > this.CANVAS_WIDTH)
             this.CANVAS_WIDTH = window.innerWidth;
         
+        //
         this.buildWorld();
-        this.inputEnabled = false;
+        this.game.inputEnabled = false;
 
         //
         Phaser.Canvas.setTouchAction(this.game.canvas, "auto");
