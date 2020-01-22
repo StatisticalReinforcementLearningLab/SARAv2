@@ -11,6 +11,9 @@ import { environment } from '../environments/environment';
 import { Router, RouterEvent, RouteConfigLoadStart, RouteConfigLoadEnd, NavigationStart, NavigationEnd } from '@angular/router';
 
 import { LoadingController } from '@ionic/angular';
+import { UserProfileService } from './user/user-profile/user-profile.service';
+import { AuthService } from './user/auth/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -27,6 +30,8 @@ export class AppComponent {
     private statusBar: StatusBar,
     private httpClient: HttpClient,
     private oneSignalService: OneSignalService,
+    private authService: AuthService,
+    private userProfileService: UserProfileService,
     public loadingController: LoadingController,
     private ga: GoogleAnalytics
    ) {
@@ -80,7 +85,32 @@ export class AppComponent {
 		);
   }
 
+  agreeToTerms: boolean = JSON.parse(localStorage.getItem("agreeToTerms"));
+  private userSub: Subscription;
+
+  ngOnInit(){
+  }
+
+  ngOnDestroy(){
+    if(this.userSub){
+      this.userSub.unsubscribe();
+    }
+  }
+
+
   initializeApp() {
+
+
+    this.authService.autoLogin();
+    if(this.authService.isLoggedIn()){
+      this.userSub = this.userProfileService.initializeObs().subscribe();
+      // this.userProfileService.initialize();
+      // if we can for things to wait to progress in here
+      // then, we'll only need to load user profile here and at login in Auth component
+    }
+
+
+
     this.platform.ready().then(() => {
       //this.statusBar.styleDefault();
 

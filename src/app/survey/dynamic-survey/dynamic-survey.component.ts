@@ -10,11 +10,13 @@ import * as moment from 'moment';
 
 //import * as lifeInsightProfile from "../../../assets/data/life_insight.json";
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
+import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 
 @Component({
   selector: 'app-dynamic-survey',
   templateUrl: './dynamic-survey.component.html',
   styleUrls: ['./dynamic-survey.component.scss'],
+  providers: [UserProfileService], //try commenting out
 })
 
 //@PreLoad('life-insights')
@@ -79,7 +81,8 @@ export class DynamicSurveyComponent implements OnInit {
     private router: Router,
     private ga: GoogleAnalytics,
     private changeDetector : ChangeDetectorRef,
-    public plt: Platform) {
+    public plt: Platform,
+    private userProfileService: UserProfileService) {
   }
 
   ngOnInit() { }
@@ -138,9 +141,9 @@ export class DynamicSurveyComponent implements OnInit {
       EncrDecr: EncrDecrService;
       awsS3Service: AwsS3Service;
       totalPoints = 0;
-
       plt: Platform;
       router: Router;
+      userProfileService: UserProfileService;
 
       constructor() {
         //self2=this;
@@ -277,6 +280,8 @@ export class DynamicSurveyComponent implements OnInit {
         console.log('Decrypted :' + decrypted);
         this.survey2['encrypted'] = encrypted;
 
+        this.userProfileService.surveyCompleted(); 
+
         if(window.localStorage['TotalPoints'] == undefined)
           this.totalPoints = 0;
         else
@@ -405,6 +410,7 @@ export class DynamicSurveyComponent implements OnInit {
         const cmpRef = this.vc.createComponent(f);
         cmpRef.instance.awsS3Service = this.awsS3Service;
         //cmpRef.instance.storeToFirebaseService = this.storeToFirebaseService;
+        cmpRef.instance.userProfileService = this.userProfileService;
         cmpRef.instance.EncrDecr = this.EncrDecr;
         cmpRef.instance.ga = this.ga;
         cmpRef.instance.plt = this.plt;
