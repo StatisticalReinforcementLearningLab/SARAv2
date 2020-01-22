@@ -23,6 +23,8 @@ import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.co
 import { AquariumModule } from './incentive/aquarium/aquarium.module';
 import { FormsModule } from '@angular/forms';
 import { CheatpageComponent } from './incentive/aquarium/cheatpage/cheatpage.component';
+import { UserModule } from './user/user.module';
+import { HomePageModule } from './home/home.module';
 
 @NgModule({
   declarations: [AppComponent,LoadingSpinnerComponent,CheatpageComponent],
@@ -38,6 +40,8 @@ import { CheatpageComponent } from './incentive/aquarium/cheatpage/cheatpage.com
     HttpClientModule,
     AquariumModule,
     FormsModule,
+    UserModule,
+    HomePageModule,
     BlobModule.forRoot()
   ],
   providers: [
@@ -46,7 +50,7 @@ import { CheatpageComponent } from './incentive/aquarium/cheatpage/cheatpage.com
     File,
     OneSignal,
     GoogleAnalytics,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
   ],
   bootstrap: [AppComponent]
 })

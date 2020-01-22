@@ -1,0 +1,33 @@
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="10" offset="1">
+        <h1>Terms of Service</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="10" offset="1">
+        <div class="scroll" scrollY="true">
+          <p># Released under MIT License</p>
+          <p> Copyright 2019 Children's Hospital of Philadelphia</p>
+          <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p> 
+          <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+          <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+        </div>   
+      </ion-col>
+    </ion-row>
+    <ion-row> 
+      <ion-col  size-sm="4" offset-sm="3">
+        <ion-item>
+          <ion-label>Agree to terms</ion-label>
+          <ion-checkbox [(ngModel)]="agreeToTerms"  ></ion-checkbox>
+        </ion-item>
+      </ion-col>
+    </ion-row>      
+    <ion-row>
+      <ion-col  size="10" offset="1" text-center>
+        <ion-button (click)="onSubmit()" [disabled]="!agreeToTerms"  >Submit</ion-button>
+      </ion-col>
+    </ion-row>      
+  </ion-grid>      
+</ion-content>
