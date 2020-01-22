@@ -7,14 +7,21 @@
         <ion-button style="color:#fff;" (click)="startCheatPage()">
           <ion-icon name="alert"></ion-icon>
         </ion-button>
+        <ion-text  *ngIf="!isActive" style="color:#fff;"><strong>Account is Paused</strong> </ion-text>
+        <ion-button style="color:#fff;" href="{{surveyPath}}">
+          <ion-icon name="journal"></ion-icon>
+        </ion-button>
+        <!--
+        <ion-button href="{{surveyPath}}" *ngIf="isActive">Start Survey</ion-button> 
         <ion-button style="color:#fff;" (click)="startSurvey()">
           <ion-icon name="journal"></ion-icon>
         </ion-button> 
         <ion-button style="color:#fff;" (click)="startSurveyAYA()">
           <ion-icon name="journal"></ion-icon>
         </ion-button> 
+        -->
     </ion-buttons>
-    <ion-title style="color:#fff;">SARA</ion-title>
+    <ion-title style="color:#fff;">ADAPTS</ion-title>
   </ion-toolbar>
 </ion-header>
 
