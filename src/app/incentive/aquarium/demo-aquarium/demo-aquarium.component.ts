@@ -48,6 +48,7 @@ import { ActivatedRoute, Router, RouterEvent, RouteConfigLoadStart, RouteConfigL
 //import { PreLoad } from '../../../PreLoad';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { Platform } from '@ionic/angular';
+import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 
 declare let Phaser: any;
 
@@ -63,17 +64,39 @@ export class DemoAquariumComponent implements OnInit {
 
   game;
   pickedGame;
-  totalPoints = 0;
+  //totalPoints = 0;
   isLoaded = false;
   public isShowingRouteLoadIndicator: boolean;
   survey_text; 
-  username;
+  //username;
+
+  
+  // totalPoints = 0;
+  get totalPoints(){
+    return this.userProfileService.points;
+  }
+  get isActive(){
+    return this.userProfileService.isActive;
+  }
+  get username(){
+    return this.userProfileService.username;
+  }
+
+  get surveyPath(){
+    if (this.userProfileService.isParent){
+      return "survey/samplesurvey" //"/survey/caregiversurvey"
+    } else{
+      return "survey/samplesurvey2" //"/survey/ayasurvey"
+    }
+  }
+
 
   constructor(private router: Router, 
     //private pickGameService: PickGameService,
     private ga: GoogleAnalytics,
     private platform: Platform,
-    private route: ActivatedRoute) { 
+    private route: ActivatedRoute,
+    private userProfileService: UserProfileService) { 
     console.log("Constructor called");
     
     /*    
@@ -86,7 +109,7 @@ export class DemoAquariumComponent implements OnInit {
     */
 
     this.survey_text = "Start Survey";
-    this.username = "test";
+    //this.username = "test";
   }
 
 
@@ -143,10 +166,12 @@ export class DemoAquariumComponent implements OnInit {
 
     console.log(window.localStorage['TotalPoints']);
     //this.totalPoints = parseInt(window.localStorage['TotalPoints'] || "0");
+    /*
      if(window.localStorage['TotalPoints'] == undefined)
         this.totalPoints = 0;
     else
         this.totalPoints = parseInt(window.localStorage['TotalPoints']);
+    */
     //console.log("Inside Aquarium totalPoints: "+this.totalPoints);
     //this.game.destroy();
 

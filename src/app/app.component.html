@@ -1,4 +1,5 @@
-<ion-app>
-  <ion-router-outlet></ion-router-outlet>
+<ion-app> 
+  <app-terms-of-service *ngIf="!agreeToTerms"></app-terms-of-service>
+  <ion-router-outlet *ngIf="agreeToTerms" ></ion-router-outlet>
 </ion-app>
 
