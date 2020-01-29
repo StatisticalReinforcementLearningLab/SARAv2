@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 
 @Component({
   selector: 'app-cheatpage',
@@ -11,15 +12,17 @@ export class CheatpageComponent implements OnInit {
   public currentPoints;
   public myInput: string;
 
-  constructor() { }
+  constructor(private userProfileService: UserProfileService) { }
 
   ngOnInit() {
 
+    /*
     if(window.localStorage['TotalPoints'] == undefined)
       this.currentPoints = 0;
     else
       this.currentPoints = parseInt(window.localStorage['TotalPoints']);
-    
+    */
+    this.currentPoints = this.userProfileService.points;
   }
 
   logChange(event) {
@@ -41,7 +44,8 @@ export class CheatpageComponent implements OnInit {
       this.totalPoints = parseInt(window.localStorage['TotalPoints']);
     */
     //this.totalPoints = 700;//this.totalPoints + 100;
-    window.localStorage.setItem("TotalPoints", ""+this.totalPoints); 
+    //window.localStorage.setItem("TotalPoints", ""+this.totalPoints); 
+    this.userProfileService.cheatPoints(this.totalPoints);
   }
 
   returnToAquarium(){

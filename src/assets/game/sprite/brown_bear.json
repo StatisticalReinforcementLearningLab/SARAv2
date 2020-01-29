@@ -1,0 +1,77 @@
+{"frames": {
+
+"tile3009.png":
+{
+	"frame": {"x":931,"y":1470,"w":623,"h":490},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":295,"y":22,"w":623,"h":490},
+	"sourceSize": {"w":1000,"h":634}
+},
+"tile4008.png":
+{
+	"frame": {"x":931,"y":970,"w":637,"h":498},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":281,"y":22,"w":637,"h":498},
+	"sourceSize": {"w":1000,"h":634}
+},
+"tile5007.png":
+{
+	"frame": {"x":1,"y":1,"w":680,"h":506},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":253,"y":19,"w":680,"h":506},
+	"sourceSize": {"w":1000,"h":634}
+},
+"tile7005.png":
+{
+	"frame": {"x":1,"y":1010,"w":928,"h":464},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":66,"w":928,"h":464},
+	"sourceSize": {"w":1000,"h":634}
+},
+"tile9003.png":
+{
+	"frame": {"x":1,"y":1476,"w":843,"h":455},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":99,"y":69,"w":843,"h":455},
+	"sourceSize": {"w":1000,"h":634}
+},
+"tile11002.png":
+{
+	"frame": {"x":683,"y":1,"w":854,"h":478},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":91,"y":49,"w":854,"h":478},
+	"sourceSize": {"w":1000,"h":634}
+},
+"tile12001.png":
+{
+	"frame": {"x":767,"y":481,"w":820,"h":487},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":118,"y":49,"w":820,"h":487},
+	"sourceSize": {"w":1000,"h":634}
+},
+"tile13000.png":
+{
+	"frame": {"x":1,"y":509,"w":764,"h":499},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":169,"y":38,"w":764,"h":499},
+	"sourceSize": {"w":1000,"h":634}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Brown Bear Sprite Sheet-0.png",
+	"format": "RGBA8888",
+	"size": {"w":1588,"h":1961},
+	"scale": "1",
+	"related_multi_packs": [ "Brown Bear Sprite Sheet-1.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:4bd6e7673fcb1b740c79e50dd0916c0b:89a89f8143ee33bde6ea8ad352f8e553:034d87d6ca8ca524616c6a0ce2d8c72e$"
+}
+}
