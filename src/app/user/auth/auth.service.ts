@@ -59,7 +59,6 @@ export class AuthService {
   }
 
   autoLogin(){
-
     const loggedInUser = localStorage.getItem('loggedInUser');
     if(loggedInUser===null){
       return;
@@ -102,7 +101,7 @@ export class AuthService {
   }
 
   private handleError(errorRes: HttpErrorResponse){
-      let errorMessage = 'An unknown error occurred!';
+      let errorMessage = 'An unknown error occurred!!!! \n' + JSON.stringify(errorRes);
       if(!errorRes.error || !errorRes.error.error){
         return throwError(errorMessage);
       }
@@ -180,6 +179,5 @@ private removeTokens() {
   localStorage.removeItem(this.REFRESH_TOKEN_EXPIRATION);
 
 }
-
 
 }
