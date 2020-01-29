@@ -66,7 +66,14 @@ export class PreloaderTundraL5 extends Phaser.State {
 
 		//
 		this.game.load.atlasJSONArray('yeti_walk', 'assets/game/sprite/yeti_walk_sprite.png', 'assets/game/sprite/yeti_walk_sprite.json');
-        this.game.load.atlasJSONArray('yeti_laugh', 'assets/game/sprite/yeti_laugh_sprite.png', 'assets/game/sprite/yeti_laugh_sprite.json');
+		this.game.load.atlasJSONArray('yeti_laugh', 'assets/game/sprite/yeti_laugh_sprite.png', 'assets/game/sprite/yeti_laugh_sprite.json');
+		
+
+		//
+		this.game.load.atlasJSONArray('brown_bear', 'assets/game/sprite/brown_bear.png', 'assets/game/sprite/brown_bear.json');
+		this.game.load.atlasJSONArray('rabbit', 'assets/game/sprite/rabbit.png', 'assets/game/sprite/rabbit.json');
+		this.game.load.atlasJSONArray('reindeer', 'assets/game/sprite/reindeer.png', 'assets/game/sprite/reindeer.json');
+		
 
 		//
 		this.load.image('treasure_tundra', 'assets/img/igloo_tresurechest.png');

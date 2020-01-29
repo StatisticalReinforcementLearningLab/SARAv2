@@ -70,10 +70,8 @@ export class AuthComponent implements OnInit, OnDestroy {
                   this.userProfileService.saveToServer();
                 });
               }
-    
-    
           )
-    )
+        )
         .subscribe(
           ()=>
           {
@@ -90,7 +88,7 @@ export class AuthComponent implements OnInit, OnDestroy {
           this.error = resData.message;
         }
         else{
-          this.error = "Unknown error";
+          this.error = "Unknown error\n" + JSON.stringify(resData);
         }
       }
       // console.log(resData);

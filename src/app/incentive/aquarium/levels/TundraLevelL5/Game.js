@@ -48,8 +48,7 @@ export class GameTundraL5 extends Phaser.State {
         this.snowgswitch.inputEnabled = true;
         this.snowgswitch.events.onInputDown.addOnce(this.startsnowing, this);
 
-        //
-        this.addAnimals();
+        
 
         //
         this.inputEnabled = false;
@@ -65,7 +64,7 @@ export class GameTundraL5 extends Phaser.State {
 
 
         //
-
+        this.addAnimals();
 
         //
         this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
@@ -136,6 +135,8 @@ export class GameTundraL5 extends Phaser.State {
                 if(data[i].name.valueOf() === "Sealion")
                     this.animateSealion();
                 
+                
+
                 if(data[i].name.valueOf() === "Wolf")
                     this.animateWolf();
 
@@ -159,7 +160,18 @@ export class GameTundraL5 extends Phaser.State {
 
                 if(data[i].name.valueOf() === "Yeti")
                     this.animateYeti();  
-              
+
+                if(data[i].name.valueOf() === "Bear")
+                    this.animateBear();  
+
+                if(data[i].name.valueOf() === "Raindeer")
+                    this.animateReindeer();
+                
+
+               /* 
+               if(data[i].name.valueOf() === "Rabbit")
+               this.animateRabbit();  
+               */
 
             }
         }
@@ -226,6 +238,26 @@ export class GameTundraL5 extends Phaser.State {
         this.gobothways(this.wolf);
     }
 
+    animateBear(){
+        this.brown_bear = this.add.sprite(-200, this.game.height-275, 'brown_bear');
+        this.brown_bear.anchor.setTo(.5,.5);
+        this.brown_bear.animations.add('swim');
+        this.brown_bear.animations.play('swim', 6, true);
+        this.brown_bear.scale.setTo(-.15, .15);
+        this.brown_bear.name = "brown_bear";
+        this.gobothways(this.brown_bear);
+    }
+
+    animateRabbit(){
+        this.rabbit = this.add.sprite(this.game.width+215, this.game.height-125, 'rabbit');
+        this.rabbit.anchor.setTo(.5,.5);
+        this.rabbit.animations.add('swim2');
+        this.rabbit.animations.play('swim2', 20, true);
+        this.rabbit.scale.setTo(-0.4, 0.4);
+        this.rabbit.name = "rabbit";
+        this.gobothways(this.rabbit);
+    }
+
     //
     animateHare(){
         this.hare = this.add.sprite(this.game.width+115, this.game.height - 245, 'hare');
@@ -236,6 +268,19 @@ export class GameTundraL5 extends Phaser.State {
         this.hare.name = "hare";
         this.gobothways(this.hare);
     }
+
+
+    //
+    animateReindeer(){
+        this.reindeer = this.add.sprite(-115, this.game.height - 145, 'reindeer');
+        this.reindeer.anchor.setTo(.5,.5);
+        this.reindeer.animations.add('swim2');
+        this.reindeer.animations.play('swim2', 5, true);
+        this.reindeer.scale.setTo(-0.15, 0.15);
+        this.reindeer.name = "reindeer";
+        this.gobothways(this.reindeer);
+    }
+
 
     //
     animateCoyote(){

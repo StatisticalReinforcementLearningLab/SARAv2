@@ -301,6 +301,27 @@
     "trivia" : "filler text",
     "img" : "img/yeti.jpg"
   },{
+    "name" : "Bear",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 2660,
+    "trivia" : "filler text",
+    "img" : "img/brown_bear.jpg"
+  },{
+    "name" : "Rabbit",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 2720,
+    "trivia" : "filler text",
+    "img" : "img/rabbit.jpg"
+  },{
+    "name" : "Raindeer",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 2780,
+    "trivia" : "filler text",
+    "img" : "img/raindeer.jpg"
+  },{
     "name" : "Rainforest",
     "level" : 3,
     "text" : "Story 1",
