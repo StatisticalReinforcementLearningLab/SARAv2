@@ -13,6 +13,14 @@ export class AwardMemesComponent implements OnInit {
 
   whichImage: string;
   meme_data: any;
+
+  viewWidth = 512;
+  viewHeight = 350;
+  drawingCanvas = <HTMLCanvasElement>document.getElementById("drawing_canvas");
+  ctx;
+  timeStep = (1/60);
+
+
   //src="{{whichImage}}"
   constructor(private ga: GoogleAnalytics,
     private router: Router) {
@@ -22,6 +30,10 @@ export class AwardMemesComponent implements OnInit {
     this.ga.trackView('Life-insight')
     .then(() => {console.log("trackView at Life-insight!")})
     .catch(e => console.log(e));
+
+
+    //
+    this.drawConfetti();
   }
 
   ngAfterViewInit() {
@@ -98,5 +110,23 @@ export class AwardMemesComponent implements OnInit {
       a.push(picked_meme[0]);
       window.localStorage['meme_shuffle6'] = JSON.stringify(a);
       return picked_meme;
+  }
+
+
+  //
+  initDrawingCanvas() {
+    this.drawingCanvas.style.width = '100%';
+    this.drawingCanvas.width = this.drawingCanvas.offsetWidth;
+    this.drawingCanvas.style.height = '90%';
+    this.ctx = this.drawingCanvas.getContext('2d');
+
+    //createLoader();
+    //createExploader();
+    //createParticles();
+  }
+
+  //draws confetti 
+  drawConfetti(){
+    this.initDrawingCanvas();
   }
 }
