@@ -6,17 +6,8 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col size="10" offset="1">
+      <ion-col size="10" offset="1" style="padding:20px;">
         <ion-img src="../../../assets/img/CHOP_RI.svg"></ion-img>        
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="6" offset="3">
-          <br>
-          <ion-text >
-              <h3>ADAPTS</h3>
-          </ion-text>
-          
       </ion-col>
     </ion-row>
     <ion-row>
@@ -38,7 +29,7 @@
                       <ion-label position="floating"   >Password</ion-label>
                       <ion-input type="password" id="password"  ngModel name="password" required  minlength="4" ></ion-input>
                   </ion-item>
-                  <div>
+                  <div style="padding-top:20px;">
                     <ion-button  type="submit" [disabled]="!authForm.valid">{{isLoginMode ? 'Login' : 'Sign Up'}}</ion-button> 
                     <!--|
                     <ion-button  type="button" (click)="onSwitchMode()">
