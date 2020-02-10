@@ -25,7 +25,6 @@ export const environment = {
     IdentityPoolId: 'us-east-1:667b1ad5-ccdc-4d90-b94f-300732b55448',
     accessKeyId: 'AKIA35724R3PLF24HO3C',
     secretAccessKey: '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'
- 
   },
 ​
   googleAnalytic: {

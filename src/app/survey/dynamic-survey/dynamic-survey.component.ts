@@ -136,6 +136,7 @@ export class DynamicSurveyComponent implements OnInit {
       
       survey2 = {};
       lifeInsightObj = {};
+      fileLink;
       //storeToFirebaseService: StoreToFirebaseService;
       ga: GoogleAnalytics;
       EncrDecr: EncrDecrService;
@@ -366,7 +367,7 @@ export class DynamicSurveyComponent implements OnInit {
         //console.log(this.survey2);
         
         //save to Amazon AWS S3
-        this.awsS3Service.upload(this.survey2);
+        this.awsS3Service.upload(this.fileLink,this.survey2);
         //console.log("End of storeData");
        
         /*
@@ -412,6 +413,7 @@ export class DynamicSurveyComponent implements OnInit {
         //cmpRef.instance.storeToFirebaseService = this.storeToFirebaseService;
         cmpRef.instance.userProfileService = this.userProfileService;
         cmpRef.instance.EncrDecr = this.EncrDecr;
+        cmpRef.instance.fileLink = this.fileLink;
         cmpRef.instance.ga = this.ga;
         cmpRef.instance.plt = this.plt;
         cmpRef.instance.router = this.router;// Router,
