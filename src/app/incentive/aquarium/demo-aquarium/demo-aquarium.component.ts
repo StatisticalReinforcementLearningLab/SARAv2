@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
-
 import { BootL1 } from '../levels/FishBowlL1/Boot';
 import { PreloaderL1 } from '../levels/FishBowlL1/Preloader';
 import { FishBowlL1 } from '../levels/FishBowlL1/Game';
@@ -49,9 +47,10 @@ import { ActivatedRoute, Router, RouterEvent, RouteConfigLoadStart, RouteConfigL
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { Platform } from '@ionic/angular';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
+import * as moment from 'moment';
+import { AlertController } from '@ionic/angular';
 
 declare let Phaser: any;
-
 
 @Component({
   selector: 'app-demo-aquarium',
@@ -82,16 +81,17 @@ export class DemoAquariumComponent implements OnInit {
     return this.userProfileService.username;
   }
 
-  get surveyPath(){
+/*   get surveyPath(){
     if (this.userProfileService.isParent){
       return "survey/samplesurvey"; //"/survey/caregiversurvey"
     } else{
       return "survey/samplesurvey2"; //"/survey/ayasurvey"
     }
-  }
+  } */
 
 
   constructor(private router: Router, 
+    private alertCtrl: AlertController,
     //private pickGameService: PickGameService,
     private ga: GoogleAnalytics,
     private platform: Platform,
@@ -196,11 +196,6 @@ export class DemoAquariumComponent implements OnInit {
         this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 74, Phaser.AUTO, 'gameDiv');    
     else
         this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 100, Phaser.AUTO, 'gameDiv');
-
-
-    
-    
-
 
     //this.totalPoints = 2125;
 
@@ -307,21 +302,50 @@ export class DemoAquariumComponent implements OnInit {
     this.game.state.states[this.pickedGame].yourGameResumedFunc();
   }
 
+  ngAfterViewInit(){
+    this.ga.trackView('Aquarium')
+    .then(() => {console.log("trackView at Aquarium!")})
+    .catch(e => console.log(e));
+        
+  }  
 
+  ionViewDidLeave(){
+    this.game.destroy();
+  }
+
+  async presentAlert() {
+    const alert = await this.alertCtrl.create({
+      header: 'Alert',
+      subHeader: "Start Survey is not avaibable!",
+      message: 'Please start survey after 6pm.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
 
   startSurvey(){
     console.log('start survey');
-    this.openSurvey('survey/samplesurvey');
+    var currentTime = moment(); 
+    var startTime = moment({hour: 18});  // 6pm
+    var endTime = moment({hour: 23, minute: 59});  // 11:59pm
+    if(currentTime.isBetween(startTime, endTime)) {
+      if (this.userProfileService.isParent){
+        this.router.navigate(['survey/samplesurvey']);  //caregiversurvey
+      } else{
+        this.router.navigate(['survey/samplesurvey2']);  //aya
+      }
+      this.ga.trackEvent('Start survey Button', 'Tapped Action', 'Loading survey', 0)
+      .then(() => {console.log("trackEvent for Start survey Button!")})
+      .catch(e => alert("trackEvent for Start survey Button=="+e));
+    } else {
+      this.presentAlert();
+    }
   }
 
   async openSurvey(location){
     this.router.navigate([location]);
   }
 
-  startSurveyAYA(){
-    console.log('start survey');
-    this.openSurvey('survey/samplesurvey2');
-  }
-  
 
 }
