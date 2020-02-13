@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
 @Component({
   selector: 'app-award-altruism',
@@ -7,19 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AwardAltruismComponent implements OnInit {
 
-
   whichImage: string;
   altruism_data: any;
 
-  constructor() { }
+  constructor(    
+    private ga: GoogleAnalytics) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.ga.trackView('Award-altruism')
+    .then(() => {console.log("trackView at award-altruism!")})
+    .catch(e => console.log(e));
+
+  }
 
   ngAfterViewInit() {
     fetch('./assets/altruism/altruism_list.json').then(async res => {
       this.altruism_data = await res.json();
       this.showaltruism();
     });
+
+  }
+
+  ionViewDidLeave(){
+
   }
 
   showaltruism(){

@@ -8,7 +8,6 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
-import { File } from '@ionic-native/file/ngx';
 import { Injector } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -47,7 +46,6 @@ import { HomePageModule } from './home/home.module';
   providers: [
     StatusBar,
     SplashScreen,
-    File,
     OneSignal,
     GoogleAnalytics,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
