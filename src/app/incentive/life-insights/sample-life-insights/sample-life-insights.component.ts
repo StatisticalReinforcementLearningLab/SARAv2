@@ -6,7 +6,6 @@ import * as moment from 'moment';
 //import { PreLoad } from '../../../PreLoad';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
-
 @Component({
   selector: 'app-sample-life-insights',
   templateUrl: './sample-life-insights.component.html',
@@ -16,7 +15,7 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 //@PreLoad('q1lifeinsight')
 export class SampleLifeInsightsComponent implements OnInit {
 
-  @ViewChild('lineCanvas') lineCanvas: ElementRef<HTMLDivElement>;
+  @ViewChild('lineCanvas', {static: true}) lineCanvas: ElementRef<HTMLDivElement>;
   //@Input() jsonObj : any;
   //private _jsonObj: any;
 
@@ -42,7 +41,8 @@ export class SampleLifeInsightsComponent implements OnInit {
 
   private lineChart: Chart;
 
-  constructor(private ga: GoogleAnalytics) {          
+  constructor(
+    private ga: GoogleAnalytics) {          
   }
 
 /*   get jsonObj(): any {

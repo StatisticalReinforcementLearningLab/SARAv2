@@ -8,7 +8,7 @@
           <ion-icon name="alert"></ion-icon>
         </ion-button>
         <ion-text  *ngIf="!isActive" style="color:#fff;"><strong>Account is Paused</strong> </ion-text>
-        <ion-button style="color:#fff;" href="{{surveyPath}}">
+        <ion-button style="color:#fff;" (click)="startSurvey()">
           <ion-icon name="journal"></ion-icon>
         </ion-button>
         <!--
