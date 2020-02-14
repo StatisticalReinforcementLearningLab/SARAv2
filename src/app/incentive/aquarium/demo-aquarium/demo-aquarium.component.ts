@@ -321,22 +321,11 @@ export class DemoAquariumComponent implements OnInit {
     this.game.destroy();
   }
 
-  async presentAlert() {
-    const alert = await this.alertCtrl.create({
-      header: 'Alert',
-      subHeader: "Start Survey is not avaibable!",
-      message: 'Please start survey after 6pm.',
-      buttons: ['OK']
-    });
-
-    await alert.present();
-  }
-
-  async presentAlertSurveyIsDone() {
+  async presentAlert(alertMessage) {
     const alert = await this.alertCtrl.create({
       header: 'Alert',
       subHeader: "Survey is not avaibable!",
-      message: 'Survey is already completed for the day.',
+      message: alertMessage,
       buttons: ['OK']
     });
 
@@ -349,9 +338,9 @@ export class DemoAquariumComponent implements OnInit {
     var startTime = moment({hour: 18});  // 6pm
     var endTime = moment({hour: 23, minute: 59});  // 11:59pm
     if(!currentTime.isBetween(startTime, endTime)) {
-      this.presentAlert();
-    } else if( this.userProfileService.surveyTakenForCurrentDay) {
-      this.presentAlertSurveyIsDone();
+      this.presentAlert('Please start survey after 6pm.');
+    } else if(this.userProfileService.surveyTakenForCurrentDay) {
+      this.presentAlert('Survey is already completed for the day.');
     } else {
       if (this.userProfileService.isParent){
         this.router.navigate(['survey/samplesurvey']);  //caregiversurvey
