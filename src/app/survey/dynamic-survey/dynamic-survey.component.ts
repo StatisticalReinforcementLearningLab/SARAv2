@@ -29,47 +29,12 @@ export class DynamicSurveyComponent implements OnInit {
   public isLoading = true;
   public loadingComplete = false;
   
-  /*
-  survey_data = [
-    {
-      "name": "Q1d",
-      "text": "How stressed are you today?",
-      "type": "radiobutton",
-      "extra": {
-        "choices": ["Not<br>at all", "A<br>lot"],
-        "orientation": "horzontal",
-        "levels": 5
-      }
-    },
-    {
-      "name": "Q3",
-      "text": "This past week, did you concentrate easily?",
-      "type": "radiobutton",
-      "extra": {
-        "choices": ["Rarely/Never", "Occasionally", "Often", "Almost Always/Always"],
-        "orientation": "vertical"
-      }
-    },
-    {
-      "name": "Q2d",
-      "text": "How are you feeling today? Please click on the spot that best represents your mood",
-      "type": "moodgrid2"
-    },
-    {
-      "name": "Q3d",
-      "text": "How much free time have you had today?",
-      "type": "range2",
-      "extra": {
-        "choices": ["0<br>hour", "600<br>min", 0, 1440, 60]
-      }
-    }
-  ];
-  */
+
   survey_string = "";
   survey = {};
   survey_data: any;
 
-  @ViewChild('vc', { read: ViewContainerRef }) vc: ViewContainerRef;
+  @ViewChild('vc', { read: ViewContainerRef, static: false}) vc: ViewContainerRef;
 
   //private vc: ViewContainerRef;
 
@@ -95,9 +60,9 @@ export class DynamicSurveyComponent implements OnInit {
         this.survey_data = await res.json();
         this.init();
       });
+
   }
 
-  //
   init() {  
 
     //TODO: Two-way binding, and call functions. Multiple choice/affect-grid.
@@ -126,9 +91,11 @@ export class DynamicSurveyComponent implements OnInit {
     //const template2 = '<ion-card><ion-card-content>Nine Inch Nails Live</ion-card-content></ion-card>';
 
     //go through the questions
+    this.survey = {};
     for (var i = 0; i < this.survey_data.length; i++) {
       var obj = this.survey_data[i];
       //console.log("Done " + obj.text);
+      this.survey[obj.name] = "";
       this.survey_string = this.process_survey(obj, this.survey_string, obj.name);
     }
     this.survey_string = this.survey_string + '<div class="ion-padding"><button class="buttonold button-positive" (click)="storeData()">Submit</button></div>';
@@ -137,6 +104,7 @@ export class DynamicSurveyComponent implements OnInit {
     const tmpCmp = Component({ template: this.survey_string })(class implements OnInit{
       
       survey2 = {};
+      fileLink;
       lifeInsightObj = {};
       //storeToFirebaseService: StoreToFirebaseService;
       ga: GoogleAnalytics;
@@ -149,10 +117,11 @@ export class DynamicSurveyComponent implements OnInit {
       awardDollarService: AwardDollarService;
 
       constructor() {
-        //self2=this;
+      }
+
+      ngOnInit() {
         this.survey2['starttimeUTC'] = new Date().getTime();
       }
-      ngOnInit() {}
 
       ngAfterViewInit() {
         setTimeout(e => this.drawMoodGrid(this), 200);
@@ -240,19 +209,7 @@ export class DynamicSurveyComponent implements OnInit {
         //console.log("Inside storeData");
         console.log(JSON.stringify(this.survey2));
         this.ga.trackEvent('Submit Button', 'Tapped Action', 'Submit the completed survey', 0);
-  
-
-        //this.saveDataService.saveData("SurveyResult", this.question);
-    
-        //var jsonString = JSON.stringify(surveyResult);
-        //var fileDir = cordova.file.externalApplicationStorageDirectory; 
-        //var filename = "result.json";
-        //var file = new File([jsonString], fileDir+filename, {type: "text/plain;charset=utf-8"});
-        //this.file.writeFile(fileDir, filename, jsonString, {replace: true}) ; 
-        //this.file.readAsArrayBuffer(fileDir, filename).then(async(buffer) => {
-        //  await this.upload(buffer, filename);
-        //});
-        
+              
         //this.storeToFirebaseService.initFirebase();
         //this.storeToFirebaseService.storeTofirebase(this.survey2);
         
@@ -263,6 +220,7 @@ export class DynamicSurveyComponent implements OnInit {
         //var decrypted = decrypt(encrypted, "Z&wz=BGw;%q49/<)");
 
         this.survey2['endtimeUTC'] = new Date().getTime();
+        this.survey2['userName'] = localStorage.getItem('loggedInUser');
         this.survey2['ts'] = moment().format('MMMM Do YYYY, h:mm:ss a Z');
 
         // Get a key for a new Post.
@@ -334,40 +292,43 @@ export class DynamicSurveyComponent implements OnInit {
             else {
               this.lifeInsightObj[question]['data'] = [null];
             }
-          }
-
-          // this.lifeInsightObj['Q4d'] = {};
-          // this.lifeInsightObj['Q4d']['dates'] = [moment().format("DD-MM-YYYY")];
-          // if(this.survey2.hasOwnProperty('Q4d')) {
-          //   this.lifeInsightObj['Q4d']['data'] = [parseInt(this.survey2['Q4d'])];
-          // }
-          // else {
-          //   this.lifeInsightObj['Q4d']['data'] = [null];
-          // }
-         
+          }         
         }
         else {
            this.lifeInsightObj= JSON.parse(window.localStorage["lifeInsight"]);
 
-           for (let question of questionsArray) {          
-              this.lifeInsightObj[question]['dates'].push(moment().format("DD-MM-YYYY"));
+           for (let question of questionsArray) {   
+            var dateslength = this.lifeInsightObj[question]['dates'].length;
+            if(dateslength == 7) {
+              this.lifeInsightObj[question]['dates'].shift();
+              this.lifeInsightObj[question]['data'].shift();
+            }      
+            var currentdate = moment().format("DD-MM-YYYY");
+            var dates = this.lifeInsightObj[question]["dates"];
+            var dateIndex = dates.indexOf(currentdate);
+            console.log("Current date exist? "+dateIndex);
+            if( dateIndex > -1 ) {
+              this.lifeInsightObj[question]['dates'][dateIndex] =currentdate;
               if(this.survey2.hasOwnProperty(question)) {
-                  this.lifeInsightObj[question]['data'].push(parseInt(this.survey2[question]));
-                }
-                else {
-                  this.lifeInsightObj[question]['data'].push(null);
-                }
-           }
-
-            // this.lifeInsightObj['Q4d']['dates'].push(moment().format("DD-MM-YYYY"));
-            // if(this.survey2.hasOwnProperty('Q4d')) {
-            //    this.lifeInsightObj['Q4d']['data'].push(parseInt(this.survey2['Q4d']));
-            //  }
-            //  else {
-            //    this.lifeInsightObj['Q4d']['data'].push(null);
-            //  }
-        }
-        //console.log("lifeInsightObj: "+JSON.stringify(this.lifeInsightObj));
+               //<<<<<<< liying-chop-s3
+                this.lifeInsightObj[question]['data'][dateIndex]=(parseInt(this.survey2[question]));
+              }
+              else {
+                this.lifeInsightObj[question][dateIndex]=null;
+              }
+            } else {
+              this.lifeInsightObj[question]['dates'].push(currentdate);
+              if(this.survey2.hasOwnProperty(question)) {
+                this.lifeInsightObj[question]['data'].push(parseInt(this.survey2[question]));
+              }
+              else {
+                this.lifeInsightObj[question]['data'].push(null);
+              }
+             } 
+          }
+      }
+        console.log("lifeInsightObj: "+JSON.stringify(this.lifeInsightObj));
+        //=======
         window.localStorage.setItem("lifeInsight", JSON.stringify(this.lifeInsightObj));
 
         //this.storeToFirebaseService.addSurvey('/results',this.survey2);
@@ -375,7 +336,7 @@ export class DynamicSurveyComponent implements OnInit {
         //console.log(this.survey2);
         
         //save to Amazon AWS S3
-        this.awsS3Service.upload(this.survey2);
+        this.awsS3Service.upload(this.fileLink,this.survey2);
         //console.log("End of storeData");
        
         /*
@@ -418,6 +379,8 @@ export class DynamicSurveyComponent implements OnInit {
         const f = factories.componentFactories[0];
         const cmpRef = this.vc.createComponent(f);
         cmpRef.instance.awsS3Service = this.awsS3Service;
+        cmpRef.instance.survey2 = this.survey;
+        cmpRef.instance.fileLink = this.fileLink;        
         //cmpRef.instance.storeToFirebaseService = this.storeToFirebaseService;
         cmpRef.instance.userProfileService = this.userProfileService;
         cmpRef.instance.awardDollarService = this.awardDollarService;
@@ -433,81 +396,6 @@ export class DynamicSurveyComponent implements OnInit {
   getTitle() {
     return this.title;
   }
-
-  /*
-  process_survey(obj, survey_string, i) {
-
-    survey_string = [survey_string,
-      '<div class="card"><div class="quetiontextstyle">',
-      obj.text,
-      '</div>'
-    ].join(" ");
-
-
-    //------------------------------------------------------ 
-    // radio button       
-    //------------------------------------------------------            
-    if (obj.type == "radiobutton") {
-
-      //------------------------------------------------------ 
-      //radio button, vertical     
-      //------------------------------------------------------   
-      if (obj.extra.orientation == "vertical") {
-        survey_string = survey_string + '<div class="radiovertical"><ul>';
-
-        for (var j = 0; j < obj.extra.choices.length; j++) {
-
-          survey_string = [survey_string,
-            '<li><input type="radio" id="option' + i + "I" + j + '" name="' + i + '" [(ngModel)]="survey2.' + i + '" value="' + obj.extra.choices[j] + '"  (change)="inputchanged(\'' + i + '\')">',
-            '<label for="option' + i + "I" + j + '">' + obj.extra.choices[j] + '</label>',
-            '<div class="check"></div></li>'
-          ].join(" ");
-
-        }
-        survey_string = survey_string + '</ul></div>';
-      }
-
-      //------------------------------------------------------ 
-      //radio button, vertical     
-      //------------------------------------------------------
-      if (obj.extra.orientation == "horizontal") {
-
-        survey_string = survey_string + '<div class="radiohorizontal"><ul>';
-
-        //starting text
-        survey_string = survey_string + '<li><p>' + obj.extra.choices[0] + '</p></li>';
-
-        //middle text
-        for (var j = 0; j < obj.extra.levels; j++) {
-          survey_string = [survey_string,
-            '<li><input type="radio" id="option' + i + "I" + j + '" name="Q' + i + '" [(ngModel)]="survey2.' + i + '" value="' + j + '"  (change)="inputchanged(\'' + i + '\')">',
-            '<label for="option' + i + "I" + j + '"></label>',
-            '<div class="check"></div></li>'
-          ].join(" ");
-        }
-
-        //ending text
-        survey_string = survey_string + '<li><p>' + obj.extra.choices[1] + '</p></li>';
-
-        survey_string = survey_string + '</ul></div>';
-      }
-
-    }
-
-
-    if (obj.type == "moodgrid2") {
-      survey_string = [survey_string,
-        '<canvas id="myCanvas" width="310" height="310" style="border:0px solid #000000;padding:10px;">',
-        'Your browser does not support the HTML5 canvas tag.',
-        '</canvas>'
-      ].join(" ");
-    }
-
-
-    survey_string = survey_string + '</div>';
-    return survey_string;
-  }
-  */
 
   // process survey if obj type is radiobutton
   process_survey_radiobutton(obj, survey_string, i){
