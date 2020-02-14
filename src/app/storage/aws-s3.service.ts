@@ -1,33 +1,46 @@
+//
+//--- The goal of this file is to serve as base class for all storeage classes,
+//    for example, store to firebase, azure, aws s3. All common functions used  
+//    to them will be added here in the future,
+
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
+import { StoreBaseService } from './storage-base.service';
 
 import * as AWS from 'aws-sdk';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AwsS3Service {
+export class AwsS3Service extends StoreBaseService {
   currentFile: File;
 
-  constructor() { }
+  constructor() { 
+    super();
+  }
 
-  upload(result){
+  upload(subfolder, result){
     var bucketName =  environment.awsConfig.bucketName;
     var bucketRegion = environment.awsConfig.bucketRegion;
     var IdentityPoolId = environment.awsConfig.IdentityPoolId;
-    var accessKeyId = environment.awsConfig.accessKeyId;
-    var secretAccessKey = environment.awsConfig.secretAccessKey;
-    
-    /*
+    //var accessKeyId = environment.awsConfig.accessKeyId;
+    //var secretAccessKey = environment.awsConfig.secretAccessKey;
+
+    //set properties after creating AWS.Config using the update method
     AWS.config.update({
       region: bucketRegion,
       credentials: new AWS.CognitoIdentityCredentials({
         IdentityPoolId: IdentityPoolId
       })
     });
-    */
+    
+    //creates a new Amazon S3 service object
+    var s3 = new AWS.S3({
+      apiVersion: '2006-03-01',
+      params: {Bucket: bucketName}
+    });  
 
-    const myS3Credentials = {
+    /*const myS3Credentials = {
       accessKeyId: accessKeyId,
       secretAcccessKey: secretAccessKey,
     };
@@ -37,21 +50,22 @@ export class AwsS3Service {
       params: {Bucket: bucketName},
       accessKeyId: accessKeyId,
       secretAccessKey: secretAccessKey
-    });  
+    });  */
 
-    this.currentFile = new File([JSON.stringify(result)], "result.json", {type: "text/plain"});
+    //create a file from result passed as a JSONObject
+    var fileName = "result"+new Date().getTime()+".json";
+    this.currentFile = new File([JSON.stringify(result)], fileName, {type: "text/plain"});
 
+    //upload currentFile to the subfolder in S3 bucket
     s3.upload({
       Bucket: bucketName,
-      Key: this.currentFile.name,
-      Body: this.currentFile,
-      ACL: 'public-read'
+      Key: subfolder+"/"+fileName,    
+      Body: this.currentFile
     }, function(err, data) {
       if (err) {
-        //return alert('There was an error uploading your photo: '+err.message);
         console.log('There was an error uploading your file: '+err.message);
       }
-      console.log('Successfully uploaded photo.');
+      console.log('Successfully uploaded file: '+fileName);
     });  
   }
 
