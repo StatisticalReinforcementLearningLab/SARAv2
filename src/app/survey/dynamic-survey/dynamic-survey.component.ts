@@ -11,6 +11,7 @@ import * as moment from 'moment';
 //import * as lifeInsightProfile from "../../../assets/data/life_insight.json";
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
+import { AwardDollarService } from 'src/app/incentive/award-money/award-dollar.service';
 
 @Component({
   selector: 'app-dynamic-survey',
@@ -47,7 +48,8 @@ export class DynamicSurveyComponent implements OnInit {
     private ga: GoogleAnalytics,
     private changeDetector : ChangeDetectorRef,
     public plt: Platform,
-    private userProfileService: UserProfileService) {
+    private userProfileService: UserProfileService,
+    private awardDollarService:AwardDollarService) {
   }
 
   ngOnInit() { }
@@ -112,6 +114,7 @@ export class DynamicSurveyComponent implements OnInit {
       plt: Platform;
       router: Router;
       userProfileService: UserProfileService;
+      awardDollarService: AwardDollarService;
 
       constructor() {
       }
@@ -247,6 +250,12 @@ export class DynamicSurveyComponent implements OnInit {
         this.totalPoints = this.totalPoints + 100;
         window.localStorage.setItem("TotalPoints", ""+this.totalPoints);
 
+
+
+        //
+        var dollars = this.awardDollarService.giveDollars();
+        console.log("Dollars: " + dollars);
+
         var lifeInsightProfile = {
             "questions":["Q3d","Q4d","Q5d","Q8d"],
             "qimgs": ["assets/img/stress.png","assets/img/freetime.png","assets/img/dance2.png","assets/img/social.png"],
@@ -301,6 +310,7 @@ export class DynamicSurveyComponent implements OnInit {
             if( dateIndex > -1 ) {
               this.lifeInsightObj[question]['dates'][dateIndex] =currentdate;
               if(this.survey2.hasOwnProperty(question)) {
+               //<<<<<<< liying-chop-s3
                 this.lifeInsightObj[question]['data'][dateIndex]=(parseInt(this.survey2[question]));
               }
               else {
@@ -318,6 +328,7 @@ export class DynamicSurveyComponent implements OnInit {
           }
       }
         console.log("lifeInsightObj: "+JSON.stringify(this.lifeInsightObj));
+        //=======
         window.localStorage.setItem("lifeInsight", JSON.stringify(this.lifeInsightObj));
 
         //this.storeToFirebaseService.addSurvey('/results',this.survey2);
@@ -372,6 +383,7 @@ export class DynamicSurveyComponent implements OnInit {
         cmpRef.instance.fileLink = this.fileLink;        
         //cmpRef.instance.storeToFirebaseService = this.storeToFirebaseService;
         cmpRef.instance.userProfileService = this.userProfileService;
+        cmpRef.instance.awardDollarService = this.awardDollarService;
         cmpRef.instance.EncrDecr = this.EncrDecr;
         cmpRef.instance.ga = this.ga;
         cmpRef.instance.plt = this.plt;
