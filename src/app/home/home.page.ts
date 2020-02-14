@@ -13,6 +13,7 @@ export class HomePage implements OnInit {
 
   private sub1$:any;
   private sub2$:any;
+  money = 0;
 
   @ViewChild(DemoAquariumComponent) child;
 
@@ -26,6 +27,7 @@ export class HomePage implements OnInit {
       console.log('****UserdashboardPage RESUMED****');
       this.child.resumeGameRendering();
     });
+      
   }
 
   ionViewDidLeave(){

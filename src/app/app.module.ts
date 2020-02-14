@@ -25,6 +25,7 @@ import { FormsModule } from '@angular/forms';
 import { CheatpageComponent } from './incentive/aquarium/cheatpage/cheatpage.component';
 import { UserModule } from './user/user.module';
 import { HomePageModule } from './home/home.module';
+import { AwardDollarService } from './incentive/award-money/award-dollar.service';
 
 @NgModule({
   declarations: [AppComponent,LoadingSpinnerComponent,CheatpageComponent],
@@ -49,6 +50,7 @@ import { HomePageModule } from './home/home.module';
     SplashScreen,
     File,
     OneSignal,
+    AwardDollarService,
     GoogleAnalytics,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
   ],

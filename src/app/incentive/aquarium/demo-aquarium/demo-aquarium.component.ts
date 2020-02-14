@@ -69,6 +69,7 @@ export class DemoAquariumComponent implements OnInit {
   survey_text; 
   //username;
   //totalPoints = 0;
+  money = 30;
 
   
   // totalPoints = 0;
@@ -110,6 +111,13 @@ export class DemoAquariumComponent implements OnInit {
 
     this.survey_text = "Start Survey";
     //this.username = "test";
+
+    if(window.localStorage['AwardDollar'] == undefined)
+        this.money = 0;
+    else
+        this.money = parseInt(window.localStorage['AwardDollar']);
+
+
   }
 
 
