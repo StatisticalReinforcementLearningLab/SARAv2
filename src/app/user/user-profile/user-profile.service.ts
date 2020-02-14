@@ -57,6 +57,39 @@ export class UserProfileService {
   }
 
  
+  calcDollars(){
+    //this method calculates the number of three day streaks
+    //then sets dollars = to number of three day streaks
+    let previousDate = new Date("1970-01-01");
+    let numStreaks = 0;
+    let streak = 1;
+    // console.log("calcDollars, # dates: " + this.userProfile.datesTaken.length);
+    for(var i=0;i<this.userProfile.datesTaken.length;i++){
+      let currentDateStr = this.userProfile.datesTaken[i];
+      let currentDate = new Date(currentDateStr.substr(0,4)+ "-" + currentDateStr.substr(4,2)+ "-" + currentDateStr.substr(6,2));
+      // console.log("calcDollars: " + currentDate);
+      let daysDiff = Math.round((currentDate.getTime()	 - previousDate.getTime()	)/(1000*60*60*24));
+      if (daysDiff ==0){ continue;}
+      if(daysDiff ==1){
+        streak++;
+        // console.log("streak: "+ streak);
+        if(streak ==3){
+          numStreaks++;
+          // reset
+          previousDate = new Date("1970-01-01");  //set previousDate to 1970-01-01
+          streak = 1;
+        } 
+      }
+      else{
+        //reset
+        streak =1;
+      }
+      previousDate = currentDate;
+    }  
+    console.log("numStreaks: " + numStreaks);
+    this.userProfile.dollars= numStreaks;
+  }
+
   get isActive(){
     //temporarily returning true until get the above commented out method working
     return true;
@@ -174,9 +207,11 @@ export class UserProfileService {
       console.log('surveyCompleted - in if loop');
       this.addDateTaken();
       this.addSurveyPoints();
+      this.calcDollars();
       this.userProfile.lastupdate =this.numericCurrenDateTime;
       const dateString: string = moment(this.userProfile.lastupdate).format('MMMM Do YYYY, h:mm:ss a Z');
       this.userProfile.readable_ts = dateString;
+      this.saveProfileToDevice();
       this.saveToServer();
     }
   }
