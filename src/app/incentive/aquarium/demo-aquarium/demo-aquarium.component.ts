@@ -332,12 +332,27 @@ export class DemoAquariumComponent implements OnInit {
     await alert.present();
   }
 
+  async presentAlertSurveyIsDone() {
+    const alert = await this.alertCtrl.create({
+      header: 'Alert',
+      subHeader: "Survey is not avaibable!",
+      message: 'Survey is already completed for the day.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
   startSurvey(){
     console.log('start survey');
     var currentTime = moment(); 
     var startTime = moment({hour: 18});  // 6pm
     var endTime = moment({hour: 23, minute: 59});  // 11:59pm
-    if(currentTime.isBetween(startTime, endTime)) {
+    if(!currentTime.isBetween(startTime, endTime)) {
+      this.presentAlert();
+    } else if( this.userProfileService.surveyTakenForCurrentDay) {
+      this.presentAlertSurveyIsDone();
+    } else {
       if (this.userProfileService.isParent){
         this.router.navigate(['survey/samplesurvey']);  //caregiversurvey
       } else{
@@ -346,14 +361,11 @@ export class DemoAquariumComponent implements OnInit {
       this.ga.trackEvent('Start survey Button', 'Tapped Action', 'Loading survey', 0)
       .then(() => {console.log("trackEvent for Start survey Button!")})
       .catch(e => alert("trackEvent for Start survey Button=="+e));
-    } else {
-      this.presentAlert();
-    }
+    } 
   }
 
   async openSurvey(location){
     this.router.navigate([location]);
   }
-
 
 }
