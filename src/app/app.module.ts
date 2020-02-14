@@ -8,7 +8,6 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
-import { File } from '@ionic-native/file/ngx';
 import { Injector } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -48,7 +47,6 @@ import { AwardDollarService } from './incentive/award-money/award-dollar.service
   providers: [
     StatusBar,
     SplashScreen,
-    File,
     OneSignal,
     AwardDollarService,
     GoogleAnalytics,
