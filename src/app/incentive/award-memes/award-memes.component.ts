@@ -32,7 +32,7 @@ export class AwardMemesComponent implements OnInit {
     .catch(e => console.log(e));
 
 
-    //his.drawConfetti();
+    //this.drawConfetti();
   }
 
   ngAfterViewInit() {
