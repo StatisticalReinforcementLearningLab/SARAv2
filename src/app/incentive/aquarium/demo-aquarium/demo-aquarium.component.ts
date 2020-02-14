@@ -339,7 +339,7 @@ export class DemoAquariumComponent implements OnInit {
     var endTime = moment({hour: 23, minute: 59});  // 11:59pm
     if(!currentTime.isBetween(startTime, endTime)) {
       this.presentAlert('Please start survey after 6pm.');
-    } else if(this.userProfileService.surveyTakenForCurrentDay) {
+    } else if(this.userProfileService.surveyTakenForCurrentDay()) {
       this.presentAlert('Survey is already completed for the day.');
     } else {
       if (this.userProfileService.isParent){
