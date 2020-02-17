@@ -1,0 +1,22 @@
+<modal-content class="ion-padding">
+  <ion-list>
+    <ion-list-header>
+      Congratulations!!!
+    </ion-list-header>
+
+
+    <ion-item *ngFor="let reinforcement of reinforcements"> 
+      <ion-thumbnail slot="start">
+        <img src="{{reinforcement.img}}">
+      </ion-thumbnail>
+      <ion-label text-wrap>
+        <h2>{{reinforcement.header}}</h2>
+        <h3>{{reinforcement.text}}</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</modal-content>
+
+<ion-footer align="right" no-border class="ion-padding">
+  <ion-button expand="block" color="primary" (click)="dismiss()">Close</ion-button>
+</ion-footer>
