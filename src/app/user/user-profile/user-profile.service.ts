@@ -73,6 +73,8 @@ export class UserProfileService {
     return this.userProfile.points;
   }
   get username(){
+    if(this.userProfile==undefined)
+      this.loadProfileFromDevice();
     return this.userProfile.username;
   }
   set username(username:string){
