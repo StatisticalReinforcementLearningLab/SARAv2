@@ -11,6 +11,7 @@ import { DemoAquariumComponent } from './aquarium/demo-aquarium/demo-aquarium.co
 import { AwardComponent } from './award/award.component';
 import { TreasurechestComponent } from './treasurechest/treasurechest.component';
 import { AwardAltruismComponent } from './award-altruism/award-altruism.component';
+import { ModalUnlockedPageComponent } from './aquarium/modal-unlocked-page/modal-unlocked-page.component';
 
 const routes: Routes = [
 //  { path: 'award', component: AwardComponent },
@@ -19,7 +20,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AwardComponent, AwardMemesComponent, AwardAltruismComponent, TreasurechestComponent],
+  declarations: [AwardComponent, AwardMemesComponent, AwardAltruismComponent, TreasurechestComponent, ModalUnlockedPageComponent],
   imports: [
     CommonModule,
     IonicModule.forRoot(),
@@ -31,6 +32,7 @@ const routes: Routes = [
     AwardAltruismComponent
     //VisualizationComponent
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  entryComponents: [ModalUnlockedPageComponent]
 })
 export class IncentiveModule { }
