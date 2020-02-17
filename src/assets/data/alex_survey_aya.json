@@ -72,7 +72,7 @@
     "text": "How <b>positive</b> were you feeling (for example, happy or joyful) just before you received this survey?",
     "type":"radiobutton",
     "extra":{
-      "choices": ["Not<br>at all", "Extremely<br>positive"],
+      "choices": ["Not<br>at all", "Extremely<br>Positive"],
       "orientation": "horizontal",
       "levels": 5
     }
@@ -83,7 +83,7 @@
     "text": "How <b>negative</b> were you feeling (for example, stressed, mad/angry, nervous/anxious, or sad) just before you received this survey?",
     "type": "radiobutton",
     "extra":{
-      "choices": ["Not<br>at all", "Extremely<br>negative"],
+      "choices": ["Not<br>at all", "Extremely<br>Negative"],
       "orientation": "horizontal",
       "levels": 5
     }
@@ -93,7 +93,7 @@
     "text": "How <b>lonely</b> are you currently feeling?",
     "type": "radiobutton",
     "extra":{
-      "choices": ["Not<br>at all", "Extremely<br>lonely"],
+      "choices": ["Not<br>at all", "Extremely<br>Lonely"],
       "orientation": "horizontal",
       "levels": 5
     }
@@ -126,7 +126,7 @@
     "text": "In the past 24 hours, how <b>easy</b> was it to talk to your parent about your thoughts and feelings?",
     "type": "radiobutton",
     "extra":{
-      "choices": ["Not<br>at all", "Extremely<br>easy"],
+      "choices": ["Not<br>at all", "Extremely<br>Easy"],
       "orientation": "horizontal",
       "levels": 5
     }

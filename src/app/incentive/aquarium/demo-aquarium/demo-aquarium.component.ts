@@ -45,10 +45,11 @@ import { TundraLevel1 } from '../demo-tundra/Tundra1';
 import { ActivatedRoute, Router, RouterEvent, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
 //import { PreLoad } from '../../../PreLoad';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
-import { Platform } from '@ionic/angular';
+import { Platform, ModalController } from '@ionic/angular';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import * as moment from 'moment';
 import { AlertController } from '@ionic/angular';
+import { ModalUnlockedPageComponent } from '../modal-unlocked-page/modal-unlocked-page.component';
 
 declare let Phaser: any;
 
@@ -76,10 +77,18 @@ export class DemoAquariumComponent implements OnInit {
     return this.userProfileService.points;
   }
   get isActive(){
-    return this.userProfileService.isActive;
+    if(this.userProfileService == undefined)
+      return true;
+    else
+      return this.userProfileService.isActive;
   }
   get username(){
-    return this.userProfileService.username;
+    if(this.userProfileService == undefined)
+      return "test";
+    else{
+      //console.log(this.userProfileService);
+      return this.userProfileService.username;
+    }
   }
 
 /*   get surveyPath(){
@@ -93,6 +102,7 @@ export class DemoAquariumComponent implements OnInit {
 
   constructor(private router: Router, 
     private alertCtrl: AlertController,
+    private modalController: ModalController,
     //private pickGameService: PickGameService,
     private ga: GoogleAnalytics,
     private platform: Platform,
@@ -118,6 +128,49 @@ export class DemoAquariumComponent implements OnInit {
         this.money = parseInt(window.localStorage['AwardDollar']);
 
 
+    //show modal on awards
+    this.showModal();
+  }
+
+  showModal(){
+    if(window.localStorage['IsModalShown'] == undefined)
+      return;
+
+    if(window.localStorage['IsModalShown'] == "false"){
+
+      //
+      var todaysDate = moment().format('YYYYMMDD');
+      var storedDate = window.localStorage['LastSurveyCompletionDate'];
+
+      //
+      if(todaysDate == storedDate){
+
+        //
+        var currentPoints = parseInt(window.localStorage['CurrentPoints']);
+        var previousPoints = parseInt(window.localStorage['PreviousPoints']);
+        var awardedDollar = parseInt(window.localStorage['AwardedDollar']);
+
+        this.presentModal(currentPoints, previousPoints, awardedDollar);
+
+      } 
+
+      //
+      window.localStorage.setItem("IsModalShown", "true");
+    }
+  }
+
+
+  //show unlocked pages, using a modal
+  async presentModal(currentPoints, previousPoints, awardedDollar) {
+    const modal = await this.modalController.create({
+      component: ModalUnlockedPageComponent,
+      componentProps: {
+        'currentPoints': currentPoints,
+        'previousPoints': previousPoints,
+        'awardedDollar': awardedDollar
+      }
+    });
+    return await modal.present();
   }
 
 
@@ -322,12 +375,24 @@ export class DemoAquariumComponent implements OnInit {
   }
 
   async presentAlert(alertMessage) {
+    
     const alert = await this.alertCtrl.create({
-      header: 'Alert',
-      subHeader: "Survey is not avaibable!",
+      //<div style="font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center">Thank you for completing the survey. You have unlocked a meme.</div>
+      //header: '<div style="line-height: 25px;padding-bottom:10px;text-align:center">Daily survey unavilable</div>',
+      header: 'Daily survey unavilable',
+      //subHeader: "Survey is not avaibable!",
       message: alertMessage,
-      buttons: ['OK']
+      //defined in theme/variables.scss
+      buttons: [{text: 'OK', cssClass: 'secondary'}]
     });
+    
+    /*
+    let alert = this.alertCtrl.create({
+      title: 'Low battery',
+      subTitle: '10% of battery remaining',
+      buttons: ['Dismiss']
+    });
+    */
 
     await alert.present();
   }
@@ -338,9 +403,9 @@ export class DemoAquariumComponent implements OnInit {
     var startTime = moment({hour: 18});  // 6pm
     var endTime = moment({hour: 23, minute: 59});  // 11:59pm
     if(!currentTime.isBetween(startTime, endTime)) {
-      this.presentAlert('Please start survey after 6pm.');
+      this.presentAlert('Survey is only available between 6PM and midnight');
     } else if(this.userProfileService.surveyTakenForCurrentDay()) {
-      this.presentAlert('Survey is already completed for the day.');
+      this.presentAlert('You have already completed the survey for the day.');
     } else {
       if (this.userProfileService.isParent){
         this.router.navigate(['survey/samplesurvey']);  //caregiversurvey
