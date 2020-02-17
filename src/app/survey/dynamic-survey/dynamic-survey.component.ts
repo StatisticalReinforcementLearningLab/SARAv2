@@ -253,8 +253,17 @@ export class DynamicSurveyComponent implements OnInit {
 
 
         //
+        var pastDollars = this.awardDollarService.getDollars();
         var dollars = this.awardDollarService.giveDollars();
         console.log("Dollars: " + dollars);
+
+        window.localStorage.setItem("LastSurveyCompletionDate", ""+moment().format('YYYYMMDD'));
+        window.localStorage.setItem("CurrentPoints", ""+ this.userProfileService.points);
+        window.localStorage.setItem("PreviousPoints", ""+ (this.userProfileService.points-100));
+        window.localStorage.setItem("AwardedDollar", ""+ (dollars-pastDollars));
+        window.localStorage.setItem("IsModalShown", "false");
+
+
 
         var lifeInsightProfile = {
             "questions":["Q3d","Q4d","Q5d","Q8d"],
@@ -293,8 +302,7 @@ export class DynamicSurveyComponent implements OnInit {
               this.lifeInsightObj[question]['data'] = [null];
             }
           }         
-        }
-        else {
+        } else {
            this.lifeInsightObj= JSON.parse(window.localStorage["lifeInsight"]);
 
            for (let question of questionsArray) {   
@@ -336,7 +344,7 @@ export class DynamicSurveyComponent implements OnInit {
         //console.log(this.survey2);
         
         //save to Amazon AWS S3
-        this.awsS3Service.upload(this.fileLink,this.survey2);
+        this.awsS3Service.upload(this.fileLink, this.survey2);
         //console.log("End of storeData");
        
         /*
