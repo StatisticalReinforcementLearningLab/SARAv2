@@ -4,6 +4,8 @@ export class UserProfile {
                      };
     public daily_streak ={};
     public imei:string = "0";
+    public dollars: number = 0 ;
+
     // had change below replacing - with _
     public life_insights = {"daily_survey": {}};
     public reinfrocement_data = {};
