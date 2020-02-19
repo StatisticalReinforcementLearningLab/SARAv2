@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SaveDataService } from './save-data.service';
+import { AwardDollarService } from './award-dollar.service';
 
-describe('SaveDataService', () => {
+describe('AwardDollarService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: SaveDataService = TestBed.get(SaveDataService);
+    const service: AwardDollarService = TestBed.get(AwardDollarService);
     expect(service).toBeTruthy();
   });
 });

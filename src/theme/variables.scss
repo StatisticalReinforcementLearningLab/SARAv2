@@ -74,4 +74,35 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  
+}
+
+
+.secondary {
+  color: #A0A !important;
+  font-size: 2em !important;
+}
+
+ion-modal {
+  padding: 50px;
+  background: #0000004d;
+  border:#0000004d solid 8px;
+  border-radius: 16px;
+}
+
+
+ion-modal.auto-height {
+  --height: auto;
+  .modal-wrapper{
+    width: 90vw;
+    .ion-page {
+      position: relative;
+      contain: content;
+      max-height: 90vh;
+      .modal-content {
+        overflow: auto;
+      }
+    }
+  }
 }
