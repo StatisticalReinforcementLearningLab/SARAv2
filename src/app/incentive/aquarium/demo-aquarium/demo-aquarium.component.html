@@ -4,11 +4,12 @@
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons-->
     <ion-buttons slot="end">
+        <font color="white">${{money}}</font>
         <ion-button style="color:#fff;" (click)="startCheatPage()">
           <ion-icon name="alert"></ion-icon>
         </ion-button>
         <ion-text  *ngIf="!isActive" style="color:#fff;"><strong>Account is Paused</strong> </ion-text>
-        <ion-button style="color:#fff;" href="{{surveyPath}}" *ngIf="isActive">
+        <ion-button style="color:#fff;" (click)="startSurvey()">
           <ion-icon name="journal"></ion-icon>
         </ion-button>
         <!--
@@ -28,7 +29,7 @@
 <ion-content>
   <div id="gameDiv"></div>
   <p  style="padding-top:10px;padding-bottom:0px;padding-left:10px;"><b>Username</b>: {{username}}</p>  
-
+  <ion-button color="primary" (click)="presentModal()">Show modal</ion-button>
   
 
   <!--

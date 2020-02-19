@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
-
 import { BootL1 } from '../levels/FishBowlL1/Boot';
 import { PreloaderL1 } from '../levels/FishBowlL1/Preloader';
 import { FishBowlL1 } from '../levels/FishBowlL1/Game';
@@ -47,11 +45,13 @@ import { TundraLevel1 } from '../demo-tundra/Tundra1';
 import { ActivatedRoute, Router, RouterEvent, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
 //import { PreLoad } from '../../../PreLoad';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
-import { Platform } from '@ionic/angular';
+import { Platform, ModalController } from '@ionic/angular';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
+import * as moment from 'moment';
+import { AlertController } from '@ionic/angular';
+import { ModalUnlockedPageComponent } from '../modal-unlocked-page/modal-unlocked-page.component';
 
 declare let Phaser: any;
-
 
 @Component({
   selector: 'app-demo-aquarium',
@@ -69,6 +69,7 @@ export class DemoAquariumComponent implements OnInit {
   survey_text; 
   //username;
   //totalPoints = 0;
+  money = 30;
 
   
   // totalPoints = 0;
@@ -76,22 +77,32 @@ export class DemoAquariumComponent implements OnInit {
     return this.userProfileService.points;
   }
   get isActive(){
-    return this.userProfileService.isActive;
+    if(this.userProfileService == undefined)
+      return true;
+    else
+      return this.userProfileService.isActive;
   }
   get username(){
-    return this.userProfileService.username;
+    if(this.userProfileService == undefined)
+      return "test";
+    else{
+      //console.log(this.userProfileService);
+      return this.userProfileService.username;
+    }
   }
 
-  get surveyPath(){
+/*   get surveyPath(){
     if (this.userProfileService.isParent){
       return "survey/samplesurvey"; //"/survey/caregiversurvey"
     } else{
       return "survey/samplesurvey2"; //"/survey/ayasurvey"
     }
-  }
+  } */
 
 
   constructor(private router: Router, 
+    private alertCtrl: AlertController,
+    private modalController: ModalController,
     //private pickGameService: PickGameService,
     private ga: GoogleAnalytics,
     private platform: Platform,
@@ -110,6 +121,56 @@ export class DemoAquariumComponent implements OnInit {
 
     this.survey_text = "Start Survey";
     //this.username = "test";
+
+    if(window.localStorage['AwardDollar'] == undefined)
+        this.money = 0;
+    else
+        this.money = parseInt(window.localStorage['AwardDollar']);
+
+
+    //show modal on awards
+    this.showModal();
+  }
+
+  showModal(){
+    if(window.localStorage['IsModalShown'] == undefined)
+      return;
+
+    if(window.localStorage['IsModalShown'] == "false"){
+
+      //
+      var todaysDate = moment().format('YYYYMMDD');
+      var storedDate = window.localStorage['LastSurveyCompletionDate'];
+
+      //
+      if(todaysDate == storedDate){
+
+        //
+        var currentPoints = parseInt(window.localStorage['CurrentPoints']);
+        var previousPoints = parseInt(window.localStorage['PreviousPoints']);
+        var awardedDollar = parseInt(window.localStorage['AwardedDollar']);
+
+        this.presentModal(currentPoints, previousPoints, awardedDollar);
+
+      } 
+
+      //
+      window.localStorage.setItem("IsModalShown", "true");
+    }
+  }
+
+
+  //show unlocked pages, using a modal
+  async presentModal(currentPoints, previousPoints, awardedDollar) {
+    const modal = await this.modalController.create({
+      component: ModalUnlockedPageComponent,
+      componentProps: {
+        'currentPoints': currentPoints,
+        'previousPoints': previousPoints,
+        'awardedDollar': awardedDollar
+      }
+    });
+    return await modal.present();
   }
 
 
@@ -196,11 +257,6 @@ export class DemoAquariumComponent implements OnInit {
         this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 74, Phaser.AUTO, 'gameDiv');    
     else
         this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 100, Phaser.AUTO, 'gameDiv');
-
-
-    
-    
-
 
     //this.totalPoints = 2125;
 
@@ -307,21 +363,63 @@ export class DemoAquariumComponent implements OnInit {
     this.game.state.states[this.pickedGame].yourGameResumedFunc();
   }
 
+  ngAfterViewInit(){
+    this.ga.trackView('Aquarium')
+    .then(() => {console.log("trackView at Aquarium!")})
+    .catch(e => console.log(e));
+        
+  }  
 
+  ionViewDidLeave(){
+    this.game.destroy();
+  }
+
+  async presentAlert(alertMessage) {
+    
+    const alert = await this.alertCtrl.create({
+      //<div style="font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center">Thank you for completing the survey. You have unlocked a meme.</div>
+      //header: '<div style="line-height: 25px;padding-bottom:10px;text-align:center">Daily survey unavilable</div>',
+      header: 'Daily survey unavilable',
+      //subHeader: "Survey is not avaibable!",
+      message: alertMessage,
+      //defined in theme/variables.scss
+      buttons: [{text: 'OK', cssClass: 'secondary'}]
+    });
+    
+    /*
+    let alert = this.alertCtrl.create({
+      title: 'Low battery',
+      subTitle: '10% of battery remaining',
+      buttons: ['Dismiss']
+    });
+    */
+
+    await alert.present();
+  }
 
   startSurvey(){
     console.log('start survey');
-    this.openSurvey('survey/samplesurvey');
+    var currentTime = moment(); 
+    var startTime = moment({hour: 18});  // 6pm
+    var endTime = moment({hour: 23, minute: 59});  // 11:59pm
+    if(!currentTime.isBetween(startTime, endTime)) {
+      this.presentAlert('Survey is only available between 6PM and midnight');
+    } else if(this.userProfileService.surveyTakenForCurrentDay()) {
+      this.presentAlert('You have already completed the survey for the day.');
+    } else {
+      if (this.userProfileService.isParent){
+        this.router.navigate(['survey/samplesurvey']);  //caregiversurvey
+      } else{
+        this.router.navigate(['survey/samplesurvey2']);  //aya
+      }
+      this.ga.trackEvent('Start survey Button', 'Tapped Action', 'Loading survey', 0)
+      .then(() => {console.log("trackEvent for Start survey Button!")})
+      .catch(e => alert("trackEvent for Start survey Button=="+e));
+    } 
   }
 
   async openSurvey(location){
     this.router.navigate([location]);
   }
-
-  startSurveyAYA(){
-    console.log('start survey');
-    this.openSurvey('survey/samplesurvey2');
-  }
-  
 
 }
