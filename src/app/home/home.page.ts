@@ -13,8 +13,9 @@ export class HomePage implements OnInit {
 
   private sub1$:any;
   private sub2$:any;
+  money = 0;
 
-  @ViewChild(DemoAquariumComponent) child;
+  @ViewChild(DemoAquariumComponent, {static: true}) child;
 
   constructor(private platform: Platform) { 
     console.log("Constructor called");
@@ -26,6 +27,7 @@ export class HomePage implements OnInit {
       console.log('****UserdashboardPage RESUMED****');
       this.child.resumeGameRendering();
     });
+      
   }
 
   ionViewDidLeave(){
@@ -46,7 +48,4 @@ export class HomePage implements OnInit {
     //throw new Error("Method not implemented.");
   }
   
-
-
-
 }

@@ -9,7 +9,7 @@ import { Chart } from 'chart.js';
 })
 export class Q1MotivatedComponent implements OnInit {
 
-  @ViewChild('lineCanvas') lineCanvas: ElementRef<HTMLDivElement>;
+  @ViewChild('lineCanvas', {static: true}) lineCanvas: ElementRef<HTMLDivElement>;
   //@Input() inputStr : string;
   //@Input() jsonObj : any;
   private _jsonObj: any;
