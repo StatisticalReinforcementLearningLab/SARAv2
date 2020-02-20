@@ -19,9 +19,11 @@ export class UserProfile {
         'points': 0,
         'weekly_survey':{}
     };
+
+    
     public username: string;
-    public isParent?: boolean;
-    public isActive: boolean;
+    // public isParent?: boolean;
+    // public isActive: boolean;
     public datesTaken: string[];
     public points: number;
     public badgeCount: number;
@@ -29,14 +31,14 @@ export class UserProfile {
     //refresh token 
 
     constructor(username: string, 
-                isParent: boolean, 
+                // isParent: boolean, 
                 datesTaken: string[], 
                 points: number,
                 badgeCount: number,
                 lastupdate: number,
                 readable_ts: string){        
         // this.userID = userID;
-        this.isParent = isParent;
+        // this.isParent = isParent;
         this.username = username;
         this.datesTaken = datesTaken;
         this.points = points;
