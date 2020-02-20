@@ -25,6 +25,7 @@ import { CheatpageComponent } from './incentive/aquarium/cheatpage/cheatpage.com
 import { UserModule } from './user/user.module';
 import { HomePageModule } from './home/home.module';
 import { AwardDollarService } from './incentive/award-money/award-dollar.service';
+import { AppVersion } from '@ionic-native/app-version/ngx';
 
 @NgModule({
   declarations: [AppComponent,LoadingSpinnerComponent,CheatpageComponent],
@@ -50,6 +51,7 @@ import { AwardDollarService } from './incentive/award-money/award-dollar.service
     OneSignal,
     AwardDollarService,
     GoogleAnalytics,
+    AppVersion,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
   ],
   bootstrap: [AppComponent]
