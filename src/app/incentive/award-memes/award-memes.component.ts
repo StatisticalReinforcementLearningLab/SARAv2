@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-award-memes',
@@ -13,6 +13,8 @@ export class AwardMemesComponent implements OnInit {
 
   whichImage: string;
   meme_data: any;
+  date;
+  prob;
 
   viewWidth = 512;
   viewHeight = 350;
@@ -23,8 +25,16 @@ export class AwardMemesComponent implements OnInit {
 
   //src="{{whichImage}}"
   constructor(private ga: GoogleAnalytics,
+    private route: ActivatedRoute,     
     private router: Router) {
-  }
+      this.route.queryParams.subscribe(params => {
+        if (this.router.getCurrentNavigation().extras.state) {
+          this.date = this.router.getCurrentNavigation().extras.state.date;
+          this.prob = this.router.getCurrentNavigation().extras.state.prob;
+          console.log("Inside AwardMemes, date is: " +this.date+" prob is: "+this.prob);
+        }
+      });    
+    }
 
   ngOnInit() {
     this.ga.trackView('Life-insight')
@@ -59,10 +69,13 @@ export class AwardMemesComponent implements OnInit {
   }
   
   ratingChanged(rating){
-    if(rating==0)
+    if(rating==0) {
       console.log("thumbs down");
-    else
+      window.localStorage.setItem("Like", "No");
+    } else {
       console.log("thumbs up");
+      window.localStorage.setItem("Like", "Yes");
+    }
     
     //this.router.navigate(['incentive/aquarium/aquariumone']);
     //this.router.navigate(['/home']);
