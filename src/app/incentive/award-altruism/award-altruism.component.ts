@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-award-altruism',
@@ -10,14 +11,28 @@ export class AwardAltruismComponent implements OnInit {
 
   whichImage: string;
   altruism_data: any;
+  date;
+  prob;
 
   constructor(    
-    private ga: GoogleAnalytics) { }
+    private ga: GoogleAnalytics,
+    private route: ActivatedRoute, 
+    private router: Router) { 
+      this.route.queryParams.subscribe(params => {
+        if (this.router.getCurrentNavigation().extras.state) {
+          this.date = this.router.getCurrentNavigation().extras.state.date;
+          this.prob = this.router.getCurrentNavigation().extras.state.prob;
+          console.log("Inside AwardAltruism, date is: " +this.date+" prob is: "+this.prob);
+        }
+      });      
+    }
 
   ngOnInit() {
     this.ga.trackView('Award-altruism')
     .then(() => {console.log("trackView at award-altruism!")})
     .catch(e => console.log(e));
+
+
 
   }
 
@@ -43,10 +58,14 @@ export class AwardAltruismComponent implements OnInit {
   }
   
   ratingChanged(rating){
-    if(rating==0)
+    if(rating==0) {
       console.log("thumbs down");
-    else
+      window.localStorage.setItem("Like", "No");
+    } else {
       console.log("thumbs up");
+      window.localStorage.setItem("Like", "Yes");
+    }
+
     
     window.location.href = '/home';
   }
