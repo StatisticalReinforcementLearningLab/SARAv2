@@ -397,6 +397,10 @@ export class DemoAquariumComponent implements OnInit {
     await alert.present();
   }
 
+  dispalySurveyPausedMsg(){
+    this.presentAlert('This account has been temporarily paused by the research administrators.');    
+  }
+
   startSurvey(){
     console.log('start survey');
     var currentTime = moment(); 

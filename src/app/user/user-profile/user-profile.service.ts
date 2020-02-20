@@ -44,7 +44,7 @@ export class UserProfileService {
           const username = localStorage.getItem('loggedInUser');
           const currenttime:Date = new Date();
           const dateString: string = moment(currenttime).format('MMMM Do YYYY, h:mm:ss a Z');
-          this.userProfile = new UserProfile(username,false,[],0,0,currenttime.getTime(), dateString);
+          this.userProfile = new UserProfile(username,[],0,0,currenttime.getTime(), dateString);
         }
         else{
           this.userProfile = response1;
@@ -91,14 +91,12 @@ export class UserProfileService {
   }
 
   get isActive(){
-    //temporarily returning true until get the above commented out method working
-    return true;
-    //return this.userProfileFixed.isActive;
+    return this.userProfileFixed.isActive;
   }
   get isParent(){
-    //temporarily returning true until get the above commented out method working
-    return false;
-    //return this.userProfileFixed.isParent;
+    // //temporarily returning true until get the above commented out method working
+    // return false;
+    return this.userProfileFixed.isParent;
   }
   get points(){
     if(this.userProfile==undefined)
@@ -133,7 +131,7 @@ export class UserProfileService {
           const username = localStorage.getItem('loggedInUser');
           const currenttime:Date = new Date();
           const dateString: string = moment(currenttime).format('MMMM Do YYYY, h:mm:ss a Z');
-          this.userProfile = new UserProfile(username,false,[],0,0,currenttime.getTime(), dateString);
+          this.userProfile = new UserProfile(username,[],0,0,currenttime.getTime(), dateString);
         }else{
           this.userProfile = response;
         }
@@ -170,7 +168,7 @@ export class UserProfileService {
   initTestProfile(){
     const currenttime:Date = new Date();
     const dateString: string = moment(currenttime).format('MMMM Do YYYY, h:mm:ss a Z');
-    const userProfile = new UserProfile('testy',false,  [], 0, 3, currenttime.getTime(), dateString);
+    const userProfile = new UserProfile('testy',  [], 0, 3, currenttime.getTime(), dateString);
     this.userProfile = userProfile;
     this.saveProfileToDevice();
     //STORE ON DEVICE
