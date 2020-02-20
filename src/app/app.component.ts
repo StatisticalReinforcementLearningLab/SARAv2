@@ -22,6 +22,7 @@ import { Subscription } from 'rxjs';
 export class AppComponent {
   public isShowingRouteLoadIndicator: boolean;
   loading;
+  isLoading = true;
 
   constructor(
     private router: Router, 
@@ -60,7 +61,7 @@ export class AppComponent {
           console.log(event.route.path);
 
           // if(event.route.path == "survey")
-          //    this.dismissLaoding();
+          //    this.dismissLoading();
 
           //console.log(event);
           //this.survey_text = "Start survey";
@@ -97,19 +98,24 @@ export class AppComponent {
     }
   }
 
-
   initializeApp() {
 
 
     this.authService.autoLogin();
     if(this.authService.isLoggedIn()){
-      this.userSub = this.userProfileService.initializeObs().subscribe();
+      this.showLoading();
+      this.userSub = this.userProfileService.initializeObs().subscribe(() =>{        
+        this.dismissLoading();
+        this.isLoading = false;
+      });
       // this.userProfileService.initialize();
       // if we can for things to wait to progress in here
       // then, we'll only need to load user profile here and at login in Auth component
     }
-
-
+    else{
+      this.dismissLaoading();
+      this.isLoading = false;
+    }
 
     this.platform.ready().then(() => {
       //this.statusBar.styleDefault();
@@ -148,7 +154,7 @@ export class AppComponent {
 
   }
 
-  async showLaoding(){
+  async showLoading(){
     this.loading = await this.loadingController.create({
       message: "Loading...",
       spinner: "lines",
@@ -158,7 +164,7 @@ export class AppComponent {
     this.loading.present();
   }
 
-  async dismissLaoding(){
+  async dismissLoading(){
     this.loading.dismiss();
   }
 
