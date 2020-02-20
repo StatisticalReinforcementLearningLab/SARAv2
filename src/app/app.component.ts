@@ -113,7 +113,7 @@ export class AppComponent {
       // then, we'll only need to load user profile here and at login in Auth component
     }
     else{
-      this.dismissLaoading();
+      this.dismissLoading();
       this.isLoading = false;
     }
 
