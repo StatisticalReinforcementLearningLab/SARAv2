@@ -92,6 +92,10 @@ export class EncrDecrService {
     return decrypted.toString(CryptoJS.enc.Utf8);
   }
 
+  getSHA256(inputStr){
+    return CryptoJS.SHA256(inputStr);
+  }
+
 
 }
 
