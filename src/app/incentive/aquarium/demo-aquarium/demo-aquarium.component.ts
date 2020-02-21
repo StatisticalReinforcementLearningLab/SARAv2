@@ -101,11 +101,6 @@ export class DemoAquariumComponent implements OnInit {
     this.survey_text = "Start Survey";
     //this.username = "test";
 
-    if(window.localStorage['AwardDollar'] == undefined)
-        this.money = 0;
-    else
-        this.money = parseInt(window.localStorage['AwardDollar']);
-
 
     //show modal on awards
     this.showModal();
