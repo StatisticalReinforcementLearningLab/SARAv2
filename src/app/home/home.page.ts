@@ -55,6 +55,12 @@ export class HomePage implements OnInit {
       console.log('****UserdashboardPage RESUMED****');
       this.child.resumeGameRendering();
     });
+
+
+    if(window.localStorage['AwardDollar'] == undefined)
+        this.money = 0;
+    else
+        this.money = parseInt(window.localStorage['AwardDollar']);
       
   }
 
