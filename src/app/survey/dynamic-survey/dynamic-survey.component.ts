@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 //import { StoreToFirebaseService } from '../../storage/store-to-firebase.service';
 import { AwsS3Service } from '../../storage/aws-s3.service';
 import { EncrDecrService } from '../../storage/encrdecrservice.service';
-import { Platform } from '@ionic/angular';
+import { Platform, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 //import { PreLoad } from '../../PreLoad';
@@ -48,6 +48,7 @@ export class DynamicSurveyComponent implements OnInit {
     private ga: GoogleAnalytics,
     private changeDetector : ChangeDetectorRef,
     public plt: Platform,
+    private alertCtrl: AlertController,
     private userProfileService: UserProfileService,
     private awardDollarService:AwardDollarService) {
   }
@@ -98,12 +99,13 @@ export class DynamicSurveyComponent implements OnInit {
       this.survey[obj.name] = "";
       this.survey_string = this.process_survey(obj, this.survey_string, obj.name);
     }
-    this.survey_string = this.survey_string + '<div class="ion-padding"><button class="buttonold button-positive" (click)="storeData()">Submit</button></div>';
+    this.survey_string = this.survey_string + '<div class="ion-padding"><button class="buttonold button-positive" (click)="submitSurvey()">Submit</button></div>';
 
 
     const tmpCmp = Component({ template: this.survey_string })(class implements OnInit{
       
       survey2 = {};
+      isQuestionIncomplete = {};
       fileLink;
       lifeInsightObj = {};
       //storeToFirebaseService: StoreToFirebaseService;
@@ -115,12 +117,19 @@ export class DynamicSurveyComponent implements OnInit {
       router: Router;
       userProfileService: UserProfileService;
       awardDollarService: AwardDollarService;
+      survey_data = [];
+      alertCtrl;
 
       constructor() {
       }
 
       ngOnInit() {
         this.survey2['starttimeUTC'] = new Date().getTime();
+        this.survey2['reponse_ts']={};
+        for (var i = 0; i < this.survey_data.length; i++) {
+          var obj = this.survey_data[i];
+          this.isQuestionIncomplete[obj.name] = {"tag": obj.tag};
+        }
       }
 
       ngAfterViewInit() {
@@ -202,7 +211,58 @@ export class DynamicSurveyComponent implements OnInit {
       }
       inputchanged(questions) {
         //console.log('holla: ' + questions);
+
+        this.survey2['reponse_ts'][questions] = {};
+        this.survey2['reponse_ts'][questions].ts = Date.now();
+        this.survey2['reponse_ts'][questions].readable_ts = moment().format("MMMM Do YYYY, h:mm:ss a");
+
+        
+
+        delete this.isQuestionIncomplete[questions];//remove the key from isQuestionIncomplete
+
+
         console.log(JSON.stringify(this.survey2));
+      }
+
+      submitSurvey(){
+        if(this.isEmpty(this.isQuestionIncomplete))//means all questions have been removed
+          this.storeData();
+        else{
+          var incompleteQuestions = "";
+          for(var prop in this.isQuestionIncomplete) {
+            incompleteQuestions = incompleteQuestions + " " + this.isQuestionIncomplete[prop]["tag"] + ",";
+          }
+          incompleteQuestions = incompleteQuestions.substring(0, incompleteQuestions.length - 1);
+          this. presentAlert("You haven't completed questions:" + incompleteQuestions);
+        }
+      }
+
+
+      async presentAlert(alertMessage) {
+    
+        const alert = await this.alertCtrl.create({
+          //<div style="font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center">Thank you for completing the survey. You have unlocked a meme.</div>
+          //header: '<div style="line-height: 25px;padding-bottom:10px;text-align:center">Daily survey unavilable</div>',
+          header: 'Daily survey unavilable',
+          //subHeader: "Survey is not avaibable!",
+          message: alertMessage,
+          //defined in theme/variables.scss
+          buttons: [{text: 'OK', cssClass: 'secondary'}]
+        });
+        
+        /*
+        let alert = this.alertCtrl.create({
+          title: 'Low battery',
+          subTitle: '10% of battery remaining',
+          buttons: ['Dismiss']
+        });
+        */
+    
+        await alert.present();
+      }
+
+      isEmpty(obj) {      
+        return JSON.stringify(obj) === JSON.stringify({});
       }
 
       storeData(){
@@ -388,7 +448,9 @@ export class DynamicSurveyComponent implements OnInit {
         const cmpRef = this.vc.createComponent(f);
         cmpRef.instance.awsS3Service = this.awsS3Service;
         cmpRef.instance.survey2 = this.survey;
-        cmpRef.instance.fileLink = this.fileLink;        
+        cmpRef.instance.fileLink = this.fileLink; 
+        cmpRef.instance.survey_data = this.survey_data;    
+        cmpRef.instance.alertCtrl = this.alertCtrl;
         //cmpRef.instance.storeToFirebaseService = this.storeToFirebaseService;
         cmpRef.instance.userProfileService = this.userProfileService;
         cmpRef.instance.awardDollarService = this.awardDollarService;
