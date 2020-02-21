@@ -68,6 +68,19 @@ export class DemoAquariumComponent implements OnInit {
   public isShowingRouteLoadIndicator: boolean;
   survey_text; 
   
+  // totalPoints = 0;
+  get totalPoints(){
+    return this.userProfileService.points;
+  }
+
+  get username(){
+    if(this.userProfileService == undefined)
+      return "test";
+    else{
+      //console.log(this.userProfileService);
+      return this.userProfileService.username;
+    }
+  }
 
 
 /*   get surveyPath(){
