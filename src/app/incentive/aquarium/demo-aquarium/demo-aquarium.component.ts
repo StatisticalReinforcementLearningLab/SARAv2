@@ -68,6 +68,19 @@ export class DemoAquariumComponent implements OnInit {
   public isShowingRouteLoadIndicator: boolean;
   survey_text; 
   
+  // totalPoints = 0;
+  get totalPoints(){
+    return this.userProfileService.points;
+  }
+
+  get username(){
+    if(this.userProfileService == undefined)
+      return "test";
+    else{
+      //console.log(this.userProfileService);
+      return this.userProfileService.username;
+    }
+  }
 
 
 /*   get surveyPath(){
@@ -100,11 +113,6 @@ export class DemoAquariumComponent implements OnInit {
 
     this.survey_text = "Start Survey";
     //this.username = "test";
-
-    if(window.localStorage['AwardDollar'] == undefined)
-        this.money = 0;
-    else
-        this.money = parseInt(window.localStorage['AwardDollar']);
 
 
     //show modal on awards
