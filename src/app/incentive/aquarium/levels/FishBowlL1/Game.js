@@ -51,11 +51,12 @@ export class FishBowlL1 extends Phaser.State {
         this.addFishes();
 
         //
+        /*
         var journal = this.add.image(this.CANVAS_WIDTH - 70, 10, 'journal');
         journal.scale.setTo(0.4, 0.4);
         journal.inputEnabled = true;
         journal.events.onInputDown.add(this.logdata, this);
-
+        */
 
         //
         var treasure = this.add.image(90, this.height-80, 'treasure');
