@@ -21,23 +21,12 @@ export class HomePage implements OnInit {
   @ViewChild(DemoAquariumComponent, {static: true}) child;
 
 
-  // totalPoints = 0;
-  get totalPoints(){
-    return this.userProfileService.points;
-  }
+
   get isActive(){
     if(this.userProfileService == undefined)
       return true;
     else
       return this.userProfileService.isActive;
-  }
-  get username(){
-    if(this.userProfileService == undefined)
-      return "test";
-    else{
-      //console.log(this.userProfileService);
-      return this.userProfileService.username;
-    }
   }
 
   startCheatPage(){
@@ -45,7 +34,9 @@ export class HomePage implements OnInit {
     this.router.navigate(['incentive/cheatpoints']);
   }
 
-  constructor(private platform: Platform, private alertCtrl: AlertController, private router: Router, private userProfileService: UserProfileService) { 
+  constructor(private platform: Platform, private alertCtrl: AlertController, 
+    private router: Router, 
+    private userProfileService: UserProfileService) { 
     console.log("Constructor called");
     this.sub1$=this.platform.pause.subscribe(() => {        
       console.log('****UserdashboardPage PAUSED****');
