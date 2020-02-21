@@ -54,7 +54,7 @@ export class AwsS3Service extends StoreBaseService {
     });  */
 
     //create a file from result passed as a JSONObject
-    var fileName = "result"+ this.EncrDecr.getSHA256(new Date().getTime())+".json";
+    var fileName = this.EncrDecr.getSHA256(new Date().getTime())+".json";
     this.currentFile = new File([JSON.stringify(result)], fileName, {type: "text/plain"});
 
     //upload currentFile to the subfolder in S3 bucket
