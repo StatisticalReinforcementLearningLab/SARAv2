@@ -35,6 +35,12 @@ export class TreasurechestComponent implements OnInit {
     //add the money
     this.amount_earned = "$" + badges['money']
 
+    //
+    if(window.localStorage['AwardDollar'] == undefined)
+        this.amount_earned = "$" + 0;
+    else
+        this.amount_earned = "$" + parseInt(window.localStorage['AwardDollar']);
+
 
 
     //add the badges for daily survey
