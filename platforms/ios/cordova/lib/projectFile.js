@@ -40,8 +40,27 @@ function parseProjectFile (locations) {
     var xcodeproj = xcode.project(pbxPath);
     xcodeproj.parseSync();
 
+    /*
     var xcBuildConfiguration = xcodeproj.pbxXCBuildConfigurationSection();
     var plist_file_entry = _.find(xcBuildConfiguration, function (entry) { return entry.buildSettings && entry.buildSettings.INFOPLIST_FILE; });
+    */
+
+   //solution comes from here: https://github.com/apache/cordova-ios/issues/764
+   var projectName = fs
+    .readdirSync(project_dir)
+    .find(d => d.includes(".xcworkspace"))
+    .replace(".xcworkspace", "");
+
+    var xcBuildConfiguration = xcodeproj.pbxXCBuildConfigurationSection();
+    var plist_file_entry = _.find(xcBuildConfiguration, function(entry) {
+        return (
+        entry.buildSettings &&
+        entry.buildSettings.INFOPLIST_FILE &&
+        entry.buildSettings.INFOPLIST_FILE.includes(projectName)
+        );
+    });
+
+
     var plist_file = path.join(project_dir, plist_file_entry.buildSettings.INFOPLIST_FILE.replace(/^"(.*)"$/g, '$1').replace(/\\&/g, '&'));
     var config_file = path.join(path.dirname(plist_file), 'config.xml');
 

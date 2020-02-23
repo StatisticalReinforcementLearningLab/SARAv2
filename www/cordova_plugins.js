@@ -237,6 +237,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "OneSignal"
       ]
+    },
+    {
+      "id": "cordova-plugin-app-version.AppVersionPlugin",
+      "file": "plugins/cordova-plugin-app-version/www/AppVersionPlugin.js",
+      "pluginId": "cordova-plugin-app-version",
+      "clobbers": [
+        "cordova.getAppVersion"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -248,6 +256,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-splashscreen": "5.0.2",
     "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-whitelist": "1.3.3",
-    "onesignal-cordova-plugin": "2.8.2"
+    "onesignal-cordova-plugin": "2.8.2",
+    "cordova-plugin-app-version": "0.1.9"
   };
 });
