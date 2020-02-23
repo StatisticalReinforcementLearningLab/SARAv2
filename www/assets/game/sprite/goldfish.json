@@ -1,0 +1,60 @@
+{"frames": [
+
+{
+	"filename": "1.png",
+	"frame": {"x":597,"y":1,"w":211,"h":130},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":211,"h":130},
+	"sourceSize": {"w":213,"h":155}
+},
+{
+	"filename": "2.png",
+	"frame": {"x":1,"y":1,"w":204,"h":132},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":1,"w":204,"h":132},
+	"sourceSize": {"w":213,"h":155}
+},
+{
+	"filename": "3.png",
+	"frame": {"x":207,"y":1,"w":193,"h":131},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":3,"w":193,"h":131},
+	"sourceSize": {"w":213,"h":155}
+},
+{
+	"filename": "4.png",
+	"frame": {"x":810,"y":1,"w":175,"h":129},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":38,"y":4,"w":175,"h":129},
+	"sourceSize": {"w":213,"h":155}
+},
+{
+	"filename": "5.png",
+	"frame": {"x":402,"y":1,"w":193,"h":131},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":3,"w":193,"h":131},
+	"sourceSize": {"w":213,"h":155}
+},
+{
+	"filename": "6.png",
+	"frame": {"x":1,"y":1,"w":204,"h":132},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":1,"w":204,"h":132},
+	"sourceSize": {"w":213,"h":155}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "goldfish.png",
+	"format": "RGBA8888",
+	"size": {"w":986,"h":134},
+	"scale": "0.41667",
+	"smartupdate": "$TexturePacker:SmartUpdate:ba3bd7f70110c0a4579f738844d86305:9e0d8eb6cf1d9be98374314eac8fc73e:99976e6727b8a52415aac23017f1551c$"
+}
+}

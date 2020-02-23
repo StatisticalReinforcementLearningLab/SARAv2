@@ -1,0 +1,44 @@
+{"frames": {
+
+"frame_0_delay-0.4s.gif":
+{
+	"frame": {"x":0,"y":0,"w":188,"h":179},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":188,"h":179},
+	"sourceSize": {"w":188,"h":179}
+},
+"frame_1_delay-0.4s.gif":
+{
+	"frame": {"x":188,"y":0,"w":188,"h":179},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":188,"h":179},
+	"sourceSize": {"w":188,"h":179}
+},
+"frame_2_delay-0.4s.gif":
+{
+	"frame": {"x":0,"y":179,"w":188,"h":179},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":188,"h":179},
+	"sourceSize": {"w":188,"h":179}
+},
+"frame_3_delay-0.4s.gif":
+{
+	"frame": {"x":188,"y":179,"w":188,"h":179},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":188,"h":179},
+	"sourceSize": {"w":188,"h":179}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "squirrel_run-0.png",
+	"format": "RGBA8888",
+	"size": {"w":512,"h":512},
+	"scale": "0.41667",
+	"smartupdate": "$TexturePacker:SmartUpdate:e61039fd87cb6d2e6e00ceaa85416c1f:e59d74e4d6301f55b1c00c2e5533b5ae:3cf685a5f5bcf58ea165451af929bc5b$"
+}
+}
