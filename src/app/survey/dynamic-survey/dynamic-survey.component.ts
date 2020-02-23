@@ -11,6 +11,7 @@ import { Component, OnInit, ViewChild, ViewContainerRef, NgModule, Compiler, Inj
 import { FormsModule } from '@angular/forms';
 import { AwsS3Service } from '../../storage/aws-s3.service';
 import { EncrDecrService } from '../../storage/encrdecrservice.service';
+
 import { Platform } from '@ionic/angular';
 import { Router, NavigationExtras} from '@angular/router';
 import * as moment from 'moment';
@@ -57,6 +58,7 @@ export class DynamicSurveyComponent implements OnInit {
     private changeDetector : ChangeDetectorRef,
     private appVersion: AppVersion,
     public plt: Platform,
+    private alertCtrl: AlertController,
     private userProfileService: UserProfileService,
     private awardDollarService:AwardDollarService) {
       this.appVersion.getVersionNumber().then(value => {
@@ -90,7 +92,7 @@ export class DynamicSurveyComponent implements OnInit {
       this.survey[obj.name] = "";
       this.survey_string = this.process_survey(obj, this.survey_string, obj.name);
     }
-    this.survey_string = this.survey_string + '<div class="ion-padding"><button class="buttonold button-positive" (click)="storeData()">Submit</button></div>';
+    this.survey_string = this.survey_string + '<div class="ion-padding"><button class="buttonold button-positive" (click)="submitSurvey()">Submit</button></div>';
 
     //---
     //--- Generate a survey component dynamically from the "survey_string."
@@ -99,6 +101,7 @@ export class DynamicSurveyComponent implements OnInit {
     const surveyComponent = Component({ template: this.survey_string })(class implements OnInit{
       
       survey2 = {};
+      isQuestionIncomplete = {};
       fileLink;
       versionNumber;
       lifeInsightObj = {};
@@ -111,12 +114,19 @@ export class DynamicSurveyComponent implements OnInit {
       router: Router;
       userProfileService: UserProfileService;
       awardDollarService: AwardDollarService;
+      survey_data = [];
+      alertCtrl;
 
       constructor() {
       }
 
       ngOnInit() {
         this.survey2['starttimeUTC'] = new Date().getTime();
+        this.survey2['reponse_ts']={};
+        for (var i = 0; i < this.survey_data.length; i++) {
+          var obj = this.survey_data[i];
+          this.isQuestionIncomplete[obj.name] = {"tag": obj.tag};
+        }
       }
 
       ngAfterViewInit() {
@@ -201,11 +211,60 @@ export class DynamicSurveyComponent implements OnInit {
       //This function tracks if users clicked on a survey question and reacts.       
       inputchanged(questions) {
         //console.log('holla: ' + questions);
+
+        this.survey2['reponse_ts'][questions] = {};
+        this.survey2['reponse_ts'][questions].ts = Date.now();
+        this.survey2['reponse_ts'][questions].readable_ts = moment().format("MMMM Do YYYY, h:mm:ss a");
+
+        
+
+        delete this.isQuestionIncomplete[questions];//remove the key from isQuestionIncomplete
+
+
         console.log(JSON.stringify(this.survey2));
       }
 
-      //storeData function is called when user presses the "submit" button
-      //This function also encrypts the survey and stores it into cloud.
+      submitSurvey(){
+        if(this.isEmpty(this.isQuestionIncomplete))//means all questions have been removed
+          this.storeData();
+        else{
+          var incompleteQuestions = "";
+          for(var prop in this.isQuestionIncomplete) {
+            incompleteQuestions = incompleteQuestions + " " + this.isQuestionIncomplete[prop]["tag"] + ",";
+          }
+          incompleteQuestions = incompleteQuestions.substring(0, incompleteQuestions.length - 1);
+          this. presentAlert("You haven't completed questions:" + incompleteQuestions);
+        }
+      }
+
+
+      async presentAlert(alertMessage) {
+    
+        const alert = await this.alertCtrl.create({
+          //<div style="font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center">Thank you for completing the survey. You have unlocked a meme.</div>
+          //header: '<div style="line-height: 25px;padding-bottom:10px;text-align:center">Daily survey unavilable</div>',
+          header: 'Daily survey unavilable',
+          //subHeader: "Survey is not avaibable!",
+          message: alertMessage,
+          //defined in theme/variables.scss
+          buttons: [{text: 'OK', cssClass: 'secondary'}]
+        });
+        
+        /*
+        let alert = this.alertCtrl.create({
+          title: 'Low battery',
+          subTitle: '10% of battery remaining',
+          buttons: ['Dismiss']
+        });
+        */
+    
+        await alert.present();
+      }
+
+      isEmpty(obj) {      
+        return JSON.stringify(obj) === JSON.stringify({});
+      }
+
       storeData(){
         //console.log("Inside storeData");
         console.log(JSON.stringify(this.survey2));
@@ -361,6 +420,7 @@ export class DynamicSurveyComponent implements OnInit {
         cmpRef.instance.survey2 = this.survey;
         cmpRef.instance.fileLink = this.fileLink;  
         cmpRef.instance.versionNumber= this.versionNumber;      
+        cmpRef.instance.survey_data = this.survey_data;    
         //cmpRef.instance.storeToFirebaseService = this.storeToFirebaseService;
         cmpRef.instance.userProfileService = this.userProfileService;
         cmpRef.instance.awardDollarService = this.awardDollarService;
