@@ -60,8 +60,9 @@ export class AwsS3Service extends StoreBaseService {
     //upload currentFile to the subfolder in S3 bucket
     s3.upload({
       Bucket: bucketName,
-      Key: subfolder+"/"+fileName,    
-      Body: this.currentFile
+      Key: subfolder+"/"+fileName,  
+      Body: JSON.stringify(result)  
+      //Body: this.currentFile
     }, function(err, data) {
       if (err) {
         console.log('There was an error uploading your file: '+err.message);

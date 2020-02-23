@@ -71,11 +71,12 @@ export class SeaLevelL4 extends Phaser.State {
         this.buildAquarium();
 
         //
+        /*
         var journal = this.add.image(this.CANVAS_WIDTH - 70, 1, 'fish_journal');
         journal.scale.setTo(0.5, 0.5);
         journal.inputEnabled = true;
         journal.events.onInputDown.add(this.logdata, this);
-
+        */
 
         
 
