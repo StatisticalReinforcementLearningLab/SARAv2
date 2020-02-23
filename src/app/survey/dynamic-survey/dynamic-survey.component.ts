@@ -1,12 +1,21 @@
+//
+//--- The goal of this file is to dynamically generate a survey from a JSON file. 
+//--- Example JSON files are located in assets/survey folder. 
+//
+//--- At a high level, this file does the following:
+//      (i) reads a JSON file in the "ngAfterViewInit" 
+//      (ii) calls the "generateSurvey" function to create html codes for the survey
+//      (iii) creates a component dynamically and attached it to the "vc" component.
+
 import { Component, OnInit, ViewChild, ViewContainerRef, NgModule, Compiler, Injector, NgModuleRef, ElementRef, Input, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-//import { StoreToFirebaseService } from '../../storage/store-to-firebase.service';
 import { AwsS3Service } from '../../storage/aws-s3.service';
 import { EncrDecrService } from '../../storage/encrdecrservice.service';
-import { Platform, AlertController } from '@ionic/angular';
-import { Router } from '@angular/router';
+
+import { Platform } from '@ionic/angular';
+import { Router, NavigationExtras} from '@angular/router';
 import * as moment from 'moment';
-//import { PreLoad } from '../../PreLoad';
+import { AppVersion } from '@ionic-native/app-version/ngx';
 
 //import * as lifeInsightProfile from "../../../assets/data/life_insight.json";
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
@@ -23,20 +32,20 @@ import { AwardDollarService } from 'src/app/incentive/award-money/award-dollar.s
 //@PreLoad('life-insights')
 export class DynamicSurveyComponent implements OnInit {
 
+  //inputs the json file used to generate a survey
   @Input() fileLink: string;
 
   title = "mash is here";
   public isLoading = true;
   public loadingComplete = false;
   
-
   survey_string = "";
   survey = {};
   survey_data: any;
+  versionNumber;
 
+  //"vc" is the div tag where the dynamic survey will be added.
   @ViewChild('vc', { read: ViewContainerRef, static: false}) vc: ViewContainerRef;
-
-  //private vc: ViewContainerRef;
 
   constructor(private _compiler: Compiler,
     private _injector: Injector,
@@ -47,49 +56,33 @@ export class DynamicSurveyComponent implements OnInit {
     private router: Router,
     private ga: GoogleAnalytics,
     private changeDetector : ChangeDetectorRef,
+    private appVersion: AppVersion,
     public plt: Platform,
     private alertCtrl: AlertController,
     private userProfileService: UserProfileService,
     private awardDollarService:AwardDollarService) {
+      this.appVersion.getVersionNumber().then(value => {
+        this.versionNumber = value;
+        console.log("VersionNumber: "+this.versionNumber);
+      }).catch(err => {
+        console.log(err);
+      });
   }
 
   ngOnInit() { }
 
   ngAfterViewInit() {
       console.log('Reading local json files: ' + this.fileLink);
+
+      //fetch JSON file and once the file is fetched called "generateSurvey" to create the survey.
       fetch('../../../assets/data/'+this.fileLink+'.json').then(async res => {
         this.survey_data = await res.json();
-        this.init();
+        this.generateSurvey();
       });
 
   }
 
-  init() {  
-
-    //TODO: Two-way binding, and call functions. Multiple choice/affect-grid.
-    //TODO: Ask Liying to do the JSON.
-
-    //const template = '<span>generated on the fly: {{name}}</span>';
-    const template = '<div class="card"><div class="quetiontextstyle">' +
-      'This is the question' +
-      '</div>' +
-      '<div class="radiovertical">' +
-      '<ul>' +
-      '<li>' +
-      '<input type="radio" id="f-option" name="selector" (click)="modelChanged(0)">' +
-      '<label for="f-option">Pizza</label>' +
-      '<div class="check"></div>' +
-      '</li>' +
-      '<li>' +
-      '<input type="radio" id="s-option" name="selector" (click)="modelChanged(1)">' +
-      '<label for="s-option">Coke</label>' +
-      '<div class="check"></div>' +
-      '</li>' +
-      '</ul>' +
-      '</div></div>';
-
-
-    //const template2 = '<ion-card><ion-card-content>Nine Inch Nails Live</ion-card-content></ion-card>';
+  generateSurvey() {  
 
     //go through the questions
     this.survey = {};
@@ -101,12 +94,16 @@ export class DynamicSurveyComponent implements OnInit {
     }
     this.survey_string = this.survey_string + '<div class="ion-padding"><button class="buttonold button-positive" (click)="submitSurvey()">Submit</button></div>';
 
-
-    const tmpCmp = Component({ template: this.survey_string })(class implements OnInit{
+    //---
+    //--- Generate a survey component dynamically from the "survey_string."
+    //--- The "survey_string" contains all the HTML for the template for dynamic component
+    //--- 
+    const surveyComponent = Component({ template: this.survey_string })(class implements OnInit{
       
       survey2 = {};
       isQuestionIncomplete = {};
       fileLink;
+      versionNumber;
       lifeInsightObj = {};
       //storeToFirebaseService: StoreToFirebaseService;
       ga: GoogleAnalytics;
@@ -205,10 +202,13 @@ export class DynamicSurveyComponent implements OnInit {
         }, false);
         
       }
+
+      //This function tracks if users clicked on a survey question
       modelChanged(newObj) {
-        // do something with new value
         console.log('holla' + newObj);
       }
+
+      //This function tracks if users clicked on a survey question and reacts.       
       inputchanged(questions) {
         //console.log('holla: ' + questions);
 
@@ -270,27 +270,14 @@ export class DynamicSurveyComponent implements OnInit {
         console.log(JSON.stringify(this.survey2));
         this.ga.trackEvent('Submit Button', 'Tapped Action', 'Submit the completed survey', 0);
               
-        //this.storeToFirebaseService.initFirebase();
-        //this.storeToFirebaseService.storeTofirebase(this.survey2);
-        
-        //var encrypted = this.EncrDecr.set('123456$#@$^@1ERF', 'password@123456');
-        //var decrypted = this.EncrDecr.get('123456$#@$^@1ERF', encrypted);
-        //data = JSON.stringify(data);
-        //var encrypted = encrypt(data, "Z&wz=BGw;%q49/<)");
-        //var decrypted = decrypt(encrypted, "Z&wz=BGw;%q49/<)");
-
         this.survey2['endtimeUTC'] = new Date().getTime();
         this.survey2['userName'] = localStorage.getItem('loggedInUser');
         this.survey2['ts'] = moment().format('MMMM Do YYYY, h:mm:ss a Z');
 
-        // Get a key for a new Post.
-        //var newPostKey = firebase.database().ref().child('SARA').child('Daily').push().key;
-
-        // Write the new post's data simultaneously in the posts list and the user's post list.
-        //var updates = {};
-        //$scope.survey.reponse_ts = $scope.reponse_ts;
         this.survey2['devicInfo'] = this.plt.platforms();
-        //$scope.survey.id = $scope.email;
+
+        //Store app version number
+        this.survey2['appVersion'] = this.versionNumber;
 
 
         var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.survey2), "Z&wz=BGw;%q49/<)");
@@ -302,7 +289,8 @@ export class DynamicSurveyComponent implements OnInit {
         this.survey2['encrypted'] = encrypted;
 
         this.userProfileService.surveyCompleted(); 
-
+        
+        //compute and store "TotalPoints" to localStorage
         if(window.localStorage['TotalPoints'] == undefined)
           this.totalPoints = 0;
         else
@@ -310,9 +298,7 @@ export class DynamicSurveyComponent implements OnInit {
         this.totalPoints = this.totalPoints + 100;
         window.localStorage.setItem("TotalPoints", ""+this.totalPoints);
 
-
-
-        //
+        //get "awardDollars"
         var pastDollars = this.awardDollarService.getDollars();
         var dollars = this.awardDollarService.giveDollars();
         console.log("Dollars: " + dollars);
@@ -323,9 +309,8 @@ export class DynamicSurveyComponent implements OnInit {
         window.localStorage.setItem("AwardedDollar", ""+ (dollars-pastDollars));
         window.localStorage.setItem("IsModalShown", "false");
 
-
-
-        var lifeInsightProfile = {
+         //Save 7-day date and value for each question in localStorage to generate lifeInsight chart
+         var lifeInsightProfile = {
             "questions":["Q3d","Q4d","Q5d","Q8d"],
             "qimgs": ["assets/img/stress.png","assets/img/freetime.png","assets/img/dance2.png","assets/img/social.png"],
             "lifeInsightsTitle": ["How much <b>pain</b> are you currently experiencing?", 
@@ -378,7 +363,6 @@ export class DynamicSurveyComponent implements OnInit {
             if( dateIndex > -1 ) {
               this.lifeInsightObj[question]['dates'][dateIndex] =currentdate;
               if(this.survey2.hasOwnProperty(question)) {
-               //<<<<<<< liying-chop-s3
                 this.lifeInsightObj[question]['data'][dateIndex]=(parseInt(this.survey2[question]));
               }
               else {
@@ -395,47 +379,33 @@ export class DynamicSurveyComponent implements OnInit {
              } 
           }
       }
-        console.log("lifeInsightObj: "+JSON.stringify(this.lifeInsightObj));
-        //=======
-        window.localStorage.setItem("lifeInsight", JSON.stringify(this.lifeInsightObj));
+      console.log("lifeInsightObj: "+JSON.stringify(this.lifeInsightObj));
+      window.localStorage.setItem("lifeInsight", JSON.stringify(this.lifeInsightObj));
 
-        //this.storeToFirebaseService.addSurvey('/results',this.survey2);
-        //console.log("End of storeData");
-        //console.log(this.survey2);
-        
-        //save to Amazon AWS S3
-        this.awsS3Service.upload(this.fileLink, this.survey2);
-        //console.log("End of storeData");
-       
-        /*
-        if(Math.random() > 0.5 ){
-            this.router.navigate(['incentive/award-memes']);
-        } else {
-            this.router.navigate(['incentive/award-memes']);
-          //this.router.navigate(['incentive/aquarium/aquariumone']);
-          //this.router.navigate(['/home']);
-        }
-        */
+      //save to Amazon AWS S3
+      this.awsS3Service.upload(this.fileLink, this.survey2);
+      //console.log("End of storeData");
 
-        if(Math.random() > 0.5 ){
-            this.router.navigate(['incentive/award-memes']);
-            //this.router.navigate(['incentive/sample-life-insight']);
-        } else {
-            //this.router.navigate(['incentive/aquarium/aquariumone']);         
-            //this.router.navigate(['incentive/sample-life-insight']);
-            this.router.navigate(['incentive/award-altruism']);
+      //navigate to award-memes/award-altruism with equal probability after submit survey
+      var currentProb = Math.random();
+      window.localStorage.setItem("Prob", ""+currentProb);
+      let navigationExtras: NavigationExtras = {
+        state: {
+          date: moment().format('YYYYMMDD'),
+          prob: currentProb
         }
-           
-        //save to azure 
-        //this.azureService.upload(this.question.getData());
-    
-        //this.saveDataService.browseToReward('/incentive/award');
-        //this.saveDataService.browseToReward('incentive/visualization');
+      };
+      if(currentProb > 0.5 ){
+          this.router.navigate(['incentive/award-memes'], navigationExtras);
+      } else {
+          //this.router.navigate(['incentive/sample-life-insight']);
+          this.router.navigate(['incentive/award-altruism'],  navigationExtras);
       }
-
+           
+     }
     });
 
-    const tmpModule = NgModule({ declarations: [tmpCmp], imports: [FormsModule]})(class {
+    const tmpModule = NgModule({ declarations: [surveyComponent], imports: [FormsModule]})(class {
     });
 
     this._compiler.compileModuleAndAllComponentsAsync(tmpModule)
@@ -448,9 +418,9 @@ export class DynamicSurveyComponent implements OnInit {
         const cmpRef = this.vc.createComponent(f);
         cmpRef.instance.awsS3Service = this.awsS3Service;
         cmpRef.instance.survey2 = this.survey;
-        cmpRef.instance.fileLink = this.fileLink; 
+        cmpRef.instance.fileLink = this.fileLink;  
+        cmpRef.instance.versionNumber= this.versionNumber;      
         cmpRef.instance.survey_data = this.survey_data;    
-        cmpRef.instance.alertCtrl = this.alertCtrl;
         //cmpRef.instance.storeToFirebaseService = this.storeToFirebaseService;
         cmpRef.instance.userProfileService = this.userProfileService;
         cmpRef.instance.awardDollarService = this.awardDollarService;
@@ -521,6 +491,10 @@ export class DynamicSurveyComponent implements OnInit {
       return survey_string;
   }
 
+  //
+  // process survey for all types of objects
+  // Our current questionaire only has radio buttons. We have codes for other types of inputs, which we will gradually add.
+  //
 
   process_survey(obj, survey_string, i) {
 
