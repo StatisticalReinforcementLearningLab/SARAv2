@@ -67,21 +67,12 @@ export class DemoAquariumComponent implements OnInit {
   isLoaded = false;
   public isShowingRouteLoadIndicator: boolean;
   survey_text; 
-  //username;
-  //totalPoints = 0;
-  money = 30;
-
   
   // totalPoints = 0;
   get totalPoints(){
     return this.userProfileService.points;
   }
-  get isActive(){
-    if(this.userProfileService == undefined)
-      return true;
-    else
-      return this.userProfileService.isActive;
-  }
+
   get username(){
     if(this.userProfileService == undefined)
       return "test";
@@ -90,6 +81,7 @@ export class DemoAquariumComponent implements OnInit {
       return this.userProfileService.username;
     }
   }
+
 
 /*   get surveyPath(){
     if (this.userProfileService.isParent){
@@ -121,11 +113,6 @@ export class DemoAquariumComponent implements OnInit {
 
     this.survey_text = "Start Survey";
     //this.username = "test";
-
-    if(window.localStorage['AwardDollar'] == undefined)
-        this.money = 0;
-    else
-        this.money = parseInt(window.localStorage['AwardDollar']);
 
 
     //show modal on awards
@@ -180,10 +167,6 @@ export class DemoAquariumComponent implements OnInit {
     this.router.navigate(['incentive/treasurechest']);
   }
 
-  startCheatPage(){
-    //this.router.navigate(['incentive/tundra']);
-    this.router.navigate(['incentive/cheatpoints']);
-  }
   
 
   //preload the images
@@ -374,52 +357,6 @@ export class DemoAquariumComponent implements OnInit {
     this.game.destroy();
   }
 
-  async presentAlert(alertMessage) {
-    
-    const alert = await this.alertCtrl.create({
-      //<div style="font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center">Thank you for completing the survey. You have unlocked a meme.</div>
-      //header: '<div style="line-height: 25px;padding-bottom:10px;text-align:center">Daily survey unavilable</div>',
-      header: 'Daily survey unavilable',
-      //subHeader: "Survey is not avaibable!",
-      message: alertMessage,
-      //defined in theme/variables.scss
-      buttons: [{text: 'OK', cssClass: 'secondary'}]
-    });
-    
-    /*
-    let alert = this.alertCtrl.create({
-      title: 'Low battery',
-      subTitle: '10% of battery remaining',
-      buttons: ['Dismiss']
-    });
-    */
-
-    await alert.present();
-  }
-
-  startSurvey(){
-    console.log('start survey');
-    var currentTime = moment(); 
-    var startTime = moment({hour: 18});  // 6pm
-    var endTime = moment({hour: 23, minute: 59});  // 11:59pm
-    if(!currentTime.isBetween(startTime, endTime)) {
-      this.presentAlert('Survey is only available between 6PM and midnight');
-    } else if(this.userProfileService.surveyTakenForCurrentDay()) {
-      this.presentAlert('You have already completed the survey for the day.');
-    } else {
-      if (this.userProfileService.isParent){
-        this.router.navigate(['survey/samplesurvey']);  //caregiversurvey
-      } else{
-        this.router.navigate(['survey/samplesurvey2']);  //aya
-      }
-      this.ga.trackEvent('Start survey Button', 'Tapped Action', 'Loading survey', 0)
-      .then(() => {console.log("trackEvent for Start survey Button!")})
-      .catch(e => alert("trackEvent for Start survey Button=="+e));
-    } 
-  }
-
-  async openSurvey(location){
-    this.router.navigate([location]);
-  }
+ 
 
 }
