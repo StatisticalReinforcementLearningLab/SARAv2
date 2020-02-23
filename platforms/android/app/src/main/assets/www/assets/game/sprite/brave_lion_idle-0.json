@@ -1,0 +1,45 @@
+{"frames": {
+
+"Idle_000.png":
+{
+	"frame": {"x":0,"y":0,"w":213,"h":213},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":213,"h":213},
+	"sourceSize": {"w":213,"h":213}
+},
+"Idle_001.png":
+{
+	"frame": {"x":213,"y":0,"w":213,"h":213},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":213,"h":213},
+	"sourceSize": {"w":213,"h":213}
+},
+"Idle_002.png":
+{
+	"frame": {"x":0,"y":213,"w":213,"h":213},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":213,"h":213},
+	"sourceSize": {"w":213,"h":213}
+},
+"Idle_003.png":
+{
+	"frame": {"x":213,"y":213,"w":213,"h":213},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":213,"h":213},
+	"sourceSize": {"w":213,"h":213}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "brave_lion_idle-0.png",
+	"format": "RGBA8888",
+	"size": {"w":512,"h":512},
+	"scale": "0.41667",
+	"related_multi_packs": [ "brave_lion_idle-1.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:509938389fec4541ba8fad81d033fc9c:c23c735f37ba90e32442bf7d31130fee:09adb782b64668f0a5920d6003adaec5$"
+}
+}

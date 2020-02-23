@@ -1,0 +1,52 @@
+{"frames": {
+
+"Idle_000.png":
+{
+	"frame": {"x":1,"y":1,"w":300,"h":364},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":91,"y":104,"w":300,"h":364},
+	"sourceSize": {"w":512,"h":512}
+},
+"Idle_001.png":
+{
+	"frame": {"x":303,"y":1,"w":293,"h":362},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":93,"y":106,"w":293,"h":362},
+	"sourceSize": {"w":512,"h":512}
+},
+"Idle_002.png":
+{
+	"frame": {"x":893,"y":1,"w":289,"h":359},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":96,"y":109,"w":289,"h":359},
+	"sourceSize": {"w":512,"h":512}
+},
+"Idle_003.png":
+{
+	"frame": {"x":1184,"y":1,"w":289,"h":359},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":96,"y":109,"w":289,"h":359},
+	"sourceSize": {"w":512,"h":512}
+},
+"Idle_004.png":
+{
+	"frame": {"x":598,"y":1,"w":293,"h":362},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":93,"y":106,"w":293,"h":362},
+	"sourceSize": {"w":512,"h":512}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "triceratops_sprite.png",
+	"format": "RGBA8888",
+	"size": {"w":1474,"h":366},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:80dc84a172df914df46ffc5c3cdd68a8:c677874354f7c491cca30d61a954a3f4:aa76b79cc58662b509249390e4f5eb98$"
+}
+}

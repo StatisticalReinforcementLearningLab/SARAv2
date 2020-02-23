@@ -1,0 +1,60 @@
+{"frames": [
+
+{
+	"filename": "1.png",
+	"frame": {"x":1,"y":1,"w":212,"h":156},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":212,"h":156},
+	"sourceSize": {"w":213,"h":213}
+},
+{
+	"filename": "2.png",
+	"frame": {"x":1,"y":159,"w":200,"h":157},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":200,"h":157},
+	"sourceSize": {"w":213,"h":213}
+},
+{
+	"filename": "3.png",
+	"frame": {"x":205,"y":316,"w":193,"h":158},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":0,"w":193,"h":158},
+	"sourceSize": {"w":213,"h":213}
+},
+{
+	"filename": "4.png",
+	"frame": {"x":215,"y":1,"w":184,"h":157},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":0,"w":184,"h":157},
+	"sourceSize": {"w":213,"h":213}
+},
+{
+	"filename": "5.png",
+	"frame": {"x":203,"y":160,"w":198,"h":154},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":198,"h":154},
+	"sourceSize": {"w":213,"h":213}
+},
+{
+	"filename": "6.png",
+	"frame": {"x":1,"y":318,"w":202,"h":155},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":202,"h":155},
+	"sourceSize": {"w":213,"h":213}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "angryfish.png",
+	"format": "RGBA8888",
+	"size": {"w":402,"h":475},
+	"scale": "0.41667",
+	"smartupdate": "$TexturePacker:SmartUpdate:8b7cf1afc3ca8ccd0ea4f91f0c58eb67:d83268f5042250338100c6b4d4523381:c99cb5c334ab68c99a3e6b5698db8837$"
+}
+}

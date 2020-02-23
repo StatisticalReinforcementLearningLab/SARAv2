@@ -1,0 +1,52 @@
+{"frames": [
+
+{
+	"filename": "1.png",
+	"frame": {"x":1,"y":1,"w":190,"h":116},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":4,"w":190,"h":116},
+	"sourceSize": {"w":213,"h":125}
+},
+{
+	"filename": "2.png",
+	"frame": {"x":385,"y":1,"w":189,"h":113},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":6,"w":189,"h":113},
+	"sourceSize": {"w":213,"h":125}
+},
+{
+	"filename": "3.png",
+	"frame": {"x":767,"y":1,"w":184,"h":113},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":6,"w":184,"h":113},
+	"sourceSize": {"w":213,"h":125}
+},
+{
+	"filename": "4.png",
+	"frame": {"x":576,"y":1,"w":189,"h":113},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":14,"y":6,"w":189,"h":113},
+	"sourceSize": {"w":213,"h":125}
+},
+{
+	"filename": "5.png",
+	"frame": {"x":193,"y":1,"w":190,"h":116},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":4,"w":190,"h":116},
+	"sourceSize": {"w":213,"h":125}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "yellowtang.png",
+	"format": "RGBA8888",
+	"size": {"w":952,"h":118},
+	"scale": "0.41667",
+	"smartupdate": "$TexturePacker:SmartUpdate:a1b593bf29f425c2df1845191d8d3c2c:d45d42639b553072dd82428b16e2f73d:f68b87ad90a07557a6c6f13d70c6b86a$"
+}
+}

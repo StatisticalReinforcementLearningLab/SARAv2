@@ -1,0 +1,52 @@
+{"frames": [
+
+{
+	"filename": "swimming1.png",
+	"frame": {"x":0,"y":0,"w":317,"h":180},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":317,"h":180},
+	"sourceSize": {"w":317,"h":180}
+},
+{
+	"filename": "swimming2.png",
+	"frame": {"x":0,"y":180,"w":323,"h":194},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":323,"h":194},
+	"sourceSize": {"w":323,"h":194}
+},
+{
+	"filename": "swimming3.png",
+	"frame": {"x":0,"y":374,"w":318,"h":141},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":318,"h":141},
+	"sourceSize": {"w":318,"h":141}
+},
+{
+	"filename": "swimming4.png",
+	"frame": {"x":0,"y":515,"w":316,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":316,"h":150},
+	"sourceSize": {"w":316,"h":150}
+},
+{
+	"filename": "swimming5.png",
+	"frame": {"x":0,"y":665,"w":285,"h":168},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":285,"h":168},
+	"sourceSize": {"w":285,"h":168}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "fat_swimmer.png",
+	"format": "RGBA8888",
+	"size": {"w":323,"h":833},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:5dd2b9b80da910c65b65dd2e8e8798c1:43cc7887fb7af6e348599bd33718c726:1a8e193e50d2e7ea485a3a7ed930278f$"
+}
+}
