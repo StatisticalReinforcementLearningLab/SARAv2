@@ -1,7 +1,4 @@
 node_modules/
-www/
-platforms/
-plugins/
 src/environments/environment.ts
 src/environments/environment.chop.ts
 src/environments/environment.prod.ts

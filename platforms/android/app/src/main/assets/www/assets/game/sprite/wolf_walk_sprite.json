@@ -1,0 +1,68 @@
+{"frames": {
+
+"wolf_white-1.png":
+{
+	"frame": {"x":1,"y":1,"w":152,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":38,"w":152,"h":83},
+	"sourceSize": {"w":152,"h":121}
+},
+"wolf_white-2.png":
+{
+	"frame": {"x":1,"y":86,"w":152,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":38,"w":152,"h":83},
+	"sourceSize": {"w":152,"h":121}
+},
+"wolf_white-3.png":
+{
+	"frame": {"x":1,"y":171,"w":152,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":38,"w":152,"h":83},
+	"sourceSize": {"w":152,"h":121}
+},
+"wolf_white-4.png":
+{
+	"frame": {"x":155,"y":1,"w":152,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":38,"w":152,"h":83},
+	"sourceSize": {"w":152,"h":121}
+},
+"wolf_white-5.png":
+{
+	"frame": {"x":303,"y":171,"w":145,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":38,"w":145,"h":83},
+	"sourceSize": {"w":152,"h":121}
+},
+"wolf_white-6.png":
+{
+	"frame": {"x":155,"y":86,"w":152,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":38,"w":152,"h":83},
+	"sourceSize": {"w":152,"h":121}
+},
+"wolf_white-7.png":
+{
+	"frame": {"x":155,"y":171,"w":146,"h":83},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":38,"w":146,"h":83},
+	"sourceSize": {"w":152,"h":121}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "wolf_walk_sprite.png",
+	"format": "RGBA8888",
+	"size": {"w":449,"h":255},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:7f124a9bac3fd9856ca387ec6d417d93:9773e6632abae4a7ba2fc6337afd407d:b3b5820ddabc03a2a176a08f7ac8224d$"
+}
+}

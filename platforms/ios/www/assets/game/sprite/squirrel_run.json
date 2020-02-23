@@ -1,0 +1,92 @@
+{"frames": {
+
+"run01.png":
+{
+	"frame": {"x":0,"y":0,"w":125,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":125,"h":133},
+	"sourceSize": {"w":125,"h":133}
+},
+"run02.png":
+{
+	"frame": {"x":125,"y":0,"w":125,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":125,"h":133},
+	"sourceSize": {"w":125,"h":133}
+},
+"run03.png":
+{
+	"frame": {"x":250,"y":0,"w":125,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":125,"h":133},
+	"sourceSize": {"w":125,"h":133}
+},
+"run04.png":
+{
+	"frame": {"x":375,"y":0,"w":125,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":125,"h":133},
+	"sourceSize": {"w":125,"h":133}
+},
+"run05.png":
+{
+	"frame": {"x":0,"y":133,"w":125,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":125,"h":133},
+	"sourceSize": {"w":125,"h":133}
+},
+"run06.png":
+{
+	"frame": {"x":125,"y":133,"w":125,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":125,"h":133},
+	"sourceSize": {"w":125,"h":133}
+},
+"run07.png":
+{
+	"frame": {"x":250,"y":133,"w":125,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":125,"h":133},
+	"sourceSize": {"w":125,"h":133}
+},
+"run08.png":
+{
+	"frame": {"x":375,"y":133,"w":125,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":125,"h":133},
+	"sourceSize": {"w":125,"h":133}
+},
+"run09.png":
+{
+	"frame": {"x":0,"y":266,"w":125,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":125,"h":133},
+	"sourceSize": {"w":125,"h":133}
+},
+"run10.png":
+{
+	"frame": {"x":125,"y":266,"w":125,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":125,"h":133},
+	"sourceSize": {"w":125,"h":133}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "squirrel_run-0.png",
+	"format": "RGBA8888",
+	"size": {"w":512,"h":512},
+	"scale": "0.41667",
+	"smartupdate": "$TexturePacker:SmartUpdate:590b1f98440bda13317b09ef881c5b93:1c0581c0fb6719ad974b6dca50b5bc2f:3cf685a5f5bcf58ea165451af929bc5b$"
+}
+}
