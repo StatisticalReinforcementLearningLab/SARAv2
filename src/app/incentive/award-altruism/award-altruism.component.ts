@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 
 @Component({
   selector: 'app-award-altruism',
@@ -10,15 +12,30 @@ export class AwardAltruismComponent implements OnInit {
 
   whichImage: string;
   altruism_data: any;
+  date;
+  reinforcementObj = {};
 
   constructor(    
-    private ga: GoogleAnalytics) { }
+    private ga: GoogleAnalytics,
+    private route: ActivatedRoute, 
+    private userProfileService: UserProfileService,
+    private router: Router) { 
+      this.reinforcementObj['ds'] = 1;
+      this.reinforcementObj['reward'] = 2;
+      this.reinforcementObj['reward_type'] = 'altruistic message';
+      this.route.queryParams.subscribe(params => {
+        if (this.router.getCurrentNavigation().extras.state) {
+          this.date = this.router.getCurrentNavigation().extras.state.date;
+          this.reinforcementObj['prob'] = this.router.getCurrentNavigation().extras.state.prob;
+          console.log("Inside AwardAltruism, date is: " +this.date+" prob is: "+this.reinforcementObj['prob']);
+        }
+      });      
+    }
 
   ngOnInit() {
     this.ga.trackView('Award-altruism')
     .then(() => {console.log("trackView at award-altruism!")})
     .catch(e => console.log(e));
-
   }
 
   ngAfterViewInit() {
@@ -30,7 +47,6 @@ export class AwardAltruismComponent implements OnInit {
   }
 
   ionViewDidLeave(){
-
   }
 
   showaltruism(){
@@ -40,14 +56,20 @@ export class AwardAltruismComponent implements OnInit {
     var picked_altruism_image = this.pick_altrusim(this.altruism_data);
     console.log('picked_altruism_image: ' + JSON.stringify(picked_altruism_image));
     this.whichImage = "./assets/altruism/"+picked_altruism_image[0]["filename"];
+    this.reinforcementObj['reward_img_link'] = "/altruism/"+picked_altruism_image[0]["filename"];
   }
   
   ratingChanged(rating){
-    if(rating==0)
+    if(rating==0) {
       console.log("thumbs down");
-    else
+      this.reinforcementObj['Like'] = "No";
+      window.localStorage.setItem("Like", "No");
+    } else {
       console.log("thumbs up");
-    
+      this.reinforcementObj['Like'] = "Yes";
+      window.localStorage.setItem("Like", "Yes");
+    }
+    this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);    
     window.location.href = '/home';
   }
 
