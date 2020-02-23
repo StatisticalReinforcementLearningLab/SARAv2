@@ -58,7 +58,6 @@ export class DynamicSurveyComponent implements OnInit {
     private changeDetector : ChangeDetectorRef,
     private appVersion: AppVersion,
     public plt: Platform,
-    private alertCtrl: AlertController,
     private userProfileService: UserProfileService,
     private awardDollarService:AwardDollarService) {
       this.appVersion.getVersionNumber().then(value => {

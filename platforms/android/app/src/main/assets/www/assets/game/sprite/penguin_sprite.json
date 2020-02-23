@@ -1,0 +1,92 @@
+{"frames": {
+
+"1.png":
+{
+	"frame": {"x":1,"y":1,"w":247,"h":272},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":247,"h":272},
+	"sourceSize": {"w":247,"h":272}
+},
+"2.png":
+{
+	"frame": {"x":250,"y":1,"w":247,"h":272},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":247,"h":272},
+	"sourceSize": {"w":247,"h":272}
+},
+"3.png":
+{
+	"frame": {"x":1,"y":275,"w":247,"h":272},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":247,"h":272},
+	"sourceSize": {"w":247,"h":272}
+},
+"4.png":
+{
+	"frame": {"x":250,"y":275,"w":247,"h":272},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":247,"h":272},
+	"sourceSize": {"w":247,"h":272}
+},
+"5.png":
+{
+	"frame": {"x":1,"y":549,"w":247,"h":272},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":247,"h":272},
+	"sourceSize": {"w":247,"h":272}
+},
+"6.png":
+{
+	"frame": {"x":250,"y":549,"w":247,"h":272},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":247,"h":272},
+	"sourceSize": {"w":247,"h":272}
+},
+"7.png":
+{
+	"frame": {"x":1,"y":823,"w":247,"h":272},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":247,"h":272},
+	"sourceSize": {"w":247,"h":272}
+},
+"8.png":
+{
+	"frame": {"x":250,"y":823,"w":247,"h":272},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":247,"h":272},
+	"sourceSize": {"w":247,"h":272}
+},
+"9.png":
+{
+	"frame": {"x":1,"y":1097,"w":247,"h":272},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":247,"h":272},
+	"sourceSize": {"w":247,"h":272}
+},
+"10.png":
+{
+	"frame": {"x":1,"y":1,"w":247,"h":272},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":247,"h":272},
+	"sourceSize": {"w":247,"h":272}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "penguin_sprite.png",
+	"format": "RGBA8888",
+	"size": {"w":498,"h":1370},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:e5514c52b484c6c8d46917a1905b48df:9b8dca843a917dac9ca030dfaf226083:c8807e8a8c3b6893c32ca4acb4d9a49e$"
+}
+}
