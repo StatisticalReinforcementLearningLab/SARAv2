@@ -272,6 +272,9 @@ Apache-2.0
 @firebase/webchannel-wrapper
 Apache-2.0
 
+@ionic-native/app-version
+MIT
+
 @ionic-native/core
 MIT
 
