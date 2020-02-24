@@ -7,6 +7,9 @@
     "files": {}
   },
   "installed_plugins": {
+    "cordova-plugin-app-version": {
+      "PACKAGE_NAME": "edu.harvard.srl.SARA"
+    },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "edu.harvard.srl.SARA"
     },
@@ -34,9 +37,6 @@
       "PACKAGE_NAME": "edu.harvard.srl.SARA"
     },
     "onesignal-cordova-plugin": {
-      "PACKAGE_NAME": "edu.harvard.srl.SARA"
-    },
-    "cordova-plugin-app-version": {
       "PACKAGE_NAME": "edu.harvard.srl.SARA"
     }
   },
