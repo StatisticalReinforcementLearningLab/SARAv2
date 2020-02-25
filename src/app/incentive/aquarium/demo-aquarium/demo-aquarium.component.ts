@@ -235,7 +235,7 @@ export class DemoAquariumComponent implements OnInit {
     if(this.platform.is('ios')){
         if(GameApp.CANVAS_HEIGHT < 642.0)//iphone SE fix.
             GameApp.CANVAS_HEIGHT += 60;
-        this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 21*window.devicePixelRatio, Phaser.AUTO, 'gameDiv');
+        this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 36*window.devicePixelRatio, Phaser.AUTO, 'gameDiv');
     }else if(this.platform.is('android'))
         this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 74, Phaser.AUTO, 'gameDiv');    
     else
