@@ -38,9 +38,12 @@ export class PreloaderTundraL5 extends Phaser.State {
             }
 
 		}, this);
+
 		
 
-        this.game.load.image('tundra1','assets/pics/bg-tundra.png');
+		//this.game.load.image('tundra1','assets/pics/bg-tundra.png');
+		this.game.load.image('tundra1','assets/pics/bg-top-tundra.png');
+		this.load.image('titlescreen', 'assets/pics/bg-bottom-tundra.png'); 
         
 		this.game.load.atlasJSONArray('penguin', 'assets/game/sprite/penguin_sprite.png', 'assets/game/sprite/penguin_sprite.json');
 		this.game.load.atlasJSONArray('sea_lion_silver', 'assets/game/sprite/sea_lion_silver_sprite.png', 'assets/game/sprite/sea_lion_silver_sprite.json');
