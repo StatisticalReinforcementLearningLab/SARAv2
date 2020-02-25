@@ -6,6 +6,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { StoreBaseService } from './storage-base.service';
+import { EncrDecrService } from './encrdecrservice.service';
 
 import * as AWS from 'aws-sdk';
 
@@ -15,7 +16,7 @@ import * as AWS from 'aws-sdk';
 export class AwsS3Service extends StoreBaseService {
   currentFile: File;
 
-  constructor() { 
+  constructor(private EncrDecr: EncrDecrService) { 
     super();
   }
 
@@ -53,14 +54,15 @@ export class AwsS3Service extends StoreBaseService {
     });  */
 
     //create a file from result passed as a JSONObject
-    var fileName = "result"+new Date().getTime()+".json";
+    var fileName = "result_" + (new Date().getTime()) + "_" + this.EncrDecr.getSHA256(localStorage.getItem('loggedInUser')) + ".json";
     this.currentFile = new File([JSON.stringify(result)], fileName, {type: "text/plain"});
 
     //upload currentFile to the subfolder in S3 bucket
     s3.upload({
       Bucket: bucketName,
-      Key: subfolder+"/"+fileName,    
-      Body: this.currentFile
+      Key: subfolder+"/"+fileName,  
+      Body: JSON.stringify(result)  
+      //Body: this.currentFile
     }, function(err, data) {
       if (err) {
         console.log('There was an error uploading your file: '+err.message);

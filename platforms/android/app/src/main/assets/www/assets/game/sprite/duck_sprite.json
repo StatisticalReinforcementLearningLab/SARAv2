@@ -1,0 +1,84 @@
+{"frames": {
+
+"duck1.png":
+{
+	"frame": {"x":1,"y":1,"w":690,"h":387},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":690,"h":387},
+	"sourceSize": {"w":690,"h":387}
+},
+"duck2.png":
+{
+	"frame": {"x":693,"y":1,"w":680,"h":428},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":680,"h":428},
+	"sourceSize": {"w":680,"h":428}
+},
+"duck3.png":
+{
+	"frame": {"x":625,"y":431,"w":685,"h":373},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":685,"h":373},
+	"sourceSize": {"w":685,"h":373}
+},
+"duck4.png":
+{
+	"frame": {"x":625,"y":806,"w":622,"h":230},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":622,"h":230},
+	"sourceSize": {"w":622,"h":230}
+},
+"duck5.png":
+{
+	"frame": {"x":1375,"y":385,"w":622,"h":263},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":622,"h":263},
+	"sourceSize": {"w":622,"h":263}
+},
+"duck6.png":
+{
+	"frame": {"x":1,"y":390,"w":622,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":622,"h":400},
+	"sourceSize": {"w":622,"h":400}
+},
+"duck7.png":
+{
+	"frame": {"x":1375,"y":1,"w":622,"h":382},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":622,"h":382},
+	"sourceSize": {"w":622,"h":382}
+},
+"duck8.png":
+{
+	"frame": {"x":1,"y":792,"w":622,"h":236},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":622,"h":236},
+	"sourceSize": {"w":622,"h":236}
+},
+"duck9.png":
+{
+	"frame": {"x":1312,"y":650,"w":664,"h":253},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":664,"h":253},
+	"sourceSize": {"w":664,"h":253}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "duck_sprite.png",
+	"format": "RGBA8888",
+	"size": {"w":1998,"h":1037},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:70332f50f358d36b112cc54210730c9f:1fb98a067416b81f22a8204f43dc2336:288cab2422484c24fafbdaa1684fe05f$"
+}
+}

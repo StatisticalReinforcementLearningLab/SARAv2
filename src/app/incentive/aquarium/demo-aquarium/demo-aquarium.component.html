@@ -1,49 +1,10 @@
-<ion-header>
-  <ion-toolbar class="new-background-color">
-    <!--ion-buttons slot="start">
-      <ion-back-button defaultHref="home"></ion-back-button>
-    </ion-buttons-->
-    <ion-buttons slot="end">
-
-      <!-- *ngIf="!isActive" -->
-      <font color="white">${{money}}</font>
-        <ion-button style="color:#fff;" (click)="startCheatPage()">
-          <ion-icon name="alert"></ion-icon>
-        </ion-button>
-
-        <ion-button style="color:#fff;" (click)="startSurvey()"   *ngIf="isActive">
-          Start Survey
-          <!-- <ion-icon name="journal"></ion-icon> -->
-        </ion-button>
-
-
-          <ion-text style="color:#ffff33;"  *ngIf="!isActive" (click)="dispalySurveyPausedMsg()" >
-            <strong>Survey is Paused</strong> 
-          </ion-text>
-
-
-        <!--
-        <ion-button href="{{surveyPath}}" *ngIf="isActive">Start Survey</ion-button> 
-        <ion-button style="color:#fff;" (click)="startSurvey()">
-          <ion-icon name="journal"></ion-icon>
-        </ion-button> 
-        <ion-button style="color:#fff;" (click)="startSurveyAYA()">
-          <ion-icon name="journal"></ion-icon>
-        </ion-button> 
-        -->
-    </ion-buttons>
-    <ion-title style="color:#fff;">ADAPTS</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <div id="gameDiv"></div>
-  <p  style="padding-top:10px;padding-bottom:0px;padding-left:10px;"><b>Username</b>: {{username}}</p>  
-  <ion-button color="primary" (click)="presentModal()">Show modal</ion-button>
+<div id="gameDiv"></div>
+<p  style="padding-top:10px;padding-bottom:0px;padding-left:10px;"><b>Username</b>: {{username}}</p>  
+  
   
 
   <!--
-
+  <ion-button color="primary" (click)="presentModal()">Show modal</ion-button>
   <ion-button color="primary" (click)="startTundraLevel()">Tundra level</ion-button>
 
   <app-loading-spinner></app-loading-spinner>
@@ -78,4 +39,4 @@
   </ion-card>
   -->
 
-</ion-content>
+

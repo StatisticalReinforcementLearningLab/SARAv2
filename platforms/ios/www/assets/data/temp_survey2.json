@@ -1,0 +1,12 @@
+[
+    {
+      "name": "Q1d",
+      "text": "How stressed are you today?",
+      "type": "radiobutton",
+      "extra": {
+        "choices": ["Not<br>at all", "A<br>lot"],
+        "orientation": "horizontal",
+        "levels": 5
+      }
+    }
+]
