@@ -16,8 +16,13 @@ export class GameTundraL5 extends Phaser.State {
         console.log("create called");
         var s = this.game.add.sprite(0,0,'tundra1');
         s.rotation = 0.0;
-        s.width = this.game.width;
-        s.height = this.game.height;
+        var aspect_ratio = s.width/s.height;
+        s.height = this.game.height - 310;
+        s.width = s.height*aspect_ratio;
+
+        var titlescreen = this.add.image(0, this.game.height-60, 'titlescreen');
+        titlescreen.scale.setTo(0.6, 0.6);
+
 
         //
         this.height = this.game.height;
