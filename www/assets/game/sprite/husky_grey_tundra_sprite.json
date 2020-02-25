@@ -1,0 +1,260 @@
+{"frames": {
+
+"skeleton-idle_0.png":
+{
+	"frame": {"x":1182,"y":188,"w":229,"h":191},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":0,"w":229,"h":191},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_1.png":
+{
+	"frame": {"x":939,"y":381,"w":229,"h":191},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":0,"w":229,"h":191},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_2.png":
+{
+	"frame": {"x":1170,"y":381,"w":229,"h":191},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":0,"w":229,"h":191},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_3.png":
+{
+	"frame": {"x":708,"y":381,"w":229,"h":190},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":1,"w":229,"h":190},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_4.png":
+{
+	"frame": {"x":1401,"y":382,"w":229,"h":190},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":1,"w":229,"h":190},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_5.png":
+{
+	"frame": {"x":704,"y":573,"w":227,"h":189},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":11,"y":2,"w":227,"h":189},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_6.png":
+{
+	"frame": {"x":474,"y":573,"w":228,"h":189},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":2,"w":228,"h":189},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_7.png":
+{
+	"frame": {"x":933,"y":574,"w":228,"h":188},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":3,"w":228,"h":188},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_8.png":
+{
+	"frame": {"x":1163,"y":574,"w":228,"h":188},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":3,"w":228,"h":188},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_9.png":
+{
+	"frame": {"x":1644,"y":378,"w":228,"h":187},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":4,"w":228,"h":187},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_10.png":
+{
+	"frame": {"x":1644,"y":189,"w":228,"h":187},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":4,"w":228,"h":187},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_11.png":
+{
+	"frame": {"x":1632,"y":567,"w":229,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":5,"w":229,"h":186},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_12.png":
+{
+	"frame": {"x":1393,"y":574,"w":230,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":5,"w":230,"h":186},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_13.png":
+{
+	"frame": {"x":1425,"y":1,"w":232,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":5,"w":232,"h":186},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_14.png":
+{
+	"frame": {"x":1190,"y":1,"w":233,"h":185},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":6,"w":233,"h":185},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_15.png":
+{
+	"frame": {"x":954,"y":1,"w":234,"h":185},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":6,"w":234,"h":185},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_16.png":
+{
+	"frame": {"x":717,"y":1,"w":235,"h":185},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":6,"w":235,"h":185},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_17.png":
+{
+	"frame": {"x":238,"y":570,"w":234,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":5,"w":234,"h":186},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_18.png":
+{
+	"frame": {"x":240,"y":191,"w":236,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":5,"w":236,"h":186},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_19.png":
+{
+	"frame": {"x":478,"y":1,"w":237,"h":186},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":5,"w":237,"h":186},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_20.png":
+{
+	"frame": {"x":1,"y":1,"w":237,"h":187},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":4,"w":237,"h":187},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_21.png":
+{
+	"frame": {"x":1,"y":190,"w":237,"h":187},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":4,"w":237,"h":187},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_22.png":
+{
+	"frame": {"x":240,"y":1,"w":236,"h":188},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":3,"w":236,"h":188},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_23.png":
+{
+	"frame": {"x":1,"y":570,"w":235,"h":188},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":3,"w":235,"h":188},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_24.png":
+{
+	"frame": {"x":1,"y":379,"w":235,"h":189},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":2,"w":235,"h":189},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_25.png":
+{
+	"frame": {"x":238,"y":379,"w":234,"h":189},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":2,"w":234,"h":189},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_26.png":
+{
+	"frame": {"x":478,"y":189,"w":233,"h":190},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":1,"w":233,"h":190},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_27.png":
+{
+	"frame": {"x":474,"y":381,"w":232,"h":190},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":1,"w":232,"h":190},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_28.png":
+{
+	"frame": {"x":717,"y":188,"w":231,"h":191},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":0,"w":231,"h":191},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_29.png":
+{
+	"frame": {"x":950,"y":188,"w":230,"h":191},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":0,"w":230,"h":191},
+	"sourceSize": {"w":238,"h":191}
+},
+"skeleton-idle_30.png":
+{
+	"frame": {"x":1413,"y":189,"w":229,"h":191},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":0,"w":229,"h":191},
+	"sourceSize": {"w":238,"h":191}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "husky_grey_tundra_sprite.png",
+	"format": "RGBA8888",
+	"size": {"w":1873,"h":763},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:638e7e69646f6b48e299985de00c9845:906bf7c126506916dbdcc3d7a5d819af:3593ad413eb6d265966b1646a836540e$"
+}
+}

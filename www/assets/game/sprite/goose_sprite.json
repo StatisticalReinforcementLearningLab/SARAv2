@@ -1,0 +1,84 @@
+{"frames": {
+
+"goose1.png":
+{
+	"frame": {"x":1,"y":1,"w":917,"h":554},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":917,"h":554},
+	"sourceSize": {"w":917,"h":554}
+},
+"goose2.png":
+{
+	"frame": {"x":1,"y":996,"w":904,"h":572},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":904,"h":572},
+	"sourceSize": {"w":904,"h":572}
+},
+"goose3.png":
+{
+	"frame": {"x":1,"y":557,"w":917,"h":437},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":917,"h":437},
+	"sourceSize": {"w":917,"h":437}
+},
+"goose4.png":
+{
+	"frame": {"x":907,"y":1253,"w":838,"h":295},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":838,"h":295},
+	"sourceSize": {"w":838,"h":295}
+},
+"goose5.png":
+{
+	"frame": {"x":907,"y":1550,"w":834,"h":321},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":834,"h":321},
+	"sourceSize": {"w":834,"h":321}
+},
+"goose6.png":
+{
+	"frame": {"x":920,"y":491,"w":830,"h":468},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":830,"h":468},
+	"sourceSize": {"w":830,"h":468}
+},
+"goose7.png":
+{
+	"frame": {"x":920,"y":1,"w":830,"h":488},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":830,"h":488},
+	"sourceSize": {"w":830,"h":488}
+},
+"goose8.png":
+{
+	"frame": {"x":920,"y":961,"w":830,"h":290},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":830,"h":290},
+	"sourceSize": {"w":830,"h":290}
+},
+"goose9.png":
+{
+	"frame": {"x":1,"y":1570,"w":882,"h":290},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":882,"h":290},
+	"sourceSize": {"w":882,"h":290}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "goose_sprite.png",
+	"format": "RGBA8888",
+	"size": {"w":1751,"h":1872},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:104b4c221234b7f8d758622a6d5251a8:ded5a23814e57cacf8d540f5b9cf26e5:01bf9ac8acf7a9783bbde48871612f53$"
+}
+}

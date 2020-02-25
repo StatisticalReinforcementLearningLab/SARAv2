@@ -1,0 +1,36 @@
+{"frames": [
+
+{
+	"filename": "frame_0_delay-0.18s.gif",
+	"frame": {"x":1,"y":1,"w":403,"h":144},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":17,"w":403,"h":144},
+	"sourceSize": {"w":420,"h":176}
+},
+{
+	"filename": "frame_1_delay-0.18s.gif",
+	"frame": {"x":1,"y":290,"w":403,"h":140},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":19,"w":403,"h":140},
+	"sourceSize": {"w":420,"h":176}
+},
+{
+	"filename": "frame_2_delay-0.18s.gif",
+	"frame": {"x":1,"y":147,"w":403,"h":141},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":17,"w":403,"h":141},
+	"sourceSize": {"w":420,"h":176}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "salmon.png",
+	"format": "RGBA8888",
+	"size": {"w":405,"h":431},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c1c32e66fddbb785c7ae4824f25193cb:eff8dd679109cd0e43596ace33a70146:4629796c1c9ff7062b70bee44ca2a056$"
+}
+}

@@ -1,0 +1,12 @@
+{
+    "declarations": {},
+    "sources": {},
+    "libraries": {
+        "OneSignal": {
+            "name": "OneSignal",
+            "type": "podspec",
+            "spec": "2.12.5",
+            "count": 1
+        }
+    }
+}

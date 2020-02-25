@@ -1,0 +1,108 @@
+{"frames": [
+
+{
+	"filename": "whale3_00000.png",
+	"frame": {"x":1,"y":1,"w":218,"h":113},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":68,"y":44,"w":218,"h":113},
+	"sourceSize": {"w":355,"h":200}
+},
+{
+	"filename": "whale3_00001.png",
+	"frame": {"x":1,"y":471,"w":214,"h":118},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":72,"y":34,"w":214,"h":118},
+	"sourceSize": {"w":355,"h":200}
+},
+{
+	"filename": "whale3_00002.png",
+	"frame": {"x":1,"y":957,"w":210,"h":121},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":76,"y":25,"w":210,"h":121},
+	"sourceSize": {"w":355,"h":200}
+},
+{
+	"filename": "whale3_00003.png",
+	"frame": {"x":1,"y":1080,"w":209,"h":123},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":77,"y":21,"w":209,"h":123},
+	"sourceSize": {"w":355,"h":200}
+},
+{
+	"filename": "whale3_00004.png",
+	"frame": {"x":1,"y":833,"w":211,"h":122},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":75,"y":23,"w":211,"h":122},
+	"sourceSize": {"w":355,"h":200}
+},
+{
+	"filename": "whale3_00005.png",
+	"frame": {"x":1,"y":711,"w":213,"h":120},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":74,"y":27,"w":213,"h":120},
+	"sourceSize": {"w":355,"h":200}
+},
+{
+	"filename": "whale3_00006.png",
+	"frame": {"x":1,"y":591,"w":214,"h":118},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":73,"y":31,"w":214,"h":118},
+	"sourceSize": {"w":355,"h":200}
+},
+{
+	"filename": "whale3_00007.png",
+	"frame": {"x":1,"y":235,"w":216,"h":116},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":72,"y":35,"w":216,"h":116},
+	"sourceSize": {"w":355,"h":200}
+},
+{
+	"filename": "whale3_00008.png",
+	"frame": {"x":1,"y":353,"w":216,"h":116},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":72,"y":38,"w":216,"h":116},
+	"sourceSize": {"w":355,"h":200}
+},
+{
+	"filename": "whale3_00009.png",
+	"frame": {"x":1,"y":116,"w":216,"h":117},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":72,"y":38,"w":216,"h":117},
+	"sourceSize": {"w":355,"h":200}
+},
+{
+	"filename": "whale3_00010.png",
+	"frame": {"x":1,"y":116,"w":216,"h":117},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":72,"y":38,"w":216,"h":117},
+	"sourceSize": {"w":355,"h":200}
+},
+{
+	"filename": "whale3_00011.png",
+	"frame": {"x":1,"y":1,"w":218,"h":113},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":68,"y":44,"w":218,"h":113},
+	"sourceSize": {"w":355,"h":200}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "whale.png",
+	"format": "RGBA8888",
+	"size": {"w":220,"h":1204},
+	"scale": "0.41667",
+	"smartupdate": "$TexturePacker:SmartUpdate:b3054edcf9170156fc6443189bfdca5b:a9208d611af253e988b4a0f1ac0d2f79:e4855b63fc44ac89034aef029b5d1ff6$"
+}
+}

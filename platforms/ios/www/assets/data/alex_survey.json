@@ -1,0 +1,137 @@
+[
+  {
+    "name":"Q1d",
+    "text":"<b>Where</b> were you right before you received this survey?",
+    "type":"radiobutton",
+    "extra":{
+      "choices":["Home (indoors)", 
+        "School", 
+        "Car/van/truck", 
+        "Outdoors", 
+        "Restaurant", 
+        "Store/mall", 
+        "Someone else’s house", 
+        "Gym/Recreational center", 
+        "Someplace else"],
+      "orientation": "vertical"
+    }
+  },
+
+  {
+    "name":"Q2d",
+    "text": "<b>Who</b> were you with just before you received this survey?",
+    "type":"radiobutton",
+    "extra":{
+      "choices":["Alone", 
+        "Mom/Dad", 
+        "Sister(s)/Brother(s)", 
+        "Other family", 
+        "Friend(s)", 
+        "Classmates", 
+        "Someone else"],
+      "orientation": "vertical"
+    }
+
+  },
+  
+  {
+    "name": "Q3d",
+    "text": "How much <b>pain</b> are you currently experiencing?",
+    "type": "radiobutton",
+    "extra":{
+      "choices": ["No<br>Pain", "Worst<br>Pain"],
+      "orientation": "horizontal",
+      "levels": 5
+    }
+  },
+
+  {
+    "name": "Q4d",
+    "text": "How much <b>fatigue</b> are you currently experiencing?",
+    "type": "radiobutton",
+    "extra":{
+      "choices": ["No<br>Fatigue", "Worst<br>Fatigue"],
+      "orientation": "horizontal",
+      "levels": 5
+    }
+  },
+
+  {
+    "name": "Q5d",
+    "text": "How much <b>nausea</b> are you currently experiencing?",
+    "type": "radiobutton",
+    "extra":{
+      "choices": ["No<br>Nausea", "Worst<br>Nausea"],
+      "orientation": "horizontal",
+      "levels": 5
+    }
+  },
+
+  {
+    "name":"Q6d",
+    "text": "How <b>positive</b> were you feeling (for example, happy or joyful) just before you received this survey?",
+    "type":"radiobutton",
+    "extra":{
+      "choices": ["No<br>at all", "Extremely<br>positive"],
+      "orientation": "horizontal",
+      "levels": 5
+    }
+  },
+
+  {
+    "name": "Q7d",
+    "text": "How <b>negative</b> were you feeling (for example, stressed, mad/angry, nervous/anxious, or sad) just before you received this survey?",
+    "type": "radiobutton",
+    "extra":{
+      "choices": ["No<br>at all", "Extremely<br>negative"],
+      "orientation": "horizontal",
+      "levels": 5
+    }
+  },
+
+  {
+    "name":"Q8d",
+    "text":"How <b>motivated</b> are you to take 6MP today?",
+    "type":"radiobutton",
+    "extra":{
+      "choices": ["No<br>at all", "Extremely<br>Motivated"],
+      "orientation": "horizontal",
+      "levels": 5
+    }
+    
+  },
+
+  {
+    "name": "Q9d",
+    "text": "In the past 24 hours, have you had a <b>misunderstanding or disagreement</b> with your parent?",
+    "type": "radiobutton",
+    "extra":{
+      "choices":["Yes",
+         "No"],
+      "orientation": "vertical"
+    }
+  },
+
+  {
+    "name": "Q10",
+    "text": "In the past 24 hours, have you found it <b>easy to talk</b> to your parents about your thoughts and feelings?",
+    "type": "radiobutton",
+    "extra":{
+      "choices":["Yes",
+         "No"],
+      "orientation": "vertical"
+    }
+  },
+
+  {
+    "name": "Q11",
+    "text": "How <b>lonely</b> are you currently feeling?",
+    "type": "radiobutton",
+    "extra":{
+      "choices": ["No<br>at all", "Extremely<br>lonely"],
+      "orientation": "horizontal",
+      "levels": 5
+    }
+  }
+]
+
