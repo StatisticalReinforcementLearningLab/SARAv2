@@ -5682,7 +5682,7 @@ var DemoAquariumComponent = /** @class */ (function () {
         if (this.platform.is('ios')) {
             if (GameApp.CANVAS_HEIGHT < 642.0) //iphone SE fix.
                 GameApp.CANVAS_HEIGHT += 60;
-            this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 21 * window.devicePixelRatio, Phaser.AUTO, 'gameDiv');
+            this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 36 * window.devicePixelRatio, Phaser.AUTO, 'gameDiv');
         }
         else if (this.platform.is('android'))
             this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 74, Phaser.AUTO, 'gameDiv');
@@ -10358,7 +10358,7 @@ class BootTundraL5 extends Phaser.State {
 
 		//Change color here 
 		//-- http://www.w3schools.com/colors/colors_picker.asp
-		this.stage.backgroundColor = '#095e98';
+		this.stage.backgroundColor = '#ffffff';
         
 		this.state.start('Preloader');
 		console.log("Boot completed");
@@ -10396,8 +10396,13 @@ class GameTundraL5 extends Phaser.State {
         console.log("create called");
         var s = this.game.add.sprite(0,0,'tundra1');
         s.rotation = 0.0;
-        s.width = this.game.width;
-        s.height = this.game.height;
+        var aspect_ratio = s.width/s.height;
+        s.height = this.game.height - 310;
+        s.width = s.height*aspect_ratio;
+
+        var titlescreen = this.add.image(0, this.game.height-60, 'titlescreen');
+        titlescreen.scale.setTo(0.6, 0.6);
+
 
         //
         this.height = this.game.height;
@@ -10903,9 +10908,12 @@ class PreloaderTundraL5 extends Phaser.State {
             }
 
 		}, this);
+
 		
 
-        this.game.load.image('tundra1','assets/pics/bg-tundra.png');
+		//this.game.load.image('tundra1','assets/pics/bg-tundra.png');
+		this.game.load.image('tundra1','assets/pics/bg-top-tundra.png');
+		this.load.image('titlescreen', 'assets/pics/bg-bottom-tundra.png'); 
         
 		this.game.load.atlasJSONArray('penguin', 'assets/game/sprite/penguin_sprite.png', 'assets/game/sprite/penguin_sprite.json');
 		this.game.load.atlasJSONArray('sea_lion_silver', 'assets/game/sprite/sea_lion_silver_sprite.png', 'assets/game/sprite/sea_lion_silver_sprite.json');
