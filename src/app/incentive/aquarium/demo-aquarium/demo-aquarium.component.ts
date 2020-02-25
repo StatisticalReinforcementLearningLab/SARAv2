@@ -357,6 +357,4 @@ export class DemoAquariumComponent implements OnInit {
     this.game.destroy();
   }
 
- 
-
 }
