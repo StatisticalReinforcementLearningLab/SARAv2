@@ -1,0 +1,44 @@
+{"frames": {
+
+"t8_smallbird-removebg-preview-0.png":
+{
+	"frame": {"x":1,"y":137,"w":213,"h":130},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":45,"w":213,"h":130},
+	"sourceSize": {"w":250,"h":250}
+},
+"t8_smallbird-removebg-preview-1.png":
+{
+	"frame": {"x":1,"y":347,"w":213,"h":75},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":98,"w":213,"h":75},
+	"sourceSize": {"w":250,"h":250}
+},
+"t8_smallbird-removebg-preview-2.png":
+{
+	"frame": {"x":1,"y":1,"w":213,"h":134},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":69,"w":213,"h":134},
+	"sourceSize": {"w":250,"h":250}
+},
+"t8_smallbird-removebg-preview-3.png":
+{
+	"frame": {"x":1,"y":269,"w":213,"h":76},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":70,"w":213,"h":76},
+	"sourceSize": {"w":250,"h":250}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "bird_tundra_sprite.png",
+	"format": "RGBA8888",
+	"size": {"w":215,"h":423},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:84d09d29777d126e83efd8c226c6ffcd:b3cb37bc979336135504e5a296c2fa58:9aebae38a108df930d4d27001d9a6963$"
+}
+}

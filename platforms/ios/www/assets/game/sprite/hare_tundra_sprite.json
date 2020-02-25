@@ -1,0 +1,60 @@
+{"frames": {
+
+"t1_hare-removebg-preview-0.png":
+{
+	"frame": {"x":1,"y":1,"w":149,"h":121},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":70,"w":149,"h":121},
+	"sourceSize": {"w":181,"h":223}
+},
+"t1_hare-removebg-preview-1.png":
+{
+	"frame": {"x":152,"y":1,"w":113,"h":120},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":50,"y":76,"w":113,"h":120},
+	"sourceSize": {"w":181,"h":223}
+},
+"t1_hare-removebg-preview-2.png":
+{
+	"frame": {"x":369,"y":1,"w":96,"h":115},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":46,"y":79,"w":96,"h":115},
+	"sourceSize": {"w":181,"h":223}
+},
+"t1_hare-removebg-preview-3.png":
+{
+	"frame": {"x":267,"y":1,"w":100,"h":117},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":52,"y":40,"w":100,"h":117},
+	"sourceSize": {"w":181,"h":223}
+},
+"t1_hare-removebg-preview-4.png":
+{
+	"frame": {"x":467,"y":1,"w":142,"h":109},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":20,"y":35,"w":142,"h":109},
+	"sourceSize": {"w":181,"h":223}
+},
+"t1_hare-removebg-preview-5.png":
+{
+	"frame": {"x":611,"y":1,"w":174,"h":103},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":7,"y":35,"w":174,"h":103},
+	"sourceSize": {"w":181,"h":223}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "hare_tundra_sprite.png",
+	"format": "RGBA8888",
+	"size": {"w":786,"h":123},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ed81153ace5cceeaa4cae585577f590c:596084a9cf8acd020062c6f9bcf24a8b:da82afba677d0c6455a66999b484f0b4$"
+}
+}

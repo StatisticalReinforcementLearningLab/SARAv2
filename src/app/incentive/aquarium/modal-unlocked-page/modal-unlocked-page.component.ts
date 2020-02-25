@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NavParams, ModalController } from '@ionic/angular';
+import * as moment from 'moment';
+import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 
 @Component({
   selector: 'app-modal-unlocked-page',
@@ -14,7 +16,7 @@ export class ModalUnlockedPageComponent implements OnInit {
   @Input() awardedDollar: number;
   reinforcements;
 
-  constructor(navParams: NavParams, public modalCtrl: ModalController) {
+  constructor(navParams: NavParams, public modalCtrl: ModalController, private userProfileService: UserProfileService) {
     // componentProps can also be accessed at construction time using NavParams
     console.log(navParams.get('firstName'));
     this.reinforcements = [];//[{'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"}];
@@ -23,9 +25,13 @@ export class ModalUnlockedPageComponent implements OnInit {
   ngOnInit() {
 
     //get if money is awarded.
-    if(this.awardedDollar > 0)
-      this.reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'Earned ' + this.awardedDollar + ' dollar(s)', 'text': 'You earned 1 dollar for completing surveys 3-days in a row'});
-
+    if(this.awardedDollar > 0){
+      if(this.isFirstDayInTheStudy())
+        this.reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + this.awardedDollar + ' dollar(s)', 'text': 'Thanks for being a participant in the study. You earned 2 dollar.'});
+      else
+        this.reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + this.awardedDollar + ' dollar(s)', 'text': 'You earned 1 dollar for completing surveys 3-days in a row'});
+    }
+      
     //get if fish is alotted
 
     var current_point = this.currentPoints;
@@ -48,7 +54,7 @@ export class ModalUnlockedPageComponent implements OnInit {
       for(var i = 0; i < fish_data.length; i++) {
           if ((fish_data[i].points > previous_point) && (fish_data[i].points <= current_point)) {
             img = "assets/" + fish_data[i].img.substring(0, fish_data[i].img.length-4) + '_tn.jpg';
-            header =  fish_data[i].name + " unlocked";
+            header =  "You unlocked " + fish_data[i].name;
             text = fish_data[i].trivia;
             this.reinforcements.push({'img': img, 'header': header, 'text': text});
           }
@@ -66,6 +72,28 @@ export class ModalUnlockedPageComponent implements OnInit {
     //this.modalCtrl.dismiss(data);
     this.modalCtrl.dismiss();
 
+  }
+
+  isFirstDayInTheStudy(){
+
+      var daily_survey = this.userProfileService.userProfile.survey_data.daily_survey;
+      var first_date = moment().format('YYYYMMDD');
+      var first_date_moment_js = moment(first_date,"YYYYMMDD");
+      var key_moment_js;
+      for (var key in daily_survey) {
+          key_moment_js = moment(key,"YYYYMMDD");
+          //takes the first day only. But it may not be the first date.
+          if (key_moment_js < first_date_moment_js) {
+              first_date = key;
+              first_date_moment_js = moment(first_date,"YYYYMMDD");
+          }
+      }
+
+      var todays_date = moment().format('YYYYMMDD');
+      if(todays_date == first_date)
+        return true;
+      else
+        return false;
   }
 
 }

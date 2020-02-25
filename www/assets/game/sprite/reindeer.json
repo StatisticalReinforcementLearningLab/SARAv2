@@ -1,0 +1,76 @@
+{"frames": {
+
+"t13_deer bottom row copy 1.png":
+{
+	"frame": {"x":574,"y":1314,"w":574,"h":636},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":65,"y":51,"w":574,"h":636},
+	"sourceSize": {"w":696,"h":755}
+},
+"t13_deer bottom row copy 2.png":
+{
+	"frame": {"x":1218,"y":607,"w":553,"h":695},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":69,"y":17,"w":553,"h":695},
+	"sourceSize": {"w":696,"h":755}
+},
+"t13_deer bottom row copy 3.png":
+{
+	"frame": {"x":649,"y":607,"w":567,"h":705},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":76,"y":11,"w":567,"h":705},
+	"sourceSize": {"w":695,"h":754}
+},
+"t13_deer bottom row copy 4.png":
+{
+	"frame": {"x":649,"y":1,"w":680,"h":604},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":10,"y":49,"w":680,"h":604},
+	"sourceSize": {"w":698,"h":755}
+},
+"tile000 copy.png":
+{
+	"frame": {"x":1,"y":1,"w":646,"h":646},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":42,"y":37,"w":646,"h":646},
+	"sourceSize": {"w":695,"h":755}
+},
+"tile001 copy.png":
+{
+	"frame": {"x":1150,"y":1314,"w":559,"h":652},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":110,"y":43,"w":559,"h":652},
+	"sourceSize": {"w":695,"h":755}
+},
+"tile002 copy.png":
+{
+	"frame": {"x":1,"y":1312,"w":571,"h":661},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":64,"y":71,"w":571,"h":661},
+	"sourceSize": {"w":695,"h":755}
+},
+"tile003 copy.png":
+{
+	"frame": {"x":1,"y":649,"w":593,"h":661},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":48,"y":74,"w":593,"h":661},
+	"sourceSize": {"w":695,"h":755}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Brown Bear-0.png",
+	"format": "RGBA8888",
+	"size": {"w":1772,"h":1974},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:a05daf8e980b94efa989a674628a0016:a18add1cf7c9ada47ab47d7cf8461914:da19d913c42397cf7cbcd5431cf868fa$"
+}
+}
