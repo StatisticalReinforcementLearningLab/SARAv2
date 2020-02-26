@@ -277,7 +277,7 @@ export class DynamicSurveyComponent implements OnInit {
 
         //Store app version number
         this.survey2['appVersion'] = this.versionNumber;
-
+        this.userProfileService.userProfile.versionNumber = this.versionNumber;
 
         var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.survey2), "Z&wz=BGw;%q49/<)");
         //var encrypted = this.EncrDecr.encrypt("holla", "Z&wz=BGw;%q49/<)");
@@ -287,6 +287,7 @@ export class DynamicSurveyComponent implements OnInit {
         console.log('Decrypted :' + decrypted);
         this.survey2['encrypted'] = encrypted;
 
+        console.log(this.userProfileService);
         this.userProfileService.surveyCompleted(); 
         
         //compute and store "TotalPoints" to localStorage
@@ -388,20 +389,29 @@ export class DynamicSurveyComponent implements OnInit {
       //navigate to award-memes/award-altruism with equal probability after submit survey
       var currentProb = Math.random();
       window.localStorage.setItem("Prob", ""+currentProb);
+      var currentDate = moment().format('YYYYMMDD');
       let navigationExtras: NavigationExtras = {
         state: {
-          date: moment().format('YYYYMMDD'),
+          date: currentDate,
           prob: currentProb
         }
       };
-      if(currentProb > 0.5 ){
-          this.router.navigate(['incentive/award-memes'], navigationExtras);
-      } else {
-          //this.router.navigate(['incentive/sample-life-insight']);
-          this.router.navigate(['incentive/award-altruism'],  navigationExtras);
-      }
-           
+
+      if(this.fileLink.includes('caregiver') || currentProb <= 0.4 ) {
+        var reinforcementObj = {};
+        reinforcementObj['ds'] = 1;
+        reinforcementObj['reward'] = 0;
+        reinforcementObj['prob'] = currentProb;  
+        //this.userProfileService.addReinforcementData(currentDate, reinforcementObj);    
+        this.router.navigate(['home']);        
+      } else if(currentProb < 0.7 ){
+        this.router.navigate(['incentive/award-memes'], navigationExtras);
+      } else  {
+        //this.router.navigate(['incentive/sample-life-insight']);
+        this.router.navigate(['incentive/award-altruism'],  navigationExtras);
+      }            
      }
+
     });
 
     const tmpModule = NgModule({ declarations: [surveyComponent], imports: [FormsModule]})(class {
