@@ -286,8 +286,6 @@ export class DynamicSurveyComponent implements OnInit {
         console.log('Encrypted :' + encrypted);
         console.log('Decrypted :' + decrypted);
         this.survey2['encrypted'] = encrypted;
-
-        this.userProfileService.surveyCompleted(); 
         
         //compute and store "TotalPoints" to localStorage
         if(window.localStorage['TotalPoints'] == undefined)
@@ -301,6 +299,8 @@ export class DynamicSurveyComponent implements OnInit {
         var pastDollars = this.awardDollarService.getDollars();
         var dollars = this.awardDollarService.giveDollars();
         console.log("Dollars: " + dollars);
+
+        this.userProfileService.surveyCompleted(); 
 
         window.localStorage.setItem("LastSurveyCompletionDate", ""+moment().format('YYYYMMDD'));
         window.localStorage.setItem("CurrentPoints", ""+ this.userProfileService.points);
