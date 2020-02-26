@@ -277,7 +277,6 @@ export class DynamicSurveyComponent implements OnInit {
 
         //Store app version number
         this.survey2['appVersion'] = this.versionNumber;
-        this.userProfileService.userProfile.versionNumber = this.versionNumber;
 
         var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.survey2), "Z&wz=BGw;%q49/<)");
         //var encrypted = this.EncrDecr.encrypt("holla", "Z&wz=BGw;%q49/<)");
@@ -289,6 +288,7 @@ export class DynamicSurveyComponent implements OnInit {
 
         console.log(this.userProfileService);
         this.userProfileService.surveyCompleted(); 
+        this.userProfileService.versionNumber = this.versionNumber;
         
         //compute and store "TotalPoints" to localStorage
         if(window.localStorage['TotalPoints'] == undefined)
