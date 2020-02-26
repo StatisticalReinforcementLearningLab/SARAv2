@@ -710,7 +710,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-app> \n  <app-terms-of-service *ngIf=\"!agreeToTerms\"></app-terms-of-service>\n  <ion-router-outlet *ngIf=\"agreeToTerms\" ></ion-router-outlet>\n</ion-app>\n\n"
+module.exports = "<ion-app> \n  <app-terms-of-service *ngIf=\"!agreeToTerms\"></app-terms-of-service>\n  <ion-router-outlet *ngIf=\"agreeToTerms && !isLoading\"  ></ion-router-outlet>\n</ion-app>\n\n"
 
 /***/ }),
 
@@ -732,7 +732,7 @@ module.exports = "<!-- \n<div class=\"container\">\n    <div class=\"row\">\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <!--ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\"></ion-back-button>\n    </ion-buttons-->\n    <ion-buttons slot=\"end\">\n        <font color=\"white\">${{money}}</font>\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n        <ion-text  *ngIf=\"!isActive\" style=\"color:#fff;\"><strong>Account is Paused</strong> </ion-text>\n        <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n          <ion-icon name=\"journal\"></ion-icon>\n        </ion-button>\n        <!--\n        <ion-button href=\"{{surveyPath}}\" *ngIf=\"isActive\">Start Survey</ion-button> \n        <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n          <ion-icon name=\"journal\"></ion-icon>\n        </ion-button> \n        <ion-button style=\"color:#fff;\" (click)=\"startSurveyAYA()\">\n          <ion-icon name=\"journal\"></ion-icon>\n        </ion-button> \n        -->\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">ADAPTS</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n\n\n<ion-content>\n  <!--div class=\"ion-padding\">\n    <ion-button href=\"/survey/samplesurvey\">Sample survey (demo)</ion-button> <br>\n    <ion-button href=\"/incentive/aquariumone\">Incentive: Aquarium 1</ion-button> <br>\n    <ion-button href=\"/incentive/award-memes\" >Incentive: meme</ion-button> <br>\n    <ion-button href=\"/incentive/visualization\">Incentive: Life-inisight</ion-button> <br>\n  </div-->\n\n  <app-demo-aquarium></app-demo-aquarium>\n</ion-content>\n\n"
+module.exports = "\n<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <!--ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\"></ion-back-button>\n    </ion-buttons-->\n    <ion-buttons slot=\"end\">\n        <font color=\"white\">${{money}}</font>\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n\n        <!-- Mash codes:\n        <ion-text  *ngIf=\"!isActive\" style=\"color:#fff;\"><strong>Account is Paused</strong> </ion-text>\n        <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n          <ion-icon name=\"journal\"></ion-icon>\n        </ion-button>\n        -->\n\n        <ion-button (click)=\"startSurvey()\"   *ngIf=\"isActive\">\n            <ion-icon name=\"journal\" style=\"color : white;\"></ion-icon>\n        </ion-button>\n\n\n        <ion-button *ngIf=\"!isActive\" (click)=\"dispalySurveyPausedMsg()\" >\n            <ion-icon name=\"journal\" style=\"color : #e74c3c;\"></ion-icon>\n        </ion-button>\n        <!--\n        <ion-button href=\"{{surveyPath}}\" *ngIf=\"isActive\">Start Survey</ion-button> \n        <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n          <ion-icon name=\"journal\"></ion-icon>\n        </ion-button> \n        <ion-button style=\"color:#fff;\" (click)=\"startSurveyAYA()\">\n          <ion-icon name=\"journal\"></ion-icon>\n        </ion-button> \n        -->\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">ADAPTS</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n\n\n<ion-content>\n  <!--div class=\"ion-padding\">\n    <ion-button href=\"/survey/samplesurvey\">Sample survey (demo)</ion-button> <br>\n    <ion-button href=\"/incentive/aquariumone\">Incentive: Aquarium 1</ion-button> <br>\n    <ion-button href=\"/incentive/award-memes\" >Incentive: meme</ion-button> <br>\n    <ion-button href=\"/incentive/visualization\">Incentive: Life-inisight</ion-button> <br>\n  </div-->\n\n  <app-demo-aquarium></app-demo-aquarium>\n</ion-content>\n\n"
 
 /***/ }),
 
@@ -765,7 +765,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n\n  <div id=\"gameDiv\"></div>\n  <p  style=\"padding-top:10px;padding-bottom:0px;padding-left:10px;\"><b>Username</b>: {{username}}</p>  \n  \n  \n\n  <!--\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"startTundraLevel()\">Tundra level</ion-button>\n\n  <app-loading-spinner></app-loading-spinner>\n\n  <ion-card> \n    <div class=\"quetiontextstyle\">\n        This is the question\n    </div>\n    <div class=\"radiovertical\">\n      <ul>\n        \n        <li>\n          <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n          <label for=\"ff-option\">Pizza</label> \n          <div class=\"check\"></div>\n        </li>\n\n        <li>\n          <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n          <label for=\"ss-option\">Boyfriend</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n        \n        <li>\n          <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n          <label for=\"tt-option\">Cats</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n\n      </ul>\n    </div>\n  </ion-card>\n  -->\n\n\n"
+module.exports = "<div id=\"gameDiv\"></div>\n<p  style=\"padding-top:10px;padding-bottom:0px;padding-left:10px;\"><b>Username</b>: {{username}}</p>  \n  \n  \n\n  <!--\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"startTundraLevel()\">Tundra level</ion-button>\n\n  <app-loading-spinner></app-loading-spinner>\n\n  <ion-card> \n    <div class=\"quetiontextstyle\">\n        This is the question\n    </div>\n    <div class=\"radiovertical\">\n      <ul>\n        \n        <li>\n          <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n          <label for=\"ff-option\">Pizza</label> \n          <div class=\"check\"></div>\n        </li>\n\n        <li>\n          <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n          <label for=\"ss-option\">Boyfriend</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n        \n        <li>\n          <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n          <label for=\"tt-option\">Cats</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n\n      </ul>\n    </div>\n  </ion-card>\n  -->\n\n\n"
 
 /***/ }),
 
@@ -4636,6 +4636,7 @@ var AppComponent = /** @class */ (function () {
         this.userProfileService = userProfileService;
         this.loadingController = loadingController;
         this.ga = ga;
+        this.isLoading = true;
         this.agreeToTerms = JSON.parse(localStorage.getItem("agreeToTerms"));
         this.initializeApp();
         router.events.subscribe(function (event) {
@@ -4655,7 +4656,7 @@ var AppComponent = /** @class */ (function () {
                 console.log("Routing ended");
                 console.log(event.route.path);
                 // if(event.route.path == "survey")
-                //    this.dismissLaoding();
+                //    this.dismissLoading();
                 //console.log(event);
                 //this.survey_text = "Start survey";
                 //console.log(this.router.url);
@@ -4688,10 +4689,18 @@ var AppComponent = /** @class */ (function () {
         var _this = this;
         this.authService.autoLogin();
         if (this.authService.isLoggedIn()) {
-            this.userSub = this.userProfileService.initializeObs().subscribe();
+            this.showLoading();
+            this.userSub = this.userProfileService.initializeObs().subscribe(function () {
+                _this.dismissLoading();
+                _this.isLoading = false;
+            });
             // this.userProfileService.initialize();
             // if we can for things to wait to progress in here
             // then, we'll only need to load user profile here and at login in Auth component
+        }
+        else {
+            this.dismissLoading();
+            this.isLoading = false;
         }
         this.platform.ready().then(function () {
             //this.statusBar.styleDefault();
@@ -4718,7 +4727,7 @@ var AppComponent = /** @class */ (function () {
         // set status bar to white
         //this.statusBar.backgroundColorByHexString('#ffffff');
     };
-    AppComponent.prototype.showLaoding = function () {
+    AppComponent.prototype.showLoading = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var _a;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_b) {
@@ -4738,7 +4747,7 @@ var AppComponent = /** @class */ (function () {
             });
         });
     };
-    AppComponent.prototype.dismissLaoding = function () {
+    AppComponent.prototype.dismissLoading = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 this.loading.dismiss();
@@ -5135,6 +5144,7 @@ var HomePage = /** @class */ (function () {
     }
     Object.defineProperty(HomePage.prototype, "isActive", {
         get: function () {
+            //return false;
             if (this.userProfileService == undefined)
                 return true;
             else
@@ -5206,31 +5216,37 @@ var HomePage = /** @class */ (function () {
                             //subHeader: "Survey is not avaibable!",
                             message: alertMessage,
                             //defined in theme/variables.scss
-                            buttons: [{ text: 'OK', cssClass: 'secondary' }]
+                            //buttons: [{text: 'OK', cssClass: 'secondary'}]
+                            buttons: [{ text: 'OK' }]
                         })];
                     case 1:
                         alert = _a.sent();
                         /*
-                        let alert = this.alertCtrl.create({
-                          title: 'Low battery',
-                          subTitle: '10% of battery remaining',
-                          buttons: ['Dismiss']
-                        });
+                          let alert = this.alertCtrl.create({
+                            title: 'Low battery',
+                            subTitle: '10% of battery remaining',
+                            buttons: ['Dismiss']
+                          });
                         */
+                        //----
                         return [4 /*yield*/, alert.present()];
                     case 2:
                         /*
-                        let alert = this.alertCtrl.create({
-                          title: 'Low battery',
-                          subTitle: '10% of battery remaining',
-                          buttons: ['Dismiss']
-                        });
+                          let alert = this.alertCtrl.create({
+                            title: 'Low battery',
+                            subTitle: '10% of battery remaining',
+                            buttons: ['Dismiss']
+                          });
                         */
+                        //----
                         _a.sent();
                         return [2 /*return*/];
                 }
             });
         });
+    };
+    HomePage.prototype.dispalySurveyPausedMsg = function () {
+        this.presentAlert('This account has been temporarily paused by the research administrators.');
     };
     HomePage.ctorParameters = function () { return [
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"] },
@@ -7603,10 +7619,34 @@ class GameRainforestL6 extends Phaser.State {
     //gets executed after preload
     create(){
         console.log("create called");
+
+        //reinforestBackgroundBottom1
+        var reinforestBackgroundBottom1 = this.add.image(0, this.game.height-320, 'reinforestBackgroundBottom1');
+        //reinforestBackgroundBottom1.scale.setTo(0.6, 0.6);
+        var aspect_ratio = reinforestBackgroundBottom1.width/reinforestBackgroundBottom1.height;
+        reinforestBackgroundBottom1.height = 250;
+        reinforestBackgroundBottom1.width = reinforestBackgroundBottom1.height*aspect_ratio;
+
+
+        //reinforestBackgroundBottom2
+        var reinforestBackgroundBottom2 = this.add.image(0, this.game.height-120, 'reinforestBackgroundBottom2');
+        //reinforestBackgroundBottom1.scale.setTo(0.6, 0.6);
+        aspect_ratio = reinforestBackgroundBottom2.width/reinforestBackgroundBottom2.height;
+        reinforestBackgroundBottom2.height = 120;
+        reinforestBackgroundBottom2.width = reinforestBackgroundBottom2.height*aspect_ratio;
+
+
         var s = this.game.add.sprite(0,0,'reinforest1');
+        //s.rotation = 0.0;
+        //s.width = this.game.width;
+        //s.height = this.game.height;
+        //var s = this.game.add.sprite(0,0,'tundra1');
         s.rotation = 0.0;
-        s.width = this.game.width;
-        s.height = this.game.height;
+        aspect_ratio = s.width/s.height;
+        s.height = this.game.height - 310;
+        s.width = s.height*aspect_ratio;
+
+        
 
         //
         this.height = this.game.height;
@@ -8113,7 +8153,11 @@ class PreloaderRainforestL6 extends Phaser.State {
 
 
         this.game.load.image('rock2','assets/pics/rock2.png');
-		this.game.load.image('reinforest1','assets/pics/bg-3.png');
+		this.game.load.image('reinforest1','assets/pics/bg-rainforest-top.png');
+		this.load.image('reinforestBackgroundBottom1', 'assets/pics/bg-rainforest-bottom-1.png'); 
+		this.load.image('reinforestBackgroundBottom2', 'assets/pics/bg-rainforest-bottom-2.png'); 
+
+
 		this.game.load.image('treasure', 'assets/img/treasure_chest_rainforest.png');
         this.game.load.atlasJSONArray('attackplant', 'assets/game/sprite/attack_plant.png', 'assets/game/sprite/attack_plant.json');
         this.game.load.atlasJSONArray('thirstyplant', 'assets/game/sprite/thirsty_plant.png', 'assets/game/sprite/thirsty_plant.json');
@@ -14091,7 +14135,9 @@ __webpack_require__.r(__webpack_exports__);
 var UserProfile = /** @class */ (function () {
     //access token
     //refresh token 
-    function UserProfile(username, isParent, datesTaken, points, badgeCount, lastupdate, readable_ts) {
+    function UserProfile(username, 
+    // isParent: boolean, 
+    datesTaken, points, badgeCount, lastupdate, readable_ts) {
         this.badges = { 'daily_survey': [],
             'money': 0,
         };
@@ -14107,7 +14153,7 @@ var UserProfile = /** @class */ (function () {
             'weekly_survey': {}
         };
         // this.userID = userID;
-        this.isParent = isParent;
+        // this.isParent = isParent;
         this.username = username;
         this.datesTaken = datesTaken;
         this.points = points;
@@ -14117,7 +14163,6 @@ var UserProfile = /** @class */ (function () {
     }
     UserProfile.ctorParameters = function () { return [
         { type: String },
-        { type: Boolean },
         { type: Array },
         { type: Number },
         { type: Number },
@@ -14193,7 +14238,7 @@ var UserProfileService = /** @class */ (function () {
                 var username = localStorage.getItem('loggedInUser');
                 var currenttime = new Date();
                 var dateString = moment__WEBPACK_IMPORTED_MODULE_7__(currenttime).format('MMMM Do YYYY, h:mm:ss a Z');
-                _this.userProfile = new _user_profile_model__WEBPACK_IMPORTED_MODULE_2__["UserProfile"](username, false, [], 0, 0, currenttime.getTime(), dateString);
+                _this.userProfile = new _user_profile_model__WEBPACK_IMPORTED_MODULE_2__["UserProfile"](username, [], 0, 0, currenttime.getTime(), dateString);
             }
             else {
                 _this.userProfile = response1;
@@ -14239,18 +14284,16 @@ var UserProfileService = /** @class */ (function () {
     };
     Object.defineProperty(UserProfileService.prototype, "isActive", {
         get: function () {
-            //temporarily returning true until get the above commented out method working
-            return true;
-            //return this.userProfileFixed.isActive;
+            return this.userProfileFixed.isActive;
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(UserProfileService.prototype, "isParent", {
         get: function () {
-            //temporarily returning true until get the above commented out method working
-            return false;
-            //return this.userProfileFixed.isParent;
+            // //temporarily returning true until get the above commented out method working
+            // return false;
+            return this.userProfileFixed.isParent;
         },
         enumerable: true,
         configurable: true
@@ -14292,7 +14335,7 @@ var UserProfileService = /** @class */ (function () {
                 var username = localStorage.getItem('loggedInUser');
                 var currenttime = new Date();
                 var dateString = moment__WEBPACK_IMPORTED_MODULE_7__(currenttime).format('MMMM Do YYYY, h:mm:ss a Z');
-                _this.userProfile = new _user_profile_model__WEBPACK_IMPORTED_MODULE_2__["UserProfile"](username, false, [], 0, 0, currenttime.getTime(), dateString);
+                _this.userProfile = new _user_profile_model__WEBPACK_IMPORTED_MODULE_2__["UserProfile"](username, [], 0, 0, currenttime.getTime(), dateString);
             }
             else {
                 _this.userProfile = response;
@@ -14322,7 +14365,7 @@ var UserProfileService = /** @class */ (function () {
     UserProfileService.prototype.initTestProfile = function () {
         var currenttime = new Date();
         var dateString = moment__WEBPACK_IMPORTED_MODULE_7__(currenttime).format('MMMM Do YYYY, h:mm:ss a Z');
-        var userProfile = new _user_profile_model__WEBPACK_IMPORTED_MODULE_2__["UserProfile"]('testy', false, [], 0, 3, currenttime.getTime(), dateString);
+        var userProfile = new _user_profile_model__WEBPACK_IMPORTED_MODULE_2__["UserProfile"]('testy', [], 0, 3, currenttime.getTime(), dateString);
         this.userProfile = userProfile;
         this.saveProfileToDevice();
         //STORE ON DEVICE
