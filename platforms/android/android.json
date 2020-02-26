@@ -9,14 +9,6 @@
         "parents": {
           "/manifest/application": [
             {
-              "xml": "<receiver android:enabled=\"true\" android:exported=\"true\" android:name=\"com.google.android.gms.analytics.CampaignTrackingReceiver\"><intent-filter><action android:name=\"com.android.vending.INSTALL_REFERRER\" /></intent-filter></receiver>",
-              "count": 1
-            },
-            {
-              "xml": "<service android:enabled=\"true\" android:exported=\"false\" android:name=\"com.google.android.gms.analytics.CampaignTrackingService\" />",
-              "count": 1
-            },
-            {
               "xml": "<amazon:enable-feature android:name=\"com.amazon.device.messaging\" android:required=\"false\" xmlns:amazon=\"http://schemas.amazon.com/apk/res/android\" />",
               "count": 1
             },
@@ -30,7 +22,7 @@
             },
             {
               "xml": "<application android:usesCleartextTraffic=\"true\" />",
-              "count": 3,
+              "count": 5,
               "mode": "merge",
               "id": "config.xml",
               "oldAttrib": {

@@ -20,10 +20,34 @@ export class GameRainforestL6 extends Phaser.State {
     //gets executed after preload
     create(){
         console.log("create called");
+
+        //reinforestBackgroundBottom1
+        var reinforestBackgroundBottom1 = this.add.image(0, this.game.height-320, 'reinforestBackgroundBottom1');
+        //reinforestBackgroundBottom1.scale.setTo(0.6, 0.6);
+        var aspect_ratio = reinforestBackgroundBottom1.width/reinforestBackgroundBottom1.height;
+        reinforestBackgroundBottom1.height = 250;
+        reinforestBackgroundBottom1.width = reinforestBackgroundBottom1.height*aspect_ratio;
+
+
+        //reinforestBackgroundBottom2
+        var reinforestBackgroundBottom2 = this.add.image(0, this.game.height-120, 'reinforestBackgroundBottom2');
+        //reinforestBackgroundBottom1.scale.setTo(0.6, 0.6);
+        aspect_ratio = reinforestBackgroundBottom2.width/reinforestBackgroundBottom2.height;
+        reinforestBackgroundBottom2.height = 120;
+        reinforestBackgroundBottom2.width = reinforestBackgroundBottom2.height*aspect_ratio;
+
+
         var s = this.game.add.sprite(0,0,'reinforest1');
+        //s.rotation = 0.0;
+        //s.width = this.game.width;
+        //s.height = this.game.height;
+        //var s = this.game.add.sprite(0,0,'tundra1');
         s.rotation = 0.0;
-        s.width = this.game.width;
-        s.height = this.game.height;
+        aspect_ratio = s.width/s.height;
+        s.height = this.game.height - 310;
+        s.width = s.height*aspect_ratio;
+
+        
 
         //
         this.height = this.game.height;

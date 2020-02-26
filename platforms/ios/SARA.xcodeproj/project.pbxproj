@@ -690,6 +690,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 0.0.20;
 				DEVELOPMENT_TEAM = 853VPLF7T7;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -705,6 +706,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)/Plugins/cordova-plugin-google-analytics\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)/Plugins/cordova-plugin-google-analytics\"",
 				);
+				MARKETING_VERSION = 0.0.20;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.harvard.srl.SARA.V2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -723,6 +725,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 0.0.20;
 				DEVELOPMENT_TEAM = 853VPLF7T7;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SARA/SARA-Prefix.pch";
@@ -736,6 +739,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)/Plugins/cordova-plugin-google-analytics\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)/Plugins/cordova-plugin-google-analytics\"",
 				);
+				MARKETING_VERSION = 0.0.20;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.harvard.srl.SARA.V2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
