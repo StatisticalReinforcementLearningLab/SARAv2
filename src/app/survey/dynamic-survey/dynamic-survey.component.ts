@@ -25,8 +25,7 @@ import { AwardDollarService } from 'src/app/incentive/award-money/award-dollar.s
 @Component({
   selector: 'app-dynamic-survey',
   templateUrl: './dynamic-survey.component.html',
-  styleUrls: ['./dynamic-survey.component.scss'],
-  providers: [UserProfileService], //try commenting out
+  styleUrls: ['./dynamic-survey.component.scss']
 })
 
 //@PreLoad('life-insights')
@@ -270,13 +269,14 @@ export class DynamicSurveyComponent implements OnInit {
         this.ga.trackEvent('Submit Button', 'Tapped Action', 'Submit the completed survey', 0);
               
         this.survey2['endtimeUTC'] = new Date().getTime();
-        this.survey2['userName'] = localStorage.getItem('loggedInUser');
+        this.survey2['userName'] = this.userProfileService.username;
         this.survey2['ts'] = moment().format('MMMM Do YYYY, h:mm:ss a Z');
 
         this.survey2['devicInfo'] = this.plt.platforms();
 
         //Store app version number
         this.survey2['appVersion'] = this.versionNumber;
+        this.userProfileService.versionNumber = this.versionNumber;
 
         var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.survey2), "Z&wz=BGw;%q49/<)");
         //var encrypted = this.EncrDecr.encrypt("holla", "Z&wz=BGw;%q49/<)");
@@ -288,7 +288,6 @@ export class DynamicSurveyComponent implements OnInit {
 
         console.log(this.userProfileService);
         this.userProfileService.surveyCompleted(); 
-        this.userProfileService.versionNumber = this.versionNumber;
         
         //compute and store "TotalPoints" to localStorage
         if(window.localStorage['TotalPoints'] == undefined)
