@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
+import { DatabaseService } from 'src/app/monitor/database.service';
 
 @Component({
   selector: 'app-award-altruism',
@@ -14,11 +15,13 @@ export class AwardAltruismComponent implements OnInit {
   altruism_data: any;
   date;
   reinforcementObj = {};
+  pageTitle = " Award_Altruism";
 
   constructor(    
     private ga: GoogleAnalytics,
     private route: ActivatedRoute, 
     private userProfileService: UserProfileService,
+    private db: DatabaseService,
     private router: Router) { 
       this.reinforcementObj['ds'] = 1;
       this.reinforcementObj['reward'] = 2;
@@ -46,7 +49,20 @@ export class AwardAltruismComponent implements OnInit {
 
   }
 
-  ionViewDidLeave(){
+  ionViewDidEnter(){
+    this.db.getDatabaseState().subscribe(rdy => {
+     if (rdy) {     
+       this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username); 
+     }
+   }); 
+ }  
+ 
+ ionViewDidLeave(){
+    this.db.getDatabaseState().subscribe(rdy => {
+      if (rdy) {     
+        this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username); 
+      }
+    });     
   }
 
   showaltruism(){
