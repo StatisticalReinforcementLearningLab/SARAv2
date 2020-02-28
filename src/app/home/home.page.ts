@@ -3,7 +3,9 @@ import { DemoAquariumComponent } from '../incentive/aquarium/demo-aquarium/demo-
 import { Platform, AlertController } from '@ionic/angular';
 import * as moment from 'moment';
 import { Router } from '@angular/router';
-import { UserProfileService } from '../user/user-profile/user-profile.service';
+import { DatabaseService } from 'src/app/monitor/database.service';
+import { AwsS3Service } from '../storage/aws-s3.service';
+import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 
 @Component({
   selector: 'app-home',
@@ -17,10 +19,9 @@ export class HomePage implements OnInit {
   private sub1$:any;
   private sub2$:any;
   money = 0;
+  pageTitle = "Home";
 
   @ViewChild(DemoAquariumComponent, {static: true}) child;
-
-
 
   get isActive(){
     if(this.userProfileService == undefined)
@@ -36,7 +37,10 @@ export class HomePage implements OnInit {
 
   constructor(private platform: Platform, private alertCtrl: AlertController, 
     private router: Router, 
-    private userProfileService: UserProfileService) { 
+    private userProfileService: UserProfileService,
+    private db: DatabaseService,
+    private awsS3Service: AwsS3Service
+    ) { 
     console.log("Constructor called");
     this.sub1$=this.platform.pause.subscribe(() => {        
       console.log('****UserdashboardPage PAUSED****');
@@ -56,13 +60,40 @@ export class HomePage implements OnInit {
   }
 
   ionViewDidLeave(){
-    console.log("ionDidLeave");
+    console.log("at Home Page: ionDidLeave");
+    this.db.getDatabaseState().subscribe(rdy => {
+      if (rdy) {     
+        this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username); 
+      }
+    }); 
+
     this.child.ionViewDidLeaveFunction();
   }
 
   ionViewDidEnter() {
+    this.db.getDatabaseState().subscribe(rdy => {
+      this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username); 
+    });      
+
     this.child.loadFunction();
   }
+
+  ionViewWillEnter() {
+    this.db.getDatabaseState().subscribe(rdy => {
+      if (rdy) {     
+        this.db.isTableEmpty().then(tableEmpty => {
+          console.log("tableEmpty: "+tableEmpty);
+          if(!tableEmpty) {
+            this.exportDeleteDatabase();
+          } 
+        }).catch(e => {
+          console.log("In ionViewDidEnter at Home:"+e);
+        });
+      }
+    });      
+
+  }
+
 
   ionViewWillUnload() {
     this.sub1$.unsubscribe();
@@ -72,6 +103,15 @@ export class HomePage implements OnInit {
   ngOnInit(): void {
     //throw new Error("Method not implemented.");
   }
+
+  exportDeleteDatabase(){
+    console.log("exportTable at Home Page!");
+    this.db.exportDatabaseToJson().then((res) => {
+      console.log("upload to AWS at Home Page: "+JSON.stringify(res));
+      this.awsS3Service.upload("Tracking",res);
+      this.db.dropTable();              
+    });   
+  }  
 
 
   startSurvey(){

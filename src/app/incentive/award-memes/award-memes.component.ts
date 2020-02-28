@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
+import { DatabaseService } from 'src/app/monitor/database.service';
 
 @Component({
   selector: 'app-award-memes',
@@ -16,6 +17,7 @@ export class AwardMemesComponent implements OnInit {
   meme_data: any;
   date;
   reinforcementObj = {};
+  pageTitle = " Award_Meme";
 
   viewWidth = 512;
   viewHeight = 350;
@@ -28,6 +30,7 @@ export class AwardMemesComponent implements OnInit {
   constructor(private ga: GoogleAnalytics,
     private route: ActivatedRoute,   
     private userProfileService: UserProfileService,  
+    private db: DatabaseService,
     private router: Router) {
       this.reinforcementObj['ds'] = 1;
       this.reinforcementObj['reward'] = 1;
@@ -60,6 +63,23 @@ export class AwardMemesComponent implements OnInit {
       this.showmemes();
     });
   }
+
+  ionViewDidEnter(){
+    this.db.getDatabaseState().subscribe(rdy => {
+     if (rdy) {     
+       this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username); 
+     }
+    }); 
+  }  
+
+  ionViewDidLeave(){
+    this.db.getDatabaseState().subscribe(rdy => {
+      if (rdy) {     
+        this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username); 
+      }
+    });     
+  }
+
 
   showmemes(){
     //window.localStorage['meme_shuffle5'] = "[]";

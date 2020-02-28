@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS tracks (id INTEGER PRIMARY KEY AUTOINCREMENT, pageName TEXT, eventTime TEXT, eventStatus TEXT, username TEXT);

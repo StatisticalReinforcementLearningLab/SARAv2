@@ -26,6 +26,8 @@ import { UserModule } from './user/user.module';
 import { HomePageModule } from './home/home.module';
 import { AwardDollarService } from './incentive/award-money/award-dollar.service';
 import { AppVersion } from '@ionic-native/app-version/ngx';
+import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
+import { SQLite } from '@ionic-native/sqlite/ngx';
 
 @NgModule({
   declarations: [AppComponent,LoadingSpinnerComponent,CheatpageComponent],
@@ -52,6 +54,8 @@ import { AppVersion } from '@ionic-native/app-version/ngx';
     AwardDollarService,
     GoogleAnalytics,
     AppVersion,
+    SQLite,
+    SQLitePorter,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
   ],
   bootstrap: [AppComponent]
