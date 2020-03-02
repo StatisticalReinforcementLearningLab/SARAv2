@@ -18,7 +18,7 @@ export class BootTundraL5 extends Phaser.State {
 
 		//Change color here 
 		//-- http://www.w3schools.com/colors/colors_picker.asp
-		this.stage.backgroundColor = '#095e98';
+		this.stage.backgroundColor = '#ffffff';
         
 		this.state.start('Preloader');
 		console.log("Boot completed");

@@ -128,6 +128,7 @@ export class UserProfileService {
       this.loadProfileFromDevice();
     return this.userProfile.points;
   }
+
   get username(){
     if(this.userProfile==undefined)
       this.loadProfileFromDevice();
@@ -138,6 +139,15 @@ export class UserProfileService {
     this.saveProfileToDevice();
   }
 
+  get versionNumber(){
+    if(this.userProfile==undefined)
+      this.loadProfileFromDevice();
+    return this.userProfile.versionNumber;
+  }
+  set versionNumber(versionNumber:string){
+    this.userProfile.versionNumber = versionNumber;
+    this.saveProfileToDevice();
+  }
 
   initializeObsOld(){
     //get profile from server

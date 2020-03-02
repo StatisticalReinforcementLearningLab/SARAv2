@@ -9,9 +9,21 @@
         <ion-button style="color:#fff;" (click)="startCheatPage()">
           <ion-icon name="alert"></ion-icon>
         </ion-button>
+
+        <!-- Mash codes:
         <ion-text  *ngIf="!isActive" style="color:#fff;"><strong>Account is Paused</strong> </ion-text>
         <ion-button style="color:#fff;" (click)="startSurvey()">
           <ion-icon name="journal"></ion-icon>
+        </ion-button>
+        -->
+
+        <ion-button (click)="startSurvey()"   *ngIf="isActive">
+            <ion-icon name="journal" style="color : white;"></ion-icon>
+        </ion-button>
+
+
+        <ion-button *ngIf="!isActive" (click)="dispalySurveyPausedMsg()" >
+            <ion-icon name="journal" style="color : #e74c3c;"></ion-icon>
         </ion-button>
         <!--
         <ion-button href="{{surveyPath}}" *ngIf="isActive">Start Survey</ion-button> 
