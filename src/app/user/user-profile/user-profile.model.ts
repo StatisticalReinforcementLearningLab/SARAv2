@@ -23,6 +23,7 @@ export class UserProfile {
 
     
     public username: string;
+    public versionNumber: string;
     // public isParent?: boolean;
     // public isActive: boolean;
     public datesTaken: string[];

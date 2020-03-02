@@ -38,7 +38,11 @@ export class PreloaderRainforestL6 extends Phaser.State {
 
 
         this.game.load.image('rock2','assets/pics/rock2.png');
-		this.game.load.image('reinforest1','assets/pics/bg-3.png');
+		this.game.load.image('reinforest1','assets/pics/bg-rainforest-top.png');
+		this.load.image('reinforestBackgroundBottom1', 'assets/pics/bg-rainforest-bottom-1.png'); 
+		this.load.image('reinforestBackgroundBottom2', 'assets/pics/bg-rainforest-bottom-2.png'); 
+
+
 		this.game.load.image('treasure', 'assets/img/treasure_chest_rainforest.png');
         this.game.load.atlasJSONArray('attackplant', 'assets/game/sprite/attack_plant.png', 'assets/game/sprite/attack_plant.json');
         this.game.load.atlasJSONArray('thirstyplant', 'assets/game/sprite/thirsty_plant.png', 'assets/game/sprite/thirsty_plant.json');

@@ -23,6 +23,7 @@ export class HomePage implements OnInit {
 
 
   get isActive(){
+    //return false;
     if(this.userProfileService == undefined)
       return true;
     else
@@ -110,18 +111,25 @@ export class HomePage implements OnInit {
       //subHeader: "Survey is not avaibable!",
       message: alertMessage,
       //defined in theme/variables.scss
-      buttons: [{text: 'OK', cssClass: 'secondary'}]
+      //buttons: [{text: 'OK', cssClass: 'secondary'}]
+      buttons: [{text: 'OK'}]
     });
     
     /*
-    let alert = this.alertCtrl.create({
-      title: 'Low battery',
-      subTitle: '10% of battery remaining',
-      buttons: ['Dismiss']
-    });
+      let alert = this.alertCtrl.create({
+        title: 'Low battery',
+        subTitle: '10% of battery remaining',
+        buttons: ['Dismiss']
+      });
     */
 
+    //----
     await alert.present();
   }
+
+  dispalySurveyPausedMsg(){
+    this.presentAlert('This account has been temporarily paused by the research administrators.');    
+  }
+
   
 }
