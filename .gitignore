@@ -4,3 +4,6 @@ www/
 src/environments/environment.ts
 src/environments/environment.chop.ts
 src/environments/environment.prod.ts
+www/
+platforms/
+plugins/

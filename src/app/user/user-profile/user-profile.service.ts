@@ -48,6 +48,10 @@ export class UserProfileService {
         }
         else{
           this.userProfile = response1;
+          if(this.userProfile.hasOwnProperty("AwardDollarDates")){
+            localStorage.setItem("AwardDollarDates", JSON.stringify( this.userProfile.AwardDollarDates));
+          }
+          localStorage.setItem("AwardDollar", JSON.stringify(this.userProfile.dollars));
         }
         this.userProfileFixed = response2;
         this.saveProfileToDevice();
@@ -56,7 +60,28 @@ export class UserProfileService {
     ));
   }
 
- 
+  //returns true if successful at adding the element (it doesn't already exist for the given date)
+  //date is a string of the format YYYYMMDD (e.g. "20170430")
+  /*reinforcementObj is an object of the form:
+  {
+      "ds": 1, //means participants completed the survey
+      "prob": 0.23,
+      "Like": "yes", //no if participants hated it.
+      "reward": 1,  //0 means users were not randomized
+      "reward_type": "meme", //'altruistic message'
+      "reward_img_link": "img/reinforcements/memes/IM25.jpg"
+  }
+  */
+  addReinforcementData(date:string, reinforcementObj:any):boolean{
+    if(!(date in this.userProfile.reinfrocement_data)){
+      this.userProfile.reinfrocement_data[date] = reinforcementObj;
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
   calcDollars(){
     //this method calculates the number of three day streaks
     //then sets dollars = to number of three day streaks
@@ -217,10 +242,14 @@ export class UserProfileService {
       console.log('surveyCompleted - in if loop');
       this.addDateTaken();
       this.addSurveyPoints();
-      this.calcDollars();
+      //this.calcDollars();
       this.userProfile.lastupdate =this.numericCurrenDateTime;
       const dateString: string = moment(this.userProfile.lastupdate).format('MMMM Do YYYY, h:mm:ss a Z');
       this.userProfile.readable_ts = dateString;
+      console.log("in SurveyCompleted, AwardDollarDates: "+ localStorage.getItem("AwardDollarDates"));
+      this.userProfile.AwardDollarDates = JSON.parse(localStorage.getItem("AwardDollarDates"));  //fetch AwardDollarDates from local storage and add it to the UserProfile
+      this.userProfile.dollars = JSON.parse(localStorage.getItem("AwardDollar"));
+
       this.saveProfileToDevice();
       this.saveToServer();
     }
@@ -260,16 +289,23 @@ export class UserProfileService {
     this.loadProfileFromDevice();
     //check if date already exists in array of dates, otherwise add the date to datesTaken array    
     var hasMatch = false;
-    console.log("surveyTakenForCurrentDay - userProfile: " + this.userProfile);
-    console.log("surveyTakenForCurrentDay - userProfile: " + JSON.stringify("this.userProfile"))
-    console.log("surveyTakenForCurrentDay - this.userProfile.datesTaken.length: " + this.userProfile.datesTaken.length);
-    for(var i=0;i<this.userProfile.datesTaken.length;i++){
-        if(this.userProfile.datesTaken[i] == this.stringCurrenDate){
-          hasMatch = true;
-            break;
-        }
+    if( this.stringCurrenDate in this.userProfile.survey_data.daily_survey){
+      return true;
     }
-    return hasMatch;
+    else{
+      return false;
+    }
+
+    // console.log("surveyTakenForCurrentDay - userProfile: " + this.userProfile);
+    // console.log("surveyTakenForCurrentDay - userProfile: " + JSON.stringify("this.userProfile"))
+    // console.log("surveyTakenForCurrentDay - this.userProfile.datesTaken.length: " + this.userProfile.datesTaken.length);
+    // for(var i=0;i<this.userProfile.datesTaken.length;i++){
+    //     if(this.userProfile.datesTaken[i] == this.stringCurrenDate){
+    //       hasMatch = true;
+    //         break;
+    //     }
+    // }
+    // return hasMatch;
   }
 
   addSurveyPoints(){
