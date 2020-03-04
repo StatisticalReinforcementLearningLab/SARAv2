@@ -37,16 +37,21 @@ export class GameRainforestL6 extends Phaser.State {
         reinforestBackgroundBottom2.width = reinforestBackgroundBottom2.height*aspect_ratio;
 
 
-        var s = this.game.add.sprite(0,0,'reinforest1');
+        var s = this.game.add.sprite(this.game.width,0,'reinforest1');
         //s.rotation = 0.0;
         //s.width = this.game.width;
         //s.height = this.game.height;
         //var s = this.game.add.sprite(0,0,'tundra1');
         s.rotation = 0.0;
         aspect_ratio = s.width/s.height;
-        s.height = this.game.height - 310;
+        s.height = this.game.height - 290;
         s.width = s.height*aspect_ratio;
-
+        //console.log("s.width " + s.width);
+        //console.log("s.height " + s.height);
+        //console.log("this.game.height " + this.game.height);
+        //console.log("this.game.width " + this.game.width);
+        //s.anchor.setTo(1-(s.width/this.game.width)/2,0);
+        s.anchor.setTo(1,0);
         
 
         //
@@ -56,6 +61,14 @@ export class GameRainforestL6 extends Phaser.State {
         this.CANVAS_WIDTH = 382.0;
         if(window.innerWidth > this.CANVAS_WIDTH)
             this.CANVAS_WIDTH = window.innerWidth;
+
+
+        //add monkey
+        this.animateMonkey();
+
+
+        //add butter fly
+        this.animateButterFly();
 
         this.animatePegions();
         this.addAnimals();
@@ -109,8 +122,11 @@ export class GameRainforestL6 extends Phaser.State {
                 //nemo
                 if(data[i].name.valueOf() === "Squirrel")
                     this.animateSquirrel();
+                
+                if(data[i].name.valueOf() === "Jaguar")
+                    this.animateJaguar();
 
-                if(data[i].name.valueOf() === "Carnivore")
+                if(data[i].name.valueOf() === "Venus Flytrap")
                     this.animateCarnivorePlant();
                 
                 if(data[i].name.valueOf() === "Lion")
@@ -122,11 +138,11 @@ export class GameRainforestL6 extends Phaser.State {
                 if(data[i].name.valueOf() === "Triceratops")
                     this.animateTriceratopsMain();
 
-                if(data[i].name.valueOf() === "Corn")
-                    this.animateCornMain();    
+                //if(data[i].name.valueOf() === "Corn")
+                //    this.animateCornMain();    
 
-                if(data[i].name.valueOf() === "Chicken")
-                    this.animateChicken();               
+                if(data[i].name.valueOf() === "Macaw")
+                    this.animateMacaw();               
 
                 if(data[i].name.valueOf() === "Duck")
                     this.animateGooseDuck(); 
@@ -143,7 +159,6 @@ export class GameRainforestL6 extends Phaser.State {
                 if(data[i].name.valueOf() === "Koala")
                     this.animateKoalaMain();
               
-
             }
         }
 
@@ -171,6 +186,70 @@ export class GameRainforestL6 extends Phaser.State {
         this.progress_sprite.crop(rect);
     }
 
+    animateButterFly(){
+        var flowerBush = this.add.sprite(-10, this.game.height-293, 'flowerBush');
+        flowerBush.scale.setTo(.2, .2);
+        flowerBush.anchor.setTo(0,1);
+
+        var butterfly = this.game.add.sprite(60, this.game.height-373, 'butterfly');
+        butterfly.animations.add('swim');
+        butterfly.animations.play('swim', 3, true);
+        butterfly.scale.setTo(.6, .6);
+        //this.butterfly = butterfly;
+
+
+        butterfly = this.game.add.sprite(30, this.game.height-343, 'butterfly');
+        butterfly.animations.add('swim');
+        butterfly.animations.play('swim', 15, true);
+        butterfly.scale.setTo(.4, .4);
+        butterfly.rotation = -0.5;
+        //this.butterfly = butterfly;
+
+        butterfly = this.game.add.sprite(20, this.game.height-343, 'butterfly');
+        butterfly.animations.add('swim');
+        butterfly.animations.play('swim', 25, true);
+        butterfly.scale.setTo(.25, .25);
+        butterfly.rotation = 0.5;
+        this.butterfly = butterfly;
+    }
+
+    animateMonkey(){
+        //---
+        var treeBranch = this.add.sprite(-10, 125, 'treeBranch');
+        treeBranch.scale.setTo(.3, .3);
+        treeBranch.rotation = -0.1;
+
+        //---
+        /*
+        //console.log("adding redMonkey");
+        var redMonkey = this.game.add.sprite(5, 145, 'redMonkey');
+        redMonkey.animations.add('swim');
+        //redMonkey.animations.play('swim', 5, true);
+        redMonkey.scale.setTo(.15, .15);
+        //redMonkey.inputEnabled = true;
+        this.redMonkey = redMonkey;
+
+        //---
+        console.log("adding brownMonkey");
+        var brownMonkey = this.game.add.sprite(20, 145, 'brownMonkey');
+        brownMonkey.animations.add('swim');
+        //brownMonkey.animations.play('swim', 5, true);
+        brownMonkey.scale.setTo(.1, .1);
+        //brownMonkey.inputEnabled = true;
+        this.brownMonkey = brownMonkey;
+
+        //---
+        console.log("adding blackMonkey");
+        var blackMonkey = this.game.add.sprite(30, 145, 'blackMonkey');
+        blackMonkey.animations.add('swim');
+        //blackMonkey.animations.play('swim', 5, true);
+        blackMonkey.scale.setTo(.15, .15);
+        //brownMonkey.inputEnabled = true;
+        this.blackMonkey = blackMonkey;
+        */
+
+    }
+
     animateCarnivorePlant(){
         //
         console.log("adding thristy plant");
@@ -186,7 +265,7 @@ export class GameRainforestL6 extends Phaser.State {
     
     animateCornMain(){
         console.log("adding corn");
-        var corn = this.game.add.sprite(120, this.game.height-230, 'corn_stand');
+        var corn = this.game.add.sprite(5, this.game.height-345, 'corn_stand');
         corn.animations.add('swim');
         corn.animations.play('swim', 5, true);
         corn.scale.setTo(.64, .64);
@@ -198,7 +277,7 @@ export class GameRainforestL6 extends Phaser.State {
 
     animateKoalaMain(){
         //
-        this.koala = this.add.sprite(this.game.width+30, this.game.height-270, 'koala');
+        this.koala = this.add.sprite(this.game.width+30, this.game.height-320, 'koala');
         this.animateKoala();
     }
     //
@@ -215,7 +294,7 @@ export class GameRainforestL6 extends Phaser.State {
 
     //
     animateTriceratopsMain(){
-        this.triceratops = this.add.sprite(this.game.width+20, this.game.height-240, 'triceratops');
+        this.triceratops = this.add.sprite(this.game.width+30, this.game.height-240, 'triceratops');
         this.animateTriceratops();
     }
 
@@ -326,14 +405,14 @@ export class GameRainforestL6 extends Phaser.State {
     }
 
     //
-    animateChicken(){
-        this.chicken = this.add.sprite(this.game.width+150, 235, 'chicken_flying');
-        this.chicken.anchor.setTo(.5,.5);
-        this.chicken.animations.add('swim2');
-        this.chicken.animations.play('swim2', 15, true);
-        this.chicken.scale.setTo(-0.1, 0.11);
-        this.chicken.name = "chicken";
-        this.gobothways(this.chicken);
+    animateMacaw(){
+        this.macaw = this.add.sprite(this.game.width+150, 235, 'macaw_flying');
+        this.macaw.anchor.setTo(.5,.5);
+        this.macaw.animations.add('swim2');
+        this.macaw.animations.play('swim2', 15, true);
+        this.macaw.scale.setTo(0.2, 0.2);
+        this.macaw.name = "macaw";
+        this.gobothways(this.macaw);
     }
 
     //
@@ -364,7 +443,7 @@ export class GameRainforestL6 extends Phaser.State {
 
     //if(this.totalPoints >= 0 && this.totalPoints < 25)
     animateOstrich(){
-        this.clownFish = this.add.sprite(this.game.width+250, this.game.height-225, 'ostrich');
+        this.clownFish = this.add.sprite(this.game.width+250, this.game.height-275, 'ostrich');
         this.clownFish.anchor.setTo(.5,.5);
         this.clownFish.animations.add('swim');
         this.clownFish.animations.play('swim', 10, true);
@@ -380,13 +459,29 @@ export class GameRainforestL6 extends Phaser.State {
 
     //if(this.totalPoints >= 0 && this.totalPoints < 25)
     animateSquirrel(){
-        this.ostrich = this.add.sprite(-50, this.game.height-200, 'squirrel');
+        this.ostrich = this.add.sprite(-50, this.game.height-250, 'squirrel');
         this.ostrich.anchor.setTo(.5,.5);
         this.ostrich.animations.add('swim2');
         this.ostrich.animations.play('swim2', 25, true);
         this.ostrich.scale.setTo(-0.56, 0.56);
         this.ostrich.name = "ostrich";
         this.gobothways(this.ostrich);
+
+
+        //this.isPrawnAdded = true;
+        //this.prawn = this.add.sprite(10, this.height-50, 'seacreatures', 'prawn0000');
+        //this.prawn.scale.setTo(0.5, 0.5);
+    }
+
+
+    animateJaguar(){
+        this.jaguar = this.add.sprite(this.game.width+50, this.game.height-310, 'jaguar');
+        this.jaguar.anchor.setTo(.5,.5);
+        this.jaguar.animations.add('swim2');
+        this.jaguar.animations.play('swim2', 10, true);
+        this.jaguar.scale.setTo(0.25, 0.25);
+        this.jaguar.name = "jaguar";
+        this.gobothways(this.jaguar);
 
 
         //this.isPrawnAdded = true;
