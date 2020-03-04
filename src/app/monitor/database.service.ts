@@ -107,7 +107,7 @@ export class DatabaseService {
 
       
     addTrack(pageName, eventStatus, username) {
-      var currentTime = moment().format('MMMM Do YYYY, h:mm:ss a Z');
+      var currentTime = moment().format('MMMM Do YYYY, h:mm:ss a');
       let data = [pageName, currentTime, eventStatus, username];
       return this.database.executeSql('INSERT INTO tracks (pageName, eventTime, eventStatus, username) VALUES (?, ?, ?, ?)', data).then(data => {
         console.log(pageName+' Track added!');
