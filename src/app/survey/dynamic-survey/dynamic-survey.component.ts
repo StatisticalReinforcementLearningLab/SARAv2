@@ -267,10 +267,12 @@ export class DynamicSurveyComponent implements OnInit {
         //console.log("Inside storeData");
         console.log(JSON.stringify(this.survey2));
         this.ga.trackEvent('Submit Button', 'Tapped Action', 'Submit the completed survey', 0);
-              
-        this.survey2['endtimeUTC'] = new Date().getTime();
+         
+        var endTime = new Date().getTime();
+        var readable_time = moment().format('MMMM Do YYYY, h:mm:ss a');
+        this.survey2['endtimeUTC'] = endTime;
         this.survey2['userName'] = this.userProfileService.username;
-        this.survey2['ts'] = moment().format('MMMM Do YYYY, h:mm:ss a Z');
+        this.survey2['ts'] = readable_time;
 
         this.survey2['devicInfo'] = this.plt.platforms();
 
@@ -395,6 +397,17 @@ export class DynamicSurveyComponent implements OnInit {
         }
       };
 
+      //prepare reinforcement data to upload to AWS S3
+      var reinforcement_data = {};
+      reinforcement_data['userName'] = this.userProfileService.username;
+      reinforcement_data['day_count'] = Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;
+      reinforcement_data['isRandomized'] = 1;
+      reinforcement_data['unix_ts'] = endTime;
+      reinforcement_data['readable_ts'] = readable_time;
+      reinforcement_data['date'] =  currentDate;
+      //save to Amazon AWS S3
+      this.awsS3Service.upload('reinforcement_data', reinforcement_data);
+      
       if(this.fileLink.includes('caregiver') || currentProb <= 0.4 ) {
         var reinforcementObj = {};
         reinforcementObj['ds'] = 1;
