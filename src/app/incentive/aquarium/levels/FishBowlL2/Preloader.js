@@ -82,7 +82,7 @@ export class PreloaderL2 extends Phaser.State {
 		this.load.image('treasure', 'assets/img/treasure.png');
 		this.load.atlasJSONArray('clownfish', 'assets/game/sprite/clownfish.png', 'assets/game/sprite/clownfish.json');
 		this.load.atlasJSONArray('squid', 'assets/game/sprite/squid.png', 'assets/game/sprite/squid.json');
-		this.load.atlasJSONArray('butterfly', 'assets/game/sprite/butterfly.png', 'assets/game/sprite/butterfly.json');
+		this.load.atlasJSONArray('butterflyfish', 'assets/game/sprite/butterflyfish.png', 'assets/game/sprite/butterflyfish.json');
 		this.load.atlasJSONArray('tigerbarb', 'assets/game/sprite/tigerbarb.png', 'assets/game/sprite/tigerbarb.json');
 		this.load.atlasJSONArray('puffer', 'assets/game/sprite/pufferfish.png', 'assets/game/sprite/pufferfish.json');
 		this.load.atlasJSONArray('angelfish', 'assets/game/sprite/angelfish.png', 'assets/game/sprite/angelfish.json');
