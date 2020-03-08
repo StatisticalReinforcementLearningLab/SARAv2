@@ -10,6 +10,8 @@ import { UserProfileService } from 'src/app/user/user-profile/user-profile.servi
   styleUrls: ['./award-memes.component.scss'],
 })
 
+//declare let confetti: any;
+
 export class AwardMemesComponent implements OnInit {
 
   whichImage: string;
@@ -145,10 +147,7 @@ export class AwardMemesComponent implements OnInit {
     //createParticles();
   }
 
-  //draws confetti 
-  drawConfetti(){
-    this.initDrawingCanvas();
-  }
+  
 
   drawImageOnCanvas(imageF_file_path) {
 
@@ -174,145 +173,117 @@ export class AwardMemesComponent implements OnInit {
       //
       
     }
-    this.HeartsBackground.initialize(drawingCanvas);
-
-    
+    //this.HeartsBackground.initialize(drawingCanvas);
+    this.drawConfetti();
   }
 
 
+  //draws confetti 
+  drawConfetti(){
+    var canvas = <HTMLCanvasElement>document.getElementById("hearts_canvas"); //$('#canvas')[0]; hearts_canvas
+    //https://www.kirilv.com/canvas-confetti/
+    // you should  only initialize a canvas once, so save this function
+    // we'll save it to the canvas itself for the purpose of this demo
+    canvas.confetti = canvas.confetti || confetti.create(canvas, { resize: true });
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight - 170;
 
-
-  HeartsBackground = {
-    heartHeight: 60,
-    heartWidth: 64,
-    hearts: [],
-    heartImage: './assets/img/valentinesheart.png',
-    maxHearts: 30,
-    minScale: 0.4,
-    draw: function() {
-      //this.setCanvasSize();
-      this.ctx.clearRect(0, 0, this.w, this.h);
-      //console.log("Hearts draw function called");
-      var ctx = this.ctx;
-      for (var i = 0; i < this.hearts.length; i++) {
-        var heart = this.hearts[i];
-        heart.image = new Image();
-        heart.image.style.height = heart.height;
-        heart.image.src = this.heartImage;
-        ctx.drawImage(heart.image, heart.x, heart.y, heart.width, heart.height);
-      }
-      this.move();
-    },
-    move: function() {
-      //console.log("Move function called");
-      for(var b = 0; b < this.hearts.length; b++) {
-        var heart = this.hearts[b];
-        heart.y += heart.ys;
-        if(heart.y > this.h) {
-          //heart.x = Math.random() * this.w;
-          //heart.y = -1 * this.heartHeight;
-        }
-      }
-    },
-    angularDraw: function() {
-      //this.setCanvasSize();
-      this.ctx.clearRect(0, 0, this.w, this.h);
-      //console.log("Hearts draw function called");
-      var ctx = this.ctx;
-      for (var i = 0; i < this.hearts.length; i++) {
-        var heart = this.hearts[i];
-        heart.image = new Image();
-        heart.image.style.height = heart.height;
-        heart.image.src = this.heartImage;
-        ctx.drawImage(heart.image, heart.angle_x, heart.angle_y, heart.width, heart.height);
-      }
-      this.angularMove();
-    },
-    angularMove: function() {
-      //console.log("Move function called");
-      for(var b = 0; b < this.hearts.length; b++) {
-        var heart = this.hearts[b];
-        //heart.y += heart.ys;
-        //console.log("" + heart.angle_x + "," + heart.angle_y);
-        //console.log(heart.angle);
-        //console.log("" + heart.angle_x + "," + heart.angle_y + ", " + heart.angle_deltax + ", " + heart.angle_deltay);
-        heart.angle_x += heart.angle_deltax;
-        heart.angle_y += heart.angle_deltay;
-        //console.log("" + heart.angle_x + "," + heart.angle_y);
-        if(heart.y > this.h) {
-          //heart.x = Math.random() * this.w;
-          //heart.y = -1 * this.heartHeight;
-        }
-      }
-    },
-    setCanvasSize: function() {
-      this.canvas.width = window.innerWidth;
-      this.canvas.height = window.innerHeight - 170;
-      console.log("Set canvas size function called");
-      this.w = this.canvas.width;
-      this.h = this.canvas.height;
-    },
-    initialize: function(drawingCanvas) {
-      console.log("Initialize hearts");
-      this.canvas = <HTMLCanvasElement>document.getElementById("hearts_canvas"); //$('#canvas')[0]; hearts_canvas
-      if(!this.canvas.getContext)
-        return;
-
-      this.setCanvasSize();
-      this.ctx = this.canvas.getContext('2d'); 
-
-      this.canvas.addEventListener("touchstart",  function(event) {event.preventDefault()});
-      this.canvas.addEventListener("touchmove",   function(event) {event.preventDefault()});
-      this.canvas.addEventListener("touchend",    function(event) {event.preventDefault()});
-      this.canvas.addEventListener("touchcancel", function(event) {event.preventDefault()});
-      // Attach an event handler to the document
-      //this.canvas.addEventListener("mousemove",   function(event) {event.preventDefault()});
+    /*
+    canvas.confetti({
+      angle: this.randomInRange(55, 125),
+      spread: this.randomInRange(50, 70),
+      particleCount: this.randomInRange(50, 100),
+      origin: { y: 0.6, x: 0.5 }
+    });
+    */
+   //
+   
+    if(Math.random()>0.5)
+        this.drawRealisticConfetti(canvas);
+    else
+        this.drawConfettiFireworks(canvas);
   
-      for(var a = 0; a < this.maxHearts; a++) {
-        var scale = (Math.random() * (1 - this.minScale)) + this.minScale;
-        this.hearts.push({
-          x: Math.random() * this.w,
-          y: Math.random() * this.h,
-          ys: Math.random() + 8,
-          height: scale * this.heartHeight,
-          width: scale * this.heartWidth,
-          angle_x: this.w/2,
-          angle_y: this.h/2,
-          angle_deltax: this.getRandomArbitraryMoreThanX(-10,10,6),
-          angle_deltay: this.getRandomArbitraryMoreThanX(-10,10,6),
-          opacity: scale
-        });
-      }
-  
-      //setInterval($.proxy(this.draw, this), 30);
-      //setTimeout(e => this.draw, 30);
-      //this.draw();
-      var intervalVar;
-      if(Math.random()>0.5)
-          intervalVar = setInterval(e => this.angularDraw(), 30);
-      else
-          intervalVar = setInterval(e => this.draw(), 30);
+  }
 
-      setTimeout(e => this.stopInterval(intervalVar), 1200);
-
-    },
-    stopInterval(intervalVar) {
-      this.ctx.clearRect(0, 0, this.w, this.h);
-      clearInterval(intervalVar);
-    },
-    getRandomArbitrary(min, max) {
+  drawConfettiFireworks(canvas){
+    var duration = 1 * 1200;
+    var animationEnd = Date.now() + duration;
+    var defaults = { startVelocity: 30, spread: 100, ticks: 60, zIndex: 0 };
+    
+    function randomInRange(min, max) {
       return Math.random() * (max - min) + min;
-    },
-    getRandomArbitraryMoreThanX(min, max, X) {
-      var rand_var =  this.getRandomArbitrary(min, max);
-      if(Math.abs(rand_var) < X){
-        if(rand_var < X)
-          return  rand_var-X;
-        if(rand_var > X)
-          return  rand_var+X;
-      }else{
-        return rand_var;
-      }
     }
-  };
+    
+    var interval = setInterval(function() {
+      var timeLeft = animationEnd - Date.now();
+    
+      if (timeLeft <= 0) {
+        return clearInterval(interval);
+      }
+    
+      var particleCount = 50 * (timeLeft / duration);
+      // since particles fall down, start a bit higher than random
+      canvas.confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.2, 0.4), y: Math.random() - 0.0}}));
+      canvas.confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.6, 0.8), y: Math.random() - 0.0}}));
+    }, 250);
+  }
+
+  drawConfettiVanillaDirection(canvas){
+    canvas.confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.5, x: 0.5 }
+    });
+  }
+
+  drawConfettiRandomDirection(canvas){
+    canvas.confetti({
+      angle: this.randomInRange(55, 125),
+      spread: this.randomInRange(50, 70),
+      particleCount: this.randomInRange(50, 100),
+      origin: { y: 0.5, x: 0.5 }
+    });
+  }
+
+  drawRealisticConfetti(canvas){
+    this.confettiFire(0.25, {
+      spread: 26,
+      startVelocity: 100,
+    },canvas);
+    this.confettiFire(0.2, {
+      spread: 60,
+    },canvas);
+    this.confettiFire(0.35, {
+      spread: 100,
+      decay: 0.99,
+    },canvas);
+    this.confettiFire(0.1, {
+      spread: 120,
+      startVelocity: 100,
+      decay: 0.99,
+    },canvas);
+    this.confettiFire(0.1, {
+      spread: 120,
+      startVelocity: 100,
+    },canvas);
+
+    //
+    setTimeout(() => {
+      canvas.confetti.reset();
+    }, 1200);
+    
+  }
+
+  confettiFire(particleRatio, opts, canvas) {
+    var count = 200;
+    var defaults = {
+      origin: { y: 0.8 }
+    };
+    canvas.confetti(Object.assign({}, defaults, opts, {
+      particleCount: Math.floor(count * particleRatio)
+    }));
+  }
+  randomInRange(min, max) {
+    return Math.random() * (max - min) + min;
+  }
 }
