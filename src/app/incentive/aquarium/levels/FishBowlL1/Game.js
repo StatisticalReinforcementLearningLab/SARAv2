@@ -41,10 +41,12 @@ export class FishBowlL1 extends Phaser.State {
         fish_progress.scale.setTo(-0.3, 0.3);
         fish_progress.anchor.setTo(.5,.5);
 
+        /*
         var pouch = this.add.image(15,80, 'diamond');
         pouch.scale.setTo(0.4, 0.4);
         pouch.anchor.setTo(.5,.5);
         this.badgecount = this.add.bitmapText(30, 73, 'eightbitwonder', "" + 2, 12);
+        */
 
         //
         this.buildFish();
@@ -192,7 +194,7 @@ export class FishBowlL1 extends Phaser.State {
 
     animateButterflyFish(){
         //angel
-        var butterflyFish = this.add.sprite(-100, this.height-300, 'butterfly');
+        var butterflyFish = this.add.sprite(-100, this.height-300, 'butterflyfish');
         butterflyFish.animations.add('swim');
         butterflyFish.animations.play('swim', 10, true);
         butterflyFish.scale.setTo(0.7, 0.7);
