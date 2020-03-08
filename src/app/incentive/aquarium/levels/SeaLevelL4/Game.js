@@ -60,12 +60,12 @@ export class SeaLevelL4 extends Phaser.State {
         fishtank.events.onInputDown.add(this.earlyaquarium, this);
         */
 
+        /*
         var pouch = this.add.image(15,80, 'diamond');
         pouch.scale.setTo(0.4, 0.4);
         pouch.anchor.setTo(.5,.5);
-
-        //this.totalPoints = 1800;
         this.badgecount = this.add.bitmapText(30, 73, 'eightbitwonder', "" + 2, 12);
+        */
 
         //this.buildFish();
         this.buildAquarium();
