@@ -43,14 +43,15 @@ export class GameTundraL5 extends Phaser.State {
         fish_progress.anchor.setTo(.5,.5);
  
         //--- 
+        /*
         var pouch = this.add.image(15,80, 'diamond');
         pouch.scale.setTo(0.4, 0.4);
         pouch.anchor.setTo(.5,.5);
         this.badgecount = this.add.bitmapText(30, 73, 'eightbitwonder', "" + 2, 12);
- 
+        */
 
         //
-        this.snowgswitch = this.add.image(5, 100, 'snowgswitch');
+        this.snowgswitch = this.add.image(5, 70, 'snowgswitch');
         this.snowgswitch.scale.setTo(0.15, 0.15);
         this.snowgswitch.inputEnabled = true;
         this.snowgswitch.events.onInputDown.addOnce(this.startsnowing, this);
