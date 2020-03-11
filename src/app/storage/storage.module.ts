@@ -7,7 +7,8 @@ import { environment } from '../../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { EncrDecrService } from './encrdecrservice.service';
 import { AwsS3Service } from './aws-s3.service';
- 
+import { Network } from '@ionic-native/network/ngx';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -15,6 +16,6 @@ import { AwsS3Service } from './aws-s3.service';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule
   ],
-  providers: [ StoreToFirebaseService, EncrDecrService, AwsS3Service ]
+  providers: [ StoreToFirebaseService, EncrDecrService, AwsS3Service, Network]
 })
 export class StorageModule { }
