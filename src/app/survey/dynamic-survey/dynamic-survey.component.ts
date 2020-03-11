@@ -269,7 +269,7 @@ export class DynamicSurveyComponent implements OnInit {
         this.ga.trackEvent('Submit Button', 'Tapped Action', 'Submit the completed survey', 0);
          
         var endTime = new Date().getTime();
-        var readable_time = moment().format('MMMM Do YYYY, h:mm:ss a');
+        var readable_time = moment().format('MMMM Do YYYY, h:mm:ss a Z');
         this.survey2['endtimeUTC'] = endTime;
         this.survey2['userName'] = this.userProfileService.username;
         this.survey2['ts'] = readable_time;
