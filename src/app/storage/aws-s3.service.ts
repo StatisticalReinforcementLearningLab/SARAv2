@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { StoreBaseService } from './storage-base.service';
 import { EncrDecrService } from './encrdecrservice.service';
+import { NetworkService, ConnectionStatus } from './network.service';
 
 import * as AWS from 'aws-sdk';
 
@@ -15,13 +16,18 @@ import * as AWS from 'aws-sdk';
 })
 export class AwsS3Service extends StoreBaseService {
   currentFile: File;
+  bucketName;
+  s3;
+  subfolder;
 
-  constructor(private EncrDecr: EncrDecrService) { 
+  constructor(
+    private networkSvc: NetworkService,
+    private EncrDecr: EncrDecrService) { 
     super();
   }
 
   upload(subfolder, result){
-    var bucketName =  environment.awsConfig.bucketName;
+    this.bucketName =  environment.awsConfig.bucketName;
     var bucketRegion = environment.awsConfig.bucketRegion;
     var IdentityPoolId = environment.awsConfig.IdentityPoolId;
     //var accessKeyId = environment.awsConfig.accessKeyId;
@@ -36,9 +42,9 @@ export class AwsS3Service extends StoreBaseService {
     });
     
     //creates a new Amazon S3 service object
-    var s3 = new AWS.S3({
+    this.s3 = new AWS.S3({
       apiVersion: '2006-03-01',
-      params: {Bucket: bucketName}
+      params: {Bucket: this.bucketName}
     });  
 
     /*const myS3Credentials = {
@@ -56,19 +62,55 @@ export class AwsS3Service extends StoreBaseService {
     //create a file from result passed as a JSONObject
     var fileName = "result_" + (new Date().getTime()) + "_" + this.EncrDecr.getSHA256(localStorage.getItem('loggedInUser')) + ".json";
     this.currentFile = new File([JSON.stringify(result)], fileName, {type: "text/plain"});
-
     //upload currentFile to the subfolder in S3 bucket
-    s3.upload({
-      Bucket: bucketName,
-      Key: subfolder+"/"+fileName,  
+    this.STORAGE_REQ_KEY = subfolder+"_result";
+    this.subfolder = subfolder;
+    if(this.networkSvc.getCurrentNetworkStatus() == ConnectionStatus.Online){
+      if(window.localStorage.getItem(this.STORAGE_REQ_KEY) != undefined ) 
+        this.uploadLocalData();
+      this.uploadToS3(subfolder+"/"+fileName, result).catch(err => {
+        if (err ) {
+          console.log('Caught thrown error: '+err.message);
+          this.storeResultLocally(result); 
+        }
+      });     
+    } else {
+      this.storeResultLocally(result);
+    }
+  }
+
+  async uploadToS3(key, result) {
+    this.s3.upload({
+      Bucket: this.bucketName,
+      Key: key,
       Body: JSON.stringify(result)  
       //Body: this.currentFile
     }, function(err, data) {
       if (err) {
         console.log('There was an error uploading your file: '+err.message);
-      }
-      console.log('Successfully uploaded file: '+fileName);
-    });  
+        throw new Error(err.message);
+      } 
+   });
+
+  }
+
+  //upload local data
+  uploadLocalData() {   
+    var storedObj = this.getLocalData();
+    this.clearLocalData();
+    if (storedObj.length > 0) {
+      for (let op of storedObj) {
+        console.log(JSON.stringify(op));
+        var fileName = "result_" + (new Date().getTime()) + "_" + this.EncrDecr.getSHA256(localStorage.getItem('loggedInUser')) + ".json";
+        this.uploadToS3(this.subfolder+"/"+fileName, [op.data]).catch(err => {
+          if (err ) {
+            console.log('Caught thrown error: '+err.message);
+            this.saveJsonObjLocally(op); 
+          }
+          console.log('In uploadLocalData: update file successfully');
+        });     
+      }  
+    } 
   }
 
 }
