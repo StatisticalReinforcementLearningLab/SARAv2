@@ -124,6 +124,14 @@ export class DemoAquariumComponent implements OnInit {
   }
 
 
+  showMemeDemo(){
+    this.router.navigate(['incentive/award-memes']);
+  }
+
+  showAltruisticDemo(){
+    this.router.navigate(['incentive/award-altruism']);
+  }
+
 
   showModal(){
     if(window.localStorage['IsModalShown'] == undefined)

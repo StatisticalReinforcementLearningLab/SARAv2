@@ -151,6 +151,7 @@ export class AwardMemesComponent implements OnInit {
 
   drawImageOnCanvas(imageF_file_path) {
 
+    /*
     //
     var imageObj = new Image();
     imageObj.src = imageF_file_path;
@@ -173,6 +174,7 @@ export class AwardMemesComponent implements OnInit {
       //
       
     }
+    */
     //this.HeartsBackground.initialize(drawingCanvas);
     this.drawConfetti();
   }
@@ -184,6 +186,8 @@ export class AwardMemesComponent implements OnInit {
     //https://www.kirilv.com/canvas-confetti/
     // you should  only initialize a canvas once, so save this function
     // we'll save it to the canvas itself for the purpose of this demo
+
+    //@ts-ignore
     canvas.confetti = canvas.confetti || confetti.create(canvas, { resize: true });
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight - 170;

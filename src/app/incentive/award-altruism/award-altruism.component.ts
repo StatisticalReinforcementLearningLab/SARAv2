@@ -113,6 +113,7 @@ export class AwardAltruismComponent implements OnInit {
 
     drawImageOnCanvas(imageF_file_path) {
 
+      /*
       //
       var imageObj = new Image();
       imageObj.src = imageF_file_path;
@@ -135,8 +136,9 @@ export class AwardAltruismComponent implements OnInit {
         //
         
       }
+      */
       //this.HeartsBackground.initialize(drawingCanvas);
-      this.HeartsBackground.initialize(drawingCanvas);
+      this.HeartsBackground.initialize();
     }
 
 
@@ -181,10 +183,13 @@ export class AwardAltruismComponent implements OnInit {
         //console.log("Hearts draw function called");
         var ctx = this.ctx;
         for (var i = 0; i < this.hearts.length; i++) {
+          
           var heart = this.hearts[i];
+          /*
           heart.image = new Image();
           heart.image.style.height = heart.height;
           heart.image.src = this.heartImage;
+          */
           ctx.drawImage(heart.image, heart.angle_x, heart.angle_y, heart.width, heart.height);
         }
         this.angularMove();
@@ -213,7 +218,7 @@ export class AwardAltruismComponent implements OnInit {
         this.w = this.canvas.width;
         this.h = this.canvas.height;
       },
-      initialize: function(drawingCanvas) {
+      initialize: function() {
         console.log("Initialize hearts");
         this.canvas = <HTMLCanvasElement>document.getElementById("hearts_canvas"); //$('#canvas')[0]; hearts_canvas
         if(!this.canvas.getContext)
@@ -252,15 +257,27 @@ export class AwardAltruismComponent implements OnInit {
         //this.draw();
         var intervalVar;
         if(Math.random()>0.5){
-            intervalVar = setInterval(e => this.angularDraw(), 30);
+            //intervalVar = setInterval(e => this.angularDraw(), 30);
             this.heartImage = this.heartImage + 'valentinesheart.png';
         }else{
-            intervalVar = setInterval(e => this.draw(), 30);
+            //intervalVar = setInterval(e => this.draw(), 30);
             //choose an heart image everytime
             const randomElement = this.imageNames[Math.floor(Math.random() * this.imageNames.length)];
             this.heartImage = this.heartImage + randomElement;
         }
-  
+
+        var image = new Image();
+        image.src = this.heartImage;
+        var hearts = this.hearts;
+        var self_this = this;
+        image.onload = function () {
+          for(var a = 0; a < hearts.length; a++) {
+            hearts[a].image = image;
+            hearts[a].image.style.height = hearts[a].height;
+          }
+          intervalVar = setInterval(e => self_this.angularDraw(), 30);
+        }
+
         setTimeout(e => this.stopInterval(intervalVar), 1200);
   
       },

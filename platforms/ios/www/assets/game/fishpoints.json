@@ -1,6 +1,6 @@
 [
   {
-    "name" : "Clown fish",
+    "name" : "The clown fish",
     "level" : 1,
     "text" : "Story 1",
     "points" : 30,
@@ -12,7 +12,7 @@
     "level" : 1,
     "text" : "Story 1",
     "points" : 60,
-    "img" : "img/butterfly.png",
+    "img" : "img/butterfly-fish.png",
     "trivia": "Do you know there are 114 species of butterfly fish?"
   },
   {
