@@ -765,7 +765,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"gameDiv\"></div>\n<p  style=\"padding-top:10px;padding-bottom:0px;padding-left:10px;\"><b>Username</b>: {{username}}</p>  \n  \n  \n\n  <!--\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"startTundraLevel()\">Tundra level</ion-button>\n\n  <app-loading-spinner></app-loading-spinner>\n\n  <ion-card> \n    <div class=\"quetiontextstyle\">\n        This is the question\n    </div>\n    <div class=\"radiovertical\">\n      <ul>\n        \n        <li>\n          <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n          <label for=\"ff-option\">Pizza</label> \n          <div class=\"check\"></div>\n        </li>\n\n        <li>\n          <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n          <label for=\"ss-option\">Boyfriend</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n        \n        <li>\n          <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n          <label for=\"tt-option\">Cats</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n\n      </ul>\n    </div>\n  </ion-card>\n  -->\n\n\n"
+module.exports = "<div id=\"gameDiv\"></div>\n<p  style=\"padding-top:10px;padding-bottom:0px;padding-left:10px;\"><b>Username</b>: {{username}}</p>  \n<ion-button color=\"primary\" (click)=\"showModalDemo()\">Unlockables</ion-button>\n<ion-button color=\"primary\" (click)=\"showMemeDemo()\">Meme</ion-button>\n<ion-button color=\"primary\" (click)=\"showAltruisticDemo()\">Altruistic msg</ion-button>\n  <!--\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"startTundraLevel()\">Tundra level</ion-button>\n\n  <app-loading-spinner></app-loading-spinner>\n\n  <ion-card> \n    <div class=\"quetiontextstyle\">\n        This is the question\n    </div>\n    <div class=\"radiovertical\">\n      <ul>\n        \n        <li>\n          <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n          <label for=\"ff-option\">Pizza</label> \n          <div class=\"check\"></div>\n        </li>\n\n        <li>\n          <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n          <label for=\"ss-option\">Boyfriend</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n        \n        <li>\n          <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n          <label for=\"tt-option\">Cats</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n\n      </ul>\n    </div>\n  </ion-card>\n  -->\n\n\n"
 
 /***/ }),
 
@@ -787,7 +787,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<modal-content class=\"ion-padding\">\n  <ion-list>\n    <ion-list-header>\n      Congratulations!!!\n    </ion-list-header>\n\n\n    <ion-item *ngFor=\"let reinforcement of reinforcements\"> \n      <ion-thumbnail slot=\"start\">\n        <img src=\"{{reinforcement.img}}\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>{{reinforcement.header}}</h2>\n        <h3>{{reinforcement.text}}</h3>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n</modal-content>\n\n<ion-footer align=\"right\" no-border class=\"ion-padding\">\n  <ion-button expand=\"block\" color=\"primary\" (click)=\"dismiss()\">Close</ion-button>\n</ion-footer>"
+module.exports = "\n<ion-header>\n    <ion-list-header>Congratulations!!!</ion-list-header>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n    <ion-list>\n      <ion-item *ngFor=\"let reinforcement of reinforcements\"> \n        <ion-thumbnail slot=\"start\">\n          <img src=\"{{reinforcement.img}}\">\n        </ion-thumbnail>\n        <ion-label text-wrap>\n          <h2>{{reinforcement.header}}</h2>\n          <h3>{{reinforcement.text}}</h3>\n        </ion-label>\n      </ion-item>\n    </ion-list>\n</ion-content>\n\n<ion-footer align=\"right\" no-border class=\"ion-padding\">\n  <ion-button expand=\"block\" color=\"primary\" (click)=\"dismiss()\">Close</ion-button>\n</ion-footer>"
 
 /***/ }),
 
@@ -798,7 +798,7 @@ module.exports = "<modal-content class=\"ion-padding\">\n  <ion-list>\n    <ion-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <!--\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    -->\n    <ion-title>Thanks for helping</ion-title>\n  </ion-toolbar>\n</ion-header>\n \n\n<ion-content>\n<!--\n<br/>\n<div style=\"font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center\">Thank you for completing the survey</div>\n-->\n<img [src]=\"whichImage\" *ngIf=\"whichImage\" style=\"height: auto;width: 100%;padding-top:0px; border: 0px solid #fff;position: absolute;\"/>\n\n\n\n\n<!--\n<ion-card> \n  <div class=\"quetiontextstyle\">\n      This is the question\n  </div>\n  <div class=\"radiovertical\">\n    <ul>\n      <li>\n        <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n        <label for=\"ff-option\">Pizza</label> \n        <div class=\"check\"></div>\n      </li>\n      \n      <li>\n        <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n        <label for=\"ss-option\">Boyfriend</label>\n        <div class=\"check\"><div class=\"inside\"></div></div>\n      </li>\n      \n      <li>\n        <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n        <label for=\"tt-option\">Cats</label>\n        <div class=\"check\"><div class=\"inside\"></div></div>\n      </li>\n    </ul>\n  </div>\n</ion-card>\n-->\n\n</ion-content>\n<ion-footer align=\"center\" no-border>\n  <ion-toolbar style=\"background:#fff;border: 0px solid #fff;height:120px;\">\n      <button style=\"height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:20px;font-size:24px;color:#fff;background:#D32F2F;\" \n      (click)=\"ratingChanged(0)\">\n          <ion-icon name=\"ios-thumbs-down\" style=\"height: 50px;width: 50px;\"></ion-icon>\n      </button>\n      <button style=\"height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:10px;font-size:24px;color:#fff;background:#33691E;\" \n      (click)=\"ratingChanged(1)\">\n          <ion-icon name=\"ios-thumbs-up\" style=\"height: 50px;width: 50px;\"></ion-icon>\n      </button>\n  </ion-toolbar>\n</ion-footer>\n"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <!--\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    -->\n    <ion-title>Thanks for helping</ion-title>\n  </ion-toolbar>\n</ion-header>\n \n\n<ion-content>\n<!--\n<br/>\n<div style=\"font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center\">Thank you for completing the survey</div>\n<canvas id=\"drawing_canvas\" width=\"100%\" height=\"auto\" style=\"position: fixed; left: 50%; top: 35%; transform: translate(-50%, -50%); z-index: 0;\"></canvas>\n-->\n<div style=\"position: relative;\">\n  <img [src]=\"whichImage\" *ngIf=\"whichImage\" style=\"height: auto;width: 100%;padding-top:0px; border: 0px solid #fff;position: absolute;\"/>\n  <canvas id=\"hearts_canvas\" width=\"100%\" height=\"100%\" style=\"box-sizing: border-box; position: absolute; left: 0; top: 0; z-index: 1;\"></canvas>\n</div>\n\n\n\n\n<!--\n<ion-card> \n  <div class=\"quetiontextstyle\">\n      This is the question\n  </div>\n  <div class=\"radiovertical\">\n    <ul>\n      <li>\n        <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n        <label for=\"ff-option\">Pizza</label> \n        <div class=\"check\"></div>\n      </li>\n      \n      <li>\n        <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n        <label for=\"ss-option\">Boyfriend</label>\n        <div class=\"check\"><div class=\"inside\"></div></div>\n      </li>\n      \n      <li>\n        <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n        <label for=\"tt-option\">Cats</label>\n        <div class=\"check\"><div class=\"inside\"></div></div>\n      </li>\n    </ul>\n  </div>\n</ion-card>\n-->\n\n</ion-content>\n<ion-footer align=\"center\" no-border>\n  <ion-toolbar style=\"background:#fff;border: 0px solid #fff;height:120px;\">\n      <button style=\"height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:20px;font-size:24px;color:#fff;background:#D32F2F;\" \n      (click)=\"ratingChanged(0)\">\n          <ion-icon name=\"ios-thumbs-down\" style=\"height: 50px;width: 50px;\"></ion-icon>\n      </button>\n      <button style=\"height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:10px;font-size:24px;color:#fff;background:#33691E;\" \n      (click)=\"ratingChanged(1)\">\n          <ion-icon name=\"ios-thumbs-up\" style=\"height: 50px;width: 50px;\"></ion-icon>\n      </button>\n  </ion-toolbar>\n</ion-footer>\n"
 
 /***/ }),
 
@@ -809,7 +809,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <!--\n    <ion-buttons slot
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar>\n      <!--\n      <ion-buttons slot=\"start\">\n        <ion-back-button defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      -->\n      <ion-title>You unlocked a meme</ion-title>\n    </ion-toolbar>\n  </ion-header>\n   \n\n<ion-content>\n  <!--\n  <br/>\n  <div style=\"font-size: 24px;line-height: 25px;padding-bottom:10px;text-align:center\">Congratulations!!</div>\n  <div style=\"font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center\">Thank you for completing the survey. You have unlocked a meme.</div>\n  -->\n  <img [src]=\"whichImage\" *ngIf=\"whichImage\" style=\"height: auto;width: 100%;padding-top:0px; border: 0px solid #fff;position: absolute;\"/>\n  <canvas id=\"drawing_canvas\"></canvas>\n\n\n\n<!--\n  <ion-card> \n    <div class=\"quetiontextstyle\">\n        This is the question\n    </div>\n    <div class=\"radiovertical\">\n      <ul>\n        <li>\n          <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n          <label for=\"ff-option\">Pizza</label> \n          <div class=\"check\"></div>\n        </li>\n        \n        <li>\n          <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n          <label for=\"ss-option\">Boyfriend</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n        \n        <li>\n          <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n          <label for=\"tt-option\">Cats</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n      </ul>\n    </div>\n  </ion-card>\n-->\n\n</ion-content>\n<ion-footer align=\"center\" no-border>\n    <ion-toolbar style=\"background:#fff;border: 0px solid #fff;height:120px;\">\n        <button style=\"height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:20px;font-size:24px;color:#fff;background:#D32F2F;\" \n        (click)=\"ratingChanged(0)\">\n            <ion-icon name=\"ios-thumbs-down\" style=\"height: 50px;width: 50px;\"></ion-icon>\n        </button>\n        <button style=\"height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:10px;font-size:24px;color:#fff;background:#33691E;\" \n        (click)=\"ratingChanged(1)\">\n            <ion-icon name=\"ios-thumbs-up\" style=\"height: 50px;width: 50px;\"></ion-icon>\n        </button>\n    </ion-toolbar>\n</ion-footer>\n"
+module.exports = "<ion-header>\n    <ion-toolbar>\n      <!--\n      <ion-buttons slot=\"start\">\n        <ion-back-button defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      -->\n      <ion-title>You unlocked a meme</ion-title>\n    </ion-toolbar>\n  </ion-header>\n   \n\n<ion-content>\n  <!--\n  <br/>\n  <div style=\"font-size: 24px;line-height: 25px;padding-bottom:10px;text-align:center\">Congratulations!!</div>\n  <div style=\"font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center\">Thank you for completing the survey. You have unlocked a meme.</div>\n  <img [src]=\"whichImage\" *ngIf=\"whichImage\" style=\"height: auto;width: 100%;padding-top:0px; border: 0px solid #fff;position: absolute;\"/>\n\n  <canvas id=\"drawing_canvas\" width=\"100%\" height=\"auto\" style=\"position: fixed; left: 50%; top: 20%; transform: translate(-50%, -50%); z-index: 0;\"></canvas>\n  -->\n  <div style=\"position: relative;\">\n    <img [src]=\"whichImage\" *ngIf=\"whichImage\" style=\"height: auto;width: 100%;padding-top:0px; border: 0px solid #fff;position: absolute;\"/>\n    <canvas id=\"hearts_canvas\" width=\"100%\" height=\"100%\" style=\"box-sizing: border-box; position: absolute; left: 0; top: 0; z-index: 1;\"></canvas>\n  </div>\n  \n\n\n<!--\n  <ion-card> \n    <div class=\"quetiontextstyle\">\n        This is the question\n    </div>\n    <div class=\"radiovertical\">\n      <ul>\n        <li>\n          <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n          <label for=\"ff-option\">Pizza</label> \n          <div class=\"check\"></div>\n        </li>\n        \n        <li>\n          <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n          <label for=\"ss-option\">Boyfriend</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n        \n        <li>\n          <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n          <label for=\"tt-option\">Cats</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n      </ul>\n    </div>\n  </ion-card>\n-->\n\n</ion-content>\n<ion-footer align=\"center\" no-border>\n    <ion-toolbar style=\"background:#fff;border: 0px solid #fff;height:120px;\">\n        <button style=\"height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:20px;font-size:24px;color:#fff;background:#D32F2F;\" \n        (click)=\"ratingChanged(0)\">\n            <ion-icon name=\"ios-thumbs-down\" style=\"height: 50px;width: 50px;\"></ion-icon>\n        </button>\n        <button style=\"height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:10px;font-size:24px;color:#fff;background:#33691E;\" \n        (click)=\"ratingChanged(1)\">\n            <ion-icon name=\"ios-thumbs-up\" style=\"height: 50px;width: 50px;\"></ion-icon>\n        </button>\n    </ion-toolbar>\n</ion-footer>\n"
 
 /***/ }),
 
@@ -853,7 +853,7 @@ module.exports = "\n\n<!--ion-content>\n    <app-q1-motivated inputStr={{inputSt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title>Rewards and unlockables</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n\n    <div>\n      <p style=\"margin-bottom:6px;\">You have so far earned</p>\n      <p style=\"font-size:34px;\">{{amount_earned}}</p>\n    </div>\n\n    <div style=\"clear: both;vertical-align: bottom;padding-top:20px;\">\n        <p style=\"padding-bottom:-40px;\">Animals/Fish to unlock</p>\n        <img *ngFor=\"let x of pointsdata;\" src={{x.img}} style=\"width:auto;height:75px;margin:5px;max-width:200px\">\n        <!--\n        <p style=\"font-size: 12px;line-height: 15px;padding-bottom:10px;color:#666666;\">Double click in a unlocked fish to show its trivia</p>\n        <img *ngFor=\"let x in pointsdata;\" src={{x.img}} style=\"width:auto;height:75px;margin:5px;max-width:200px\">\n        -->\n    </div>  \n\n    <div style=\"clear: both;vertical-align: bottom;padding-top:30px;\">\n      <p>Treasures earned for completing surveys</p>\n      <img *ngFor=\"let pearls of pearlsAndGems;\" src={{pearls.img}} [style.width.px]=\"pearls.width\" style=\"margin:5px;\">\n    </div>\n\n</ion-content>\n\n\n"
+module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">Unlockables</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n\n    <div>\n      <p style=\"margin-bottom:6px;\">You have so far earned</p>\n      <p style=\"font-size:34px;\">{{amount_earned}}</p>\n    </div>\n\n    <div style=\"clear: both;vertical-align: bottom;padding-top:20px;\">\n        <p style=\"padding-bottom:-40px;\">Animals/Fish to unlock</p>\n        <img *ngFor=\"let x of pointsdata;\" src={{x.img}} style=\"width:auto;height:75px;margin:5px;max-width:200px\">\n        <!--\n        <p style=\"font-size: 12px;line-height: 15px;padding-bottom:10px;color:#666666;\">Double click in a unlocked fish to show its trivia</p>\n        <img *ngFor=\"let x in pointsdata;\" src={{x.img}} style=\"width:auto;height:75px;margin:5px;max-width:200px\">\n        -->\n    </div>  \n\n    <!--\n    <div style=\"clear: both;vertical-align: bottom;padding-top:30px;\">\n      <p>Treasures earned for completing surveys</p>\n      <img *ngFor=\"let pearls of pearlsAndGems;\" src={{pearls.img}} [style.width.px]=\"pearls.width\" style=\"margin:5px;\">\n    </div>\n    -->\n\n</ion-content>\n\n\n"
 
 /***/ }),
 
@@ -864,7 +864,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title>AYA Survey</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n    <!-- <app-dynamic-survey fileLink=\"alex_survey\"></app-dynamic-survey> -->\n    <app-dynamic-survey fileLink=\"alex_survey_aya\"></app-dynamic-survey>\n  <!--\n  <app-dynamic-survey fileLink=\"temp_survey\"></app-dynamic-survey>\n  -->\n</ion-content>\n\n\n"
+module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\" style=\"color:#fff;\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">AYA Survey</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n    <!-- <app-dynamic-survey fileLink=\"alex_survey\"></app-dynamic-survey> -->\n    <app-dynamic-survey fileLink=\"alex_survey_aya\"></app-dynamic-survey>\n  <!--\n  <app-dynamic-survey fileLink=\"temp_survey\"></app-dynamic-survey>\n  -->\n</ion-content>\n\n\n"
 
 /***/ }),
 
@@ -886,7 +886,7 @@ module.exports = "<div *ngIf=\"isLoading\">\n    <p>Loading survey...</p>\n</div
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title>Survey</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  \n    <!--\n    <ion-card> \n        <div class=\"quetiontextstyle\">\n            This is the question\n        </div>\n        <div class=\"radiovertical\">\n        <ul>\n            <li>\n            <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n            <label for=\"ff-option\">Pizza</label> \n            <div class=\"check\"></div>\n            </li>\n            \n            <li>\n            <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n            <label for=\"ss-option\">Boyfriend</label>\n            <div class=\"check\"><div class=\"inside\"></div></div>\n            </li>\n            \n            <li>\n            <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n            <label for=\"tt-option\">Cats</label>\n            <div class=\"check\"><div class=\"inside\"></div></div>\n            </li>\n        </ul>\n        </div>\n    </ion-card>\n    -->\n\n    <!-- <app-dynamic-survey fileLink=\"alex_survey\"></app-dynamic-survey> -->\n    <app-dynamic-survey fileLink=\"alex_survey_caregiver\"></app-dynamic-survey>\n  <!--\n  <app-dynamic-survey fileLink=\"temp_survey\"></app-dynamic-survey>\n  -->\n</ion-content>\n\n"
+module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\" style=\"color:#fff;\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">Survey</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  \n    <!--\n    <ion-card> \n        <div class=\"quetiontextstyle\">\n            This is the question\n        </div>\n        <div class=\"radiovertical\">\n        <ul>\n            <li>\n            <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n            <label for=\"ff-option\">Pizza</label> \n            <div class=\"check\"></div>\n            </li>\n            \n            <li>\n            <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n            <label for=\"ss-option\">Boyfriend</label>\n            <div class=\"check\"><div class=\"inside\"></div></div>\n            </li>\n            \n            <li>\n            <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n            <label for=\"tt-option\">Cats</label>\n            <div class=\"check\"><div class=\"inside\"></div></div>\n            </li>\n        </ul>\n        </div>\n    </ion-card>\n    -->\n\n    <!-- <app-dynamic-survey fileLink=\"alex_survey\"></app-dynamic-survey> -->\n    <app-dynamic-survey fileLink=\"alex_survey_caregiver\"></app-dynamic-survey>\n  <!--\n  <app-dynamic-survey fileLink=\"temp_survey\"></app-dynamic-survey>\n  -->\n</ion-content>\n\n"
 
 /***/ }),
 
@@ -4428,6 +4428,72 @@ module.exports = webpackAsyncContext;
 
 /***/ }),
 
+/***/ "./src/app/animations/modal_enter.ts":
+/*!*******************************************!*\
+  !*** ./src/app/animations/modal_enter.ts ***!
+  \*******************************************/
+/*! exports provided: myEnterAnimation */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "myEnterAnimation", function() { return myEnterAnimation; });
+function myEnterAnimation(AnimationC, baseEl) {
+    var baseAnimation = new AnimationC();
+    var backdropAnimation = new AnimationC();
+    backdropAnimation.addElement(baseEl.querySelector('ion-backdrop'));
+    var wrapperAnimation = new AnimationC();
+    wrapperAnimation.addElement(baseEl.querySelector('.modal-wrapper'));
+    wrapperAnimation
+        .fromTo('transform', 'scaleX(0.1) scaleY(0.1)', 'translateX(0%) scaleX(1) scaleY(1)')
+        .fromTo('opacity', 0, 1);
+    backdropAnimation.fromTo('opacity', 0.01, 0.4);
+    return Promise.resolve(baseAnimation
+        .addElement(baseEl)
+        .easing('cubic-bezier(0.36,0.66,0.04,1)')
+        .duration(400)
+        .beforeAddClass('show-modal')
+        .add(backdropAnimation)
+        .add(wrapperAnimation));
+}
+
+
+/***/ }),
+
+/***/ "./src/app/animations/modal_leave.ts":
+/*!*******************************************!*\
+  !*** ./src/app/animations/modal_leave.ts ***!
+  \*******************************************/
+/*! exports provided: myLeaveAnimation */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "myLeaveAnimation", function() { return myLeaveAnimation; });
+//see blog -- https://www.joshmorony.com/create-a-custom-modal-page-transition-animation-in-ionic/
+function myLeaveAnimation(AnimationC, baseEl) {
+    var baseAnimation = new AnimationC();
+    var backdropAnimation = new AnimationC();
+    backdropAnimation.addElement(baseEl.querySelector('ion-backdrop'));
+    var wrapperAnimation = new AnimationC();
+    var wrapperEl = baseEl.querySelector('.modal-wrapper');
+    wrapperAnimation.addElement(wrapperEl);
+    var wrapperElRect = wrapperEl.getBoundingClientRect();
+    wrapperAnimation
+        .fromTo('transform', 'scaleX(1) scaleY(1)', 'scaleX(0.1) scaleY(0.1)')
+        .fromTo('opacity', 1, 0);
+    backdropAnimation.fromTo('opacity', 0.4, 0.0);
+    return Promise.resolve(baseAnimation
+        .addElement(baseEl)
+        .easing('ease-out')
+        .duration(400)
+        .add(backdropAnimation)
+        .add(wrapperAnimation));
+}
+
+
+/***/ }),
+
 /***/ "./src/app/app-routing.module.ts":
 /*!***************************************!*\
   !*** ./src/app/app-routing.module.ts ***!
@@ -5091,7 +5157,7 @@ var HomePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".new-background-color {\n  --background: #3F51B5;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYXNoMi9Ecm9wYm94IChQQUMgTEFCKS9jb2Rlcy9pb25pY19wcm9qZWN0cy9TQVJBVjMvU0FSQV9tb2R1bGFyL3NyYy9hcHAvaG9tZS9ob21lLnBhZ2Uuc2NzcyIsInNyYy9hcHAvaG9tZS9ob21lLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFCQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9ob21lL2hvbWUucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5ldy1iYWNrZ3JvdW5kLWNvbG9ye1xuICAgIC0tYmFja2dyb3VuZDogIzNGNTFCNTtcbn1cbiIsIi5uZXctYmFja2dyb3VuZC1jb2xvciB7XG4gIC0tYmFja2dyb3VuZDogIzNGNTFCNTtcbn0iXX0= */"
+module.exports = ".new-background-color {\n  --background: #005486;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYXNoMi9Ecm9wYm94IChQQUMgTEFCKS9jb2Rlcy9pb25pY19wcm9qZWN0cy9TQVJBVjMvU0FSQV9tb2R1bGFyL3NyYy9hcHAvaG9tZS9ob21lLnBhZ2Uuc2NzcyIsInNyYy9hcHAvaG9tZS9ob21lLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFCQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9ob21lL2hvbWUucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5ldy1iYWNrZ3JvdW5kLWNvbG9ye1xuICAgIC0tYmFja2dyb3VuZDogIzAwNTQ4Njtcbn1cbiIsIi5uZXctYmFja2dyb3VuZC1jb2xvciB7XG4gIC0tYmFja2dyb3VuZDogIzAwNTQ4Njtcbn0iXX0= */"
 
 /***/ }),
 
@@ -5469,7 +5535,7 @@ var CheatpageComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".new-background-color {\n  --background: #3F51B5;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYXNoMi9Ecm9wYm94IChQQUMgTEFCKS9jb2Rlcy9pb25pY19wcm9qZWN0cy9TQVJBVjMvU0FSQV9tb2R1bGFyL3NyYy9hcHAvaW5jZW50aXZlL2FxdWFyaXVtL2RlbW8tYXF1YXJpdW0vZGVtby1hcXVhcml1bS5jb21wb25lbnQubGVzcyIsInNyYy9hcHAvaW5jZW50aXZlL2FxdWFyaXVtL2RlbW8tYXF1YXJpdW0vZGVtby1hcXVhcml1bS5jb21wb25lbnQubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFCQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9pbmNlbnRpdmUvYXF1YXJpdW0vZGVtby1hcXVhcml1bS9kZW1vLWFxdWFyaXVtLmNvbXBvbmVudC5sZXNzIiwic291cmNlc0NvbnRlbnQiOlsiLm5ldy1iYWNrZ3JvdW5kLWNvbG9ye1xuICAgIC0tYmFja2dyb3VuZDogIzNGNTFCNTtcbn0iLCIubmV3LWJhY2tncm91bmQtY29sb3Ige1xuICAtLWJhY2tncm91bmQ6ICMzRjUxQjU7XG59XG4iXX0= */"
+module.exports = ".new-background-color {\n  --background: #005486;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYXNoMi9Ecm9wYm94IChQQUMgTEFCKS9jb2Rlcy9pb25pY19wcm9qZWN0cy9TQVJBVjMvU0FSQV9tb2R1bGFyL3NyYy9hcHAvaW5jZW50aXZlL2FxdWFyaXVtL2RlbW8tYXF1YXJpdW0vZGVtby1hcXVhcml1bS5jb21wb25lbnQubGVzcyIsInNyYy9hcHAvaW5jZW50aXZlL2FxdWFyaXVtL2RlbW8tYXF1YXJpdW0vZGVtby1hcXVhcml1bS5jb21wb25lbnQubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFCQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9pbmNlbnRpdmUvYXF1YXJpdW0vZGVtby1hcXVhcml1bS9kZW1vLWFxdWFyaXVtLmNvbXBvbmVudC5sZXNzIiwic291cmNlc0NvbnRlbnQiOlsiLm5ldy1iYWNrZ3JvdW5kLWNvbG9ye1xuICAgIC0tYmFja2dyb3VuZDogIzAwNTQ4Njtcbn0iLCIubmV3LWJhY2tncm91bmQtY29sb3Ige1xuICAtLWJhY2tncm91bmQ6ICMwMDU0ODY7XG59XG4iXX0= */"
 
 /***/ }),
 
@@ -5513,6 +5579,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_27___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_27__);
 /* harmony import */ var _modal_unlocked_page_modal_unlocked_page_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../modal-unlocked-page/modal-unlocked-page.component */ "./src/app/incentive/aquarium/modal-unlocked-page/modal-unlocked-page.component.ts");
+/* harmony import */ var _animations_modal_enter__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../../../animations/modal_enter */ "./src/app/animations/modal_enter.ts");
+/* harmony import */ var _animations_modal_leave__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../../../animations/modal_leave */ "./src/app/animations/modal_leave.ts");
 
 
 
@@ -5540,6 +5608,8 @@ __webpack_require__.r(__webpack_exports__);
 //import { PickGameService } from './pick-game.service';
 
 //import { PreLoad } from '../../../PreLoad';
+
+
 
 
 
@@ -5599,6 +5669,12 @@ var DemoAquariumComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    DemoAquariumComponent.prototype.showMemeDemo = function () {
+        this.router.navigate(['incentive/award-memes']);
+    };
+    DemoAquariumComponent.prototype.showAltruisticDemo = function () {
+        this.router.navigate(['incentive/award-altruism']);
+    };
     DemoAquariumComponent.prototype.showModal = function () {
         if (window.localStorage['IsModalShown'] == undefined)
             return;
@@ -5608,18 +5684,26 @@ var DemoAquariumComponent = /** @class */ (function () {
             var storedDate = window.localStorage['LastSurveyCompletionDate'];
             //
             if (todaysDate == storedDate) {
-                //
-                var currentPoints = parseInt(window.localStorage['CurrentPoints']);
-                var previousPoints = parseInt(window.localStorage['PreviousPoints']);
-                var awardedDollar = parseInt(window.localStorage['AwardedDollar']);
-                this.presentModal(currentPoints, previousPoints, awardedDollar);
+                this.computeUnlockedReinforcements();
             }
             //
             window.localStorage.setItem("IsModalShown", "true");
         }
     };
+    DemoAquariumComponent.prototype.showModalDemo = function () {
+        var reinforcements = [];
+        reinforcements.push({ 'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?" });
+        reinforcements.push({ 'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?" });
+        reinforcements.push({ 'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?" });
+        //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+        //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+        //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+        //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+        //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+        this.presentModal(reinforcements);
+    };
     //show unlocked pages, using a modal
-    DemoAquariumComponent.prototype.presentModal = function (currentPoints, previousPoints, awardedDollar) {
+    DemoAquariumComponent.prototype.presentModal = function (reinforcements) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var modal;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
@@ -5627,10 +5711,12 @@ var DemoAquariumComponent = /** @class */ (function () {
                     case 0: return [4 /*yield*/, this.modalController.create({
                             component: _modal_unlocked_page_modal_unlocked_page_component__WEBPACK_IMPORTED_MODULE_28__["ModalUnlockedPageComponent"],
                             componentProps: {
-                                'currentPoints': currentPoints,
-                                'previousPoints': previousPoints,
-                                'awardedDollar': awardedDollar
-                            }
+                                'reinforcements': reinforcements
+                            },
+                            enterAnimation: _animations_modal_enter__WEBPACK_IMPORTED_MODULE_29__["myEnterAnimation"],
+                            leaveAnimation: _animations_modal_leave__WEBPACK_IMPORTED_MODULE_30__["myLeaveAnimation"],
+                            //,
+                            cssClass: 'my-default-2'
                         })];
                     case 1:
                         modal = _a.sent();
@@ -5639,6 +5725,62 @@ var DemoAquariumComponent = /** @class */ (function () {
                 }
             });
         });
+    };
+    DemoAquariumComponent.prototype.isFirstDayInTheStudy = function () {
+        var daily_survey = this.userProfileService.userProfile.survey_data.daily_survey;
+        var first_date = moment__WEBPACK_IMPORTED_MODULE_27__().format('YYYYMMDD');
+        var first_date_moment_js = moment__WEBPACK_IMPORTED_MODULE_27__(first_date, "YYYYMMDD");
+        var key_moment_js;
+        for (var key in daily_survey) {
+            key_moment_js = moment__WEBPACK_IMPORTED_MODULE_27__(key, "YYYYMMDD");
+            //takes the first day only. But it may not be the first date.
+            if (key_moment_js < first_date_moment_js) {
+                first_date = key;
+                first_date_moment_js = moment__WEBPACK_IMPORTED_MODULE_27__(first_date, "YYYYMMDD");
+            }
+        }
+        var todays_date = moment__WEBPACK_IMPORTED_MODULE_27__().format('YYYYMMDD');
+        if (todays_date == first_date)
+            return true;
+        else
+            return false;
+    };
+    DemoAquariumComponent.prototype.computeUnlockedReinforcements = function () {
+        var _this = this;
+        var currentPoints = parseInt(window.localStorage['CurrentPoints']);
+        var previousPoints = parseInt(window.localStorage['PreviousPoints']);
+        var awardedDollar = parseInt(window.localStorage['AwardedDollar']);
+        var reinforcements = [];
+        //get if money is awarded.
+        if (awardedDollar > 0) {
+            if (this.isFirstDayInTheStudy())
+                reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'Thanks for being a participant in the study. You earned 2 dollar.' });
+            else
+                reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'You earned 1 dollar for completing surveys 3-days in a row' });
+        }
+        //get if fish is alotted
+        var previous_point = currentPoints - 100;
+        fetch('../../../assets/game/fishpoints.json').then(function (res) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+            var fish_data, img, header, text, i;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, res.json()];
+                    case 1:
+                        fish_data = _a.sent();
+                        for (i = 0; i < fish_data.length; i++) {
+                            if ((fish_data[i].points > previous_point) && (fish_data[i].points <= currentPoints)) {
+                                img = "assets/" + fish_data[i].img.substring(0, fish_data[i].img.length - 4) + '_tn.jpg';
+                                header = "You unlocked " + fish_data[i].name;
+                                text = fish_data[i].trivia;
+                                reinforcements.push({ 'img': img, 'header': header, 'text': text });
+                            }
+                        }
+                        if (reinforcements.length > 0) //means some rainforcement was provided.
+                            this.presentModal(reinforcements);
+                        return [2 /*return*/];
+                }
+            });
+        }); });
     };
     DemoAquariumComponent.prototype.goToRewardsPage = function () {
         console.log("rewards page");
@@ -6308,10 +6450,12 @@ class FishBowlL1 extends Phaser.State {
         fish_progress.scale.setTo(-0.3, 0.3);
         fish_progress.anchor.setTo(.5,.5);
 
+        /*
         var pouch = this.add.image(15,80, 'diamond');
         pouch.scale.setTo(0.4, 0.4);
         pouch.anchor.setTo(.5,.5);
         this.badgecount = this.add.bitmapText(30, 73, 'eightbitwonder', "" + 2, 12);
+        */
 
         //
         this.buildFish();
@@ -6459,7 +6603,7 @@ class FishBowlL1 extends Phaser.State {
 
     animateButterflyFish(){
         //angel
-        var butterflyFish = this.add.sprite(-100, this.height-300, 'butterfly');
+        var butterflyFish = this.add.sprite(-100, this.height-300, 'butterflyfish');
         butterflyFish.animations.add('swim');
         butterflyFish.animations.play('swim', 10, true);
         butterflyFish.scale.setTo(0.7, 0.7);
@@ -6744,7 +6888,7 @@ class PreloaderL1 extends Phaser.State {
 		this.load.image('treasure', 'assets/img/treasure.png');
 		this.load.atlasJSONArray('clownfish', 'assets/game/sprite/clownfish.png', 'assets/game/sprite/clownfish.json');
 		this.load.atlasJSONArray('squid', 'assets/game/sprite/squid.png', 'assets/game/sprite/squid.json');
-		this.load.atlasJSONArray('butterfly', 'assets/game/sprite/butterfly.png', 'assets/game/sprite/butterfly.json');
+		this.load.atlasJSONArray('butterflyfish', 'assets/game/sprite/butterflyfish.png', 'assets/game/sprite/butterflyfish.json');
 		this.load.atlasJSONArray('tigerbarb', 'assets/game/sprite/tigerbarb.png', 'assets/game/sprite/tigerbarb.json');
 		this.load.atlasJSONArray('puffer', 'assets/game/sprite/pufferfish.png', 'assets/game/sprite/pufferfish.json');
 		this.load.atlasJSONArray('angelfish', 'assets/game/sprite/angelfish.png', 'assets/game/sprite/angelfish.json');
@@ -6785,7 +6929,10 @@ class BootL2 extends Phaser.State {
     }
     
     create() {
-        this.input.maxPointers = 1;
+		this.input.maxPointers = 1;
+		if(this.game.device.touch){
+			this.input.mouse.stop();
+		}
 		this.stage.disableVisibilityChange = false;
 		//this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		this.scale.minWidth = 270;
@@ -6864,10 +7011,12 @@ class FishBowlL2 extends Phaser.State {
         fish_progress.anchor.setTo(.5,.5);
 
 
+        /*
         var pouch = this.add.image(15,80, 'diamond');
         pouch.scale.setTo(0.4, 0.4);
         pouch.anchor.setTo(.5,.5);
         this.badgecount = this.add.bitmapText(30, 73, 'eightbitwonder', "" + 2, 12);
+        */
 
         //this.totalPoints = 1000;
         this.buildFish();
@@ -7034,7 +7183,7 @@ class FishBowlL2 extends Phaser.State {
     
     animateButterflyFish(){
         //angel
-        var butterflyFish = this.add.sprite(-100, this.height-300, 'butterfly');
+        var butterflyFish = this.add.sprite(-100, this.height-300, 'butterflyfish');
         butterflyFish.animations.add('swim');
         butterflyFish.animations.play('swim', 10, true);
         butterflyFish.scale.setTo(0.5, 0.5);
@@ -7398,7 +7547,7 @@ class PreloaderL2 extends Phaser.State {
 		this.load.image('treasure', 'assets/img/treasure.png');
 		this.load.atlasJSONArray('clownfish', 'assets/game/sprite/clownfish.png', 'assets/game/sprite/clownfish.json');
 		this.load.atlasJSONArray('squid', 'assets/game/sprite/squid.png', 'assets/game/sprite/squid.json');
-		this.load.atlasJSONArray('butterfly', 'assets/game/sprite/butterfly.png', 'assets/game/sprite/butterfly.json');
+		this.load.atlasJSONArray('butterflyfish', 'assets/game/sprite/butterflyfish.png', 'assets/game/sprite/butterflyfish.json');
 		this.load.atlasJSONArray('tigerbarb', 'assets/game/sprite/tigerbarb.png', 'assets/game/sprite/tigerbarb.json');
 		this.load.atlasJSONArray('puffer', 'assets/game/sprite/pufferfish.png', 'assets/game/sprite/pufferfish.json');
 		this.load.atlasJSONArray('angelfish', 'assets/game/sprite/angelfish.png', 'assets/game/sprite/angelfish.json');
@@ -7565,7 +7714,10 @@ class BootRainforestL6 extends Phaser.State {
     }
     
     create() {
-        this.input.maxPointers = 1;
+		this.input.maxPointers = 1;
+		if(this.game.device.touch){
+			this.input.mouse.stop();
+		}
 		this.stage.disableVisibilityChange = false;
 		//this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		this.scale.minWidth = 270;
@@ -8333,7 +8485,10 @@ class BootL3 extends Phaser.State {
     }
     
     create() {
-        this.input.maxPointers = 1;
+		this.input.maxPointers = 1;
+		if(this.game.device.touch){
+			this.input.mouse.stop();
+		}
 		this.stage.disableVisibilityChange = false;
 		//this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		this.scale.minWidth = 270;
@@ -8442,12 +8597,12 @@ class SeaLevelL3 extends Phaser.State {
         fishtank.events.onInputDown.add(this.earlyaquarium, this);
         */
        
+        /*
         var pouch = this.add.image(15,80, 'diamond');
         pouch.scale.setTo(0.4, 0.4);
         pouch.anchor.setTo(.5,.5);
-
-        //this.totalPoints = 1200;
         this.badgecount = this.add.bitmapText(30, 73, 'eightbitwonder', "" + 2, 12);
+        */
 
         //this.buildFish();
         this.buildAquarium();
@@ -9465,7 +9620,10 @@ class BootL4 extends Phaser.State {
     }
     
     create() {
-        this.input.maxPointers = 1;
+		this.input.maxPointers = 1;
+		if(this.game.device.touch){
+			this.input.mouse.stop();
+		}
 		this.stage.disableVisibilityChange = false;
 		//this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		this.scale.minWidth = 270;
@@ -9561,12 +9719,12 @@ class SeaLevelL4 extends Phaser.State {
         fishtank.events.onInputDown.add(this.earlyaquarium, this);
         */
 
+        /*
         var pouch = this.add.image(15,80, 'diamond');
         pouch.scale.setTo(0.4, 0.4);
         pouch.anchor.setTo(.5,.5);
-
-        //this.totalPoints = 1800;
         this.badgecount = this.add.bitmapText(30, 73, 'eightbitwonder', "" + 2, 12);
+        */
 
         //this.buildFish();
         this.buildAquarium();
@@ -10504,7 +10662,11 @@ class BootTundraL5 extends Phaser.State {
     }
     
     create() {
-        this.input.maxPointers = 1;
+		this.input.maxPointers = 1;
+		//-- https://github.com/photonstorm/phaser-ce/issues/32
+		if(this.game.device.touch){
+			this.input.mouse.stop();
+		}
 		this.stage.disableVisibilityChange = false;
 		//this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		this.scale.minWidth = 270;
@@ -10583,14 +10745,15 @@ class GameTundraL5 extends Phaser.State {
         fish_progress.anchor.setTo(.5,.5);
  
         //--- 
+        /*
         var pouch = this.add.image(15,80, 'diamond');
         pouch.scale.setTo(0.4, 0.4);
         pouch.anchor.setTo(.5,.5);
         this.badgecount = this.add.bitmapText(30, 73, 'eightbitwonder', "" + 2, 12);
- 
+        */
 
         //
-        this.snowgswitch = this.add.image(5, 100, 'snowgswitch');
+        this.snowgswitch = this.add.image(5, 70, 'snowgswitch');
         this.snowgswitch.scale.setTo(0.15, 0.15);
         this.snowgswitch.inputEnabled = true;
         this.snowgswitch.events.onInputDown.addOnce(this.startsnowing, this);
@@ -11279,10 +11442,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
-
+/* harmony import */ var src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
 
 
 
@@ -11293,43 +11453,9 @@ var ModalUnlockedPageComponent = /** @class */ (function () {
         this.userProfileService = userProfileService;
         // componentProps can also be accessed at construction time using NavParams
         console.log(navParams.get('firstName'));
-        this.reinforcements = []; //[{'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"}];
+        //this.reinforcements = [];//[{'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"}];
     }
     ModalUnlockedPageComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        //get if money is awarded.
-        if (this.awardedDollar > 0) {
-            if (this.isFirstDayInTheStudy())
-                this.reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + this.awardedDollar + ' dollar(s)', 'text': 'Thanks for being a participant in the study. You earned 2 dollar.' });
-            else
-                this.reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + this.awardedDollar + ' dollar(s)', 'text': 'You earned 1 dollar for completing surveys 3-days in a row' });
-        }
-        //get if fish is alotted
-        var current_point = this.currentPoints;
-        var previous_point = current_point - 100;
-        //
-        //this.reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 
-        //      'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
-        //
-        fetch('../../../assets/game/fishpoints.json').then(function (res) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
-            var fish_data, img, header, text, i;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, res.json()];
-                    case 1:
-                        fish_data = _a.sent();
-                        for (i = 0; i < fish_data.length; i++) {
-                            if ((fish_data[i].points > previous_point) && (fish_data[i].points <= current_point)) {
-                                img = "assets/" + fish_data[i].img.substring(0, fish_data[i].img.length - 4) + '_tn.jpg';
-                                header = "You unlocked " + fish_data[i].name;
-                                text = fish_data[i].trivia;
-                                this.reinforcements.push({ 'img': img, 'header': header, 'text': text });
-                            }
-                        }
-                        return [2 /*return*/];
-                }
-            });
-        }); });
     };
     ModalUnlockedPageComponent.prototype.dismiss = function () {
         //pass-data: https://ionicframework.com/docs/v3/api/components/modal/ModalController/
@@ -11337,49 +11463,22 @@ var ModalUnlockedPageComponent = /** @class */ (function () {
         //this.modalCtrl.dismiss(data);
         this.modalCtrl.dismiss();
     };
-    ModalUnlockedPageComponent.prototype.isFirstDayInTheStudy = function () {
-        var daily_survey = this.userProfileService.userProfile.survey_data.daily_survey;
-        var first_date = moment__WEBPACK_IMPORTED_MODULE_3__().format('YYYYMMDD');
-        var first_date_moment_js = moment__WEBPACK_IMPORTED_MODULE_3__(first_date, "YYYYMMDD");
-        var key_moment_js;
-        for (var key in daily_survey) {
-            key_moment_js = moment__WEBPACK_IMPORTED_MODULE_3__(key, "YYYYMMDD");
-            //takes the first day only. But it may not be the first date.
-            if (key_moment_js < first_date_moment_js) {
-                first_date = key;
-                first_date_moment_js = moment__WEBPACK_IMPORTED_MODULE_3__(first_date, "YYYYMMDD");
-            }
-        }
-        var todays_date = moment__WEBPACK_IMPORTED_MODULE_3__().format('YYYYMMDD');
-        if (todays_date == first_date)
-            return true;
-        else
-            return false;
-    };
     ModalUnlockedPageComponent.ctorParameters = function () { return [
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] },
-        { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__["UserProfileService"] }
+        { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__["UserProfileService"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
-    ], ModalUnlockedPageComponent.prototype, "currentPoints", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
-    ], ModalUnlockedPageComponent.prototype, "previousPoints", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
-    ], ModalUnlockedPageComponent.prototype, "awardedDollar", void 0);
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], ModalUnlockedPageComponent.prototype, "reinforcements", void 0);
     ModalUnlockedPageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-modal-unlocked-page',
             template: __webpack_require__(/*! raw-loader!./modal-unlocked-page.component.html */ "./node_modules/raw-loader/index.js!./src/app/incentive/aquarium/modal-unlocked-page/modal-unlocked-page.component.html"),
             styles: [__webpack_require__(/*! ./modal-unlocked-page.component.scss */ "./src/app/incentive/aquarium/modal-unlocked-page/modal-unlocked-page.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__["UserProfileService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__["UserProfileService"]])
     ], ModalUnlockedPageComponent);
     return ModalUnlockedPageComponent;
 }());
@@ -11427,6 +11526,156 @@ var AwardAltruismComponent = /** @class */ (function () {
         this.userProfileService = userProfileService;
         this.router = router;
         this.reinforcementObj = {};
+        this.HeartsBackground = {
+            heartHeight: 60,
+            heartWidth: 64,
+            hearts: [],
+            imageNames: ['valentinesheart.png', 'blueflower.png', 'yellowrose.png', 'redflower.png', 'yellowflower.png'],
+            heartImage: './assets/img/',
+            //heartImage: './assets/img/petal.png',
+            maxHearts: 60,
+            minScale: 0.4,
+            draw: function () {
+                //this.setCanvasSize();
+                this.ctx.clearRect(0, 0, this.w, this.h);
+                //console.log("Hearts draw function called");
+                var ctx = this.ctx;
+                for (var i = 0; i < this.hearts.length; i++) {
+                    var heart = this.hearts[i];
+                    heart.image = new Image();
+                    heart.image.style.height = heart.height;
+                    heart.image.src = this.heartImage;
+                    ctx.drawImage(heart.image, heart.x, heart.y, heart.width, heart.height);
+                }
+                this.move();
+            },
+            move: function () {
+                //console.log("Move function called");
+                for (var b = 0; b < this.hearts.length; b++) {
+                    var heart = this.hearts[b];
+                    heart.y += heart.ys;
+                    if (heart.y > this.h) {
+                        //heart.x = Math.random() * this.w;
+                        //heart.y = -1 * this.heartHeight;
+                    }
+                }
+            },
+            angularDraw: function () {
+                //this.setCanvasSize();
+                this.ctx.clearRect(0, 0, this.w, this.h);
+                //console.log("Hearts draw function called");
+                var ctx = this.ctx;
+                for (var i = 0; i < this.hearts.length; i++) {
+                    var heart = this.hearts[i];
+                    /*
+                    heart.image = new Image();
+                    heart.image.style.height = heart.height;
+                    heart.image.src = this.heartImage;
+                    */
+                    ctx.drawImage(heart.image, heart.angle_x, heart.angle_y, heart.width, heart.height);
+                }
+                this.angularMove();
+            },
+            angularMove: function () {
+                //console.log("Move function called");
+                for (var b = 0; b < this.hearts.length; b++) {
+                    var heart = this.hearts[b];
+                    //heart.y += heart.ys;
+                    //console.log("" + heart.angle_x + "," + heart.angle_y);
+                    //console.log(heart.angle);
+                    //console.log("" + heart.angle_x + "," + heart.angle_y + ", " + heart.angle_deltax + ", " + heart.angle_deltay);
+                    heart.angle_x += heart.angle_deltax;
+                    heart.angle_y += heart.angle_deltay;
+                    //console.log("" + heart.angle_x + "," + heart.angle_y);
+                    if (heart.y > this.h) {
+                        //heart.x = Math.random() * this.w;
+                        //heart.y = -1 * this.heartHeight;
+                    }
+                }
+            },
+            setCanvasSize: function () {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight - 170;
+                console.log("Set canvas size function called");
+                this.w = this.canvas.width;
+                this.h = this.canvas.height;
+            },
+            initialize: function () {
+                var _this = this;
+                console.log("Initialize hearts");
+                this.canvas = document.getElementById("hearts_canvas"); //$('#canvas')[0]; hearts_canvas
+                if (!this.canvas.getContext)
+                    return;
+                this.setCanvasSize();
+                this.ctx = this.canvas.getContext('2d');
+                this.canvas.addEventListener("touchstart", function (event) { event.preventDefault(); });
+                this.canvas.addEventListener("touchmove", function (event) { event.preventDefault(); });
+                this.canvas.addEventListener("touchend", function (event) { event.preventDefault(); });
+                this.canvas.addEventListener("touchcancel", function (event) { event.preventDefault(); });
+                // Attach an event handler to the document
+                //this.canvas.addEventListener("mousemove",   function(event) {event.preventDefault()});
+                for (var a = 0; a < this.maxHearts; a++) {
+                    var scale = (Math.random() * (1 - this.minScale)) + this.minScale;
+                    this.hearts.push({
+                        x: Math.random() * this.w,
+                        y: Math.random() * this.h,
+                        ys: Math.random() + 8,
+                        height: scale * this.heartHeight,
+                        width: scale * this.heartWidth,
+                        angle_x: this.w / 2,
+                        angle_y: this.h / 2,
+                        angle_deltax: this.getRandomArbitraryMoreThanX(-10, 10, 6),
+                        angle_deltay: this.getRandomArbitraryMoreThanX(-10, 10, 6),
+                        opacity: scale
+                    });
+                }
+                //setInterval($.proxy(this.draw, this), 30);
+                //setTimeout(e => this.draw, 30);
+                //this.draw();
+                var intervalVar;
+                if (Math.random() > 0.5) {
+                    //intervalVar = setInterval(e => this.angularDraw(), 30);
+                    this.heartImage = this.heartImage + 'valentinesheart.png';
+                }
+                else {
+                    //intervalVar = setInterval(e => this.draw(), 30);
+                    //choose an heart image everytime
+                    var randomElement = this.imageNames[Math.floor(Math.random() * this.imageNames.length)];
+                    this.heartImage = this.heartImage + randomElement;
+                }
+                var image = new Image();
+                image.src = this.heartImage;
+                var hearts = this.hearts;
+                var self_this = this;
+                image.onload = function () {
+                    for (var a = 0; a < hearts.length; a++) {
+                        hearts[a].image = image;
+                        hearts[a].image.style.height = hearts[a].height;
+                    }
+                    intervalVar = setInterval(function (e) { return self_this.angularDraw(); }, 30);
+                };
+                setTimeout(function (e) { return _this.stopInterval(intervalVar); }, 1200);
+            },
+            stopInterval: function (intervalVar) {
+                this.ctx.clearRect(0, 0, this.w, this.h);
+                clearInterval(intervalVar);
+            },
+            getRandomArbitrary: function (min, max) {
+                return Math.random() * (max - min) + min;
+            },
+            getRandomArbitraryMoreThanX: function (min, max, X) {
+                var rand_var = this.getRandomArbitrary(min, max);
+                if (Math.abs(rand_var) < X) {
+                    if (rand_var < X)
+                        return rand_var - X;
+                    if (rand_var > X)
+                        return rand_var + X;
+                }
+                else {
+                    return rand_var;
+                }
+            }
+        };
         this.reinforcementObj['ds'] = 1;
         this.reinforcementObj['reward'] = 2;
         this.reinforcementObj['reward_type'] = 'altruistic message';
@@ -11463,6 +11712,7 @@ var AwardAltruismComponent = /** @class */ (function () {
     AwardAltruismComponent.prototype.ionViewDidLeave = function () {
     };
     AwardAltruismComponent.prototype.showaltruism = function () {
+        var _this = this;
         console.log('Altruism data: ' + JSON.stringify(this.altruism_data));
         this.altruism_data = this.shuffle(this.altruism_data);
         console.log('Altruism images suffled: ' + JSON.stringify(this.altruism_data));
@@ -11470,6 +11720,7 @@ var AwardAltruismComponent = /** @class */ (function () {
         console.log('picked_altruism_image: ' + JSON.stringify(picked_altruism_image));
         this.whichImage = "./assets/altruism/" + picked_altruism_image[0]["filename"];
         this.reinforcementObj['reward_img_link'] = "/altruism/" + picked_altruism_image[0]["filename"];
+        setTimeout(function (e) { return _this.drawImageOnCanvas(_this.whichImage); }, 200);
     };
     AwardAltruismComponent.prototype.ratingChanged = function (rating) {
         if (rating == 0) {
@@ -11517,6 +11768,34 @@ var AwardAltruismComponent = /** @class */ (function () {
         a.push(picked_altruism[0]);
         window.localStorage['altruism_shuffle6'] = JSON.stringify(a);
         return picked_altruism;
+    };
+    AwardAltruismComponent.prototype.drawImageOnCanvas = function (imageF_file_path) {
+        /*
+        //
+        var imageObj = new Image();
+        imageObj.src = imageF_file_path;
+        
+        //
+        var drawingCanvas = <HTMLCanvasElement>document.getElementById("drawing_canvas");
+        drawingCanvas.style.width = '100%';
+        drawingCanvas.width = drawingCanvas.offsetWidth;
+       
+        var ctx = drawingCanvas.getContext('2d');
+       
+        //
+        imageObj.onload = function () {
+          console.log("print: " + (imageObj.height/imageObj.width));
+          drawingCanvas.height = Math.abs(drawingCanvas.width*(imageObj.height/imageObj.width));
+    
+          ctx.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height, // source rectangle
+            0, 0, drawingCanvas.width, drawingCanvas.height); // destination rectangle
+    
+          //
+          
+        }
+        */
+        //this.HeartsBackground.initialize(drawingCanvas);
+        this.HeartsBackground.initialize();
     };
     AwardAltruismComponent.ctorParameters = function () { return [
         { type: _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleAnalytics"] },
@@ -11584,7 +11863,6 @@ var AwardMemesComponent = /** @class */ (function () {
         this.reinforcementObj = {};
         this.viewWidth = 512;
         this.viewHeight = 350;
-        this.drawingCanvas = document.getElementById("drawing_canvas");
         this.timeStep = (1 / 60);
         this.reinforcementObj['ds'] = 1;
         this.reinforcementObj['reward'] = 1;
@@ -11601,7 +11879,6 @@ var AwardMemesComponent = /** @class */ (function () {
         this.ga.trackView('Life-insight')
             .then(function () { console.log("trackView at Life-insight!"); })
             .catch(function (e) { return console.log(e); });
-        //this.drawConfetti();
     };
     AwardMemesComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
@@ -11624,16 +11901,18 @@ var AwardMemesComponent = /** @class */ (function () {
         }); });
     };
     AwardMemesComponent.prototype.showmemes = function () {
+        var _this = this;
         //window.localStorage['meme_shuffle5'] = "[]";
         //var randomInt = Math.floor(Math.random() * this.meme_data.length);
         //this.whichImage = "./assets/memes/"+this.meme_data[randomInt]["filename"];
-        console.log('Meme data: ' + JSON.stringify(this.meme_data));
+        //console.log('Meme data: ' + JSON.stringify(this.meme_data));
         this.meme_data = this.shuffle(this.meme_data);
-        console.log('Meme suffled: ' + JSON.stringify(this.meme_data));
+        //console.log('Meme suffled: ' + JSON.stringify(this.meme_data));
         var picked_meme = this.pick_meme(this.meme_data);
-        console.log('picked_meme: ' + JSON.stringify(picked_meme));
+        //console.log('picked_meme: ' + JSON.stringify(picked_meme));
         this.whichImage = "./assets/memes/" + picked_meme[0]["filename"];
         this.reinforcementObj['reward_img_link'] = "/memes/" + picked_meme[0]["filename"];
+        setTimeout(function (e) { return _this.drawImageOnCanvas(_this.whichImage); }, 200);
     };
     AwardMemesComponent.prototype.ratingChanged = function (rating) {
         if (rating == 0) {
@@ -11688,17 +11967,138 @@ var AwardMemesComponent = /** @class */ (function () {
     };
     //
     AwardMemesComponent.prototype.initDrawingCanvas = function () {
+        /*
         this.drawingCanvas.style.width = '100%';
         this.drawingCanvas.width = this.drawingCanvas.offsetWidth;
         this.drawingCanvas.style.height = '90%';
         this.ctx = this.drawingCanvas.getContext('2d');
+        */
         //createLoader();
         //createExploader();
         //createParticles();
     };
+    AwardMemesComponent.prototype.drawImageOnCanvas = function (imageF_file_path) {
+        /*
+        //
+        var imageObj = new Image();
+        imageObj.src = imageF_file_path;
+        
+        //
+        var drawingCanvas = <HTMLCanvasElement>document.getElementById("drawing_canvas");
+        drawingCanvas.style.width = '100%';
+        drawingCanvas.width = drawingCanvas.offsetWidth;
+       
+        var ctx = drawingCanvas.getContext('2d');
+       
+        //
+        imageObj.onload = function () {
+          console.log("print: " + (imageObj.height/imageObj.width));
+          drawingCanvas.height = Math.abs(drawingCanvas.width*(imageObj.height/imageObj.width));
+    
+          ctx.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height, // source rectangle
+            0, 0, drawingCanvas.width, drawingCanvas.height); // destination rectangle
+    
+          //
+          
+        }
+        */
+        //this.HeartsBackground.initialize(drawingCanvas);
+        this.drawConfetti();
+    };
     //draws confetti 
     AwardMemesComponent.prototype.drawConfetti = function () {
-        this.initDrawingCanvas();
+        var canvas = document.getElementById("hearts_canvas"); //$('#canvas')[0]; hearts_canvas
+        //https://www.kirilv.com/canvas-confetti/
+        // you should  only initialize a canvas once, so save this function
+        // we'll save it to the canvas itself for the purpose of this demo
+        //@ts-ignore
+        canvas.confetti = canvas.confetti || confetti.create(canvas, { resize: true });
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight - 170;
+        /*
+        canvas.confetti({
+          angle: this.randomInRange(55, 125),
+          spread: this.randomInRange(50, 70),
+          particleCount: this.randomInRange(50, 100),
+          origin: { y: 0.6, x: 0.5 }
+        });
+        */
+        //
+        if (Math.random() > 0.5)
+            this.drawRealisticConfetti(canvas);
+        else
+            this.drawConfettiFireworks(canvas);
+    };
+    AwardMemesComponent.prototype.drawConfettiFireworks = function (canvas) {
+        var duration = 1 * 1200;
+        var animationEnd = Date.now() + duration;
+        var defaults = { startVelocity: 30, spread: 100, ticks: 60, zIndex: 0 };
+        function randomInRange(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+        var interval = setInterval(function () {
+            var timeLeft = animationEnd - Date.now();
+            if (timeLeft <= 0) {
+                return clearInterval(interval);
+            }
+            var particleCount = 50 * (timeLeft / duration);
+            // since particles fall down, start a bit higher than random
+            canvas.confetti(Object.assign({}, defaults, { particleCount: particleCount, origin: { x: randomInRange(0.2, 0.4), y: Math.random() - 0.0 } }));
+            canvas.confetti(Object.assign({}, defaults, { particleCount: particleCount, origin: { x: randomInRange(0.6, 0.8), y: Math.random() - 0.0 } }));
+        }, 250);
+    };
+    AwardMemesComponent.prototype.drawConfettiVanillaDirection = function (canvas) {
+        canvas.confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.5, x: 0.5 }
+        });
+    };
+    AwardMemesComponent.prototype.drawConfettiRandomDirection = function (canvas) {
+        canvas.confetti({
+            angle: this.randomInRange(55, 125),
+            spread: this.randomInRange(50, 70),
+            particleCount: this.randomInRange(50, 100),
+            origin: { y: 0.5, x: 0.5 }
+        });
+    };
+    AwardMemesComponent.prototype.drawRealisticConfetti = function (canvas) {
+        this.confettiFire(0.25, {
+            spread: 26,
+            startVelocity: 100,
+        }, canvas);
+        this.confettiFire(0.2, {
+            spread: 60,
+        }, canvas);
+        this.confettiFire(0.35, {
+            spread: 100,
+            decay: 0.99,
+        }, canvas);
+        this.confettiFire(0.1, {
+            spread: 120,
+            startVelocity: 100,
+            decay: 0.99,
+        }, canvas);
+        this.confettiFire(0.1, {
+            spread: 120,
+            startVelocity: 100,
+        }, canvas);
+        //
+        setTimeout(function () {
+            canvas.confetti.reset();
+        }, 1200);
+    };
+    AwardMemesComponent.prototype.confettiFire = function (particleRatio, opts, canvas) {
+        var count = 200;
+        var defaults = {
+            origin: { y: 0.8 }
+        };
+        canvas.confetti(Object.assign({}, defaults, opts, {
+            particleCount: Math.floor(count * particleRatio)
+        }));
+    };
+    AwardMemesComponent.prototype.randomInRange = function (min, max) {
+        return Math.random() * (max - min) + min;
     };
     AwardMemesComponent.ctorParameters = function () { return [
         { type: _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleAnalytics"] },
@@ -11711,7 +12111,9 @@ var AwardMemesComponent = /** @class */ (function () {
             selector: 'app-award-memes',
             template: __webpack_require__(/*! raw-loader!./award-memes.component.html */ "./node_modules/raw-loader/index.js!./src/app/incentive/award-memes/award-memes.component.html"),
             styles: [__webpack_require__(/*! ./award-memes.component.scss */ "./src/app/incentive/award-memes/award-memes.component.scss")]
-        }),
+        })
+        //declare let confetti: any;
+        ,
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleAnalytics"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
             src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__["UserProfileService"],
@@ -12389,7 +12791,7 @@ var SampleLifeInsightsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2luY2VudGl2ZS90cmVhc3VyZWNoZXN0L3RyZWFzdXJlY2hlc3QuY29tcG9uZW50LnNjc3MifQ== */"
+module.exports = ".new-background-color {\n  --background: #005486;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYXNoMi9Ecm9wYm94IChQQUMgTEFCKS9jb2Rlcy9pb25pY19wcm9qZWN0cy9TQVJBVjMvU0FSQV9tb2R1bGFyL3NyYy9hcHAvaW5jZW50aXZlL3RyZWFzdXJlY2hlc3QvdHJlYXN1cmVjaGVzdC5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvaW5jZW50aXZlL3RyZWFzdXJlY2hlc3QvdHJlYXN1cmVjaGVzdC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFCQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9pbmNlbnRpdmUvdHJlYXN1cmVjaGVzdC90cmVhc3VyZWNoZXN0LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5ldy1iYWNrZ3JvdW5kLWNvbG9ye1xuICAgIC0tYmFja2dyb3VuZDogIzAwNTQ4Njtcbn0iLCIubmV3LWJhY2tncm91bmQtY29sb3Ige1xuICAtLWJhY2tncm91bmQ6ICMwMDU0ODY7XG59Il19 */"
 
 /***/ }),
 
@@ -13026,7 +13428,7 @@ var StoreToFirebaseService = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3N1cnZleS9heWEtc2FtcGxlLXN1cnZleS9heWEtc2FtcGxlLXN1cnZleS5jb21wb25lbnQuc2NzcyJ9 */"
+module.exports = ".new-background-color {\n  --background: #005486;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYXNoMi9Ecm9wYm94IChQQUMgTEFCKS9jb2Rlcy9pb25pY19wcm9qZWN0cy9TQVJBVjMvU0FSQV9tb2R1bGFyL3NyYy9hcHAvc3VydmV5L2F5YS1zYW1wbGUtc3VydmV5L2F5YS1zYW1wbGUtc3VydmV5LmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9zdXJ2ZXkvYXlhLXNhbXBsZS1zdXJ2ZXkvYXlhLXNhbXBsZS1zdXJ2ZXkuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxxQkFBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvc3VydmV5L2F5YS1zYW1wbGUtc3VydmV5L2F5YS1zYW1wbGUtc3VydmV5LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5ldy1iYWNrZ3JvdW5kLWNvbG9ye1xuICAgIC0tYmFja2dyb3VuZDogIzAwNTQ4Njtcbn0iLCIubmV3LWJhY2tncm91bmQtY29sb3Ige1xuICAtLWJhY2tncm91bmQ6ICMwMDU0ODY7XG59Il19 */"
 
 /***/ }),
 
@@ -13677,7 +14079,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3N1cnZleS9zYW1wbGUtc3VydmV5L3NhbXBsZS1zdXJ2ZXkuY29tcG9uZW50LnNjc3MifQ== */"
+module.exports = ".new-background-color {\n  --background: #005486;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYXNoMi9Ecm9wYm94IChQQUMgTEFCKS9jb2Rlcy9pb25pY19wcm9qZWN0cy9TQVJBVjMvU0FSQV9tb2R1bGFyL3NyYy9hcHAvc3VydmV5L3NhbXBsZS1zdXJ2ZXkvc2FtcGxlLXN1cnZleS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvc3VydmV5L3NhbXBsZS1zdXJ2ZXkvc2FtcGxlLXN1cnZleS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFCQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9zdXJ2ZXkvc2FtcGxlLXN1cnZleS9zYW1wbGUtc3VydmV5LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5ldy1iYWNrZ3JvdW5kLWNvbG9ye1xuICAgIC0tYmFja2dyb3VuZDogIzAwNTQ4Njtcbn0iLCIubmV3LWJhY2tncm91bmQtY29sb3Ige1xuICAtLWJhY2tncm91bmQ6ICMwMDU0ODY7XG59Il19 */"
 
 /***/ }),
 
