@@ -22,10 +22,12 @@ export class UserProfileService {
   //user profile has been initialized
   initializeObs(){
     //get profile from server
-    // this.userProfile
+    // 
+    console.log("user-profile.service.ts - initializeObs method");
     let getProfile = this.http.post<any>(environment.userServer+'/userinfo',{"empty":"empty"}); 
     let getProfileFixed = this.http.get<any>(environment.userServer+'/userinfofixed');
 
+    // forkJoin will return an observable that waits till both http requests have received responses
     return forkJoin([getProfile, getProfileFixed])
       .pipe(tap(
         response =>
@@ -60,9 +62,11 @@ export class UserProfileService {
     ));
   }
 
-  //returns true if successful at adding the element (it doesn't already exist for the given date)
-  //date is a string of the format YYYYMMDD (e.g. "20170430")
-  /*reinforcementObj is an object of the form:
+  /* 
+  addReinforcementData returns true if successful at adding the element (it doesn't already exist for the given date)
+  date is a string of the format YYYYMMDD (e.g. "20170430")
+  
+  reinforcementObj is an object of the form:
   {
       "ds": 1, //means participants completed the survey
       "prob": 0.23,
@@ -82,6 +86,8 @@ export class UserProfileService {
     }
   }
 
+  // not currenlty using below method (wich calcs dollars based on days survey is taken in UserProfile)
+  // instead allowing award-dollar.service to calc streaks
   calcDollars(){
     //this method calculates the number of three day streaks
     //then sets dollars = to number of three day streaks
@@ -116,25 +122,31 @@ export class UserProfileService {
   }
 
   get isActive(){
+    console.log("user-profile.service.ts - isActive getter - begin");
     return this.userProfileFixed.isActive;
   }
   get isParent(){
-    // //temporarily returning true until get the above commented out method working
-    // return false;
+    console.log("user-profile.service.ts - isParent getter - begin");  
     return this.userProfileFixed.isParent;
   }
   get points(){
+    console.log("user-profile.service.ts - points getter - begin");
+ 
     if(this.userProfile==undefined)
       this.loadProfileFromDevice();
     return this.userProfile.points;
   }
 
   get username(){
+    console.log("user-profile.service.ts - username getter - begin");
+
     if(this.userProfile==undefined)
       this.loadProfileFromDevice();
     return this.userProfile.username;
   }
   set username(username:string){
+    console.log("user-profile.service.ts - isActive setter - begin");
+
     this.userProfile.username = username;
     this.saveProfileToDevice();
   }
@@ -149,42 +161,9 @@ export class UserProfileService {
     this.saveProfileToDevice();
   }
 
-  initializeObsOld(){
-    //get profile from server
-    // this.userProfile
-    // let getProfile = this.http.post<any>(environment.userServer+'/userinfo',{"empty":"empty"}); 
-    // let get
-
-    return this.http
-      .post<any>(environment.userServer+'/userinfo',{"empty":"empty"})
-      .pipe(tap(
-        response =>
-        {
-        console.log("initializeObs response: "+  JSON.stringify(response));
-        if (!response.username || !response.hasOwnProperty('username') ){
-          console.log("blank or empty user_name");
-          const username = localStorage.getItem('loggedInUser');
-          const currenttime:Date = new Date();
-          const dateString: string = moment(currenttime).format('MMMM Do YYYY, h:mm:ss a Z');
-          this.userProfile = new UserProfile(username,[],0,0,currenttime.getTime(), dateString);
-        }else{
-          this.userProfile = response;
-        }
-        this.saveProfileToDevice();
-        this.initialLoading.next(false);
-      }
-      ));
-  }
-
-
   saveToServer(){ 
     this.loadProfileFromDevice(); 
     const userProfile: UserProfile = this.userProfile;
-    // const userID = 'dog';//userProfile.userID;
-    // const profileObj = {userID: userProfile}
-    //const recipes = this.recipeServices.getRecipes();
-    //console.log('pre-http call');
-
     this.http
       .post(environment.userServer+'/setuserinfo',userProfile)
       .subscribe(response =>{
@@ -212,7 +191,6 @@ export class UserProfileService {
   saveProfileToDevice(){
       localStorage.setItem('userProfile', JSON.stringify(this.userProfile));
       
-      //temporarily commenting out 
       // maybe use this logic in case it's undefined:  https://stackoverflow.com/questions/37417012/unexpected-token-u-in-json-at-position-0
       localStorage.setItem('userProfileFixed', JSON.stringify(this.userProfileFixed));
 
@@ -234,19 +212,24 @@ export class UserProfileService {
 
   }
 
+  // below method can be called when a survey has been completed
+  // it does all the needed accounting
+  // adds current date to dict (and array)
   public surveyCompleted(){
+    console.log("user-profile.service.ts - surveyCompleted method - begin");
+
     const username = localStorage.getItem('loggedInUser'); //this.authService.loggedInUser.getValue()
     // check if survey has already been take for the current day or admin is contained in the username
-    console.log('surveyCompleted - before if loop');
+    // console.log('surveyCompleted - before if loop');
     if(!this.surveyTakenForCurrentDay()|| username.indexOf('admin')>=0){
-      console.log('surveyCompleted - in if loop');
+      // console.log('surveyCompleted - in if loop');
       this.addDateTaken();
       this.addSurveyPoints();
       //this.calcDollars();
       this.userProfile.lastupdate =this.numericCurrenDateTime;
       const dateString: string = moment(this.userProfile.lastupdate).format('MMMM Do YYYY, h:mm:ss a Z');
       this.userProfile.readable_ts = dateString;
-      console.log("in SurveyCompleted, AwardDollarDates: "+ localStorage.getItem("AwardDollarDates"));
+      // console.log("in SurveyCompleted, AwardDollarDates: "+ localStorage.getItem("AwardDollarDates"));
       this.userProfile.AwardDollarDates = JSON.parse(localStorage.getItem("AwardDollarDates"));  //fetch AwardDollarDates from local storage and add it to the UserProfile
       this.userProfile.dollars = JSON.parse(localStorage.getItem("AwardDollar"));
 
@@ -256,6 +239,8 @@ export class UserProfileService {
   }
 
   get stringCurrenDate(){
+    console.log("user-profile.service.ts - stringCurrenDate getter - begin");
+    
     //shift hours back by 2, so that 2am, will register as 12am
     const hoursShift: number = 2;
     const currentDateTime : Date = new Date();
@@ -268,7 +253,9 @@ export class UserProfileService {
  }
   
   get numericCurrenDateTime(){
-     //shift hours back by 2, so that 2am, will register as 12am
+    console.log("user-profile.service.ts - numericCurrenDateTime getter - begin");
+
+    //shift hours back by 2, so that 2am, will register as 12am
      const hoursShift: number = 2;
      const currentDateTime : Date = new Date();
      currentDateTime.setHours(currentDateTime.getHours() - hoursShift);
@@ -278,6 +265,8 @@ export class UserProfileService {
   }
 
   addDateTaken(){
+    console.log("user-profile.service.ts - addDateTaken method - begin");
+
     this.loadProfileFromDevice();
     const stringCurrenDate = this.stringCurrenDate;
     this.userProfile.datesTaken.push(stringCurrenDate);
@@ -285,35 +274,31 @@ export class UserProfileService {
     this.saveProfileToDevice();
   }
 
+  // boolean function, checks if survey has been taken for the current date.
   surveyTakenForCurrentDay(){
+    console.log("user-profile.service.ts - surveyTakenForCurrentDay method - begin");
+
     this.loadProfileFromDevice();
-    //check if date already exists in array of dates, otherwise add the date to datesTaken array    
-    var hasMatch = false;
+    //check if date already exists in dict of dates, otherwise add the date to dict    
+    // var hasMatch = false;
     if( this.stringCurrenDate in this.userProfile.survey_data.daily_survey){
       return true;
     }
     else{
       return false;
     }
-
-    // console.log("surveyTakenForCurrentDay - userProfile: " + this.userProfile);
-    // console.log("surveyTakenForCurrentDay - userProfile: " + JSON.stringify("this.userProfile"))
-    // console.log("surveyTakenForCurrentDay - this.userProfile.datesTaken.length: " + this.userProfile.datesTaken.length);
-    // for(var i=0;i<this.userProfile.datesTaken.length;i++){
-    //     if(this.userProfile.datesTaken[i] == this.stringCurrenDate){
-    //       hasMatch = true;
-    //         break;
-    //     }
-    // }
-    // return hasMatch;
   }
 
   addSurveyPoints(){
+    console.log("user-profile.service.ts - addSurveyPoints method - begin");
+
     const pointsPerSurvey = 100;
     this.addPoints(pointsPerSurvey);
   }
 
   addPoints(points: number){
+    console.log("user-profile.service.ts - addPoints method - begin");
+    
     this.userProfile.points += points;
     this.userProfile.survey_data.points += points;
     this.saveProfileToDevice();
@@ -321,6 +306,8 @@ export class UserProfileService {
   }
 
   cheatPoints(points: number){
+    console.log("user-profile.service.ts - cheatPoints method - begin");
+
     this.userProfile.points = points;
     this.userProfile.survey_data.points = points;
     this.saveProfileToDevice();
@@ -330,24 +317,5 @@ export class UserProfileService {
   removeUserProfile(){
     localStorage.removeItem('userProfile');
   }
-
-//methods - to be recreated
-/*
-x - saveProfileToDevice(userProfile: UserProfile)
-- sendProfileToServer() - send from deviceStorage to server (may be only called internally 
-                            - let this service worry about communicating with server)
-x - loadProfileFromDevice() - return userProfile
-- fetchProfileFromServer -              (may be only called internally 
-                            - let this service worry about communicating with server)
-x - addDateTaken(date: Date) - adds new date survey taken        
-  - first check if 
-
-x  - surveyTakenForCurrentDay
-actually, consumer of service will not know where things are stored.  It will simply get profile from service
-and accept updates
-
-after login, if nothing is on the server initialize user profile
-*/
-
 
 }

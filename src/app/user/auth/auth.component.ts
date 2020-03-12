@@ -27,15 +27,18 @@ export class AuthComponent implements OnInit, OnDestroy {
     private userProfileService: UserProfileService,
     private oneSignal: OneSignal){}
 
-  onSwitchMode(){
-    this.isLoginMode = !this.isLoginMode;
-  }
+  // was used to switch mode between login and register
+  // onSwitchMode(){
+  //   this.isLoginMode = !this.isLoginMode;
+  // }
 
   ngOnInit(){
     console.log(environment.userServer);
   }
 
+  //login button was clicked
   onSubmit(form: NgForm){
+    console.log("auth.component.ts - onSubmit method - begin");
 
     if(!form.valid){
       console.log('invalid');
@@ -46,18 +49,24 @@ export class AuthComponent implements OnInit, OnDestroy {
     let authObs: Observable<AuthResponseData>;
 
     this.isLoading = true;
-    if(this.isLoginMode){
-      authObs =  this.authService.login(userName,password);
-    }else{
-      authObs =  this.authService.signup(userName, password);
-    }
+
+    // if(this.isLoginMode){
+
+    // login returns an observable
+    authObs =  this.authService.login(userName,password);
+    // }else{
+    //   authObs =  this.authService.signup(userName, password);
+    // }
 
     this.authSub = authObs.subscribe(resData => {
-      console.log("auth login/signup response: "+ JSON.stringify(resData));
-
+      console.log("auth.component.ts - onSubmit method - authService.login response: "+ JSON.stringify(resData));
+      
       if(resData.hasOwnProperty('access_token') && resData.hasOwnProperty('refresh_token') ){
-        console.log("has access token");
         // the response contains an access token and refresh token
+        console.log("auth.component.ts - onSubmit method - has access token");
+        
+        // userProfileService.initializeObs returns an observable, 
+        // then below we can get the OneSignal Player id when UserProfile has been intialized 
         this.userSub = this.userProfileService.initializeObs()
         .pipe(
           tap(
