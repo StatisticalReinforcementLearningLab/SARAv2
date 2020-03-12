@@ -1,3 +1,7 @@
+// logic borrowed from https://angular-academy.com/angular-jwt/
+// all http requests will be intercepted by this token interceptor
+// which adds the access token to the request, unless URL contains refresh
+
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
 
@@ -14,6 +18,7 @@ export class TokenInterceptor implements HttpInterceptor {
   constructor(public authService: AuthService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {    
+    console.log("token.interceptorts - intercept method - begin");
     if (this.authService.loggedInUser.getValue()) {
       //if it's a refresh request, don't overwrite the token since it was already added
       if(request.url.indexOf('refresh')<0){
@@ -32,6 +37,7 @@ export class TokenInterceptor implements HttpInterceptor {
   }
 
   private addToken(request: HttpRequest<any>, token: string) {
+    console.log("token.interceptorts - addToken method - begin");
     return request.clone({
       setHeaders: {
         'Authorization': `Bearer ${token}`
@@ -40,6 +46,7 @@ export class TokenInterceptor implements HttpInterceptor {
   }
 
   private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
+    console.log("token.interceptorts - handle401Error method - begin");
     if (!this.isRefreshing) {
       this.isRefreshing = true;
       this.refreshTokenSubject.next(null);
