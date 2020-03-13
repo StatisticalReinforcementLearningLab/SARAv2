@@ -19,6 +19,9 @@ export interface TrackObj {
   id: number,
   pageName: string,
   eventTime: Date,
+  eventDate: string,
+  unix_ts: number, 
+  day_count: number,
   eventStatus: string,
   username: string
 }
@@ -106,10 +109,12 @@ export class DatabaseService {
     }
 
       
-    addTrack(pageName, eventStatus, username) {
-      var currentTime = moment().format('MMMM Do YYYY, h:mm:ss a');
-      let data = [pageName, currentTime, eventStatus, username];
-      return this.database.executeSql('INSERT INTO tracks (pageName, eventTime, eventStatus, username) VALUES (?, ?, ?, ?)', data).then(data => {
+    addTrack(pageName, eventStatus, username, day_count) {
+      var currentTime = moment().format('MMMM Do YYYY, h:mm:ss a Z');
+      var currentDate = moment().format('YYYYMMDD');
+      var unix_ts = new Date().getTime();
+      let data = [pageName, currentTime, currentDate, unix_ts, day_count, eventStatus, username];
+      return this.database.executeSql('INSERT INTO tracks (pageName, eventTime, eventDate, unix_ts, day_count, eventStatus, username) VALUES (?, ?, ?, ?, ?, ?, ?)', data).then(data => {
         console.log(pageName+' Track added!');
         //this.displayTracks();
       }).catch(e => console.log("In addTrack:"+pageName+" "+JSON.stringify(e)));
@@ -131,6 +136,9 @@ export class DatabaseService {
               id: data.rows.item(i).id,
               pageName: data.rows.item(i).pageName,
               eventTime: data.rows.item(i).eventTime,
+              eventDate: data.rows.item(i).eventDate,
+              unix_ts: data.rows.item(i).unix_ts,
+              day_count: data.rows.item(i).day_count,
               eventStatus: data.rows.item(i).eventStatus,
               username: data.rows.item(i).username,
              });
