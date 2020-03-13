@@ -219,7 +219,7 @@ export class DemoAquariumComponent implements OnInit {
 
     this.db.getDatabaseState().subscribe(rdy => {
       if (rdy) {     
-        this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username); 
+        this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
       }
     }); 
 
@@ -347,7 +347,7 @@ export class DemoAquariumComponent implements OnInit {
     this.survey_text = "Start survey";
     this.db.getDatabaseState().subscribe(rdy => {
       if (rdy) {     
-        this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username); 
+        this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
       }
     }); 
 

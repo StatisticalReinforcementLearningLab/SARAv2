@@ -78,7 +78,6 @@ export class DynamicSurveyComponent implements OnInit {
         this.survey_data = await res.json();
         this.generateSurvey();
       });
-
   }
 
   generateSurvey() {  
@@ -121,7 +120,7 @@ export class DynamicSurveyComponent implements OnInit {
 
       ngOnInit() {
         this.survey2['starttimeUTC'] = new Date().getTime();
-        this.survey2['reponse_ts']={};
+        this.survey2['reponse_ts']= {};
         for (var i = 0; i < this.survey_data.length; i++) {
           var obj = this.survey_data[i];
           this.isQuestionIncomplete[obj.name] = {"tag": obj.tag};
@@ -213,7 +212,7 @@ export class DynamicSurveyComponent implements OnInit {
 
         this.survey2['reponse_ts'][questions] = {};
         this.survey2['reponse_ts'][questions].ts = Date.now();
-        this.survey2['reponse_ts'][questions].readable_ts = moment().format("MMMM Do YYYY, h:mm:ss a");
+        this.survey2['reponse_ts'][questions].readable_ts = moment().format("MMMM Do YYYY, h:mm:ss a Z");
 
         
 
@@ -381,7 +380,7 @@ export class DynamicSurveyComponent implements OnInit {
       console.log("lifeInsightObj: "+JSON.stringify(this.lifeInsightObj));
       window.localStorage.setItem("lifeInsight", JSON.stringify(this.lifeInsightObj));
 
-      //save to Amazon AWS S3
+        //save to Amazon AWS S3
       this.awsS3Service.upload(this.fileLink, this.survey2);
       //console.log("End of storeData");
 
