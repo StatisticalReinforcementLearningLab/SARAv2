@@ -1,3 +1,5 @@
+//contains the two classes UserProfile and UserProfileFixed
+
 export class UserProfile {
     public badges=  { 'daily_survey': [],
                      'money': 0,
@@ -6,7 +8,6 @@ export class UserProfile {
     public imei:string = "0";
     public dollars: number = 0 ;
 
-    // had change below replacing - with _
     public life_insights = {"daily_survey": {}};
     public reinfrocement_data = {};
 
@@ -24,23 +25,17 @@ export class UserProfile {
     
     public username: string;
     public versionNumber: string;
-    // public isParent?: boolean;
-    // public isActive: boolean;
     public datesTaken: string[];
     public points: number;
     public badgeCount: number;
-    //access token
-    //refresh token 
 
+    // created constructor to initialize UserProfile - early on
     constructor(username: string, 
-                // isParent: boolean, 
                 datesTaken: string[], 
                 points: number,
                 badgeCount: number,
                 lastupdate: number,
                 readable_ts: string){        
-        // this.userID = userID;
-        // this.isParent = isParent;
         this.username = username;
         this.datesTaken = datesTaken;
         this.points = points;
