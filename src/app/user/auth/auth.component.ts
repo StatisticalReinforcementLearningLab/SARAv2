@@ -84,6 +84,11 @@ export class AuthComponent implements OnInit, OnDestroy {
       {
         this.isLoading = false;
         this.authService.loggedInUser.next(null);
+
+        //for testing purposes.
+        // this.router.navigateByUrl('/home');
+        // console.log("log in did not succeed");
+
         if(resData.hasOwnProperty('message')){
           this.error = resData.message;
         }

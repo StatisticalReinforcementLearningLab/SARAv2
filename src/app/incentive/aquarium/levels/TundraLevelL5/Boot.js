@@ -4,7 +4,11 @@ export class BootTundraL5 extends Phaser.State {
     }
     
     create() {
-        this.input.maxPointers = 1;
+		this.input.maxPointers = 1;
+		//-- https://github.com/photonstorm/phaser-ce/issues/32
+		if(this.game.device.touch){
+			this.input.mouse.stop();
+		}
 		this.stage.disableVisibilityChange = false;
 		//this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		this.scale.minWidth = 270;
