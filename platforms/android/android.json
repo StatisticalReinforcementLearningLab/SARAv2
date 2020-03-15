@@ -9,12 +9,8 @@
         "parents": {
           "/manifest/application": [
             {
-              "xml": "<receiver android:name=\"com.onesignal.ADMMessageHandler$Receiver\" android:permission=\"com.amazon.device.messaging.permission.SEND\"><intent-filter><action android:name=\"com.amazon.device.messaging.intent.REGISTRATION\" /><action android:name=\"com.amazon.device.messaging.intent.RECEIVE\" /><category android:name=\"edu.harvard.srl.SARA\" /></intent-filter></receiver>",
-              "count": 1
-            },
-            {
               "xml": "<application android:usesCleartextTraffic=\"true\" />",
-              "count": 7,
+              "count": 8,
               "mode": "merge",
               "id": "config.xml",
               "oldAttrib": {
