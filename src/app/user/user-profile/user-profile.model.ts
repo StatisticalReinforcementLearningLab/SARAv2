@@ -10,7 +10,8 @@ export class UserProfile {
     public life_insights = {"daily_survey": {}};
     public reinfrocement_data = {};
 
-    public oneSignalPlayerId?: string;                     
+    public oneSignalPlayerId?: string;     
+    public AwardDollarDates?: {};                
 
     public lastupdate: number;
     public readable_ts: string;
@@ -22,6 +23,7 @@ export class UserProfile {
 
     
     public username: string;
+    public versionNumber: string;
     // public isParent?: boolean;
     // public isActive: boolean;
     public datesTaken: string[];
