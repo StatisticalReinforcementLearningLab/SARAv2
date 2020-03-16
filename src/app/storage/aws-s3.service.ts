@@ -65,6 +65,9 @@ export class AwsS3Service extends StoreBaseService {
     //upload currentFile to the subfolder in S3 bucket
     this.STORAGE_REQ_KEY = subfolder+"_result";
     this.subfolder = subfolder;
+
+    // Upload data and data saved in local Storage to AWS when online, save data
+    // to local storage when offline.
     if(this.networkSvc.getCurrentNetworkStatus() == ConnectionStatus.Online){
       if(window.localStorage.getItem(this.STORAGE_REQ_KEY) != undefined ) 
         this.uploadLocalData();
@@ -94,7 +97,8 @@ export class AwsS3Service extends StoreBaseService {
 
   }
 
-  //upload local data
+  // upload data in local storage to AWS and clear local Data, if failed, save
+  // data in local storage.
   uploadLocalData() {   
     var storedObj = this.getLocalData();
     this.clearLocalData();
