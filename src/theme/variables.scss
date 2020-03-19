@@ -78,29 +78,9 @@
   
 }
 
-
-.secondary {
-  color: #A0A !important;
-  font-size: 2em !important;
-}
-
-ion-modal {
-  padding: 50px;
-  background: #0000004d;
+ion-modal{
+  padding: 30px;
+  background: rgba(0,0,0,0.5);
 }
 
 
-ion-modal.auto-height {
-  --height: auto;
-  .modal-wrapper{
-    width: 90vw;
-    .ion-page {
-      position: relative;
-      contain: content;
-      max-height: 90vh;
-      .modal-content {
-        overflow: auto;
-      }
-    }
-  }
-}
