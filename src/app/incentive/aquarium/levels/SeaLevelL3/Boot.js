@@ -4,7 +4,10 @@ export class BootL3 extends Phaser.State {
     }
     
     create() {
-        this.input.maxPointers = 1;
+		this.input.maxPointers = 1;
+		if(this.game.device.touch){
+			this.input.mouse.stop();
+		}
 		this.stage.disableVisibilityChange = false;
 		//this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		this.scale.minWidth = 270;

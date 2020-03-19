@@ -48,13 +48,13 @@ export class PreloaderTundraL5 extends Phaser.State {
 		this.game.load.atlasJSONArray('penguin', 'assets/game/sprite/penguin_sprite.png', 'assets/game/sprite/penguin_sprite.json');
 		this.game.load.atlasJSONArray('sea_lion_silver', 'assets/game/sprite/sea_lion_silver_sprite.png', 'assets/game/sprite/sea_lion_silver_sprite.json');
 		this.game.load.atlasJSONArray('sea_lion_brown', 'assets/game/sprite/sea_lion_brown_sprite.png', 'assets/game/sprite/sea_lion_brown_sprite.json');
-		
+		this.game.load.atlasJSONArray('sea_lion_pink', 'assets/game/sprite/PinkSeal.png', 'assets/game/sprite/PinkSeal.json');
 		//
 		this.game.load.atlasJSONArray('wolf_walk', 'assets/game/sprite/wolf_walk_sprite.png', 'assets/game/sprite/wolf_walk_sprite.json');
 
 		//
 		this.game.load.atlasJSONArray('bird_fly', 'assets/game/sprite/bird_tundra_sprite.png', 'assets/game/sprite/bird_tundra_sprite.json');
-
+		this.game.load.atlasJSONArray('blue_jay', 'assets/game/sprite/BlueJay.png', 'assets/game/sprite/BlueJay.json');
 
 		//
 		this.game.load.atlasJSONArray('hare', 'assets/game/sprite/hare_tundra_sprite.png', 'assets/game/sprite/hare_tundra_sprite.json');

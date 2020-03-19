@@ -51,6 +51,10 @@ import * as moment from 'moment';
 import { AlertController } from '@ionic/angular';
 import { ModalUnlockedPageComponent } from '../modal-unlocked-page/modal-unlocked-page.component';
 
+
+import { myEnterAnimation } from '../../../animations/modal_enter';
+import { myLeaveAnimation } from '../../../animations/modal_leave';
+
 declare let Phaser: any;
 
 @Component({
@@ -119,6 +123,16 @@ export class DemoAquariumComponent implements OnInit {
     this.showModal();
   }
 
+
+  showMemeDemo(){
+    this.router.navigate(['incentive/award-memes']);
+  }
+
+  showAltruisticDemo(){
+    this.router.navigate(['incentive/award-altruism']);
+  }
+
+
   showModal(){
     if(window.localStorage['IsModalShown'] == undefined)
       return;
@@ -131,14 +145,7 @@ export class DemoAquariumComponent implements OnInit {
 
       //
       if(todaysDate == storedDate){
-
-        //
-        var currentPoints = parseInt(window.localStorage['CurrentPoints']);
-        var previousPoints = parseInt(window.localStorage['PreviousPoints']);
-        var awardedDollar = parseInt(window.localStorage['AwardedDollar']);
-
-        this.presentModal(currentPoints, previousPoints, awardedDollar);
-
+        this.computeUnlockedReinforcements();
       } 
 
       //
@@ -146,19 +153,99 @@ export class DemoAquariumComponent implements OnInit {
     }
   }
 
+  showModalDemo(){
+    var reinforcements =  [];
+    reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+    reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+    reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+    //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+    //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+    //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+    //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+    //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+    this.presentModal(reinforcements);
+  }
+
 
   //show unlocked pages, using a modal
-  async presentModal(currentPoints, previousPoints, awardedDollar) {
+  async presentModal(reinforcements) {
     const modal = await this.modalController.create({
       component: ModalUnlockedPageComponent,
       componentProps: {
-        'currentPoints': currentPoints,
-        'previousPoints': previousPoints,
-        'awardedDollar': awardedDollar
-      }
+        'reinforcements': reinforcements
+      },
+      enterAnimation: myEnterAnimation,
+      leaveAnimation: myLeaveAnimation,
+      //,
+      cssClass: 'my-default-2'
     });
     return await modal.present();
   }
+
+
+  isFirstDayInTheStudy(){
+
+    var daily_survey = this.userProfileService.userProfile.survey_data.daily_survey;
+    var first_date = moment().format('YYYYMMDD');
+    var first_date_moment_js = moment(first_date,"YYYYMMDD");
+    var key_moment_js;
+    for (var key in daily_survey) {
+        key_moment_js = moment(key,"YYYYMMDD");
+        //takes the first day only. But it may not be the first date.
+        if (key_moment_js < first_date_moment_js) {
+            first_date = key;
+            first_date_moment_js = moment(first_date,"YYYYMMDD");
+        }
+    }
+
+    var todays_date = moment().format('YYYYMMDD');
+    if(todays_date == first_date)
+      return true;
+    else
+      return false;
+  }
+
+  computeUnlockedReinforcements(){
+
+    var currentPoints = parseInt(window.localStorage['CurrentPoints']);
+    var previousPoints = parseInt(window.localStorage['PreviousPoints']);
+    var awardedDollar = parseInt(window.localStorage['AwardedDollar']);
+    var reinforcements = [];
+
+    //get if money is awarded.
+    if(awardedDollar > 0){
+      if(this.isFirstDayInTheStudy())
+        reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'Thanks for being a participant in the study. You earned 2 dollar.'});
+      else
+        reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'You earned 1 dollar for completing surveys 3-days in a row'});
+    }
+      
+    //get if fish is alotted
+    var previous_point = currentPoints - 100;
+
+    fetch('../../../assets/game/fishpoints.json').then(async res => {
+      //console.log("Fishes: " + data);
+
+      var fish_data = await res.json();
+      var img; 
+      var header;
+      var text;
+      for(var i = 0; i < fish_data.length; i++) {
+          if ((fish_data[i].points > previous_point) && (fish_data[i].points <= currentPoints)) {
+            img = "assets/" + fish_data[i].img.substring(0, fish_data[i].img.length-4) + '_tn.jpg';
+            header =  "You unlocked " + fish_data[i].name;
+            text = fish_data[i].trivia;
+            reinforcements.push({'img': img, 'header': header, 'text': text});
+            
+          }
+      }
+      if(reinforcements.length > 0)//means some rainforcement was provided.
+        this.presentModal(reinforcements);
+    });
+  }
+
+
+
 
 
   goToRewardsPage(){
@@ -233,8 +320,10 @@ export class DemoAquariumComponent implements OnInit {
 
     //var game;
     if(this.platform.is('ios')){
-        if(GameApp.CANVAS_HEIGHT < 642.0)//iphone SE fix.
-            GameApp.CANVAS_HEIGHT += 60;
+        if(GameApp.CANVAS_HEIGHT < 642.0){//iphone SE fix.
+            GameApp.CANVAS_HEIGHT += 30;
+            GameApp.CANVAS_WIDTH = window.innerWidth;
+        }
         this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 36*window.devicePixelRatio, Phaser.AUTO, 'gameDiv');
     }else if(this.platform.is('android'))
         this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 74, Phaser.AUTO, 'gameDiv');    

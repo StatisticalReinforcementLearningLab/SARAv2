@@ -1,6 +1,6 @@
 [
   {
-    "name" : "Clown fish",
+    "name" : "The clown fish",
     "level" : 1,
     "text" : "Story 1",
     "points" : 30,
@@ -12,7 +12,7 @@
     "level" : 1,
     "text" : "Story 1",
     "points" : 60,
-    "img" : "img/butterfly.png",
+    "img" : "img/butterfly-fish.png",
     "trivia": "Do you know there are 114 species of butterfly fish?"
   },
   {
@@ -231,60 +231,53 @@
     "trivia" : "No penguins live at the North Pole.",
     "img" : "img/penguin.png"
   },{
-    "name" : "Sealion",
+    "name" : "Seal",
     "level" : 3,
     "text" : "Story 1",
     "points" : 2180,
-    "trivia" : "Filler text",
+    "trivia" : "When they are on the land, they live in huge colonies with over one thousand other seals!",
     "img" : "img/sealion.png"
   },{
-    "name" : "Wolf",
+    "name" : "Grey Wolf",
     "level" : 3,
     "text" : "Story 1",
     "points" : 2240,
-    "trivia" : "filler text",
+    "trivia" : "Living in the Arctic Circle, the Arctic wolf spends five out of twelve months in total darkness.",
     "img" : "img/wolf.png"
   },{
-    "name" : "Bird",
+    "name" : "Snow Bunting",
     "level" : 3,
     "text" : "Story 1",
     "points" : 2300,
-    "trivia" : "filler text",
+    "trivia" : "Snow buntings have been called 'snowflakes' because flocks look like snowflakes as they swirl through the air and then settle on winter fields.",
     "img" : "img/bird.jpg"
   },{
     "name" : "Hare",
     "level" : 3,
     "text" : "Story 1",
     "points" : 2420,
-    "trivia" : "filler text",
+    "trivia" : "During winter, artic hare's white fur allows them to blend into the snow. In spring, their coat turns blue-gray to match the landscape.",
     "img" : "img/hare.jpg"
   },{
-    "name" : "Pingu",
+    "name" : "Pingu, the Penguin",
     "level" : 3,
     "text" : "Story 1",
     "points" : 2420,
-    "trivia" : "filler text",
+    "trivia" : "The earliest known penguin fossil was found in 61.6 million-year old  rock. Some fossil penguins were much larger than any penguin  today, reaching 4.5 feet tall!",
     "img" : "img/pingu.jpg"
   },{
-    "name" : "Coyote",
+    "name" : "Reindeer",
     "level" : 3,
     "text" : "Story 1",
     "points" : 2480,
-    "trivia" : "filler text",
-    "img" : "img/coyote.jpg"
-  },{
-    "name" : "White Husky",
-    "level" : 3,
-    "text" : "Story 1",
-    "points" : 2540,
-    "trivia" : "filler text",
-    "img" : "img/white-husky.jpg"
+    "trivia" : "Male reindeer lose their antlers in November but females keep theirs much longer.",
+    "img" : "img/raindeer.jpg"
   },{
     "name" : "Grey Husky",
     "level" : 3,
     "text" : "Story 1",
     "points" : 2540,
-    "trivia" : "filler text",
+    "trivia" : "Living in the Arctic Circle, the Arctic wolf spends five out of twelve months in total darkness.",
     "img" : "img/grey-husky.jpg"
   },{
     "name" : "Snow",
@@ -298,29 +291,22 @@
     "level" : 3,
     "text" : "Story 1",
     "points" : 2600,
-    "trivia" : "filler text",
+    "trivia" : "In 2019, Indian mountaineers uncovered a large sets of footprints in the northeastern Himalaya snow which led them to believe the prints belonged to Yeti.",
     "img" : "img/yeti.jpg"
   },{
-    "name" : "Bear",
+    "name" : "Brown Bear",
     "level" : 3,
     "text" : "Story 1",
     "points" : 2660,
-    "trivia" : "filler text",
+    "trivia" : "Brown bears can be found in many habitats, from the fringes of deserts to high mountain forests and ice fields.",
     "img" : "img/brown_bear.jpg"
   },{
-    "name" : "Rabbit",
+    "name" : "Blue Jay",
     "level" : 3,
     "text" : "Story 1",
-    "points" : 2720,
-    "trivia" : "filler text",
-    "img" : "img/rabbit.jpg"
-  },{
-    "name" : "Raindeer",
-    "level" : 3,
-    "text" : "Story 1",
-    "points" : 2780,
-    "trivia" : "filler text",
-    "img" : "img/raindeer.jpg"
+    "points" : 2660,
+    "trivia" : "Blue jays warn other birds of predators by imitating the sound of hawks!",
+    "img" : "img/blue_jay.jpg"
   },{
     "name" : "Rainforest",
     "level" : 3,
@@ -333,21 +319,28 @@
     "level" : 3,
     "text" : "Story 1",
     "points" : 3000,
-    "trivia" : "filler text",
+    "trivia" : "Squirrels have four front teeth which never stop growing throughout their lives.",
     "img" : "img/squirrel.jpg"
+  },{
+    "name" : "Jaguar",
+    "level" : 3,
+    "text" : "Story 1",
+    "points" : 3480,
+    "trivia" : "Jaguars once roamed all the way to the US-Mexico border. Today, almost all jaguars are found in the Amazon river basin.",
+    "img" : "img/jaguar.jpg"
   },{
     "name" : "Ostrich",
     "level" : 3,
     "text" : "Story 1",
     "points" : 3180,
-    "trivia" : "filler text",
+    "trivia" : "Ostriches formerly occupied Africa south of the rainforest belt. Today common ostriches prefer open land and are native to the savannas.",
     "img" : "img/ostrich.jpg"
   },{
-    "name" : "Carnivore",
+    "name" : "Venus Flytrap",
     "level" : 3,
     "text" : "Story 1",
     "points" : 3060,
-    "trivia" : "filler text",
+    "trivia" : "It takes roughly 10 days for a venus flytrap to completely digest an insect.",
     "img" : "img/carnivore2.jpg"
   },{
     "name" : "Lion",
@@ -378,25 +371,26 @@
     "trivia" : "filler text",
     "img" : "img/corn.jpg"
   },{
-    "name" : "Chicken",
+    "name" : "Macaw",
     "level" : 3,
     "text" : "Story 1",
     "points" : 3420,
-    "trivia" : "filler text",
-    "img" : "img/chicken.jpg"
+    "trivia" : "Macaws usually live for around 60 years!",
+    "img" : "img/macaw.jpg"
   },{
     "name" : "Duck",
     "level" : 3,
     "text" : "Story 1",
     "points" : 3480,
-    "trivia" : "filler text",
+    "trivia" : "One of the most rare ducks in the planet, the White-Winged Ducks are on the verge of disappearing from the face of the Earth. They usually inhabit shady rainforests in Asia.",
     "img" : "img/duck.jpg"
-  },{
+  }
+  ,{
     "name" : "Goose",
     "level" : 3,
     "text" : "Story 1",
     "points" : 3480,
-    "trivia" : "filler text",
+    "trivia" : "You’ll only find Orinoco Geese in South America, including the Amazon basin, the Orinoco basin, and in the Pantanal wetlands of southern Brazil and Paraguay.",
     "img" : "img/goose.jpg"
   },{
     "name" : "Owl",
@@ -410,14 +404,14 @@
     "level" : 3,
     "text" : "Story 1",
     "points" : 3600,
-    "trivia" : "filler text",
+    "trivia" : "The song of Pectoral Sparrow is high and thin. It has been described as 'insect-like .. an extremely high, thin, buzzy chit-tic-tzzzzzz, tzzzzzz, tzzzzz.'",
     "img" : "img/sparrow.jpg"
   },{
     "name" : "Vulture",
     "level" : 3,
     "text" : "Story 1",
     "points" : 3780,
-    "trivia" : "filler text",
+    "trivia" : "The king vulture is one of the larger species of vulture (up to 32 inches long). All of the other species vultures are quick to move aside for the 'king.'",
     "img" : "img/vulture.jpg"
   }
   
