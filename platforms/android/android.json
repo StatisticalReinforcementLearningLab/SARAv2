@@ -9,20 +9,8 @@
         "parents": {
           "/manifest/application": [
             {
-              "xml": "<amazon:enable-feature android:name=\"com.amazon.device.messaging\" android:required=\"false\" xmlns:amazon=\"http://schemas.amazon.com/apk/res/android\" />",
-              "count": 1
-            },
-            {
-              "xml": "<service android:exported=\"false\" android:name=\"com.onesignal.ADMMessageHandler\" />",
-              "count": 1
-            },
-            {
-              "xml": "<receiver android:name=\"com.onesignal.ADMMessageHandler$Receiver\" android:permission=\"com.amazon.device.messaging.permission.SEND\"><intent-filter><action android:name=\"com.amazon.device.messaging.intent.REGISTRATION\" /><action android:name=\"com.amazon.device.messaging.intent.RECEIVE\" /><category android:name=\"edu.harvard.srl.SARA\" /></intent-filter></receiver>",
-              "count": 1
-            },
-            {
               "xml": "<application android:usesCleartextTraffic=\"true\" />",
-              "count": 5,
+              "count": 8,
               "mode": "merge",
               "id": "config.xml",
               "oldAttrib": {

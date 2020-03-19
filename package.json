@@ -34,6 +34,7 @@
     "angular-azure-blob-service": "^1.1.0",
     "angularfire2": "^5.1.3",
     "aws-sdk": "^2.608.0",
+    "canvas-confetti": "^1.1.2",
     "chart.js": "^2.9.3",
     "cordova-android": "^8.1.0",
     "cordova-ios": "^5.1.1",
