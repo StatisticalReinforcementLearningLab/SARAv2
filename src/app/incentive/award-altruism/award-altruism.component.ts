@@ -70,7 +70,8 @@ export class AwardAltruismComponent implements OnInit {
       window.localStorage.setItem("Like", "Yes");
     }
     //this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);    
-    window.location.href = '/home';
+    this.router.navigate(['home']);   
+    //window.location.href = '/home';
   }
 
 
