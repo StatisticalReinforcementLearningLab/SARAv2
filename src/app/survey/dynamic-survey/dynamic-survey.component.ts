@@ -400,6 +400,7 @@ export class DynamicSurveyComponent implements OnInit {
       //prepare reinforcement data to upload to AWS S3
       var reinforcement_data = {};
       reinforcement_data['userName'] = this.userProfileService.username;
+      reinforcement_data['Prob'] = currentProb;
       reinforcement_data['day_count'] = Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;
       reinforcement_data['isRandomized'] = 1;
       reinforcement_data['unix_ts'] = endTime;
