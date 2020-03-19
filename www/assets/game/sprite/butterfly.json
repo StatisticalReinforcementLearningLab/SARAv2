@@ -1,0 +1,100 @@
+{"frames": {
+
+"tile000.png":
+{
+	"frame": {"x":1,"y":1,"w":49,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":11,"w":49,"h":45},
+	"sourceSize": {"w":70,"h":66}
+},
+"tile001.png":
+{
+	"frame": {"x":52,"y":1,"w":48,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":16,"y":11,"w":48,"h":45},
+	"sourceSize": {"w":70,"h":66}
+},
+"tile002.png":
+{
+	"frame": {"x":102,"y":1,"w":47,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":16,"y":11,"w":47,"h":45},
+	"sourceSize": {"w":70,"h":66}
+},
+"tile003.png":
+{
+	"frame": {"x":151,"y":1,"w":45,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":11,"w":45,"h":45},
+	"sourceSize": {"w":70,"h":66}
+},
+"tile004.png":
+{
+	"frame": {"x":289,"y":1,"w":42,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":11,"w":42,"h":45},
+	"sourceSize": {"w":70,"h":66}
+},
+"tile005.png":
+{
+	"frame": {"x":376,"y":1,"w":38,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":11,"w":38,"h":45},
+	"sourceSize": {"w":70,"h":66}
+},
+"tile006.png":
+{
+	"frame": {"x":456,"y":1,"w":34,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":23,"y":11,"w":34,"h":45},
+	"sourceSize": {"w":70,"h":66}
+},
+"tile007.png":
+{
+	"frame": {"x":416,"y":1,"w":38,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":21,"y":11,"w":38,"h":45},
+	"sourceSize": {"w":70,"h":66}
+},
+"tile008.png":
+{
+	"frame": {"x":333,"y":1,"w":41,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":11,"w":41,"h":45},
+	"sourceSize": {"w":70,"h":66}
+},
+"tile009.png":
+{
+	"frame": {"x":244,"y":1,"w":43,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":11,"w":43,"h":45},
+	"sourceSize": {"w":70,"h":66}
+},
+"tile010.png":
+{
+	"frame": {"x":198,"y":1,"w":44,"h":45},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":18,"y":11,"w":44,"h":45},
+	"sourceSize": {"w":70,"h":66}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Butterfly to rest on tree.png",
+	"format": "RGBA8888",
+	"size": {"w":491,"h":47},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c8693ce4707a3732d79734137e6d1794:17813b0ad475ac3814eb412800bf891b:3ac1292251632666bd4e1e5dafe141ae$"
+}
+}
