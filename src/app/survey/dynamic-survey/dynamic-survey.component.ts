@@ -25,8 +25,7 @@ import { AwardDollarService } from 'src/app/incentive/award-money/award-dollar.s
 @Component({
   selector: 'app-dynamic-survey',
   templateUrl: './dynamic-survey.component.html',
-  styleUrls: ['./dynamic-survey.component.scss'],
-  providers: [UserProfileService], //try commenting out
+  styleUrls: ['./dynamic-survey.component.scss']
 })
 
 //@PreLoad('life-insights')
@@ -268,16 +267,18 @@ export class DynamicSurveyComponent implements OnInit {
         //console.log("Inside storeData");
         console.log(JSON.stringify(this.survey2));
         this.ga.trackEvent('Submit Button', 'Tapped Action', 'Submit the completed survey', 0);
-              
-        this.survey2['endtimeUTC'] = new Date().getTime();
-        this.survey2['userName'] = localStorage.getItem('loggedInUser');
-        this.survey2['ts'] = moment().format('MMMM Do YYYY, h:mm:ss a Z');
+         
+        var endTime = new Date().getTime();
+        var readable_time = moment().format('MMMM Do YYYY, h:mm:ss a Z');
+        this.survey2['endtimeUTC'] = endTime;
+        this.survey2['userName'] = this.userProfileService.username;
+        this.survey2['ts'] = readable_time;
 
         this.survey2['devicInfo'] = this.plt.platforms();
 
         //Store app version number
         this.survey2['appVersion'] = this.versionNumber;
-
+        this.userProfileService.versionNumber = this.versionNumber;
 
         var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.survey2), "Z&wz=BGw;%q49/<)");
         //var encrypted = this.EncrDecr.encrypt("holla", "Z&wz=BGw;%q49/<)");
@@ -286,8 +287,6 @@ export class DynamicSurveyComponent implements OnInit {
         console.log('Encrypted :' + encrypted);
         console.log('Decrypted :' + decrypted);
         this.survey2['encrypted'] = encrypted;
-
-        this.userProfileService.surveyCompleted(); 
         
         //compute and store "TotalPoints" to localStorage
         if(window.localStorage['TotalPoints'] == undefined)
@@ -301,6 +300,8 @@ export class DynamicSurveyComponent implements OnInit {
         var pastDollars = this.awardDollarService.getDollars();
         var dollars = this.awardDollarService.giveDollars();
         console.log("Dollars: " + dollars);
+
+        this.userProfileService.surveyCompleted(); 
 
         window.localStorage.setItem("LastSurveyCompletionDate", ""+moment().format('YYYYMMDD'));
         window.localStorage.setItem("CurrentPoints", ""+ this.userProfileService.points);
@@ -388,20 +389,41 @@ export class DynamicSurveyComponent implements OnInit {
       //navigate to award-memes/award-altruism with equal probability after submit survey
       var currentProb = Math.random();
       window.localStorage.setItem("Prob", ""+currentProb);
+      var currentDate = moment().format('YYYYMMDD');
       let navigationExtras: NavigationExtras = {
         state: {
-          date: moment().format('YYYYMMDD'),
+          date: currentDate,
           prob: currentProb
         }
       };
-      if(currentProb > 0.5 ){
-          this.router.navigate(['incentive/award-memes'], navigationExtras);
-      } else {
-          //this.router.navigate(['incentive/sample-life-insight']);
-          this.router.navigate(['incentive/award-altruism'],  navigationExtras);
-      }
-           
+
+      //prepare reinforcement data to upload to AWS S3
+      var reinforcement_data = {};
+      reinforcement_data['userName'] = this.userProfileService.username;
+      reinforcement_data['Prob'] = currentProb;
+      reinforcement_data['day_count'] = Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;
+      reinforcement_data['isRandomized'] = 1;
+      reinforcement_data['unix_ts'] = endTime;
+      reinforcement_data['readable_ts'] = readable_time;
+      reinforcement_data['date'] =  currentDate;
+      //save to Amazon AWS S3
+      this.awsS3Service.upload('reinforcement_data', reinforcement_data);
+      
+      if(this.fileLink.includes('caregiver') || currentProb <= 0.4 ) {
+        var reinforcementObj = {};
+        reinforcementObj['ds'] = 1;
+        reinforcementObj['reward'] = 0;
+        reinforcementObj['prob'] = currentProb;  
+        //this.userProfileService.addReinforcementData(currentDate, reinforcementObj);    
+        this.router.navigate(['home']);        
+      } else if(currentProb < 0.7 ){
+        this.router.navigate(['incentive/award-memes'], navigationExtras);
+      } else  {
+        //this.router.navigate(['incentive/sample-life-insight']);
+        this.router.navigate(['incentive/award-altruism'],  navigationExtras);
+      }            
      }
+
     });
 
     const tmpModule = NgModule({ declarations: [surveyComponent], imports: [FormsModule]})(class {
