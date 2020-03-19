@@ -84,7 +84,8 @@ export class AuthComponent implements OnInit, OnDestroy {
         .subscribe(
           ()=>
           {
-            this.router.navigateByUrl('/home');
+            //this.router.navigateByUrl('/home');
+            this.router.navigate(['home']);
             this.isLoading = false;
           }        
         );      

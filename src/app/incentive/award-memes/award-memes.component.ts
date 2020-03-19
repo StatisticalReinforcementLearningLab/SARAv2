@@ -89,8 +89,8 @@ export class AwardMemesComponent implements OnInit {
     }
     
     //this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);    
-    this.router.navigate(['home']); 
-    //window.location.href = '/home';
+    this.router.navigate(['home']);
+
   }
 
   /**
