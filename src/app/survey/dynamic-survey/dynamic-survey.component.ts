@@ -414,7 +414,7 @@ export class DynamicSurveyComponent implements OnInit {
         reinforcementObj['ds'] = 1;
         reinforcementObj['reward'] = 0;
         reinforcementObj['prob'] = currentProb;  
-        //this.userProfileService.addReinforcementData(currentDate, reinforcementObj);    
+        this.userProfileService.addReinforcementData(currentDate, reinforcementObj);    
         this.router.navigate(['home']);        
       } else if(currentProb < 0.7 ){
         this.router.navigate(['incentive/award-memes'], navigationExtras);
