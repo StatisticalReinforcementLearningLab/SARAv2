@@ -37,7 +37,8 @@ export class PreloaderRainforestL6 extends Phaser.State {
 
 
 
-        this.game.load.image('rock2','assets/pics/rock2.png');
+		this.game.load.image('rock2','assets/pics/rock2.png');
+		
 		this.game.load.image('reinforest1','assets/pics/bg-rainforest-top.png');
 		this.load.image('reinforestBackgroundBottom1', 'assets/pics/bg-rainforest-bottom-1.png'); 
 		this.load.image('reinforestBackgroundBottom2', 'assets/pics/bg-rainforest-bottom-2.png'); 
@@ -48,7 +49,9 @@ export class PreloaderRainforestL6 extends Phaser.State {
         this.game.load.atlasJSONArray('thirstyplant', 'assets/game/sprite/thirsty_plant.png', 'assets/game/sprite/thirsty_plant.json');
         this.game.load.atlasJSONArray('squirrel', 'assets/game/sprite/squirrel_run-0.png', 'assets/game/sprite/squirrel_run.json');
         this.game.load.atlasJSONArray('ostrich', 'assets/game/sprite/ostrich_sprite.png', 'assets/game/sprite/ostrich_sprite.json');
-        this.game.load.atlasJSONArray('pegions', 'assets/game/sprite/5-pegions.png', 'assets/game/sprite/5-pegions.json');
+		this.game.load.atlasJSONArray('jaguar', 'assets/game/sprite/Jaquar.png', 'assets/game/sprite/Jaquar.json');
+		
+		this.game.load.atlasJSONArray('pegions', 'assets/game/sprite/5-pegions.png', 'assets/game/sprite/5-pegions.json');
         this.game.load.atlasJSONArray('lion', 'assets/game/sprite/brave_lion_idle-0.png', 'assets/game/sprite/brave_lion_idle-0.json');
         this.game.load.atlasJSONArray('triceratops', 'assets/game/sprite/triceratops_idle_sprit.png', 'assets/game/sprite/triceratops_idle_sprit.json');
         this.game.load.atlasJSONArray('koala', 'assets/game/sprite/koala_sprite.png', 'assets/game/sprite/koala_sprite.json');
@@ -64,7 +67,23 @@ export class PreloaderRainforestL6 extends Phaser.State {
         this.game.load.atlasJSONArray('goose_flying', 'assets/game/sprite/goose_sprite.png', 'assets/game/sprite/goose_sprite.json');
         this.game.load.atlasJSONArray('owl_flying', 'assets/game/sprite/owl_sprite.png', 'assets/game/sprite/owl_sprite.json');
         this.game.load.atlasJSONArray('duck_flying', 'assets/game/sprite/duck_sprite.png', 'assets/game/sprite/duck_sprite.json');
-        this.game.load.atlasJSONArray('chicken_flying', 'assets/game/sprite/chicken_sprite.png', 'assets/game/sprite/chicken_sprite.json');
+		this.game.load.atlasJSONArray('macaw_flying', 'assets/game/sprite/Macaw.png', 'assets/game/sprite/Macaw.json');
+		
+		//monkeys
+		this.game.load.image('treeBranch','assets/img/branch-tree.png');
+		//this.game.load.atlasJSONArray('redMonkey', 'assets/game/sprite/RedMonkey.png', 'assets/game/sprite/RedMonkey.json');
+        //this.game.load.atlasJSONArray('brownMonkey', 'assets/game/sprite/BrownMonkey.png', 'assets/game/sprite/BrownMonkey.json');
+        //this.game.load.atlasJSONArray('blackMonkey', 'assets/game/sprite/BlackMonkey.png', 'assets/game/sprite/BlackMonkey.json');
+		
+		//butter fly
+		this.game.load.image('flowerBush','assets/img/flower-bush.png');
+		this.game.load.atlasJSONArray('butterfly', 'assets/game/sprite/Butterfly.png', 'assets/game/sprite/Butterfly.json');
+        
+
+
+		//
+
+		
 
 	}	
 
