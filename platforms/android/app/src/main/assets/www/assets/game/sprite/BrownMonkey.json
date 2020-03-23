@@ -1,0 +1,84 @@
+{"frames": {
+
+"1.png":
+{
+	"frame": {"x":357,"y":391,"w":307,"h":396},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":307,"h":396},
+	"sourceSize": {"w":307,"h":396}
+},
+"2.png":
+{
+	"frame": {"x":1,"y":1,"w":303,"h":397},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":303,"h":397},
+	"sourceSize": {"w":303,"h":397}
+},
+"3.png":
+{
+	"frame": {"x":666,"y":377,"w":335,"h":395},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":335,"h":395},
+	"sourceSize": {"w":335,"h":395}
+},
+"4.png":
+{
+	"frame": {"x":661,"y":1,"w":344,"h":374},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":344,"h":374},
+	"sourceSize": {"w":344,"h":374}
+},
+"5.png":
+{
+	"frame": {"x":357,"y":789,"w":351,"h":378},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":351,"h":378},
+	"sourceSize": {"w":351,"h":378}
+},
+"6.png":
+{
+	"frame": {"x":306,"y":1,"w":353,"h":388},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":353,"h":388},
+	"sourceSize": {"w":353,"h":388}
+},
+"7.png":
+{
+	"frame": {"x":1,"y":400,"w":354,"h":394},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":354,"h":394},
+	"sourceSize": {"w":354,"h":394}
+},
+"8.png":
+{
+	"frame": {"x":1,"y":796,"w":319,"h":377},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":319,"h":377},
+	"sourceSize": {"w":319,"h":377}
+},
+"9.png":
+{
+	"frame": {"x":710,"y":774,"w":301,"h":378},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":301,"h":378},
+	"sourceSize": {"w":301,"h":378}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Brown Monkey Walking.png",
+	"format": "RGBA8888",
+	"size": {"w":1012,"h":1174},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:7b4563dd8c7abf80c3a7a8dcb4d586ae:133b6b19c5d7b727dc743bfeb473fac1:8f19ab8d01bf119512a8f298259ae46f$"
+}
+}
