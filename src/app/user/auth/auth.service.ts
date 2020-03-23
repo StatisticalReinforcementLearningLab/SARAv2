@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { throwError, Subject, BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { User } from './user.model';
+// import { User } from './user.model';
 import { Router } from '@angular/router';
-import { AngularFireAuth } from '@angular/fire/auth';
+// import { AngularFireAuth } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
-import { UserProfileService } from '../user-profile/user-profile.service';
+// import { UserProfileService } from '../user-profile/user-profile.service';
 
+//I don't believe this interface is being used anymore
 export interface AuthResponseData{
   message?: string;
   access_token?: string;
@@ -43,6 +44,7 @@ export class AuthService {
   constructor(private http: HttpClient,
               private router: Router) { }
 
+  // used to register new user
   signup(userName: string, password: string){
     return this.http
     .post<AuthResponseData>(environment.userServer+'/registration',
@@ -58,7 +60,9 @@ export class AuthService {
     }));
   }
 
+  // initializes loggedinUsder
   autoLogin(){
+    console.log("auth.service.ts - autoLogin method - begin");
     const loggedInUser = localStorage.getItem('loggedInUser');
     if(loggedInUser===null){
       return;
@@ -76,14 +80,15 @@ export class AuthService {
   }
 
   //may not need 
-  autoLogout(expirationDuration: number){
-    console.log(expirationDuration);
-    this.tokenExpirationTimer= setTimeout(() => {
-      this.logout();
-    },expirationDuration);
-  }
+  // autoLogout(expirationDuration: number){
+  //   console.log(expirationDuration);
+  //   this.tokenExpirationTimer= setTimeout(() => {
+  //     this.logout();
+  //   },expirationDuration);
+  // }
 
   login(userName: string, password: string){
+    console.log("auth.service.ts -login method - begin");
     return this.http
     .post<AuthResponseData>(environment.userServer+'/login',
     {
@@ -95,12 +100,13 @@ export class AuthService {
       this.storeAccessToken(resData.access_token, resData.access_token);
       this.storeRefreshToken(resData.refresh_token, resData.refresh_expires);
       
-      console.log("loggedInUser: " +  this.loggedInUser.getValue());
-      console.log("resData: " + JSON.stringify(resData));
+      console.log("auth.service.ts -login method - loggedInUser: " +  this.loggedInUser.getValue());
+      console.log("auth.service.ts -login method - resData: " + JSON.stringify(resData));
     }));
   }
 
   private handleError(errorRes: HttpErrorResponse){
+      console.log("auth.service.ts - handleError method - begin");
       let errorMessage = 'An unknown error occurred!!!! \n' + JSON.stringify(errorRes);
       if(!errorRes.error || !errorRes.error.error){
         return throwError(errorMessage);
@@ -120,7 +126,9 @@ export class AuthService {
       return throwError(errorMessage);
   }
 
+  //use refresh token to get a new access token
   refreshToken() {
+    console.log("auth.service.ts - refreshToken method - begin");
     const token = this.getRefreshToken();
     const httpOptions = {
       headers: new HttpHeaders({
@@ -142,11 +150,14 @@ export class AuthService {
   //   localStorage.removeItem('user');
   // }
 
+// check if loggedInUser has a value and in which case, the user is logged in
 isLoggedIn() {
+  console.log("auth.service.ts - isLoggedIn method - begin");
   return !!this.loggedInUser.getValue();
 }
 
 getAccessToken() {
+  console.log("auth.service.ts - getAccessToken method - begin");
   return localStorage.getItem(this.ACCESS_TOKEN);
 }
 
@@ -156,10 +167,12 @@ private doLogoutUser() {
 }
 
 private getRefreshToken() {
+  console.log("auth.service.ts - getRefreshToken method - begin");
   return localStorage.getItem(this.REFRESH_TOKEN);
 }
 
 private storeAccessToken(token: string, expires: string) {
+  console.log("auth.service.ts - storeAccessToken method - begin");
   localStorage.setItem(this.ACCESS_TOKEN, token);
   
   const expirationDate = new Date(new Date().getTime() + +expires * 1000);
@@ -167,12 +180,14 @@ private storeAccessToken(token: string, expires: string) {
 }
 
 private storeRefreshToken(token: string, expires: string) {
+  console.log("auth.service.ts - storeRefreshToken method - begin");
   localStorage.setItem(this.REFRESH_TOKEN, token);
   const expirationDate = new Date(new Date().getTime() + +expires * 1000);
   localStorage.REFRESH_TOKEN_EXPIRATION = expirationDate;
 }
 
 private removeTokens() {
+  console.log("auth.service.ts - removeTokens method - begin");
   localStorage.removeItem(this.ACCESS_TOKEN);
   localStorage.removeItem(this.ACCESS_TOKEN_EXPIRATION);
   localStorage.removeItem(this.REFRESH_TOKEN);
