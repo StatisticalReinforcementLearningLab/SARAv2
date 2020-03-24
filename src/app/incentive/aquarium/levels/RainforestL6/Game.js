@@ -15,6 +15,8 @@ export class GameRainforestL6 extends Phaser.State {
         this.owl;
         this.koala;
         this.corn;
+        this.emitter;
+        this.rainingswitch
     }
 
     //gets executed after preload
@@ -67,13 +69,11 @@ export class GameRainforestL6 extends Phaser.State {
         this.animateMonkey();
 
 
-        //add butter fly
-        this.animateButterFly();
-
+        
         this.animatePegions();
         this.addAnimals();
 
-        
+        //this.animateRain();
 
         //--- 
         var fish_progress = this.add.image(175, 50, 'clownfish_grey');
@@ -106,6 +106,8 @@ export class GameRainforestL6 extends Phaser.State {
         this.game.onPause.add(this.yourGamePausedFunc, this);
         this.game.onResume.add(this.yourGameResumedFunc, this);
 
+
+
     }
 
     addAnimals(){
@@ -116,49 +118,75 @@ export class GameRainforestL6 extends Phaser.State {
         var data = phaserJSON;
         var survey_string = "";
         var current_points = this.totalPoints;
+
+
+        //drawing order, initialize to zero
+        var drawing_order = ["Butterfly", "Jaguar", "Ostrich", "Squirrel", "Koala", "Venus Flytrap", "Lion", "Triceratops", "Macaw", "Duck", "Owl", "Sparrow", "Vulture", "Rain"];
+        var drawing_order_enabled = {};
+        for(var j=0; j < drawing_order.length; j++)
+            drawing_order_enabled[drawing_order[j]] = 0;
+
+        //
         for(var i = 0; i < data.length; i++) {
             if(current_points >= data[i].points){
+                drawing_order_enabled[data[i].name.valueOf()] = 1;
+            }
+        }
 
-                //nemo
-                if(data[i].name.valueOf() === "Squirrel")
+        for(var key in drawing_order_enabled) {
+
+            //means it is not included
+            if(drawing_order_enabled[key] == 0)
+                continue;
+
+
+            if(drawing_order_enabled[key] == 1){
+
+                //
+                if(key === "Squirrel")
                     this.animateSquirrel();
                 
-                if(data[i].name.valueOf() === "Jaguar")
+                if(key === "Jaguar")
                     this.animateJaguar();
 
-                if(data[i].name.valueOf() === "Venus Flytrap")
+                if(key === "Venus Flytrap")
                     this.animateCarnivorePlant();
                 
-                if(data[i].name.valueOf() === "Lion")
+                if(key === "Lion")
                     this.animateLionMain();
 
-                if(data[i].name.valueOf() === "Ostrich")
+                if(key === "Ostrich")
                     this.animateOstrich();
 
-                if(data[i].name.valueOf() === "Triceratops")
+                if(key === "Triceratops")
                     this.animateTriceratopsMain();
 
                 //if(data[i].name.valueOf() === "Corn")
                 //    this.animateCornMain();    
 
-                if(data[i].name.valueOf() === "Macaw")
+                if(key === "Macaw")
                     this.animateMacaw();               
 
-                if(data[i].name.valueOf() === "Duck")
+                if(key === "Duck")
                     this.animateGooseDuck(); 
 
-                if(data[i].name.valueOf() === "Owl")
+                if(key === "Owl")
                     this.animateOwl();
 
-                if(data[i].name.valueOf() === "Sparrow")
+                if(key === "Sparrow")
                     this.animateSparrow();
 
-                if(data[i].name.valueOf() === "Vulture")
+                if(key === "Vulture")
                     this.animateVulture();
 
-                if(data[i].name.valueOf() === "Koala")
+                if(key === "Koala")
                     this.animateKoalaMain();
-              
+
+                if(key === "Butterfly")
+                    this.animateButterFly();
+
+                if(key === "Rain")
+                    this.animateRain();
             }
         }
 
@@ -184,6 +212,47 @@ export class GameRainforestL6 extends Phaser.State {
 
         console.log("Width, " + rect.width  + "," + this.progress_sprite.width);
         this.progress_sprite.crop(rect);
+    }
+
+    animateRain(){
+        //console.log("snow button loaded");
+        this.rainingswitch = this.add.image(this.game.width - 100, 10, 'rain_start');
+        this.rainingswitch.scale.setTo(0.15, 0.15);
+        this.rainingswitch.inputEnabled = true;
+        this.rainingswitch.events.onInputDown.addOnce(this.startraining, this);
+    }
+
+    startraining(){
+        console.log("start snowing");
+
+        //var mid_emitter;
+        //var back_emitter;
+
+        this.rainingswitch.loadTexture("rain_end",0);
+        
+        //this.back_emitter = this.game.add.emitter(this.game.world.centerX, -32, 600);
+        this.emitter = this.game.add.emitter(this.game.world.centerX, -32, 600);
+
+        this.emitter.width = this.game.world.width;
+        // emitter.angle = 30; // uncomment to set an angle for the rain.
+
+        this.emitter.makeParticles('rain');
+        this.emitter.minParticleScale = 0.1;
+        this.emitter.maxParticleScale = 0.5;
+        this.emitter.setYSpeed(300, 500);
+        this.emitter.setXSpeed(-5, 5);
+        this.emitter.minRotation = 0;
+        this.emitter.maxRotation = 0;
+        this.emitter.start(false, 1600, 5, 0);
+
+        this.rainingswitch.events.onInputDown.addOnce(this.stopraining, this);
+    }
+
+    stopraining(){
+
+        this.rainingswitch.loadTexture("rain_start",0);
+        this.emitter.destroy();
+        this.rainingswitch.events.onInputDown.addOnce(this.startraining, this);
     }
 
     animateButterFly(){
@@ -369,7 +438,7 @@ export class GameRainforestL6 extends Phaser.State {
         this.vulture.anchor.setTo(.5,.5);
         this.vulture.animations.add('swim2');
         this.vulture.animations.play('swim2', 5, true);
-        this.vulture.scale.setTo(0.15, 0.15);
+        this.vulture.scale.setTo(0.12, 0.12);
         this.vulture.name = "vulture";
         this.gobothways(this.vulture);
     }
