@@ -101,8 +101,8 @@
       "cordova-plugin-app-version": {}
     },
     "platforms": [
-      "ios",
-      "android"
+      "android",
+      "ios"
     ]
   }
 }
