@@ -110,8 +110,7 @@ export class UserProfileService {
           previousDate = new Date("1970-01-01");  //set previousDate to 1970-01-01
           streak = 1;
         } 
-      }
-      else{
+      }else{
         //reset
         streak =1;
       }
@@ -122,7 +121,7 @@ export class UserProfileService {
   }
 
   get isActive(){
-    console.log("user-profile.service.ts - isActive getter - begin");
+    //console.log("user-profile.service.ts - isActive getter - begin");
     return this.userProfileFixed.isActive;
   }
   get isParent(){
@@ -138,7 +137,7 @@ export class UserProfileService {
   }
 
   get username(){
-    console.log("user-profile.service.ts - username getter - begin");
+    //console.log("user-profile.service.ts - username getter - begin");
 
     if(this.userProfile==undefined)
       this.loadProfileFromDevice();
@@ -176,8 +175,6 @@ export class UserProfileService {
   }
   getProfile(){
   }
-
-
 
   initTestProfile(){
     const currenttime:Date = new Date();

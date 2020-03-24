@@ -51,11 +51,12 @@ export class GameTundraL5 extends Phaser.State {
         */
 
         //
+        /*
         this.snowgswitch = this.add.image(5, 70, 'snowgswitch');
         this.snowgswitch.scale.setTo(0.15, 0.15);
         this.snowgswitch.inputEnabled = true;
         this.snowgswitch.events.onInputDown.addOnce(this.startsnowing, this);
-
+        */
         
 
         //
@@ -64,14 +65,17 @@ export class GameTundraL5 extends Phaser.State {
         this.game.input.touch.preventDefault = false;
 
 
-
+        //this.animateDuck();
+        //this.animateSnowOwl();
+        
+        
 
         //
         this.addAnimals();
 
         //
         var treasure = this.add.image(this.game.width-150, this.height-125, 'treasure_tundra');
-        treasure.scale.setTo(-0.16, 0.15);
+        treasure.scale.setTo(-0.07, 0.07);
         treasure.inputEnabled = true;
         treasure.events.onInputDown.add(this.showunlockables, this);
 
@@ -89,6 +93,8 @@ export class GameTundraL5 extends Phaser.State {
 
         //var mid_emitter;
         //var back_emitter;
+
+        this.snowgswitch.loadTexture("snow_end",0);
         
         this.back_emitter = this.game.add.emitter(this.game.world.centerX, -32, 600);
         this.back_emitter.makeParticles('snowflakes', [0, 1, 2, 3, 4, 5]);
@@ -117,6 +123,8 @@ export class GameTundraL5 extends Phaser.State {
     }
 
     stopsnowing(){
+
+        this.snowgswitch.loadTexture("snow_start",0);
         this.back_emitter.destroy();
         this.mid_emitter.destroy();
         this.snowgswitch.events.onInputDown.addOnce(this.startsnowing, this);
@@ -133,51 +141,90 @@ export class GameTundraL5 extends Phaser.State {
         var data = phaserJSON;
         var survey_string = "";
         var current_points = this.totalPoints;
+
+
+        //drawing order, initialize to zero
+        var drawing_order = ["Brown Bear", "Grey Wolf", "Hare", "Reindeer", "Yeti", "Grey Husky", "Penguin", "Pingu, the Penguin", "Mountain goat", "Seal", "Ducks", "Snow", "Snow Bunting", "Snowy Owl", "Blue Jay"];
+        var drawing_order_enabled = {};
+        for(var j=0; j < drawing_order.length; j++)
+            drawing_order_enabled[drawing_order[j]] = 0;
+
+
+        //
         for(var i = 0; i < data.length; i++) {
             if(current_points >= data[i].points){
+                drawing_order_enabled[data[i].name.valueOf()] = 1;
+            }
+        }
+        
 
+        for(var key in drawing_order_enabled) {
+
+            //means it is not included
+            if(drawing_order_enabled[key] == 0)
+                continue;
+
+
+            if(drawing_order_enabled[key] == 1){
 
                 //nemo
-                if(data[i].name.valueOf() === "Penguin")
+                if(key === "Penguin")
                     this.animatePenguin();
 
-                if(data[i].name.valueOf() === "Seal")
+                if(key === "Seal")
                     this.animateSealion();
 
-                if(data[i].name.valueOf() === "Grey Wolf")
+                if(key === "Grey Wolf")
                     this.animateWolf();
 
-                if(data[i].name.valueOf() === "Brown Bear")
+                if(key === "Brown Bear")
                     this.animateBear(); 
 
-                if(data[i].name.valueOf() === "Snow Bunting")
+                if(key === "Snow Bunting")
                     this.animateBirds();
 
-                if(data[i].name.valueOf() === "Hare")
+                if(key === "Hare")
                     this.animateHare();
 
-                if(data[i].name.valueOf() === "Pingu, the Penguin")
+                if(key === "Pingu, the Penguin")
                     this.animatePingu();    
 
                 //if(data[i].name.valueOf() === "Coyote")
                 //    this.animateCoyote();                
 
-                if(data[i].name.valueOf() === "White Husky")
-                    this.animateWhiteHusky();  
+                //if(data[i].name.valueOf() === "White Husky")
+                //    this.animateWhiteHusky();  
 
-                if(data[i].name.valueOf() === "Grey Husky")
+
+                if(key === "Snow")
+                   this.animateSnow();  
+
+
+                if(key === "Grey Husky")
                     this.animateBrwonHusky();  
 
-                if(data[i].name.valueOf() === "Yeti")
+                if(key === "Yeti")
                     this.animateYeti();  
 
                  
 
-                if(data[i].name.valueOf() === "Reindeer")
+                if(key === "Reindeer")
                     this.animateReindeer();
                 
-                if(data[i].name.valueOf() === "Blue Jay")
-                    this.animateBlueJay()
+                
+
+                if(key === "Snowy Owl")
+                    this.animateSnowOwl();
+
+
+                if(key === "Ducks")
+                    this.animateDuck();
+
+                if(key === "Mountain goat")
+                    this.animateMountainGoat();
+
+                if(key === "Blue Jay")
+                    this.animateBlueJay();
 
                /* 
                if(data[i].name.valueOf() === "Rabbit")
@@ -209,6 +256,16 @@ export class GameTundraL5 extends Phaser.State {
         console.log("Width, " + rect.width  + "," + this.progress_sprite.width);
         this.progress_sprite.crop(rect);
     }
+
+    animateSnow(){
+        //console.log("snow button loaded");
+        this.snowgswitch = this.add.image(5, 70, 'snow_start');
+        this.snowgswitch.scale.setTo(0.15, 0.15);
+        this.snowgswitch.inputEnabled = true;
+        this.snowgswitch.events.onInputDown.addOnce(this.startsnowing, this);
+    }
+
+   
 
     //-- Add Penguin
     animatePenguin(){
@@ -293,6 +350,181 @@ export class GameTundraL5 extends Phaser.State {
 
     }
 
+    //
+    animateDuck(){
+        this.duck = this.add.sprite(this.game.width+15, this.game.height-20, 'duck');
+        this.duck.anchor.setTo(.5,.5);
+        this.duck.animations.add('swim2');
+        this.duck.animations.play('swim2', 3, true);
+        this.duck.scale.setTo(1, 1);
+        this.duck.name = "duck";
+        this.gobothways(this.duck);
+
+        this.duck2 = this.add.sprite(this.game.width+55, this.game.height-20, 'duck');
+        this.duck2.anchor.setTo(.5,.5);
+        this.duck2.animations.add('swim2');
+        this.duck2.animations.play('swim2', 3, true);
+        this.duck2.scale.setTo(1, 1);
+        this.duck2.name = "duck2";
+        this.gobothways(this.duck2);
+    }
+
+    animateBearCub(){
+        //console.log("snow button loaded");
+        this.polarBearCub = this.add.sprite(this.game.width+15, this.game.height - 290, 'polar_bear_cub');
+        this.polarBearCub.anchor.setTo(.5,.5);
+        this.polarBearCub.animations.add('swim2');
+        this.polarBearCub.animations.play('swim2', 3, true);
+        this.polarBearCub.scale.setTo(-0.8, 0.8);
+        this.polarBearCub.name = "polarBearCub";
+        this.gobothways(this.polarBearCub);
+    }
+
+
+
+
+    //
+    animateSnowOwl(){
+        //
+        this.black_tundra_owl = this.add.sprite(this.game.width-130, 195, 'black_tundra_owl');
+        this.black_tundra_owl.anchor.setTo(.5,.5);
+        this.black_tundra_owl.animations.add('swim2');
+        this.black_tundra_owl.animations.play('swim2', 5, true);
+        this.black_tundra_owl.scale.setTo(0.9, 0.9);
+        this.black_tundra_owl.name = "black_tundra_owl";
+        this.gobothways(this.black_tundra_owl);
+
+
+        this.brown_tundra_owl = this.add.sprite(this.game.width-100, 200, 'brown_tundra_owl');
+        this.brown_tundra_owl.anchor.setTo(.5,.5);
+        this.brown_tundra_owl.animations.add('swim2');
+        this.brown_tundra_owl.animations.play('swim2', 5, true);
+        this.brown_tundra_owl.scale.setTo(0.9, 0.9);
+        this.brown_tundra_owl.name = "brown_tundra_owl";
+        this.gobothways(this.brown_tundra_owl);
+
+
+        this.grey_tundra_owl = this.add.sprite(this.game.width-160, 205, 'grey_tundra_owl');
+        this.grey_tundra_owl.anchor.setTo(.5,.5);
+        this.grey_tundra_owl.animations.add('swim2');
+        this.grey_tundra_owl.animations.play('swim2', 5, true);
+        this.grey_tundra_owl.scale.setTo(0.9, 0.9);
+        this.grey_tundra_owl.name = "grey_tundra_owl";
+        this.gobothways(this.grey_tundra_owl);
+
+        /*
+        this.light_brown_tundra_owl = this.add.sprite(this.game.width-170, 180, 'light_brown_tundra_owl');
+        this.light_brown_tundra_owl.anchor.setTo(.5,.5);
+        this.light_brown_tundra_owl.animations.add('swim2');
+        this.light_brown_tundra_owl.animations.play('swim2', 5, true);
+        this.light_brown_tundra_owl.scale.setTo(0.9, 0.9);
+        this.light_brown_tundra_owl.name = "light_brown_tundra_owl";
+        this.gobothways(this.light_brown_tundra_owl);
+        */
+
+        this.white_tundra_owl = this.add.sprite(this.game.width-200, 185, 'white_tundra_owl');
+        this.white_tundra_owl.anchor.setTo(.5,.5);
+        this.white_tundra_owl.animations.add('swim2');
+        this.white_tundra_owl.animations.play('swim2', 5, true);
+        this.white_tundra_owl.scale.setTo(0.9, 0.9);
+        this.white_tundra_owl.name = "white_tundra_owl";
+        this.gobothways(this.white_tundra_owl);
+
+    }
+
+    //
+    animateMountainGoat(){
+        var starting_pos_x, starting_pos_y, ending_pos_x, ending_pos_y, scale_x, scale_y;
+        
+        
+        //---- sea lion silver
+        starting_pos_x = this.game.width/2-60;
+        starting_pos_y = this.game.height - 185 + 40;
+        ending_pos_x = this.game.width/2-30;
+        ending_pos_y = this.game.height - 185 + 40;
+        scale_x = 1.3;
+        scale_y = 1.3;
+
+        this.black_mountain_goat = this.add.sprite(starting_pos_x, starting_pos_y, 'black_mountain_goat');
+        this.black_mountain_goat.anchor.setTo(.5,.5);
+        this.black_mountain_goat.animations.add('swim2');
+        this.black_mountain_goat.animations.play('swim2', 3, true);
+        this.black_mountain_goat.scale.setTo(scale_x, scale_y);
+        this.black_mountain_goat.name = "black_mountain_goat";
+        var t = this.add.tween(this.black_mountain_goat).to({ x: ending_pos_x, y: ending_pos_y}, 9000, Phaser.Easing.Quadratic.InOut, true, 0);
+        t.onComplete.add(function(){this.black_mountain_goat.animations.stop(null, true);}, this);
+
+
+        starting_pos_x = this.game.width-10;
+        starting_pos_y = this.game.height - 205 + 40;
+        ending_pos_x = this.game.width/2+50;
+        ending_pos_y = this.game.height - 205 + 40;
+        scale_x = -1.5;
+        scale_y = 1.5;
+
+        this.white_mountain_goat = this.add.sprite(starting_pos_x, starting_pos_y, 'white_mountain_goat');
+        this.white_mountain_goat.anchor.setTo(.5,.5);
+        this.white_mountain_goat.animations.add('swim2');
+        this.white_mountain_goat.animations.play('swim2', 3, true);
+        this.white_mountain_goat.scale.setTo(scale_x, scale_y);
+        this.white_mountain_goat.name = "white_mountain_goat";
+        t = this.add.tween(this.white_mountain_goat).to({ x: ending_pos_x, y: ending_pos_y}, 15000, Phaser.Easing.Quadratic.InOut, true, 0);
+        t.onComplete.add(function(){this.white_mountain_goat.animations.stop(null, true);}, this);
+
+
+        starting_pos_x = this.game.width-10;
+        starting_pos_y = this.game.height - 175 + 40;
+        ending_pos_x = this.game.width/2+30;
+        ending_pos_y = this.game.height - 175 + 40;
+        scale_x = -1.2;
+        scale_y = 1.2;
+
+        this.brown_mountain_goat = this.add.sprite(starting_pos_x, starting_pos_y, 'brown_mountain_goat');
+        this.brown_mountain_goat.anchor.setTo(.5,.5);
+        this.brown_mountain_goat.animations.add('swim2');
+        this.brown_mountain_goat.animations.play('swim2', 3, true);
+        this.brown_mountain_goat.scale.setTo(scale_x, scale_y);
+        this.brown_mountain_goat.name = "brown_mountain_goat";
+        t = this.add.tween(this.brown_mountain_goat).to({ x: ending_pos_x, y: ending_pos_y}, 9000, Phaser.Easing.Quadratic.InOut, true, 0);
+        t.onComplete.add(function(){this.brown_mountain_goat.animations.stop(null, true);}, this);
+
+        /*
+        //---- sea lion brown
+        starting_pos_x = this.game.width+25;
+        starting_pos_y = this.game.height - 135;
+        ending_pos_x = this.game.width-45;
+        ending_pos_y = this.game.height - 135;
+        scale_x = 1.3;
+        scale_y = 1.3;
+
+        this.sealion_brown = this.add.sprite(starting_pos_x, starting_pos_y, 'sea_lion_brown');
+        this.sealion_brown.anchor.setTo(.5,.5);
+        this.sealion_brown.animations.add('swim2');
+        this.sealion_brown.animations.play('swim2', 5, true);
+        this.sealion_brown.scale.setTo(scale_x, scale_y);
+        this.sealion_brown.name = "sea_lion_brown";
+        var t = this.add.tween(this.sealion_brown).to({x: ending_pos_x, y: ending_pos_y}, 5000, Phaser.Easing.Quadratic.InOut, true, 0);
+        t.onComplete.add(function(){this.sealion_brown.animations.stop(null, true);}, this);
+
+        //---- sea lion pink
+        starting_pos_x = this.game.width+125;
+        starting_pos_y = this.game.height - 85;
+        ending_pos_x = this.game.width-25;
+        ending_pos_y = this.game.height - 85;
+        scale_x = 0.8;
+        scale_y = 0.8;
+
+        this.sealion_pink = this.add.sprite(starting_pos_x, starting_pos_y, 'sea_lion_pink');
+        this.sealion_pink.anchor.setTo(.5,.5);
+        this.sealion_pink.animations.add('swim2');
+        this.sealion_pink.animations.play('swim2', 5, true);
+        this.sealion_pink.scale.setTo(scale_x, scale_y);
+        this.sealion_pink.name = "sea_lion_pink";
+        var t = this.add.tween(this.sealion_pink).to({x: ending_pos_x, y: ending_pos_y}, 5000, Phaser.Easing.Quadratic.InOut, true, 0);
+        t.onComplete.add(function(){this.sealion_pink.animations.stop(null, true);}, this);
+        */
+    }
+
     //--- add wolf animation.
     animateWolf(){
 
@@ -324,20 +556,23 @@ export class GameTundraL5 extends Phaser.State {
         this.brown_bear.scale.setTo(-.15, .15);
         this.brown_bear.name = "brown_bear";
         this.gobothways(this.brown_bear);
+
+        this.animateBearCub();
     }
 
+    
+
     //
-    animateWhiteHusky(){
+    animateBrwonHusky(){
+
         this.white_husky = this.add.sprite(65, this.game.height - 215, 'white_husky');
         this.white_husky.anchor.setTo(.5,.5);
         this.white_husky.animations.add('swim2');
         this.white_husky.animations.play('swim2',15, true);
         this.white_husky.scale.setTo(0.35, 0.35);
         this.white_husky.name = "white_husky";
-    }
 
-    //
-    animateBrwonHusky(){
+
         this.white_husky = this.add.sprite(65, this.game.height - 185, 'grey_husky');
         this.white_husky.anchor.setTo(.5,.5);
         this.white_husky.animations.add('swim2');
@@ -425,10 +660,10 @@ export class GameTundraL5 extends Phaser.State {
     
     //
     animateBlueJay(){
-        this.blue_jay = this.add.sprite(this.game.width-50, 145, 'blue_jay');
+        this.blue_jay = this.add.sprite(this.game.width-50, 135, 'blue_jay');
         this.blue_jay.anchor.setTo(.5,.5);
         this.blue_jay.animations.add('swim2');
-        this.blue_jay.animations.play('swim2', 5, true);
+        this.blue_jay.animations.play('swim2', 10, true);
         this.blue_jay.scale.setTo(0.6, 0.6);
         this.blue_jay.name = "blue_jay";
         //this.pegions.body.velocity.x = -20;
