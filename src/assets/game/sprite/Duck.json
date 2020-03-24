@@ -1,0 +1,36 @@
+{"frames": {
+
+"tile000.png":
+{
+	"frame": {"x":39,"y":1,"w":36,"h":29},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":4,"w":36,"h":29},
+	"sourceSize": {"w":49,"h":39}
+},
+"tile001.png":
+{
+	"frame": {"x":77,"y":1,"w":34,"h":29},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":5,"y":3,"w":34,"h":29},
+	"sourceSize": {"w":49,"h":39}
+},
+"tile002.png":
+{
+	"frame": {"x":1,"y":1,"w":36,"h":30},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":4,"w":36,"h":30},
+	"sourceSize": {"w":48,"h":39}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Duck Swimming on Water.png",
+	"format": "RGBA8888",
+	"size": {"w":112,"h":32},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:3f0dfb9716d9e78a386b5afee4d1f4bd:ab6e8fc4e7e23c1a5cf944367c9cda6c:cc51412dda7263de7c4501dc103f2a4c$"
+}
+}

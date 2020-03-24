@@ -81,7 +81,7 @@ export class DemoAquariumComponent implements OnInit {
     if(this.userProfileService == undefined)
       return "test";
     else{
-      //console.log(this.userProfileService);
+      //console.log("User profile -- username -- called from here");
       return this.userProfileService.username;
     }
   }
@@ -383,7 +383,7 @@ export class DemoAquariumComponent implements OnInit {
       seaLevelL4.setTotalPoints(this.totalPoints);
       this.game.state.add('SeaLevelL4', seaLevelL4);
 
-    } else if( this.totalPoints >=2120 && this.totalPoints <3000){
+    } else if( this.totalPoints >=2120 && this.totalPoints <3020){
 
       this.game.state.add('Boot', BootTundraL5);
       this.pickedGame = "TundraLevel1";
@@ -393,7 +393,7 @@ export class DemoAquariumComponent implements OnInit {
       level5.setTotalPoints(this.totalPoints);
       this.game.state.add('TundraLevel1', level5);
 
-    }else if( this.totalPoints >=3000){
+    }else if( this.totalPoints >=3020){
 
         this.game.state.add('Boot', BootRainforestL6);
         this.pickedGame = "RainforestLevel6";

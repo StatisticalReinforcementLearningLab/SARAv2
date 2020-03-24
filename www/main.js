@@ -890,17 +890,6 @@ module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/index.js!./src/app/ui/loading-spinner/loading-spinner.component.html":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/ui/loading-spinner/loading-spinner.component.html ***!
-  \*********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "Holla!!\n<div class=\"spinner2\">\n    <div class=\"rect1\"></div>\n    <div class=\"rect2\"></div>\n    <div class=\"rect3\"></div>\n    <div class=\"rect4\"></div>\n    <div class=\"rect5\"></div>\n</div>"
-
-/***/ }),
-
 /***/ "./node_modules/raw-loader/index.js!./src/app/user/auth/auth.component.html":
 /*!*************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/user/auth/auth.component.html ***!
@@ -908,7 +897,7 @@ module.exports = "Holla!!\n<div class=\"spinner2\">\n    <div class=\"rect1\"></
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-title style=\"color:#fff;\">ADAPTS</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n  <ion-grid>\n    <ion-row>\n      <ion-col size=\"10\" offset=\"1\" style=\"padding:20px;\">\n        <ion-img src=\"../../../assets/img/CHOP_RI.svg\"></ion-img>        \n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col size=\"10\" offset=\"1\">\n            <div class=\"alert alert-danger\" *ngIf=\"error\">\n                <p>{{error}} </p>\n              </div>\n              <div *ngIf=\"isLoading\" style=\"text-align: center;\">\n                <ion-spinner></ion-spinner>\n                <!-- <app-loading-spinner></app-loading-spinner> -->\n              </div> \n\n              <form #authForm=\"ngForm\" (ngSubmit)=\"onSubmit(authForm)\" *ngIf=\"!isLoading\">\n                  <ion-item>\n                      <ion-label position=\"floating\"  >Username</ion-label>\n                      <ion-input type=\"userName\" id=\"userName\"  ngModel name=\"userName\" required ></ion-input>    \n                  </ion-item>\n                  <ion-item>\n                      <ion-label position=\"floating\"   >Password</ion-label>\n                      <ion-input type=\"password\" id=\"password\"  ngModel name=\"password\" required  minlength=\"4\" ></ion-input>\n                  </ion-item>\n                  <div style=\"padding-top:20px;\">\n                    <ion-button  type=\"submit\" [disabled]=\"!authForm.valid\">{{isLoginMode ? 'Login' : 'Sign Up'}}</ion-button> \n                    <!--|\n                    <ion-button  type=\"button\" (click)=\"onSwitchMode()\">\n                    Switch to {{isLoginMode ? 'Sign Up' : 'Login'}}</ion-button>\n                    -->\n                  </div>\n              </form>      \n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-title style=\"color:#fff;\">ADAPTS</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n  <ion-grid>\n    <ion-row>\n      <ion-col size=\"10\" offset=\"1\" style=\"padding:20px;\">\n        <ion-img src=\"../../../assets/img/CHOP_RI.svg\"></ion-img>        \n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col size=\"10\" offset=\"1\">\n            <div class=\"alert alert-danger\" *ngIf=\"error\">\n                <p>{{error}} </p>\n              </div>\n\n              \n              <div *ngIf=\"isLoading\" style=\"text-align: center;\">\n                <ion-spinner  name=\"crescent\"></ion-spinner>\n                <!-- <app-loading-spinner></app-loading-spinner> -->\n              </div> \n\n              <form #authForm=\"ngForm\" (ngSubmit)=\"onSubmit(authForm)\" *ngIf=\"!isLoading\">\n                  <ion-item>\n                      <ion-label position=\"floating\"  >Username</ion-label>\n                      <ion-input type=\"userName\" id=\"userName\"  ngModel name=\"userName\" required ></ion-input>    \n                  </ion-item>\n                  <ion-item>\n                      <ion-label position=\"floating\"   >Password</ion-label>\n                      <ion-input type=\"password\" id=\"password\"  ngModel name=\"password\" required  minlength=\"4\" ></ion-input>\n                  </ion-item>\n                  <div style=\"padding-top:20px;\">\n                    <ion-button  type=\"submit\" [disabled]=\"!authForm.valid\">{{isLoginMode ? 'Login' : 'Sign Up'}}</ion-button> \n                    <!--|\n                    <ion-button  type=\"button\" (click)=\"onSwitchMode()\">\n                    Switch to {{isLoginMode ? 'Sign Up' : 'Login'}}</ion-button>\n                    -->\n                  </div>\n              </form>      \n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>"
 
 /***/ }),
 
@@ -4926,15 +4915,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _incentive_life_insights_life_insights_module__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./incentive/life-insights/life-insights.module */ "./src/app/incentive/life-insights/life-insights.module.ts");
 /* harmony import */ var _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic-native/google-analytics/ngx */ "./node_modules/@ionic-native/google-analytics/ngx/index.js");
 /* harmony import */ var _survey_survey_module__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./survey/survey.module */ "./src/app/survey/survey.module.ts");
-/* harmony import */ var _ui_loading_spinner_loading_spinner_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./ui/loading-spinner/loading-spinner.component */ "./src/app/ui/loading-spinner/loading-spinner.component.ts");
-/* harmony import */ var _incentive_aquarium_aquarium_module__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./incentive/aquarium/aquarium.module */ "./src/app/incentive/aquarium/aquarium.module.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./incentive/aquarium/cheatpage/cheatpage.component */ "./src/app/incentive/aquarium/cheatpage/cheatpage.component.ts");
-/* harmony import */ var _user_user_module__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./user/user.module */ "./src/app/user/user.module.ts");
-/* harmony import */ var _home_home_module__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./home/home.module */ "./src/app/home/home.module.ts");
-/* harmony import */ var _incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./incentive/award-money/award-dollar.service */ "./src/app/incentive/award-money/award-dollar.service.ts");
-/* harmony import */ var _ionic_native_app_version_ngx__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @ionic-native/app-version/ngx */ "./node_modules/@ionic-native/app-version/ngx/index.js");
-
+/* harmony import */ var _incentive_aquarium_aquarium_module__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./incentive/aquarium/aquarium.module */ "./src/app/incentive/aquarium/aquarium.module.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./incentive/aquarium/cheatpage/cheatpage.component */ "./src/app/incentive/aquarium/cheatpage/cheatpage.component.ts");
+/* harmony import */ var _user_user_module__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./user/user.module */ "./src/app/user/user.module.ts");
+/* harmony import */ var _home_home_module__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./home/home.module */ "./src/app/home/home.module.ts");
+/* harmony import */ var _incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./incentive/award-money/award-dollar.service */ "./src/app/incentive/award-money/award-dollar.service.ts");
+/* harmony import */ var _ionic_native_app_version_ngx__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @ionic-native/app-version/ngx */ "./node_modules/@ionic-native/app-version/ngx/index.js");
 
 
 
@@ -4972,8 +4959,8 @@ var AppModule = /** @class */ (function () {
     ]; };
     AppModule = AppModule_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"], _ui_loading_spinner_loading_spinner_component__WEBPACK_IMPORTED_MODULE_17__["LoadingSpinnerComponent"], _incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_20__["CheatpageComponent"]],
-            entryComponents: [_incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_20__["CheatpageComponent"]],
+            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"], _incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_19__["CheatpageComponent"]],
+            entryComponents: [_incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_19__["CheatpageComponent"]],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicModule"].forRoot(),
@@ -4983,19 +4970,19 @@ var AppModule = /** @class */ (function () {
                 _incentive_life_insights_life_insights_module__WEBPACK_IMPORTED_MODULE_14__["LifeInsightsModule"],
                 _notification_notification_module__WEBPACK_IMPORTED_MODULE_12__["NotificationModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
-                _incentive_aquarium_aquarium_module__WEBPACK_IMPORTED_MODULE_18__["AquariumModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_19__["FormsModule"],
-                _user_user_module__WEBPACK_IMPORTED_MODULE_21__["UserModule"],
-                _home_home_module__WEBPACK_IMPORTED_MODULE_22__["HomePageModule"],
+                _incentive_aquarium_aquarium_module__WEBPACK_IMPORTED_MODULE_17__["AquariumModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_18__["FormsModule"],
+                _user_user_module__WEBPACK_IMPORTED_MODULE_20__["UserModule"],
+                _home_home_module__WEBPACK_IMPORTED_MODULE_21__["HomePageModule"],
                 angular_azure_blob_service__WEBPACK_IMPORTED_MODULE_5__["BlobModule"].forRoot()
             ],
             providers: [
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_8__["StatusBar"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_7__["SplashScreen"],
                 _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_9__["OneSignal"],
-                _incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_23__["AwardDollarService"],
+                _incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_22__["AwardDollarService"],
                 _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_15__["GoogleAnalytics"],
-                _ionic_native_app_version_ngx__WEBPACK_IMPORTED_MODULE_24__["AppVersion"],
+                _ionic_native_app_version_ngx__WEBPACK_IMPORTED_MODULE_23__["AppVersion"],
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicRouteStrategy"] }
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"]]
@@ -5662,7 +5649,7 @@ var DemoAquariumComponent = /** @class */ (function () {
             if (this.userProfileService == undefined)
                 return "test";
             else {
-                //console.log(this.userProfileService);
+                //console.log("User profile -- username -- called from here");
                 return this.userProfileService.username;
             }
         },
@@ -13733,19 +13720,21 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 //console.log("Inside storeData");
                 console.log(JSON.stringify(this.survey2));
                 this.ga.trackEvent('Submit Button', 'Tapped Action', 'Submit the completed survey', 0);
-                this.survey2['endtimeUTC'] = new Date().getTime();
-                this.survey2['userName'] = localStorage.getItem('loggedInUser');
-                this.survey2['ts'] = moment__WEBPACK_IMPORTED_MODULE_7__().format('MMMM Do YYYY, h:mm:ss a Z');
+                var endTime = new Date().getTime();
+                var readable_time = moment__WEBPACK_IMPORTED_MODULE_7__().format('MMMM Do YYYY, h:mm:ss a Z');
+                this.survey2['endtimeUTC'] = endTime;
+                this.survey2['userName'] = this.userProfileService.username;
+                this.survey2['ts'] = readable_time;
                 this.survey2['devicInfo'] = this.plt.platforms();
                 //Store app version number
                 this.survey2['appVersion'] = this.versionNumber;
+                this.userProfileService.versionNumber = this.versionNumber;
                 var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.survey2), "Z&wz=BGw;%q49/<)");
                 //var encrypted = this.EncrDecr.encrypt("holla", "Z&wz=BGw;%q49/<)");
                 var decrypted = this.EncrDecr.decrypt(encrypted, "Z&wz=BGw;%q49/<)");
                 console.log('Encrypted :' + encrypted);
                 console.log('Decrypted :' + decrypted);
                 this.survey2['encrypted'] = encrypted;
-                this.userProfileService.surveyCompleted();
                 //compute and store "TotalPoints" to localStorage
                 if (window.localStorage['TotalPoints'] == undefined)
                     this.totalPoints = 0;
@@ -13757,6 +13746,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 var pastDollars = this.awardDollarService.getDollars();
                 var dollars = this.awardDollarService.giveDollars();
                 console.log("Dollars: " + dollars);
+                this.userProfileService.surveyCompleted();
                 window.localStorage.setItem("LastSurveyCompletionDate", "" + moment__WEBPACK_IMPORTED_MODULE_7__().format('YYYYMMDD'));
                 window.localStorage.setItem("CurrentPoints", "" + this.userProfileService.points);
                 window.localStorage.setItem("PreviousPoints", "" + (this.userProfileService.points - 100));
@@ -13843,13 +13833,32 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 //navigate to award-memes/award-altruism with equal probability after submit survey
                 var currentProb = Math.random();
                 window.localStorage.setItem("Prob", "" + currentProb);
+                var currentDate = moment__WEBPACK_IMPORTED_MODULE_7__().format('YYYYMMDD');
                 var navigationExtras = {
                     state: {
-                        date: moment__WEBPACK_IMPORTED_MODULE_7__().format('YYYYMMDD'),
+                        date: currentDate,
                         prob: currentProb
                     }
                 };
-                if (currentProb > 0.5) {
+                //prepare reinforcement data to upload to AWS S3
+                var reinforcement_data = {};
+                reinforcement_data['userName'] = this.userProfileService.username;
+                reinforcement_data['day_count'] = Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;
+                reinforcement_data['isRandomized'] = 1;
+                reinforcement_data['unix_ts'] = endTime;
+                reinforcement_data['readable_ts'] = readable_time;
+                reinforcement_data['date'] = currentDate;
+                //save to Amazon AWS S3
+                this.awsS3Service.upload('reinforcement_data', reinforcement_data);
+                if (this.fileLink.includes('caregiver') || currentProb <= 0.4) {
+                    var reinforcementObj = {};
+                    reinforcementObj['ds'] = 1;
+                    reinforcementObj['reward'] = 0;
+                    reinforcementObj['prob'] = currentProb;
+                    //this.userProfileService.addReinforcementData(currentDate, reinforcementObj);    
+                    this.router.navigate(['home']);
+                }
+                else if (currentProb < 0.7) {
                     this.router.navigate(['incentive/award-memes'], navigationExtras);
                 }
                 else {
@@ -14047,7 +14056,6 @@ var DynamicSurveyComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-dynamic-survey',
             template: __webpack_require__(/*! raw-loader!./dynamic-survey.component.html */ "./node_modules/raw-loader/index.js!./src/app/survey/dynamic-survey/dynamic-survey.component.html"),
-            providers: [src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_10__["UserProfileService"]],
             styles: [__webpack_require__(/*! ./dynamic-survey.component.scss */ "./src/app/survey/dynamic-survey/dynamic-survey.component.scss")]
         })
         //@PreLoad('life-insights')
@@ -14211,50 +14219,6 @@ var SurveyModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/ui/loading-spinner/loading-spinner.component.scss":
-/*!*******************************************************************!*\
-  !*** ./src/app/ui/loading-spinner/loading-spinner.component.scss ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ".spinner2 {\n  margin: 100px auto;\n  width: 50px;\n  height: 40px;\n  text-align: center;\n  font-size: 10px;\n}\n\n.spinner2 > div {\n  background-color: #333;\n  height: 100%;\n  width: 6px;\n  display: inline-block;\n  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;\n  animation: sk-stretchdelay 1.2s infinite ease-in-out;\n}\n\n.spinner2 .rect2 {\n  -webkit-animation-delay: -1.1s;\n  animation-delay: -1.1s;\n}\n\n.spinner2 .rect3 {\n  -webkit-animation-delay: -1s;\n  animation-delay: -1s;\n}\n\n.spinner2 .rect4 {\n  -webkit-animation-delay: -0.9s;\n  animation-delay: -0.9s;\n}\n\n.spinner2 .rect5 {\n  -webkit-animation-delay: -0.8s;\n  animation-delay: -0.8s;\n}\n\n@-webkit-keyframes sk-stretchdelay {\n  0%, 40%, 100% {\n    -webkit-transform: scaleY(0.4);\n  }\n  20% {\n    -webkit-transform: scaleY(1);\n  }\n}\n\n@keyframes sk-stretchdelay {\n  0%, 40%, 100% {\n    transform: scaleY(0.4);\n    -webkit-transform: scaleY(0.4);\n  }\n  20% {\n    transform: scaleY(1);\n    -webkit-transform: scaleY(1);\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYXNoMi9Ecm9wYm94IChQQUMgTEFCKS9jb2Rlcy9pb25pY19wcm9qZWN0cy9TQVJBVjMvU0FSQV9tb2R1bGFyL3NyYy9hcHAvdWkvbG9hZGluZy1zcGlubmVyL2xvYWRpbmctc3Bpbm5lci5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvdWkvbG9hZGluZy1zcGlubmVyL2xvYWRpbmctc3Bpbm5lci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGtCQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLGVBQUE7QUNDSjs7QURFRTtFQUNFLHNCQUFBO0VBQ0EsWUFBQTtFQUNBLFVBQUE7RUFDQSxxQkFBQTtFQUVBLDREQUFBO0VBQ0Esb0RBQUE7QUNBSjs7QURHRTtFQUNFLDhCQUFBO0VBQ0Esc0JBQUE7QUNBSjs7QURHRTtFQUNFLDRCQUFBO0VBQ0Esb0JBQUE7QUNBSjs7QURHRTtFQUNFLDhCQUFBO0VBQ0Esc0JBQUE7QUNBSjs7QURHRTtFQUNFLDhCQUFBO0VBQ0Esc0JBQUE7QUNBSjs7QURHRTtFQUNFO0lBQWdCLDhCQUFBO0VDQ2xCO0VEQUU7SUFBTSw0QkFBQTtFQ0dSO0FBQ0Y7O0FEREU7RUFDRTtJQUNFLHNCQUFBO0lBQ0EsOEJBQUE7RUNHSjtFREZLO0lBQ0Qsb0JBQUE7SUFDQSw0QkFBQTtFQ0lKO0FBQ0YiLCJmaWxlIjoic3JjL2FwcC91aS9sb2FkaW5nLXNwaW5uZXIvbG9hZGluZy1zcGlubmVyLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnNwaW5uZXIyIHtcbiAgICBtYXJnaW46IDEwMHB4IGF1dG87XG4gICAgd2lkdGg6IDUwcHg7XG4gICAgaGVpZ2h0OiA0MHB4O1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBmb250LXNpemU6IDEwcHg7XG4gIH1cbiAgXG4gIC5zcGlubmVyMiA+IGRpdiB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzMzMztcbiAgICBoZWlnaHQ6IDEwMCU7XG4gICAgd2lkdGg6IDZweDtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gICAgXG4gICAgLXdlYmtpdC1hbmltYXRpb246IHNrLXN0cmV0Y2hkZWxheSAxLjJzIGluZmluaXRlIGVhc2UtaW4tb3V0O1xuICAgIGFuaW1hdGlvbjogc2stc3RyZXRjaGRlbGF5IDEuMnMgaW5maW5pdGUgZWFzZS1pbi1vdXQ7XG4gIH1cbiAgXG4gIC5zcGlubmVyMiAucmVjdDIge1xuICAgIC13ZWJraXQtYW5pbWF0aW9uLWRlbGF5OiAtMS4xcztcbiAgICBhbmltYXRpb24tZGVsYXk6IC0xLjFzO1xuICB9XG4gIFxuICAuc3Bpbm5lcjIgLnJlY3QzIHtcbiAgICAtd2Via2l0LWFuaW1hdGlvbi1kZWxheTogLTEuMHM7XG4gICAgYW5pbWF0aW9uLWRlbGF5OiAtMS4wcztcbiAgfVxuICBcbiAgLnNwaW5uZXIyIC5yZWN0NCB7XG4gICAgLXdlYmtpdC1hbmltYXRpb24tZGVsYXk6IC0wLjlzO1xuICAgIGFuaW1hdGlvbi1kZWxheTogLTAuOXM7XG4gIH1cbiAgXG4gIC5zcGlubmVyMiAucmVjdDUge1xuICAgIC13ZWJraXQtYW5pbWF0aW9uLWRlbGF5OiAtMC44cztcbiAgICBhbmltYXRpb24tZGVsYXk6IC0wLjhzO1xuICB9XG4gIFxuICBALXdlYmtpdC1rZXlmcmFtZXMgc2stc3RyZXRjaGRlbGF5IHtcbiAgICAwJSwgNDAlLCAxMDAlIHsgLXdlYmtpdC10cmFuc2Zvcm06IHNjYWxlWSgwLjQpIH0gIFxuICAgIDIwJSB7IC13ZWJraXQtdHJhbnNmb3JtOiBzY2FsZVkoMS4wKSB9XG4gIH1cbiAgXG4gIEBrZXlmcmFtZXMgc2stc3RyZXRjaGRlbGF5IHtcbiAgICAwJSwgNDAlLCAxMDAlIHsgXG4gICAgICB0cmFuc2Zvcm06IHNjYWxlWSgwLjQpO1xuICAgICAgLXdlYmtpdC10cmFuc2Zvcm06IHNjYWxlWSgwLjQpO1xuICAgIH0gIDIwJSB7IFxuICAgICAgdHJhbnNmb3JtOiBzY2FsZVkoMS4wKTtcbiAgICAgIC13ZWJraXQtdHJhbnNmb3JtOiBzY2FsZVkoMS4wKTtcbiAgICB9XG4gIH0iLCIuc3Bpbm5lcjIge1xuICBtYXJnaW46IDEwMHB4IGF1dG87XG4gIHdpZHRoOiA1MHB4O1xuICBoZWlnaHQ6IDQwcHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgZm9udC1zaXplOiAxMHB4O1xufVxuXG4uc3Bpbm5lcjIgPiBkaXYge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMzMzO1xuICBoZWlnaHQ6IDEwMCU7XG4gIHdpZHRoOiA2cHg7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgLXdlYmtpdC1hbmltYXRpb246IHNrLXN0cmV0Y2hkZWxheSAxLjJzIGluZmluaXRlIGVhc2UtaW4tb3V0O1xuICBhbmltYXRpb246IHNrLXN0cmV0Y2hkZWxheSAxLjJzIGluZmluaXRlIGVhc2UtaW4tb3V0O1xufVxuXG4uc3Bpbm5lcjIgLnJlY3QyIHtcbiAgLXdlYmtpdC1hbmltYXRpb24tZGVsYXk6IC0xLjFzO1xuICBhbmltYXRpb24tZGVsYXk6IC0xLjFzO1xufVxuXG4uc3Bpbm5lcjIgLnJlY3QzIHtcbiAgLXdlYmtpdC1hbmltYXRpb24tZGVsYXk6IC0xcztcbiAgYW5pbWF0aW9uLWRlbGF5OiAtMXM7XG59XG5cbi5zcGlubmVyMiAucmVjdDQge1xuICAtd2Via2l0LWFuaW1hdGlvbi1kZWxheTogLTAuOXM7XG4gIGFuaW1hdGlvbi1kZWxheTogLTAuOXM7XG59XG5cbi5zcGlubmVyMiAucmVjdDUge1xuICAtd2Via2l0LWFuaW1hdGlvbi1kZWxheTogLTAuOHM7XG4gIGFuaW1hdGlvbi1kZWxheTogLTAuOHM7XG59XG5cbkAtd2Via2l0LWtleWZyYW1lcyBzay1zdHJldGNoZGVsYXkge1xuICAwJSwgNDAlLCAxMDAlIHtcbiAgICAtd2Via2l0LXRyYW5zZm9ybTogc2NhbGVZKDAuNCk7XG4gIH1cbiAgMjAlIHtcbiAgICAtd2Via2l0LXRyYW5zZm9ybTogc2NhbGVZKDEpO1xuICB9XG59XG5Aa2V5ZnJhbWVzIHNrLXN0cmV0Y2hkZWxheSB7XG4gIDAlLCA0MCUsIDEwMCUge1xuICAgIHRyYW5zZm9ybTogc2NhbGVZKDAuNCk7XG4gICAgLXdlYmtpdC10cmFuc2Zvcm06IHNjYWxlWSgwLjQpO1xuICB9XG4gIDIwJSB7XG4gICAgdHJhbnNmb3JtOiBzY2FsZVkoMSk7XG4gICAgLXdlYmtpdC10cmFuc2Zvcm06IHNjYWxlWSgxKTtcbiAgfVxufSJdfQ== */"
-
-/***/ }),
-
-/***/ "./src/app/ui/loading-spinner/loading-spinner.component.ts":
-/*!*****************************************************************!*\
-  !*** ./src/app/ui/loading-spinner/loading-spinner.component.ts ***!
-  \*****************************************************************/
-/*! exports provided: LoadingSpinnerComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoadingSpinnerComponent", function() { return LoadingSpinnerComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-
-
-var LoadingSpinnerComponent = /** @class */ (function () {
-    function LoadingSpinnerComponent() {
-    }
-    LoadingSpinnerComponent.prototype.ngOnInit = function () { };
-    LoadingSpinnerComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-loading-spinner',
-            template: __webpack_require__(/*! raw-loader!./loading-spinner.component.html */ "./node_modules/raw-loader/index.js!./src/app/ui/loading-spinner/loading-spinner.component.html"),
-            styles: [__webpack_require__(/*! ./loading-spinner.component.scss */ "./src/app/ui/loading-spinner/loading-spinner.component.scss")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-    ], LoadingSpinnerComponent);
-    return LoadingSpinnerComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/user/auth/auth.component.scss":
 /*!***********************************************!*\
   !*** ./src/app/user/auth/auth.component.scss ***!
@@ -14303,14 +14267,17 @@ var AuthComponent = /** @class */ (function () {
         this.isLoading = false;
         this.error = null;
     }
-    AuthComponent.prototype.onSwitchMode = function () {
-        this.isLoginMode = !this.isLoginMode;
-    };
+    // was used to switch mode between login and register
+    // onSwitchMode(){
+    //   this.isLoginMode = !this.isLoginMode;
+    // }
     AuthComponent.prototype.ngOnInit = function () {
         console.log(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].userServer);
     };
+    //login button was clicked
     AuthComponent.prototype.onSubmit = function (form) {
         var _this = this;
+        console.log("auth.component.ts - onSubmit method - begin");
         if (!form.valid) {
             console.log('invalid');
             return;
@@ -14319,17 +14286,19 @@ var AuthComponent = /** @class */ (function () {
         var password = form.value.password;
         var authObs;
         this.isLoading = true;
-        if (this.isLoginMode) {
-            authObs = this.authService.login(userName, password);
-        }
-        else {
-            authObs = this.authService.signup(userName, password);
-        }
+        // if(this.isLoginMode){
+        // login returns an observable
+        authObs = this.authService.login(userName, password);
+        // }else{
+        //   authObs =  this.authService.signup(userName, password);
+        // }
         this.authSub = authObs.subscribe(function (resData) {
-            console.log("auth login/signup response: " + JSON.stringify(resData));
+            console.log("auth.component.ts - onSubmit method - authService.login response: " + JSON.stringify(resData));
             if (resData.hasOwnProperty('access_token') && resData.hasOwnProperty('refresh_token')) {
-                console.log("has access token");
                 // the response contains an access token and refresh token
+                console.log("auth.component.ts - onSubmit method - has access token");
+                // userProfileService.initializeObs returns an observable, 
+                // then below we can get the OneSignal Player id when UserProfile has been intialized 
                 _this.userSub = _this.userProfileService.initializeObs()
                     .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["tap"])(function () {
                     _this.oneSignal.getIds().then(function (id) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
@@ -14476,7 +14445,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// import { User } from './user.model';
 
+// import { AngularFireAuth } from '@angular/fire/auth';
 
 var AuthService = /** @class */ (function () {
     function AuthService(http, router) {
@@ -14498,6 +14469,7 @@ var AuthService = /** @class */ (function () {
         this.REFRESH_TOKEN = 'REFRESH_TOKEN';
         this.REFRESH_TOKEN_EXPIRATION = 'REFRESH_TOKEN_EXPIRATION';
     }
+    // used to register new user
     AuthService.prototype.signup = function (userName, password) {
         var _this = this;
         return this.http
@@ -14511,7 +14483,9 @@ var AuthService = /** @class */ (function () {
             console.log("resData: " + JSON.stringify(resData));
         }));
     };
+    // initializes loggedinUsder
     AuthService.prototype.autoLogin = function () {
+        console.log("auth.service.ts - autoLogin method - begin");
         var loggedInUser = localStorage.getItem('loggedInUser');
         if (loggedInUser === null) {
             return;
@@ -14527,15 +14501,15 @@ var AuthService = /** @class */ (function () {
         this.removeTokens();
     };
     //may not need 
-    AuthService.prototype.autoLogout = function (expirationDuration) {
-        var _this = this;
-        console.log(expirationDuration);
-        this.tokenExpirationTimer = setTimeout(function () {
-            _this.logout();
-        }, expirationDuration);
-    };
+    // autoLogout(expirationDuration: number){
+    //   console.log(expirationDuration);
+    //   this.tokenExpirationTimer= setTimeout(() => {
+    //     this.logout();
+    //   },expirationDuration);
+    // }
     AuthService.prototype.login = function (userName, password) {
         var _this = this;
+        console.log("auth.service.ts -login method - begin");
         return this.http
             .post(src_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].userServer + '/login', {
             username: userName,
@@ -14544,11 +14518,12 @@ var AuthService = /** @class */ (function () {
             _this.loggedInUser.next(userName);
             _this.storeAccessToken(resData.access_token, resData.access_token);
             _this.storeRefreshToken(resData.refresh_token, resData.refresh_expires);
-            console.log("loggedInUser: " + _this.loggedInUser.getValue());
-            console.log("resData: " + JSON.stringify(resData));
+            console.log("auth.service.ts -login method - loggedInUser: " + _this.loggedInUser.getValue());
+            console.log("auth.service.ts -login method - resData: " + JSON.stringify(resData));
         }));
     };
     AuthService.prototype.handleError = function (errorRes) {
+        console.log("auth.service.ts - handleError method - begin");
         var errorMessage = 'An unknown error occurred!!!! \n' + JSON.stringify(errorRes);
         if (!errorRes.error || !errorRes.error.error) {
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(errorMessage);
@@ -14566,8 +14541,10 @@ var AuthService = /** @class */ (function () {
         }
         return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(errorMessage);
     };
+    //use refresh token to get a new access token
     AuthService.prototype.refreshToken = function () {
         var _this = this;
+        console.log("auth.service.ts - refreshToken method - begin");
         var token = this.getRefreshToken();
         var httpOptions = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
@@ -14583,10 +14560,13 @@ var AuthService = /** @class */ (function () {
     // private removeUser(){
     //   localStorage.removeItem('user');
     // }
+    // check if loggedInUser has a value and in which case, the user is logged in
     AuthService.prototype.isLoggedIn = function () {
+        console.log("auth.service.ts - isLoggedIn method - begin");
         return !!this.loggedInUser.getValue();
     };
     AuthService.prototype.getAccessToken = function () {
+        console.log("auth.service.ts - getAccessToken method - begin");
         return localStorage.getItem(this.ACCESS_TOKEN);
     };
     AuthService.prototype.doLogoutUser = function () {
@@ -14594,19 +14574,23 @@ var AuthService = /** @class */ (function () {
         this.removeTokens();
     };
     AuthService.prototype.getRefreshToken = function () {
+        console.log("auth.service.ts - getRefreshToken method - begin");
         return localStorage.getItem(this.REFRESH_TOKEN);
     };
     AuthService.prototype.storeAccessToken = function (token, expires) {
+        console.log("auth.service.ts - storeAccessToken method - begin");
         localStorage.setItem(this.ACCESS_TOKEN, token);
         var expirationDate = new Date(new Date().getTime() + +expires * 1000);
         localStorage.ACCESS_TOKEN_EXPIRATION = expirationDate;
     };
     AuthService.prototype.storeRefreshToken = function (token, expires) {
+        console.log("auth.service.ts - storeRefreshToken method - begin");
         localStorage.setItem(this.REFRESH_TOKEN, token);
         var expirationDate = new Date(new Date().getTime() + +expires * 1000);
         localStorage.REFRESH_TOKEN_EXPIRATION = expirationDate;
     };
     AuthService.prototype.removeTokens = function () {
+        console.log("auth.service.ts - removeTokens method - begin");
         localStorage.removeItem(this.ACCESS_TOKEN);
         localStorage.removeItem(this.ACCESS_TOKEN_EXPIRATION);
         localStorage.removeItem(this.REFRESH_TOKEN);
@@ -14661,7 +14645,7 @@ var LoadingSpinnerComponent = /** @class */ (function () {
     LoadingSpinnerComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-loading-spinner',
-            template: '<div class="lds-circle"><div></div></div>',
+            template: '<div class="lds-circle"><div>Facebook</div></div>',
             styles: [__webpack_require__(/*! ./loading-spinner.component.css */ "./src/app/user/auth/loading-spinner/loading-spinner.component.css")]
         })
     ], LoadingSpinnerComponent);
@@ -14688,6 +14672,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./auth.service */ "./src/app/user/auth/auth.service.ts");
+// logic borrowed from https://angular-academy.com/angular-jwt/
+// all http requests will be intercepted by this token interceptor
+// which adds the access token to the request, unless URL contains refresh
 
 
 
@@ -14702,6 +14689,7 @@ var TokenInterceptor = /** @class */ (function () {
     }
     TokenInterceptor.prototype.intercept = function (request, next) {
         var _this = this;
+        console.log("token.interceptorts - intercept method - begin");
         if (this.authService.loggedInUser.getValue()) {
             //if it's a refresh request, don't overwrite the token since it was already added
             if (request.url.indexOf('refresh') < 0) {
@@ -14718,6 +14706,7 @@ var TokenInterceptor = /** @class */ (function () {
         }));
     };
     TokenInterceptor.prototype.addToken = function (request, token) {
+        console.log("token.interceptorts - addToken method - begin");
         return request.clone({
             setHeaders: {
                 'Authorization': "Bearer " + token
@@ -14726,6 +14715,7 @@ var TokenInterceptor = /** @class */ (function () {
     };
     TokenInterceptor.prototype.handle401Error = function (request, next) {
         var _this = this;
+        console.log("token.interceptorts - handle401Error method - begin");
         if (!this.isRefreshing) {
             this.isRefreshing = true;
             this.refreshTokenSubject.next(null);
@@ -14766,19 +14756,16 @@ var TokenInterceptor = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserProfile", function() { return UserProfile; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserProfileFixed", function() { return UserProfileFixed; });
+//contains the two classes UserProfile and UserProfileFixed
 var UserProfile = /** @class */ (function () {
-    //access token
-    //refresh token 
-    function UserProfile(username, 
-    // isParent: boolean, 
-    datesTaken, points, badgeCount, lastupdate, readable_ts) {
+    // created constructor to initialize UserProfile - early on
+    function UserProfile(username, datesTaken, points, badgeCount, lastupdate, readable_ts) {
         this.badges = { 'daily_survey': [],
             'money': 0,
         };
         this.daily_streak = {};
         this.imei = "0";
         this.dollars = 0;
-        // had change below replacing - with _
         this.life_insights = { "daily_survey": {} };
         this.reinfrocement_data = {};
         this.survey_data = {
@@ -14786,8 +14773,6 @@ var UserProfile = /** @class */ (function () {
             'points': 0,
             'weekly_survey': {}
         };
-        // this.userID = userID;
-        // this.isParent = isParent;
         this.username = username;
         this.datesTaken = datesTaken;
         this.points = points;
@@ -14854,9 +14839,11 @@ var UserProfileService = /** @class */ (function () {
     UserProfileService.prototype.initializeObs = function () {
         var _this = this;
         //get profile from server
-        // this.userProfile
+        // 
+        console.log("user-profile.service.ts - initializeObs method");
         var getProfile = this.http.post(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].userServer + '/userinfo', { "empty": "empty" });
         var getProfileFixed = this.http.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].userServer + '/userinfofixed');
+        // forkJoin will return an observable that waits till both http requests have received responses
         return Object(rxjs__WEBPACK_IMPORTED_MODULE_5__["forkJoin"])([getProfile, getProfileFixed])
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["tap"])(function (response) {
             console.log("in response of forkjoin");
@@ -14876,12 +14863,41 @@ var UserProfileService = /** @class */ (function () {
             }
             else {
                 _this.userProfile = response1;
+                if (_this.userProfile.hasOwnProperty("AwardDollarDates")) {
+                    localStorage.setItem("AwardDollarDates", JSON.stringify(_this.userProfile.AwardDollarDates));
+                }
+                localStorage.setItem("AwardDollar", JSON.stringify(_this.userProfile.dollars));
             }
             _this.userProfileFixed = response2;
             _this.saveProfileToDevice();
             _this.initialLoading.next(false);
         }));
     };
+    /*
+    addReinforcementData returns true if successful at adding the element (it doesn't already exist for the given date)
+    date is a string of the format YYYYMMDD (e.g. "20170430")
+    
+    reinforcementObj is an object of the form:
+    {
+        "ds": 1, //means participants completed the survey
+        "prob": 0.23,
+        "Like": "yes", //no if participants hated it.
+        "reward": 1,  //0 means users were not randomized
+        "reward_type": "meme", //'altruistic message'
+        "reward_img_link": "img/reinforcements/memes/IM25.jpg"
+    }
+    */
+    UserProfileService.prototype.addReinforcementData = function (date, reinforcementObj) {
+        if (!(date in this.userProfile.reinfrocement_data)) {
+            this.userProfile.reinfrocement_data[date] = reinforcementObj;
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+    // not currenlty using below method (wich calcs dollars based on days survey is taken in UserProfile)
+    // instead allowing award-dollar.service to calc streaks
     UserProfileService.prototype.calcDollars = function () {
         //this method calculates the number of three day streaks
         //then sets dollars = to number of three day streaks
@@ -14918,6 +14934,7 @@ var UserProfileService = /** @class */ (function () {
     };
     Object.defineProperty(UserProfileService.prototype, "isActive", {
         get: function () {
+            //console.log("user-profile.service.ts - isActive getter - begin");
             return this.userProfileFixed.isActive;
         },
         enumerable: true,
@@ -14925,8 +14942,7 @@ var UserProfileService = /** @class */ (function () {
     });
     Object.defineProperty(UserProfileService.prototype, "isParent", {
         get: function () {
-            // //temporarily returning true until get the above commented out method working
-            // return false;
+            console.log("user-profile.service.ts - isParent getter - begin");
             return this.userProfileFixed.isParent;
         },
         enumerable: true,
@@ -14934,6 +14950,7 @@ var UserProfileService = /** @class */ (function () {
     });
     Object.defineProperty(UserProfileService.prototype, "points", {
         get: function () {
+            console.log("user-profile.service.ts - points getter - begin");
             if (this.userProfile == undefined)
                 this.loadProfileFromDevice();
             return this.userProfile.points;
@@ -14943,48 +14960,35 @@ var UserProfileService = /** @class */ (function () {
     });
     Object.defineProperty(UserProfileService.prototype, "username", {
         get: function () {
+            //console.log("user-profile.service.ts - username getter - begin");
             if (this.userProfile == undefined)
                 this.loadProfileFromDevice();
             return this.userProfile.username;
         },
         set: function (username) {
+            console.log("user-profile.service.ts - isActive setter - begin");
             this.userProfile.username = username;
             this.saveProfileToDevice();
         },
         enumerable: true,
         configurable: true
     });
-    UserProfileService.prototype.initializeObsOld = function () {
-        //get profile from server
-        // this.userProfile
-        // let getProfile = this.http.post<any>(environment.userServer+'/userinfo',{"empty":"empty"}); 
-        // let get
-        var _this = this;
-        return this.http
-            .post(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].userServer + '/userinfo', { "empty": "empty" })
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["tap"])(function (response) {
-            console.log("initializeObs response: " + JSON.stringify(response));
-            if (!response.username || !response.hasOwnProperty('username')) {
-                console.log("blank or empty user_name");
-                var username = localStorage.getItem('loggedInUser');
-                var currenttime = new Date();
-                var dateString = moment__WEBPACK_IMPORTED_MODULE_7__(currenttime).format('MMMM Do YYYY, h:mm:ss a Z');
-                _this.userProfile = new _user_profile_model__WEBPACK_IMPORTED_MODULE_2__["UserProfile"](username, [], 0, 0, currenttime.getTime(), dateString);
-            }
-            else {
-                _this.userProfile = response;
-            }
-            _this.saveProfileToDevice();
-            _this.initialLoading.next(false);
-        }));
-    };
+    Object.defineProperty(UserProfileService.prototype, "versionNumber", {
+        get: function () {
+            if (this.userProfile == undefined)
+                this.loadProfileFromDevice();
+            return this.userProfile.versionNumber;
+        },
+        set: function (versionNumber) {
+            this.userProfile.versionNumber = versionNumber;
+            this.saveProfileToDevice();
+        },
+        enumerable: true,
+        configurable: true
+    });
     UserProfileService.prototype.saveToServer = function () {
         this.loadProfileFromDevice();
         var userProfile = this.userProfile;
-        // const userID = 'dog';//userProfile.userID;
-        // const profileObj = {userID: userProfile}
-        //const recipes = this.recipeServices.getRecipes();
-        //console.log('pre-http call');
         this.http
             .post(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].userServer + '/setuserinfo', userProfile)
             .subscribe(function (response) {
@@ -15006,7 +15010,6 @@ var UserProfileService = /** @class */ (function () {
     };
     UserProfileService.prototype.saveProfileToDevice = function () {
         localStorage.setItem('userProfile', JSON.stringify(this.userProfile));
-        //temporarily commenting out 
         // maybe use this logic in case it's undefined:  https://stackoverflow.com/questions/37417012/unexpected-token-u-in-json-at-position-0
         localStorage.setItem('userProfileFixed', JSON.stringify(this.userProfileFixed));
     };
@@ -15023,24 +15026,32 @@ var UserProfileService = /** @class */ (function () {
         //temporarily commenting out below line (see other instance for more info)
         // this.userProfileFixed = JSON.parse(localStorage.getItem('userProfileFixed'));
     };
+    // below method can be called when a survey has been completed
+    // it does all the needed accounting
+    // adds current date to dict (and array)
     UserProfileService.prototype.surveyCompleted = function () {
+        console.log("user-profile.service.ts - surveyCompleted method - begin");
         var username = localStorage.getItem('loggedInUser'); //this.authService.loggedInUser.getValue()
         // check if survey has already been take for the current day or admin is contained in the username
-        console.log('surveyCompleted - before if loop');
+        // console.log('surveyCompleted - before if loop');
         if (!this.surveyTakenForCurrentDay() || username.indexOf('admin') >= 0) {
-            console.log('surveyCompleted - in if loop');
+            // console.log('surveyCompleted - in if loop');
             this.addDateTaken();
             this.addSurveyPoints();
-            this.calcDollars();
+            //this.calcDollars();
             this.userProfile.lastupdate = this.numericCurrenDateTime;
             var dateString = moment__WEBPACK_IMPORTED_MODULE_7__(this.userProfile.lastupdate).format('MMMM Do YYYY, h:mm:ss a Z');
             this.userProfile.readable_ts = dateString;
+            // console.log("in SurveyCompleted, AwardDollarDates: "+ localStorage.getItem("AwardDollarDates"));
+            this.userProfile.AwardDollarDates = JSON.parse(localStorage.getItem("AwardDollarDates")); //fetch AwardDollarDates from local storage and add it to the UserProfile
+            this.userProfile.dollars = JSON.parse(localStorage.getItem("AwardDollar"));
             this.saveProfileToDevice();
             this.saveToServer();
         }
     };
     Object.defineProperty(UserProfileService.prototype, "stringCurrenDate", {
         get: function () {
+            console.log("user-profile.service.ts - stringCurrenDate getter - begin");
             //shift hours back by 2, so that 2am, will register as 12am
             var hoursShift = 2;
             var currentDateTime = new Date();
@@ -15056,6 +15067,7 @@ var UserProfileService = /** @class */ (function () {
     });
     Object.defineProperty(UserProfileService.prototype, "numericCurrenDateTime", {
         get: function () {
+            console.log("user-profile.service.ts - numericCurrenDateTime getter - begin");
             //shift hours back by 2, so that 2am, will register as 12am
             var hoursShift = 2;
             var currentDateTime = new Date();
@@ -15068,38 +15080,40 @@ var UserProfileService = /** @class */ (function () {
         configurable: true
     });
     UserProfileService.prototype.addDateTaken = function () {
+        console.log("user-profile.service.ts - addDateTaken method - begin");
         this.loadProfileFromDevice();
         var stringCurrenDate = this.stringCurrenDate;
         this.userProfile.datesTaken.push(stringCurrenDate);
         this.userProfile.survey_data.daily_survey[stringCurrenDate] = 1;
         this.saveProfileToDevice();
     };
+    // boolean function, checks if survey has been taken for the current date.
     UserProfileService.prototype.surveyTakenForCurrentDay = function () {
+        console.log("user-profile.service.ts - surveyTakenForCurrentDay method - begin");
         this.loadProfileFromDevice();
-        //check if date already exists in array of dates, otherwise add the date to datesTaken array    
-        var hasMatch = false;
-        console.log("surveyTakenForCurrentDay - userProfile: " + this.userProfile);
-        console.log("surveyTakenForCurrentDay - userProfile: " + JSON.stringify("this.userProfile"));
-        console.log("surveyTakenForCurrentDay - this.userProfile.datesTaken.length: " + this.userProfile.datesTaken.length);
-        for (var i = 0; i < this.userProfile.datesTaken.length; i++) {
-            if (this.userProfile.datesTaken[i] == this.stringCurrenDate) {
-                hasMatch = true;
-                break;
-            }
+        //check if date already exists in dict of dates, otherwise add the date to dict    
+        // var hasMatch = false;
+        if (this.stringCurrenDate in this.userProfile.survey_data.daily_survey) {
+            return true;
         }
-        return hasMatch;
+        else {
+            return false;
+        }
     };
     UserProfileService.prototype.addSurveyPoints = function () {
+        console.log("user-profile.service.ts - addSurveyPoints method - begin");
         var pointsPerSurvey = 100;
         this.addPoints(pointsPerSurvey);
     };
     UserProfileService.prototype.addPoints = function (points) {
+        console.log("user-profile.service.ts - addPoints method - begin");
         this.userProfile.points += points;
         this.userProfile.survey_data.points += points;
         this.saveProfileToDevice();
         this.saveToServer();
     };
     UserProfileService.prototype.cheatPoints = function (points) {
+        console.log("user-profile.service.ts - cheatPoints method - begin");
         this.userProfile.points = points;
         this.userProfile.survey_data.points = points;
         this.saveProfileToDevice();

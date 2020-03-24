@@ -1,0 +1,44 @@
+{"frames": {
+
+"yslGtnS-0.png":
+{
+	"frame": {"x":199,"y":1,"w":41,"h":50},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":0,"w":41,"h":50},
+	"sourceSize": {"w":69,"h":50}
+},
+"yslGtnS-1.png":
+{
+	"frame": {"x":285,"y":1,"w":41,"h":27},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":17,"y":10,"w":41,"h":27},
+	"sourceSize": {"w":69,"h":50}
+},
+"yslGtnS-2.png":
+{
+	"frame": {"x":242,"y":1,"w":41,"h":43},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":26,"y":4,"w":41,"h":43},
+	"sourceSize": {"w":69,"h":50}
+},
+"yslGtnS.png":
+{
+	"frame": {"x":1,"y":1,"w":196,"h":50},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":0,"w":196,"h":50},
+	"sourceSize": {"w":207,"h":50}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Small White Owl Flying Left.png",
+	"format": "RGBA8888",
+	"size": {"w":327,"h":52},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:e7e764f76aa8d2f4902785e2453e53cc:1ad4e32f7f87470904977b103505bc5b:3d5843ac536930c0217f274739c96e8e$"
+}
+}
