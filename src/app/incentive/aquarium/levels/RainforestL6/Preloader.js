@@ -77,10 +77,13 @@ export class PreloaderRainforestL6 extends Phaser.State {
 		
 		//butter fly
 		this.game.load.image('flowerBush','assets/img/flower-bush.png');
-		this.game.load.atlasJSONArray('butterfly', 'assets/game/sprite/Butterfly.png', 'assets/game/sprite/Butterfly.json');
+		this.game.load.atlasJSONArray('butterfly', 'assets/game/sprite/butterfly.png', 'assets/game/sprite/butterfly.json');
         
-
-
+		this.game.load.spritesheet('rain', 'assets/game/sprite/rain.png', 17, 17)
+//
+		//this.load.image('snowgswitch', 'assets/img/snowglobe.png');
+		this.load.image('rain_start', 'assets/img/start_rain.png');
+		this.load.image('rain_end', 'assets/img/stop_rain.png');
 		//
 
 		

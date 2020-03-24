@@ -1,0 +1,36 @@
+{"frames": {
+
+"mountain_goat_all-33.png":
+{
+	"frame": {"x":1,"y":1,"w":38,"h":39},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":9,"w":38,"h":39},
+	"sourceSize": {"w":48,"h":48}
+},
+"mountain_goat_all-34.png":
+{
+	"frame": {"x":1,"y":83,"w":37,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":8,"w":37,"h":40},
+	"sourceSize": {"w":48,"h":48}
+},
+"mountain_goat_all-35.png":
+{
+	"frame": {"x":1,"y":42,"w":38,"h":39},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":9,"w":38,"h":39},
+	"sourceSize": {"w":48,"h":48}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "black_mountain_goat.png",
+	"format": "RGBA8888",
+	"size": {"w":40,"h":124},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:3914d2e027bb7503dea1fc7c0ebec311:654f7d1cd978c7de209117afc3fff4a6:44f00f99451ee32722045a6493dc11f0$"
+}
+}
