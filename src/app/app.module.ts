@@ -15,10 +15,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { NotificationModule } from './notification/notification.module';
 import { IncentiveModule } from './incentive/incentive.module';
 import { LifeInsightsModule } from './incentive/life-insights/life-insights.module';
-
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { SurveyModule } from './survey/survey.module';
-import { LoadingSpinnerComponent } from './ui/loading-spinner/loading-spinner.component';
 import { AquariumModule } from './incentive/aquarium/aquarium.module';
 import { FormsModule } from '@angular/forms';
 import { CheatpageComponent } from './incentive/aquarium/cheatpage/cheatpage.component';
@@ -28,7 +26,7 @@ import { AwardDollarService } from './incentive/award-money/award-dollar.service
 import { AppVersion } from '@ionic-native/app-version/ngx';
 
 @NgModule({
-  declarations: [AppComponent,LoadingSpinnerComponent,CheatpageComponent],
+  declarations: [AppComponent,CheatpageComponent],
   entryComponents: [CheatpageComponent],
   imports: [
     BrowserModule, 
