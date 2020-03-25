@@ -4765,7 +4765,7 @@ var AppComponent = /** @class */ (function () {
             //this.statusBar.backgroundColorByHexString('#ffffff');
             if (_this.platform.is('android')) {
                 _this.statusBar.styleLightContent();
-                _this.statusBar.backgroundColorByHexString("#303F9F");
+                _this.statusBar.backgroundColorByHexString("#004166");
             }
             _this.splashScreen.hide();
             _this.oneSignalService.initOneSignal();
@@ -5746,7 +5746,7 @@ var DemoAquariumComponent = /** @class */ (function () {
                 reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'You earned 1 dollar for completing surveys 3-days in a row' });
         }
         //get if fish is alotted
-        var previous_point = currentPoints - 100;
+        var previous_point = currentPoints - 60;
         fetch('../../../assets/game/fishpoints.json').then(function (res) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
             var fish_data, img, header, text, i;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
@@ -5762,6 +5762,7 @@ var DemoAquariumComponent = /** @class */ (function () {
                                 reinforcements.push({ 'img': img, 'header': header, 'text': text });
                             }
                         }
+                        console.log(JSON.stringify(reinforcements));
                         if (reinforcements.length > 0) //means some rainforcement was provided.
                             this.presentModal(reinforcements);
                         return [2 /*return*/];
@@ -5880,7 +5881,7 @@ var DemoAquariumComponent = /** @class */ (function () {
             seaLevelL4.setTotalPoints(this.totalPoints);
             this.game.state.add('SeaLevelL4', seaLevelL4);
         }
-        else if (this.totalPoints >= 2120 && this.totalPoints < 3000) {
+        else if (this.totalPoints >= 2120 && this.totalPoints < 3020) {
             this.game.state.add('Boot', _levels_TundraLevelL5_Boot__WEBPACK_IMPORTED_MODULE_17__["BootTundraL5"]);
             this.pickedGame = "TundraLevel1";
             var preLoader = new _levels_TundraLevelL5_Preloader__WEBPACK_IMPORTED_MODULE_18__["PreloaderTundraL5"]();
@@ -5889,7 +5890,7 @@ var DemoAquariumComponent = /** @class */ (function () {
             level5.setTotalPoints(this.totalPoints);
             this.game.state.add('TundraLevel1', level5);
         }
-        else if (this.totalPoints >= 3000) {
+        else if (this.totalPoints >= 3020) {
             this.game.state.add('Boot', _levels_RainforestL6_Boot__WEBPACK_IMPORTED_MODULE_20__["BootRainforestL6"]);
             this.pickedGame = "RainforestLevel6";
             var preLoader = new _levels_RainforestL6_Preloader__WEBPACK_IMPORTED_MODULE_21__["PreloaderRainforestL6"]();
@@ -7755,6 +7756,8 @@ class GameRainforestL6 extends Phaser.State {
         this.owl;
         this.koala;
         this.corn;
+        this.emitter;
+        this.rainingswitch
     }
 
     //gets executed after preload
@@ -7807,13 +7810,11 @@ class GameRainforestL6 extends Phaser.State {
         this.animateMonkey();
 
 
-        //add butter fly
-        this.animateButterFly();
-
+        
         this.animatePegions();
         this.addAnimals();
 
-        
+        //this.animateRain();
 
         //--- 
         var fish_progress = this.add.image(175, 50, 'clownfish_grey');
@@ -7846,6 +7847,8 @@ class GameRainforestL6 extends Phaser.State {
         this.game.onPause.add(this.yourGamePausedFunc, this);
         this.game.onResume.add(this.yourGameResumedFunc, this);
 
+
+
     }
 
     addAnimals(){
@@ -7856,49 +7859,75 @@ class GameRainforestL6 extends Phaser.State {
         var data = phaserJSON;
         var survey_string = "";
         var current_points = this.totalPoints;
+
+
+        //drawing order, initialize to zero
+        var drawing_order = ["Butterfly", "Jaguar", "Ostrich", "Squirrel", "Koala", "Venus Flytrap", "Lion", "Triceratops", "Macaw", "Duck", "Owl", "Sparrow", "Vulture", "Rain"];
+        var drawing_order_enabled = {};
+        for(var j=0; j < drawing_order.length; j++)
+            drawing_order_enabled[drawing_order[j]] = 0;
+
+        //
         for(var i = 0; i < data.length; i++) {
             if(current_points >= data[i].points){
+                drawing_order_enabled[data[i].name.valueOf()] = 1;
+            }
+        }
 
-                //nemo
-                if(data[i].name.valueOf() === "Squirrel")
+        for(var key in drawing_order_enabled) {
+
+            //means it is not included
+            if(drawing_order_enabled[key] == 0)
+                continue;
+
+
+            if(drawing_order_enabled[key] == 1){
+
+                //
+                if(key === "Squirrel")
                     this.animateSquirrel();
                 
-                if(data[i].name.valueOf() === "Jaguar")
+                if(key === "Jaguar")
                     this.animateJaguar();
 
-                if(data[i].name.valueOf() === "Venus Flytrap")
+                if(key === "Venus Flytrap")
                     this.animateCarnivorePlant();
                 
-                if(data[i].name.valueOf() === "Lion")
+                if(key === "Lion")
                     this.animateLionMain();
 
-                if(data[i].name.valueOf() === "Ostrich")
+                if(key === "Ostrich")
                     this.animateOstrich();
 
-                if(data[i].name.valueOf() === "Triceratops")
+                if(key === "Triceratops")
                     this.animateTriceratopsMain();
 
                 //if(data[i].name.valueOf() === "Corn")
                 //    this.animateCornMain();    
 
-                if(data[i].name.valueOf() === "Macaw")
+                if(key === "Macaw")
                     this.animateMacaw();               
 
-                if(data[i].name.valueOf() === "Duck")
+                if(key === "Duck")
                     this.animateGooseDuck(); 
 
-                if(data[i].name.valueOf() === "Owl")
+                if(key === "Owl")
                     this.animateOwl();
 
-                if(data[i].name.valueOf() === "Sparrow")
+                if(key === "Sparrow")
                     this.animateSparrow();
 
-                if(data[i].name.valueOf() === "Vulture")
+                if(key === "Vulture")
                     this.animateVulture();
 
-                if(data[i].name.valueOf() === "Koala")
+                if(key === "Koala")
                     this.animateKoalaMain();
-              
+
+                if(key === "Butterfly")
+                    this.animateButterFly();
+
+                if(key === "Rain")
+                    this.animateRain();
             }
         }
 
@@ -7924,6 +7953,47 @@ class GameRainforestL6 extends Phaser.State {
 
         console.log("Width, " + rect.width  + "," + this.progress_sprite.width);
         this.progress_sprite.crop(rect);
+    }
+
+    animateRain(){
+        //console.log("snow button loaded");
+        this.rainingswitch = this.add.image(this.game.width - 100, 10, 'rain_start');
+        this.rainingswitch.scale.setTo(0.15, 0.15);
+        this.rainingswitch.inputEnabled = true;
+        this.rainingswitch.events.onInputDown.addOnce(this.startraining, this);
+    }
+
+    startraining(){
+        console.log("start snowing");
+
+        //var mid_emitter;
+        //var back_emitter;
+
+        this.rainingswitch.loadTexture("rain_end",0);
+        
+        //this.back_emitter = this.game.add.emitter(this.game.world.centerX, -32, 600);
+        this.emitter = this.game.add.emitter(this.game.world.centerX, -32, 600);
+
+        this.emitter.width = this.game.world.width;
+        // emitter.angle = 30; // uncomment to set an angle for the rain.
+
+        this.emitter.makeParticles('rain');
+        this.emitter.minParticleScale = 0.1;
+        this.emitter.maxParticleScale = 0.5;
+        this.emitter.setYSpeed(300, 500);
+        this.emitter.setXSpeed(-5, 5);
+        this.emitter.minRotation = 0;
+        this.emitter.maxRotation = 0;
+        this.emitter.start(false, 1600, 5, 0);
+
+        this.rainingswitch.events.onInputDown.addOnce(this.stopraining, this);
+    }
+
+    stopraining(){
+
+        this.rainingswitch.loadTexture("rain_start",0);
+        this.emitter.destroy();
+        this.rainingswitch.events.onInputDown.addOnce(this.startraining, this);
     }
 
     animateButterFly(){
@@ -8109,7 +8179,7 @@ class GameRainforestL6 extends Phaser.State {
         this.vulture.anchor.setTo(.5,.5);
         this.vulture.animations.add('swim2');
         this.vulture.animations.play('swim2', 5, true);
-        this.vulture.scale.setTo(0.15, 0.15);
+        this.vulture.scale.setTo(0.12, 0.12);
         this.vulture.name = "vulture";
         this.gobothways(this.vulture);
     }
@@ -8428,10 +8498,13 @@ class PreloaderRainforestL6 extends Phaser.State {
 		
 		//butter fly
 		this.game.load.image('flowerBush','assets/img/flower-bush.png');
-		this.game.load.atlasJSONArray('butterfly', 'assets/game/sprite/Butterfly.png', 'assets/game/sprite/Butterfly.json');
+		this.game.load.atlasJSONArray('butterfly', 'assets/game/sprite/butterfly.png', 'assets/game/sprite/butterfly.json');
         
-
-
+		this.game.load.spritesheet('rain', 'assets/game/sprite/rain.png', 17, 17)
+//
+		//this.load.image('snowgswitch', 'assets/img/snowglobe.png');
+		this.load.image('rain_start', 'assets/img/start_rain.png');
+		this.load.image('rain_end', 'assets/img/stop_rain.png');
 		//
 
 		
@@ -10740,11 +10813,12 @@ class GameTundraL5 extends Phaser.State {
         */
 
         //
+        /*
         this.snowgswitch = this.add.image(5, 70, 'snowgswitch');
         this.snowgswitch.scale.setTo(0.15, 0.15);
         this.snowgswitch.inputEnabled = true;
         this.snowgswitch.events.onInputDown.addOnce(this.startsnowing, this);
-
+        */
         
 
         //
@@ -10753,14 +10827,17 @@ class GameTundraL5 extends Phaser.State {
         this.game.input.touch.preventDefault = false;
 
 
-
+        //this.animateDuck();
+        //this.animateSnowOwl();
+        
+        
 
         //
         this.addAnimals();
 
         //
         var treasure = this.add.image(this.game.width-150, this.height-125, 'treasure_tundra');
-        treasure.scale.setTo(-0.16, 0.15);
+        treasure.scale.setTo(-0.07, 0.07);
         treasure.inputEnabled = true;
         treasure.events.onInputDown.add(this.showunlockables, this);
 
@@ -10778,6 +10855,8 @@ class GameTundraL5 extends Phaser.State {
 
         //var mid_emitter;
         //var back_emitter;
+
+        this.snowgswitch.loadTexture("snow_end",0);
         
         this.back_emitter = this.game.add.emitter(this.game.world.centerX, -32, 600);
         this.back_emitter.makeParticles('snowflakes', [0, 1, 2, 3, 4, 5]);
@@ -10806,6 +10885,8 @@ class GameTundraL5 extends Phaser.State {
     }
 
     stopsnowing(){
+
+        this.snowgswitch.loadTexture("snow_start",0);
         this.back_emitter.destroy();
         this.mid_emitter.destroy();
         this.snowgswitch.events.onInputDown.addOnce(this.startsnowing, this);
@@ -10822,51 +10903,90 @@ class GameTundraL5 extends Phaser.State {
         var data = phaserJSON;
         var survey_string = "";
         var current_points = this.totalPoints;
+
+
+        //drawing order, initialize to zero
+        var drawing_order = ["Brown Bear", "Grey Wolf", "Hare", "Reindeer", "Yeti", "Grey Husky", "Penguin", "Pingu, the Penguin", "Mountain goat", "Seal", "Ducks", "Snow", "Snow Bunting", "Snowy Owl", "Blue Jay"];
+        var drawing_order_enabled = {};
+        for(var j=0; j < drawing_order.length; j++)
+            drawing_order_enabled[drawing_order[j]] = 0;
+
+
+        //
         for(var i = 0; i < data.length; i++) {
             if(current_points >= data[i].points){
+                drawing_order_enabled[data[i].name.valueOf()] = 1;
+            }
+        }
+        
 
+        for(var key in drawing_order_enabled) {
+
+            //means it is not included
+            if(drawing_order_enabled[key] == 0)
+                continue;
+
+
+            if(drawing_order_enabled[key] == 1){
 
                 //nemo
-                if(data[i].name.valueOf() === "Penguin")
+                if(key === "Penguin")
                     this.animatePenguin();
 
-                if(data[i].name.valueOf() === "Seal")
+                if(key === "Seal")
                     this.animateSealion();
 
-                if(data[i].name.valueOf() === "Grey Wolf")
+                if(key === "Grey Wolf")
                     this.animateWolf();
 
-                if(data[i].name.valueOf() === "Brown Bear")
+                if(key === "Brown Bear")
                     this.animateBear(); 
 
-                if(data[i].name.valueOf() === "Snow Bunting")
+                if(key === "Snow Bunting")
                     this.animateBirds();
 
-                if(data[i].name.valueOf() === "Hare")
+                if(key === "Hare")
                     this.animateHare();
 
-                if(data[i].name.valueOf() === "Pingu, the Penguin")
+                if(key === "Pingu, the Penguin")
                     this.animatePingu();    
 
                 //if(data[i].name.valueOf() === "Coyote")
                 //    this.animateCoyote();                
 
-                if(data[i].name.valueOf() === "White Husky")
-                    this.animateWhiteHusky();  
+                //if(data[i].name.valueOf() === "White Husky")
+                //    this.animateWhiteHusky();  
 
-                if(data[i].name.valueOf() === "Grey Husky")
+
+                if(key === "Snow")
+                   this.animateSnow();  
+
+
+                if(key === "Grey Husky")
                     this.animateBrwonHusky();  
 
-                if(data[i].name.valueOf() === "Yeti")
+                if(key === "Yeti")
                     this.animateYeti();  
 
                  
 
-                if(data[i].name.valueOf() === "Reindeer")
+                if(key === "Reindeer")
                     this.animateReindeer();
                 
-                if(data[i].name.valueOf() === "Blue Jay")
-                    this.animateBlueJay()
+                
+
+                if(key === "Snowy Owl")
+                    this.animateSnowOwl();
+
+
+                if(key === "Ducks")
+                    this.animateDuck();
+
+                if(key === "Mountain goat")
+                    this.animateMountainGoat();
+
+                if(key === "Blue Jay")
+                    this.animateBlueJay();
 
                /* 
                if(data[i].name.valueOf() === "Rabbit")
@@ -10898,6 +11018,16 @@ class GameTundraL5 extends Phaser.State {
         console.log("Width, " + rect.width  + "," + this.progress_sprite.width);
         this.progress_sprite.crop(rect);
     }
+
+    animateSnow(){
+        //console.log("snow button loaded");
+        this.snowgswitch = this.add.image(5, 70, 'snow_start');
+        this.snowgswitch.scale.setTo(0.15, 0.15);
+        this.snowgswitch.inputEnabled = true;
+        this.snowgswitch.events.onInputDown.addOnce(this.startsnowing, this);
+    }
+
+   
 
     //-- Add Penguin
     animatePenguin(){
@@ -10982,6 +11112,181 @@ class GameTundraL5 extends Phaser.State {
 
     }
 
+    //
+    animateDuck(){
+        this.duck = this.add.sprite(this.game.width+15, this.game.height-20, 'duck');
+        this.duck.anchor.setTo(.5,.5);
+        this.duck.animations.add('swim2');
+        this.duck.animations.play('swim2', 3, true);
+        this.duck.scale.setTo(1, 1);
+        this.duck.name = "duck";
+        this.gobothways(this.duck);
+
+        this.duck2 = this.add.sprite(this.game.width+55, this.game.height-20, 'duck');
+        this.duck2.anchor.setTo(.5,.5);
+        this.duck2.animations.add('swim2');
+        this.duck2.animations.play('swim2', 3, true);
+        this.duck2.scale.setTo(1, 1);
+        this.duck2.name = "duck2";
+        this.gobothways(this.duck2);
+    }
+
+    animateBearCub(){
+        //console.log("snow button loaded");
+        this.polarBearCub = this.add.sprite(this.game.width+15, this.game.height - 290, 'polar_bear_cub');
+        this.polarBearCub.anchor.setTo(.5,.5);
+        this.polarBearCub.animations.add('swim2');
+        this.polarBearCub.animations.play('swim2', 3, true);
+        this.polarBearCub.scale.setTo(-0.8, 0.8);
+        this.polarBearCub.name = "polarBearCub";
+        this.gobothways(this.polarBearCub);
+    }
+
+
+
+
+    //
+    animateSnowOwl(){
+        //
+        this.black_tundra_owl = this.add.sprite(this.game.width-130, 195, 'black_tundra_owl');
+        this.black_tundra_owl.anchor.setTo(.5,.5);
+        this.black_tundra_owl.animations.add('swim2');
+        this.black_tundra_owl.animations.play('swim2', 5, true);
+        this.black_tundra_owl.scale.setTo(0.9, 0.9);
+        this.black_tundra_owl.name = "black_tundra_owl";
+        this.gobothways(this.black_tundra_owl);
+
+
+        this.brown_tundra_owl = this.add.sprite(this.game.width-100, 200, 'brown_tundra_owl');
+        this.brown_tundra_owl.anchor.setTo(.5,.5);
+        this.brown_tundra_owl.animations.add('swim2');
+        this.brown_tundra_owl.animations.play('swim2', 5, true);
+        this.brown_tundra_owl.scale.setTo(0.9, 0.9);
+        this.brown_tundra_owl.name = "brown_tundra_owl";
+        this.gobothways(this.brown_tundra_owl);
+
+
+        this.grey_tundra_owl = this.add.sprite(this.game.width-160, 205, 'grey_tundra_owl');
+        this.grey_tundra_owl.anchor.setTo(.5,.5);
+        this.grey_tundra_owl.animations.add('swim2');
+        this.grey_tundra_owl.animations.play('swim2', 5, true);
+        this.grey_tundra_owl.scale.setTo(0.9, 0.9);
+        this.grey_tundra_owl.name = "grey_tundra_owl";
+        this.gobothways(this.grey_tundra_owl);
+
+        /*
+        this.light_brown_tundra_owl = this.add.sprite(this.game.width-170, 180, 'light_brown_tundra_owl');
+        this.light_brown_tundra_owl.anchor.setTo(.5,.5);
+        this.light_brown_tundra_owl.animations.add('swim2');
+        this.light_brown_tundra_owl.animations.play('swim2', 5, true);
+        this.light_brown_tundra_owl.scale.setTo(0.9, 0.9);
+        this.light_brown_tundra_owl.name = "light_brown_tundra_owl";
+        this.gobothways(this.light_brown_tundra_owl);
+        */
+
+        this.white_tundra_owl = this.add.sprite(this.game.width-200, 185, 'white_tundra_owl');
+        this.white_tundra_owl.anchor.setTo(.5,.5);
+        this.white_tundra_owl.animations.add('swim2');
+        this.white_tundra_owl.animations.play('swim2', 5, true);
+        this.white_tundra_owl.scale.setTo(0.9, 0.9);
+        this.white_tundra_owl.name = "white_tundra_owl";
+        this.gobothways(this.white_tundra_owl);
+
+    }
+
+    //
+    animateMountainGoat(){
+        var starting_pos_x, starting_pos_y, ending_pos_x, ending_pos_y, scale_x, scale_y;
+        
+        
+        //---- sea lion silver
+        starting_pos_x = this.game.width/2-60;
+        starting_pos_y = this.game.height - 185 + 40;
+        ending_pos_x = this.game.width/2-30;
+        ending_pos_y = this.game.height - 185 + 40;
+        scale_x = 1.3;
+        scale_y = 1.3;
+
+        this.black_mountain_goat = this.add.sprite(starting_pos_x, starting_pos_y, 'black_mountain_goat');
+        this.black_mountain_goat.anchor.setTo(.5,.5);
+        this.black_mountain_goat.animations.add('swim2');
+        this.black_mountain_goat.animations.play('swim2', 3, true);
+        this.black_mountain_goat.scale.setTo(scale_x, scale_y);
+        this.black_mountain_goat.name = "black_mountain_goat";
+        var t = this.add.tween(this.black_mountain_goat).to({ x: ending_pos_x, y: ending_pos_y}, 9000, Phaser.Easing.Quadratic.InOut, true, 0);
+        t.onComplete.add(function(){this.black_mountain_goat.animations.stop(null, true);}, this);
+
+
+        starting_pos_x = this.game.width-10;
+        starting_pos_y = this.game.height - 205 + 40;
+        ending_pos_x = this.game.width/2+50;
+        ending_pos_y = this.game.height - 205 + 40;
+        scale_x = -1.5;
+        scale_y = 1.5;
+
+        this.white_mountain_goat = this.add.sprite(starting_pos_x, starting_pos_y, 'white_mountain_goat');
+        this.white_mountain_goat.anchor.setTo(.5,.5);
+        this.white_mountain_goat.animations.add('swim2');
+        this.white_mountain_goat.animations.play('swim2', 3, true);
+        this.white_mountain_goat.scale.setTo(scale_x, scale_y);
+        this.white_mountain_goat.name = "white_mountain_goat";
+        t = this.add.tween(this.white_mountain_goat).to({ x: ending_pos_x, y: ending_pos_y}, 15000, Phaser.Easing.Quadratic.InOut, true, 0);
+        t.onComplete.add(function(){this.white_mountain_goat.animations.stop(null, true);}, this);
+
+
+        starting_pos_x = this.game.width-10;
+        starting_pos_y = this.game.height - 175 + 40;
+        ending_pos_x = this.game.width/2+30;
+        ending_pos_y = this.game.height - 175 + 40;
+        scale_x = -1.2;
+        scale_y = 1.2;
+
+        this.brown_mountain_goat = this.add.sprite(starting_pos_x, starting_pos_y, 'brown_mountain_goat');
+        this.brown_mountain_goat.anchor.setTo(.5,.5);
+        this.brown_mountain_goat.animations.add('swim2');
+        this.brown_mountain_goat.animations.play('swim2', 3, true);
+        this.brown_mountain_goat.scale.setTo(scale_x, scale_y);
+        this.brown_mountain_goat.name = "brown_mountain_goat";
+        t = this.add.tween(this.brown_mountain_goat).to({ x: ending_pos_x, y: ending_pos_y}, 9000, Phaser.Easing.Quadratic.InOut, true, 0);
+        t.onComplete.add(function(){this.brown_mountain_goat.animations.stop(null, true);}, this);
+
+        /*
+        //---- sea lion brown
+        starting_pos_x = this.game.width+25;
+        starting_pos_y = this.game.height - 135;
+        ending_pos_x = this.game.width-45;
+        ending_pos_y = this.game.height - 135;
+        scale_x = 1.3;
+        scale_y = 1.3;
+
+        this.sealion_brown = this.add.sprite(starting_pos_x, starting_pos_y, 'sea_lion_brown');
+        this.sealion_brown.anchor.setTo(.5,.5);
+        this.sealion_brown.animations.add('swim2');
+        this.sealion_brown.animations.play('swim2', 5, true);
+        this.sealion_brown.scale.setTo(scale_x, scale_y);
+        this.sealion_brown.name = "sea_lion_brown";
+        var t = this.add.tween(this.sealion_brown).to({x: ending_pos_x, y: ending_pos_y}, 5000, Phaser.Easing.Quadratic.InOut, true, 0);
+        t.onComplete.add(function(){this.sealion_brown.animations.stop(null, true);}, this);
+
+        //---- sea lion pink
+        starting_pos_x = this.game.width+125;
+        starting_pos_y = this.game.height - 85;
+        ending_pos_x = this.game.width-25;
+        ending_pos_y = this.game.height - 85;
+        scale_x = 0.8;
+        scale_y = 0.8;
+
+        this.sealion_pink = this.add.sprite(starting_pos_x, starting_pos_y, 'sea_lion_pink');
+        this.sealion_pink.anchor.setTo(.5,.5);
+        this.sealion_pink.animations.add('swim2');
+        this.sealion_pink.animations.play('swim2', 5, true);
+        this.sealion_pink.scale.setTo(scale_x, scale_y);
+        this.sealion_pink.name = "sea_lion_pink";
+        var t = this.add.tween(this.sealion_pink).to({x: ending_pos_x, y: ending_pos_y}, 5000, Phaser.Easing.Quadratic.InOut, true, 0);
+        t.onComplete.add(function(){this.sealion_pink.animations.stop(null, true);}, this);
+        */
+    }
+
     //--- add wolf animation.
     animateWolf(){
 
@@ -11013,20 +11318,23 @@ class GameTundraL5 extends Phaser.State {
         this.brown_bear.scale.setTo(-.15, .15);
         this.brown_bear.name = "brown_bear";
         this.gobothways(this.brown_bear);
+
+        this.animateBearCub();
     }
 
+    
+
     //
-    animateWhiteHusky(){
+    animateBrwonHusky(){
+
         this.white_husky = this.add.sprite(65, this.game.height - 215, 'white_husky');
         this.white_husky.anchor.setTo(.5,.5);
         this.white_husky.animations.add('swim2');
         this.white_husky.animations.play('swim2',15, true);
         this.white_husky.scale.setTo(0.35, 0.35);
         this.white_husky.name = "white_husky";
-    }
 
-    //
-    animateBrwonHusky(){
+
         this.white_husky = this.add.sprite(65, this.game.height - 185, 'grey_husky');
         this.white_husky.anchor.setTo(.5,.5);
         this.white_husky.animations.add('swim2');
@@ -11114,10 +11422,10 @@ class GameTundraL5 extends Phaser.State {
     
     //
     animateBlueJay(){
-        this.blue_jay = this.add.sprite(this.game.width-50, 145, 'blue_jay');
+        this.blue_jay = this.add.sprite(this.game.width-50, 135, 'blue_jay');
         this.blue_jay.anchor.setTo(.5,.5);
         this.blue_jay.animations.add('swim2');
-        this.blue_jay.animations.play('swim2', 5, true);
+        this.blue_jay.animations.play('swim2', 10, true);
         this.blue_jay.scale.setTo(0.6, 0.6);
         this.blue_jay.name = "blue_jay";
         //this.pegions.body.velocity.x = -20;
@@ -11369,16 +11677,36 @@ class PreloaderTundraL5 extends Phaser.State {
 		this.game.load.atlasJSONArray('brown_bear', 'assets/game/sprite/brown_bear.png', 'assets/game/sprite/brown_bear.json');
 		this.game.load.atlasJSONArray('rabbit', 'assets/game/sprite/rabbit.png', 'assets/game/sprite/rabbit.json');
 		this.game.load.atlasJSONArray('reindeer', 'assets/game/sprite/reindeer.png', 'assets/game/sprite/reindeer.json');
-		
 
 		//
-		this.load.image('treasure_tundra', 'assets/img/igloo_tresurechest.png');
+		this.game.load.atlasJSONArray('duck', 'assets/game/sprite/Duck.png', 'assets/game/sprite/Duck.json');
+		this.game.load.atlasJSONArray('polar_bear_cub', 'assets/game/sprite/PolarBear.png', 'assets/game/sprite/PolarBear.json');
+
+
+		//
+		this.game.load.atlasJSONArray('black_tundra_owl', 'assets/game/sprite/black_tundra_owl.png', 'assets/game/sprite/black_tundra_owl.json');
+		this.game.load.atlasJSONArray('brown_tundra_owl', 'assets/game/sprite/brown_tundra_owl.png', 'assets/game/sprite/brown_tundra_owl.json');
+		this.game.load.atlasJSONArray('grey_tundra_owl', 'assets/game/sprite/grey_tundra_owl.png', 'assets/game/sprite/grey_tundra_owl.json');
+		//this.game.load.atlasJSONArray('light_brown_tundra_owl', 'assets/game/sprite/light_brown_tundra_owl.png', 'assets/game/sprite/light_brown_tundra_owl.json');
+		this.game.load.atlasJSONArray('white_tundra_owl', 'assets/game/sprite/white_tundra_owl.png', 'assets/game/sprite/white_tundra_owl.json');
+
+
+		//mountain goat
+		this.game.load.atlasJSONArray('black_mountain_goat', 'assets/game/sprite/black_mountain_goat.png', 'assets/game/sprite/black_mountain_goat.json');
+		this.game.load.atlasJSONArray('brown_mountain_goat', 'assets/game/sprite/brown_mountain_goat.png', 'assets/game/sprite/brown_mountain_goat.json');
+		this.game.load.atlasJSONArray('white_mountain_goat', 'assets/game/sprite/white_mountain_goat.png', 'assets/game/sprite/white_mountain_goat.json');
+
+
+		//
+		this.load.image('treasure_tundra', 'assets/img/tundra_treasure_chest.png');
 
 		//
 		this.load.image('yeti_standing', 'assets/game/sprite/yeti_standing.png');
 
 		//
-		this.load.image('snowgswitch', 'assets/img/snowglobe.png');
+		//this.load.image('snowgswitch', 'assets/img/snowglobe.png');
+		this.load.image('snow_start', 'assets/img/start_snow.png');
+		this.load.image('snow_end', 'assets/img/stop_snow.png');
 
 		//
 		this.game.load.spritesheet('snowflakes', 'assets/game/sprite/snowflakes.png', 17, 17);
@@ -11500,19 +11828,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/google-analytics/ngx */ "./node_modules/@ionic-native/google-analytics/ngx/index.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
+/* harmony import */ var src_app_storage_aws_s3_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/storage/aws-s3.service */ "./src/app/storage/aws-s3.service.ts");
+
 
 
 
 
 
 var AwardAltruismComponent = /** @class */ (function () {
-    function AwardAltruismComponent(ga, route, userProfileService, router) {
+    function AwardAltruismComponent(ga, route, userProfileService, awsS3Service, router) {
         var _this = this;
         this.ga = ga;
         this.route = route;
         this.userProfileService = userProfileService;
+        this.awsS3Service = awsS3Service;
         this.router = router;
         this.reinforcementObj = {};
+        this.reinforcement_data = {};
         this.HeartsBackground = {
             heartHeight: 60,
             heartWidth: 64,
@@ -11670,6 +12002,7 @@ var AwardAltruismComponent = /** @class */ (function () {
             if (_this.router.getCurrentNavigation().extras.state) {
                 _this.date = _this.router.getCurrentNavigation().extras.state.date;
                 _this.reinforcementObj['prob'] = _this.router.getCurrentNavigation().extras.state.prob;
+                _this.reinforcement_data = _this.router.getCurrentNavigation().extras.state.reinforcement_data;
                 console.log("Inside AwardAltruism, date is: " + _this.date + " prob is: " + _this.reinforcementObj['prob']);
             }
         });
@@ -11707,21 +12040,26 @@ var AwardAltruismComponent = /** @class */ (function () {
         console.log('picked_altruism_image: ' + JSON.stringify(picked_altruism_image));
         this.whichImage = "./assets/altruism/" + picked_altruism_image[0]["filename"];
         this.reinforcementObj['reward_img_link'] = "/altruism/" + picked_altruism_image[0]["filename"];
+        this.reinforcement_data['reward_img_link'] = "/altruism/" + picked_altruism_image[0]["filename"];
         setTimeout(function (e) { return _this.drawImageOnCanvas(_this.whichImage); }, 200);
     };
     AwardAltruismComponent.prototype.ratingChanged = function (rating) {
         if (rating == 0) {
             console.log("thumbs down");
             this.reinforcementObj['Like'] = "No";
+            this.reinforcement_data['Like'] = "No";
             window.localStorage.setItem("Like", "No");
+            this.awsS3Service.upload('reinforcement_data', this.reinforcement_data);
         }
         else {
             console.log("thumbs up");
             this.reinforcementObj['Like'] = "Yes";
+            this.reinforcement_data['Like'] = "Yes";
             window.localStorage.setItem("Like", "Yes");
+            this.awsS3Service.upload('reinforcement_data', this.reinforcement_data);
         }
         //this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);    
-        window.location.href = '/home';
+        this.router.navigate(['home']);
     };
     /**
       * Shuffles array in place if it is not already shuffled
@@ -11788,6 +12126,7 @@ var AwardAltruismComponent = /** @class */ (function () {
         { type: _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleAnalytics"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
         { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__["UserProfileService"] },
+        { type: src_app_storage_aws_s3_service__WEBPACK_IMPORTED_MODULE_5__["AwsS3Service"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
     ]; };
     AwardAltruismComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -11799,6 +12138,7 @@ var AwardAltruismComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleAnalytics"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
             src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__["UserProfileService"],
+            src_app_storage_aws_s3_service__WEBPACK_IMPORTED_MODULE_5__["AwsS3Service"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], AwardAltruismComponent);
     return AwardAltruismComponent;
@@ -11834,6 +12174,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/google-analytics/ngx */ "./node_modules/@ionic-native/google-analytics/ngx/index.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
+/* harmony import */ var src_app_storage_aws_s3_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/storage/aws-s3.service */ "./src/app/storage/aws-s3.service.ts");
+
 
 
 
@@ -11841,13 +12183,15 @@ __webpack_require__.r(__webpack_exports__);
 
 var AwardMemesComponent = /** @class */ (function () {
     //src="{{whichImage}}"
-    function AwardMemesComponent(ga, route, userProfileService, router) {
+    function AwardMemesComponent(ga, route, userProfileService, awsS3Service, router) {
         var _this = this;
         this.ga = ga;
         this.route = route;
         this.userProfileService = userProfileService;
+        this.awsS3Service = awsS3Service;
         this.router = router;
         this.reinforcementObj = {};
+        this.reinforcement_data = {};
         this.viewWidth = 512;
         this.viewHeight = 350;
         this.timeStep = (1 / 60);
@@ -11858,6 +12202,7 @@ var AwardMemesComponent = /** @class */ (function () {
             if (_this.router.getCurrentNavigation().extras.state) {
                 _this.date = _this.router.getCurrentNavigation().extras.state.date;
                 _this.reinforcementObj['prob'] = _this.router.getCurrentNavigation().extras.state.prob;
+                _this.reinforcement_data = _this.router.getCurrentNavigation().extras.state.reinforcement_data;
                 console.log("Inside AwardMemes, date is: " + _this.date + " prob is: " + _this.reinforcementObj['prob']);
             }
         });
@@ -11899,21 +12244,26 @@ var AwardMemesComponent = /** @class */ (function () {
         //console.log('picked_meme: ' + JSON.stringify(picked_meme));
         this.whichImage = "./assets/memes/" + picked_meme[0]["filename"];
         this.reinforcementObj['reward_img_link'] = "/memes/" + picked_meme[0]["filename"];
+        this.reinforcement_data['reward_img_link'] = "/memes/" + picked_meme[0]["filename"];
         setTimeout(function (e) { return _this.drawImageOnCanvas(_this.whichImage); }, 200);
     };
     AwardMemesComponent.prototype.ratingChanged = function (rating) {
         if (rating == 0) {
-            console.log("thumbs down");
+            //console.log("thumbs down");
             this.reinforcementObj['Like'] = "No";
+            this.reinforcement_data['Like'] = "No";
             window.localStorage.setItem("Like", "No");
+            this.awsS3Service.upload('reinforcement_data', this.reinforcement_data);
         }
         else {
-            console.log("thumbs up");
+            //console.log("thumbs up");
             this.reinforcementObj['Like'] = "Yes";
+            this.reinforcement_data['Like'] = "Yes";
             window.localStorage.setItem("Like", "Yes");
+            this.awsS3Service.upload('reinforcement_data', this.reinforcement_data);
         }
         //this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);    
-        window.location.href = '/home';
+        this.router.navigate(['home']);
     };
     /**
      * Shuffles array in place if it is not already shuffled
@@ -12091,6 +12441,7 @@ var AwardMemesComponent = /** @class */ (function () {
         { type: _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleAnalytics"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
         { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__["UserProfileService"] },
+        { type: src_app_storage_aws_s3_service__WEBPACK_IMPORTED_MODULE_5__["AwsS3Service"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
     ]; };
     AwardMemesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -12104,6 +12455,7 @@ var AwardMemesComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleAnalytics"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
             src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__["UserProfileService"],
+            src_app_storage_aws_s3_service__WEBPACK_IMPORTED_MODULE_5__["AwsS3Service"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], AwardMemesComponent);
     return AwardMemesComponent;
@@ -13086,8 +13438,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
 /* harmony import */ var _storage_base_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./storage-base.service */ "./src/app/storage/storage-base.service.ts");
 /* harmony import */ var _encrdecrservice_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./encrdecrservice.service */ "./src/app/storage/encrdecrservice.service.ts");
-/* harmony import */ var aws_sdk__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! aws-sdk */ "./node_modules/aws-sdk/lib/browser.js");
-/* harmony import */ var aws_sdk__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(aws_sdk__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _network_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./network.service */ "./src/app/storage/network.service.ts");
+/* harmony import */ var aws_sdk__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! aws-sdk */ "./node_modules/aws-sdk/lib/browser.js");
+/* harmony import */ var aws_sdk__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(aws_sdk__WEBPACK_IMPORTED_MODULE_6__);
 //
 //--- The goal of this file is to serve as base class for all storeage classes,
 //    for example, store to firebase, azure, aws s3. All common functions used  
@@ -13098,30 +13451,33 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var AwsS3Service = /** @class */ (function (_super) {
     tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"](AwsS3Service, _super);
-    function AwsS3Service(EncrDecr) {
+    function AwsS3Service(networkSvc, EncrDecr) {
         var _this = _super.call(this) || this;
+        _this.networkSvc = networkSvc;
         _this.EncrDecr = EncrDecr;
         return _this;
     }
     AwsS3Service.prototype.upload = function (subfolder, result) {
-        var bucketName = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].awsConfig.bucketName;
+        var _this = this;
+        this.bucketName = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].awsConfig.bucketName;
         var bucketRegion = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].awsConfig.bucketRegion;
         var IdentityPoolId = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].awsConfig.IdentityPoolId;
         //var accessKeyId = environment.awsConfig.accessKeyId;
         //var secretAccessKey = environment.awsConfig.secretAccessKey;
         //set properties after creating AWS.Config using the update method
-        aws_sdk__WEBPACK_IMPORTED_MODULE_5__["config"].update({
+        aws_sdk__WEBPACK_IMPORTED_MODULE_6__["config"].update({
             region: bucketRegion,
-            credentials: new aws_sdk__WEBPACK_IMPORTED_MODULE_5__["CognitoIdentityCredentials"]({
+            credentials: new aws_sdk__WEBPACK_IMPORTED_MODULE_6__["CognitoIdentityCredentials"]({
                 IdentityPoolId: IdentityPoolId
             })
         });
         //creates a new Amazon S3 service object
-        var s3 = new aws_sdk__WEBPACK_IMPORTED_MODULE_5__["S3"]({
+        this.s3 = new aws_sdk__WEBPACK_IMPORTED_MODULE_6__["S3"]({
             apiVersion: '2006-03-01',
-            params: { Bucket: bucketName }
+            params: { Bucket: this.bucketName }
         });
         /*const myS3Credentials = {
           accessKeyId: accessKeyId,
@@ -13138,26 +13494,77 @@ var AwsS3Service = /** @class */ (function (_super) {
         var fileName = "result_" + (new Date().getTime()) + "_" + this.EncrDecr.getSHA256(localStorage.getItem('loggedInUser')) + ".json";
         this.currentFile = new File([JSON.stringify(result)], fileName, { type: "text/plain" });
         //upload currentFile to the subfolder in S3 bucket
-        s3.upload({
-            Bucket: bucketName,
-            Key: subfolder + "/" + fileName,
-            Body: JSON.stringify(result)
-            //Body: this.currentFile
-        }, function (err, data) {
-            if (err) {
-                console.log('There was an error uploading your file: ' + err.message);
-            }
-            console.log('Successfully uploaded file: ' + fileName);
+        this.STORAGE_REQ_KEY = subfolder + "_result";
+        this.subfolder = subfolder;
+        // Upload data and data saved in local Storage to AWS when online, save data
+        // to local storage when offline.
+        if (this.networkSvc.getCurrentNetworkStatus() == _network_service__WEBPACK_IMPORTED_MODULE_5__["ConnectionStatus"].Online) {
+            if (window.localStorage.getItem(this.STORAGE_REQ_KEY) != undefined)
+                this.uploadLocalData();
+            this.uploadToS3(subfolder + "/" + fileName, result).catch(function (err) {
+                if (err) {
+                    console.log('Caught thrown error: ' + err.message);
+                    _this.storeResultLocally(result);
+                }
+            });
+        }
+        else {
+            this.storeResultLocally(result);
+        }
+    };
+    AwsS3Service.prototype.uploadToS3 = function (key, result) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                this.s3.upload({
+                    Bucket: this.bucketName,
+                    Key: key,
+                    Body: JSON.stringify(result)
+                    //Body: this.currentFile
+                }, function (err, data) {
+                    if (err) {
+                        console.log('There was an error uploading your file: ' + err.message);
+                        throw new Error(err.message);
+                    }
+                });
+                return [2 /*return*/];
+            });
         });
     };
+    // upload data in local storage to AWS and clear local Data, if failed, save
+    // data in local storage.
+    AwsS3Service.prototype.uploadLocalData = function () {
+        var _this = this;
+        var storedObj = this.getLocalData();
+        this.clearLocalData();
+        if (storedObj.length > 0) {
+            var _loop_1 = function (op) {
+                console.log(JSON.stringify(op));
+                fileName = "result_" + (new Date().getTime()) + "_" + this_1.EncrDecr.getSHA256(localStorage.getItem('loggedInUser')) + ".json";
+                this_1.uploadToS3(this_1.subfolder + "/" + fileName, [op.data]).catch(function (err) {
+                    if (err) {
+                        console.log('Caught thrown error: ' + err.message);
+                        _this.saveJsonObjLocally(op);
+                    }
+                    console.log('In uploadLocalData: update file successfully');
+                });
+            };
+            var this_1 = this, fileName;
+            for (var _i = 0, storedObj_1 = storedObj; _i < storedObj_1.length; _i++) {
+                var op = storedObj_1[_i];
+                _loop_1(op);
+            }
+        }
+    };
     AwsS3Service.ctorParameters = function () { return [
+        { type: _network_service__WEBPACK_IMPORTED_MODULE_5__["NetworkService"] },
         { type: _encrdecrservice_service__WEBPACK_IMPORTED_MODULE_4__["EncrDecrService"] }
     ]; };
     AwsS3Service = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_encrdecrservice_service__WEBPACK_IMPORTED_MODULE_4__["EncrDecrService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_network_service__WEBPACK_IMPORTED_MODULE_5__["NetworkService"],
+            _encrdecrservice_service__WEBPACK_IMPORTED_MODULE_4__["EncrDecrService"]])
     ], AwsS3Service);
     return AwsS3Service;
 }(_storage_base_service__WEBPACK_IMPORTED_MODULE_3__["StoreBaseService"]));
@@ -13268,6 +13675,102 @@ var EncrDecrService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/storage/network.service.ts":
+/*!********************************************!*\
+  !*** ./src/app/storage/network.service.ts ***!
+  \********************************************/
+/*! exports provided: ConnectionStatus, NetworkService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConnectionStatus", function() { return ConnectionStatus; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NetworkService", function() { return NetworkService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/network/ngx */ "./node_modules/@ionic-native/network/ngx/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
+
+
+
+var ConnectionStatus;
+(function (ConnectionStatus) {
+    ConnectionStatus[ConnectionStatus["Online"] = 0] = "Online";
+    ConnectionStatus[ConnectionStatus["Offline"] = 1] = "Offline";
+})(ConnectionStatus || (ConnectionStatus = {}));
+var NetworkService = /** @class */ (function () {
+    function NetworkService(network, toastController, plt) {
+        var _this = this;
+        this.network = network;
+        this.toastController = toastController;
+        this.plt = plt;
+        this.status = new rxjs__WEBPACK_IMPORTED_MODULE_3__["BehaviorSubject"](ConnectionStatus.Offline);
+        this.plt.ready().then(function () {
+            _this.initializeNetworkEvents();
+            var status = _this.network.type !== 'none' ? ConnectionStatus.Online : ConnectionStatus.Offline;
+            _this.status.next(status);
+        });
+    }
+    NetworkService.prototype.initializeNetworkEvents = function () {
+        var _this = this;
+        this.network.onDisconnect().subscribe(function () {
+            if (_this.status.getValue() === ConnectionStatus.Online) {
+                console.log('WE ARE OFFLINE');
+                _this.updateNetworkStatus(ConnectionStatus.Offline);
+            }
+        });
+        this.network.onConnect().subscribe(function () {
+            if (_this.status.getValue() === ConnectionStatus.Offline) {
+                console.log('WE ARE ONLINE');
+                _this.updateNetworkStatus(ConnectionStatus.Online);
+            }
+        });
+    };
+    NetworkService.prototype.updateNetworkStatus = function (status) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var connection, toast;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                this.status.next(status);
+                connection = status == ConnectionStatus.Offline ? 'Offline' : 'Online';
+                toast = this.toastController.create({
+                    message: "You are now " + connection,
+                    duration: 3000,
+                    position: 'bottom'
+                });
+                toast.then(function (toast) { return toast.present(); });
+                return [2 /*return*/];
+            });
+        });
+    };
+    NetworkService.prototype.onNetworkChange = function () {
+        return this.status.asObservable();
+    };
+    NetworkService.prototype.getCurrentNetworkStatus = function () {
+        return this.status.getValue();
+    };
+    NetworkService.ctorParameters = function () { return [
+        { type: _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_2__["Network"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"] }
+    ]; };
+    NetworkService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_2__["Network"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"]])
+    ], NetworkService);
+    return NetworkService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/storage/storage-base.service.ts":
 /*!*************************************************!*\
   !*** ./src/app/storage/storage-base.service.ts ***!
@@ -13280,15 +13783,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StoreBaseService", function() { return StoreBaseService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
 //
 //--- The goal of this file is to serve as base class for all storeage classes,
 //    for example, store to firebase, azure, aws s3. All common functions used  
 //    to them will be added here in the future,
 
 
+
 var StoreBaseService = /** @class */ (function () {
     function StoreBaseService() {
     }
+    StoreBaseService.prototype.storeResultLocally = function (surveyResult) {
+        var obj = {
+            date: moment__WEBPACK_IMPORTED_MODULE_2__().format('YYYYMMDD'),
+            data: surveyResult
+        };
+        console.log("Before saveJsonObjLocally: " + this.STORAGE_REQ_KEY);
+        if (window.localStorage.getItem(this.STORAGE_REQ_KEY) == undefined) {
+            var storedObj = [obj];
+            window.localStorage.setItem(this.STORAGE_REQ_KEY, JSON.stringify(storedObj));
+        }
+        else {
+            this.saveJsonObjLocally(obj);
+        }
+    };
+    StoreBaseService.prototype.saveJsonObjLocally = function (obj) {
+        var storedObj = this.getLocalData();
+        console.log("before push survey to local storage: " + JSON.stringify(storedObj));
+        storedObj.push(obj);
+        console.log("after push survey to loca storage: " + JSON.stringify(storedObj));
+        // Save old & new local transactions back to Storage
+        window.localStorage.setItem(this.STORAGE_REQ_KEY, JSON.stringify(storedObj));
+    };
+    StoreBaseService.prototype.getLocalData = function () {
+        return JSON.parse(window.localStorage.getItem(this.STORAGE_REQ_KEY));
+    };
+    StoreBaseService.prototype.clearLocalData = function () {
+        window.localStorage.removeItem(this.STORAGE_REQ_KEY);
+    };
     StoreBaseService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
@@ -13321,6 +13855,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/index.js");
 /* harmony import */ var _encrdecrservice_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./encrdecrservice.service */ "./src/app/storage/encrdecrservice.service.ts");
 /* harmony import */ var _aws_s3_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./aws-s3.service */ "./src/app/storage/aws-s3.service.ts");
+/* harmony import */ var _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/network/ngx */ "./node_modules/@ionic-native/network/ngx/index.js");
+
 
 
 
@@ -13341,7 +13877,7 @@ var StorageModule = /** @class */ (function () {
                 _angular_fire__WEBPACK_IMPORTED_MODULE_4__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].firebaseConfig),
                 _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_6__["AngularFirestoreModule"]
             ],
-            providers: [_store_to_firebase_service__WEBPACK_IMPORTED_MODULE_3__["StoreToFirebaseService"], _encrdecrservice_service__WEBPACK_IMPORTED_MODULE_7__["EncrDecrService"], _aws_s3_service__WEBPACK_IMPORTED_MODULE_8__["AwsS3Service"]]
+            providers: [_store_to_firebase_service__WEBPACK_IMPORTED_MODULE_3__["StoreToFirebaseService"], _encrdecrservice_service__WEBPACK_IMPORTED_MODULE_7__["EncrDecrService"], _aws_s3_service__WEBPACK_IMPORTED_MODULE_8__["AwsS3Service"], _ionic_native_network_ngx__WEBPACK_IMPORTED_MODULE_9__["Network"]]
         })
     ], StorageModule);
     return StorageModule;
@@ -13510,7 +14046,7 @@ __webpack_require__.r(__webpack_exports__);
 var DynamicSurveyComponent = /** @class */ (function () {
     function DynamicSurveyComponent(_compiler, _injector, _m, awsS3Service, 
     //private storeToFirebaseService: StoreToFirebaseService,
-    EncrDecr, router, ga, changeDetector, appVersion, plt, userProfileService, awardDollarService) {
+    EncrDecr, router, ga, changeDetector, appVersion, alertCtrl, plt, userProfileService, awardDollarService) {
         var _this = this;
         this._compiler = _compiler;
         this._injector = _injector;
@@ -13521,6 +14057,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
         this.ga = ga;
         this.changeDetector = changeDetector;
         this.appVersion = appVersion;
+        this.alertCtrl = alertCtrl;
         this.plt = plt;
         this.userProfileService = userProfileService;
         this.awardDollarService = awardDollarService;
@@ -13740,7 +14277,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
                     this.totalPoints = 0;
                 else
                     this.totalPoints = parseInt(window.localStorage['TotalPoints']);
-                this.totalPoints = this.totalPoints + 100;
+                this.totalPoints = this.totalPoints + 60;
                 window.localStorage.setItem("TotalPoints", "" + this.totalPoints);
                 //get "awardDollars"
                 var pastDollars = this.awardDollarService.getDollars();
@@ -13749,7 +14286,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 this.userProfileService.surveyCompleted();
                 window.localStorage.setItem("LastSurveyCompletionDate", "" + moment__WEBPACK_IMPORTED_MODULE_7__().format('YYYYMMDD'));
                 window.localStorage.setItem("CurrentPoints", "" + this.userProfileService.points);
-                window.localStorage.setItem("PreviousPoints", "" + (this.userProfileService.points - 100));
+                window.localStorage.setItem("PreviousPoints", "" + (this.userProfileService.points - 60));
                 window.localStorage.setItem("AwardedDollar", "" + (dollars - pastDollars));
                 window.localStorage.setItem("IsModalShown", "false");
                 //Save 7-day date and value for each question in localStorage to generate lifeInsight chart
@@ -13843,26 +14380,31 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 //prepare reinforcement data to upload to AWS S3
                 var reinforcement_data = {};
                 reinforcement_data['userName'] = this.userProfileService.username;
+                reinforcement_data['Prob'] = currentProb;
                 reinforcement_data['day_count'] = Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;
-                reinforcement_data['isRandomized'] = 1;
+                reinforcement_data['isRandomized'] = 1; //what is this one??
                 reinforcement_data['unix_ts'] = endTime;
                 reinforcement_data['readable_ts'] = readable_time;
                 reinforcement_data['date'] = currentDate;
                 //save to Amazon AWS S3
-                this.awsS3Service.upload('reinforcement_data', reinforcement_data);
                 if (this.fileLink.includes('caregiver') || currentProb <= 0.4) {
                     var reinforcementObj = {};
                     reinforcementObj['ds'] = 1;
                     reinforcementObj['reward'] = 0;
                     reinforcementObj['prob'] = currentProb;
+                    reinforcement_data['reward'] = "No push";
+                    this.awsS3Service.upload('reinforcement_data', reinforcement_data);
                     //this.userProfileService.addReinforcementData(currentDate, reinforcementObj);    
                     this.router.navigate(['home']);
                 }
-                else if (currentProb < 0.7) {
+                else if ((currentProb > 0.4) && (currentProb <= 0.7)) {
+                    reinforcement_data['reward'] = "Meme";
+                    navigationExtras['state']['reinforcement_data'] = reinforcement_data;
                     this.router.navigate(['incentive/award-memes'], navigationExtras);
                 }
-                else {
-                    //this.router.navigate(['incentive/sample-life-insight']);
+                else if (currentProb > 0.7) {
+                    reinforcement_data['reward'] = "Altruistic message";
+                    navigationExtras['state']['reinforcement_data'] = reinforcement_data;
                     this.router.navigate(['incentive/award-altruism'], navigationExtras);
                 }
             };
@@ -13887,6 +14429,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
             cmpRef.instance.versionNumber = _this.versionNumber;
             cmpRef.instance.survey_data = _this.survey_data;
             //cmpRef.instance.storeToFirebaseService = this.storeToFirebaseService;
+            cmpRef.instance.alertCtrl = _this.alertCtrl;
             cmpRef.instance.userProfileService = _this.userProfileService;
             cmpRef.instance.awardDollarService = _this.awardDollarService;
             cmpRef.instance.EncrDecr = _this.EncrDecr;
@@ -14040,6 +14583,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
         { type: _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_9__["GoogleAnalytics"] },
         { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] },
         { type: _ionic_native_app_version_ngx__WEBPACK_IMPORTED_MODULE_8__["AppVersion"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["AlertController"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Platform"] },
         { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_10__["UserProfileService"] },
         { type: src_app_incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_11__["AwardDollarService"] }
@@ -14069,6 +14613,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
             _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_9__["GoogleAnalytics"],
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"],
             _ionic_native_app_version_ngx__WEBPACK_IMPORTED_MODULE_8__["AppVersion"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["AlertController"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Platform"],
             src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_10__["UserProfileService"],
             src_app_incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_11__["AwardDollarService"]])
@@ -14314,7 +14859,8 @@ var AuthComponent = /** @class */ (function () {
                     }); });
                 }))
                     .subscribe(function () {
-                    _this.router.navigateByUrl('/home');
+                    //this.router.navigateByUrl('/home');
+                    _this.router.navigate(['home']);
                     _this.isLoading = false;
                 });
             }
