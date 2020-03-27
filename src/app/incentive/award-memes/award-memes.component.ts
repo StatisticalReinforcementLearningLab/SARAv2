@@ -98,7 +98,7 @@ export class AwardMemesComponent implements OnInit {
       this.awsS3Service.upload('reinforcement_data', this.reinforcement_data); 
     }
     
-    //this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);    
+    this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);    
     this.router.navigate(['home']);
 
   }
