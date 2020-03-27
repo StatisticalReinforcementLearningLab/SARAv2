@@ -79,8 +79,7 @@ export class AwardAltruismComponent implements OnInit {
       window.localStorage.setItem("Like", "Yes");
       this.awsS3Service.upload('reinforcement_data', this.reinforcement_data); 
     }
-    //this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);    
-
+    this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);    
     this.router.navigate(['home']);
 
   }
