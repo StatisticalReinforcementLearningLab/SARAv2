@@ -216,12 +216,8 @@ export class DynamicSurveyComponent implements OnInit {
         this.survey2['reponse_ts'][questions].ts = Date.now();
         this.survey2['reponse_ts'][questions].readable_ts = moment().format("MMMM Do YYYY, h:mm:ss a");
 
-        
-
-        delete this.isQuestionIncomplete[questions];//remove the key from isQuestionIncomplete
-
-
-        console.log(JSON.stringify(this.survey2));
+        delete this.isQuestionIncomplete[questions]; //remove the key from isQuestionIncomplete
+        //console.log(JSON.stringify(this.survey2));
       }
 
       submitSurvey(){
@@ -267,7 +263,7 @@ export class DynamicSurveyComponent implements OnInit {
 
       storeData(){
         //console.log("Inside storeData");
-        console.log(JSON.stringify(this.survey2));
+        //console.log(JSON.stringify(this.survey2));
         this.ga.trackEvent('Submit Button', 'Tapped Action', 'Submit the completed survey', 0);
          
         var endTime = new Date().getTime();
@@ -285,6 +281,9 @@ export class DynamicSurveyComponent implements OnInit {
         var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.survey2), "Z&wz=BGw;%q49/<)");
         //var encrypted = this.EncrDecr.encrypt("holla", "Z&wz=BGw;%q49/<)");
         var decrypted = this.EncrDecr.decrypt(encrypted, "Z&wz=BGw;%q49/<)");
+
+        var survey3 = {};
+        survey3['encrypted'] = encrypted;
 
         console.log('Encrypted :' + encrypted);
         console.log('Decrypted :' + decrypted);
@@ -385,7 +384,7 @@ export class DynamicSurveyComponent implements OnInit {
       window.localStorage.setItem("lifeInsight", JSON.stringify(this.lifeInsightObj));
 
       //save to Amazon AWS S3
-      this.awsS3Service.upload(this.fileLink, this.survey2);
+      this.awsS3Service.upload(this.fileLink, survey3);
       //console.log("End of storeData");
 
       //navigate to award-memes/award-altruism with equal probability after submit survey
@@ -402,6 +401,7 @@ export class DynamicSurveyComponent implements OnInit {
       //prepare reinforcement data to upload to AWS S3
       var reinforcement_data = {};
       reinforcement_data['userName'] = this.userProfileService.username;
+      reinforcement_data['appVersion'] = this.versionNumber;
       reinforcement_data['Prob'] = currentProb;
       reinforcement_data['day_count'] = Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;
       reinforcement_data['isRandomized'] = 1;//what is this one??
@@ -419,7 +419,7 @@ export class DynamicSurveyComponent implements OnInit {
 
         reinforcement_data['reward'] = "No push"; 
         this.awsS3Service.upload('reinforcement_data', reinforcement_data);  
-        //this.userProfileService.addReinforcementData(currentDate, reinforcementObj);    
+        this.userProfileService.addReinforcementData(currentDate, reinforcementObj);    
         this.router.navigate(['home']);        
       } else if((currentProb > 0.4)  &&  (currentProb <=0.7)){
         reinforcement_data['reward'] = "Meme"; 
