@@ -221,7 +221,7 @@ export class DemoAquariumComponent implements OnInit {
     }
       
     //get if fish is alotted
-    var previous_point = currentPoints - 100;
+    var previous_point = currentPoints - 60;
 
     fetch('../../../assets/game/fishpoints.json').then(async res => {
       //console.log("Fishes: " + data);
@@ -236,9 +236,9 @@ export class DemoAquariumComponent implements OnInit {
             header =  "You unlocked " + fish_data[i].name;
             text = fish_data[i].trivia;
             reinforcements.push({'img': img, 'header': header, 'text': text});
-            
           }
       }
+      console.log(JSON.stringify(reinforcements));
       if(reinforcements.length > 0)//means some rainforcement was provided.
         this.presentModal(reinforcements);
     });

@@ -126,10 +126,8 @@ export class AppComponent {
       //this.statusBar.backgroundColorByHexString('#ffffff');
 
       if(this.platform.is('android')) {
-
-        
         this.statusBar.styleLightContent();
-        this.statusBar.backgroundColorByHexString("#303F9F");
+        this.statusBar.backgroundColorByHexString("#004166");
       }
 
       this.splashScreen.hide();
