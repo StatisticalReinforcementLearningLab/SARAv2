@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { AwsS3Service } from '../../storage/aws-s3.service';
 import { EncrDecrService } from '../../storage/encrdecrservice.service';
 
-import { Platform } from '@ionic/angular';
+import { Platform, AlertController } from '@ionic/angular';
 import { Router, NavigationExtras} from '@angular/router';
 import * as moment from 'moment';
 import { AppVersion } from '@ionic-native/app-version/ngx';
@@ -56,6 +56,7 @@ export class DynamicSurveyComponent implements OnInit {
     private ga: GoogleAnalytics,
     private changeDetector : ChangeDetectorRef,
     private appVersion: AppVersion,
+    private alertCtrl: AlertController,
     public plt: Platform,
     private userProfileService: UserProfileService,
     private awardDollarService:AwardDollarService) {
@@ -104,6 +105,7 @@ export class DynamicSurveyComponent implements OnInit {
       versionNumber;
       lifeInsightObj = {};
       //storeToFirebaseService: StoreToFirebaseService;
+      
       ga: GoogleAnalytics;
       EncrDecr: EncrDecrService;
       awsS3Service: AwsS3Service;
@@ -293,7 +295,7 @@ export class DynamicSurveyComponent implements OnInit {
           this.totalPoints = 0;
         else
           this.totalPoints = parseInt(window.localStorage['TotalPoints']);
-        this.totalPoints = this.totalPoints + 100;
+        this.totalPoints = this.totalPoints + 60;
         window.localStorage.setItem("TotalPoints", ""+this.totalPoints);
 
         //get "awardDollars"
@@ -305,7 +307,7 @@ export class DynamicSurveyComponent implements OnInit {
 
         window.localStorage.setItem("LastSurveyCompletionDate", ""+moment().format('YYYYMMDD'));
         window.localStorage.setItem("CurrentPoints", ""+ this.userProfileService.points);
-        window.localStorage.setItem("PreviousPoints", ""+ (this.userProfileService.points-100));
+        window.localStorage.setItem("PreviousPoints", ""+ (this.userProfileService.points-60));
         window.localStorage.setItem("AwardedDollar", ""+ (dollars-pastDollars));
         window.localStorage.setItem("IsModalShown", "false");
 
@@ -402,24 +404,30 @@ export class DynamicSurveyComponent implements OnInit {
       reinforcement_data['userName'] = this.userProfileService.username;
       reinforcement_data['Prob'] = currentProb;
       reinforcement_data['day_count'] = Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;
-      reinforcement_data['isRandomized'] = 1;
+      reinforcement_data['isRandomized'] = 1;//what is this one??
       reinforcement_data['unix_ts'] = endTime;
       reinforcement_data['readable_ts'] = readable_time;
       reinforcement_data['date'] =  currentDate;
       //save to Amazon AWS S3
-      this.awsS3Service.upload('reinforcement_data', reinforcement_data);
+      
       
       if(this.fileLink.includes('caregiver') || currentProb <= 0.4 ) {
         var reinforcementObj = {};
         reinforcementObj['ds'] = 1;
         reinforcementObj['reward'] = 0;
-        reinforcementObj['prob'] = currentProb;  
+        reinforcementObj['prob'] = currentProb;
+
+        reinforcement_data['reward'] = "No push"; 
+        this.awsS3Service.upload('reinforcement_data', reinforcement_data);  
         //this.userProfileService.addReinforcementData(currentDate, reinforcementObj);    
         this.router.navigate(['home']);        
-      } else if(currentProb < 0.7 ){
+      } else if((currentProb > 0.4)  &&  (currentProb <=0.7)){
+        reinforcement_data['reward'] = "Meme"; 
+        navigationExtras['state']['reinforcement_data'] = reinforcement_data;
         this.router.navigate(['incentive/award-memes'], navigationExtras);
-      } else  {
-        //this.router.navigate(['incentive/sample-life-insight']);
+      } else if(currentProb > 0.7){
+        reinforcement_data['reward'] = "Altruistic message"; 
+        navigationExtras['state']['reinforcement_data'] = reinforcement_data;
         this.router.navigate(['incentive/award-altruism'],  navigationExtras);
       }            
      }
@@ -443,6 +451,7 @@ export class DynamicSurveyComponent implements OnInit {
         cmpRef.instance.versionNumber= this.versionNumber;      
         cmpRef.instance.survey_data = this.survey_data;    
         //cmpRef.instance.storeToFirebaseService = this.storeToFirebaseService;
+        cmpRef.instance.alertCtrl = this.alertCtrl;   
         cmpRef.instance.userProfileService = this.userProfileService;
         cmpRef.instance.awardDollarService = this.awardDollarService;
         cmpRef.instance.EncrDecr = this.EncrDecr;
