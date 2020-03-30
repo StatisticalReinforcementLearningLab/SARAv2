@@ -64,12 +64,14 @@ export class AwardDollarService {
 
 
     //----   
-    if(window.localStorage['AwardDollarDates'] == undefined) {
-        this.awardDollarObj = {};
-        this.awardDollarObj['dates'] = [moment().format("DD-MM-YYYY")];      
-        window.localStorage.setItem("AwardDollarDates", JSON.stringify(this.awardDollarObj));
-    } else {
-        this.awardDollarObj= JSON.parse(window.localStorage["AwardDollarDates"]);
+//----   
+
+      this.awardDollarObj = JSON.parse(window.localStorage["AwardDollarDates"]);
+      if(this.awardDollarObj == null) {
+          this.awardDollarObj = {};
+          this.awardDollarObj['dates'] = [moment().format("DD-MM-YYYY")];      
+          window.localStorage.setItem("AwardDollarDates", JSON.stringify(this.awardDollarObj));
+      } else {
 
         if(this.awardDollarObj['dates'].length < 2) {
 
