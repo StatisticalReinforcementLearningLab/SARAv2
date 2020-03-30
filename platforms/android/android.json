@@ -10,7 +10,7 @@
           "/manifest/application": [
             {
               "xml": "<application android:usesCleartextTraffic=\"true\" />",
-              "count": 8,
+              "count": 1,
               "mode": "merge",
               "id": "config.xml",
               "oldAttrib": {
