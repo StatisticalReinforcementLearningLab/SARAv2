@@ -1,5 +1,5 @@
-// Platform: ios
-// 9c79667cd175f51fd2edf2dc91ac8be98b89076a
+// Platform: android
+// 74fdba8b327b2a13b4366dd141b52def96d4cb56
 /*
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements.  See the NOTICE file
@@ -19,7 +19,7 @@
  under the License.
 */
 ;(function() {
-var PLATFORM_VERSION_BUILD_LABEL = '5.1.1';
+var PLATFORM_VERSION_BUILD_LABEL = '8.1.0';
 // file: src/scripts/require.js
 var require;
 var define;
@@ -97,7 +97,7 @@ define("cordova", function(require, exports, module) {
 
 // Workaround for Windows 10 in hosted environment case
 // http://www.w3.org/html/wg/drafts/html/master/browsers.html#named-access-on-the-window-object
-if (window.cordova && !(window.cordova instanceof HTMLElement)) {
+if (window.cordova && !(window.cordova instanceof HTMLElement)) { // eslint-disable-line no-undef
     throw new Error('cordova already defined');
 }
 
@@ -170,12 +170,15 @@ function createEvent (type, data) {
     return event;
 }
 
+/* eslint-disable no-undef */
 var cordova = {
     define: define,
     require: require,
     version: PLATFORM_VERSION_BUILD_LABEL,
     platformVersion: PLATFORM_VERSION_BUILD_LABEL,
     platformId: platform.id,
+
+    /* eslint-enable no-undef */
 
     /**
      * Methods to add/remove your own addEventListener hijacking on document + window.
@@ -195,25 +198,15 @@ var cordova = {
     removeDocumentEventHandler: function (event) {
         delete documentEventHandlers[event];
     },
-
     /**
      * Retrieve original event handlers that were replaced by Cordova
      *
      * @return object
      */
     getOriginalHandlers: function () {
-        return {
-            document: {
-                addEventListener: m_document_addEventListener,
-                removeEventListener: m_document_removeEventListener
-            },
-            window: {
-                addEventListener: m_window_addEventListener,
-                removeEventListener: m_window_removeEventListener
-            }
-        };
+        return { 'document': { 'addEventListener': m_document_addEventListener, 'removeEventListener': m_document_removeEventListener },
+            'window': { 'addEventListener': m_window_addEventListener, 'removeEventListener': m_window_removeEventListener } };
     },
-
     /**
      * Method to fire event from native code
      * bNoDetach is required for events which cause an exception which needs to be caught in native code
@@ -236,7 +229,6 @@ var cordova = {
             document.dispatchEvent(evt);
         }
     },
-
     fireWindowEvent: function (type, data) {
         var evt = createEvent(type, data);
         if (typeof windowEventHandlers[type] !== 'undefined') {
@@ -316,7 +308,6 @@ var cordova = {
             throw err;
         }
     },
-
     addConstructor: function (func) {
         channel.onCordovaReady.subscribe(function () {
             try {
@@ -329,6 +320,51 @@ var cordova = {
 };
 
 module.exports = cordova;
+
+});
+
+// file: ../cordova-android/cordova-js-src/android/nativeapiprovider.js
+define("cordova/android/nativeapiprovider", function(require, exports, module) {
+
+/**
+ * Exports the ExposedJsApi.java object if available, otherwise exports the PromptBasedNativeApi.
+ */
+
+var nativeApi = this._cordovaNative || require('cordova/android/promptbasednativeapi');
+var currentApi = nativeApi;
+
+module.exports = {
+    get: function() { return currentApi; },
+    setPreferPrompt: function(value) {
+        currentApi = value ? require('cordova/android/promptbasednativeapi') : nativeApi;
+    },
+    // Used only by tests.
+    set: function(value) {
+        currentApi = value;
+    }
+};
+
+});
+
+// file: ../cordova-android/cordova-js-src/android/promptbasednativeapi.js
+define("cordova/android/promptbasednativeapi", function(require, exports, module) {
+
+/**
+ * Implements the API of ExposedJsApi.java, but uses prompt() to communicate.
+ * This is used pre-JellyBean, where addJavascriptInterface() is disabled.
+ */
+
+module.exports = {
+    exec: function(bridgeSecret, service, action, callbackId, argsJson) {
+        return prompt(argsJson, 'gap:'+JSON.stringify([bridgeSecret, service, action, callbackId]));
+    },
+    setNativeToJsBridgeMode: function(bridgeSecret, value) {
+        prompt(value, 'gap_bridge_mode:' + bridgeSecret);
+    },
+    retrieveJsMessages: function(bridgeSecret, fromOnlineEvent) {
+        return prompt(+fromOnlineEvent, 'gap_poll:' + bridgeSecret);
+    }
+};
 
 });
 
@@ -436,7 +472,7 @@ base64.fromArrayBuffer = function (arrayBuffer) {
 };
 
 base64.toArrayBuffer = function (str) {
-    var decodedStr = atob(str);
+    var decodedStr = typeof atob !== 'undefined' ? atob(str) : Buffer.from(str, 'base64').toString('binary'); // eslint-disable-line no-undef
     var arrayBuffer = new ArrayBuffer(decodedStr.length);
     var array = new Uint8Array(arrayBuffer);
     for (var i = 0, len = decodedStr.length; i < len; i++) {
@@ -505,6 +541,7 @@ function each (objects, func, context) {
 }
 
 function clobber (obj, key, value) {
+    exports.replaceHookForTesting(obj, key);
     var needsProperty = false;
     try {
         obj[key] = value;
@@ -604,6 +641,7 @@ exports.buildIntoAndMerge = function (objects, target) {
 };
 exports.recursiveMerge = recursiveMerge;
 exports.assignOrWrapInDeprecateGetter = assignOrWrapInDeprecateGetter;
+exports.replaceHookForTesting = function () {};
 
 });
 
@@ -684,14 +722,14 @@ var channel = {
         }
         if (!len) h();
     },
-
+    /* eslint-disable no-return-assign */
     create: function (type) {
-        return (channel[type] = new Channel(type, false));
+        return channel[type] = new Channel(type, false);
     },
     createSticky: function (type) {
-        return (channel[type] = new Channel(type, true));
+        return channel[type] = new Channel(type, true);
     },
-
+    /* eslint-enable no-return-assign */
     /**
      * cordova Channels that must fire before "deviceready" is fired.
      */
@@ -812,6 +850,7 @@ Channel.prototype.unsubscribe = function (eventListenerOrFunction) {
  * Calls all functions subscribed to this channel.
  */
 Channel.prototype.fire = function (e) {
+    var fail = false; // eslint-disable-line no-unused-vars
     var fireArgs = Array.prototype.slice.call(arguments);
     // Apply stickiness.
     if (this.state === 1) {
@@ -868,250 +907,274 @@ module.exports = channel;
 
 });
 
-// file: ../cordova-ios/cordova-js-src/exec.js
+// file: ../cordova-android/cordova-js-src/exec.js
 define("cordova/exec", function(require, exports, module) {
 
-/* global require, module, atob, document */
-
 /**
- * Creates a gap bridge iframe used to notify the native code about queued
- * commands.
+ * Execute a cordova command.  It is up to the native side whether this action
+ * is synchronous or asynchronous.  The native side can return:
+ *      Synchronous: PluginResult object as a JSON string
+ *      Asynchronous: Empty string ""
+ * If async, the native side will cordova.callbackSuccess or cordova.callbackError,
+ * depending upon the result of the action.
+ *
+ * @param {Function} success    The success callback
+ * @param {Function} fail       The fail callback
+ * @param {String} service      The name of the service to use
+ * @param {String} action       Action to be run in cordova
+ * @param {String[]} [args]     Zero or more arguments to pass to the method
  */
-var cordova = require('cordova');
-var utils = require('cordova/utils');
-var base64 = require('cordova/base64');
-var execIframe;
-var commandQueue = []; // Contains pending JS->Native messages.
-var isInContextOfEvalJs = 0;
-var failSafeTimerId = 0;
+var cordova = require('cordova'),
+    nativeApiProvider = require('cordova/android/nativeapiprovider'),
+    utils = require('cordova/utils'),
+    base64 = require('cordova/base64'),
+    channel = require('cordova/channel'),
+    jsToNativeModes = {
+        PROMPT: 0,
+        JS_OBJECT: 1
+    },
+    nativeToJsModes = {
+        // Polls for messages using the JS->Native bridge.
+        POLLING: 0,
+        // For LOAD_URL to be viable, it would need to have a work-around for
+        // the bug where the soft-keyboard gets dismissed when a message is sent.
+        LOAD_URL: 1,
+        // For the ONLINE_EVENT to be viable, it would need to intercept all event
+        // listeners (both through addEventListener and window.ononline) as well
+        // as set the navigator property itself.
+        ONLINE_EVENT: 2,
+        EVAL_BRIDGE: 3
+    },
+    jsToNativeBridgeMode,  // Set lazily.
+    nativeToJsBridgeMode = nativeToJsModes.EVAL_BRIDGE,
+    pollEnabled = false,
+    bridgeSecret = -1;
 
-function massageArgsJsToNative (args) {
-    if (!args || utils.typeName(args) !== 'Array') {
-        return args;
+var messagesFromNative = [];
+var isProcessing = false;
+var resolvedPromise = typeof Promise == 'undefined' ? null : Promise.resolve();
+var nextTick = resolvedPromise ? function(fn) { resolvedPromise.then(fn); } : function(fn) { setTimeout(fn); };
+
+function androidExec(success, fail, service, action, args) {
+    if (bridgeSecret < 0) {
+        // If we ever catch this firing, we'll need to queue up exec()s
+        // and fire them once we get a secret. For now, I don't think
+        // it's possible for exec() to be called since plugins are parsed but
+        // not run until until after onNativeReady.
+        throw new Error('exec() called without bridgeSecret');
     }
-    var ret = [];
-    args.forEach(function (arg, i) {
-        if (utils.typeName(arg) === 'ArrayBuffer') {
-            ret.push({
-                'CDVType': 'ArrayBuffer',
-                'data': base64.fromArrayBuffer(arg)
-            });
-        } else {
-            ret.push(arg);
+    // Set default bridge modes if they have not already been set.
+    // By default, we use the failsafe, since addJavascriptInterface breaks too often
+    if (jsToNativeBridgeMode === undefined) {
+        androidExec.setJsToNativeBridgeMode(jsToNativeModes.JS_OBJECT);
+    }
+
+    // If args is not provided, default to an empty array
+    args = args || [];
+
+    // Process any ArrayBuffers in the args into a string.
+    for (var i = 0; i < args.length; i++) {
+        if (utils.typeName(args[i]) == 'ArrayBuffer') {
+            args[i] = base64.fromArrayBuffer(args[i]);
         }
-    });
-    return ret;
+    }
+
+    var callbackId = service + cordova.callbackId++,
+        argsJson = JSON.stringify(args);
+    if (success || fail) {
+        cordova.callbacks[callbackId] = {success:success, fail:fail};
+    }
+
+    var msgs = nativeApiProvider.get().exec(bridgeSecret, service, action, callbackId, argsJson);
+    // If argsJson was received by Java as null, try again with the PROMPT bridge mode.
+    // This happens in rare circumstances, such as when certain Unicode characters are passed over the bridge on a Galaxy S2.  See CB-2666.
+    if (jsToNativeBridgeMode == jsToNativeModes.JS_OBJECT && msgs === "@Null arguments.") {
+        androidExec.setJsToNativeBridgeMode(jsToNativeModes.PROMPT);
+        androidExec(success, fail, service, action, args);
+        androidExec.setJsToNativeBridgeMode(jsToNativeModes.JS_OBJECT);
+    } else if (msgs) {
+        messagesFromNative.push(msgs);
+        // Always process async to avoid exceptions messing up stack.
+        nextTick(processMessages);
+    }
 }
 
-function massageMessageNativeToJs (message) {
-    if (message.CDVType === 'ArrayBuffer') {
-        var stringToArrayBuffer = function (str) {
-            var ret = new Uint8Array(str.length);
-            for (var i = 0; i < str.length; i++) {
-                ret[i] = str.charCodeAt(i);
-            }
-            return ret.buffer;
-        };
-        var base64ToArrayBuffer = function (b64) {
-            return stringToArrayBuffer(atob(b64));
-        };
-        message = base64ToArrayBuffer(message.data);
+androidExec.init = function() {
+    bridgeSecret = +prompt('', 'gap_init:' + nativeToJsBridgeMode);
+    channel.onNativeReady.fire();
+};
+
+function pollOnceFromOnlineEvent() {
+    pollOnce(true);
+}
+
+function pollOnce(opt_fromOnlineEvent) {
+    if (bridgeSecret < 0) {
+        // This can happen when the NativeToJsMessageQueue resets the online state on page transitions.
+        // We know there's nothing to retrieve, so no need to poll.
+        return;
+    }
+    var msgs = nativeApiProvider.get().retrieveJsMessages(bridgeSecret, !!opt_fromOnlineEvent);
+    if (msgs) {
+        messagesFromNative.push(msgs);
+        // Process sync since we know we're already top-of-stack.
+        processMessages();
+    }
+}
+
+function pollingTimerFunc() {
+    if (pollEnabled) {
+        pollOnce();
+        setTimeout(pollingTimerFunc, 50);
+    }
+}
+
+function hookOnlineApis() {
+    function proxyEvent(e) {
+        cordova.fireWindowEvent(e.type);
+    }
+    // The network module takes care of firing online and offline events.
+    // It currently fires them only on document though, so we bridge them
+    // to window here (while first listening for exec()-releated online/offline
+    // events).
+    window.addEventListener('online', pollOnceFromOnlineEvent, false);
+    window.addEventListener('offline', pollOnceFromOnlineEvent, false);
+    cordova.addWindowEventHandler('online');
+    cordova.addWindowEventHandler('offline');
+    document.addEventListener('online', proxyEvent, false);
+    document.addEventListener('offline', proxyEvent, false);
+}
+
+hookOnlineApis();
+
+androidExec.jsToNativeModes = jsToNativeModes;
+androidExec.nativeToJsModes = nativeToJsModes;
+
+androidExec.setJsToNativeBridgeMode = function(mode) {
+    if (mode == jsToNativeModes.JS_OBJECT && !window._cordovaNative) {
+        mode = jsToNativeModes.PROMPT;
+    }
+    nativeApiProvider.setPreferPrompt(mode == jsToNativeModes.PROMPT);
+    jsToNativeBridgeMode = mode;
+};
+
+androidExec.setNativeToJsBridgeMode = function(mode) {
+    if (mode == nativeToJsBridgeMode) {
+        return;
+    }
+    if (nativeToJsBridgeMode == nativeToJsModes.POLLING) {
+        pollEnabled = false;
+    }
+
+    nativeToJsBridgeMode = mode;
+    // Tell the native side to switch modes.
+    // Otherwise, it will be set by androidExec.init()
+    if (bridgeSecret >= 0) {
+        nativeApiProvider.get().setNativeToJsBridgeMode(bridgeSecret, mode);
+    }
+
+    if (mode == nativeToJsModes.POLLING) {
+        pollEnabled = true;
+        setTimeout(pollingTimerFunc, 1);
+    }
+};
+
+function buildPayload(payload, message) {
+    var payloadKind = message.charAt(0);
+    if (payloadKind == 's') {
+        payload.push(message.slice(1));
+    } else if (payloadKind == 't') {
+        payload.push(true);
+    } else if (payloadKind == 'f') {
+        payload.push(false);
+    } else if (payloadKind == 'N') {
+        payload.push(null);
+    } else if (payloadKind == 'n') {
+        payload.push(+message.slice(1));
+    } else if (payloadKind == 'A') {
+        var data = message.slice(1);
+        payload.push(base64.toArrayBuffer(data));
+    } else if (payloadKind == 'S') {
+        payload.push(window.atob(message.slice(1)));
+    } else if (payloadKind == 'M') {
+        var multipartMessages = message.slice(1);
+        while (multipartMessages !== "") {
+            var spaceIdx = multipartMessages.indexOf(' ');
+            var msgLen = +multipartMessages.slice(0, spaceIdx);
+            var multipartMessage = multipartMessages.substr(spaceIdx + 1, msgLen);
+            multipartMessages = multipartMessages.slice(spaceIdx + msgLen + 1);
+            buildPayload(payload, multipartMessage);
+        }
+    } else {
+        payload.push(JSON.parse(message));
+    }
+}
+
+// Processes a single message, as encoded by NativeToJsMessageQueue.java.
+function processMessage(message) {
+    var firstChar = message.charAt(0);
+    if (firstChar == 'J') {
+        // This is deprecated on the .java side. It doesn't work with CSP enabled.
+        eval(message.slice(1));
+    } else if (firstChar == 'S' || firstChar == 'F') {
+        var success = firstChar == 'S';
+        var keepCallback = message.charAt(1) == '1';
+        var spaceIdx = message.indexOf(' ', 2);
+        var status = +message.slice(2, spaceIdx);
+        var nextSpaceIdx = message.indexOf(' ', spaceIdx + 1);
+        var callbackId = message.slice(spaceIdx + 1, nextSpaceIdx);
+        var payloadMessage = message.slice(nextSpaceIdx + 1);
+        var payload = [];
+        buildPayload(payload, payloadMessage);
+        cordova.callbackFromNative(callbackId, success, status, payload, keepCallback);
+    } else {
+        console.log("processMessage failed: invalid message: " + JSON.stringify(message));
+    }
+}
+
+function processMessages() {
+    // Check for the reentrant case.
+    if (isProcessing) {
+        return;
+    }
+    if (messagesFromNative.length === 0) {
+        return;
+    }
+    isProcessing = true;
+    try {
+        var msg = popMessageFromQueue();
+        // The Java side can send a * message to indicate that it
+        // still has messages waiting to be retrieved.
+        if (msg == '*' && messagesFromNative.length === 0) {
+            nextTick(pollOnce);
+            return;
+        }
+        processMessage(msg);
+    } finally {
+        isProcessing = false;
+        if (messagesFromNative.length > 0) {
+            nextTick(processMessages);
+        }
+    }
+}
+
+function popMessageFromQueue() {
+    var messageBatch = messagesFromNative.shift();
+    if (messageBatch == '*') {
+        return '*';
+    }
+
+    var spaceIdx = messageBatch.indexOf(' ');
+    var msgLen = +messageBatch.slice(0, spaceIdx);
+    var message = messageBatch.substr(spaceIdx + 1, msgLen);
+    messageBatch = messageBatch.slice(spaceIdx + msgLen + 1);
+    if (messageBatch) {
+        messagesFromNative.unshift(messageBatch);
     }
     return message;
 }
 
-function convertMessageToArgsNativeToJs (message) {
-    var args = [];
-    if (!message || !message.hasOwnProperty('CDVType')) {
-        args.push(message);
-    } else if (message.CDVType === 'MultiPart') {
-        message.messages.forEach(function (e) {
-            args.push(massageMessageNativeToJs(e));
-        });
-    } else {
-        args.push(massageMessageNativeToJs(message));
-    }
-    return args;
-}
-
-function iOSExec () {
-
-    var successCallback, failCallback, service, action, actionArgs;
-    var callbackId = null;
-    if (typeof arguments[0] !== 'string') {
-        // FORMAT ONE
-        successCallback = arguments[0];
-        failCallback = arguments[1];
-        service = arguments[2];
-        action = arguments[3];
-        actionArgs = arguments[4];
-
-        // Since we need to maintain backwards compatibility, we have to pass
-        // an invalid callbackId even if no callback was provided since plugins
-        // will be expecting it. The Cordova.exec() implementation allocates
-        // an invalid callbackId and passes it even if no callbacks were given.
-        callbackId = 'INVALID';
-    } else {
-        throw new Error('The old format of this exec call has been removed (deprecated since 2.1). Change to: ' +
-            'cordova.exec(null, null, \'Service\', \'action\', [ arg1, arg2 ]);'
-        );
-    }
-
-    // If actionArgs is not provided, default to an empty array
-    actionArgs = actionArgs || [];
-
-    // Register the callbacks and add the callbackId to the positional
-    // arguments if given.
-    if (successCallback || failCallback) {
-        callbackId = service + cordova.callbackId++;
-        cordova.callbacks[callbackId] =
-            { success: successCallback, fail: failCallback };
-    }
-
-    actionArgs = massageArgsJsToNative(actionArgs);
-
-    var command = [callbackId, service, action, actionArgs];
-
-    // Stringify and queue the command. We stringify to command now to
-    // effectively clone the command arguments in case they are mutated before
-    // the command is executed.
-    commandQueue.push(JSON.stringify(command));
-
-    // If we're in the context of a stringByEvaluatingJavaScriptFromString call,
-    // then the queue will be flushed when it returns; no need for a poke.
-    // Also, if there is already a command in the queue, then we've already
-    // poked the native side, so there is no reason to do so again.
-    if (!isInContextOfEvalJs && commandQueue.length === 1) {
-        pokeNative();
-    }
-}
-
-// CB-10530
-function proxyChanged () {
-    var cexec = cordovaExec();
-
-    return (execProxy !== cexec && // proxy objects are different
-            iOSExec !== cexec // proxy object is not the current iOSExec
-    );
-}
-
-// CB-10106
-function handleBridgeChange () {
-    if (proxyChanged()) {
-        var commandString = commandQueue.shift();
-        while (commandString) {
-            var command = JSON.parse(commandString);
-            var callbackId = command[0];
-            var service = command[1];
-            var action = command[2];
-            var actionArgs = command[3];
-            var callbacks = cordova.callbacks[callbackId] || {};
-
-            execProxy(callbacks.success, callbacks.fail, service, action, actionArgs);
-
-            commandString = commandQueue.shift();
-        }
-        return true;
-    }
-
-    return false;
-}
-
-function pokeNative () {
-    // CB-5488 - Don't attempt to create iframe before document.body is available.
-    if (!document.body) {
-        setTimeout(pokeNative);
-        return;
-    }
-
-    // Check if they've removed it from the DOM, and put it back if so.
-    if (execIframe && execIframe.contentWindow) {
-        execIframe.contentWindow.location = 'gap://ready';
-    } else {
-        execIframe = document.createElement('iframe');
-        execIframe.style.display = 'none';
-        execIframe.src = 'gap://ready';
-        document.body.appendChild(execIframe);
-    }
-    // Use a timer to protect against iframe being unloaded during the poke (CB-7735).
-    // This makes the bridge ~ 7% slower, but works around the poke getting lost
-    // when the iframe is removed from the DOM.
-    // An onunload listener could be used in the case where the iframe has just been
-    // created, but since unload events fire only once, it doesn't work in the normal
-    // case of iframe reuse (where unload will have already fired due to the attempted
-    // navigation of the page).
-    failSafeTimerId = setTimeout(function () {
-        if (commandQueue.length) {
-            // CB-10106 - flush the queue on bridge change
-            if (!handleBridgeChange()) {
-                pokeNative();
-            }
-        }
-    }, 50); // Making this > 0 improves performance (marginally) in the normal case (where it doesn't fire).
-}
-
-iOSExec.nativeFetchMessages = function () {
-    // Stop listing for window detatch once native side confirms poke.
-    if (failSafeTimerId) {
-        clearTimeout(failSafeTimerId);
-        failSafeTimerId = 0;
-    }
-    // Each entry in commandQueue is a JSON string already.
-    if (!commandQueue.length) {
-        return '';
-    }
-    var json = '[' + commandQueue.join(',') + ']';
-    commandQueue.length = 0;
-    return json;
-};
-
-iOSExec.nativeCallback = function (callbackId, status, message, keepCallback, debug) {
-    return iOSExec.nativeEvalAndFetch(function () {
-        var success = status === 0 || status === 1;
-        var args = convertMessageToArgsNativeToJs(message);
-        function nc2 () {
-            cordova.callbackFromNative(callbackId, success, status, args, keepCallback);
-        }
-        setTimeout(nc2, 0);
-    });
-};
-
-iOSExec.nativeEvalAndFetch = function (func) {
-    // This shouldn't be nested, but better to be safe.
-    isInContextOfEvalJs++;
-    try {
-        func();
-        return iOSExec.nativeFetchMessages();
-    } finally {
-        isInContextOfEvalJs--;
-    }
-};
-
-// Proxy the exec for bridge changes. See CB-10106
-
-function cordovaExec () {
-    var cexec = require('cordova/exec');
-    var cexec_valid = (typeof cexec.nativeFetchMessages === 'function') && (typeof cexec.nativeEvalAndFetch === 'function') && (typeof cexec.nativeCallback === 'function');
-    return (cexec_valid && execProxy !== cexec) ? cexec : iOSExec;
-}
-
-function execProxy () {
-    cordovaExec().apply(null, arguments);
-}
-
-execProxy.nativeFetchMessages = function () {
-    return cordovaExec().nativeFetchMessages.apply(null, arguments);
-};
-
-execProxy.nativeEvalAndFetch = function () {
-    return cordovaExec().nativeEvalAndFetch.apply(null, arguments);
-};
-
-execProxy.nativeCallback = function () {
-    return cordovaExec().nativeCallback.apply(null, arguments);
-};
-
-module.exports = execProxy;
+module.exports = androidExec;
 
 });
 
@@ -1275,7 +1338,7 @@ channel.join(function () {
 define("cordova/modulemapper", function(require, exports, module) {
 
 var builder = require('cordova/builder');
-var moduleMap = define.moduleMap;
+var moduleMap = define.moduleMap; // eslint-disable-line no-undef
 var symbolList;
 var deprecationMap;
 
@@ -1315,9 +1378,12 @@ function prepareNamespace (symbolPath, context) {
     if (!symbolPath) {
         return context;
     }
-    return symbolPath.split('.').reduce(function (cur, part) {
-        return (cur[part] = cur[part] || {});
-    }, context);
+    var parts = symbolPath.split('.');
+    var cur = context;
+    for (var i = 0, part; part = parts[i]; ++i) { // eslint-disable-line no-cond-assign
+        cur = cur[part] = cur[part] || {};
+    }
+    return cur;
 }
 
 exports.mapModules = function (context) {
@@ -1368,524 +1434,206 @@ exports.reset();
 
 });
 
-// file: ../cordova-ios/cordova-js-src/platform.js
+// file: ../cordova-android/cordova-js-src/platform.js
 define("cordova/platform", function(require, exports, module) {
 
+// The last resume event that was received that had the result of a plugin call.
+var lastResumeEvent = null;
+
 module.exports = {
-    id: 'ios',
-    bootstrap: function () {
-        // Attach the console polyfill that is iOS-only to window.console
-        // see the file under plugin/ios/console.js
-        require('cordova/modulemapper').clobbers('cordova/plugin/ios/console', 'window.console');
+    id: 'android',
+    bootstrap: function() {
+        var channel = require('cordova/channel'),
+            cordova = require('cordova'),
+            exec = require('cordova/exec'),
+            modulemapper = require('cordova/modulemapper');
 
-        require('cordova/channel').onNativeReady.fire();
-    }
-};
+        // Get the shared secret needed to use the bridge.
+        exec.init();
 
-});
+        // TODO: Extract this as a proper plugin.
+        modulemapper.clobbers('cordova/plugin/android/app', 'navigator.app');
 
-// file: ../cordova-ios/cordova-js-src/plugin/ios/console.js
-define("cordova/plugin/ios/console", function(require, exports, module) {
+        var APP_PLUGIN_NAME = Number(cordova.platformVersion.split('.')[0]) >= 4 ? 'CoreAndroid' : 'App';
 
-// ------------------------------------------------------------------------------
+        // Inject a listener for the backbutton on the document.
+        var backButtonChannel = cordova.addDocumentEventHandler('backbutton');
+        backButtonChannel.onHasSubscribersChange = function() {
+            // If we just attached the first handler or detached the last handler,
+            // let native know we need to override the back button.
+            exec(null, null, APP_PLUGIN_NAME, "overrideBackbutton", [this.numHandlers == 1]);
+        };
 
-var logger = require('cordova/plugin/ios/logger');
+        // Add hardware MENU and SEARCH button handlers
+        cordova.addDocumentEventHandler('menubutton');
+        cordova.addDocumentEventHandler('searchbutton');
 
-// ------------------------------------------------------------------------------
-// object that we're exporting
-// ------------------------------------------------------------------------------
-var console = module.exports;
-
-// ------------------------------------------------------------------------------
-// copy of the original console object
-// ------------------------------------------------------------------------------
-var WinConsole = window.console;
-
-// ------------------------------------------------------------------------------
-// whether to use the logger
-// ------------------------------------------------------------------------------
-var UseLogger = false;
-
-// ------------------------------------------------------------------------------
-// Timers
-// ------------------------------------------------------------------------------
-var Timers = {};
-
-// ------------------------------------------------------------------------------
-// used for unimplemented methods
-// ------------------------------------------------------------------------------
-function noop () {}
-
-// ------------------------------------------------------------------------------
-// used for unimplemented methods
-// ------------------------------------------------------------------------------
-console.useLogger = function (value) {
-    if (arguments.length) UseLogger = !!value;
-
-    if (UseLogger) {
-        if (logger.useConsole()) {
-            throw new Error('console and logger are too intertwingly');
+        function bindButtonChannel(buttonName) {
+            // generic button bind used for volumeup/volumedown buttons
+            var volumeButtonChannel = cordova.addDocumentEventHandler(buttonName + 'button');
+            volumeButtonChannel.onHasSubscribersChange = function() {
+                exec(null, null, APP_PLUGIN_NAME, "overrideButton", [buttonName, this.numHandlers == 1]);
+            };
         }
+        // Inject a listener for the volume buttons on the document.
+        bindButtonChannel('volumeup');
+        bindButtonChannel('volumedown');
+
+        // The resume event is not "sticky", but it is possible that the event
+        // will contain the result of a plugin call. We need to ensure that the
+        // plugin result is delivered even after the event is fired (CB-10498)
+        var cordovaAddEventListener = document.addEventListener;
+
+        document.addEventListener = function(evt, handler, capture) {
+            cordovaAddEventListener(evt, handler, capture);
+
+            if (evt === 'resume' && lastResumeEvent) {
+                handler(lastResumeEvent);
+            }
+        };
+
+        // Let native code know we are all done on the JS side.
+        // Native code will then un-hide the WebView.
+        channel.onCordovaReady.subscribe(function() {
+            exec(onMessageFromNative, null, APP_PLUGIN_NAME, 'messageChannel', []);
+            exec(null, null, APP_PLUGIN_NAME, "show", []);
+        });
     }
-
-    return UseLogger;
 };
 
-// ------------------------------------------------------------------------------
-console.log = function () {
-    if (logger.useConsole()) return;
-    logger.log.apply(logger, [].slice.call(arguments));
-};
+function onMessageFromNative(msg) {
+    var cordova = require('cordova');
+    var action = msg.action;
 
-// ------------------------------------------------------------------------------
-console.error = function () {
-    if (logger.useConsole()) return;
-    logger.error.apply(logger, [].slice.call(arguments));
-};
+    switch (action)
+    {
+        // Button events
+        case 'backbutton':
+        case 'menubutton':
+        case 'searchbutton':
+        // App life cycle events
+        case 'pause':
+        // Volume events
+        case 'volumedownbutton':
+        case 'volumeupbutton':
+            cordova.fireDocumentEvent(action);
+            break;
+        case 'resume':
+            if(arguments.length > 1 && msg.pendingResult) {
+                if(arguments.length === 2) {
+                    msg.pendingResult.result = arguments[1];
+                } else {
+                    // The plugin returned a multipart message
+                    var res = [];
+                    for(var i = 1; i < arguments.length; i++) {
+                        res.push(arguments[i]);
+                    }
+                    msg.pendingResult.result = res;
+                }
 
-// ------------------------------------------------------------------------------
-console.warn = function () {
-    if (logger.useConsole()) return;
-    logger.warn.apply(logger, [].slice.call(arguments));
-};
-
-// ------------------------------------------------------------------------------
-console.info = function () {
-    if (logger.useConsole()) return;
-    logger.info.apply(logger, [].slice.call(arguments));
-};
-
-// ------------------------------------------------------------------------------
-console.debug = function () {
-    if (logger.useConsole()) return;
-    logger.debug.apply(logger, [].slice.call(arguments));
-};
-
-// ------------------------------------------------------------------------------
-console.assert = function (expression) {
-    if (expression) return;
-
-    var message = logger.format.apply(logger.format, [].slice.call(arguments, 1));
-    console.log('ASSERT: ' + message);
-};
-
-// ------------------------------------------------------------------------------
-console.clear = function () {};
-
-// ------------------------------------------------------------------------------
-console.dir = function (object) {
-    console.log('%o', object);
-};
-
-// ------------------------------------------------------------------------------
-console.dirxml = function (node) {
-    console.log(node.innerHTML);
-};
-
-// ------------------------------------------------------------------------------
-console.trace = noop;
-
-// ------------------------------------------------------------------------------
-console.group = console.log;
-
-// ------------------------------------------------------------------------------
-console.groupCollapsed = console.log;
-
-// ------------------------------------------------------------------------------
-console.groupEnd = noop;
-
-// ------------------------------------------------------------------------------
-console.time = function (name) {
-    Timers[name] = new Date().valueOf();
-};
-
-// ------------------------------------------------------------------------------
-console.timeEnd = function (name) {
-    var timeStart = Timers[name];
-    if (!timeStart) {
-        console.warn('unknown timer: ' + name);
-        return;
-    }
-
-    var timeElapsed = new Date().valueOf() - timeStart;
-    console.log(name + ': ' + timeElapsed + 'ms');
-};
-
-// ------------------------------------------------------------------------------
-console.timeStamp = noop;
-
-// ------------------------------------------------------------------------------
-console.profile = noop;
-
-// ------------------------------------------------------------------------------
-console.profileEnd = noop;
-
-// ------------------------------------------------------------------------------
-console.count = noop;
-
-// ------------------------------------------------------------------------------
-console.exception = console.log;
-
-// ------------------------------------------------------------------------------
-console.table = function (data, columns) {
-    console.log('%o', data);
-};
-
-// ------------------------------------------------------------------------------
-// return a new function that calls both functions passed as args
-// ------------------------------------------------------------------------------
-function wrappedOrigCall (orgFunc, newFunc) {
-    return function () {
-        var args = [].slice.call(arguments);
-        try { orgFunc.apply(WinConsole, args); } catch (e) {}
-        try { newFunc.apply(console, args); } catch (e) {}
-    };
-}
-
-// ------------------------------------------------------------------------------
-// For every function that exists in the original console object, that
-// also exists in the new console object, wrap the new console method
-// with one that calls both
-// ------------------------------------------------------------------------------
-for (var key in console) {
-    if (typeof WinConsole[key] === 'function') {
-        console[key] = wrappedOrigCall(WinConsole[key], console[key]);
+                // Save the plugin result so that it can be delivered to the js
+                // even if they miss the initial firing of the event
+                lastResumeEvent = msg;
+            }
+            cordova.fireDocumentEvent(action, msg);
+            break;
+        default:
+            throw new Error('Unknown event action ' + action);
     }
 }
 
 });
 
-// file: ../cordova-ios/cordova-js-src/plugin/ios/logger.js
-define("cordova/plugin/ios/logger", function(require, exports, module) {
-
-// ------------------------------------------------------------------------------
-// The logger module exports the following properties/functions:
-//
-// LOG                          - constant for the level LOG
-// ERROR                        - constant for the level ERROR
-// WARN                         - constant for the level WARN
-// INFO                         - constant for the level INFO
-// DEBUG                        - constant for the level DEBUG
-// logLevel()                   - returns current log level
-// logLevel(value)              - sets and returns a new log level
-// useConsole()                 - returns whether logger is using console
-// useConsole(value)            - sets and returns whether logger is using console
-// log(message,...)             - logs a message at level LOG
-// error(message,...)           - logs a message at level ERROR
-// warn(message,...)            - logs a message at level WARN
-// info(message,...)            - logs a message at level INFO
-// debug(message,...)           - logs a message at level DEBUG
-// logLevel(level,message,...)  - logs a message specified level
-//
-// ------------------------------------------------------------------------------
-
-var logger = exports;
+// file: ../cordova-android/cordova-js-src/plugin/android/app.js
+define("cordova/plugin/android/app", function(require, exports, module) {
 
 var exec = require('cordova/exec');
+var APP_PLUGIN_NAME = Number(require('cordova').platformVersion.split('.')[0]) >= 4 ? 'CoreAndroid' : 'App';
 
-var UseConsole = false;
-var UseLogger = true;
-var Queued = [];
-var DeviceReady = false;
-var CurrentLevel;
+module.exports = {
+    /**
+    * Clear the resource cache.
+    */
+    clearCache:function() {
+        exec(null, null, APP_PLUGIN_NAME, "clearCache", []);
+    },
 
-var originalConsole = console;
+    /**
+    * Load the url into the webview or into new browser instance.
+    *
+    * @param url           The URL to load
+    * @param props         Properties that can be passed in to the activity:
+    *      wait: int                           => wait msec before loading URL
+    *      loadingDialog: "Title,Message"      => display a native loading dialog
+    *      loadUrlTimeoutValue: int            => time in msec to wait before triggering a timeout error
+    *      clearHistory: boolean              => clear webview history (default=false)
+    *      openExternal: boolean              => open in a new browser (default=false)
+    *
+    * Example:
+    *      navigator.app.loadUrl("http://server/myapp/index.html", {wait:2000, loadingDialog:"Wait,Loading App", loadUrlTimeoutValue: 60000});
+    */
+    loadUrl:function(url, props) {
+        exec(null, null, APP_PLUGIN_NAME, "loadUrl", [url, props]);
+    },
 
-/**
- * Logging levels
- */
+    /**
+    * Cancel loadUrl that is waiting to be loaded.
+    */
+    cancelLoadUrl:function() {
+        exec(null, null, APP_PLUGIN_NAME, "cancelLoadUrl", []);
+    },
 
-var Levels = [
-    'LOG',
-    'ERROR',
-    'WARN',
-    'INFO',
-    'DEBUG'
-];
+    /**
+    * Clear web history in this web view.
+    * Instead of BACK button loading the previous web page, it will exit the app.
+    */
+    clearHistory:function() {
+        exec(null, null, APP_PLUGIN_NAME, "clearHistory", []);
+    },
 
-/*
- * add the logging levels to the logger object and
- * to a separate levelsMap object for testing
- */
+    /**
+    * Go to previous page displayed.
+    * This is the same as pressing the backbutton on Android device.
+    */
+    backHistory:function() {
+        exec(null, null, APP_PLUGIN_NAME, "backHistory", []);
+    },
 
-var LevelsMap = {};
-for (var i = 0; i < Levels.length; i++) {
-    var level = Levels[i];
-    LevelsMap[level] = i;
-    logger[level] = level;
-}
+    /**
+    * Override the default behavior of the Android back button.
+    * If overridden, when the back button is pressed, the "backKeyDown" JavaScript event will be fired.
+    *
+    * Note: The user should not have to call this method.  Instead, when the user
+    *       registers for the "backbutton" event, this is automatically done.
+    *
+    * @param override        T=override, F=cancel override
+    */
+    overrideBackbutton:function(override) {
+        exec(null, null, APP_PLUGIN_NAME, "overrideBackbutton", [override]);
+    },
 
-CurrentLevel = LevelsMap.WARN;
+    /**
+    * Override the default behavior of the Android volume button.
+    * If overridden, when the volume button is pressed, the "volume[up|down]button"
+    * JavaScript event will be fired.
+    *
+    * Note: The user should not have to call this method.  Instead, when the user
+    *       registers for the "volume[up|down]button" event, this is automatically done.
+    *
+    * @param button          volumeup, volumedown
+    * @param override        T=override, F=cancel override
+    */
+    overrideButton:function(button, override) {
+        exec(null, null, APP_PLUGIN_NAME, "overrideButton", [button, override]);
+    },
 
-/**
- * Getter/Setter for the logging level
- *
- * Returns the current logging level.
- *
- * When a value is passed, sets the logging level to that value.
- * The values should be one of the following constants:
- *    logger.LOG
- *    logger.ERROR
- *    logger.WARN
- *    logger.INFO
- *    logger.DEBUG
- *
- * The value used determines which messages get printed.  The logging
- * values above are in order, and only messages logged at the logging
- * level or above will actually be displayed to the user.  E.g., the
- * default level is WARN, so only messages logged with LOG, ERROR, or
- * WARN will be displayed; INFO and DEBUG messages will be ignored.
- */
-logger.level = function (value) {
-    if (arguments.length) {
-        if (LevelsMap[value] === null) {
-            throw new Error('invalid logging level: ' + value);
-        }
-        CurrentLevel = LevelsMap[value];
-    }
-
-    return Levels[CurrentLevel];
-};
-
-/**
- * Getter/Setter for the useConsole functionality
- *
- * When useConsole is true, the logger will log via the
- * browser 'console' object.
- */
-logger.useConsole = function (value) {
-    if (arguments.length) UseConsole = !!value;
-
-    if (UseConsole) {
-        if (typeof console === 'undefined') {
-            throw new Error('global console object is not defined');
-        }
-
-        if (typeof console.log !== 'function') {
-            throw new Error('global console object does not have a log function');
-        }
-
-        if (typeof console.useLogger === 'function') {
-            if (console.useLogger()) {
-                throw new Error('console and logger are too intertwingly');
-            }
-        }
-    }
-
-    return UseConsole;
-};
-
-/**
- * Getter/Setter for the useLogger functionality
- *
- * When useLogger is true, the logger will log via the
- * native Logger plugin.
- */
-logger.useLogger = function (value) {
-    // Enforce boolean
-    if (arguments.length) UseLogger = !!value;
-    return UseLogger;
-};
-
-/**
- * Logs a message at the LOG level.
- *
- * Parameters passed after message are used applied to
- * the message with utils.format()
- */
-logger.log = function (message) { logWithArgs('LOG', arguments); };
-
-/**
- * Logs a message at the ERROR level.
- *
- * Parameters passed after message are used applied to
- * the message with utils.format()
- */
-logger.error = function (message) { logWithArgs('ERROR', arguments); };
-
-/**
- * Logs a message at the WARN level.
- *
- * Parameters passed after message are used applied to
- * the message with utils.format()
- */
-logger.warn = function (message) { logWithArgs('WARN', arguments); };
-
-/**
- * Logs a message at the INFO level.
- *
- * Parameters passed after message are used applied to
- * the message with utils.format()
- */
-logger.info = function (message) { logWithArgs('INFO', arguments); };
-
-/**
- * Logs a message at the DEBUG level.
- *
- * Parameters passed after message are used applied to
- * the message with utils.format()
- */
-logger.debug = function (message) { logWithArgs('DEBUG', arguments); };
-
-// log at the specified level with args
-function logWithArgs (level, args) {
-    args = [level].concat([].slice.call(args));
-    logger.logLevel.apply(logger, args);
-}
-
-// return the correct formatString for an object
-function formatStringForMessage (message) {
-    return (typeof message === 'string') ? '' : '%o';
-}
-
-/**
- * Logs a message at the specified level.
- *
- * Parameters passed after message are used applied to
- * the message with utils.format()
- */
-logger.logLevel = function (level /* , ... */) {
-    // format the message with the parameters
-    var formatArgs = [].slice.call(arguments, 1);
-    var fmtString = formatStringForMessage(formatArgs[0]);
-    if (fmtString.length > 0) {
-        formatArgs.unshift(fmtString); // add formatString
-    }
-
-    var message = logger.format.apply(logger.format, formatArgs);
-
-    if (LevelsMap[level] === null) {
-        throw new Error('invalid logging level: ' + level);
-    }
-
-    if (LevelsMap[level] > CurrentLevel) return;
-
-    // queue the message if not yet at deviceready
-    if (!DeviceReady && !UseConsole) {
-        Queued.push([level, message]);
-        return;
-    }
-
-    // Log using the native logger if that is enabled
-    if (UseLogger) {
-        exec(null, null, 'Console', 'logLevel', [level, message]);
-    }
-
-    // Log using the console if that is enabled
-    if (UseConsole) {
-        // make sure console is not using logger
-        if (console.useLogger()) {
-            throw new Error('console and logger are too intertwingly');
-        }
-
-        // log to the console
-        switch (level) {
-        case logger.LOG: originalConsole.log(message); break;
-        case logger.ERROR: originalConsole.log('ERROR: ' + message); break;
-        case logger.WARN: originalConsole.log('WARN: ' + message); break;
-        case logger.INFO: originalConsole.log('INFO: ' + message); break;
-        case logger.DEBUG: originalConsole.log('DEBUG: ' + message); break;
-        }
+    /**
+    * Exit and terminate the application.
+    */
+    exitApp:function() {
+        return exec(null, null, APP_PLUGIN_NAME, "exitApp", []);
     }
 };
-
-/**
- * Formats a string and arguments following it ala console.log()
- *
- * Any remaining arguments will be appended to the formatted string.
- *
- * for rationale, see FireBug's Console API:
- *    http://getfirebug.com/wiki/index.php/Console_API
- */
-logger.format = function (formatString, args) {
-    return __format(arguments[0], [].slice.call(arguments, 1)).join(' ');
-};
-
-// ------------------------------------------------------------------------------
-/**
- * Formats a string and arguments following it ala vsprintf()
- *
- * format chars:
- *   %j - format arg as JSON
- *   %o - format arg as JSON
- *   %c - format arg as ''
- *   %% - replace with '%'
- * any other char following % will format it's
- * arg via toString().
- *
- * Returns an array containing the formatted string and any remaining
- * arguments.
- */
-function __format (formatString, args) {
-    if (formatString === null || formatString === undefined) return [''];
-    if (arguments.length === 1) return [formatString.toString()];
-
-    if (typeof formatString !== 'string') { formatString = formatString.toString(); }
-
-    var pattern = /(.*?)%(.)(.*)/;
-    var rest = formatString;
-    var result = [];
-
-    while (args.length) {
-        var match = pattern.exec(rest);
-        if (!match) break;
-
-        var arg = args.shift();
-        rest = match[3];
-        result.push(match[1]);
-
-        if (match[2] === '%') {
-            result.push('%');
-            args.unshift(arg);
-            continue;
-        }
-
-        result.push(__formatted(arg, match[2]));
-    }
-
-    result.push(rest);
-
-    var remainingArgs = [].slice.call(args);
-    remainingArgs.unshift(result.join(''));
-    return remainingArgs;
-}
-
-function __formatted (object, formatChar) {
-
-    try {
-        switch (formatChar) {
-        case 'j':
-        case 'o': return JSON.stringify(object);
-        case 'c': return '';
-        }
-    } catch (e) {
-        return 'error JSON.stringify()ing argument: ' + e;
-    }
-
-    if ((object === null) || (object === undefined)) {
-        return Object.prototype.toString.call(object);
-    }
-
-    return object.toString();
-}
-
-// ------------------------------------------------------------------------------
-// when deviceready fires, log queued messages
-logger.__onDeviceReady = function () {
-    if (DeviceReady) return;
-
-    DeviceReady = true;
-
-    for (var i = 0; i < Queued.length; i++) {
-        var messageArgs = Queued[i];
-        logger.logLevel(messageArgs[0], messageArgs[1]);
-    }
-
-    Queued = null;
-};
-
-// add a deviceready event to log queued messages
-document.addEventListener('deviceready', logger.__onDeviceReady, false);
 
 });
 
@@ -1908,11 +1656,11 @@ exports.injectScript = function (url, onload, onerror) {
 
 function injectIfNecessary (id, url, onload, onerror) {
     onerror = onerror || onload;
-    if (id in define.moduleMap) {
+    if (id in define.moduleMap) { // eslint-disable-line no-undef
         onload();
     } else {
         exports.injectScript(url, function () {
-            if (id in define.moduleMap) {
+            if (id in define.moduleMap) { // eslint-disable-line no-undef
                 onload();
             } else {
                 onerror();
@@ -1923,7 +1671,7 @@ function injectIfNecessary (id, url, onload, onerror) {
 
 function onScriptLoadingComplete (moduleList, finishPluginLoading) {
     // Loop through all the plugins and then through their clobbers and merges.
-    for (var i = 0, module; (module = moduleList[i]); i++) {
+    for (var i = 0, module; module = moduleList[i]; i++) { // eslint-disable-line no-cond-assign
         if (module.clobbers && module.clobbers.length) {
             for (var j = 0; j < module.clobbers.length; j++) {
                 modulemapper.clobbers(module.id, module.clobbers[j]);
@@ -2106,11 +1854,10 @@ utils.clone = function (obj) {
 
     retVal = {};
     for (i in obj) {
-        // 'unknown' type may be returned in custom protocol activation case on
-        // Windows Phone 8.1 causing "No such interface supported" exception on
-        // cloning (https://issues.apache.org/jira/browse/CB-11522)
-        // eslint-disable-next-line valid-typeof
-        if ((!(i in retVal) || retVal[i] !== obj[i]) && typeof obj[i] !== 'undefined' && typeof obj[i] !== 'unknown') {
+        // https://issues.apache.org/jira/browse/CB-11522 'unknown' type may be returned in
+        // custom protocol activation case on Windows Phone 8.1 causing "No such interface supported" exception
+        // on cloning.
+        if ((!(i in retVal) || retVal[i] !== obj[i]) && typeof obj[i] !== 'undefined' && typeof obj[i] !== 'unknown') { // eslint-disable-line valid-typeof
             retVal[i] = utils.clone(obj[i]);
         }
     }
