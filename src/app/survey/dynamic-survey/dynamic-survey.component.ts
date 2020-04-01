@@ -416,7 +416,6 @@ export class DynamicSurveyComponent implements OnInit {
         reinforcementObj['ds'] = 1;
         reinforcementObj['reward'] = 0;
         reinforcementObj['prob'] = currentProb;
-
         reinforcement_data['reward'] = "No push"; 
         this.awsS3Service.upload('reinforcement_data', reinforcement_data);  
         this.userProfileService.addReinforcementData(currentDate, reinforcementObj);    
