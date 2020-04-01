@@ -81,7 +81,6 @@ export class AwardAltruismComponent implements OnInit {
     }
     this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);    
     this.router.navigate(['home']);
-
   }
 
 
