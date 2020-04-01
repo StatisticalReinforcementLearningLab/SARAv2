@@ -74,8 +74,9 @@ export class GameTundraL5 extends Phaser.State {
         this.addAnimals();
 
         //
-        var treasure = this.add.image(this.game.width-150, this.height-125, 'treasure_tundra');
-        treasure.scale.setTo(-0.07, 0.07);
+        var treasure = this.add.image(this.game.width/2, this.height-85, 'treasure_tundra');
+        treasure.scale.setTo(-0.5, 0.5);
+        treasure.anchor.setTo(.5,.5);
         treasure.inputEnabled = true;
         treasure.events.onInputDown.add(this.showunlockables, this);
 
