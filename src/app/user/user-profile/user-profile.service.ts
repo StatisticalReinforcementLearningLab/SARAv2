@@ -41,25 +41,25 @@ export class UserProfileService {
           console.log("initializeOb - !response1.username: " + !response1.username);
           console.log("initializeOb - !response1.hasOwnProperty('username'): " + !response1.hasOwnProperty('username'));
 
-        if (!response1.username || !response1.hasOwnProperty('username') ){
-          console.log("blank or empty user_name");
-          const username = localStorage.getItem('loggedInUser');
-          const currenttime:Date = new Date();
-          const dateString: string = moment(currenttime).format('MMMM Do YYYY, h:mm:ss a Z');
-          this.userProfile = new UserProfile(username,[],0,0,currenttime.getTime(), dateString);
-        }
-        else{
-          this.userProfile = response1;
-          if(this.userProfile.hasOwnProperty("AwardDollarDates")){
-            localStorage.setItem("AwardDollarDates", JSON.stringify( this.userProfile.AwardDollarDates));
+          if (!response1.username || !response1.hasOwnProperty('username') ){
+            console.log("blank or empty user_name");
+            const username = localStorage.getItem('loggedInUser');
+            const currenttime:Date = new Date();
+            const dateString: string = moment(currenttime).format('MMMM Do YYYY, h:mm:ss a Z');
+            this.userProfile = new UserProfile(username,[],0,0,currenttime.getTime(), dateString);
           }
-          localStorage.setItem("AwardDollar", JSON.stringify(this.userProfile.dollars));
+          else{
+            this.userProfile = response1;
+            if(this.userProfile.hasOwnProperty("AwardDollarDates")){
+              localStorage.setItem("AwardDollarDates", JSON.stringify( this.userProfile.AwardDollarDates));
+            }
+            localStorage.setItem("AwardDollar", JSON.stringify(this.userProfile.dollars));
+          }
+          this.userProfileFixed = response2;
+          this.saveProfileToDevice();
+          this.initialLoading.next(false);
         }
-        this.userProfileFixed = response2;
-        this.saveProfileToDevice();
-        this.initialLoading.next(false);
-      }
-    ));
+      ));
   }
 
   /* 
@@ -110,8 +110,7 @@ export class UserProfileService {
           previousDate = new Date("1970-01-01");  //set previousDate to 1970-01-01
           streak = 1;
         } 
-      }
-      else{
+      }else{
         //reset
         streak =1;
       }
@@ -122,7 +121,7 @@ export class UserProfileService {
   }
 
   get isActive(){
-    console.log("user-profile.service.ts - isActive getter - begin");
+    //console.log("user-profile.service.ts - isActive getter - begin");
     return this.userProfileFixed.isActive;
   }
   get isParent(){
@@ -138,7 +137,7 @@ export class UserProfileService {
   }
 
   get username(){
-    console.log("user-profile.service.ts - username getter - begin");
+    //console.log("user-profile.service.ts - username getter - begin");
 
     if(this.userProfile==undefined)
       this.loadProfileFromDevice();
@@ -176,8 +175,6 @@ export class UserProfileService {
   }
   getProfile(){
   }
-
-
 
   initTestProfile(){
     const currenttime:Date = new Date();

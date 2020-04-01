@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
+import { AwsS3Service } from 'src/app/storage/aws-s3.service';
 
 @Component({
   selector: 'app-award-memes',
@@ -18,6 +19,7 @@ export class AwardMemesComponent implements OnInit {
   meme_data: any;
   date;
   reinforcementObj = {};
+  reinforcement_data = {};
 
   viewWidth = 512;
   viewHeight = 350;
@@ -29,14 +31,17 @@ export class AwardMemesComponent implements OnInit {
   constructor(private ga: GoogleAnalytics,
     private route: ActivatedRoute,   
     private userProfileService: UserProfileService,  
+    private awsS3Service: AwsS3Service,
     private router: Router) {
       this.reinforcementObj['ds'] = 1;
       this.reinforcementObj['reward'] = 1;
       this.reinforcementObj['reward_type'] = 'meme';
+
       this.route.queryParams.subscribe(params => {
         if (this.router.getCurrentNavigation().extras.state) {
           this.date = this.router.getCurrentNavigation().extras.state.date;
           this.reinforcementObj['prob'] = this.router.getCurrentNavigation().extras.state.prob;
+          this.reinforcement_data = this.router.getCurrentNavigation().extras.state.reinforcement_data;
           console.log("Inside AwardMemes, date is: " +this.date+" prob is: "+this.reinforcementObj['prob']);
         }
       });    
@@ -74,23 +79,27 @@ export class AwardMemesComponent implements OnInit {
     //console.log('picked_meme: ' + JSON.stringify(picked_meme));
     this.whichImage = "./assets/memes/"+picked_meme[0]["filename"];
     this.reinforcementObj['reward_img_link'] = "/memes/"+picked_meme[0]["filename"];
+    this.reinforcement_data['reward_img_link'] = "/memes/"+picked_meme[0]["filename"];
     setTimeout(e => this.drawImageOnCanvas(this.whichImage), 200);
   }
   
   ratingChanged(rating){
     if(rating==0) {
-      console.log("thumbs down");
+      //console.log("thumbs down");
       this.reinforcementObj['Like'] = "No";
+      this.reinforcement_data['Like'] = "No";
       window.localStorage.setItem("Like", "No");
+      this.awsS3Service.upload('reinforcement_data', this.reinforcement_data); 
     } else {
-      console.log("thumbs up");
+      //console.log("thumbs up");
       this.reinforcementObj['Like'] = "Yes";
+      this.reinforcement_data['Like'] = "Yes";
       window.localStorage.setItem("Like", "Yes");
+      this.awsS3Service.upload('reinforcement_data', this.reinforcement_data); 
     }
     
     this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);    
-    this.router.navigate(['home']); 
-    //window.location.href = '/home';
+    this.router.navigate(['home']);
   }
 
   /**

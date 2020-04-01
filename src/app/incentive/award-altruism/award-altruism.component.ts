@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
+import { AwsS3Service } from 'src/app/storage/aws-s3.service';
 
 @Component({
   selector: 'app-award-altruism',
@@ -14,11 +15,13 @@ export class AwardAltruismComponent implements OnInit {
   altruism_data: any;
   date;
   reinforcementObj = {};
+  reinforcement_data = {};
 
   constructor(    
     private ga: GoogleAnalytics,
     private route: ActivatedRoute, 
     private userProfileService: UserProfileService,
+    private awsS3Service: AwsS3Service,
     private router: Router) { 
       this.reinforcementObj['ds'] = 1;
       this.reinforcementObj['reward'] = 2;
@@ -27,6 +30,7 @@ export class AwardAltruismComponent implements OnInit {
         if (this.router.getCurrentNavigation().extras.state) {
           this.date = this.router.getCurrentNavigation().extras.state.date;
           this.reinforcementObj['prob'] = this.router.getCurrentNavigation().extras.state.prob;
+          this.reinforcement_data = this.router.getCurrentNavigation().extras.state.reinforcement_data;         
           console.log("Inside AwardAltruism, date is: " +this.date+" prob is: "+this.reinforcementObj['prob']);
         }
       });      
@@ -57,6 +61,7 @@ export class AwardAltruismComponent implements OnInit {
     console.log('picked_altruism_image: ' + JSON.stringify(picked_altruism_image));
     this.whichImage = "./assets/altruism/"+picked_altruism_image[0]["filename"];
     this.reinforcementObj['reward_img_link'] = "/altruism/"+picked_altruism_image[0]["filename"];
+    this.reinforcement_data['reward_img_link'] = "/altruism/"+picked_altruism_image[0]["filename"];
     setTimeout(e => this.drawImageOnCanvas(this.whichImage), 200);
   }
   
@@ -64,15 +69,18 @@ export class AwardAltruismComponent implements OnInit {
     if(rating==0) {
       console.log("thumbs down");
       this.reinforcementObj['Like'] = "No";
+      this.reinforcement_data['Like'] = "No";
       window.localStorage.setItem("Like", "No");
+      this.awsS3Service.upload('reinforcement_data', this.reinforcement_data); 
     } else {
       console.log("thumbs up");
       this.reinforcementObj['Like'] = "Yes";
+      this.reinforcement_data['Like'] = "Yes";
       window.localStorage.setItem("Like", "Yes");
+      this.awsS3Service.upload('reinforcement_data', this.reinforcement_data); 
     }
     this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);    
-    this.router.navigate(['home']);   
-    //window.location.href = '/home';
+    this.router.navigate(['home']);
   }
 
 
