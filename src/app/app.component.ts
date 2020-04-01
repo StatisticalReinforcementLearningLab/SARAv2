@@ -107,12 +107,14 @@ export class AppComponent {
       this.userSub = this.userProfileService.initializeObs().subscribe(() =>{        
         this.dismissLoading();
         this.isLoading = false;
+        console.log("successfully logged in");
       });
       // this.userProfileService.initialize();
       // if we can for things to wait to progress in here
       // then, we'll only need to load user profile here and at login in Auth component
     }
     else{
+      console.log("log in unsuccessful.");
       this.dismissLoading();
       this.isLoading = false;
     }
@@ -126,10 +128,8 @@ export class AppComponent {
       //this.statusBar.backgroundColorByHexString('#ffffff');
 
       if(this.platform.is('android')) {
-
-        
         this.statusBar.styleLightContent();
-        this.statusBar.backgroundColorByHexString("#303F9F");
+        this.statusBar.backgroundColorByHexString("#004166");
       }
 
       this.splashScreen.hide();
@@ -159,6 +159,10 @@ export class AppComponent {
       message: "Loading...",
       spinner: "lines",
       duration: 5000
+    });
+
+    this.loading.onDidDismiss(() => {
+      console.log('Dismissed loading after 5 seconds');
     });
 
     this.loading.present();

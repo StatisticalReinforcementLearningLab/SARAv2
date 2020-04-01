@@ -1,0 +1,36 @@
+{"frames": {
+
+"flying owls-12.png":
+{
+	"frame": {"x":1,"y":46,"w":41,"h":42},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":23,"y":0,"w":41,"h":42},
+	"sourceSize": {"w":77,"h":48}
+},
+"flying owls-13.png":
+{
+	"frame": {"x":1,"y":90,"w":41,"h":27},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":23,"y":10,"w":41,"h":27},
+	"sourceSize": {"w":77,"h":48}
+},
+"flying owls-14.png":
+{
+	"frame": {"x":1,"y":1,"w":41,"h":43},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":24,"y":4,"w":41,"h":43},
+	"sourceSize": {"w":77,"h":48}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "black_tundra_owl.png",
+	"format": "RGBA8888",
+	"size": {"w":43,"h":118},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:627cc782936fdc76ed0a29c23079b151:b223e44a47ec9a88740362314b9e00e4:301aebdff42a5ed63f3d79472c811ec9$"
+}
+}

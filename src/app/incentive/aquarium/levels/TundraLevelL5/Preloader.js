@@ -76,16 +76,36 @@ export class PreloaderTundraL5 extends Phaser.State {
 		this.game.load.atlasJSONArray('brown_bear', 'assets/game/sprite/brown_bear.png', 'assets/game/sprite/brown_bear.json');
 		this.game.load.atlasJSONArray('rabbit', 'assets/game/sprite/rabbit.png', 'assets/game/sprite/rabbit.json');
 		this.game.load.atlasJSONArray('reindeer', 'assets/game/sprite/reindeer.png', 'assets/game/sprite/reindeer.json');
-		
 
 		//
-		this.load.image('treasure_tundra', 'assets/img/igloo_tresurechest.png');
+		this.game.load.atlasJSONArray('duck', 'assets/game/sprite/Duck.png', 'assets/game/sprite/Duck.json');
+		this.game.load.atlasJSONArray('polar_bear_cub', 'assets/game/sprite/PolarBear.png', 'assets/game/sprite/PolarBear.json');
+
+
+		//
+		this.game.load.atlasJSONArray('black_tundra_owl', 'assets/game/sprite/black_tundra_owl.png', 'assets/game/sprite/black_tundra_owl.json');
+		this.game.load.atlasJSONArray('brown_tundra_owl', 'assets/game/sprite/brown_tundra_owl.png', 'assets/game/sprite/brown_tundra_owl.json');
+		this.game.load.atlasJSONArray('grey_tundra_owl', 'assets/game/sprite/grey_tundra_owl.png', 'assets/game/sprite/grey_tundra_owl.json');
+		//this.game.load.atlasJSONArray('light_brown_tundra_owl', 'assets/game/sprite/light_brown_tundra_owl.png', 'assets/game/sprite/light_brown_tundra_owl.json');
+		this.game.load.atlasJSONArray('white_tundra_owl', 'assets/game/sprite/white_tundra_owl.png', 'assets/game/sprite/white_tundra_owl.json');
+
+
+		//mountain goat
+		this.game.load.atlasJSONArray('black_mountain_goat', 'assets/game/sprite/black_mountain_goat.png', 'assets/game/sprite/black_mountain_goat.json');
+		this.game.load.atlasJSONArray('brown_mountain_goat', 'assets/game/sprite/brown_mountain_goat.png', 'assets/game/sprite/brown_mountain_goat.json');
+		this.game.load.atlasJSONArray('white_mountain_goat', 'assets/game/sprite/white_mountain_goat.png', 'assets/game/sprite/white_mountain_goat.json');
+
+
+		//
+		this.load.image('treasure_tundra', 'assets/img/tundra_treasure_chest.png');
 
 		//
 		this.load.image('yeti_standing', 'assets/game/sprite/yeti_standing.png');
 
 		//
-		this.load.image('snowgswitch', 'assets/img/snowglobe.png');
+		//this.load.image('snowgswitch', 'assets/img/snowglobe.png');
+		this.load.image('snow_start', 'assets/img/start_snow.png');
+		this.load.image('snow_end', 'assets/img/stop_snow.png');
 
 		//
 		this.game.load.spritesheet('snowflakes', 'assets/game/sprite/snowflakes.png', 17, 17);
