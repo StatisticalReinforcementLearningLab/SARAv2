@@ -732,7 +732,7 @@ module.exports = "<!-- \n<div class=\"container\">\n    <div class=\"row\">\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <!--ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\"></ion-back-button>\n    </ion-buttons-->\n    <ion-buttons slot=\"end\">\n        <font color=\"white\">${{money}}</font>\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n\n        <!-- Mash codes:\n        <ion-text  *ngIf=\"!isActive\" style=\"color:#fff;\"><strong>Account is Paused</strong> </ion-text>\n        <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n          <ion-icon name=\"journal\"></ion-icon>\n        </ion-button>\n        -->\n\n        <ion-button (click)=\"startSurvey()\"   *ngIf=\"isActive\">\n            <ion-icon name=\"journal\" style=\"color : white;\"></ion-icon>\n        </ion-button>\n\n\n        <ion-button *ngIf=\"!isActive\" (click)=\"dispalySurveyPausedMsg()\" >\n            <ion-icon name=\"journal\" style=\"color : #e74c3c;\"></ion-icon>\n        </ion-button>\n        <!--\n        <ion-button href=\"{{surveyPath}}\" *ngIf=\"isActive\">Start Survey</ion-button> \n        <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n          <ion-icon name=\"journal\"></ion-icon>\n        </ion-button> \n        <ion-button style=\"color:#fff;\" (click)=\"startSurveyAYA()\">\n          <ion-icon name=\"journal\"></ion-icon>\n        </ion-button> \n        -->\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">ADAPTS</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n\n\n<ion-content>\n  <!--div class=\"ion-padding\">\n    <ion-button href=\"/survey/samplesurvey\">Sample survey (demo)</ion-button> <br>\n    <ion-button href=\"/incentive/aquariumone\">Incentive: Aquarium 1</ion-button> <br>\n    <ion-button href=\"/incentive/award-memes\" >Incentive: meme</ion-button> <br>\n    <ion-button href=\"/incentive/visualization\">Incentive: Life-inisight</ion-button> <br>\n  </div-->\n\n  <app-demo-aquarium></app-demo-aquarium>\n</ion-content>\n\n"
+module.exports = "\n<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <!--ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\"></ion-back-button>\n    </ion-buttons-->\n    <ion-buttons slot=\"end\">\n        <font color=\"white\">${{money}}</font>\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n\n        <!-- Mash codes:\n        <ion-text  *ngIf=\"!isActive\" style=\"color:#fff;\"><strong>Account is Paused</strong> </ion-text>\n        <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n          <ion-icon name=\"journal\"></ion-icon>\n        </ion-button>\n        -->\n\n        <ion-button (click)=\"startSurvey()\"   *ngIf=\"isActive\">\n            <ion-icon name=\"journal\" style=\"color : white;\"></ion-icon>\n        </ion-button>\n\n\n        <ion-button *ngIf=\"!isActive\" (click)=\"dispalySurveyPausedMsg()\" >\n            <ion-icon name=\"journal\" style=\"color : #e74c3c;\"></ion-icon>\n        </ion-button>\n        <!--\n        <ion-button href=\"{{surveyPath}}\" *ngIf=\"isActive\">Start Survey</ion-button> \n        <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n          <ion-icon name=\"journal\"></ion-icon>\n        </ion-button> \n        <ion-button style=\"color:#fff;\" (click)=\"startSurveyAYA()\">\n          <ion-icon name=\"journal\"></ion-icon>\n        </ion-button> \n        -->\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">ADAPTS</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n\n\n<ion-content>\n  <!--div class=\"ion-padding\">\n    <ion-button href=\"/survey/samplesurvey\">Sample survey (demo)</ion-button> <br>\n    <ion-button href=\"/incentive/aquariumone\">Incentive: Aquarium 1</ion-button> <br>\n    <ion-button href=\"/incentive/award-memes\" >Incentive: meme</ion-button> <br>\n    <ion-button href=\"/incentive/visualization\">Incentive: Life-inisight</ion-button> <br>\n  </div-->\n\n  <app-demo-aquarium></app-demo-aquarium>\n  <ion-button color=\"primary\" (click)=\"showModalDemo()\">Unlockables</ion-button>\n  <ion-button color=\"primary\" (click)=\"showMemeDemo()\">Meme</ion-button>\n  <ion-button color=\"primary\" (click)=\"showAltruisticDemo()\">Altruistic msg</ion-button>\n</ion-content>\n\n"
 
 /***/ }),
 
@@ -765,7 +765,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"gameDiv\"></div>\n<p  style=\"padding-top:10px;padding-bottom:0px;padding-left:10px;\"><b>Username</b>: {{username}}</p>  \n<ion-button color=\"primary\" (click)=\"showModalDemo()\">Unlockables</ion-button>\n<ion-button color=\"primary\" (click)=\"showMemeDemo()\">Meme</ion-button>\n<ion-button color=\"primary\" (click)=\"showAltruisticDemo()\">Altruistic msg</ion-button>\n  <!--\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"startTundraLevel()\">Tundra level</ion-button>\n\n  <app-loading-spinner></app-loading-spinner>\n\n  <ion-card> \n    <div class=\"quetiontextstyle\">\n        This is the question\n    </div>\n    <div class=\"radiovertical\">\n      <ul>\n        \n        <li>\n          <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n          <label for=\"ff-option\">Pizza</label> \n          <div class=\"check\"></div>\n        </li>\n\n        <li>\n          <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n          <label for=\"ss-option\">Boyfriend</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n        \n        <li>\n          <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n          <label for=\"tt-option\">Cats</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n\n      </ul>\n    </div>\n  </ion-card>\n  -->\n\n\n"
+module.exports = "<div id=\"gameDiv\"></div>\n<p  style=\"padding-top:10px;padding-bottom:0px;padding-left:10px;\"><b>Username</b>: {{username}}</p>  \n  <!--\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"startTundraLevel()\">Tundra level</ion-button>\n\n  <app-loading-spinner></app-loading-spinner>\n\n  <ion-card> \n    <div class=\"quetiontextstyle\">\n        This is the question\n    </div>\n    <div class=\"radiovertical\">\n      <ul>\n        \n        <li>\n          <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n          <label for=\"ff-option\">Pizza</label> \n          <div class=\"check\"></div>\n        </li>\n\n        <li>\n          <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n          <label for=\"ss-option\">Boyfriend</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n        \n        <li>\n          <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n          <label for=\"tt-option\">Cats</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n\n      </ul>\n    </div>\n  </ion-card>\n  -->\n\n\n"
 
 /***/ }),
 
@@ -4748,12 +4748,14 @@ var AppComponent = /** @class */ (function () {
             this.userSub = this.userProfileService.initializeObs().subscribe(function () {
                 _this.dismissLoading();
                 _this.isLoading = false;
+                console.log("successfully logged in");
             });
             // this.userProfileService.initialize();
             // if we can for things to wait to progress in here
             // then, we'll only need to load user profile here and at login in Auth component
         }
         else {
+            console.log("log in unsuccessful.");
             this.dismissLoading();
             this.isLoading = false;
         }
@@ -4796,6 +4798,9 @@ var AppComponent = /** @class */ (function () {
                             })];
                     case 1:
                         _a.loading = _b.sent();
+                        this.loading.onDidDismiss(function () {
+                            console.log('Dismissed loading after 5 seconds');
+                        });
                         this.loading.present();
                         return [2 /*return*/];
                 }
@@ -5166,6 +5171,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
+/* harmony import */ var _animations_modal_enter__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../animations/modal_enter */ "./src/app/animations/modal_enter.ts");
+/* harmony import */ var _incentive_aquarium_modal_unlocked_page_modal_unlocked_page_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../incentive/aquarium/modal-unlocked-page/modal-unlocked-page.component */ "./src/app/incentive/aquarium/modal-unlocked-page/modal-unlocked-page.component.ts");
+/* harmony import */ var _animations_modal_leave__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../animations/modal_leave */ "./src/app/animations/modal_leave.ts");
+
+
+
 
 
 
@@ -5174,11 +5185,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var HomePage = /** @class */ (function () {
-    function HomePage(platform, alertCtrl, router, userProfileService) {
+    function HomePage(platform, alertCtrl, router, route, modalController, userProfileService) {
         var _this = this;
         this.platform = platform;
         this.alertCtrl = alertCtrl;
         this.router = router;
+        this.route = route;
+        this.modalController = modalController;
         this.userProfileService = userProfileService;
         this.money = 0;
         console.log("Constructor called");
@@ -5194,6 +5207,18 @@ var HomePage = /** @class */ (function () {
             this.money = 0;
         else
             this.money = parseInt(window.localStorage['AwardDollar']);
+        this.route.queryParams.subscribe(function (params) {
+            if (_this.router.getCurrentNavigation().extras.state) {
+                //throw new Error("Method not implemented.");
+                //show modal on awards
+                if (_this.router.getCurrentNavigation().extras.state.IsShowModal == true)
+                    _this.showModal();
+                //this.date = this.router.getCurrentNavigation().extras.state.date;
+                //this.reinforcementObj['prob'] = this.router.getCurrentNavigation().extras.state.prob;
+                //this.reinforcement_data = this.router.getCurrentNavigation().extras.state.reinforcement_data;         
+                //console.log("Inside AwardAltruism, date is: " +this.date+" prob is: "+this.reinforcementObj['prob']);
+            }
+        });
     }
     Object.defineProperty(HomePage.prototype, "isActive", {
         get: function () {
@@ -5222,7 +5247,6 @@ var HomePage = /** @class */ (function () {
         this.sub2$.unsubscribe();
     };
     HomePage.prototype.ngOnInit = function () {
-        //throw new Error("Method not implemented.");
     };
     HomePage.prototype.startSurvey = function () {
         console.log('start survey');
@@ -5301,10 +5325,126 @@ var HomePage = /** @class */ (function () {
     HomePage.prototype.dispalySurveyPausedMsg = function () {
         this.presentAlert('This account has been temporarily paused by the research administrators.');
     };
+    HomePage.prototype.showMemeDemo = function () {
+        this.router.navigate(['incentive/award-memes']);
+    };
+    HomePage.prototype.showAltruisticDemo = function () {
+        this.router.navigate(['incentive/award-altruism']);
+    };
+    HomePage.prototype.showModalDemo = function () {
+        var reinforcements = [];
+        reinforcements.push({ 'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?" });
+        reinforcements.push({ 'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?" });
+        reinforcements.push({ 'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?" });
+        //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+        //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+        //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+        //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+        //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+        this.presentModal(reinforcements);
+    };
+    //show unlocked pages, using a modal
+    HomePage.prototype.presentModal = function (reinforcements) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var modal;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.modalController.create({
+                            component: _incentive_aquarium_modal_unlocked_page_modal_unlocked_page_component__WEBPACK_IMPORTED_MODULE_8__["ModalUnlockedPageComponent"],
+                            componentProps: {
+                                'reinforcements': reinforcements
+                            },
+                            enterAnimation: _animations_modal_enter__WEBPACK_IMPORTED_MODULE_7__["myEnterAnimation"],
+                            leaveAnimation: _animations_modal_leave__WEBPACK_IMPORTED_MODULE_9__["myLeaveAnimation"],
+                            //,
+                            cssClass: 'my-default-2'
+                        })];
+                    case 1:
+                        modal = _a.sent();
+                        return [4 /*yield*/, modal.present()];
+                    case 2: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    HomePage.prototype.showModal = function () {
+        //if(window.localStorage['IsModalShown'] == undefined)
+        //  return;
+        //if(window.localStorage['IsModalShown'] == "false"){
+        //
+        var todaysDate = moment__WEBPACK_IMPORTED_MODULE_4__().format('YYYYMMDD');
+        var storedDate = window.localStorage['LastSurveyCompletionDate'];
+        //
+        if (todaysDate == storedDate) {
+            this.computeUnlockedReinforcements();
+        }
+        //
+        //window.localStorage.setItem("IsModalShown", "true");
+        //}
+    };
+    HomePage.prototype.isFirstDayInTheStudy = function () {
+        var daily_survey = this.userProfileService.userProfile.survey_data.daily_survey;
+        var first_date = moment__WEBPACK_IMPORTED_MODULE_4__().format('YYYYMMDD');
+        var first_date_moment_js = moment__WEBPACK_IMPORTED_MODULE_4__(first_date, "YYYYMMDD");
+        var key_moment_js;
+        for (var key in daily_survey) {
+            key_moment_js = moment__WEBPACK_IMPORTED_MODULE_4__(key, "YYYYMMDD");
+            //takes the first day only. But it may not be the first date.
+            if (key_moment_js < first_date_moment_js) {
+                first_date = key;
+                first_date_moment_js = moment__WEBPACK_IMPORTED_MODULE_4__(first_date, "YYYYMMDD");
+            }
+        }
+        var todays_date = moment__WEBPACK_IMPORTED_MODULE_4__().format('YYYYMMDD');
+        if (todays_date == first_date)
+            return true;
+        else
+            return false;
+    };
+    HomePage.prototype.computeUnlockedReinforcements = function () {
+        var _this = this;
+        var currentPoints = parseInt(window.localStorage['CurrentPoints']);
+        var previousPoints = parseInt(window.localStorage['PreviousPoints']);
+        var awardedDollar = parseInt(window.localStorage['AwardedDollar']);
+        var reinforcements = [];
+        //get if money is awarded.
+        if (awardedDollar > 0) {
+            if (this.isFirstDayInTheStudy())
+                reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'Thanks for being a participant in the study. You earned 2 dollar.' });
+            else
+                reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'You earned 1 dollar for completing surveys 3-days in a row' });
+        }
+        //get if fish is alotted
+        var previous_point = currentPoints - 60;
+        fetch('../../../assets/game/fishpoints.json').then(function (res) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+            var fish_data, img, header, text, i;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, res.json()];
+                    case 1:
+                        fish_data = _a.sent();
+                        for (i = 0; i < fish_data.length; i++) {
+                            if ((fish_data[i].points > previous_point) && (fish_data[i].points <= currentPoints)) {
+                                img = "assets/" + fish_data[i].img.substring(0, fish_data[i].img.length - 4) + '_tn.jpg';
+                                header = "You unlocked " + fish_data[i].name;
+                                text = fish_data[i].trivia;
+                                reinforcements.push({ 'img': img, 'header': header, 'text': text });
+                            }
+                        }
+                        console.log(JSON.stringify(reinforcements));
+                        if (reinforcements.length > 0) //means some rainforcement was provided.
+                            this.presentModal(reinforcements);
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+    };
     HomePage.ctorParameters = function () { return [
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"] },
         { type: _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_6__["UserProfileService"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -5321,6 +5461,8 @@ var HomePage = /** @class */ (function () {
         ,
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"],
             _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"],
             _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_6__["UserProfileService"]])
     ], HomePage);
     return HomePage;
@@ -5563,11 +5705,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @ionic-native/google-analytics/ngx */ "./node_modules/@ionic-native/google-analytics/ngx/index.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! src/app/user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_27___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_27__);
-/* harmony import */ var _modal_unlocked_page_modal_unlocked_page_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../modal-unlocked-page/modal-unlocked-page.component */ "./src/app/incentive/aquarium/modal-unlocked-page/modal-unlocked-page.component.ts");
-/* harmony import */ var _animations_modal_enter__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../../../animations/modal_enter */ "./src/app/animations/modal_enter.ts");
-/* harmony import */ var _animations_modal_leave__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../../../animations/modal_leave */ "./src/app/animations/modal_leave.ts");
 
 
 
@@ -5595,10 +5732,6 @@ __webpack_require__.r(__webpack_exports__);
 //import { PickGameService } from './pick-game.service';
 
 //import { PreLoad } from '../../../PreLoad';
-
-
-
-
 
 
 
@@ -5633,8 +5766,6 @@ var DemoAquariumComponent = /** @class */ (function () {
         */
         this.survey_text = "Start Survey";
         //this.username = "test";
-        //show modal on awards
-        this.showModal();
     }
     Object.defineProperty(DemoAquariumComponent.prototype, "totalPoints", {
         // totalPoints = 0;
@@ -5656,120 +5787,6 @@ var DemoAquariumComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    DemoAquariumComponent.prototype.showMemeDemo = function () {
-        this.router.navigate(['incentive/award-memes']);
-    };
-    DemoAquariumComponent.prototype.showAltruisticDemo = function () {
-        this.router.navigate(['incentive/award-altruism']);
-    };
-    DemoAquariumComponent.prototype.showModal = function () {
-        if (window.localStorage['IsModalShown'] == undefined)
-            return;
-        if (window.localStorage['IsModalShown'] == "false") {
-            //
-            var todaysDate = moment__WEBPACK_IMPORTED_MODULE_27__().format('YYYYMMDD');
-            var storedDate = window.localStorage['LastSurveyCompletionDate'];
-            //
-            if (todaysDate == storedDate) {
-                this.computeUnlockedReinforcements();
-            }
-            //
-            window.localStorage.setItem("IsModalShown", "true");
-        }
-    };
-    DemoAquariumComponent.prototype.showModalDemo = function () {
-        var reinforcements = [];
-        reinforcements.push({ 'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?" });
-        reinforcements.push({ 'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?" });
-        reinforcements.push({ 'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?" });
-        //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
-        //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
-        //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
-        //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
-        //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
-        this.presentModal(reinforcements);
-    };
-    //show unlocked pages, using a modal
-    DemoAquariumComponent.prototype.presentModal = function (reinforcements) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var modal;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.modalController.create({
-                            component: _modal_unlocked_page_modal_unlocked_page_component__WEBPACK_IMPORTED_MODULE_28__["ModalUnlockedPageComponent"],
-                            componentProps: {
-                                'reinforcements': reinforcements
-                            },
-                            enterAnimation: _animations_modal_enter__WEBPACK_IMPORTED_MODULE_29__["myEnterAnimation"],
-                            leaveAnimation: _animations_modal_leave__WEBPACK_IMPORTED_MODULE_30__["myLeaveAnimation"],
-                            //,
-                            cssClass: 'my-default-2'
-                        })];
-                    case 1:
-                        modal = _a.sent();
-                        return [4 /*yield*/, modal.present()];
-                    case 2: return [2 /*return*/, _a.sent()];
-                }
-            });
-        });
-    };
-    DemoAquariumComponent.prototype.isFirstDayInTheStudy = function () {
-        var daily_survey = this.userProfileService.userProfile.survey_data.daily_survey;
-        var first_date = moment__WEBPACK_IMPORTED_MODULE_27__().format('YYYYMMDD');
-        var first_date_moment_js = moment__WEBPACK_IMPORTED_MODULE_27__(first_date, "YYYYMMDD");
-        var key_moment_js;
-        for (var key in daily_survey) {
-            key_moment_js = moment__WEBPACK_IMPORTED_MODULE_27__(key, "YYYYMMDD");
-            //takes the first day only. But it may not be the first date.
-            if (key_moment_js < first_date_moment_js) {
-                first_date = key;
-                first_date_moment_js = moment__WEBPACK_IMPORTED_MODULE_27__(first_date, "YYYYMMDD");
-            }
-        }
-        var todays_date = moment__WEBPACK_IMPORTED_MODULE_27__().format('YYYYMMDD');
-        if (todays_date == first_date)
-            return true;
-        else
-            return false;
-    };
-    DemoAquariumComponent.prototype.computeUnlockedReinforcements = function () {
-        var _this = this;
-        var currentPoints = parseInt(window.localStorage['CurrentPoints']);
-        var previousPoints = parseInt(window.localStorage['PreviousPoints']);
-        var awardedDollar = parseInt(window.localStorage['AwardedDollar']);
-        var reinforcements = [];
-        //get if money is awarded.
-        if (awardedDollar > 0) {
-            if (this.isFirstDayInTheStudy())
-                reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'Thanks for being a participant in the study. You earned 2 dollar.' });
-            else
-                reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'You earned 1 dollar for completing surveys 3-days in a row' });
-        }
-        //get if fish is alotted
-        var previous_point = currentPoints - 60;
-        fetch('../../../assets/game/fishpoints.json').then(function (res) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
-            var fish_data, img, header, text, i;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, res.json()];
-                    case 1:
-                        fish_data = _a.sent();
-                        for (i = 0; i < fish_data.length; i++) {
-                            if ((fish_data[i].points > previous_point) && (fish_data[i].points <= currentPoints)) {
-                                img = "assets/" + fish_data[i].img.substring(0, fish_data[i].img.length - 4) + '_tn.jpg';
-                                header = "You unlocked " + fish_data[i].name;
-                                text = fish_data[i].trivia;
-                                reinforcements.push({ 'img': img, 'header': header, 'text': text });
-                            }
-                        }
-                        console.log(JSON.stringify(reinforcements));
-                        if (reinforcements.length > 0) //means some rainforcement was provided.
-                            this.presentModal(reinforcements);
-                        return [2 /*return*/];
-                }
-            });
-        }); });
-    };
     DemoAquariumComponent.prototype.goToRewardsPage = function () {
         console.log("rewards page");
         //this.router.navigate(['/home']);
@@ -12526,13 +12543,14 @@ var AwardDollarService = /** @class */ (function () {
         else
             this.awardDollar = parseInt(window.localStorage['AwardDollar']);
         //----   
-        if (window.localStorage['AwardDollarDates'] == undefined) {
+        //----   
+        this.awardDollarObj = JSON.parse(window.localStorage["AwardDollarDates"]);
+        if (this.awardDollarObj == null) {
             this.awardDollarObj = {};
             this.awardDollarObj['dates'] = [moment__WEBPACK_IMPORTED_MODULE_2__().format("DD-MM-YYYY")];
             window.localStorage.setItem("AwardDollarDates", JSON.stringify(this.awardDollarObj));
         }
         else {
-            this.awardDollarObj = JSON.parse(window.localStorage["AwardDollarDates"]);
             if (this.awardDollarObj['dates'].length < 2) {
                 //compute previous date, and see if it exist
                 var previousdate = moment__WEBPACK_IMPORTED_MODULE_2__().subtract(1, "days").format("DD-MM-YYYY");
@@ -14395,7 +14413,8 @@ var DynamicSurveyComponent = /** @class */ (function () {
                     reinforcement_data['reward'] = "No push";
                     this.awsS3Service.upload('reinforcement_data', reinforcement_data);
                     //this.userProfileService.addReinforcementData(currentDate, reinforcementObj);    
-                    this.router.navigate(['home']);
+                    navigationExtras['state']['IsShowModal'] = true;
+                    this.router.navigate(['home'], navigationExtras);
                 }
                 else if ((currentProb > 0.4) && (currentProb <= 0.7)) {
                     reinforcement_data['reward'] = "Meme";
