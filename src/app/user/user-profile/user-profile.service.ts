@@ -289,7 +289,7 @@ export class UserProfileService {
   addSurveyPoints(){
     console.log("user-profile.service.ts - addSurveyPoints method - begin");
 
-    const pointsPerSurvey = 100;
+    const pointsPerSurvey = 60;
     this.addPoints(pointsPerSurvey);
   }
 
