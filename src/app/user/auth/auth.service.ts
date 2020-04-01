@@ -65,9 +65,11 @@ export class AuthService {
     console.log("auth.service.ts - autoLogin method - begin");
     const loggedInUser = localStorage.getItem('loggedInUser');
     if(loggedInUser===null){
+      console.log("auth.service.ts - autoLogin method - (loggedInUser===null)");
       return;
     }
     else{
+      console.log("auth.service.ts - autoLogin method - (sending saved observable)");
       this.loggedInUser.next(loggedInUser);
     }
   }

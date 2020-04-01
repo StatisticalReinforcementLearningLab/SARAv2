@@ -63,7 +63,6 @@ export class AwardDollarService {
       this.awardDollar = parseInt(window.localStorage['AwardDollar']);
 
 
-    //----   
     this.awardDollarObj = JSON.parse(window.localStorage["AwardDollarDates"]);
     if(this.awardDollarObj == null) {
         this.awardDollarObj = {};
