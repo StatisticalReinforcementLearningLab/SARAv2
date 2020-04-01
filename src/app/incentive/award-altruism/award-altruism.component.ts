@@ -286,10 +286,10 @@ export class AwardAltruismComponent implements OnInit {
             hearts[a].image = image;
             hearts[a].image.style.height = hearts[a].height;
           }
-          intervalVar = setInterval(e => self_this.angularDraw(), 30);
+          intervalVar = setInterval(e => self_this.angularDraw(), 15);
         }
 
-        setTimeout(e => this.stopInterval(intervalVar), 1200);
+        setTimeout(e => this.stopInterval(intervalVar), 800);
   
       },
       stopInterval(intervalVar) {
