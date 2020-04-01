@@ -420,7 +420,8 @@ export class DynamicSurveyComponent implements OnInit {
         reinforcement_data['reward'] = "No push"; 
         this.awsS3Service.upload('reinforcement_data', reinforcement_data);  
         this.userProfileService.addReinforcementData(currentDate, reinforcementObj);    
-        this.router.navigate(['home']);        
+        navigationExtras['state']['IsShowModal'] = true;
+        this.router.navigate(['home'], navigationExtras);        
       } else if((currentProb > 0.4)  &&  (currentProb <=0.7)){
         reinforcement_data['reward'] = "Meme"; 
         navigationExtras['state']['reinforcement_data'] = reinforcement_data;
