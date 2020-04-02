@@ -12,6 +12,7 @@ import { AwardComponent } from './award/award.component';
 import { TreasurechestComponent } from './treasurechest/treasurechest.component';
 import { AwardAltruismComponent } from './award-altruism/award-altruism.component';
 import { ModalUnlockedPageComponent } from './aquarium/modal-unlocked-page/modal-unlocked-page.component';
+import { InfoPageComponent } from './info-page/info-page.component';
 
 const routes: Routes = [
 //  { path: 'award', component: AwardComponent },
@@ -20,7 +21,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AwardComponent, AwardMemesComponent, AwardAltruismComponent, TreasurechestComponent, ModalUnlockedPageComponent],
+  declarations: [AwardComponent, AwardMemesComponent, AwardAltruismComponent, TreasurechestComponent, ModalUnlockedPageComponent,InfoPageComponent],
   imports: [
     CommonModule,
     IonicModule.forRoot(),
