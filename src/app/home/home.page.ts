@@ -38,6 +38,10 @@ export class HomePage implements OnInit {
     this.router.navigate(['incentive/cheatpoints']);
   }
 
+  startInfoPage(){
+    this.router.navigate(['incentive/infopage']);
+  }
+
   constructor(private platform: Platform, private alertCtrl: AlertController, 
     private router: Router, 
     private route: ActivatedRoute, 
@@ -56,8 +60,15 @@ export class HomePage implements OnInit {
 
     if(window.localStorage['AwardDollar'] == undefined)
         this.money = 0;
-    else
-        this.money = parseInt(window.localStorage['AwardDollar']);
+    else{
+        try{
+          this.money = JSON.parse(localStorage.getItem("AwardDollar"));
+        }catch(error){
+          window.localStorage.setItem("AwardDollar", ""+0); 
+          this.money = 0;
+        }
+    }
+
 
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {

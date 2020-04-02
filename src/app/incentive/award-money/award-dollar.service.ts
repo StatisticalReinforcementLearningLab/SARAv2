@@ -62,14 +62,15 @@ export class AwardDollarService {
     else
       this.awardDollar = parseInt(window.localStorage['AwardDollar']);
 
-
-    this.awardDollarObj = JSON.parse(window.localStorage["AwardDollarDates"]);
-    if(this.awardDollarObj == null) {
+    //console.log(window.localStorage["AwardDollarDates"]);
+    this.awardDollarObj = window.localStorage["AwardDollarDates"];
+    if(this.awardDollarObj == undefined) {
         this.awardDollarObj = {};
         this.awardDollarObj['dates'] = [moment().format("DD-MM-YYYY")];      
         window.localStorage.setItem("AwardDollarDates", JSON.stringify(this.awardDollarObj));
     } else {
 
+        this.awardDollarObj = JSON.parse(window.localStorage["AwardDollarDates"]);
         if(this.awardDollarObj['dates'].length < 2) {
 
           //compute previous date, and see if it exist
