@@ -732,7 +732,7 @@ module.exports = "<!-- \n<div class=\"container\">\n    <div class=\"row\">\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <!--ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\"></ion-back-button>\n    </ion-buttons-->\n    <ion-buttons slot=\"end\">\n        <font color=\"white\">${{money}}</font>\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n\n        <!-- Mash codes:\n        <ion-text  *ngIf=\"!isActive\" style=\"color:#fff;\"><strong>Account is Paused</strong> </ion-text>\n        <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n          <ion-icon name=\"journal\"></ion-icon>\n        </ion-button>\n        -->\n\n        <ion-button (click)=\"startSurvey()\"   *ngIf=\"isActive\">\n            <ion-icon name=\"journal\" style=\"color : white;\"></ion-icon>\n        </ion-button>\n\n\n        <ion-button *ngIf=\"!isActive\" (click)=\"dispalySurveyPausedMsg()\" >\n            <ion-icon name=\"journal\" style=\"color : #e74c3c;\"></ion-icon>\n        </ion-button>\n        <!--\n        <ion-button href=\"{{surveyPath}}\" *ngIf=\"isActive\">Start Survey</ion-button> \n        <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n          <ion-icon name=\"journal\"></ion-icon>\n        </ion-button> \n        <ion-button style=\"color:#fff;\" (click)=\"startSurveyAYA()\">\n          <ion-icon name=\"journal\"></ion-icon>\n        </ion-button> \n        -->\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">ADAPTS</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n\n\n<ion-content>\n  <!--div class=\"ion-padding\">\n    <ion-button href=\"/survey/samplesurvey\">Sample survey (demo)</ion-button> <br>\n    <ion-button href=\"/incentive/aquariumone\">Incentive: Aquarium 1</ion-button> <br>\n    <ion-button href=\"/incentive/award-memes\" >Incentive: meme</ion-button> <br>\n    <ion-button href=\"/incentive/visualization\">Incentive: Life-inisight</ion-button> <br>\n  </div-->\n\n  <app-demo-aquarium></app-demo-aquarium>\n  <ion-button color=\"primary\" (click)=\"showModalDemo()\">Unlockables</ion-button>\n  <ion-button color=\"primary\" (click)=\"showMemeDemo()\">Meme</ion-button>\n  <ion-button color=\"primary\" (click)=\"showAltruisticDemo()\">Altruistic msg</ion-button>\n</ion-content>\n\n"
+module.exports = "\n<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <!--ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\"></ion-back-button>\n    </ion-buttons-->\n    <ion-buttons slot=\"end\">\n        <font color=\"white\">${{money}}</font>\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n\n        <!-- Mash codes:\n        <ion-text  *ngIf=\"!isActive\" style=\"color:#fff;\"><strong>Account is Paused</strong> </ion-text>\n        <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n          <ion-icon name=\"journal\"></ion-icon>\n        </ion-button>\n        -->\n\n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\">\n          <ion-icon name=\"information-circle\"></ion-icon>\n        </ion-button>\n\n        <ion-button (click)=\"startSurvey()\"   *ngIf=\"isActive\">\n            <ion-icon name=\"journal\" style=\"color : white;\"></ion-icon>\n        </ion-button>\n\n\n        <ion-button *ngIf=\"!isActive\" (click)=\"dispalySurveyPausedMsg()\" >\n            <ion-icon name=\"journal\" style=\"color : #e74c3c;\"></ion-icon>\n        </ion-button>\n        <!--\n        <ion-button href=\"{{surveyPath}}\" *ngIf=\"isActive\">Start Survey</ion-button> \n        <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n          <ion-icon name=\"journal\"></ion-icon>\n        </ion-button> \n        <ion-button style=\"color:#fff;\" (click)=\"startSurveyAYA()\">\n          <ion-icon name=\"journal\"></ion-icon>\n        </ion-button> \n        -->\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">ADAPTS</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n\n\n<ion-content>\n  <!--div class=\"ion-padding\">\n    <ion-button href=\"/survey/samplesurvey\">Sample survey (demo)</ion-button> <br>\n    <ion-button href=\"/incentive/aquariumone\">Incentive: Aquarium 1</ion-button> <br>\n    <ion-button href=\"/incentive/award-memes\" >Incentive: meme</ion-button> <br>\n    <ion-button href=\"/incentive/visualization\">Incentive: Life-inisight</ion-button> <br>\n  </div-->\n\n  <app-demo-aquarium></app-demo-aquarium>\n  <ion-button color=\"primary\" (click)=\"showModalDemo()\">Unlockables</ion-button>\n  <ion-button color=\"primary\" (click)=\"showMemeDemo()\">Meme</ion-button>\n  <ion-button color=\"primary\" (click)=\"showAltruisticDemo()\">Altruistic msg</ion-button>\n</ion-content>\n\n"
 
 /***/ }),
 
@@ -766,17 +766,6 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\"
 /***/ (function(module, exports) {
 
 module.exports = "<div id=\"gameDiv\"></div>\n<p  style=\"padding-top:10px;padding-bottom:0px;padding-left:10px;\"><b>Username</b>: {{username}}</p>  \n  <!--\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"startTundraLevel()\">Tundra level</ion-button>\n\n  <app-loading-spinner></app-loading-spinner>\n\n  <ion-card> \n    <div class=\"quetiontextstyle\">\n        This is the question\n    </div>\n    <div class=\"radiovertical\">\n      <ul>\n        \n        <li>\n          <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n          <label for=\"ff-option\">Pizza</label> \n          <div class=\"check\"></div>\n        </li>\n\n        <li>\n          <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n          <label for=\"ss-option\">Boyfriend</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n        \n        <li>\n          <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n          <label for=\"tt-option\">Cats</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n\n      </ul>\n    </div>\n  </ion-card>\n  -->\n\n\n"
-
-/***/ }),
-
-/***/ "./node_modules/raw-loader/index.js!./src/app/incentive/aquarium/demo-tundra/demo-tundra.component.html":
-/*!*****************************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/incentive/aquarium/demo-tundra/demo-tundra.component.html ***!
-  \*****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title>Tundra 1</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div id=\"gameDiv\"></div>\n</ion-content>\n"
 
 /***/ }),
 
@@ -821,6 +810,17 @@ module.exports = "<ion-header>\n    <ion-toolbar>\n      <!--\n      <ion-button
 /***/ (function(module, exports) {
 
 module.exports = "<p>\n  You earned $1!\n</p>\n\n<div class=\"ion-padding\">\n    <a href=\"/home\">Home</a> \n</div>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/incentive/info-page/info-page.component.html":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/incentive/info-page/info-page.component.html ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">Inforation page</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n\n  <ion-list>\n\n    <ion-item style=\"border: 1px solid #263238;border-left: 3px solid #263238;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/money.gif\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Money</h2>\n        <h3><b>One dollar</b> can be earned if you complete both surveys and active tasks 3-days in a row.</h3>\n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n    <ion-item style=\"border: 1px solid #FF6F00;border-left: 3px solid #FF6F00;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/30points.png\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Point</h2>\n        <h3><b><u></u> </b>Each survey or active task is also worth <b>60</b> points. Sunday's survey is longer, but you can earn <b>50</b> extra points.</h3>\n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n    <ion-item style=\"border: 1px solid #4E342E; border-left: 3px solid #4E342E;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/clownfish_tn.jpg\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Fish/animals</h2>\n        <h3><b><u></u> </b>More points mean more <b>fish/animals</b> in the aquarium/forest</h3>\n      </ion-label>\n    </ion-item>\n\n  </ion-list>\n  \n  <div class=\"list\">\n\n\n    <!--\n    <div class=\"card\" style=\"border-left: 3px solid #263238;border-top: 1px solid #263238;\"> \n        <img src=\"img/18_Rev.jpg\" style=\"float:left;width:100px;padding:10px;padding-right:20px;padding-top:15px;margin-bottom:0px;\" />\n        <p style=\"padding:15px;font-size:15px;color:#5a2d0c\">Longer <b>streaks</b> give higher<br>financial incentives<br></b></p>\n        <ul style=\"padding-left:100px;margin-top:1px;\">\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 3-day streak gives 25 cents</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 6-day streak gives 50 cents</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 12-day streak gives 1 dollars</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 18-day streak gives 1.5 dollars</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 30-day streak gives 2.5 dollars</li>\n            <li style=\"height:15px;\"></li>\n        </ul>\n        <br><p style=\"padding:10px;font-size: 12px;line-height:15px;color:#5a2d0c;\">Streaks for surveys and active tasks are separate. So, if you complete 3-day streaks on both survey and active tasks then you will get 50 cents.<p>\n    </div>\n    -->\n\n    <div class=\"card\"  style=\"border-left: 2px solid #263238;border-top: 1px solid #AD1457;\"> \n        <p style=\"padding:15px;font-size:15px;color:#AD1457\">Sometimes you will get <b>memes</b> or a <b>thank you message</b> after you complete the <b>surveys</b></p>\n        <div class=\"item item-image\" style=\"border: 0px solid #4E342E;\">\n            <img src=\"assets/img/HM1.png\" style=\"padding:20px;padding-top:5px;\">\n        </div>\n\n    </div>\n\n\n</div>\n\n\n\n</ion-content>"
 
 /***/ }),
 
@@ -4502,11 +4502,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _incentive_treasurechest_treasurechest_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./incentive/treasurechest/treasurechest.component */ "./src/app/incentive/treasurechest/treasurechest.component.ts");
 /* harmony import */ var _survey_sample_survey_sample_survey_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./survey/sample-survey/sample-survey.component */ "./src/app/survey/sample-survey/sample-survey.component.ts");
 /* harmony import */ var _incentive_award_altruism_award_altruism_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./incentive/award-altruism/award-altruism.component */ "./src/app/incentive/award-altruism/award-altruism.component.ts");
-/* harmony import */ var _incentive_aquarium_demo_tundra_demo_tundra_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./incentive/aquarium/demo-tundra/demo-tundra.component */ "./src/app/incentive/aquarium/demo-tundra/demo-tundra.component.ts");
-/* harmony import */ var _incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./incentive/aquarium/cheatpage/cheatpage.component */ "./src/app/incentive/aquarium/cheatpage/cheatpage.component.ts");
-/* harmony import */ var _survey_aya_sample_survey_aya_sample_survey_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./survey/aya-sample-survey/aya-sample-survey.component */ "./src/app/survey/aya-sample-survey/aya-sample-survey.component.ts");
-/* harmony import */ var _user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./user/auth/auth.guard */ "./src/app/user/auth/auth.guard.ts");
-/* harmony import */ var _user_auth_auth_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./user/auth/auth.component */ "./src/app/user/auth/auth.component.ts");
+/* harmony import */ var _incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./incentive/aquarium/cheatpage/cheatpage.component */ "./src/app/incentive/aquarium/cheatpage/cheatpage.component.ts");
+/* harmony import */ var _survey_aya_sample_survey_aya_sample_survey_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./survey/aya-sample-survey/aya-sample-survey.component */ "./src/app/survey/aya-sample-survey/aya-sample-survey.component.ts");
+/* harmony import */ var _user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./user/auth/auth.guard */ "./src/app/user/auth/auth.guard.ts");
+/* harmony import */ var _user_auth_auth_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./user/auth/auth.component */ "./src/app/user/auth/auth.component.ts");
+/* harmony import */ var _incentive_info_page_info_page_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./incentive/info-page/info-page.component */ "./src/app/incentive/info-page/info-page.component.ts");
 
 
 
@@ -4545,19 +4545,19 @@ var routes = [
     { path: 'incentive/aquariumone', component: DemoAquariumComponent },
     { path: 'life-insight/q1lifeinsight', component: Q1MotivatedComponent },
     */
-    { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_12__["AuthGuard"]] },
-    { path: 'auth', component: _user_auth_auth_component__WEBPACK_IMPORTED_MODULE_13__["AuthComponent"] },
-    { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_12__["AuthGuard"]] },
+    { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
+    { path: 'auth', component: _user_auth_auth_component__WEBPACK_IMPORTED_MODULE_12__["AuthComponent"] },
+    { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     //{ path: 'home', component: DemoAquariumComponent, canActivate: [AuthGuard]},
-    { path: 'incentive/sample-life-insight', component: _incentive_life_insights_sample_life_insights_sample_life_insights_component__WEBPACK_IMPORTED_MODULE_5__["SampleLifeInsightsComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_12__["AuthGuard"]] },
-    { path: 'incentive/treasurechest', component: _incentive_treasurechest_treasurechest_component__WEBPACK_IMPORTED_MODULE_6__["TreasurechestComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_12__["AuthGuard"]] },
-    { path: 'incentive/tundra', component: _incentive_aquarium_demo_tundra_demo_tundra_component__WEBPACK_IMPORTED_MODULE_9__["DemoTundraComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_12__["AuthGuard"]] },
-    { path: 'incentive/cheatpoints', component: _incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_10__["CheatpageComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_12__["AuthGuard"]] },
-    { path: 'survey/samplesurvey', component: _survey_sample_survey_sample_survey_component__WEBPACK_IMPORTED_MODULE_7__["SampleSurveyComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_12__["AuthGuard"]] },
-    { path: 'survey/samplesurvey2', component: _survey_aya_sample_survey_aya_sample_survey_component__WEBPACK_IMPORTED_MODULE_11__["AyaSampleSurveyComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_12__["AuthGuard"]] },
-    { path: 'incentive/aquariumone', component: _incentive_aquarium_demo_aquarium_demo_aquarium_component__WEBPACK_IMPORTED_MODULE_4__["DemoAquariumComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_12__["AuthGuard"]] },
-    { path: 'incentive/award-memes', component: _incentive_award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_3__["AwardMemesComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_12__["AuthGuard"]] },
-    { path: 'incentive/award-altruism', component: _incentive_award_altruism_award_altruism_component__WEBPACK_IMPORTED_MODULE_8__["AwardAltruismComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_12__["AuthGuard"]] }
+    { path: 'incentive/sample-life-insight', component: _incentive_life_insights_sample_life_insights_sample_life_insights_component__WEBPACK_IMPORTED_MODULE_5__["SampleLifeInsightsComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
+    { path: 'incentive/treasurechest', component: _incentive_treasurechest_treasurechest_component__WEBPACK_IMPORTED_MODULE_6__["TreasurechestComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
+    { path: 'incentive/cheatpoints', component: _incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_9__["CheatpageComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
+    { path: 'survey/samplesurvey', component: _survey_sample_survey_sample_survey_component__WEBPACK_IMPORTED_MODULE_7__["SampleSurveyComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
+    { path: 'survey/samplesurvey2', component: _survey_aya_sample_survey_aya_sample_survey_component__WEBPACK_IMPORTED_MODULE_10__["AyaSampleSurveyComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
+    { path: 'incentive/aquariumone', component: _incentive_aquarium_demo_aquarium_demo_aquarium_component__WEBPACK_IMPORTED_MODULE_4__["DemoAquariumComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
+    { path: 'incentive/award-memes', component: _incentive_award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_3__["AwardMemesComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
+    { path: 'incentive/award-altruism', component: _incentive_award_altruism_award_altruism_component__WEBPACK_IMPORTED_MODULE_8__["AwardAltruismComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
+    { path: 'incentive/infopage', component: _incentive_info_page_info_page_component__WEBPACK_IMPORTED_MODULE_13__["InfoPageComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] }
     //{ path: 'incentive/award-memes', component: AwardMemesComponent },
     //{ path: 'incentive/aquariumone', component: DemoAquariumComponent },  
     /*
@@ -5205,8 +5205,15 @@ var HomePage = /** @class */ (function () {
         });
         if (window.localStorage['AwardDollar'] == undefined)
             this.money = 0;
-        else
-            this.money = parseInt(window.localStorage['AwardDollar']);
+        else {
+            try {
+                this.money = JSON.parse(localStorage.getItem("AwardDollar"));
+            }
+            catch (error) {
+                window.localStorage.setItem("AwardDollar", "" + 0);
+                this.money = 0;
+            }
+        }
         this.route.queryParams.subscribe(function (params) {
             if (_this.router.getCurrentNavigation().extras.state) {
                 //throw new Error("Method not implemented.");
@@ -5234,6 +5241,9 @@ var HomePage = /** @class */ (function () {
     HomePage.prototype.startCheatPage = function () {
         //this.router.navigate(['incentive/tundra']);
         this.router.navigate(['incentive/cheatpoints']);
+    };
+    HomePage.prototype.startInfoPage = function () {
+        this.router.navigate(['incentive/infopage']);
     };
     HomePage.prototype.ionViewDidLeave = function () {
         console.log("ionDidLeave");
@@ -5539,8 +5549,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _demo_aquarium_demo_aquarium_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./demo-aquarium/demo-aquarium.component */ "./src/app/incentive/aquarium/demo-aquarium/demo-aquarium.component.ts");
 /* harmony import */ var _survey_survey_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../survey/survey.module */ "./src/app/survey/survey.module.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _demo_tundra_demo_tundra_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./demo-tundra/demo-tundra.component */ "./src/app/incentive/aquarium/demo-tundra/demo-tundra.component.ts");
-
 
 
 
@@ -5556,7 +5564,7 @@ var AquariumModule = /** @class */ (function () {
     }
     AquariumModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_demo_aquarium_demo_aquarium_component__WEBPACK_IMPORTED_MODULE_4__["DemoAquariumComponent"], _demo_tundra_demo_tundra_component__WEBPACK_IMPORTED_MODULE_7__["DemoTundraComponent"]],
+            declarations: [_demo_aquarium_demo_aquarium_component__WEBPACK_IMPORTED_MODULE_4__["DemoAquariumComponent"]],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _survey_survey_module__WEBPACK_IMPORTED_MODULE_5__["SurveyModule"],
@@ -5564,8 +5572,7 @@ var AquariumModule = /** @class */ (function () {
                 _angular_router__WEBPACK_IMPORTED_MODULE_6__["RouterModule"].forChild(routes)
             ],
             exports: [
-                _demo_aquarium_demo_aquarium_component__WEBPACK_IMPORTED_MODULE_4__["DemoAquariumComponent"],
-                _demo_tundra_demo_tundra_component__WEBPACK_IMPORTED_MODULE_7__["DemoTundraComponent"]
+                _demo_aquarium_demo_aquarium_component__WEBPACK_IMPORTED_MODULE_4__["DemoAquariumComponent"]
             ],
             schemas: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["CUSTOM_ELEMENTS_SCHEMA"]]
         })
@@ -5728,8 +5735,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-//import { FormsModule } from '@angular/forms';
-//import { PickGameService } from './pick-game.service';
 
 //import { PreLoad } from '../../../PreLoad';
 
@@ -5973,389 +5978,6 @@ var DemoAquariumComponent = /** @class */ (function () {
             src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_26__["UserProfileService"]])
     ], DemoAquariumComponent);
     return DemoAquariumComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/incentive/aquarium/demo-tundra/Tundra1.js":
-/*!***********************************************************!*\
-  !*** ./src/app/incentive/aquarium/demo-tundra/Tundra1.js ***!
-  \***********************************************************/
-/*! exports provided: TundraLevel1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TundraLevel1", function() { return TundraLevel1; });
-
-class TundraLevel1 extends Phaser.State {
-    //componentObject;
-    constructor(){
-        super();
-        this.componentObject;
-        //this.thirstyplant;
-    }
-
-    //preload the images
-    preload(){
-        console.log("Preload called");
-        this.input.addPointer();
-        this.game.load.image('tundra1','assets/pics/bg-tundra.png');
-        
-        this.game.load.atlasJSONArray('penguin', 'assets/game/sprite/penguin_sprite.png', 'assets/game/sprite/penguin_sprite.json');
-        this.game.load.atlasJSONArray('pingu', 'assets/game/sprite/pingu_tundra_sprite.png', 'assets/game/sprite/pingu_tundra_sprite.json');
-        this.game.load.atlasJSONArray('sea_lion_silver', 'assets/game/sprite/sea_lion_silver_sprite.png', 'assets/game/sprite/sea_lion_silver_sprite.json');
-        this.game.load.atlasJSONArray('sea_lion_brown', 'assets/game/sprite/sea_lion_brown_sprite.png', 'assets/game/sprite/sea_lion_brown_sprite.json');
-        this.game.load.atlasJSONArray('wolf_walk', 'assets/game/sprite/wolf_walk_sprite.png', 'assets/game/sprite/wolf_walk_sprite.json');
-        this.game.load.atlasJSONArray('bird_fly', 'assets/game/sprite/bird_tundra_sprite.png', 'assets/game/sprite/bird_tundra_sprite.json');
-        this.game.load.atlasJSONArray('hare', 'assets/game/sprite/hare_tundra_sprite.png', 'assets/game/sprite/hare_tundra_sprite.json');
-    
-        //
-        this.game.load.atlasJSONArray('coyote', 'assets/game/sprite/coyote_tundra_sprite.png', 'assets/game/sprite/coyote_tundra_sprite.json');
-    
-        //
-        this.game.load.atlasJSONArray('grey_husky', 'assets/game/sprite/husky_grey_tundra_sprite.png', 'assets/game/sprite/husky_grey_tundra_sprite.json');
-        this.game.load.atlasJSONArray('white_husky', 'assets/game/sprite/husky_white_tundra_sprite.png', 'assets/game/sprite/husky_white_tundra_sprite.json');
-
-    }
-
-    //gets executed after preload
-    create(){
-        console.log("create called");
-        var s = this.game.add.sprite(0,0,'tundra1');
-        s.rotation = 0.0;
-        s.width = this.game.width;
-        s.height = this.game.height;
-        //s.inputEnabled = true;
-        //s.events.onInputDown.add(this.changeToAttack, this);
-
-        //
-        //var attackplant = this.game.add.sprite(-10, this.game.height-230, 'attackplant');
-        //attackplant.animations.add('swim');
-        //attackplant.animations.play('swim', 15, true);
-        //attackplant.scale.setTo(1, 1);
-        //this.game.inputEnabled = false;
-        //
-
-        this.CANVAS_WIDTH = 382.0;
-        if(window.innerWidth > this.CANVAS_WIDTH)
-            this.CANVAS_WIDTH = window.innerWidth;
-
-        //
-        this.animatePenguin();
-        this.animateSealion();
-        this.animateWolf();
-
-        //
-        this.animateBirds();
-        this.animateHare();
-        this.animateCoyote();
-
-        //
-        this.animatePingu();
-        this.animateWhiteHusky();
-        this.animateBrwonHusky();
-
-        //
-        this.inputEnabled = false;
-        Phaser.Canvas.setTouchAction(this.game.canvas, "auto");
-        this.game.input.touch.preventDefault = false;
-
-    }
-
-    //
-    animateWhiteHusky(){
-        this.white_husky = this.add.sprite(65, this.game.height - 235, 'white_husky');
-        this.white_husky.anchor.setTo(.5,.5);
-        this.white_husky.animations.add('swim2');
-        this.white_husky.animations.play('swim2',15, true);
-        this.white_husky.scale.setTo(0.35, 0.35);
-        this.white_husky.name = "white_husky";
-        //this.pegions.body.velocity.x = -20;
-        //var t = this.add.tween(this.pingu).to({ x: 45, y: this.game.height - 145}, 1000, Phaser.Easing.Quadratic.InOut, true, 0);
-        //this.gobothways(this.penguins);
-        //t.onComplete.add(function(){this.pingu.animations.stop(null, true);}, this);
-    }
-
-    //
-    animateBrwonHusky(){
-        this.white_husky = this.add.sprite(65, this.game.height - 205, 'grey_husky');
-        this.white_husky.anchor.setTo(.5,.5);
-        this.white_husky.animations.add('swim2');
-        this.white_husky.animations.play('swim2',15, true);
-        this.white_husky.scale.setTo(0.35, 0.35);
-        this.white_husky.name = "grey_husky";
-        //this.pegions.body.velocity.x = -20;
-        //var t = this.add.tween(this.pingu).to({ x: 45, y: this.game.height - 145}, 1000, Phaser.Easing.Quadratic.InOut, true, 0);
-        //this.gobothways(this.penguins);
-        //t.onComplete.add(function(){this.pingu.animations.stop(null, true);}, this);
-    }
-
-    //
-    animatePingu(){
-        this.pingu = this.add.sprite(105, this.game.height - 135, 'pingu');
-        this.pingu.anchor.setTo(.5,.5);
-        this.pingu.animations.add('swim2');
-        this.pingu.animations.play('swim2',4, true);
-        this.pingu.scale.setTo(0.35, 0.35);
-        this.pingu.name = "pingu";
-        //this.pegions.body.velocity.x = -20;
-        //var t = this.add.tween(this.pingu).to({ x: 45, y: this.game.height - 145}, 1000, Phaser.Easing.Quadratic.InOut, true, 0);
-        //this.gobothways(this.penguins);
-        //t.onComplete.add(function(){this.pingu.animations.stop(null, true);}, this);
-    }
-
-    //if(this.totalPoints >= 0 && this.totalPoints < 25)
-    animateWolf(){
-        this.wolf = this.add.sprite(this.game.width+100, this.game.height-295, 'wolf_walk');
-        this.wolf.anchor.setTo(.5,.5);
-        this.wolf.animations.add('swim');
-        this.wolf.animations.play('swim', 3, true);
-        this.wolf.scale.setTo(.8, .8);
-        this.wolf.name = "wolf";
-        this.gobothways(this.wolf);
-
-
-        //this.isPrawnAdded = true;
-        //this.prawn = this.add.sprite(10, this.height-50, 'seacreatures', 'prawn0000');
-        //this.prawn.scale.setTo(0.5, 0.5);
-    }
-
-    //
-    animateHare(){
-        this.hare = this.add.sprite(this.game.width+115, this.game.height - 245, 'hare');
-        this.hare.anchor.setTo(.5,.5);
-        this.hare.animations.add('swim2');
-        this.hare.animations.play('swim2', 5, true);
-        this.hare.scale.setTo(0.4, 0.4);
-        this.hare.name = "hare";
-        this.gobothways(this.hare);
-    }
-
-    //
-    animateCoyote(){
-        this.coyote = this.add.sprite(-115, this.game.height - 225, 'coyote');
-        this.coyote.anchor.setTo(.5,.5);
-        this.coyote.animations.add('swim2');
-        this.coyote.animations.play('swim2', 5, true);
-        this.coyote.scale.setTo(-1, 1);
-        this.coyote.name = "coyote";
-        this.gobothways(this.coyote);
-    }
-
-
-    //
-    animateBirds(){
-        this.birds = this.add.sprite(-50, 95, 'bird_fly');
-        this.birds.anchor.setTo(.5,.5);
-        this.birds.animations.add('swim2');
-        this.birds.animations.play('swim2', 5, true);
-        this.birds.scale.setTo(-0.3, 0.3);
-        this.birds.name = "birds";
-        //this.pegions.body.velocity.x = -20;
-        this.gobothways(this.birds);
-    }
-
-    //
-    animatePenguin(){
-        this.penguins = this.add.sprite(-15, this.game.height - 145, 'penguin');
-        this.penguins.anchor.setTo(.5,.5);
-        this.penguins.animations.add('swim2');
-        this.penguins.animations.play('swim2', 5, true);
-        this.penguins.scale.setTo(0.3, 0.3);
-        this.penguins.name = "pegions";
-        //this.pegions.body.velocity.x = -20;
-        var t = this.add.tween(this.penguins).to({ x: 45, y: this.game.height - 145}, 1000, Phaser.Easing.Quadratic.InOut, true, 0);
-        //this.gobothways(this.penguins);
-        t.onComplete.add(function(){this.penguins.animations.stop(null, true);}, this);
-    }
-
-   
-
-    animateSealion(){
-        this.sealion = this.add.sprite(this.game.width+15, this.game.height - 145, 'sea_lion_silver');
-        this.sealion.anchor.setTo(.5,.5);
-        this.sealion.animations.add('swim2');
-        this.sealion.animations.play('swim2', 5, true);
-        this.sealion.scale.setTo(1.3, 1.3);
-        this.sealion.name = "sea_lion_silver";
-        var t = this.add.tween(this.sealion).to({ x: this.game.width-75, y: this.game.height - 145}, 3000, Phaser.Easing.Quadratic.InOut, true, 0);
-        t.onComplete.add(function(){this.sealion.animations.stop(null, true);}, this);
-
-        this.sealion_brown = this.add.sprite(this.game.width+25, this.game.height - 145, 'sea_lion_brown');
-        this.sealion_brown.anchor.setTo(.5,.5);
-        this.sealion_brown.animations.add('swim2');
-        this.sealion_brown.animations.play('swim2', 5, true);
-        this.sealion_brown.scale.setTo(1.3, 1.3);
-        this.sealion_brown.name = "sea_lion_brown";
-        var t = this.add.tween(this.sealion_brown).to({ x: this.game.width-45, y: this.game.height - 175}, 5000, Phaser.Easing.Quadratic.InOut, true, 0);
-        t.onComplete.add(function(){this.sealion_brown.animations.stop(null, true);}, this);
-    }
-
-
-    gobothways(b){
-
-        var change_amount = Math.floor(this.rnd.realInRange(0, 150));
-        if(Math.floor(this.rnd.realInRange(0, 10))==2)
-            change_amount = 3*change_amount;
-        var pos_y = b.y;// + Math.floor(this.rnd.realInRange(-1*change_amount, change_amount));
-        while((pos_y > this.height) || (pos_y < 70)){
-            pos_y = b.y;// + Math.floor(this.rnd.realInRange(-1*change_amount, change_amount));
-        }
-
-        var t, X, Y;
-        if(b.x > this.CANVAS_WIDTH){ 
-            //console.log('right to left, ' + b.x);
-            //b.scale.setTo(-0.4, 0.4);//b.scale.x * (-1);
-            b.scale.x = -1*b.scale.x;
-            X = -100+Math.floor(this.rnd.realInRange(0, 50));//+Math.floor(this.rnd.realInRange(0, 50)); + Math.floor(this.rnd.realInRange(0, 2000))
-            t= this.add.tween(b).to({ x: X, y: pos_y}, 17500, Phaser.Easing.Quadratic.InOut, true, 0);
-            t.onComplete.add(this.stopFish, this); 
-        }
-
-        if(b.x < 0){
-            //console.log('left to right, ' + b.x);
-            b.scale.x = -1*b.scale.x;
-            X = this.CANVAS_WIDTH + 100 - Math.floor(this.rnd.realInRange(0, 50)); //+ Math.floor(this.rnd.realInRange(0, 2000))
-            t = this.add.tween(b).to({ x: X, y: pos_y }, 17500+ Math.floor(this.rnd.realInRange(0, 5000)), Phaser.Easing.Quadratic.InOut, true, 0);
-            t.onComplete.add(this.stopFish, this);
-        }
-        //*/
-
-       
-    }
-
-    gobothways2(b,duration){
-
-        var change_amount = Math.floor(this.rnd.realInRange(0, 150));
-        if(Math.floor(this.rnd.realInRange(0, 10))==2)
-            change_amount = 3*change_amount;
-        var pos_y = b.y;// + Math.floor(this.rnd.realInRange(-1*change_amount, change_amount));
-        while((pos_y > this.height) || (pos_y < 70)){
-            pos_y = b.y;// + Math.floor(this.rnd.realInRange(-1*change_amount, change_amount));
-        }
-
-        var t, X, Y;
-        if(b.x > this.CANVAS_WIDTH){ 
-            //console.log('right to left, ' + b.x);
-            //b.scale.setTo(-0.4, 0.4);//b.scale.x * (-1);
-            b.scale.x = -1*b.scale.x;
-            X = -100+Math.floor(this.rnd.realInRange(0, 50));//+Math.floor(this.rnd.realInRange(0, 50)); + Math.floor(this.rnd.realInRange(0, 2000))
-            t= this.add.tween(b).to({ x: X, y: pos_y}, duration, Phaser.Easing.Quadratic.InOut, true, 0);
-            t.onComplete.add(this.stopFish, this); 
-        }
-
-        if(b.x < 0){
-            //console.log('left to right, ' + b.x);
-            b.scale.x = -1*b.scale.x;
-            X = this.CANVAS_WIDTH + 100 - Math.floor(this.rnd.realInRange(0, 50)); //+ Math.floor(this.rnd.realInRange(0, 2000))
-            t = this.add.tween(b).to({ x: X, y: pos_y }, duration, Phaser.Easing.Quadratic.InOut, true, 0);
-            t.onComplete.add(this.stopFish, this);
-        }
-        //*/
-
-       
-    }
-
-    stopFish(b) {
-        //this.assignFishMovement(b);
-        //console.log('stopped');
-        this.gobothways(b);
-    }
-   
-    
-
-}
-
-/***/ }),
-
-/***/ "./src/app/incentive/aquarium/demo-tundra/demo-tundra.component.scss":
-/*!***************************************************************************!*\
-  !*** ./src/app/incentive/aquarium/demo-tundra/demo-tundra.component.scss ***!
-  \***************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2luY2VudGl2ZS9hcXVhcml1bS9kZW1vLXR1bmRyYS9kZW1vLXR1bmRyYS5jb21wb25lbnQuc2NzcyJ9 */"
-
-/***/ }),
-
-/***/ "./src/app/incentive/aquarium/demo-tundra/demo-tundra.component.ts":
-/*!*************************************************************************!*\
-  !*** ./src/app/incentive/aquarium/demo-tundra/demo-tundra.component.ts ***!
-  \*************************************************************************/
-/*! exports provided: DemoTundraComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DemoTundraComponent", function() { return DemoTundraComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _Tundra1__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Tundra1 */ "./src/app/incentive/aquarium/demo-tundra/Tundra1.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-
-
-
-
-
-var DemoTundraComponent = /** @class */ (function () {
-    function DemoTundraComponent(platform, router) {
-        this.platform = platform;
-        this.router = router;
-        console.log("Constructor called");
-        //this.game.destroy();
-    }
-    DemoTundraComponent.prototype.ngOnInit = function () {
-        //
-        this.loadFunction();
-    };
-    DemoTundraComponent.prototype.loadFunction = function () {
-        //height adjustment for different phone types
-        var GameApp = GameApp || {};
-        GameApp.CANVAS_WIDTH = 382.0;
-        console.log("w: " + window.innerWidth + ", h: " + window.innerHeight + ", dp: " + window.devicePixelRatio);
-        if (window.innerWidth > GameApp.CANVAS_WIDTH)
-            GameApp.CANVAS_WIDTH = window.innerWidth;
-        GameApp.CANVAS_HEIGHT = window.innerHeight;
-        //var game;
-        if (this.platform.is('ios')) {
-            if (GameApp.CANVAS_HEIGHT < 642.0) //iphone SE fix.
-                GameApp.CANVAS_HEIGHT += 60;
-            this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 21 * window.devicePixelRatio, Phaser.AUTO, 'gameDiv');
-        }
-        else if (this.platform.is('android'))
-            this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 74, Phaser.AUTO, 'gameDiv');
-        else
-            this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 100, Phaser.AUTO, 'gameDiv');
-        var tundraLevel1 = new _Tundra1__WEBPACK_IMPORTED_MODULE_3__["TundraLevel1"]();
-        this.game.state.add('Tundra1', tundraLevel1);
-        this.game.state.start('Tundra1');
-    };
-    DemoTundraComponent.prototype.goToRewardsPage = function () {
-        console.log("rewards page");
-        this.router.navigate(['/home']);
-    };
-    DemoTundraComponent.prototype.ionViewDidLeaveFunction = function () {
-        console.log("Tundra, ionDidLeave");
-        this.game.destroy();
-    };
-    DemoTundraComponent.ctorParameters = function () { return [
-        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
-    ]; };
-    DemoTundraComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-demo-tundra',
-            template: __webpack_require__(/*! raw-loader!./demo-tundra.component.html */ "./node_modules/raw-loader/index.js!./src/app/incentive/aquarium/demo-tundra/demo-tundra.component.html"),
-            styles: [__webpack_require__(/*! ./demo-tundra.component.scss */ "./src/app/incentive/aquarium/demo-tundra/demo-tundra.component.scss")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
-    ], DemoTundraComponent);
-    return DemoTundraComponent;
 }());
 
 
@@ -12553,13 +12175,15 @@ var AwardDollarService = /** @class */ (function () {
             this.awardDollar = 0;
         else
             this.awardDollar = parseInt(window.localStorage['AwardDollar']);
-        this.awardDollarObj = JSON.parse(window.localStorage["AwardDollarDates"]);
-        if (this.awardDollarObj == null) {
+        //console.log(window.localStorage["AwardDollarDates"]);
+        this.awardDollarObj = window.localStorage["AwardDollarDates"];
+        if (this.awardDollarObj == undefined) {
             this.awardDollarObj = {};
             this.awardDollarObj['dates'] = [moment__WEBPACK_IMPORTED_MODULE_2__().format("DD-MM-YYYY")];
             window.localStorage.setItem("AwardDollarDates", JSON.stringify(this.awardDollarObj));
         }
         else {
+            this.awardDollarObj = JSON.parse(window.localStorage["AwardDollarDates"]);
             if (this.awardDollarObj['dates'].length < 2) {
                 //compute previous date, and see if it exist
                 var previousdate = moment__WEBPACK_IMPORTED_MODULE_2__().subtract(1, "days").format("DD-MM-YYYY");
@@ -12669,6 +12293,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _treasurechest_treasurechest_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./treasurechest/treasurechest.component */ "./src/app/incentive/treasurechest/treasurechest.component.ts");
 /* harmony import */ var _award_altruism_award_altruism_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./award-altruism/award-altruism.component */ "./src/app/incentive/award-altruism/award-altruism.component.ts");
 /* harmony import */ var _aquarium_modal_unlocked_page_modal_unlocked_page_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./aquarium/modal-unlocked-page/modal-unlocked-page.component */ "./src/app/incentive/aquarium/modal-unlocked-page/modal-unlocked-page.component.ts");
+/* harmony import */ var _info_page_info_page_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./info-page/info-page.component */ "./src/app/incentive/info-page/info-page.component.ts");
 
 
 
@@ -12683,6 +12308,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var routes = [
     //  { path: 'award', component: AwardComponent },
     { path: 'award-memes', component: _award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__["AwardMemesComponent"] },
@@ -12692,7 +12318,7 @@ var IncentiveModule = /** @class */ (function () {
     }
     IncentiveModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_award_award_component__WEBPACK_IMPORTED_MODULE_6__["AwardComponent"], _award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__["AwardMemesComponent"], _award_altruism_award_altruism_component__WEBPACK_IMPORTED_MODULE_8__["AwardAltruismComponent"], _treasurechest_treasurechest_component__WEBPACK_IMPORTED_MODULE_7__["TreasurechestComponent"], _aquarium_modal_unlocked_page_modal_unlocked_page_component__WEBPACK_IMPORTED_MODULE_9__["ModalUnlockedPageComponent"]],
+            declarations: [_award_award_component__WEBPACK_IMPORTED_MODULE_6__["AwardComponent"], _award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__["AwardMemesComponent"], _award_altruism_award_altruism_component__WEBPACK_IMPORTED_MODULE_8__["AwardAltruismComponent"], _treasurechest_treasurechest_component__WEBPACK_IMPORTED_MODULE_7__["TreasurechestComponent"], _aquarium_modal_unlocked_page_modal_unlocked_page_component__WEBPACK_IMPORTED_MODULE_9__["ModalUnlockedPageComponent"], _info_page_info_page_component__WEBPACK_IMPORTED_MODULE_10__["InfoPageComponent"]],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["IonicModule"].forRoot(),
@@ -12709,6 +12335,50 @@ var IncentiveModule = /** @class */ (function () {
         })
     ], IncentiveModule);
     return IncentiveModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/incentive/info-page/info-page.component.scss":
+/*!**************************************************************!*\
+  !*** ./src/app/incentive/info-page/info-page.component.scss ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".new-background-color {\n  --background: #005486;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYXNoMi9Ecm9wYm94IChQQUMgTEFCKS9jb2Rlcy9pb25pY19wcm9qZWN0cy9TQVJBVjMvU0FSQV9tb2R1bGFyL3NyYy9hcHAvaW5jZW50aXZlL2luZm8tcGFnZS9pbmZvLXBhZ2UuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2luY2VudGl2ZS9pbmZvLXBhZ2UvaW5mby1wYWdlLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0kscUJBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL2luY2VudGl2ZS9pbmZvLXBhZ2UvaW5mby1wYWdlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5ldy1iYWNrZ3JvdW5kLWNvbG9ye1xuICAgIC0tYmFja2dyb3VuZDogIzAwNTQ4Njtcbn0iLCIubmV3LWJhY2tncm91bmQtY29sb3Ige1xuICAtLWJhY2tncm91bmQ6ICMwMDU0ODY7XG59Il19 */"
+
+/***/ }),
+
+/***/ "./src/app/incentive/info-page/info-page.component.ts":
+/*!************************************************************!*\
+  !*** ./src/app/incentive/info-page/info-page.component.ts ***!
+  \************************************************************/
+/*! exports provided: InfoPageComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InfoPageComponent", function() { return InfoPageComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var InfoPageComponent = /** @class */ (function () {
+    function InfoPageComponent() {
+    }
+    InfoPageComponent.prototype.ngOnInit = function () { };
+    InfoPageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-info-page',
+            template: __webpack_require__(/*! raw-loader!./info-page.component.html */ "./node_modules/raw-loader/index.js!./src/app/incentive/info-page/info-page.component.html"),
+            styles: [__webpack_require__(/*! ./info-page.component.scss */ "./src/app/incentive/info-page/info-page.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], InfoPageComponent);
+    return InfoPageComponent;
 }());
 
 
@@ -14298,8 +13968,8 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 var decrypted = this.EncrDecr.decrypt(encrypted, "Z&wz=BGw;%q49/<)");
                 var survey3 = {};
                 survey3['encrypted'] = encrypted;
-                console.log('Encrypted :' + encrypted);
-                console.log('Decrypted :' + decrypted);
+                //console.log('Encrypted :' + encrypted);
+                //console.log('Decrypted :' + decrypted);
                 this.survey2['encrypted'] = encrypted;
                 //compute and store "TotalPoints" to localStorage
                 if (window.localStorage['TotalPoints'] == undefined)
@@ -14311,7 +13981,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 //get "awardDollars"
                 var pastDollars = this.awardDollarService.getDollars();
                 var dollars = this.awardDollarService.giveDollars();
-                console.log("Dollars: " + dollars);
+                //console.log("Dollars: " + dollars);
                 this.userProfileService.surveyCompleted();
                 window.localStorage.setItem("LastSurveyCompletionDate", "" + moment__WEBPACK_IMPORTED_MODULE_7__().format('YYYYMMDD'));
                 window.localStorage.setItem("CurrentPoints", "" + this.userProfileService.points);
@@ -14391,7 +14061,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
                         }
                     }
                 }
-                console.log("lifeInsightObj: " + JSON.stringify(this.lifeInsightObj));
+                //console.log("lifeInsightObj: "+JSON.stringify(this.lifeInsightObj));
                 window.localStorage.setItem("lifeInsight", JSON.stringify(this.lifeInsightObj));
                 //save to Amazon AWS S3
                 this.awsS3Service.upload(this.fileLink, survey3);
@@ -15632,7 +15302,13 @@ var UserProfileService = /** @class */ (function () {
             this.userProfile.readable_ts = dateString;
             // console.log("in SurveyCompleted, AwardDollarDates: "+ localStorage.getItem("AwardDollarDates"));
             this.userProfile.AwardDollarDates = JSON.parse(localStorage.getItem("AwardDollarDates")); //fetch AwardDollarDates from local storage and add it to the UserProfile
-            this.userProfile.dollars = JSON.parse(localStorage.getItem("AwardDollar"));
+            try {
+                this.userProfile.dollars = JSON.parse(localStorage.getItem("AwardDollar"));
+            }
+            catch (error) {
+                window.localStorage.setItem("AwardDollar", "" + 0);
+                this.userProfile.dollars = 0;
+            }
             this.saveProfileToDevice();
             this.saveToServer();
         }
