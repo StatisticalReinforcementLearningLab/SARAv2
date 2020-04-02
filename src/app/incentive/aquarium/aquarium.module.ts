@@ -4,14 +4,13 @@ import { IonicModule } from '@ionic/angular';
 import { DemoAquariumComponent } from './demo-aquarium/demo-aquarium.component';
 import { SurveyModule } from '../../survey/survey.module';
 import { Routes, RouterModule } from '@angular/router';
-import { DemoTundraComponent } from './demo-tundra/demo-tundra.component';
 
 const routes: Routes = [
      { path: 'aquariumone', component: DemoAquariumComponent }
 ];
 
 @NgModule({
-  declarations: [DemoAquariumComponent,DemoTundraComponent],
+  declarations: [DemoAquariumComponent],
   imports: [
     CommonModule,
     SurveyModule,
@@ -19,8 +18,7 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   exports:[
-    DemoAquariumComponent,
-    DemoTundraComponent
+    DemoAquariumComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
