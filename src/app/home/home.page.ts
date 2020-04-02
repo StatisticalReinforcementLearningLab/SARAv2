@@ -38,6 +38,10 @@ export class HomePage implements OnInit {
     this.router.navigate(['incentive/cheatpoints']);
   }
 
+  startInfoPage(){
+    this.router.navigate(['incentive/infopage']);
+  }
+
   constructor(private platform: Platform, private alertCtrl: AlertController, 
     private router: Router, 
     private route: ActivatedRoute, 
