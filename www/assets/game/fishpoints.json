@@ -342,7 +342,7 @@
     "level" : 4,
     "text" : "Story 1",
     "points" : 3020,
-    "trivia" : "filler text",
+    "trivia" : "Thank you again for completing your survey. You have now unlocked the new rainforest level.",
     "img" : "img/rainforest.jpg"
   },{
     "name" : "Squirrel",
@@ -370,7 +370,7 @@
     "level" : 4,
     "text" : "Story 1",
     "points" : 3080,
-    "trivia" : "filler text",
+    "trivia" : "A lion�' roar can be heard from as far as 5 miles away.",
     "img" : "img/lion.jpg"
   },{
     "name" : "Ostrich",
@@ -391,7 +391,7 @@
     "level" : 4,
     "text" : "Story 1",
     "points" : 3380,
-    "trivia" : "filler text",
+    "trivia" : "It is believed that fully grown triceratops were about 10 ft tall and weighed anywhere between 6 to 12 tons.",
     "img" : "img/triceratops.jpg"
   },{
     "name" : "Duck",
@@ -412,28 +412,28 @@
     "level" : 4,
     "text" : "Story 1",
     "points" : 3500,
-    "trivia" : "filler text",
+    "trivia" : "The 'blue morpho' is among the largest butterflies in the world, with wings spanning from five to eight inches.",
     "img" : "img/butterfly.jpg"
   },{
     "name" : "Rain",
     "level" : 4,
     "text" : "Story 1",
     "points" : 3560,
-    "trivia" : "",
+    "trivia" : "The scent that rain leaves behind is called petrichor.",
     "img" : "img/rain.jpg"
   },{
     "name" : "Koala",
     "level" : 4,
     "text" : "Story 1",
     "points" : 3620,
-    "trivia" : "filler text",
+    "trivia" : "Koalas sleep for up to 19 hours per day!",
     "img" : "img/koala.jpg"
   },{
     "name" : "Owl",
     "level" : 4,
     "text" : "Story 1",
     "points" : 3680,
-    "trivia" : "filler text",
+    "trivia" : "Owls can rotate their necks 270 degrees.",
     "img" : "img/owl.jpg"
   },{
     "name" : "Sparrow",

@@ -285,8 +285,8 @@ export class DynamicSurveyComponent implements OnInit {
         var survey3 = {};
         survey3['encrypted'] = encrypted;
 
-        console.log('Encrypted :' + encrypted);
-        console.log('Decrypted :' + decrypted);
+        //console.log('Encrypted :' + encrypted);
+        //console.log('Decrypted :' + decrypted);
         this.survey2['encrypted'] = encrypted;
         
         //compute and store "TotalPoints" to localStorage
@@ -300,7 +300,7 @@ export class DynamicSurveyComponent implements OnInit {
         //get "awardDollars"
         var pastDollars = this.awardDollarService.getDollars();
         var dollars = this.awardDollarService.giveDollars();
-        console.log("Dollars: " + dollars);
+        //console.log("Dollars: " + dollars);
 
         this.userProfileService.surveyCompleted(); 
 
@@ -380,7 +380,7 @@ export class DynamicSurveyComponent implements OnInit {
              } 
           }
       }
-      console.log("lifeInsightObj: "+JSON.stringify(this.lifeInsightObj));
+      //console.log("lifeInsightObj: "+JSON.stringify(this.lifeInsightObj));
       window.localStorage.setItem("lifeInsight", JSON.stringify(this.lifeInsightObj));
 
       //save to Amazon AWS S3
@@ -424,10 +424,12 @@ export class DynamicSurveyComponent implements OnInit {
       } else if((currentProb > 0.4)  &&  (currentProb <=0.7)){
         reinforcement_data['reward'] = "Meme"; 
         navigationExtras['state']['reinforcement_data'] = reinforcement_data;
+        navigationExtras['state']['IsShowModal'] = true;
         this.router.navigate(['incentive/award-memes'], navigationExtras);
       } else if(currentProb > 0.7){
         reinforcement_data['reward'] = "Altruistic message"; 
         navigationExtras['state']['reinforcement_data'] = reinforcement_data;
+        navigationExtras['state']['IsShowModal'] = true;
         this.router.navigate(['incentive/award-altruism'],  navigationExtras);
       }            
      }
