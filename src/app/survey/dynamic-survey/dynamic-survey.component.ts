@@ -394,7 +394,7 @@ export class DynamicSurveyComponent implements OnInit {
       let navigationExtras: NavigationExtras = {
         state: {
           date: currentDate,
-          prob: currentProb
+          prob: currentProb          
         }
       };
 
@@ -418,6 +418,8 @@ export class DynamicSurveyComponent implements OnInit {
         reinforcementObj['prob'] = currentProb;
 
         reinforcement_data['reward'] = "No push"; 
+        reinforcement_data['reward_img_link'] = ""; 
+        reinforcement_data['Like'] = ""; 
         this.awsS3Service.upload('reinforcement_data', reinforcement_data);  
         this.userProfileService.addReinforcementData(currentDate, reinforcementObj);    
         navigationExtras['state']['IsShowModal'] = true;
