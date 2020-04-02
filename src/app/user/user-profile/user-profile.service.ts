@@ -228,8 +228,12 @@ export class UserProfileService {
       this.userProfile.readable_ts = dateString;
       // console.log("in SurveyCompleted, AwardDollarDates: "+ localStorage.getItem("AwardDollarDates"));
       this.userProfile.AwardDollarDates = JSON.parse(localStorage.getItem("AwardDollarDates"));  //fetch AwardDollarDates from local storage and add it to the UserProfile
-      this.userProfile.dollars = JSON.parse(localStorage.getItem("AwardDollar"));
-
+      try{
+        this.userProfile.dollars = JSON.parse(localStorage.getItem("AwardDollar"));
+      }catch(error){
+        window.localStorage.setItem("AwardDollar", ""+0); 
+        this.userProfile.dollars = 0;
+      }
       this.saveProfileToDevice();
       this.saveToServer();
     }
