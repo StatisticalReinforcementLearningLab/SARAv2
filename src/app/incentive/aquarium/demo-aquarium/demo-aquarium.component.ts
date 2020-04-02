@@ -35,13 +35,6 @@ import { PreloaderRainforestL6 } from '../levels/RainforestL6/Preloader';
 import { GameRainforestL6 } from '../levels/RainforestL6/Game';
 
 
-//import { GameOver } from '../fishgame/GameOver';
-import { Game } from '../fishgame/Game';
-import { Level1 } from '../fishgame/Level1';
-import { Level1Small } from '../fishgame/Level1Small';
-import { TundraLevel1 } from '../demo-tundra/Tundra1';
-//import { FormsModule } from '@angular/forms';
-//import { PickGameService } from './pick-game.service';
 import { ActivatedRoute, Router, RouterEvent, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
 //import { PreLoad } from '../../../PreLoad';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
