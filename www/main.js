@@ -10853,8 +10853,9 @@ class GameTundraL5 extends Phaser.State {
         this.addAnimals();
 
         //
-        var treasure = this.add.image(this.game.width-150, this.height-125, 'treasure_tundra');
-        treasure.scale.setTo(-0.07, 0.07);
+        var treasure = this.add.image(this.game.width/2, this.height-85, 'treasure_tundra');
+        treasure.scale.setTo(-0.5, 0.5);
+        treasure.anchor.setTo(.5,.5);
         treasure.inputEnabled = true;
         treasure.events.onInputDown.add(this.showunlockables, this);
 
@@ -11988,9 +11989,9 @@ var AwardAltruismComponent = /** @class */ (function () {
                         hearts[a].image = image;
                         hearts[a].image.style.height = hearts[a].height;
                     }
-                    intervalVar = setInterval(function (e) { return self_this.angularDraw(); }, 30);
+                    intervalVar = setInterval(function (e) { return self_this.angularDraw(); }, 15);
                 };
-                setTimeout(function (e) { return _this.stopInterval(intervalVar); }, 1200);
+                setTimeout(function (e) { return _this.stopInterval(intervalVar); }, 800);
             },
             stopInterval: function (intervalVar) {
                 this.ctx.clearRect(0, 0, this.w, this.h);
@@ -12075,8 +12076,13 @@ var AwardAltruismComponent = /** @class */ (function () {
             window.localStorage.setItem("Like", "Yes");
             this.awsS3Service.upload('reinforcement_data', this.reinforcement_data);
         }
-        //this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);    
-        this.router.navigate(['home']);
+        this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);
+        var navigationExtras = {
+            state: {
+                IsShowModal: true
+            }
+        };
+        this.router.navigate(['home'], navigationExtras);
     };
     /**
       * Shuffles array in place if it is not already shuffled
@@ -12279,8 +12285,13 @@ var AwardMemesComponent = /** @class */ (function () {
             window.localStorage.setItem("Like", "Yes");
             this.awsS3Service.upload('reinforcement_data', this.reinforcement_data);
         }
-        //this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);    
-        this.router.navigate(['home']);
+        this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);
+        var navigationExtras = {
+            state: {
+                IsShowModal: true
+            }
+        };
+        this.router.navigate(['home'], navigationExtras);
     };
     /**
      * Shuffles array in place if it is not already shuffled
@@ -12542,8 +12553,6 @@ var AwardDollarService = /** @class */ (function () {
             this.awardDollar = 0;
         else
             this.awardDollar = parseInt(window.localStorage['AwardDollar']);
-        //----   
-        //----   
         this.awardDollarObj = JSON.parse(window.localStorage["AwardDollarDates"]);
         if (this.awardDollarObj == null) {
             this.awardDollarObj = {};
@@ -14216,7 +14225,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 this.survey2['reponse_ts'][questions].ts = Date.now();
                 this.survey2['reponse_ts'][questions].readable_ts = moment__WEBPACK_IMPORTED_MODULE_7__().format("MMMM Do YYYY, h:mm:ss a");
                 delete this.isQuestionIncomplete[questions]; //remove the key from isQuestionIncomplete
-                console.log(JSON.stringify(this.survey2));
+                //console.log(JSON.stringify(this.survey2));
             };
             class_1.prototype.submitSurvey = function () {
                 if (this.isEmpty(this.isQuestionIncomplete)) //means all questions have been removed
@@ -14273,7 +14282,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
             };
             class_1.prototype.storeData = function () {
                 //console.log("Inside storeData");
-                console.log(JSON.stringify(this.survey2));
+                //console.log(JSON.stringify(this.survey2));
                 this.ga.trackEvent('Submit Button', 'Tapped Action', 'Submit the completed survey', 0);
                 var endTime = new Date().getTime();
                 var readable_time = moment__WEBPACK_IMPORTED_MODULE_7__().format('MMMM Do YYYY, h:mm:ss a Z');
@@ -14287,6 +14296,8 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.survey2), "Z&wz=BGw;%q49/<)");
                 //var encrypted = this.EncrDecr.encrypt("holla", "Z&wz=BGw;%q49/<)");
                 var decrypted = this.EncrDecr.decrypt(encrypted, "Z&wz=BGw;%q49/<)");
+                var survey3 = {};
+                survey3['encrypted'] = encrypted;
                 console.log('Encrypted :' + encrypted);
                 console.log('Decrypted :' + decrypted);
                 this.survey2['encrypted'] = encrypted;
@@ -14383,7 +14394,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 console.log("lifeInsightObj: " + JSON.stringify(this.lifeInsightObj));
                 window.localStorage.setItem("lifeInsight", JSON.stringify(this.lifeInsightObj));
                 //save to Amazon AWS S3
-                this.awsS3Service.upload(this.fileLink, this.survey2);
+                this.awsS3Service.upload(this.fileLink, survey3);
                 //console.log("End of storeData");
                 //navigate to award-memes/award-altruism with equal probability after submit survey
                 var currentProb = Math.random();
@@ -14398,6 +14409,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 //prepare reinforcement data to upload to AWS S3
                 var reinforcement_data = {};
                 reinforcement_data['userName'] = this.userProfileService.username;
+                reinforcement_data['appVersion'] = this.versionNumber;
                 reinforcement_data['Prob'] = currentProb;
                 reinforcement_data['day_count'] = Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;
                 reinforcement_data['isRandomized'] = 1; //what is this one??
@@ -14412,18 +14424,20 @@ var DynamicSurveyComponent = /** @class */ (function () {
                     reinforcementObj['prob'] = currentProb;
                     reinforcement_data['reward'] = "No push";
                     this.awsS3Service.upload('reinforcement_data', reinforcement_data);
-                    //this.userProfileService.addReinforcementData(currentDate, reinforcementObj);    
+                    this.userProfileService.addReinforcementData(currentDate, reinforcementObj);
                     navigationExtras['state']['IsShowModal'] = true;
                     this.router.navigate(['home'], navigationExtras);
                 }
                 else if ((currentProb > 0.4) && (currentProb <= 0.7)) {
                     reinforcement_data['reward'] = "Meme";
                     navigationExtras['state']['reinforcement_data'] = reinforcement_data;
+                    navigationExtras['state']['IsShowModal'] = true;
                     this.router.navigate(['incentive/award-memes'], navigationExtras);
                 }
                 else if (currentProb > 0.7) {
                     reinforcement_data['reward'] = "Altruistic message";
                     navigationExtras['state']['reinforcement_data'] = reinforcement_data;
+                    navigationExtras['state']['IsShowModal'] = true;
                     this.router.navigate(['incentive/award-altruism'], navigationExtras);
                 }
             };
@@ -14962,13 +14976,20 @@ var AuthGuard = /** @class */ (function () {
         this.router = router;
     }
     AuthGuard.prototype.canActivate = function (route, router) {
+        //This using reactive programming
+        //--- pipe: is a series of operation to be executed when the observables "loggedInUser" state changes
+        //--- take: an observable can emit a series of values. take(1) means only the first value will be used
+        //--- map: function takes an observable, do some transformation and returns a observable.
+        //--- search documentation here: https://rxjs-dev.firebaseapp.com/
         var _this = this;
         return this.authService.loggedInUser.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["take"])(1), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (loggedInUser) {
             var isAuth = !!loggedInUser;
             if (isAuth) {
+                console.log("auth.guard.ts - (isAuth): true");
                 return true;
             }
             else {
+                console.log("auth.guard.ts - (isAuth): false");
                 return _this.router.createUrlTree(['auth']);
             }
         }));
@@ -15053,9 +15074,11 @@ var AuthService = /** @class */ (function () {
         console.log("auth.service.ts - autoLogin method - begin");
         var loggedInUser = localStorage.getItem('loggedInUser');
         if (loggedInUser === null) {
+            console.log("auth.service.ts - autoLogin method - (loggedInUser===null)");
             return;
         }
         else {
+            console.log("auth.service.ts - autoLogin method - (sending saved observable)");
             this.loggedInUser.next(loggedInUser);
         }
     };
@@ -15667,7 +15690,7 @@ var UserProfileService = /** @class */ (function () {
     };
     UserProfileService.prototype.addSurveyPoints = function () {
         console.log("user-profile.service.ts - addSurveyPoints method - begin");
-        var pointsPerSurvey = 100;
+        var pointsPerSurvey = 60;
         this.addPoints(pointsPerSurvey);
     };
     UserProfileService.prototype.addPoints = function (points) {
