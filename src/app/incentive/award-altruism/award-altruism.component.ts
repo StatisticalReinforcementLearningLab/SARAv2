@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import { AwsS3Service } from 'src/app/storage/aws-s3.service';
 
@@ -79,8 +79,14 @@ export class AwardAltruismComponent implements OnInit {
       window.localStorage.setItem("Like", "Yes");
       this.awsS3Service.upload('reinforcement_data', this.reinforcement_data); 
     }
-    this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);    
-    this.router.navigate(['home']);
+    this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);
+    
+    let navigationExtras: NavigationExtras = {
+      state: {
+        IsShowModal: true
+      }
+    };
+    this.router.navigate(['home'], navigationExtras);
   }
 
 
