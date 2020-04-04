@@ -20,6 +20,7 @@ export class HomePage implements OnInit {
   private sub1$:any;
   private sub2$:any;
   money = 0;
+  modalObjectNavigationExtras = {};
 
   @ViewChild(DemoAquariumComponent, {static: true}) child;
 
@@ -74,8 +75,11 @@ export class HomePage implements OnInit {
       if (this.router.getCurrentNavigation().extras.state) {
         //throw new Error("Method not implemented.");
         //show modal on awards
-        if(this.router.getCurrentNavigation().extras.state.IsShowModal == true)
+        this.modalObjectNavigationExtras = this.router.getCurrentNavigation().extras.state.modalObjectNavigationExtras;
+        if(this.modalObjectNavigationExtras['IsModalShownYet'] == false)
           this.showModal();
+
+        console.log("home.page.ts --- IsShowModalYet: " + this.modalObjectNavigationExtras['IsModalShownYet']);
         //this.date = this.router.getCurrentNavigation().extras.state.date;
         //this.reinforcementObj['prob'] = this.router.getCurrentNavigation().extras.state.prob;
         //this.reinforcement_data = this.router.getCurrentNavigation().extras.state.reinforcement_data;         
@@ -245,9 +249,9 @@ export class HomePage implements OnInit {
 
   computeUnlockedReinforcements(){
 
-    var currentPoints = parseInt(window.localStorage['CurrentPoints']);
-    var previousPoints = parseInt(window.localStorage['PreviousPoints']);
-    var awardedDollar = parseInt(window.localStorage['AwardedDollar']);
+    var currentPoints = this.modalObjectNavigationExtras["CurrentPoints"];
+    var previousPoints = this.modalObjectNavigationExtras["PreviousPoints"];
+    var awardedDollar = this.modalObjectNavigationExtras["AwardedDollar"];
     var reinforcements = [];
 
     //get if money is awarded.
