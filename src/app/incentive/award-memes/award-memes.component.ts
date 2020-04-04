@@ -25,6 +25,7 @@ export class AwardMemesComponent implements OnInit {
   viewHeight = 350;
   ctx;
   timeStep = (1/60);
+  modalObjectNavigationExtras = {};
 
 
   //src="{{whichImage}}"
@@ -42,6 +43,7 @@ export class AwardMemesComponent implements OnInit {
           this.date = this.router.getCurrentNavigation().extras.state.date;
           this.reinforcementObj['prob'] = this.router.getCurrentNavigation().extras.state.prob;
           this.reinforcement_data = this.router.getCurrentNavigation().extras.state.reinforcement_data;
+          this.modalObjectNavigationExtras = this.router.getCurrentNavigation().extras.state.modalObjectNavigationExtras;
           console.log("Inside AwardMemes, date is: " +this.date+" prob is: "+this.reinforcementObj['prob']);
         }
       });    
@@ -102,7 +104,7 @@ export class AwardMemesComponent implements OnInit {
     
     let navigationExtras: NavigationExtras = {
       state: {
-        IsShowModal: true
+        modalObjectNavigationExtras: this.modalObjectNavigationExtras
       }
     };
     this.router.navigate(['home'], navigationExtras);
