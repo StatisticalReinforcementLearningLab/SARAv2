@@ -304,11 +304,6 @@ export class DynamicSurveyComponent implements OnInit {
 
         this.userProfileService.surveyCompleted(); 
 
-        window.localStorage.setItem("LastSurveyCompletionDate", ""+moment().format('YYYYMMDD'));
-        window.localStorage.setItem("CurrentPoints", ""+ this.userProfileService.points);
-        window.localStorage.setItem("PreviousPoints", ""+ (this.userProfileService.points-60));
-        window.localStorage.setItem("AwardedDollar", ""+ (dollars-pastDollars));
-        window.localStorage.setItem("IsModalShown", "false");
 
          //Save 7-day date and value for each question in localStorage to generate lifeInsight chart
          var lifeInsightProfile = {
@@ -409,8 +404,18 @@ export class DynamicSurveyComponent implements OnInit {
       reinforcement_data['readable_ts'] = readable_time;
       reinforcement_data['date'] =  currentDate;
       //save to Amazon AWS S3
+
+
+      //add for the  modal object
+      var modalObjectNavigationExtras = {};
+      modalObjectNavigationExtras["LastSurveyCompletionDate"] = moment().format('YYYYMMDD');
+      modalObjectNavigationExtras["CurrentPoints"] = this.userProfileService.points;
+      modalObjectNavigationExtras["PreviousPoints"] = this.userProfileService.points-60;
+      modalObjectNavigationExtras["AwardedDollar"] = dollars-pastDollars;
+      modalObjectNavigationExtras["IsModalShownYet"] = false;
       
       
+      //currentProb = 0.8;
       if(this.fileLink.includes('caregiver') || currentProb <= 0.4 ) {
         var reinforcementObj = {};
         reinforcementObj['ds'] = 1;
@@ -419,17 +424,17 @@ export class DynamicSurveyComponent implements OnInit {
         reinforcement_data['reward'] = "No push"; 
         this.awsS3Service.upload('reinforcement_data', reinforcement_data);  
         this.userProfileService.addReinforcementData(currentDate, reinforcementObj);    
-        navigationExtras['state']['IsShowModal'] = true;
+        navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
         this.router.navigate(['home'], navigationExtras);        
       } else if((currentProb > 0.4)  &&  (currentProb <=0.7)){
         reinforcement_data['reward'] = "Meme"; 
         navigationExtras['state']['reinforcement_data'] = reinforcement_data;
-        navigationExtras['state']['IsShowModal'] = true;
+        navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
         this.router.navigate(['incentive/award-memes'], navigationExtras);
       } else if(currentProb > 0.7){
         reinforcement_data['reward'] = "Altruistic message"; 
         navigationExtras['state']['reinforcement_data'] = reinforcement_data;
-        navigationExtras['state']['IsShowModal'] = true;
+        navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
         this.router.navigate(['incentive/award-altruism'],  navigationExtras);
       }            
      }
