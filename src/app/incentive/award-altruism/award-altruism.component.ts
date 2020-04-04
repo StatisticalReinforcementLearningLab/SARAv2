@@ -16,6 +16,7 @@ export class AwardAltruismComponent implements OnInit {
   date;
   reinforcementObj = {};
   reinforcement_data = {};
+  modalObjectNavigationExtras = {};
 
   constructor(    
     private ga: GoogleAnalytics,
@@ -31,6 +32,7 @@ export class AwardAltruismComponent implements OnInit {
           this.date = this.router.getCurrentNavigation().extras.state.date;
           this.reinforcementObj['prob'] = this.router.getCurrentNavigation().extras.state.prob;
           this.reinforcement_data = this.router.getCurrentNavigation().extras.state.reinforcement_data;         
+          this.modalObjectNavigationExtras = this.router.getCurrentNavigation().extras.state.modalObjectNavigationExtras;
           console.log("Inside AwardAltruism, date is: " +this.date+" prob is: "+this.reinforcementObj['prob']);
         }
       });      
@@ -83,7 +85,7 @@ export class AwardAltruismComponent implements OnInit {
     
     let navigationExtras: NavigationExtras = {
       state: {
-        IsShowModal: true
+        modalObjectNavigationExtras: this.modalObjectNavigationExtras
       }
     };
     this.router.navigate(['home'], navigationExtras);
