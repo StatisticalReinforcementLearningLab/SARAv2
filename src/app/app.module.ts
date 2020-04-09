@@ -24,6 +24,11 @@ import { UserModule } from './user/user.module';
 import { HomePageModule } from './home/home.module';
 import { AwardDollarService } from './incentive/award-money/award-dollar.service';
 import { AppVersion } from '@ionic-native/app-version/ngx';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+
 
 @NgModule({
   declarations: [AppComponent,CheatpageComponent],
@@ -41,7 +46,17 @@ import { AppVersion } from '@ionic-native/app-version/ngx';
     FormsModule,
     UserModule,
     HomePageModule,
-    BlobModule.forRoot()
+    BlobModule.forRoot(),
+    //this ngrx import
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
+    //dev tool maxAge 25 versions of the data
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [
     StatusBar,
