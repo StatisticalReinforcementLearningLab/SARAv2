@@ -5194,6 +5194,7 @@ var HomePage = /** @class */ (function () {
         this.modalController = modalController;
         this.userProfileService = userProfileService;
         this.money = 0;
+        this.modalObjectNavigationExtras = {};
         console.log("Constructor called");
         this.sub1$ = this.platform.pause.subscribe(function () {
             console.log('****UserdashboardPage PAUSED****');
@@ -5214,18 +5215,6 @@ var HomePage = /** @class */ (function () {
                 this.money = 0;
             }
         }
-        this.route.queryParams.subscribe(function (params) {
-            if (_this.router.getCurrentNavigation().extras.state) {
-                //throw new Error("Method not implemented.");
-                //show modal on awards
-                if (_this.router.getCurrentNavigation().extras.state.IsShowModal == true)
-                    _this.showModal();
-                //this.date = this.router.getCurrentNavigation().extras.state.date;
-                //this.reinforcementObj['prob'] = this.router.getCurrentNavigation().extras.state.prob;
-                //this.reinforcement_data = this.router.getCurrentNavigation().extras.state.reinforcement_data;         
-                //console.log("Inside AwardAltruism, date is: " +this.date+" prob is: "+this.reinforcementObj['prob']);
-            }
-        });
     }
     Object.defineProperty(HomePage.prototype, "isActive", {
         get: function () {
@@ -5257,6 +5246,21 @@ var HomePage = /** @class */ (function () {
         this.sub2$.unsubscribe();
     };
     HomePage.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.queryParams.subscribe(function (params) {
+            if (_this.router.getCurrentNavigation().extras.state) {
+                //throw new Error("Method not implemented.");
+                //show modal on awards
+                _this.modalObjectNavigationExtras = _this.router.getCurrentNavigation().extras.state.modalObjectNavigationExtras;
+                console.log("home.page.ts --- modalObjectNavigationExtras: " + JSON.stringify(_this.modalObjectNavigationExtras));
+                if (_this.modalObjectNavigationExtras['IsModalShownYet'] == false)
+                    _this.showModal();
+                //this.date = this.router.getCurrentNavigation().extras.state.date;
+                //this.reinforcementObj['prob'] = this.router.getCurrentNavigation().extras.state.prob;
+                //this.reinforcement_data = this.router.getCurrentNavigation().extras.state.reinforcement_data;         
+                //console.log("Inside AwardAltruism, date is: " +this.date+" prob is: "+this.reinforcementObj['prob']);
+            }
+        });
     };
     HomePage.prototype.startSurvey = function () {
         console.log('start survey');
@@ -5383,7 +5387,7 @@ var HomePage = /** @class */ (function () {
         //if(window.localStorage['IsModalShown'] == "false"){
         //
         var todaysDate = moment__WEBPACK_IMPORTED_MODULE_4__().format('YYYYMMDD');
-        var storedDate = window.localStorage['LastSurveyCompletionDate'];
+        var storedDate = this.modalObjectNavigationExtras["LastSurveyCompletionDate"];
         //
         if (todaysDate == storedDate) {
             this.computeUnlockedReinforcements();
@@ -5413,9 +5417,9 @@ var HomePage = /** @class */ (function () {
     };
     HomePage.prototype.computeUnlockedReinforcements = function () {
         var _this = this;
-        var currentPoints = parseInt(window.localStorage['CurrentPoints']);
-        var previousPoints = parseInt(window.localStorage['PreviousPoints']);
-        var awardedDollar = parseInt(window.localStorage['AwardedDollar']);
+        var currentPoints = this.modalObjectNavigationExtras["CurrentPoints"];
+        var previousPoints = this.modalObjectNavigationExtras["PreviousPoints"];
+        var awardedDollar = this.modalObjectNavigationExtras["AwardedDollar"];
         var reinforcements = [];
         //get if money is awarded.
         if (awardedDollar > 0) {
@@ -5441,7 +5445,7 @@ var HomePage = /** @class */ (function () {
                                 reinforcements.push({ 'img': img, 'header': header, 'text': text });
                             }
                         }
-                        console.log(JSON.stringify(reinforcements));
+                        console.log("reinforcements: " + JSON.stringify(reinforcements));
                         if (reinforcements.length > 0) //means some rainforcement was provided.
                             this.presentModal(reinforcements);
                         return [2 /*return*/];
@@ -11477,7 +11481,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var AwardAltruismComponent = /** @class */ (function () {
     function AwardAltruismComponent(ga, route, userProfileService, awsS3Service, router) {
-        var _this = this;
         this.ga = ga;
         this.route = route;
         this.userProfileService = userProfileService;
@@ -11485,6 +11488,7 @@ var AwardAltruismComponent = /** @class */ (function () {
         this.router = router;
         this.reinforcementObj = {};
         this.reinforcement_data = {};
+        this.modalObjectNavigationExtras = {};
         this.HeartsBackground = {
             heartHeight: 60,
             heartWidth: 64,
@@ -11638,19 +11642,21 @@ var AwardAltruismComponent = /** @class */ (function () {
         this.reinforcementObj['ds'] = 1;
         this.reinforcementObj['reward'] = 2;
         this.reinforcementObj['reward_type'] = 'altruistic message';
+    }
+    AwardAltruismComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.ga.trackView('Award-altruism')
+            .then(function () { console.log("trackView at award-altruism!"); })
+            .catch(function (e) { return console.log(e); });
         this.route.queryParams.subscribe(function (params) {
             if (_this.router.getCurrentNavigation().extras.state) {
                 _this.date = _this.router.getCurrentNavigation().extras.state.date;
                 _this.reinforcementObj['prob'] = _this.router.getCurrentNavigation().extras.state.prob;
                 _this.reinforcement_data = _this.router.getCurrentNavigation().extras.state.reinforcement_data;
+                _this.modalObjectNavigationExtras = _this.router.getCurrentNavigation().extras.state.modalObjectNavigationExtras;
                 console.log("Inside AwardAltruism, date is: " + _this.date + " prob is: " + _this.reinforcementObj['prob']);
             }
         });
-    }
-    AwardAltruismComponent.prototype.ngOnInit = function () {
-        this.ga.trackView('Award-altruism')
-            .then(function () { console.log("trackView at award-altruism!"); })
-            .catch(function (e) { return console.log(e); });
     };
     AwardAltruismComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
@@ -11701,7 +11707,7 @@ var AwardAltruismComponent = /** @class */ (function () {
         this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);
         var navigationExtras = {
             state: {
-                IsShowModal: true
+                modalObjectNavigationExtras: this.modalObjectNavigationExtras
             }
         };
         this.router.navigate(['home'], navigationExtras);
@@ -11829,7 +11835,6 @@ __webpack_require__.r(__webpack_exports__);
 var AwardMemesComponent = /** @class */ (function () {
     //src="{{whichImage}}"
     function AwardMemesComponent(ga, route, userProfileService, awsS3Service, router) {
-        var _this = this;
         this.ga = ga;
         this.route = route;
         this.userProfileService = userProfileService;
@@ -11840,22 +11845,25 @@ var AwardMemesComponent = /** @class */ (function () {
         this.viewWidth = 512;
         this.viewHeight = 350;
         this.timeStep = (1 / 60);
+        this.modalObjectNavigationExtras = {};
         this.reinforcementObj['ds'] = 1;
         this.reinforcementObj['reward'] = 1;
         this.reinforcementObj['reward_type'] = 'meme';
+    }
+    AwardMemesComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.ga.trackView('Life-insight')
+            .then(function () { console.log("trackView at Life-insight!"); })
+            .catch(function (e) { return console.log(e); });
         this.route.queryParams.subscribe(function (params) {
             if (_this.router.getCurrentNavigation().extras.state) {
                 _this.date = _this.router.getCurrentNavigation().extras.state.date;
                 _this.reinforcementObj['prob'] = _this.router.getCurrentNavigation().extras.state.prob;
                 _this.reinforcement_data = _this.router.getCurrentNavigation().extras.state.reinforcement_data;
+                _this.modalObjectNavigationExtras = _this.router.getCurrentNavigation().extras.state.modalObjectNavigationExtras;
                 console.log("Inside AwardMemes, date is: " + _this.date + " prob is: " + _this.reinforcementObj['prob']);
             }
         });
-    }
-    AwardMemesComponent.prototype.ngOnInit = function () {
-        this.ga.trackView('Life-insight')
-            .then(function () { console.log("trackView at Life-insight!"); })
-            .catch(function (e) { return console.log(e); });
     };
     AwardMemesComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
@@ -11910,7 +11918,7 @@ var AwardMemesComponent = /** @class */ (function () {
         this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);
         var navigationExtras = {
             state: {
-                IsShowModal: true
+                modalObjectNavigationExtras: this.modalObjectNavigationExtras
             }
         };
         this.router.navigate(['home'], navigationExtras);
@@ -13984,11 +13992,6 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 var dollars = this.awardDollarService.giveDollars();
                 //console.log("Dollars: " + dollars);
                 this.userProfileService.surveyCompleted();
-                window.localStorage.setItem("LastSurveyCompletionDate", "" + moment__WEBPACK_IMPORTED_MODULE_7__().format('YYYYMMDD'));
-                window.localStorage.setItem("CurrentPoints", "" + this.userProfileService.points);
-                window.localStorage.setItem("PreviousPoints", "" + (this.userProfileService.points - 60));
-                window.localStorage.setItem("AwardedDollar", "" + (dollars - pastDollars));
-                window.localStorage.setItem("IsModalShown", "false");
                 //Save 7-day date and value for each question in localStorage to generate lifeInsight chart
                 var lifeInsightProfile = {
                     "questions": ["Q3d", "Q4d", "Q5d", "Q8d"],
@@ -14088,27 +14091,37 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 reinforcement_data['readable_ts'] = readable_time;
                 reinforcement_data['date'] = currentDate;
                 //save to Amazon AWS S3
+                //add for the  modal object
+                var modalObjectNavigationExtras = {};
+                modalObjectNavigationExtras["LastSurveyCompletionDate"] = moment__WEBPACK_IMPORTED_MODULE_7__().format('YYYYMMDD');
+                modalObjectNavigationExtras["CurrentPoints"] = this.userProfileService.points;
+                modalObjectNavigationExtras["PreviousPoints"] = this.userProfileService.points - 60;
+                modalObjectNavigationExtras["AwardedDollar"] = dollars - pastDollars;
+                modalObjectNavigationExtras["IsModalShownYet"] = false;
+                //currentProb = 0.8;
                 if (this.fileLink.includes('caregiver') || currentProb <= 0.4) {
                     var reinforcementObj = {};
                     reinforcementObj['ds'] = 1;
                     reinforcementObj['reward'] = 0;
                     reinforcementObj['prob'] = currentProb;
                     reinforcement_data['reward'] = "No push";
+                    reinforcement_data['reward_img_link'] = "";
+                    reinforcement_data['Like'] = "";
                     this.awsS3Service.upload('reinforcement_data', reinforcement_data);
                     this.userProfileService.addReinforcementData(currentDate, reinforcementObj);
-                    navigationExtras['state']['IsShowModal'] = true;
+                    navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
                     this.router.navigate(['home'], navigationExtras);
                 }
                 else if ((currentProb > 0.4) && (currentProb <= 0.7)) {
                     reinforcement_data['reward'] = "Meme";
                     navigationExtras['state']['reinforcement_data'] = reinforcement_data;
-                    navigationExtras['state']['IsShowModal'] = true;
+                    navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
                     this.router.navigate(['incentive/award-memes'], navigationExtras);
                 }
                 else if (currentProb > 0.7) {
                     reinforcement_data['reward'] = "Altruistic message";
                     navigationExtras['state']['reinforcement_data'] = reinforcement_data;
-                    navigationExtras['state']['IsShowModal'] = true;
+                    navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
                     this.router.navigate(['incentive/award-altruism'], navigationExtras);
                 }
             };
