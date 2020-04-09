@@ -26,22 +26,23 @@ export class AwardAltruismComponent implements OnInit {
     private router: Router) { 
       this.reinforcementObj['ds'] = 1;
       this.reinforcementObj['reward'] = 2;
-      this.reinforcementObj['reward_type'] = 'altruistic message';
-      this.route.queryParams.subscribe(params => {
-        if (this.router.getCurrentNavigation().extras.state) {
-          this.date = this.router.getCurrentNavigation().extras.state.date;
-          this.reinforcementObj['prob'] = this.router.getCurrentNavigation().extras.state.prob;
-          this.reinforcement_data = this.router.getCurrentNavigation().extras.state.reinforcement_data;         
-          this.modalObjectNavigationExtras = this.router.getCurrentNavigation().extras.state.modalObjectNavigationExtras;
-          console.log("Inside AwardAltruism, date is: " +this.date+" prob is: "+this.reinforcementObj['prob']);
-        }
-      });      
+      this.reinforcementObj['reward_type'] = 'altruistic message';     
     }
 
   ngOnInit() {
     this.ga.trackView('Award-altruism')
     .then(() => {console.log("trackView at award-altruism!")})
     .catch(e => console.log(e));
+
+    this.route.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.date = this.router.getCurrentNavigation().extras.state.date;
+        this.reinforcementObj['prob'] = this.router.getCurrentNavigation().extras.state.prob;
+        this.reinforcement_data = this.router.getCurrentNavigation().extras.state.reinforcement_data;         
+        this.modalObjectNavigationExtras = this.router.getCurrentNavigation().extras.state.modalObjectNavigationExtras;
+        console.log("Inside AwardAltruism, date is: " +this.date+" prob is: "+this.reinforcementObj['prob']);
+      }
+    }); 
   }
 
   ngAfterViewInit() {
