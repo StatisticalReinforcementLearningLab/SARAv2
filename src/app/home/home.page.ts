@@ -70,23 +70,6 @@ export class HomePage implements OnInit {
         }
     }
 
-
-    this.route.queryParams.subscribe(params => {
-      if (this.router.getCurrentNavigation().extras.state) {
-        //throw new Error("Method not implemented.");
-        //show modal on awards
-        this.modalObjectNavigationExtras = this.router.getCurrentNavigation().extras.state.modalObjectNavigationExtras;
-        if(this.modalObjectNavigationExtras['IsModalShownYet'] == false)
-          this.showModal();
-
-        console.log("home.page.ts --- IsShowModalYet: " + this.modalObjectNavigationExtras['IsModalShownYet']);
-        //this.date = this.router.getCurrentNavigation().extras.state.date;
-        //this.reinforcementObj['prob'] = this.router.getCurrentNavigation().extras.state.prob;
-        //this.reinforcement_data = this.router.getCurrentNavigation().extras.state.reinforcement_data;         
-        //console.log("Inside AwardAltruism, date is: " +this.date+" prob is: "+this.reinforcementObj['prob']);
-      }
-    }); 
-      
   }
 
   ionViewDidLeave(){
@@ -104,6 +87,23 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.route.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        //throw new Error("Method not implemented.");
+        //show modal on awards
+        this.modalObjectNavigationExtras = this.router.getCurrentNavigation().extras.state.modalObjectNavigationExtras;
+        console.log("home.page.ts --- modalObjectNavigationExtras: " + JSON.stringify(this.modalObjectNavigationExtras));
+        if(this.modalObjectNavigationExtras['IsModalShownYet'] == false)
+          this.showModal();
+
+        
+        //this.date = this.router.getCurrentNavigation().extras.state.date;
+        //this.reinforcementObj['prob'] = this.router.getCurrentNavigation().extras.state.prob;
+        //this.reinforcement_data = this.router.getCurrentNavigation().extras.state.reinforcement_data;         
+        //console.log("Inside AwardAltruism, date is: " +this.date+" prob is: "+this.reinforcementObj['prob']);
+      }
+    }); 
     
   }
 
@@ -211,7 +211,7 @@ export class HomePage implements OnInit {
 
     //
     var todaysDate = moment().format('YYYYMMDD');
-    var storedDate = window.localStorage['LastSurveyCompletionDate'];
+    var storedDate = this.modalObjectNavigationExtras["LastSurveyCompletionDate"];
 
     //
     if(todaysDate == storedDate){
@@ -280,7 +280,7 @@ export class HomePage implements OnInit {
             reinforcements.push({'img': img, 'header': header, 'text': text});
           }
       }
-      console.log(JSON.stringify(reinforcements));
+      console.log("reinforcements: " + JSON.stringify(reinforcements));
       if(reinforcements.length > 0)//means some rainforcement was provided.
         this.presentModal(reinforcements);
     });
