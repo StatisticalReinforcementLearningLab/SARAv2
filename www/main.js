@@ -5194,6 +5194,7 @@ var HomePage = /** @class */ (function () {
         this.modalController = modalController;
         this.userProfileService = userProfileService;
         this.money = 0;
+        this.modalObjectNavigationExtras = {};
         console.log("Constructor called");
         this.sub1$ = this.platform.pause.subscribe(function () {
             console.log('****UserdashboardPage PAUSED****');
@@ -5218,8 +5219,10 @@ var HomePage = /** @class */ (function () {
             if (_this.router.getCurrentNavigation().extras.state) {
                 //throw new Error("Method not implemented.");
                 //show modal on awards
-                if (_this.router.getCurrentNavigation().extras.state.IsShowModal == true)
+                _this.modalObjectNavigationExtras = _this.router.getCurrentNavigation().extras.state.modalObjectNavigationExtras;
+                if (_this.modalObjectNavigationExtras['IsModalShownYet'] == false)
                     _this.showModal();
+                console.log("home.page.ts --- IsShowModalYet: " + _this.modalObjectNavigationExtras['IsModalShownYet']);
                 //this.date = this.router.getCurrentNavigation().extras.state.date;
                 //this.reinforcementObj['prob'] = this.router.getCurrentNavigation().extras.state.prob;
                 //this.reinforcement_data = this.router.getCurrentNavigation().extras.state.reinforcement_data;         
@@ -5413,9 +5416,9 @@ var HomePage = /** @class */ (function () {
     };
     HomePage.prototype.computeUnlockedReinforcements = function () {
         var _this = this;
-        var currentPoints = parseInt(window.localStorage['CurrentPoints']);
-        var previousPoints = parseInt(window.localStorage['PreviousPoints']);
-        var awardedDollar = parseInt(window.localStorage['AwardedDollar']);
+        var currentPoints = this.modalObjectNavigationExtras["CurrentPoints"];
+        var previousPoints = this.modalObjectNavigationExtras["PreviousPoints"];
+        var awardedDollar = this.modalObjectNavigationExtras["AwardedDollar"];
         var reinforcements = [];
         //get if money is awarded.
         if (awardedDollar > 0) {
@@ -11485,6 +11488,7 @@ var AwardAltruismComponent = /** @class */ (function () {
         this.router = router;
         this.reinforcementObj = {};
         this.reinforcement_data = {};
+        this.modalObjectNavigationExtras = {};
         this.HeartsBackground = {
             heartHeight: 60,
             heartWidth: 64,
@@ -11643,6 +11647,7 @@ var AwardAltruismComponent = /** @class */ (function () {
                 _this.date = _this.router.getCurrentNavigation().extras.state.date;
                 _this.reinforcementObj['prob'] = _this.router.getCurrentNavigation().extras.state.prob;
                 _this.reinforcement_data = _this.router.getCurrentNavigation().extras.state.reinforcement_data;
+                _this.modalObjectNavigationExtras = _this.router.getCurrentNavigation().extras.state.modalObjectNavigationExtras;
                 console.log("Inside AwardAltruism, date is: " + _this.date + " prob is: " + _this.reinforcementObj['prob']);
             }
         });
@@ -11701,7 +11706,7 @@ var AwardAltruismComponent = /** @class */ (function () {
         this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);
         var navigationExtras = {
             state: {
-                IsShowModal: true
+                modalObjectNavigationExtras: this.modalObjectNavigationExtras
             }
         };
         this.router.navigate(['home'], navigationExtras);
@@ -11840,6 +11845,7 @@ var AwardMemesComponent = /** @class */ (function () {
         this.viewWidth = 512;
         this.viewHeight = 350;
         this.timeStep = (1 / 60);
+        this.modalObjectNavigationExtras = {};
         this.reinforcementObj['ds'] = 1;
         this.reinforcementObj['reward'] = 1;
         this.reinforcementObj['reward_type'] = 'meme';
@@ -11848,6 +11854,7 @@ var AwardMemesComponent = /** @class */ (function () {
                 _this.date = _this.router.getCurrentNavigation().extras.state.date;
                 _this.reinforcementObj['prob'] = _this.router.getCurrentNavigation().extras.state.prob;
                 _this.reinforcement_data = _this.router.getCurrentNavigation().extras.state.reinforcement_data;
+                _this.modalObjectNavigationExtras = _this.router.getCurrentNavigation().extras.state.modalObjectNavigationExtras;
                 console.log("Inside AwardMemes, date is: " + _this.date + " prob is: " + _this.reinforcementObj['prob']);
             }
         });
@@ -11910,7 +11917,7 @@ var AwardMemesComponent = /** @class */ (function () {
         this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);
         var navigationExtras = {
             state: {
-                IsShowModal: true
+                modalObjectNavigationExtras: this.modalObjectNavigationExtras
             }
         };
         this.router.navigate(['home'], navigationExtras);
@@ -13984,11 +13991,6 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 var dollars = this.awardDollarService.giveDollars();
                 //console.log("Dollars: " + dollars);
                 this.userProfileService.surveyCompleted();
-                window.localStorage.setItem("LastSurveyCompletionDate", "" + moment__WEBPACK_IMPORTED_MODULE_7__().format('YYYYMMDD'));
-                window.localStorage.setItem("CurrentPoints", "" + this.userProfileService.points);
-                window.localStorage.setItem("PreviousPoints", "" + (this.userProfileService.points - 60));
-                window.localStorage.setItem("AwardedDollar", "" + (dollars - pastDollars));
-                window.localStorage.setItem("IsModalShown", "false");
                 //Save 7-day date and value for each question in localStorage to generate lifeInsight chart
                 var lifeInsightProfile = {
                     "questions": ["Q3d", "Q4d", "Q5d", "Q8d"],
@@ -14088,27 +14090,37 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 reinforcement_data['readable_ts'] = readable_time;
                 reinforcement_data['date'] = currentDate;
                 //save to Amazon AWS S3
+                //add for the  modal object
+                var modalObjectNavigationExtras = {};
+                modalObjectNavigationExtras["LastSurveyCompletionDate"] = moment__WEBPACK_IMPORTED_MODULE_7__().format('YYYYMMDD');
+                modalObjectNavigationExtras["CurrentPoints"] = this.userProfileService.points;
+                modalObjectNavigationExtras["PreviousPoints"] = this.userProfileService.points - 60;
+                modalObjectNavigationExtras["AwardedDollar"] = dollars - pastDollars;
+                modalObjectNavigationExtras["IsModalShownYet"] = false;
+                //currentProb = 0.8;
                 if (this.fileLink.includes('caregiver') || currentProb <= 0.4) {
                     var reinforcementObj = {};
                     reinforcementObj['ds'] = 1;
                     reinforcementObj['reward'] = 0;
                     reinforcementObj['prob'] = currentProb;
                     reinforcement_data['reward'] = "No push";
+                    reinforcement_data['reward_img_link'] = "";
+                    reinforcement_data['Like'] = "";
                     this.awsS3Service.upload('reinforcement_data', reinforcement_data);
                     this.userProfileService.addReinforcementData(currentDate, reinforcementObj);
-                    navigationExtras['state']['IsShowModal'] = true;
+                    navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
                     this.router.navigate(['home'], navigationExtras);
                 }
                 else if ((currentProb > 0.4) && (currentProb <= 0.7)) {
                     reinforcement_data['reward'] = "Meme";
                     navigationExtras['state']['reinforcement_data'] = reinforcement_data;
-                    navigationExtras['state']['IsShowModal'] = true;
+                    navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
                     this.router.navigate(['incentive/award-memes'], navigationExtras);
                 }
                 else if (currentProb > 0.7) {
                     reinforcement_data['reward'] = "Altruistic message";
                     navigationExtras['state']['reinforcement_data'] = reinforcement_data;
-                    navigationExtras['state']['IsShowModal'] = true;
+                    navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
                     this.router.navigate(['incentive/award-altruism'], navigationExtras);
                 }
             };
