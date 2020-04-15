@@ -4927,6 +4927,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_home_module__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./home/home.module */ "./src/app/home/home.module.ts");
 /* harmony import */ var _incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./incentive/award-money/award-dollar.service */ "./src/app/incentive/award-money/award-dollar.service.ts");
 /* harmony import */ var _ionic_native_app_version_ngx__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @ionic-native/app-version/ngx */ "./node_modules/@ionic-native/app-version/ngx/index.js");
+/* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
+/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./reducers */ "./src/app/reducers/index.ts");
+/* harmony import */ var _ngrx_store_devtools__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @ngrx/store-devtools */ "./node_modules/@ngrx/store-devtools/fesm5/store-devtools.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+
+
+
+
 
 
 
@@ -4979,7 +4987,17 @@ var AppModule = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_18__["FormsModule"],
                 _user_user_module__WEBPACK_IMPORTED_MODULE_20__["UserModule"],
                 _home_home_module__WEBPACK_IMPORTED_MODULE_21__["HomePageModule"],
-                angular_azure_blob_service__WEBPACK_IMPORTED_MODULE_5__["BlobModule"].forRoot()
+                angular_azure_blob_service__WEBPACK_IMPORTED_MODULE_5__["BlobModule"].forRoot(),
+                //this ngrx import
+                _ngrx_store__WEBPACK_IMPORTED_MODULE_24__["StoreModule"].forRoot(_reducers__WEBPACK_IMPORTED_MODULE_25__["reducers"], {
+                    metaReducers: _reducers__WEBPACK_IMPORTED_MODULE_25__["metaReducers"],
+                    runtimeChecks: {
+                        strictStateImmutability: true,
+                        strictActionImmutability: true
+                    }
+                }),
+                //dev tool maxAge 25 versions of the data
+                _ngrx_store_devtools__WEBPACK_IMPORTED_MODULE_26__["StoreDevtoolsModule"].instrument({ maxAge: 25, logOnly: _environments_environment__WEBPACK_IMPORTED_MODULE_27__["environment"].production })
             ],
             providers: [
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_8__["StatusBar"],
@@ -5174,6 +5192,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _animations_modal_enter__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../animations/modal_enter */ "./src/app/animations/modal_enter.ts");
 /* harmony import */ var _incentive_aquarium_modal_unlocked_page_modal_unlocked_page_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../incentive/aquarium/modal-unlocked-page/modal-unlocked-page.component */ "./src/app/incentive/aquarium/modal-unlocked-page/modal-unlocked-page.component.ts");
 /* harmony import */ var _animations_modal_leave__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../animations/modal_leave */ "./src/app/animations/modal_leave.ts");
+/* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
+/* harmony import */ var _incentive_incentive_selectors__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../incentive/incentive.selectors */ "./src/app/incentive/incentive.selectors.ts");
+
+
 
 
 
@@ -5185,13 +5207,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var HomePage = /** @class */ (function () {
-    function HomePage(platform, alertCtrl, router, route, modalController, userProfileService) {
+    function HomePage(platform, alertCtrl, router, route, modalController, store, userProfileService) {
         var _this = this;
         this.platform = platform;
         this.alertCtrl = alertCtrl;
         this.router = router;
         this.route = route;
         this.modalController = modalController;
+        this.store = store;
         this.userProfileService = userProfileService;
         this.money = 0;
         this.modalObjectNavigationExtras = {};
@@ -5259,6 +5282,18 @@ var HomePage = /** @class */ (function () {
                 //this.reinforcementObj['prob'] = this.router.getCurrentNavigation().extras.state.prob;
                 //this.reinforcement_data = this.router.getCurrentNavigation().extras.state.reinforcement_data;         
                 //console.log("Inside AwardAltruism, date is: " +this.date+" prob is: "+this.reinforcementObj['prob']);
+            }
+        });
+        //this.unlockedItems$ = 
+        this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_10__["select"])(_incentive_incentive_selectors__WEBPACK_IMPORTED_MODULE_11__["isIncentivesUnlockedForTheDay"]))
+            .subscribe(function (params) {
+            if (params == undefined)
+                console.log("---params: undefined---" + JSON.stringify(params));
+            else {
+                console.log("---params: ---" + JSON.stringify(params));
+                var unlockedIncentive = params;
+                //computeUnlockedReinforcements(currentPoints, previousPoints, awardedDollar)
+                _this.computeUnlockedReinforcements(unlockedIncentive["current_point"], unlockedIncentive["current_point"] - unlockedIncentive["unlocked_points"], unlockedIncentive["unlocked_money"]);
             }
         });
     };
@@ -5390,7 +5425,7 @@ var HomePage = /** @class */ (function () {
         var storedDate = this.modalObjectNavigationExtras["LastSurveyCompletionDate"];
         //
         if (todaysDate == storedDate) {
-            this.computeUnlockedReinforcements();
+            //this.computeUnlockedReinforcements();
         }
         //
         //window.localStorage.setItem("IsModalShown", "true");
@@ -5415,12 +5450,13 @@ var HomePage = /** @class */ (function () {
         else
             return false;
     };
-    HomePage.prototype.computeUnlockedReinforcements = function () {
+    HomePage.prototype.computeUnlockedReinforcements = function (currentPoints, previousPoints, awardedDollar) {
         var _this = this;
-        var currentPoints = this.modalObjectNavigationExtras["CurrentPoints"];
-        var previousPoints = this.modalObjectNavigationExtras["PreviousPoints"];
-        var awardedDollar = this.modalObjectNavigationExtras["AwardedDollar"];
+        //var currentPoints = this.modalObjectNavigationExtras["CurrentPoints"];
+        //var previousPoints = this.modalObjectNavigationExtras["PreviousPoints"];
+        //var awardedDollar = this.modalObjectNavigationExtras["AwardedDollar"];
         var reinforcements = [];
+        console.log("computeUnlockedReinforcements: called");
         //get if money is awarded.
         if (awardedDollar > 0) {
             if (this.isFirstDayInTheStudy())
@@ -5429,7 +5465,8 @@ var HomePage = /** @class */ (function () {
                 reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'You earned 1 dollar for completing surveys 3-days in a row' });
         }
         //get if fish is alotted
-        var previous_point = currentPoints - 60;
+        previousPoints = currentPoints - 60;
+        console.log(currentPoints + ", " + previousPoints);
         fetch('../../../assets/game/fishpoints.json').then(function (res) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
             var fish_data, img, header, text, i;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
@@ -5438,7 +5475,7 @@ var HomePage = /** @class */ (function () {
                     case 1:
                         fish_data = _a.sent();
                         for (i = 0; i < fish_data.length; i++) {
-                            if ((fish_data[i].points > previous_point) && (fish_data[i].points <= currentPoints)) {
+                            if ((fish_data[i].points > previousPoints) && (fish_data[i].points <= currentPoints)) {
                                 img = "assets/" + fish_data[i].img.substring(0, fish_data[i].img.length - 4) + '_tn.jpg';
                                 header = "You unlocked " + fish_data[i].name;
                                 text = fish_data[i].trivia;
@@ -5459,6 +5496,7 @@ var HomePage = /** @class */ (function () {
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"] },
+        { type: _ngrx_store__WEBPACK_IMPORTED_MODULE_10__["Store"] },
         { type: _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_6__["UserProfileService"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -5477,6 +5515,7 @@ var HomePage = /** @class */ (function () {
             _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"],
             _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"],
+            _ngrx_store__WEBPACK_IMPORTED_MODULE_10__["Store"],
             _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_6__["UserProfileService"]])
     ], HomePage);
     return HomePage;
@@ -5531,6 +5570,23 @@ var TermsOfServiceComponent = /** @class */ (function () {
     ], TermsOfServiceComponent);
     return TermsOfServiceComponent;
 }());
+
+
+
+/***/ }),
+
+/***/ "./src/app/incentive/action-types.ts":
+/*!*******************************************!*\
+  !*** ./src/app/incentive/action-types.ts ***!
+  \*******************************************/
+/*! exports provided: IncentiveActions */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _incentive_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./incentive.actions */ "./src/app/incentive/incentive.actions.ts");
+/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "IncentiveActions", function() { return _incentive_actions__WEBPACK_IMPORTED_MODULE_0__; });
+
 
 
 
@@ -12282,6 +12338,23 @@ var AwardComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/incentive/incentive.actions.ts":
+/*!************************************************!*\
+  !*** ./src/app/incentive/incentive.actions.ts ***!
+  \************************************************/
+/*! exports provided: surveyCompletedRegisterUnlocked */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "surveyCompletedRegisterUnlocked", function() { return surveyCompletedRegisterUnlocked; });
+/* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
+
+var surveyCompletedRegisterUnlocked = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createAction"])("[Survey Page] Survey Completed. Register Unlocked.", Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["props"])());
+
+
+/***/ }),
+
 /***/ "./src/app/incentive/incentive.module.ts":
 /*!***********************************************!*\
   !*** ./src/app/incentive/incentive.module.ts ***!
@@ -12303,6 +12376,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _award_altruism_award_altruism_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./award-altruism/award-altruism.component */ "./src/app/incentive/award-altruism/award-altruism.component.ts");
 /* harmony import */ var _aquarium_modal_unlocked_page_modal_unlocked_page_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./aquarium/modal-unlocked-page/modal-unlocked-page.component */ "./src/app/incentive/aquarium/modal-unlocked-page/modal-unlocked-page.component.ts");
 /* harmony import */ var _info_page_info_page_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./info-page/info-page.component */ "./src/app/incentive/info-page/info-page.component.ts");
+/* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
+/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./reducers */ "./src/app/incentive/reducers/index.ts");
 
 
 
@@ -12312,6 +12387,8 @@ __webpack_require__.r(__webpack_exports__);
 //import { VisualizationComponent } from './visualization/visualization.component';
 //import { DemoAquariumComponent } from './aquarium/demo-aquarium/demo-aquarium.component';
 //import { SurveyModule } from '../survey/survey.module';
+
+
 
 
 
@@ -12331,7 +12408,8 @@ var IncentiveModule = /** @class */ (function () {
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["IonicModule"].forRoot(),
-                _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"].forChild(routes)
+                _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"].forChild(routes),
+                _ngrx_store__WEBPACK_IMPORTED_MODULE_11__["StoreModule"].forFeature('incentive', _reducers__WEBPACK_IMPORTED_MODULE_12__["incentiveReducer"])
             ],
             exports: [
                 //AwardComponent, 
@@ -12346,6 +12424,34 @@ var IncentiveModule = /** @class */ (function () {
     return IncentiveModule;
 }());
 
+
+
+/***/ }),
+
+/***/ "./src/app/incentive/incentive.selectors.ts":
+/*!**************************************************!*\
+  !*** ./src/app/incentive/incentive.selectors.ts ***!
+  \**************************************************/
+/*! exports provided: selectAuthState, isIncentivesUnlockedForTheDay */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAuthState", function() { return selectAuthState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isIncentivesUnlockedForTheDay", function() { return isIncentivesUnlockedForTheDay; });
+/* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var selectAuthState = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createFeatureSelector"])("incentive");
+var isIncentivesUnlockedForTheDay = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createSelector"])(selectAuthState, function (incentive) {
+    var currentDate = moment__WEBPACK_IMPORTED_MODULE_1__().format('YYYYMMDD');
+    if (currentDate in incentive)
+        return incentive[currentDate]["timeline"][0];
+    else
+        return undefined;
+});
 
 
 /***/ }),
@@ -12829,6 +12935,51 @@ var SampleLifeInsightsComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/incentive/reducers/index.ts":
+/*!*********************************************!*\
+  !*** ./src/app/incentive/reducers/index.ts ***!
+  \*********************************************/
+/*! exports provided: initialUnlockedIncentiveState, incentiveReducer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialUnlockedIncentiveState", function() { return initialUnlockedIncentiveState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "incentiveReducer", function() { return incentiveReducer; });
+/* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
+/* harmony import */ var _action_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../action-types */ "./src/app/incentive/action-types.ts");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+var initialUnlockedIncentiveState = {
+    unlockedIncentives: undefined
+};
+var incentiveReducer = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createReducer"])(initialUnlockedIncentiveState, Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["on"])(_action_types__WEBPACK_IMPORTED_MODULE_1__["IncentiveActions"].surveyCompletedRegisterUnlocked, function (state, action) {
+    var currentDate = moment__WEBPACK_IMPORTED_MODULE_2__().format('YYYYMMDD');
+    var unlockedIncentiveObject = {};
+    unlockedIncentiveObject[currentDate] = action.unlockedIncentives;
+    return unlockedIncentiveObject;
+})
+/*
+on(AuthActions.login, (state, action) => {
+    return {
+        user: action.user
+    }
+}),
+
+on(AuthActions.logout, (state, action) => {
+    return {
+        user: undefined
+    }
+})
+*/
+);
+
+
+/***/ }),
+
 /***/ "./src/app/incentive/treasurechest/treasurechest.component.scss":
 /*!**********************************************************************!*\
   !*** ./src/app/incentive/treasurechest/treasurechest.component.scss ***!
@@ -13125,6 +13276,25 @@ var OneSignalService = /** @class */ (function () {
     return OneSignalService;
 }());
 
+
+
+/***/ }),
+
+/***/ "./src/app/reducers/index.ts":
+/*!***********************************!*\
+  !*** ./src/app/reducers/index.ts ***!
+  \***********************************/
+/*! exports provided: reducers, metaReducers */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reducers", function() { return reducers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "metaReducers", function() { return metaReducers; });
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
+var reducers = {};
+var metaReducers = !_environments_environment__WEBPACK_IMPORTED_MODULE_0__["environment"].production ? [] : [];
 
 
 /***/ }),
@@ -13650,6 +13820,23 @@ var StoreToFirebaseService = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./src/app/survey/action-types.ts":
+/*!****************************************!*\
+  !*** ./src/app/survey/action-types.ts ***!
+  \****************************************/
+/*! exports provided: SurveyActions */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _survey_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./survey.actions */ "./src/app/survey/survey.actions.ts");
+/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "SurveyActions", function() { return _survey_actions__WEBPACK_IMPORTED_MODULE_0__; });
+
+
+
+
+/***/ }),
+
 /***/ "./src/app/survey/aya-sample-survey/aya-sample-survey.component.scss":
 /*!***************************************************************************!*\
   !*** ./src/app/survey/aya-sample-survey/aya-sample-survey.component.scss ***!
@@ -13728,6 +13915,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/google-analytics/ngx */ "./node_modules/@ionic-native/google-analytics/ngx/index.js");
 /* harmony import */ var src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/app/user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
 /* harmony import */ var src_app_incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! src/app/incentive/award-money/award-dollar.service */ "./src/app/incentive/award-money/award-dollar.service.ts");
+/* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
+/* harmony import */ var _survey_actions__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../survey.actions */ "./src/app/survey/survey.actions.ts");
+/* harmony import */ var src_app_incentive_incentive_actions__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! src/app/incentive/incentive.actions */ "./src/app/incentive/incentive.actions.ts");
 //
 //--- The goal of this file is to dynamically generate a survey from a JSON file. 
 //--- Example JSON files are located in assets/survey folder. 
@@ -13749,10 +13939,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 var DynamicSurveyComponent = /** @class */ (function () {
     function DynamicSurveyComponent(_compiler, _injector, _m, awsS3Service, 
     //private storeToFirebaseService: StoreToFirebaseService,
-    EncrDecr, router, ga, changeDetector, appVersion, alertCtrl, plt, userProfileService, awardDollarService) {
+    EncrDecr, router, ga, changeDetector, appVersion, alertCtrl, plt, userProfileService, store, awardDollarService) {
         var _this = this;
         this._compiler = _compiler;
         this._injector = _injector;
@@ -13766,6 +13959,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
         this.alertCtrl = alertCtrl;
         this.plt = plt;
         this.userProfileService = userProfileService;
+        this.store = store;
         this.awardDollarService = awardDollarService;
         this.title = "mash is here";
         this.isLoading = true;
@@ -14124,6 +14318,13 @@ var DynamicSurveyComponent = /** @class */ (function () {
                     navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
                     this.router.navigate(['incentive/award-altruism'], navigationExtras);
                 }
+                var surveyTimeline = { user_id: this.userProfileService.username,
+                    timeline: [{ dateOfCompletion: currentDate, timestamp: endTime, readableTimestamp: readable_time }] };
+                this.store.dispatch(Object(_survey_actions__WEBPACK_IMPORTED_MODULE_13__["surveyCompleted"])({ surveyTimeline: surveyTimeline }));
+                var unlockedIncentives = { user_id: this.userProfileService.username, last_date: moment__WEBPACK_IMPORTED_MODULE_7__().format('YYYYMMDD'),
+                    timeline: [{ unlocked_points: 60, unlocked_money: dollars - pastDollars,
+                            current_point: this.userProfileService.points, date: moment__WEBPACK_IMPORTED_MODULE_7__().format('YYYYMMDD') }] };
+                this.store.dispatch(Object(src_app_incentive_incentive_actions__WEBPACK_IMPORTED_MODULE_14__["surveyCompletedRegisterUnlocked"])({ unlockedIncentives: unlockedIncentives }));
             };
             return class_1;
         }()));
@@ -14153,6 +14354,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
             cmpRef.instance.ga = _this.ga;
             cmpRef.instance.plt = _this.plt;
             cmpRef.instance.router = _this.router; // Router,
+            cmpRef.instance.store = _this.store;
             cmpRef.instance.name = 'dynamic';
             //console.log('called');
         });
@@ -14303,6 +14505,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["AlertController"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Platform"] },
         { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_10__["UserProfileService"] },
+        { type: _ngrx_store__WEBPACK_IMPORTED_MODULE_12__["Store"] },
         { type: src_app_incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_11__["AwardDollarService"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -14333,11 +14536,57 @@ var DynamicSurveyComponent = /** @class */ (function () {
             _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["AlertController"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Platform"],
             src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_10__["UserProfileService"],
+            _ngrx_store__WEBPACK_IMPORTED_MODULE_12__["Store"],
             src_app_incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_11__["AwardDollarService"]])
     ], DynamicSurveyComponent);
     return DynamicSurveyComponent;
 }());
 
+
+
+/***/ }),
+
+/***/ "./src/app/survey/reducers/index.ts":
+/*!******************************************!*\
+  !*** ./src/app/survey/reducers/index.ts ***!
+  \******************************************/
+/*! exports provided: initialSurveyState, surveyReducer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialSurveyState", function() { return initialSurveyState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "surveyReducer", function() { return surveyReducer; });
+/* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
+/* harmony import */ var _action_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../action-types */ "./src/app/survey/action-types.ts");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+var initialSurveyState = {
+    surveyTimeLine: undefined
+};
+var surveyReducer = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createReducer"])(initialSurveyState, Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["on"])(_action_types__WEBPACK_IMPORTED_MODULE_1__["SurveyActions"].surveyCompleted, function (state, action) {
+    var currentDate = moment__WEBPACK_IMPORTED_MODULE_2__().format('YYYYMMDD');
+    var surveyObject = {};
+    surveyObject[currentDate] = action.surveyTimeline;
+    return surveyObject;
+})
+/*
+on(AuthActions.login, (state, action) => {
+    return {
+        user: action.user
+    }
+}),
+
+on(AuthActions.logout, (state, action) => {
+    return {
+        user: undefined
+    }
+})
+*/
+);
 
 
 /***/ }),
@@ -14399,6 +14648,23 @@ var SampleSurveyComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/survey/survey.actions.ts":
+/*!******************************************!*\
+  !*** ./src/app/survey/survey.actions.ts ***!
+  \******************************************/
+/*! exports provided: surveyCompleted */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "surveyCompleted", function() { return surveyCompleted; });
+/* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
+
+var surveyCompleted = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["createAction"])("[Survey Page] Survey Completed", Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_0__["props"])());
+
+
+/***/ }),
+
 /***/ "./src/app/survey/survey.module.ts":
 /*!*****************************************!*\
   !*** ./src/app/survey/survey.module.ts ***!
@@ -14420,6 +14686,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _incentive_incentive_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../incentive/incentive.module */ "./src/app/incentive/incentive.module.ts");
 /* harmony import */ var _aya_sample_survey_aya_sample_survey_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./aya-sample-survey/aya-sample-survey.component */ "./src/app/survey/aya-sample-survey/aya-sample-survey.component.ts");
+/* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
+/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./reducers */ "./src/app/survey/reducers/index.ts");
 
 
 
@@ -14431,6 +14699,8 @@ __webpack_require__.r(__webpack_exports__);
 
 //import { ActivetaskComponent } from './activetask/activetask.component';
 //import { ActiveTask2Component } from './active-task2/active-task2.component';
+
+
 
 
 
@@ -14460,7 +14730,8 @@ var SurveyModule = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
                 _storage_storage_module__WEBPACK_IMPORTED_MODULE_5__["StorageModule"],
                 _incentive_incentive_module__WEBPACK_IMPORTED_MODULE_9__["IncentiveModule"],
-                _angular_router__WEBPACK_IMPORTED_MODULE_8__["RouterModule"].forChild(routes)
+                _angular_router__WEBPACK_IMPORTED_MODULE_8__["RouterModule"].forChild(routes),
+                _ngrx_store__WEBPACK_IMPORTED_MODULE_11__["StoreModule"].forFeature('survey', _reducers__WEBPACK_IMPORTED_MODULE_12__["surveyReducer"])
             ],
             exports: [
                 //InitiatedDrinkComponent,
