@@ -7,6 +7,11 @@ import { UserProfileService } from '../user/user-profile/user-profile.service';
 import { myEnterAnimation } from '../animations/modal_enter';
 import { ModalUnlockedPageComponent } from '../incentive/aquarium/modal-unlocked-page/modal-unlocked-page.component';
 import { myLeaveAnimation } from '../animations/modal_leave';
+import { AppState } from '../reducers';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { isIncentivesUnlockedForTheDay } from '../incentive/incentive.selectors';
+import { UnlockedIncentive } from '../incentive/model/unlocked-incentives';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +28,9 @@ export class HomePage implements OnInit {
   modalObjectNavigationExtras = {};
 
   @ViewChild(DemoAquariumComponent, {static: true}) child;
+
+
+  unlockedItems$: Observable<any>;
 
 
 
@@ -47,6 +55,7 @@ export class HomePage implements OnInit {
     private router: Router, 
     private route: ActivatedRoute, 
     private modalController: ModalController,
+    private store: Store<AppState>,
     private userProfileService: UserProfileService) { 
     console.log("Constructor called");
     this.sub1$=this.platform.pause.subscribe(() => {        
@@ -104,6 +113,23 @@ export class HomePage implements OnInit {
         //console.log("Inside AwardAltruism, date is: " +this.date+" prob is: "+this.reinforcementObj['prob']);
       }
     }); 
+
+    //this.unlockedItems$ = 
+    this.store.pipe(select(isIncentivesUnlockedForTheDay))
+              .subscribe(params => {
+                  if(params == undefined)
+                    console.log("---params: undefined---"+ JSON.stringify(params))
+                  else{
+                    console.log("---params: ---"+ JSON.stringify(params))
+                    var unlockedIncentive: UnlockedIncentive = params;
+                    //computeUnlockedReinforcements(currentPoints, previousPoints, awardedDollar)
+                    this.computeUnlockedReinforcements(unlockedIncentive["current_point"], 
+                                                       unlockedIncentive["current_point"] - unlockedIncentive["unlocked_points"],
+                                                       unlockedIncentive["unlocked_money"]);
+                  }
+                }
+              );
+    
     
   }
 
@@ -215,7 +241,7 @@ export class HomePage implements OnInit {
 
     //
     if(todaysDate == storedDate){
-      this.computeUnlockedReinforcements();
+      //this.computeUnlockedReinforcements();
     } 
 
     //
@@ -247,12 +273,13 @@ export class HomePage implements OnInit {
       return false;
   }
 
-  computeUnlockedReinforcements(){
+  computeUnlockedReinforcements(currentPoints, previousPoints, awardedDollar){
 
-    var currentPoints = this.modalObjectNavigationExtras["CurrentPoints"];
-    var previousPoints = this.modalObjectNavigationExtras["PreviousPoints"];
-    var awardedDollar = this.modalObjectNavigationExtras["AwardedDollar"];
+    //var currentPoints = this.modalObjectNavigationExtras["CurrentPoints"];
+    //var previousPoints = this.modalObjectNavigationExtras["PreviousPoints"];
+    //var awardedDollar = this.modalObjectNavigationExtras["AwardedDollar"];
     var reinforcements = [];
+    console.log("computeUnlockedReinforcements: called")
 
     //get if money is awarded.
     if(awardedDollar > 0){
@@ -263,7 +290,8 @@ export class HomePage implements OnInit {
     }
       
     //get if fish is alotted
-    var previous_point = currentPoints - 60;
+    previousPoints = currentPoints - 60;
+    console.log(currentPoints + ", " + previousPoints);
 
     fetch('../../../assets/game/fishpoints.json').then(async res => {
       //console.log("Fishes: " + data);
@@ -273,7 +301,7 @@ export class HomePage implements OnInit {
       var header;
       var text;
       for(var i = 0; i < fish_data.length; i++) {
-          if ((fish_data[i].points > previous_point) && (fish_data[i].points <= currentPoints)) {
+          if ((fish_data[i].points > previousPoints) && (fish_data[i].points <= currentPoints)) {
             img = "assets/" + fish_data[i].img.substring(0, fish_data[i].img.length-4) + '_tn.jpg';
             header =  "You unlocked " + fish_data[i].name;
             text = fish_data[i].trivia;
