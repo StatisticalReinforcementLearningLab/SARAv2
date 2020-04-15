@@ -21,6 +21,7 @@ import { AppVersion } from '@ionic-native/app-version/ngx';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import { AwardDollarService } from 'src/app/incentive/award-money/award-dollar.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-dynamic-survey',
@@ -278,9 +279,9 @@ export class DynamicSurveyComponent implements OnInit {
         this.survey2['appVersion'] = this.versionNumber;
         this.userProfileService.versionNumber = this.versionNumber;
 
-        var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.survey2), "Z&wz=BGw;%q49/<)");
+        var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.survey2), environment.encyptString);
         //var encrypted = this.EncrDecr.encrypt("holla", "Z&wz=BGw;%q49/<)");
-        var decrypted = this.EncrDecr.decrypt(encrypted, "Z&wz=BGw;%q49/<)");
+        var decrypted = this.EncrDecr.decrypt(encrypted, environment.encyptString);
 
         var survey3 = {};
         survey3['encrypted'] = encrypted;
