@@ -1,0 +1,14 @@
+export interface UnlockedIncentives {
+    user_id: string;
+    last_date: string;
+    timeline: Array<UnlockedIncentive> //list: Array<number> = [1, 2, 3]; I can also write Array<number> = [1, 2, 3]
+}
+
+
+export interface UnlockedIncentive {
+    unlocked_points: number;
+    unlocked_money: number;
+    current_point: number;
+    date: string;
+}
+
