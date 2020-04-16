@@ -1,4 +1,4 @@
-export class GameTundraL5 extends Phaser.State {
+export class GameTundraL51 extends Phaser.State {
 
     //componentObject;
     constructor(){
@@ -8,6 +8,7 @@ export class GameTundraL5 extends Phaser.State {
         this.back_emitter;
         this.mid_emitter;
         this.yeti;
+        this.scaleFactor=0.8;
     }
 
     //
@@ -75,7 +76,7 @@ export class GameTundraL5 extends Phaser.State {
 
         //
         var treasure = this.add.image(this.game.width/2, this.height-85, 'treasure_tundra');
-        treasure.scale.setTo(-0.5, 0.5);
+        treasure.scale.setTo(-0.5*this.scaleFactor, 0.5*this.scaleFactor);
         treasure.anchor.setTo(.5,.5);
         treasure.inputEnabled = true;
         treasure.events.onInputDown.add(this.showunlockables, this);
@@ -278,14 +279,14 @@ export class GameTundraL5 extends Phaser.State {
         starting_pos_y = this.game.height - 145;
         ending_pos_x = 45;
         ending_pos_y = this.game.height - 105;
-        scale_x = 0.3;
-        scale_y = 0.3;
+        scale_x = 0.25;
+        scale_y = 0.25;
 
         this.penguins = this.add.sprite(starting_pos_x, starting_pos_y, 'penguin');
         this.penguins.anchor.setTo(.5,.5);
         this.penguins.animations.add('swim2');
         this.penguins.animations.play('swim2', 5, true);
-        this.penguins.scale.setTo(scale_x, scale_y);
+        this.penguins.scale.setTo(scale_x*this.scaleFactor, scale_y*this.scaleFactor);
         this.penguins.name = "pegions";
         var t = this.add.tween(this.penguins).to({ x: ending_pos_x, y: ending_pos_y}, 1000, Phaser.Easing.Quadratic.InOut, true, 0);
         t.onComplete.add(function(){this.penguins.animations.stop(null, true);}, this);
@@ -300,7 +301,7 @@ export class GameTundraL5 extends Phaser.State {
         //---- sea lion silver
         starting_pos_x = this.game.width+15;
         starting_pos_y = this.game.height - 105;
-        ending_pos_x = this.game.width-75;
+        ending_pos_x = this.game.width-65;
         ending_pos_y = this.game.height - 105;
         scale_x = 1.3;
         scale_y = 1.3;
@@ -309,7 +310,7 @@ export class GameTundraL5 extends Phaser.State {
         this.sealion.anchor.setTo(.5,.5);
         this.sealion.animations.add('swim2');
         this.sealion.animations.play('swim2', 5, true);
-        this.sealion.scale.setTo(scale_x, scale_y);
+        this.sealion.scale.setTo(scale_x*this.scaleFactor, scale_y*this.scaleFactor);
         this.sealion.name = "sea_lion_silver";
         var t = this.add.tween(this.sealion).to({ x: ending_pos_x, y: ending_pos_y}, 3000, Phaser.Easing.Quadratic.InOut, true, 0);
         t.onComplete.add(function(){this.sealion.animations.stop(null, true);}, this);
@@ -317,9 +318,9 @@ export class GameTundraL5 extends Phaser.State {
 
         //---- sea lion brown
         starting_pos_x = this.game.width+25;
-        starting_pos_y = this.game.height - 135;
+        starting_pos_y = this.game.height - 125;
         ending_pos_x = this.game.width-45;
-        ending_pos_y = this.game.height - 135;
+        ending_pos_y = this.game.height - 125;
         scale_x = 1.3;
         scale_y = 1.3;
 
@@ -327,7 +328,7 @@ export class GameTundraL5 extends Phaser.State {
         this.sealion_brown.anchor.setTo(.5,.5);
         this.sealion_brown.animations.add('swim2');
         this.sealion_brown.animations.play('swim2', 5, true);
-        this.sealion_brown.scale.setTo(scale_x, scale_y);
+        this.sealion_brown.scale.setTo(scale_x*this.scaleFactor, scale_y*this.scaleFactor);
         this.sealion_brown.name = "sea_lion_brown";
         var t = this.add.tween(this.sealion_brown).to({x: ending_pos_x, y: ending_pos_y}, 5000, Phaser.Easing.Quadratic.InOut, true, 0);
         t.onComplete.add(function(){this.sealion_brown.animations.stop(null, true);}, this);
@@ -344,7 +345,7 @@ export class GameTundraL5 extends Phaser.State {
         this.sealion_pink.anchor.setTo(.5,.5);
         this.sealion_pink.animations.add('swim2');
         this.sealion_pink.animations.play('swim2', 5, true);
-        this.sealion_pink.scale.setTo(scale_x, scale_y);
+        this.sealion_pink.scale.setTo(scale_x*this.scaleFactor, scale_y*this.scaleFactor);
         this.sealion_pink.name = "sea_lion_pink";
         var t = this.add.tween(this.sealion_pink).to({x: ending_pos_x, y: ending_pos_y}, 5000, Phaser.Easing.Quadratic.InOut, true, 0);
         t.onComplete.add(function(){this.sealion_pink.animations.stop(null, true);}, this);
@@ -391,7 +392,7 @@ export class GameTundraL5 extends Phaser.State {
         this.black_tundra_owl.anchor.setTo(.5,.5);
         this.black_tundra_owl.animations.add('swim2');
         this.black_tundra_owl.animations.play('swim2', 5, true);
-        this.black_tundra_owl.scale.setTo(0.9, 0.9);
+        this.black_tundra_owl.scale.setTo(0.9*this.scaleFactor, 0.9*this.scaleFactor);
         this.black_tundra_owl.name = "black_tundra_owl";
         this.gobothways(this.black_tundra_owl);
 
@@ -400,7 +401,7 @@ export class GameTundraL5 extends Phaser.State {
         this.brown_tundra_owl.anchor.setTo(.5,.5);
         this.brown_tundra_owl.animations.add('swim2');
         this.brown_tundra_owl.animations.play('swim2', 5, true);
-        this.brown_tundra_owl.scale.setTo(0.9, 0.9);
+        this.brown_tundra_owl.scale.setTo(0.9*this.scaleFactor, 0.9*this.scaleFactor);
         this.brown_tundra_owl.name = "brown_tundra_owl";
         this.gobothways(this.brown_tundra_owl);
 
@@ -409,7 +410,7 @@ export class GameTundraL5 extends Phaser.State {
         this.grey_tundra_owl.anchor.setTo(.5,.5);
         this.grey_tundra_owl.animations.add('swim2');
         this.grey_tundra_owl.animations.play('swim2', 5, true);
-        this.grey_tundra_owl.scale.setTo(0.9, 0.9);
+        this.grey_tundra_owl.scale.setTo(0.9*this.scaleFactor, 0.9*this.scaleFactor);
         this.grey_tundra_owl.name = "grey_tundra_owl";
         this.gobothways(this.grey_tundra_owl);
 
@@ -427,7 +428,7 @@ export class GameTundraL5 extends Phaser.State {
         this.white_tundra_owl.anchor.setTo(.5,.5);
         this.white_tundra_owl.animations.add('swim2');
         this.white_tundra_owl.animations.play('swim2', 5, true);
-        this.white_tundra_owl.scale.setTo(0.9, 0.9);
+        this.white_tundra_owl.scale.setTo(0.9*this.scaleFactor, 0.9*this.scaleFactor);
         this.white_tundra_owl.name = "white_tundra_owl";
         this.gobothways(this.white_tundra_owl);
 
@@ -440,9 +441,9 @@ export class GameTundraL5 extends Phaser.State {
         
         //---- sea lion silver
         starting_pos_x = this.game.width/2-60;
-        starting_pos_y = this.game.height - 185 + 40;
-        ending_pos_x = this.game.width/2-30;
-        ending_pos_y = this.game.height - 185 + 40;
+        starting_pos_y = this.game.height - 185 + 30;
+        ending_pos_x = this.game.width/2-15;
+        ending_pos_y = this.game.height - 185 + 30;
         scale_x = 1.3;
         scale_y = 1.3;
 
@@ -450,7 +451,7 @@ export class GameTundraL5 extends Phaser.State {
         this.black_mountain_goat.anchor.setTo(.5,.5);
         this.black_mountain_goat.animations.add('swim2');
         this.black_mountain_goat.animations.play('swim2', 3, true);
-        this.black_mountain_goat.scale.setTo(scale_x, scale_y);
+        this.black_mountain_goat.scale.setTo(scale_x*this.scaleFactor, scale_y*this.scaleFactor);
         this.black_mountain_goat.name = "black_mountain_goat";
         var t = this.add.tween(this.black_mountain_goat).to({ x: ending_pos_x, y: ending_pos_y}, 9000, Phaser.Easing.Quadratic.InOut, true, 0);
         t.onComplete.add(function(){this.black_mountain_goat.animations.stop(null, true);}, this);
@@ -467,7 +468,7 @@ export class GameTundraL5 extends Phaser.State {
         this.white_mountain_goat.anchor.setTo(.5,.5);
         this.white_mountain_goat.animations.add('swim2');
         this.white_mountain_goat.animations.play('swim2', 3, true);
-        this.white_mountain_goat.scale.setTo(scale_x, scale_y);
+        this.white_mountain_goat.scale.setTo(scale_x*this.scaleFactor, scale_y*this.scaleFactor);
         this.white_mountain_goat.name = "white_mountain_goat";
         t = this.add.tween(this.white_mountain_goat).to({ x: ending_pos_x, y: ending_pos_y}, 15000, Phaser.Easing.Quadratic.InOut, true, 0);
         t.onComplete.add(function(){this.white_mountain_goat.animations.stop(null, true);}, this);
@@ -484,7 +485,7 @@ export class GameTundraL5 extends Phaser.State {
         this.brown_mountain_goat.anchor.setTo(.5,.5);
         this.brown_mountain_goat.animations.add('swim2');
         this.brown_mountain_goat.animations.play('swim2', 3, true);
-        this.brown_mountain_goat.scale.setTo(scale_x, scale_y);
+        this.brown_mountain_goat.scale.setTo(scale_x*this.scaleFactor, scale_y*this.scaleFactor);
         this.brown_mountain_goat.name = "brown_mountain_goat";
         t = this.add.tween(this.brown_mountain_goat).to({ x: ending_pos_x, y: ending_pos_y}, 9000, Phaser.Easing.Quadratic.InOut, true, 0);
         t.onComplete.add(function(){this.brown_mountain_goat.animations.stop(null, true);}, this);
@@ -533,7 +534,7 @@ export class GameTundraL5 extends Phaser.State {
 
         //---- wolf walk
         starting_pos_x = this.game.width-100;
-        starting_pos_y = this.game.height-335;
+        starting_pos_y = this.game.height-285;
         scale_x = 0.8;
         scale_y = 0.8;
 
@@ -542,7 +543,7 @@ export class GameTundraL5 extends Phaser.State {
         this.wolf.anchor.setTo(.5,.5);
         this.wolf.animations.add('swim');
         this.wolf.animations.play('swim', 3, true);
-        this.wolf.scale.setTo(scale_x, scale_y);
+        this.wolf.scale.setTo(scale_x*this.scaleFactor, scale_y*this.scaleFactor);
         this.wolf.name = "wolf";
         this.wolf.startingDirection = "leftToRight";
         this.wolf.spriteFacesDirection = "right";
@@ -554,7 +555,7 @@ export class GameTundraL5 extends Phaser.State {
         this.brown_bear.anchor.setTo(.5,.5);
         this.brown_bear.animations.add('swim');
         this.brown_bear.animations.play('swim', 6, true);
-        this.brown_bear.scale.setTo(-.15, .15);
+        this.brown_bear.scale.setTo(-.15*this.scaleFactor, .15*this.scaleFactor);
         this.brown_bear.name = "brown_bear";
         this.gobothways(this.brown_bear);
 
@@ -566,19 +567,19 @@ export class GameTundraL5 extends Phaser.State {
     //
     animateBrwonHusky(){
 
-        this.white_husky = this.add.sprite(65, this.game.height - 215, 'white_husky');
+        this.white_husky = this.add.sprite(65, this.game.height - 205, 'white_husky');
         this.white_husky.anchor.setTo(.5,.5);
         this.white_husky.animations.add('swim2');
         this.white_husky.animations.play('swim2',15, true);
-        this.white_husky.scale.setTo(0.35, 0.35);
+        this.white_husky.scale.setTo(0.35*this.scaleFactor, 0.35*this.scaleFactor);
         this.white_husky.name = "white_husky";
 
 
-        this.white_husky = this.add.sprite(65, this.game.height - 185, 'grey_husky');
+        this.white_husky = this.add.sprite(65, this.game.height - 175, 'grey_husky');
         this.white_husky.anchor.setTo(.5,.5);
         this.white_husky.animations.add('swim2');
         this.white_husky.animations.play('swim2',15, true);
-        this.white_husky.scale.setTo(0.35, 0.35);
+        this.white_husky.scale.setTo(0.35*this.scaleFactor, 0.35*this.scaleFactor);
         this.white_husky.name = "grey_husky";
     }
 
@@ -588,7 +589,7 @@ export class GameTundraL5 extends Phaser.State {
         this.pingu.anchor.setTo(.5,.5);
         this.pingu.animations.add('swim2');
         this.pingu.animations.play('swim2',4, true);
-        this.pingu.scale.setTo(0.35, 0.35);
+        this.pingu.scale.setTo(0.35*this.scaleFactor, 0.35*this.scaleFactor);
         this.pingu.name = "pingu";
     }
 
@@ -609,11 +610,11 @@ export class GameTundraL5 extends Phaser.State {
 
     //
     animateHare(){
-        this.hare = this.add.sprite(this.game.width-115, this.game.height - 285, 'hare');
+        this.hare = this.add.sprite(this.game.width-115, this.game.height - 245, 'hare');
         this.hare.anchor.setTo(.5,.5);
         this.hare.animations.add('swim2');
         this.hare.animations.play('swim2', 5, true);
-        this.hare.scale.setTo(0.4, 0.4);
+        this.hare.scale.setTo(0.4*this.scaleFactor, 0.4*this.scaleFactor);
         this.hare.name = "hare";
         this.hare.startingDirection = "rightToLeft";
         this.hare.spriteFacesDirection = "right";
@@ -624,11 +625,11 @@ export class GameTundraL5 extends Phaser.State {
     //
     animateReindeer(){
         //this.reindeer = this.add.sprite(-115, this.game.height - 145, 'reindeer');
-        this.reindeer = this.add.sprite(-75, this.game.height - 265, 'reindeer');
+        this.reindeer = this.add.sprite(-75, this.game.height - 230, 'reindeer');
         this.reindeer.anchor.setTo(.5,.5);
         this.reindeer.animations.add('swim2');
         this.reindeer.animations.play('swim2', 5, true);
-        this.reindeer.scale.setTo(-0.12, 0.12);
+        this.reindeer.scale.setTo(-0.12*this.scaleFactor, 0.12*this.scaleFactor);
         this.reindeer.name = "reindeer";
         this.gobothways(this.reindeer);
     }
@@ -640,7 +641,7 @@ export class GameTundraL5 extends Phaser.State {
         this.coyote.anchor.setTo(.5,.5);
         this.coyote.animations.add('swim2');
         this.coyote.animations.play('swim2', 5, true);
-        this.coyote.scale.setTo(-1, 1);
+        this.coyote.scale.setTo(-1*this.scaleFactor, 1*this.scaleFactor);
         this.coyote.name = "coyote";
         this.gobothways(this.coyote);
     }
@@ -665,7 +666,7 @@ export class GameTundraL5 extends Phaser.State {
         this.blue_jay.anchor.setTo(.5,.5);
         this.blue_jay.animations.add('swim2');
         this.blue_jay.animations.play('swim2', 10, true);
-        this.blue_jay.scale.setTo(0.6, 0.6);
+        this.blue_jay.scale.setTo(0.6*this.scaleFactor, 0.6*this.scaleFactor);
         this.blue_jay.name = "blue_jay";
         //this.pegions.body.velocity.x = -20;
         this.gobothways(this.blue_jay);
@@ -673,11 +674,11 @@ export class GameTundraL5 extends Phaser.State {
 
     //
     animateYeti(){
-        this.yeti = this.add.sprite(this.game.width-15, this.game.height - 205, 'yeti_walk');
+        this.yeti = this.add.sprite(this.game.width-15, this.game.height - 190, 'yeti_walk');
         this.yeti.anchor.setTo(.5,.5);
         this.yeti.animations.add('swim2');
         this.yeti.animations.play('swim2', 5, true);
-        this.yeti.scale.setTo(-0.5, 0.5);
+        this.yeti.scale.setTo(-0.5*this.scaleFactor, 0.5*this.scaleFactor);
         this.yeti.name = "yeti";
         var t = this.add.tween(this.yeti).to({ x: this.game.width-45, y: this.game.height - 205}, 2000, Phaser.Easing.Quadratic.InOut, true, 0);
         t.onComplete.add(function(){
