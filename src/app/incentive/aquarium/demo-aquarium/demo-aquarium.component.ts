@@ -43,6 +43,7 @@ import { UserProfileService } from 'src/app/user/user-profile/user-profile.servi
 import * as moment from 'moment';
 import { AlertController } from '@ionic/angular';
 import { ModalUnlockedPageComponent } from '../modal-unlocked-page/modal-unlocked-page.component';
+import { DatabaseService } from 'src/app/monitor/database.service';
 
 
 declare let Phaser: any;
@@ -61,6 +62,7 @@ export class DemoAquariumComponent implements OnInit {
   isLoaded = false;
   public isShowingRouteLoadIndicator: boolean;
   survey_text; 
+  pageTitle = "Aquarium";
   
   // totalPoints = 0;
   get totalPoints(){
@@ -93,7 +95,8 @@ export class DemoAquariumComponent implements OnInit {
     private ga: GoogleAnalytics,
     private platform: Platform,
     private route: ActivatedRoute,
-    private userProfileService: UserProfileService) { 
+    private userProfileService: UserProfileService,
+    private db: DatabaseService) { 
     console.log("Constructor called");
     
     /*    
@@ -149,7 +152,7 @@ export class DemoAquariumComponent implements OnInit {
   
 
   ngOnInit() {
-    this.ga.trackView('Aquarium')
+    this.ga.trackView(this.pageTitle)
     .then(() => {console.log("trackView at Aquarium!")})
     .catch(e => console.log(e));
     //this.loadFunction();
@@ -165,6 +168,13 @@ export class DemoAquariumComponent implements OnInit {
   loadFunction(){
 
     console.log(window.localStorage['TotalPoints']);
+
+    this.db.getDatabaseState().subscribe(rdy => {
+      if (rdy) {     
+        this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
+      }
+    }); 
+
     //this.totalPoints = parseInt(window.localStorage['TotalPoints'] || "0");
     /*
      if(window.localStorage['TotalPoints'] == undefined)
@@ -289,6 +299,12 @@ export class DemoAquariumComponent implements OnInit {
   ionViewDidLeaveFunction(){
     console.log("Aquarium, ionDidLeave");
     this.survey_text = "Start survey";
+    this.db.getDatabaseState().subscribe(rdy => {
+      if (rdy) {     
+        this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
+      }
+    }); 
+  
     this.game.destroy();
   }
 
