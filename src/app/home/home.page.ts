@@ -97,6 +97,7 @@ export class HomePage implements OnInit {
 
   ngOnInit(): void {
 
+    /*
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         //throw new Error("Method not implemented.");
@@ -113,6 +114,7 @@ export class HomePage implements OnInit {
         //console.log("Inside AwardAltruism, date is: " +this.date+" prob is: "+this.reinforcementObj['prob']);
       }
     }); 
+    */
 
     //this.unlockedItems$ = 
     this.store.pipe(select(isIncentivesUnlockedForTheDay))
@@ -123,9 +125,13 @@ export class HomePage implements OnInit {
                     console.log("---params: ---"+ JSON.stringify(params))
                     var unlockedIncentive: UnlockedIncentive = params;
                     //computeUnlockedReinforcements(currentPoints, previousPoints, awardedDollar)
+
+                    /*
                     this.computeUnlockedReinforcements(unlockedIncentive["current_point"], 
                                                        unlockedIncentive["current_point"] - unlockedIncentive["unlocked_points"],
                                                        unlockedIncentive["unlocked_money"]);
+                    */
+                                                   
                   }
                 }
               );
