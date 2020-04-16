@@ -9,6 +9,9 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { Injector } from '@angular/core';
+import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
+import { SQLite } from '@ionic-native/sqlite/ngx';
+
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -50,6 +53,8 @@ import { AppVersion } from '@ionic-native/app-version/ngx';
     AwardDollarService,
     GoogleAnalytics,
     AppVersion,
+    SQLite,
+    SQLitePorter,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
   ],
   bootstrap: [AppComponent]
