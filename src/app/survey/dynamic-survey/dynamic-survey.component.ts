@@ -22,6 +22,12 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import { AwardDollarService } from 'src/app/incentive/award-money/award-dollar.service';
 import { environment } from '../../../environments/environment';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/reducers';
+import { surveyCompleted } from '../survey.actions';
+import { SurveyTimeline } from '../model/surveyTimeline';
+import { UnlockedIncentives } from '../../incentive/model/unlocked-incentives';
+import { surveyCompletedRegisterUnlocked } from 'src/app/incentive/incentive.actions';
 
 @Component({
   selector: 'app-dynamic-survey',
@@ -60,6 +66,7 @@ export class DynamicSurveyComponent implements OnInit {
     private alertCtrl: AlertController,
     public plt: Platform,
     private userProfileService: UserProfileService,
+    private store: Store<AppState>,
     private awardDollarService:AwardDollarService) {
       this.appVersion.getVersionNumber().then(value => {
         this.versionNumber = value;
@@ -79,7 +86,6 @@ export class DynamicSurveyComponent implements OnInit {
         this.survey_data = await res.json();
         this.generateSurvey();
       });
-
   }
 
   generateSurvey() {  
@@ -117,6 +123,8 @@ export class DynamicSurveyComponent implements OnInit {
       awardDollarService: AwardDollarService;
       survey_data = [];
       alertCtrl;
+      store: Store<AppState>;
+
 
       constructor() {
       }
@@ -439,7 +447,19 @@ export class DynamicSurveyComponent implements OnInit {
         navigationExtras['state']['reinforcement_data'] = reinforcement_data;
         navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
         this.router.navigate(['incentive/award-altruism'],  navigationExtras);
-      }            
+      }
+      
+      
+      let surveyTimeline: SurveyTimeline = {user_id: this.userProfileService.username, 
+            timeline: [{dateOfCompletion: currentDate, timestamp: endTime, readableTimestamp: readable_time}]};
+      this.store.dispatch(surveyCompleted({surveyTimeline}));
+
+      
+
+      var unlockedIncentives: UnlockedIncentives = {user_id: this.userProfileService.username, last_date: moment().format('YYYYMMDD'),
+                                                timeline: [{unlocked_points: 60, unlocked_money: dollars-pastDollars, 
+                                                current_point: this.userProfileService.points, date: moment().format('YYYYMMDD')}]};
+      this.store.dispatch(surveyCompletedRegisterUnlocked({unlockedIncentives}));
      }
 
     });
@@ -468,6 +488,7 @@ export class DynamicSurveyComponent implements OnInit {
         cmpRef.instance.ga = this.ga;
         cmpRef.instance.plt = this.plt;
         cmpRef.instance.router = this.router;// Router,
+        cmpRef.instance.store = this.store;
         cmpRef.instance.name = 'dynamic';
         //console.log('called');
     });

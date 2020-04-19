@@ -5215,6 +5215,7 @@ var HomePage = /** @class */ (function () {
                 this.money = 0;
             }
         }
+<<<<<<< HEAD
         this.route.queryParams.subscribe(function (params) {
             if (_this.router.getCurrentNavigation().extras.state) {
                 //throw new Error("Method not implemented.");
@@ -5229,6 +5230,8 @@ var HomePage = /** @class */ (function () {
                 //console.log("Inside AwardAltruism, date is: " +this.date+" prob is: "+this.reinforcementObj['prob']);
             }
         });
+=======
+>>>>>>> mash-ngrx
     }
     Object.defineProperty(HomePage.prototype, "isActive", {
         get: function () {
@@ -5260,6 +5263,21 @@ var HomePage = /** @class */ (function () {
         this.sub2$.unsubscribe();
     };
     HomePage.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.queryParams.subscribe(function (params) {
+            if (_this.router.getCurrentNavigation().extras.state) {
+                //throw new Error("Method not implemented.");
+                //show modal on awards
+                _this.modalObjectNavigationExtras = _this.router.getCurrentNavigation().extras.state.modalObjectNavigationExtras;
+                console.log("home.page.ts --- modalObjectNavigationExtras: " + JSON.stringify(_this.modalObjectNavigationExtras));
+                if (_this.modalObjectNavigationExtras['IsModalShownYet'] == false)
+                    _this.showModal();
+                //this.date = this.router.getCurrentNavigation().extras.state.date;
+                //this.reinforcementObj['prob'] = this.router.getCurrentNavigation().extras.state.prob;
+                //this.reinforcement_data = this.router.getCurrentNavigation().extras.state.reinforcement_data;         
+                //console.log("Inside AwardAltruism, date is: " +this.date+" prob is: "+this.reinforcementObj['prob']);
+            }
+        });
     };
     HomePage.prototype.startSurvey = function () {
         console.log('start survey');
@@ -5386,7 +5404,7 @@ var HomePage = /** @class */ (function () {
         //if(window.localStorage['IsModalShown'] == "false"){
         //
         var todaysDate = moment__WEBPACK_IMPORTED_MODULE_4__().format('YYYYMMDD');
-        var storedDate = window.localStorage['LastSurveyCompletionDate'];
+        var storedDate = this.modalObjectNavigationExtras["LastSurveyCompletionDate"];
         //
         if (todaysDate == storedDate) {
             this.computeUnlockedReinforcements();
@@ -5444,7 +5462,7 @@ var HomePage = /** @class */ (function () {
                                 reinforcements.push({ 'img': img, 'header': header, 'text': text });
                             }
                         }
-                        console.log(JSON.stringify(reinforcements));
+                        console.log("reinforcements: " + JSON.stringify(reinforcements));
                         if (reinforcements.length > 0) //means some rainforcement was provided.
                             this.presentModal(reinforcements);
                         return [2 /*return*/];
@@ -11480,7 +11498,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var AwardAltruismComponent = /** @class */ (function () {
     function AwardAltruismComponent(ga, route, userProfileService, awsS3Service, router) {
-        var _this = this;
         this.ga = ga;
         this.route = route;
         this.userProfileService = userProfileService;
@@ -11642,6 +11659,12 @@ var AwardAltruismComponent = /** @class */ (function () {
         this.reinforcementObj['ds'] = 1;
         this.reinforcementObj['reward'] = 2;
         this.reinforcementObj['reward_type'] = 'altruistic message';
+    }
+    AwardAltruismComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.ga.trackView('Award-altruism')
+            .then(function () { console.log("trackView at award-altruism!"); })
+            .catch(function (e) { return console.log(e); });
         this.route.queryParams.subscribe(function (params) {
             if (_this.router.getCurrentNavigation().extras.state) {
                 _this.date = _this.router.getCurrentNavigation().extras.state.date;
@@ -11651,11 +11674,6 @@ var AwardAltruismComponent = /** @class */ (function () {
                 console.log("Inside AwardAltruism, date is: " + _this.date + " prob is: " + _this.reinforcementObj['prob']);
             }
         });
-    }
-    AwardAltruismComponent.prototype.ngOnInit = function () {
-        this.ga.trackView('Award-altruism')
-            .then(function () { console.log("trackView at award-altruism!"); })
-            .catch(function (e) { return console.log(e); });
     };
     AwardAltruismComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
@@ -11834,7 +11852,6 @@ __webpack_require__.r(__webpack_exports__);
 var AwardMemesComponent = /** @class */ (function () {
     //src="{{whichImage}}"
     function AwardMemesComponent(ga, route, userProfileService, awsS3Service, router) {
-        var _this = this;
         this.ga = ga;
         this.route = route;
         this.userProfileService = userProfileService;
@@ -11849,6 +11866,12 @@ var AwardMemesComponent = /** @class */ (function () {
         this.reinforcementObj['ds'] = 1;
         this.reinforcementObj['reward'] = 1;
         this.reinforcementObj['reward_type'] = 'meme';
+    }
+    AwardMemesComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.ga.trackView('Life-insight')
+            .then(function () { console.log("trackView at Life-insight!"); })
+            .catch(function (e) { return console.log(e); });
         this.route.queryParams.subscribe(function (params) {
             if (_this.router.getCurrentNavigation().extras.state) {
                 _this.date = _this.router.getCurrentNavigation().extras.state.date;
@@ -11858,11 +11881,6 @@ var AwardMemesComponent = /** @class */ (function () {
                 console.log("Inside AwardMemes, date is: " + _this.date + " prob is: " + _this.reinforcementObj['prob']);
             }
         });
-    }
-    AwardMemesComponent.prototype.ngOnInit = function () {
-        this.ga.trackView('Life-insight')
-            .then(function () { console.log("trackView at Life-insight!"); })
-            .catch(function (e) { return console.log(e); });
     };
     AwardMemesComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
