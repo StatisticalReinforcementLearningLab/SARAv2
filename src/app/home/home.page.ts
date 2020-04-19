@@ -31,7 +31,8 @@ export class HomePage implements OnInit {
 
 
   unlockedItems$: Observable<any>;
-
+  modalDataSubscription: any;
+  title = "";
 
 
   get isActive(){
@@ -116,8 +117,10 @@ export class HomePage implements OnInit {
     }); 
     */
 
+
+    this.title = "ADAPTS";
     //this.unlockedItems$ = 
-    this.store.pipe(select(isIncentivesUnlockedForTheDay))
+    this.modalDataSubscription = this.store.pipe(select(isIncentivesUnlockedForTheDay))
               .subscribe(params => {
                   if(params == undefined)
                     console.log("---params: undefined---"+ JSON.stringify(params))
@@ -126,17 +129,21 @@ export class HomePage implements OnInit {
                     var unlockedIncentive: UnlockedIncentive = params;
                     //computeUnlockedReinforcements(currentPoints, previousPoints, awardedDollar)
 
-                    /*
+                    
                     this.computeUnlockedReinforcements(unlockedIncentive["current_point"], 
                                                        unlockedIncentive["current_point"] - unlockedIncentive["unlocked_points"],
                                                        unlockedIncentive["unlocked_money"]);
-                    */
+                    
                                                    
                   }
                 }
               );
     
     
+  }
+
+  ngOnDestroy(){
+    this.modalDataSubscription.unsubscribe();
   }
 
 
