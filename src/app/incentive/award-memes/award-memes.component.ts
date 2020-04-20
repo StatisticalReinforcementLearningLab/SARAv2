@@ -76,19 +76,13 @@ export class AwardMemesComponent implements OnInit {
   }
 
   ionViewDidEnter(){
-    this.db.getDatabaseState().subscribe(rdy => {
-     if (rdy) {     
-       this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
-     }
-    }); 
+    this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
+ 
   }  
 
   ionViewDidLeave(){
-    this.db.getDatabaseState().subscribe(rdy => {
-      if (rdy) {     
-        this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
-      }
-    });     
+    this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
+ 
   }
 
 
