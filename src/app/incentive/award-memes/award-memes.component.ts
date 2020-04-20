@@ -42,21 +42,24 @@ export class AwardMemesComponent implements OnInit {
       this.reinforcementObj['reward'] = 1;
       this.reinforcementObj['reward_type'] = 'meme';
 
-      this.route.queryParams.subscribe(params => {
-        if (this.router.getCurrentNavigation().extras.state) {
-          this.date = this.router.getCurrentNavigation().extras.state.date;
-          this.reinforcementObj['prob'] = this.router.getCurrentNavigation().extras.state.prob;
-          this.reinforcement_data = this.router.getCurrentNavigation().extras.state.reinforcement_data;
-          this.modalObjectNavigationExtras = this.router.getCurrentNavigation().extras.state.modalObjectNavigationExtras;
-          console.log("Inside AwardMemes, date is: " +this.date+" prob is: "+this.reinforcementObj['prob']);
-        }
-      });    
+         
     }
 
   ngOnInit() {
     this.ga.trackView('Life-insight')
     .then(() => {console.log("trackView at Life-insight!")})
     .catch(e => console.log(e));
+
+    this.route.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.date = this.router.getCurrentNavigation().extras.state.date;
+        this.reinforcementObj['prob'] = this.router.getCurrentNavigation().extras.state.prob;
+        this.reinforcement_data = this.router.getCurrentNavigation().extras.state.reinforcement_data;
+        this.modalObjectNavigationExtras = this.router.getCurrentNavigation().extras.state.modalObjectNavigationExtras;
+        console.log("Inside AwardMemes, date is: " +this.date+" prob is: "+this.reinforcementObj['prob']);
+      }
+    }); 
+    
   }
   
 
