@@ -13,6 +13,8 @@ import { SampleSurveyComponent } from './sample-survey/sample-survey.component';
 import { Routes, RouterModule } from '@angular/router';
 import { IncentiveModule } from '../incentive/incentive.module';
 import { AyaSampleSurveyComponent } from './aya-sample-survey/aya-sample-survey.component';
+import { StoreModule } from '@ngrx/store';
+import {surveyReducer} from './reducers';
 
 const routes: Routes = [
     { path: 'samplesurvey', component: SampleSurveyComponent }
@@ -34,7 +36,8 @@ const routes: Routes = [
     FormsModule,
     StorageModule,
     IncentiveModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    StoreModule.forFeature('survey', surveyReducer)
   ],
   exports:[
     //InitiatedDrinkComponent,

@@ -13,6 +13,8 @@ import { TreasurechestComponent } from './treasurechest/treasurechest.component'
 import { AwardAltruismComponent } from './award-altruism/award-altruism.component';
 import { ModalUnlockedPageComponent } from './aquarium/modal-unlocked-page/modal-unlocked-page.component';
 import { InfoPageComponent } from './info-page/info-page.component';
+import { StoreModule } from '@ngrx/store';
+import {incentiveReducer} from './reducers';
 
 const routes: Routes = [
 //  { path: 'award', component: AwardComponent },
@@ -25,7 +27,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     IonicModule.forRoot(),
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    StoreModule.forFeature('incentive', incentiveReducer)
   ],
   exports:[
     //AwardComponent, 
