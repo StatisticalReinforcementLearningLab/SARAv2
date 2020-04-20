@@ -27,8 +27,12 @@ import { GameOver } from '../levels/GameOver/GameOver';
 
 import { BootTundraL5 } from '../levels/TundraLevelL5/Boot';
 import { PreloaderTundraL5 } from '../levels/TundraLevelL5/Preloader';
-import { GameTundraL5 } from '../levels/TundraLevelL5//Game';
+import { GameTundraL5 } from '../levels/TundraLevelL5/Game';
 
+
+import { BootTundraL51 } from '../levels/TundraLevelL51/Boot';
+import { PreloaderTundraL51 } from '../levels/TundraLevelL51/Preloader';
+import { GameTundraL51 } from '../levels/TundraLevelL51/Game';
 
 import { BootRainforestL6 } from '../levels/RainforestL6/Boot';
 import { PreloaderRainforestL6 } from '../levels/RainforestL6/Preloader';
@@ -258,7 +262,7 @@ export class DemoAquariumComponent implements OnInit {
       seaLevelL4.setTotalPoints(this.totalPoints);
       this.game.state.add('SeaLevelL4', seaLevelL4);
 
-    } else if( this.totalPoints >=2120 && this.totalPoints <3020){
+    } else if( this.totalPoints >=2120 && this.totalPoints <2720){
 
       this.game.state.add('Boot', BootTundraL5);
       this.pickedGame = "TundraLevel1";
@@ -267,6 +271,16 @@ export class DemoAquariumComponent implements OnInit {
       var level5 = new GameTundraL5();
       level5.setTotalPoints(this.totalPoints);
       this.game.state.add('TundraLevel1', level5);
+
+    }else if( this.totalPoints >=2720 && this.totalPoints <3020){
+
+      this.game.state.add('Boot', BootTundraL51);
+      this.pickedGame = "TundraLevel2";
+      var preLoader = new PreloaderTundraL51();
+      this.game.state.add('Preloader', preLoader);
+      var level51 = new GameTundraL51();
+      level51.setTotalPoints(this.totalPoints);
+      this.game.state.add('TundraLevel2', level51);
 
     }else if( this.totalPoints >=3020){
 

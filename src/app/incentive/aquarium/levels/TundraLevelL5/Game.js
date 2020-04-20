@@ -533,7 +533,7 @@ export class GameTundraL5 extends Phaser.State {
 
         //---- wolf walk
         starting_pos_x = this.game.width-100;
-        starting_pos_y = this.game.height-285;
+        starting_pos_y = this.game.height-335;
         scale_x = 0.8;
         scale_y = 0.8;
 
@@ -609,7 +609,7 @@ export class GameTundraL5 extends Phaser.State {
 
     //
     animateHare(){
-        this.hare = this.add.sprite(this.game.width-115, this.game.height - 245, 'hare');
+        this.hare = this.add.sprite(this.game.width-115, this.game.height - 285, 'hare');
         this.hare.anchor.setTo(.5,.5);
         this.hare.animations.add('swim2');
         this.hare.animations.play('swim2', 5, true);
@@ -624,7 +624,7 @@ export class GameTundraL5 extends Phaser.State {
     //
     animateReindeer(){
         //this.reindeer = this.add.sprite(-115, this.game.height - 145, 'reindeer');
-        this.reindeer = this.add.sprite(-75, this.game.height - 225, 'reindeer');
+        this.reindeer = this.add.sprite(-75, this.game.height - 265, 'reindeer');
         this.reindeer.anchor.setTo(.5,.5);
         this.reindeer.animations.add('swim2');
         this.reindeer.animations.play('swim2', 5, true);
