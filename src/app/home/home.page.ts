@@ -3,6 +3,8 @@ import { DemoAquariumComponent } from '../incentive/aquarium/demo-aquarium/demo-
 import { Platform, AlertController, ModalController } from '@ionic/angular';
 import * as moment from 'moment';
 import { Router, ActivatedRoute } from '@angular/router';
+import { DatabaseService } from 'src/app/monitor/database.service';
+import { AwsS3Service } from '../storage/aws-s3.service';
 import { UserProfileService } from '../user/user-profile/user-profile.service';
 import { myEnterAnimation } from '../animations/modal_enter';
 import { ModalUnlockedPageComponent } from '../incentive/aquarium/modal-unlocked-page/modal-unlocked-page.component';
@@ -25,6 +27,7 @@ export class HomePage implements OnInit {
   private sub1$:any;
   private sub2$:any;
   money = 0;
+  pageTitle = "Home";
   modalObjectNavigationExtras = {};
 
   @ViewChild(DemoAquariumComponent, {static: true}) child;
@@ -55,6 +58,8 @@ export class HomePage implements OnInit {
     private router: Router, 
     private route: ActivatedRoute, 
     private modalController: ModalController,
+    private db: DatabaseService,
+    private awsS3Service: AwsS3Service,
     private store: Store<AppState>,
     private userProfileService: UserProfileService) { 
     console.log("Constructor called");
@@ -82,13 +87,49 @@ export class HomePage implements OnInit {
   }
 
   ionViewDidLeave(){
-    console.log("ionDidLeave");
+    console.log("at Home Page: ionDidLeave");
+    this.db.getDatabaseState().subscribe(rdy => {
+      if (rdy) {     
+        this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
+      }
+    }); 
+
     this.child.ionViewDidLeaveFunction();
   }
 
   ionViewDidEnter() {
+    this.db.getDatabaseState().subscribe(rdy => {
+      this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
+    });      
+
     this.child.loadFunction();
   }
+
+  ionViewWillEnter() {
+    this.db.getDatabaseState().subscribe(rdy => {
+      if (rdy) {     
+        this.db.isTableEmpty().then(tableEmpty => {
+          console.log("tableEmpty: "+tableEmpty);
+          if(!tableEmpty) {
+            this.exportDeleteDatabase();
+          } 
+        }).catch(e => {
+          console.log("In ionViewDidEnter at Home:"+e);
+        });
+      }
+    });      
+
+  }
+
+  exportDeleteDatabase(){
+    console.log("exportTable at Home Page!");
+    this.db.exportDatabaseToJson().then((res) => {
+      console.log("upload to AWS at Home Page: "+JSON.stringify(res));
+      this.awsS3Service.upload("Tracking",res);
+      this.db.dropTable();              
+    });   
+  }  
+
 
   ionViewWillUnload() {
     this.sub1$.unsubscribe();

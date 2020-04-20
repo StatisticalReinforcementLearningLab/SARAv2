@@ -4,6 +4,8 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import { AwsS3Service } from 'src/app/storage/aws-s3.service';
+import { DatabaseService } from 'src/app/monitor/database.service';
+
 
 @Component({
   selector: 'app-award-memes',
@@ -20,6 +22,7 @@ export class AwardMemesComponent implements OnInit {
   date;
   reinforcementObj = {};
   reinforcement_data = {};
+  pageTitle = " Award_Meme";
 
   viewWidth = 512;
   viewHeight = 350;
@@ -33,6 +36,7 @@ export class AwardMemesComponent implements OnInit {
     private route: ActivatedRoute,   
     private userProfileService: UserProfileService,  
     private awsS3Service: AwsS3Service,
+    private db: DatabaseService,
     private router: Router) {
       this.reinforcementObj['ds'] = 1;
       this.reinforcementObj['reward'] = 1;
@@ -67,11 +71,26 @@ export class AwardMemesComponent implements OnInit {
     fetch('./assets/memes/memefile.json').then(async res => {
       this.meme_data = await res.json();
       this.showmemes();
-    });
-
-    
+    });   
     
   }
+
+  ionViewDidEnter(){
+    this.db.getDatabaseState().subscribe(rdy => {
+     if (rdy) {     
+       this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
+     }
+    }); 
+  }  
+
+  ionViewDidLeave(){
+    this.db.getDatabaseState().subscribe(rdy => {
+      if (rdy) {     
+        this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
+      }
+    });     
+  }
+
 
   showmemes(){
     //window.localStorage['meme_shuffle5'] = "[]";
