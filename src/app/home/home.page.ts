@@ -88,36 +88,25 @@ export class HomePage implements OnInit {
 
   ionViewDidLeave(){
     console.log("at Home Page: ionDidLeave");
-    this.db.getDatabaseState().subscribe(rdy => {
-      if (rdy) {     
-        this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
-      }
-    }); 
-
+    this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
     this.child.ionViewDidLeaveFunction();
   }
 
   ionViewDidEnter() {
-    this.db.getDatabaseState().subscribe(rdy => {
-      this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
-    });      
-
+    this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
     this.child.loadFunction();
   }
 
   ionViewWillEnter() {
-    this.db.getDatabaseState().subscribe(rdy => {
-      if (rdy) {     
-        this.db.isTableEmpty().then(tableEmpty => {
-          console.log("tableEmpty: "+tableEmpty);
-          if(!tableEmpty) {
-            this.exportDeleteDatabase();
-          } 
-        }).catch(e => {
-          console.log("In ionViewDidEnter at Home:"+e);
-        });
-      }
-    });      
+    this.db.isTableEmpty().then(tableEmpty => {
+      console.log("tableEmpty: "+tableEmpty);
+      if(!tableEmpty) {
+        this.exportDeleteDatabase();
+      } 
+    }).catch(e => {
+      console.log("In ionViewDidEnter at Home:"+e);
+    });
+
 
   }
 
