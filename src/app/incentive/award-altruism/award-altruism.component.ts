@@ -3,6 +3,7 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import { AwsS3Service } from 'src/app/storage/aws-s3.service';
+import { DatabaseService } from 'src/app/monitor/database.service';
 
 @Component({
   selector: 'app-award-altruism',
@@ -17,12 +18,14 @@ export class AwardAltruismComponent implements OnInit {
   reinforcementObj = {};
   reinforcement_data = {};
   modalObjectNavigationExtras = {};
+  pageTitle = " Award_Altruism";
 
   constructor(    
     private ga: GoogleAnalytics,
     private route: ActivatedRoute, 
     private userProfileService: UserProfileService,
     private awsS3Service: AwsS3Service,
+    private db: DatabaseService,
     private router: Router) { 
       this.reinforcementObj['ds'] = 1;
       this.reinforcementObj['reward'] = 2;
@@ -53,7 +56,20 @@ export class AwardAltruismComponent implements OnInit {
 
   }
 
-  ionViewDidLeave(){
+  ionViewDidEnter(){
+    this.db.getDatabaseState().subscribe(rdy => {
+     if (rdy) {     
+       this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
+     }
+   }); 
+ }  
+ 
+ ionViewDidLeave(){
+    this.db.getDatabaseState().subscribe(rdy => {
+      if (rdy) {     
+        this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
+      }
+    });     
   }
 
   showaltruism(){
