@@ -7,9 +7,7 @@ import { Component, OnInit} from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 
-//@PreLoad('aquarium')
 export class HomePage  implements OnInit {
   ngOnInit(): void {
-    //throw new Error("Method not implemented.");
   }
 }
