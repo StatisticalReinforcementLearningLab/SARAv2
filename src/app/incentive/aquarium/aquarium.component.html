@@ -1,0 +1,61 @@
+<ion-header>
+    <ion-toolbar class="new-background-color">
+      <!--ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons-->
+      <ion-buttons slot="end">
+          <font color="white">${{money}}</font>
+          <ion-button style="color:#fff;" (click)="startCheatPage()">
+            <ion-icon name="alert"></ion-icon>
+          </ion-button>
+  
+          <!-- Mash codes:
+          <ion-text  *ngIf="!isActive" style="color:#fff;"><strong>Account is Paused</strong> </ion-text>
+          <ion-button style="color:#fff;" (click)="startSurvey()">
+            <ion-icon name="journal"></ion-icon>
+          </ion-button>
+          -->
+  
+          <ion-button style="color:#fff;" (click)="startInfoPage()">
+            <ion-icon name="information-circle"></ion-icon>
+          </ion-button>
+  
+          <ion-button (click)="startSurvey()"   *ngIf="isActive">
+              <ion-icon name="journal" style="color : white;"></ion-icon>
+          </ion-button>
+  
+  
+          <ion-button *ngIf="!isActive" (click)="dispalySurveyPausedMsg()" >
+              <ion-icon name="journal" style="color : #e74c3c;"></ion-icon>
+          </ion-button>
+          <!--
+          <ion-button href="{{surveyPath}}" *ngIf="isActive">Start Survey</ion-button> 
+          <ion-button style="color:#fff;" (click)="startSurvey()">
+            <ion-icon name="journal"></ion-icon>
+          </ion-button> 
+          <ion-button style="color:#fff;" (click)="startSurveyAYA()">
+            <ion-icon name="journal"></ion-icon>
+          </ion-button> 
+          -->
+      </ion-buttons>
+      <ion-title style="color:#fff;">{{title}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  
+  
+  <ion-content>
+    <!--div class="ion-padding">
+      <ion-button href="/survey/samplesurvey">Sample survey (demo)</ion-button> <br>
+      <ion-button href="/incentive/aquariumone">Incentive: Aquarium 1</ion-button> <br>
+      <ion-button href="/incentive/award-memes" >Incentive: meme</ion-button> <br>
+      <ion-button href="/incentive/visualization">Incentive: Life-inisight</ion-button> <br>
+    </div-->
+  
+    <app-demo-aquarium></app-demo-aquarium>
+    <ion-button color="primary" (click)="showModalDemo()">Unlockables</ion-button>
+    <ion-button color="primary" (click)="showMemeDemo()">Meme</ion-button>
+    <ion-button color="primary" (click)="showAltruisticDemo()">Altruistic msg</ion-button>
+  </ion-content>
+  
+  
