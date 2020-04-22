@@ -1,60 +1,42 @@
-<ion-header>
-  <ion-toolbar class="new-background-color">
-    <!--ion-buttons slot="start">
-      <ion-back-button defaultHref="home"></ion-back-button>
-    </ion-buttons-->
-    <ion-buttons slot="end">
-        <font color="white">${{money}}</font>
-        <ion-button style="color:#fff;" (click)="startCheatPage()">
-          <ion-icon name="alert"></ion-icon>
-        </ion-button>
+<!--
+  <app-aquarium></app-aquarium>
+-->
 
-        <!-- Mash codes:
-        <ion-text  *ngIf="!isActive" style="color:#fff;"><strong>Account is Paused</strong> </ion-text>
-        <ion-button style="color:#fff;" (click)="startSurvey()">
-          <ion-icon name="journal"></ion-icon>
-        </ion-button>
-        -->
+<ion-tabs>
 
-        <ion-button style="color:#fff;" (click)="startInfoPage()">
-          <ion-icon name="information-circle"></ion-icon>
-        </ion-button>
+  <ion-tab-bar slot="bottom" style="background: #005486;">
+    <ion-tab-button tab="incentive" style="background: #005486;">
+      <ion-icon src="/assets/img/fish_tab.svg" style="color: #fff;"></ion-icon>
+      <ion-label style="color: #fff;">Aquarium</ion-label>
+    </ion-tab-button>
 
-        <ion-button (click)="startSurvey()"   *ngIf="isActive">
-            <ion-icon name="journal" style="color : white;"></ion-icon>
-        </ion-button>
+    <ion-tab-button tab="unlocables" style="background: #005486;">
+      <ion-icon src="/assets/img/treasure_chest_tab.svg" style="color: #fff;"></ion-icon>
+      <ion-label style="color: #fff;">Unlockables</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="memes" style="background: #005486;">
+      <ion-icon src="/assets/img/happy_tab.svg" style="color: #fff;"></ion-icon>
+      <ion-label style="color: #fff;">memes</ion-label>
+    </ion-tab-button>
 
 
-        <ion-button *ngIf="!isActive" (click)="dispalySurveyPausedMsg()" >
-            <ion-icon name="journal" style="color : #e74c3c;"></ion-icon>
-        </ion-button>
-        <!--
-        <ion-button href="{{surveyPath}}" *ngIf="isActive">Start Survey</ion-button> 
-        <ion-button style="color:#fff;" (click)="startSurvey()">
-          <ion-icon name="journal"></ion-icon>
-        </ion-button> 
-        <ion-button style="color:#fff;" (click)="startSurveyAYA()">
-          <ion-icon name="journal"></ion-icon>
-        </ion-button> 
-        -->
-    </ion-buttons>
-    <ion-title style="color:#fff;">ADAPTS</ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-tab-button tab="thankyous" style="background: #005486;">
+      <ion-icon src="/assets/img/help_tab.svg" style="color: #fff;"></ion-icon>
+      <ion-label style="color: #fff;">Thank yous</ion-label>
+    </ion-tab-button>
 
+    <!--
+    <ion-tab-button tab="tab2">
+      <ion-icon name="create"></ion-icon>
+      <ion-label>Memes</ion-label>
+    </ion-tab-button>
 
+    <ion-tab-button tab="tab3">
+      <ion-icon name="locate"></ion-icon>
+      <ion-label>Thank yous</ion-label>
+    </ion-tab-button>
+    -->
+  </ion-tab-bar>
 
-<ion-content>
-  <!--div class="ion-padding">
-    <ion-button href="/survey/samplesurvey">Sample survey (demo)</ion-button> <br>
-    <ion-button href="/incentive/aquariumone">Incentive: Aquarium 1</ion-button> <br>
-    <ion-button href="/incentive/award-memes" >Incentive: meme</ion-button> <br>
-    <ion-button href="/incentive/visualization">Incentive: Life-inisight</ion-button> <br>
-  </div-->
-
-  <app-demo-aquarium></app-demo-aquarium>
-  <ion-button color="primary" (click)="showModalDemo()">Unlockables</ion-button>
-  <ion-button color="primary" (click)="showMemeDemo()">Meme</ion-button>
-  <ion-button color="primary" (click)="showAltruisticDemo()">Altruistic msg</ion-button>
-</ion-content>
-
+</ion-tabs>

@@ -315,6 +315,9 @@ export class UserProfileService {
     this.saveToServer();
   }
 
+  
+
+
   removeUserProfile(){
     localStorage.removeItem('userProfile');
   }
