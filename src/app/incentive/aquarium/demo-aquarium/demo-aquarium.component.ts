@@ -169,6 +169,7 @@ export class DemoAquariumComponent implements OnInit {
     this.survey_text = "Start survey";
   }
 
+  //this function gets called from the above the "aquarium.component.ts"
   loadFunction(){
 
     console.log(window.localStorage['TotalPoints']);
@@ -280,7 +281,8 @@ export class DemoAquariumComponent implements OnInit {
       this.game.state.add('Preloader', preLoader);
       var level51 = new GameTundraL51();
       level51.setTotalPoints(this.totalPoints);
-      this.game.state.add('TundraLevel2', level51);
+      this.game.state.add('TundraLevel2', level51
+      );
 
     }else if( this.totalPoints >=3020){
 

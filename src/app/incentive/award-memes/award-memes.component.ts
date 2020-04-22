@@ -4,8 +4,8 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import { AwsS3Service } from 'src/app/storage/aws-s3.service';
+import * as moment from 'moment';
 import { DatabaseService } from 'src/app/monitor/database.service';
-
 
 @Component({
   selector: 'app-award-memes',
@@ -72,7 +72,6 @@ export class AwardMemesComponent implements OnInit {
       this.meme_data = await res.json();
       this.showmemes();
     });   
-    
   }
 
   ionViewDidEnter(){
@@ -100,7 +99,18 @@ export class AwardMemesComponent implements OnInit {
     this.meme_data = this.shuffle(this.meme_data);
     //console.log('Meme suffled: ' + JSON.stringify(this.meme_data));
     var picked_meme = this.pick_meme(this.meme_data);
-    //console.log('picked_meme: ' + JSON.stringify(picked_meme));
+    
+    var already_shown = window.localStorage["already_shown_memes3"];
+    if(already_shown == undefined)
+        already_shown = [{"filename": "assets/memes/4.jpg", "unlock_date": moment().format('MM/DD/YYYY')}]
+    else
+        already_shown = JSON.parse(window.localStorage["already_shown_memes3"]);
+
+    console.log("already_shown: " + already_shown);
+    already_shown.push({"filename": "assets/memes/"+picked_meme[0]["filename"], "unlock_date": moment().format('MM/DD/YYYY')});
+    window.localStorage["already_shown_memes3"] = JSON.stringify(already_shown);
+
+
     this.whichImage = "./assets/memes/"+picked_meme[0]["filename"];
     this.reinforcementObj['reward_img_link'] = "/memes/"+picked_meme[0]["filename"];
     this.reinforcement_data['reward_img_link'] = "/memes/"+picked_meme[0]["filename"];
