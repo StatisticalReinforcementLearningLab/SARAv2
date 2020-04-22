@@ -8,13 +8,14 @@ import { AwardMemesComponent } from './award-memes/award-memes.component';
 //import { SurveyModule } from '../survey/survey.module';
 import { Routes, RouterModule } from '@angular/router';
 import { DemoAquariumComponent } from './aquarium/demo-aquarium/demo-aquarium.component';
-import { AwardComponent } from './award/award.component';
 import { TreasurechestComponent } from './treasurechest/treasurechest.component';
 import { AwardAltruismComponent } from './award-altruism/award-altruism.component';
 import { ModalUnlockedPageComponent } from './aquarium/modal-unlocked-page/modal-unlocked-page.component';
 import { InfoPageComponent } from './info-page/info-page.component';
 import { StoreModule } from '@ngrx/store';
 import {incentiveReducer} from './reducers';
+import { UnlockedMemesComponent } from './unlocked-memes/unlocked-memes.component';
+import { UnlockedAltuisticMessagesComponent } from './unlocked-altuistic-messages/unlocked-altuistic-messages.component';
 
 const routes: Routes = [
 //  { path: 'award', component: AwardComponent },
@@ -23,7 +24,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AwardComponent, AwardMemesComponent, AwardAltruismComponent, TreasurechestComponent, ModalUnlockedPageComponent,InfoPageComponent],
+  declarations: [AwardMemesComponent, AwardAltruismComponent, TreasurechestComponent, ModalUnlockedPageComponent,InfoPageComponent, UnlockedMemesComponent, UnlockedAltuisticMessagesComponent],
   imports: [
     CommonModule,
     IonicModule.forRoot(),

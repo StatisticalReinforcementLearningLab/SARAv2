@@ -12,10 +12,11 @@ export const isIncentivesUnlockedForTheDay = createSelector(
     selectAuthState,
     incentive =>  {
         var currentDate = moment().format('YYYYMMDD');
-        if(currentDate in incentive)
-            return  incentive[currentDate]["timeline"][0];
+        if(incentive["timeline"] == undefined)
+            return undefined;
+        else if(currentDate in incentive["timeline"])
+            return  incentive["timeline"][currentDate];
         else
             return undefined;
     }
-
 );
