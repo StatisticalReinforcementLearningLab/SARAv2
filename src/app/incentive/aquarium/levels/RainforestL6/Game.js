@@ -207,10 +207,10 @@ export class GameRainforestL6 extends Phaser.State {
         this.progress_sprite = this.game.add.sprite(5, 40, 'timer', 0);
         var rect = new Phaser.Rectangle(0, 0, 0, this.progress_sprite.height);
         var percent = (current_points-previoous_fish_point)/(next_fish_point-previoous_fish_point);
-        console.log("" + current_points + "," + previoous_fish_point + "," + next_fish_point + "," + percent);
+        //console.log("" + current_points + "," + previoous_fish_point + "," + next_fish_point + "," + percent);
         rect.width = Math.max(0, percent * this.progress_sprite.width);
 
-        console.log("Width, " + rect.width  + "," + this.progress_sprite.width);
+        //console.log("Width, " + rect.width  + "," + this.progress_sprite.width);
         this.progress_sprite.crop(rect);
     }
 
@@ -223,7 +223,7 @@ export class GameRainforestL6 extends Phaser.State {
     }
 
     startraining(){
-        console.log("start snowing");
+        //console.log("start snowing");
 
         //var mid_emitter;
         //var back_emitter;
@@ -321,7 +321,7 @@ export class GameRainforestL6 extends Phaser.State {
 
     animateCarnivorePlant(){
         //
-        console.log("adding thristy plant");
+        //console.log("adding thristy plant");
         var thirstyplant = this.game.add.sprite(-30, this.game.height-310, 'thirstyplant');
         thirstyplant.animations.add('swim');
         thirstyplant.animations.play('swim', 15, true);
@@ -333,7 +333,7 @@ export class GameRainforestL6 extends Phaser.State {
 
     
     animateCornMain(){
-        console.log("adding corn");
+        //console.log("adding corn");
         var corn = this.game.add.sprite(5, this.game.height-345, 'corn_stand');
         corn.animations.add('swim');
         corn.animations.play('swim', 5, true);
@@ -369,7 +369,7 @@ export class GameRainforestL6 extends Phaser.State {
 
     //
     animateTriceratops(){
-        console.log("Idle triceratops");
+        //console.log("Idle triceratops");
         this.triceratops.loadTexture('triceratops', 0);
         this.triceratops.animations.add('swim');
         this.triceratops.animations.play('swim', 2, true);
@@ -400,7 +400,7 @@ export class GameRainforestL6 extends Phaser.State {
     //
     animateLionJump(){
         
-        console.log("Jump lion jump");
+        //console.log("Jump lion jump");
 
         //this.thirstyplant.loadTexture('attackplant', 0);
 
@@ -570,7 +570,7 @@ export class GameRainforestL6 extends Phaser.State {
     }
 
     changeToThirsty(){
-        console.log("changed to thirsty");
+        //console.log("changed to thirsty");
         this.thirstyplant.loadTexture('thirstyplant', 0);
         this.thirstyplant.animations.add('swim');
         this.thirstyplant.animations.play('swim', 15, true);
@@ -578,7 +578,7 @@ export class GameRainforestL6 extends Phaser.State {
     }
 
     changeToAttackCorn(){
-        console.log("changed to attack");
+        //console.log("changed to attack");
         this.corn.loadTexture('corn_attach', 0);
         this.corn.animations.add('swim');
         this.corn.animations.play('swim', 5, true);
@@ -587,7 +587,7 @@ export class GameRainforestL6 extends Phaser.State {
 
 
     changeToAttackCornKiss(){
-        console.log("changed to thirsty");
+        //console.log("changed to thirsty");
         this.corn.loadTexture('corn_stand', 0);
         this.corn.animations.add('swim');
         this.corn.animations.play('swim', 5, true);
@@ -635,7 +635,7 @@ export class GameRainforestL6 extends Phaser.State {
     }
 
     showunlockables(){
-        console.log('treasure box clicked');
+        //console.log('treasure box clicked');
         this.componentObject.goToRewardsPage();
     }
 

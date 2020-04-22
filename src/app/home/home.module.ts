@@ -8,6 +8,7 @@ import { HomePage } from './home.page';
 import { AquariumModule } from '../incentive/aquarium/aquarium.module';
 import { HeaderComponent } from './header/header.component';
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
+import { HomeRoutingModule } from './home-routing.module';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.com
     FormsModule,
     IonicModule,
     AquariumModule,
+    HomeRoutingModule,
     RouterModule.forChild([
       {
         path: '',

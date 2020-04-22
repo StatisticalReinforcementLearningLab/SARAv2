@@ -456,10 +456,14 @@ export class DynamicSurveyComponent implements OnInit {
 
       
 
-      var unlockedIncentives: UnlockedIncentives = {user_id: this.userProfileService.username, last_date: moment().format('YYYYMMDD'),
-                                                timeline: [{unlocked_points: 60, unlocked_money: dollars-pastDollars, 
-                                                current_point: this.userProfileService.points, date: moment().format('YYYYMMDD')}]};
-      this.store.dispatch(surveyCompletedRegisterUnlocked({unlockedIncentives}));
+      var payload: Object = {user_id: this.userProfileService.username, 
+                     last_date: moment().format('YYYYMMDD'),
+                     unlocked_points: 60, 
+                     unlocked_money: dollars-pastDollars, 
+                     current_point: this.userProfileService.points, 
+                     date: moment().format('YYYYMMDD'),
+                     isUnlockedViewShown: false};
+      this.store.dispatch(surveyCompletedRegisterUnlocked({payload}));
      }
 
     });

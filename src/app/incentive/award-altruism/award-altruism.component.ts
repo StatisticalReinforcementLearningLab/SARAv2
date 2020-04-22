@@ -3,6 +3,7 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import { AwsS3Service } from 'src/app/storage/aws-s3.service';
+import * as moment from 'moment';
 import { DatabaseService } from 'src/app/monitor/database.service';
 
 @Component({
@@ -57,7 +58,8 @@ export class AwardAltruismComponent implements OnInit {
   }
 
   ionViewDidEnter(){
-    this.db.getDatabaseState().subscribe(rdy => {
+    this.
+      .getDatabaseState().subscribe(rdy => {
      if (rdy) {     
        this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
      }
@@ -75,9 +77,22 @@ export class AwardAltruismComponent implements OnInit {
   showaltruism(){
     console.log('Altruism data: ' + JSON.stringify(this.altruism_data));
     this.altruism_data = this.shuffle(this.altruism_data);
-    console.log('Altruism images suffled: ' + JSON.stringify(this.altruism_data));
+    //console.log('Altruism images suffled: ' + JSON.stringify(this.altruism_data));
     var picked_altruism_image = this.pick_altrusim(this.altruism_data);
-    console.log('picked_altruism_image: ' + JSON.stringify(picked_altruism_image));
+    //console.log('picked_altruism_image: ' + JSON.stringify(picked_altruism_image));
+
+    var already_shown = window.localStorage["already_shown_alt_msg3"];
+    if(already_shown == undefined)
+        already_shown = [{"filename": "assets/altruism/altruism_1.png", "unlock_date": moment().format('MM/DD/YYYY')}]
+    else
+        already_shown = JSON.parse(window.localStorage["already_shown_alt_msg3"]);
+
+    console.log("already_shown: " + already_shown);
+    already_shown.push({"filename": "assets/altruism/"+picked_altruism_image[0]["filename"], "unlock_date": moment().format('MM/DD/YYYY')});
+    window.localStorage["already_shown_alt_msg3"] = JSON.stringify(already_shown);
+
+
+
     this.whichImage = "./assets/altruism/"+picked_altruism_image[0]["filename"];
     this.reinforcementObj['reward_img_link'] = "/altruism/"+picked_altruism_image[0]["filename"];
     this.reinforcement_data['reward_img_link'] = "/altruism/"+picked_altruism_image[0]["filename"];
