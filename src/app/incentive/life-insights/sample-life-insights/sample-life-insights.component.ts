@@ -4,7 +4,6 @@ import * as moment from 'moment';
 
 //import * as lifeInsightProfile from "../../../../assets/data/life_insight.json";
 //import { PreLoad } from '../../../PreLoad';
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
 @Component({
   selector: 'app-sample-life-insights',
@@ -41,8 +40,7 @@ export class SampleLifeInsightsComponent implements OnInit {
 
   private lineChart: Chart;
 
-  constructor(
-    private ga: GoogleAnalytics) {          
+  constructor() {          
   }
 
 /*   get jsonObj(): any {
@@ -58,11 +56,6 @@ export class SampleLifeInsightsComponent implements OnInit {
   } */
 
   ngOnInit(){
-
-    this.ga.trackView('Life-insight')
-    .then(() => {console.log("trackView at Life-insight!")})
-    .catch(e => console.log(e));
-
     this.init(this.index);
 
   }
@@ -227,8 +220,6 @@ export class SampleLifeInsightsComponent implements OnInit {
     console.log("onChangeCategorySelect: "+this.selectedValue);
     this.index =  this.qYaxisArray.indexOf(this.selectedValue);
     this.init(this.index);   
-
-    this.ga.trackEvent('Select category for Life-insight', 'OnChange Action', 'Switch to display '+this.selectedValue, 0);
 
   }*/
 

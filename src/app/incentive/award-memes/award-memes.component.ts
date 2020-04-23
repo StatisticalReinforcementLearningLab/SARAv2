@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import { AwsS3Service } from 'src/app/storage/aws-s3.service';
@@ -32,7 +30,7 @@ export class AwardMemesComponent implements OnInit {
 
 
   //src="{{whichImage}}"
-  constructor(private ga: GoogleAnalytics,
+  constructor(
     private route: ActivatedRoute,   
     private userProfileService: UserProfileService,  
     private awsS3Service: AwsS3Service,
@@ -46,10 +44,7 @@ export class AwardMemesComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.ga.trackView('Life-insight')
-    .then(() => {console.log("trackView at Life-insight!")})
-    .catch(e => console.log(e));
-
+ 
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.date = this.router.getCurrentNavigation().extras.state.date;
