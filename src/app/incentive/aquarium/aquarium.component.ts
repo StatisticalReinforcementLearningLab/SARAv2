@@ -169,11 +169,7 @@ export class AquariumComponent implements OnInit {
       } else{
         this.router.navigate(['survey/samplesurvey2']);  //aya
       }
-      /*
-      this.ga.trackEvent('Start survey Button', 'Tapped Action', 'Loading survey', 0)
-      .then(() => {console.log("trackEvent for Start survey Button!")})
-      .catch(e => alert("trackEvent for Start survey Button=="+e));
-      */
+
     } 
   }
 
