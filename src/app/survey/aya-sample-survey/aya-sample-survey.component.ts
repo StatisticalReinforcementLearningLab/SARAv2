@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { DatabaseService } from 'src/app/monitor/database.service';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 
@@ -11,14 +10,11 @@ import { UserProfileService } from 'src/app/user/user-profile/user-profile.servi
 export class AyaSampleSurveyComponent implements OnInit {
   pageTitle = "Survey_aya";
 
-  constructor(private ga: GoogleAnalytics,
+  constructor(
     private userProfileService: UserProfileService,
     private db: DatabaseService) { }
 
   ngOnInit() {
-    this.ga.trackView(this.pageTitle)
-    .then(() => {console.log("trackView at Survey_aya!")})
-    .catch(e => console.log('Error starting GoogleAnalytics == '+ e));
 
   }
 
