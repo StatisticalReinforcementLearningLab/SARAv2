@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import { AwsS3Service } from 'src/app/storage/aws-s3.service';
@@ -22,7 +21,6 @@ export class AwardAltruismComponent implements OnInit {
   pageTitle = " Award_Altruism";
 
   constructor(    
-    private ga: GoogleAnalytics,
     private route: ActivatedRoute, 
     private userProfileService: UserProfileService,
     private awsS3Service: AwsS3Service,
@@ -34,9 +32,6 @@ export class AwardAltruismComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.ga.trackView('Award-altruism')
-    .then(() => {console.log("trackView at award-altruism!")})
-    .catch(e => console.log(e));
 
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
@@ -58,8 +53,7 @@ export class AwardAltruismComponent implements OnInit {
   }
 
   ionViewDidEnter(){
-    this.
-      .getDatabaseState().subscribe(rdy => {
+    this.db.getDatabaseState().subscribe(rdy => {
      if (rdy) {     
        this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
      }
