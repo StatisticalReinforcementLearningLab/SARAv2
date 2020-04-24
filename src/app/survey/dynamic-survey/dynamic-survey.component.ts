@@ -18,7 +18,6 @@ import * as moment from 'moment';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 
 //import * as lifeInsightProfile from "../../../assets/data/life_insight.json";
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import { AwardDollarService } from 'src/app/incentive/award-money/award-dollar.service';
 import { environment } from '../../../environments/environment';
@@ -60,7 +59,6 @@ export class DynamicSurveyComponent implements OnInit {
     //private storeToFirebaseService: StoreToFirebaseService,
     private EncrDecr: EncrDecrService,
     private router: Router,
-    private ga: GoogleAnalytics,
     private changeDetector : ChangeDetectorRef,
     private appVersion: AppVersion,
     private alertCtrl: AlertController,
@@ -113,7 +111,6 @@ export class DynamicSurveyComponent implements OnInit {
       lifeInsightObj = {};
       //storeToFirebaseService: StoreToFirebaseService;
       
-      ga: GoogleAnalytics;
       EncrDecr: EncrDecrService;
       awsS3Service: AwsS3Service;
       totalPoints = 0;
@@ -273,7 +270,6 @@ export class DynamicSurveyComponent implements OnInit {
       storeData(){
         //console.log("Inside storeData");
         //console.log(JSON.stringify(this.survey2));
-        this.ga.trackEvent('Submit Button', 'Tapped Action', 'Submit the completed survey', 0);
          
         var endTime = new Date().getTime();
         var readable_time = moment().format('MMMM Do YYYY, h:mm:ss a Z');
@@ -489,7 +485,6 @@ export class DynamicSurveyComponent implements OnInit {
         cmpRef.instance.userProfileService = this.userProfileService;
         cmpRef.instance.awardDollarService = this.awardDollarService;
         cmpRef.instance.EncrDecr = this.EncrDecr;
-        cmpRef.instance.ga = this.ga;
         cmpRef.instance.plt = this.plt;
         cmpRef.instance.router = this.router;// Router,
         cmpRef.instance.store = this.store;
