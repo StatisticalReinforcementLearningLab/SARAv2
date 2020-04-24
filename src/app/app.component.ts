@@ -6,7 +6,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { HttpClient } from '@angular/common/http';
 import { OneSignalService } from './notification/one-signal.service';
 
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { environment } from '../environments/environment';
 import { Router, RouterEvent, RouteConfigLoadStart, RouteConfigLoadEnd, NavigationStart, NavigationEnd } from '@angular/router';
 
@@ -33,8 +32,7 @@ export class AppComponent {
     private oneSignalService: OneSignalService,
     private authService: AuthService,
     private userProfileService: UserProfileService,
-    public loadingController: LoadingController,
-    private ga: GoogleAnalytics
+    public loadingController: LoadingController
    ) {
     this.initializeApp();
 
@@ -135,13 +133,6 @@ export class AppComponent {
       this.splashScreen.hide();
       this.oneSignalService.initOneSignal();
 
-      this.ga.startTrackerWithId(environment.googleAnalytic.id)
-      .then(() => {
-        console.log('Google analytics is ready now');
-        this.ga.setUserId("Liying");
-        //this.ga.debugMode();
-      }).catch(e => console.log('Error starting GoogleAnalytics == '+ e));
-
     });
     //window.localStorage.setItem("TotalPoints", "0");
 
@@ -171,10 +162,6 @@ export class AppComponent {
   async dismissLoading(){
     this.loading.dismiss();
   }
-
-
-
-
 
   async presentLoading() {
     const loading = await this.loadingController.create({
