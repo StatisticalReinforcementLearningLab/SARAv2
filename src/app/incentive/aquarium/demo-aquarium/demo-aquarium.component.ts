@@ -41,7 +41,6 @@ import { GameRainforestL6 } from '../levels/RainforestL6/Game';
 
 import { ActivatedRoute, Router, RouterEvent, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
 //import { PreLoad } from '../../../PreLoad';
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { Platform, ModalController } from '@ionic/angular';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import * as moment from 'moment';
@@ -96,7 +95,6 @@ export class DemoAquariumComponent implements OnInit {
     private alertCtrl: AlertController,
     private modalController: ModalController,
     //private pickGameService: PickGameService,
-    private ga: GoogleAnalytics,
     private platform: Platform,
     private route: ActivatedRoute,
     private userProfileService: UserProfileService,
@@ -156,10 +154,7 @@ export class DemoAquariumComponent implements OnInit {
   
 
   ngOnInit() {
-    this.ga.trackView(this.pageTitle)
-    .then(() => {console.log("trackView at Aquarium!")})
-    .catch(e => console.log(e));
-    //this.loadFunction();
+     //this.loadFunction();
     
   }
 
@@ -333,9 +328,6 @@ export class DemoAquariumComponent implements OnInit {
   }
 
   ngAfterViewInit(){
-    this.ga.trackView('Aquarium')
-    .then(() => {console.log("trackView at Aquarium!")})
-    .catch(e => console.log(e));
         
   }  
 
