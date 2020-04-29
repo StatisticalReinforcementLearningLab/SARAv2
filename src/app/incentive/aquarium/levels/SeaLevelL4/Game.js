@@ -39,9 +39,11 @@ export class SeaLevelL4 extends Phaser.State {
 
 
         //
+        /*
         var fish_progress = this.add.image(175,50, 'clownfish_grey');
         fish_progress.scale.setTo(-0.3, 0.3);
         fish_progress.anchor.setTo(.5,.5);
+        */
         
 
         var treasure = this.add.image(35, this.height-80, 'treasuresea');
@@ -107,9 +109,12 @@ export class SeaLevelL4 extends Phaser.State {
         // this.showBanner();
 
         //
+        /*
         var banner_shown = window.localStorage['banner_shown_2'] || "0";// = 1;
         if(banner_shown==="0")
             this.showBanner();
+        */
+       
         // 
         this.game.onPause.add(this.yourGamePausedFunc, this);
         this.game.onResume.add(this.yourGameResumedFunc, this);
