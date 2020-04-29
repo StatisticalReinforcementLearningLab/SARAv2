@@ -47,9 +47,11 @@ export class SeaLevelL3 extends Phaser.State {
 
 
         //
+        /*
         var fish_progress = this.add.image(175,50, 'clownfish_grey');
         fish_progress.scale.setTo(-0.3, 0.3);
         fish_progress.anchor.setTo(.5,.5);
+        */
 
 
 
@@ -108,9 +110,11 @@ export class SeaLevelL3 extends Phaser.State {
         //this.game.onResume.add(yourGameResumedFunc, this);
 
         //
+        /*
         var banner_shown = window.localStorage['banner_shown_2'] || "0";// = 1;
         if(banner_shown==="0")
             this.showBanner();
+        */
 
         this.isPaused = false;
 

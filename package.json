@@ -26,9 +26,9 @@
     "@ionic-native/network": "^5.21.6",
     "@ionic-native/onesignal": "^5.19.1",
     "@ionic-native/splash-screen": "^5.0.0",
+    "@ionic-native/sqlite": "^5.24.0",
+    "@ionic-native/sqlite-porter": "^5.24.0",
     "@ionic-native/status-bar": "^5.17.0",
-    "@ionic-native/sqlite": "^5.19.1",
-    "@ionic-native/sqlite-porter": "^5.19.1",
     "@ionic/angular": "^4.7.1",
     "@ngrx/schematics": "^9.1.0",
     "@ngrx/store": "^8.5.2",
@@ -58,8 +58,8 @@
     "moment": "^2.24.0",
     "onesignal-cordova-plugin": "^2.8.2",
     "rxjs": "~6.5.1",
-    "uk.co.workingedge.cordova.plugin.sqliteporter": "^1.1.1",
     "tslib": "^1.9.0",
+    "uk.co.workingedge.cordova.plugin.sqliteporter": "^1.1.1",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
