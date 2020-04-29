@@ -754,7 +754,7 @@ module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <!--ion-buttons slot=\"start\">\n        <ion-back-button defaultHref=\"home\"></ion-back-button>\n      </ion-buttons-->\n      <ion-buttons slot=\"end\">\n          <font color=\"white\">${{money}}</font>\n          <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\">\n            <ion-icon name=\"alert\"></ion-icon>\n          </ion-button>\n  \n          <!-- Mash codes:\n          <ion-text  *ngIf=\"!isActive\" style=\"color:#fff;\"><strong>Account is Paused</strong> </ion-text>\n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button>\n          -->\n  \n          <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\">\n            <ion-icon name=\"information-circle\"></ion-icon>\n          </ion-button>\n  \n          <ion-button (click)=\"startSurvey()\"   *ngIf=\"isActive\">\n              <ion-icon name=\"journal\" style=\"color : white;\"></ion-icon>\n          </ion-button>\n  \n  \n          <ion-button *ngIf=\"!isActive\" (click)=\"dispalySurveyPausedMsg()\" >\n              <ion-icon name=\"journal\" style=\"color : #e74c3c;\"></ion-icon>\n          </ion-button>\n          <!--\n          <ion-button href=\"{{surveyPath}}\" *ngIf=\"isActive\">Start Survey</ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurveyAYA()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          -->\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">{{title}}</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  \n  \n  <ion-content>\n    <!--div class=\"ion-padding\">\n      <ion-button href=\"/survey/samplesurvey\">Sample survey (demo)</ion-button> <br>\n      <ion-button href=\"/incentive/aquariumone\">Incentive: Aquarium 1</ion-button> <br>\n      <ion-button href=\"/incentive/award-memes\" >Incentive: meme</ion-button> <br>\n      <ion-button href=\"/incentive/visualization\">Incentive: Life-inisight</ion-button> <br>\n    </div-->\n  \n    <app-demo-aquarium></app-demo-aquarium>\n    <ion-button color=\"primary\" (click)=\"showModalDemo()\">Unlockables</ion-button>\n    <ion-button color=\"primary\" (click)=\"showMemeDemo()\">Meme</ion-button>\n    <ion-button color=\"primary\" (click)=\"showAltruisticDemo()\">Altruistic msg</ion-button>\n  </ion-content>\n  \n  "
+module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n\n\n      <ion-buttons slot=\"start\" *ngIf=\"isIOS\">\n        \n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\">\n          <ion-icon name=\"information-circle\"></ion-icon>\n        </ion-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n\n      </ion-buttons>\n\n\n      <ion-buttons slot=\"end\">\n          <font color=\"white\">${{money}}</font>\n          <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\"  *ngIf=\"!isIOS\">\n            <ion-icon name=\"alert\"></ion-icon>\n          </ion-button>\n  \n          <!-- Mash codes:\n          <ion-text  *ngIf=\"!isActive\" style=\"color:#fff;\"><strong>Account is Paused</strong> </ion-text>\n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button>\n          -->\n  \n          <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"!isIOS\">\n            <ion-icon name=\"information-circle\"></ion-icon>\n          </ion-button>\n  \n          <ion-button (click)=\"startSurvey()\"   *ngIf=\"isActive\">\n              <ion-icon name=\"journal\" style=\"color : white;\"></ion-icon>\n          </ion-button>\n  \n  \n          <ion-button *ngIf=\"!isActive\" (click)=\"dispalySurveyPausedMsg()\" >\n              <ion-icon name=\"journal\" style=\"color : #e74c3c;\"></ion-icon>\n          </ion-button>\n          <!--\n          <ion-button href=\"{{surveyPath}}\" *ngIf=\"isActive\">Start Survey</ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurveyAYA()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          -->\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">{{title}}</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  \n  \n  <ion-content>\n    <!--div class=\"ion-padding\">\n      <ion-button href=\"/survey/samplesurvey\">Sample survey (demo)</ion-button> <br>\n      <ion-button href=\"/incentive/aquariumone\">Incentive: Aquarium 1</ion-button> <br>\n      <ion-button href=\"/incentive/award-memes\" >Incentive: meme</ion-button> <br>\n      <ion-button href=\"/incentive/visualization\">Incentive: Life-inisight</ion-button> <br>\n    </div-->\n  \n    <app-demo-aquarium></app-demo-aquarium>\n    <ion-button color=\"primary\" (click)=\"showModalDemo()\">Unlockables</ion-button>\n    <ion-button color=\"primary\" (click)=\"showMemeDemo()\">Meme</ion-button>\n    <ion-button color=\"primary\" (click)=\"showAltruisticDemo()\">Altruistic msg</ion-button>\n  </ion-content>\n  \n  "
 
 /***/ }),
 
@@ -798,7 +798,7 @@ module.exports = "\n<ion-header>\n    <ion-list-header>Congratulations!!!</ion-l
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <!--\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    -->\n    <ion-title>Thanks for helping</ion-title>\n  </ion-toolbar>\n</ion-header>\n \n\n<ion-content>\n<!--\n<br/>\n<div style=\"font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center\">Thank you for completing the survey</div>\n<canvas id=\"drawing_canvas\" width=\"100%\" height=\"auto\" style=\"position: fixed; left: 50%; top: 35%; transform: translate(-50%, -50%); z-index: 0;\"></canvas>\n-->\n<div style=\"position: relative;\">\n  <img [src]=\"whichImage\" *ngIf=\"whichImage\" style=\"height: auto;width: 100%;padding-top:0px; border: 0px solid #fff;position: absolute;\"/>\n  <canvas id=\"hearts_canvas\" width=\"100%\" height=\"100%\" style=\"box-sizing: border-box; position: absolute; left: 0; top: 0; z-index: 1;\"></canvas>\n</div>\n\n\n\n\n<!--\n<ion-card> \n  <div class=\"quetiontextstyle\">\n      This is the question\n  </div>\n  <div class=\"radiovertical\">\n    <ul>\n      <li>\n        <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n        <label for=\"ff-option\">Pizza</label> \n        <div class=\"check\"></div>\n      </li>\n      \n      <li>\n        <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n        <label for=\"ss-option\">Boyfriend</label>\n        <div class=\"check\"><div class=\"inside\"></div></div>\n      </li>\n      \n      <li>\n        <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n        <label for=\"tt-option\">Cats</label>\n        <div class=\"check\"><div class=\"inside\"></div></div>\n      </li>\n    </ul>\n  </div>\n</ion-card>\n-->\n\n</ion-content>\n<ion-footer align=\"center\" no-border>\n  <ion-toolbar style=\"background:#fff;border: 0px solid #fff;height:120px;\">\n      <button style=\"height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:20px;font-size:24px;color:#fff;background:#D32F2F;\" \n      (click)=\"ratingChanged(0)\">\n          <ion-icon name=\"ios-thumbs-down\" style=\"height: 50px;width: 50px;\"></ion-icon>\n      </button>\n      <button style=\"height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:10px;font-size:24px;color:#fff;background:#33691E;\" \n      (click)=\"ratingChanged(1)\">\n          <ion-icon name=\"ios-thumbs-up\" style=\"height: 50px;width: 50px;\"></ion-icon>\n      </button>\n  </ion-toolbar>\n</ion-footer>\n"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <!--\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    -->\n    <ion-title>You unlocked a thank you message</ion-title>\n  </ion-toolbar>\n</ion-header>\n \n\n<ion-content>\n<!--\n<br/>\n<div style=\"font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center\">Thank you for completing the survey</div>\n<canvas id=\"drawing_canvas\" width=\"100%\" height=\"auto\" style=\"position: fixed; left: 50%; top: 35%; transform: translate(-50%, -50%); z-index: 0;\"></canvas>\n-->\n<div style=\"position: relative;\">\n  <img [src]=\"whichImage\" *ngIf=\"whichImage\" style=\"height: auto;width: 100%;padding-top:0px; border: 0px solid #fff;position: absolute;\"/>\n  <canvas id=\"hearts_canvas\" width=\"100%\" height=\"100%\" style=\"box-sizing: border-box; position: absolute; left: 0; top: 0; z-index: 1;\"></canvas>\n</div>\n\n\n\n\n<!--\n<ion-card> \n  <div class=\"quetiontextstyle\">\n      This is the question\n  </div>\n  <div class=\"radiovertical\">\n    <ul>\n      <li>\n        <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n        <label for=\"ff-option\">Pizza</label> \n        <div class=\"check\"></div>\n      </li>\n      \n      <li>\n        <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n        <label for=\"ss-option\">Boyfriend</label>\n        <div class=\"check\"><div class=\"inside\"></div></div>\n      </li>\n      \n      <li>\n        <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n        <label for=\"tt-option\">Cats</label>\n        <div class=\"check\"><div class=\"inside\"></div></div>\n      </li>\n    </ul>\n  </div>\n</ion-card>\n-->\n\n</ion-content>\n<ion-footer align=\"center\" no-border>\n  <ion-toolbar style=\"background:#fff;border: 0px solid #fff;height:120px;\">\n      <button style=\"height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:20px;font-size:24px;color:#fff;background:#D32F2F;\" \n      (click)=\"ratingChanged(0)\">\n          <ion-icon name=\"ios-thumbs-down\" style=\"height: 50px;width: 50px;\"></ion-icon>\n      </button>\n      <button style=\"height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:10px;font-size:24px;color:#fff;background:#33691E;\" \n      (click)=\"ratingChanged(1)\">\n          <ion-icon name=\"ios-thumbs-up\" style=\"height: 50px;width: 50px;\"></ion-icon>\n      </button>\n  </ion-toolbar>\n</ion-footer>\n"
 
 /***/ }),
 
@@ -820,7 +820,7 @@ module.exports = "<ion-header>\n    <ion-toolbar>\n      <!--\n      <ion-button
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">Inforation page</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n\n  <ion-list>\n\n    <ion-item style=\"border: 1px solid #263238;border-left: 3px solid #263238;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/money.gif\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Money</h2>\n        <h3>You will earn <b>one dollar</b> for completing a 3-day streak of your daily survey and <b>two dollars</b> for completing the 1st survey of every new cycle.</h3> \n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n    <ion-item style=\"border: 1px solid #FF6F00;border-left: 3px solid #FF6F00;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/30points.png\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Point</h2>\n        <h3>Each survey you complete = <b>60 points!</b></h3>\n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n    <ion-item style=\"border: 1px solid #4E342E; border-left: 3px solid #4E342E;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/clownfish_tn.jpg\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Animals</h2>\n        <h3>More <b>points</b> = more <b>animals</b> in your environment!</h3>\n      </ion-label>\n    </ion-item>\n\n  </ion-list>\n  \n  <div class=\"list\">\n\n\n    <!--\n    <div class=\"card\" style=\"border-left: 3px solid #263238;border-top: 1px solid #263238;\"> \n        <img src=\"img/18_Rev.jpg\" style=\"float:left;width:100px;padding:10px;padding-right:20px;padding-top:15px;margin-bottom:0px;\" />\n        <p style=\"padding:15px;font-size:15px;color:#5a2d0c\">Longer <b>streaks</b> give higher<br>financial incentives<br></b></p>\n        <ul style=\"padding-left:100px;margin-top:1px;\">\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 3-day streak gives 25 cents</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 6-day streak gives 50 cents</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 12-day streak gives 1 dollars</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 18-day streak gives 1.5 dollars</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 30-day streak gives 2.5 dollars</li>\n            <li style=\"height:15px;\"></li>\n        </ul>\n        <br><p style=\"padding:10px;font-size: 12px;line-height:15px;color:#5a2d0c;\">Streaks for surveys and active tasks are separate. So, if you complete 3-day streaks on both survey and active tasks then you will get 50 cents.<p>\n    </div>\n    -->\n\n    <div class=\"card\"  style=\"border-left: 2px solid #263238;border-top: 1px solid #AD1457;\"> \n        <p style=\"padding:15px;font-size:15px;color:#AD1457\">You will sometimes get <b>thank you messages</b> or <b>memes</b> for completing the surveys.</p>\n        <div class=\"item item-image\" style=\"border: 0px solid #4E342E;\">\n            <img src=\"assets/memes/4.jpg\" style=\"padding:20px;padding-top:5px;\">\n        </div>\n    </div>\n\n\n</div>\n\n\n\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">Information page</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n\n  <ion-list>\n\n    <ion-item style=\"border: 1px solid #263238;border-left: 3px solid #263238;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/money.gif\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Money</h2>\n        <h3>You will earn <b>one dollar</b> for completing a 3-day streak of your daily survey and <b>two dollars</b> for completing the 1st survey of every new cycle.</h3> \n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n    <ion-item style=\"border: 1px solid #263238;border-left: 3px solid #263238;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/60points.png\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Point</h2>\n        <h3>Each survey you complete = <b>60 points!</b></h3>\n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n    <ion-item style=\"border: 1px solid #4E342E; border-left: 3px solid #4E342E;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/clownfish_tn.jpg\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Animals</h2>\n        <h3>More <b>points</b> = more <b>animals</b> in your environment!</h3>\n      </ion-label>\n    </ion-item>\n\n  </ion-list>\n  \n  <div class=\"list\">\n\n\n    <!--\n    <div class=\"card\" style=\"border-left: 3px solid #263238;border-top: 1px solid #263238;\"> \n        <img src=\"img/18_Rev.jpg\" style=\"float:left;width:100px;padding:10px;padding-right:20px;padding-top:15px;margin-bottom:0px;\" />\n        <p style=\"padding:15px;font-size:15px;color:#5a2d0c\">Longer <b>streaks</b> give higher<br>financial incentives<br></b></p>\n        <ul style=\"padding-left:100px;margin-top:1px;\">\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 3-day streak gives 25 cents</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 6-day streak gives 50 cents</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 12-day streak gives 1 dollars</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 18-day streak gives 1.5 dollars</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 30-day streak gives 2.5 dollars</li>\n            <li style=\"height:15px;\"></li>\n        </ul>\n        <br><p style=\"padding:10px;font-size: 12px;line-height:15px;color:#5a2d0c;\">Streaks for surveys and active tasks are separate. So, if you complete 3-day streaks on both survey and active tasks then you will get 50 cents.<p>\n    </div>\n    -->\n\n    <div class=\"card\"  style=\"border-left: 2px solid #263238;border-top: 1px solid #263238;\"> \n        <p style=\"padding:15px;font-size:15px;\">You will sometimes get <b>thank you messages</b> or <b>memes</b> for completing the surveys.</p>\n        <div class=\"item item-image\" style=\"border: 0px solid #4E342E;\">\n            <img src=\"assets/memes/4.jpg\" style=\"padding:20px;padding-top:5px;\">\n        </div>\n    </div>\n\n\n</div>\n\n\n\n</ion-content>"
 
 /***/ }),
 
@@ -864,7 +864,7 @@ module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">Thank you messages</ion-title>\n  </ion-toolbar>\n</ion-header>\n  \n  <ion-content [fullscreen]=\"true\">\n\n    <ion-card>\n        <ion-card-content>\n          <ion-card-title style=\"color:black;\">{{unlockedAltMessagesCount}} out of 30 thank you messages unlocked</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n    <ion-card *ngFor=\"let x of already_shown_altruism_msgs;\">\n        <img src=\"{{x.filename}}\" />\n        <ion-card-content>\n            <b>Unlock date:</b> {{x.unlock_date}}    \n        </ion-card-content>\n    </ion-card>\n  \n    <!--\n    <ion-card>\n      <img src=\"./assets/cnn_billgates.png\" />\n      <ion-card-header>\n        <ion-card-subtitle>বিল গেটস</ion-card-subtitle>\n        <ion-card-title>ডেভেলপিং দেশে করোনার ঝুঁকি আরো বেশি </ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        বিল গেটস সম্প্রতি CNN এর একটি ইন্টারভিউ তে বলছেন ডেভেলপিং দেশে করোনা বন্ধ করা বেশি কঠিন। Youtube-এর ইন্টারভিউ লিংক এখানে পাওয়া যাবে। https://youtu.be/A71lfXrQlxU\n  \n        <br><br><p style=\"color:green;\">৯৪ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    <ion-card>\n      <img src=\"./assets/anthony_faucci.jpg\" />\n      <ion-card-header>\n        <ion-card-subtitle>এন্থনি ফাউচি</ion-card-subtitle>\n        <ion-card-title>ভ্যাকসিন এখনো পাওয়া যাইনি। ঘরে থাকুন</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        মার্কিন যুক্তরাষ্টের করোনা ভাইরাস বিষয়ক টাস্ক ফোর্সের প্রধান এবং সম্মানিত বিজ্ঞানী এন্থনি ফাউচি বলেছেন কোরোনার কোনো ভ্যাকসিন আবিষ্কার হয়নি। এ বিষয় অনেক গবেষণা চলছে। ভ্যাকসিন না বের হওয়া পর্যন্ত সবাইকে ড: ফাউচি ঘরে থাকতে বলেছেন।  \n  \n        <br><br><p style=\"color:green;\">৫১ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    -->\n  </ion-content>\n  \n"
+module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">Thank you messages</ion-title>\n  </ion-toolbar>\n</ion-header>\n  \n  <ion-content [fullscreen]=\"true\">\n\n    <ion-card>\n        <ion-card-content>\n          <ion-card-title style=\"color:black;\">{{unlockedAltMessagesCount}} out of 21 thank you messages unlocked</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n    <ion-card *ngFor=\"let x of already_shown_altruism_msgs;\">\n        <img src=\"{{x.filename}}\" />\n        <ion-card-content>\n            <b>Unlock date:</b> {{x.unlock_date}}    \n        </ion-card-content>\n    </ion-card>\n  \n    <!--\n    <ion-card>\n      <img src=\"./assets/cnn_billgates.png\" />\n      <ion-card-header>\n        <ion-card-subtitle>বিল গেটস</ion-card-subtitle>\n        <ion-card-title>ডেভেলপিং দেশে করোনার ঝুঁকি আরো বেশি </ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        বিল গেটস সম্প্রতি CNN এর একটি ইন্টারভিউ তে বলছেন ডেভেলপিং দেশে করোনা বন্ধ করা বেশি কঠিন। Youtube-এর ইন্টারভিউ লিংক এখানে পাওয়া যাবে। https://youtu.be/A71lfXrQlxU\n  \n        <br><br><p style=\"color:green;\">৯৪ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    <ion-card>\n      <img src=\"./assets/anthony_faucci.jpg\" />\n      <ion-card-header>\n        <ion-card-subtitle>এন্থনি ফাউচি</ion-card-subtitle>\n        <ion-card-title>ভ্যাকসিন এখনো পাওয়া যাইনি। ঘরে থাকুন</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        মার্কিন যুক্তরাষ্টের করোনা ভাইরাস বিষয়ক টাস্ক ফোর্সের প্রধান এবং সম্মানিত বিজ্ঞানী এন্থনি ফাউচি বলেছেন কোরোনার কোনো ভ্যাকসিন আবিষ্কার হয়নি। এ বিষয় অনেক গবেষণা চলছে। ভ্যাকসিন না বের হওয়া পর্যন্ত সবাইকে ড: ফাউচি ঘরে থাকতে বলেছেন।  \n  \n        <br><br><p style=\"color:green;\">৫১ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    -->\n  </ion-content>\n  \n"
 
 /***/ }),
 
@@ -875,7 +875,7 @@ module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Memes</ion-title>\n    </ion-toolbar>\n</ion-header>\n  \n  <ion-content [fullscreen]=\"true\">\n\n    <ion-card>\n        <ion-card-content>\n          <ion-card-title style=\"color:black;\">{{unlockedMemeCount}} out of 30 memes unlocked</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n    <ion-card *ngFor=\"let x of already_shown_memes;\">\n        <img src=\"{{x.filename}}\" />\n        <ion-card-content>\n            <b>Unlock date:</b> {{x.unlock_date}}    \n        </ion-card-content>\n    </ion-card>\n  \n    <!--\n    <ion-card>\n      <img src=\"./assets/cnn_billgates.png\" />\n      <ion-card-header>\n        <ion-card-subtitle>বিল গেটস</ion-card-subtitle>\n        <ion-card-title>ডেভেলপিং দেশে করোনার ঝুঁকি আরো বেশি </ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        বিল গেটস সম্প্রতি CNN এর একটি ইন্টারভিউ তে বলছেন ডেভেলপিং দেশে করোনা বন্ধ করা বেশি কঠিন। Youtube-এর ইন্টারভিউ লিংক এখানে পাওয়া যাবে। https://youtu.be/A71lfXrQlxU\n  \n        <br><br><p style=\"color:green;\">৯৪ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    <ion-card>\n      <img src=\"./assets/anthony_faucci.jpg\" />\n      <ion-card-header>\n        <ion-card-subtitle>এন্থনি ফাউচি</ion-card-subtitle>\n        <ion-card-title>ভ্যাকসিন এখনো পাওয়া যাইনি। ঘরে থাকুন</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        মার্কিন যুক্তরাষ্টের করোনা ভাইরাস বিষয়ক টাস্ক ফোর্সের প্রধান এবং সম্মানিত বিজ্ঞানী এন্থনি ফাউচি বলেছেন কোরোনার কোনো ভ্যাকসিন আবিষ্কার হয়নি। এ বিষয় অনেক গবেষণা চলছে। ভ্যাকসিন না বের হওয়া পর্যন্ত সবাইকে ড: ফাউচি ঘরে থাকতে বলেছেন।  \n  \n        <br><br><p style=\"color:green;\">৫১ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    -->\n  </ion-content>\n  \n"
+module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Memes</ion-title>\n    </ion-toolbar>\n</ion-header>\n  \n  <ion-content [fullscreen]=\"true\">\n\n    <ion-card>\n        <ion-card-content>\n          <ion-card-title style=\"color:black;\">{{unlockedMemeCount}} out of 31 memes unlocked</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n    <ion-card *ngFor=\"let x of already_shown_memes;\">\n        <img src=\"{{x.filename}}\" />\n        <ion-card-content>\n            <b>Unlock date:</b> {{x.unlock_date}}    \n        </ion-card-content>\n    </ion-card>\n  \n    <!--\n    <ion-card>\n      <img src=\"./assets/cnn_billgates.png\" />\n      <ion-card-header>\n        <ion-card-subtitle>বিল গেটস</ion-card-subtitle>\n        <ion-card-title>ডেভেলপিং দেশে করোনার ঝুঁকি আরো বেশি </ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        বিল গেটস সম্প্রতি CNN এর একটি ইন্টারভিউ তে বলছেন ডেভেলপিং দেশে করোনা বন্ধ করা বেশি কঠিন। Youtube-এর ইন্টারভিউ লিংক এখানে পাওয়া যাবে। https://youtu.be/A71lfXrQlxU\n  \n        <br><br><p style=\"color:green;\">৯৪ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    <ion-card>\n      <img src=\"./assets/anthony_faucci.jpg\" />\n      <ion-card-header>\n        <ion-card-subtitle>এন্থনি ফাউচি</ion-card-subtitle>\n        <ion-card-title>ভ্যাকসিন এখনো পাওয়া যাইনি। ঘরে থাকুন</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        মার্কিন যুক্তরাষ্টের করোনা ভাইরাস বিষয়ক টাস্ক ফোর্সের প্রধান এবং সম্মানিত বিজ্ঞানী এন্থনি ফাউচি বলেছেন কোরোনার কোনো ভ্যাকসিন আবিষ্কার হয়নি। এ বিষয় অনেক গবেষণা চলছে। ভ্যাকসিন না বের হওয়া পর্যন্ত সবাইকে ড: ফাউচি ঘরে থাকতে বলেছেন।  \n  \n        <br><br><p style=\"color:green;\">৫১ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    -->\n  </ion-content>\n  \n"
 
 /***/ }),
 
@@ -5434,6 +5434,7 @@ var AquariumComponent = /** @class */ (function () {
         this.money = 0;
         this.modalObjectNavigationExtras = {};
         this.title = "";
+        this.isIOS = false;
         console.log("Constructor called");
         this.sub1$ = this.platform.pause.subscribe(function () {
             console.log('****UserdashboardPage PAUSED****');
@@ -5453,6 +5454,9 @@ var AquariumComponent = /** @class */ (function () {
                 window.localStorage.setItem("AwardDollar", "" + 0);
                 this.money = 0;
             }
+        }
+        if (this.platform.is('ios')) {
+            this.isIOS = true;
         }
     }
     Object.defineProperty(AquariumComponent.prototype, "isActive", {
@@ -5535,7 +5539,7 @@ var AquariumComponent = /** @class */ (function () {
         var startTime = moment__WEBPACK_IMPORTED_MODULE_4__({ hour: 18 }); // 6pm
         var endTime = moment__WEBPACK_IMPORTED_MODULE_4__({ hour: 23, minute: 59 }); // 11:59pm
         if (!currentTime.isBetween(startTime, endTime)) {
-            this.presentAlert('Survey is only available between 6PM and midnight');
+            this.presentAlert('Please come back between 6 PM and midnight');
         }
         else if (this.userProfileService.surveyTakenForCurrentDay()) {
             this.presentAlert('You have already completed the survey for the day.');
@@ -6315,10 +6319,11 @@ class FishBowlL1 extends Phaser.State {
         //
         var timer = this.add.sprite(5, 40, 'timer', 1);
 
-        //
+        /*
         var fish_progress = this.add.image(175,50, 'clownfish_grey');
         fish_progress.scale.setTo(-0.3, 0.3);
         fish_progress.anchor.setTo(.5,.5);
+        */
 
         /*
         var pouch = this.add.image(15,80, 'diamond');
@@ -6876,10 +6881,11 @@ class FishBowlL2 extends Phaser.State {
         this.add.sprite(5, 40, 'timer', 1);
 
         //
+        /*
         var fish_progress = this.add.image(175,50, 'clownfish_grey');
         fish_progress.scale.setTo(-0.3, 0.3);
         fish_progress.anchor.setTo(.5,.5);
-
+        */
 
         /*
         var pouch = this.add.image(15,80, 'diamond');
@@ -7699,9 +7705,11 @@ class GameRainforestL6 extends Phaser.State {
         //this.animateRain();
 
         //--- 
-        var fish_progress = this.add.image(175, 50, 'clownfish_grey');
+        /*
+        var fish_progress = this.add.image(175,50, 'clownfish_grey');
         fish_progress.scale.setTo(-0.3, 0.3);
         fish_progress.anchor.setTo(.5,.5);
+        */
 
 
         //add the rock to cover the carnivorous plant
@@ -8513,9 +8521,11 @@ class SeaLevelL3 extends Phaser.State {
 
 
         //
+        /*
         var fish_progress = this.add.image(175,50, 'clownfish_grey');
         fish_progress.scale.setTo(-0.3, 0.3);
         fish_progress.anchor.setTo(.5,.5);
+        */
 
 
 
@@ -8574,9 +8584,11 @@ class SeaLevelL3 extends Phaser.State {
         //this.game.onResume.add(yourGameResumedFunc, this);
 
         //
+        /*
         var banner_shown = window.localStorage['banner_shown_2'] || "0";// = 1;
         if(banner_shown==="0")
             this.showBanner();
+        */
 
         this.isPaused = false;
 
@@ -9640,9 +9652,11 @@ class SeaLevelL4 extends Phaser.State {
 
 
         //
+        /*
         var fish_progress = this.add.image(175,50, 'clownfish_grey');
         fish_progress.scale.setTo(-0.3, 0.3);
         fish_progress.anchor.setTo(.5,.5);
+        */
         
 
         var treasure = this.add.image(35, this.height-80, 'treasuresea');
@@ -9708,9 +9722,12 @@ class SeaLevelL4 extends Phaser.State {
         // this.showBanner();
 
         //
+        /*
         var banner_shown = window.localStorage['banner_shown_2'] || "0";// = 1;
         if(banner_shown==="0")
             this.showBanner();
+        */
+       
         // 
         this.game.onPause.add(this.yourGamePausedFunc, this);
         this.game.onResume.add(this.yourGameResumedFunc, this);
@@ -10682,9 +10699,11 @@ class GameTundraL5 extends Phaser.State {
         var timer = this.add.sprite(5, 40, 'timer', 1);
 
         //--- 
-        var fish_progress = this.add.image(175, 50, 'clownfish_grey');
+        /*
+        var fish_progress = this.add.image(175,50, 'clownfish_grey');
         fish_progress.scale.setTo(-0.3, 0.3);
         fish_progress.anchor.setTo(.5,.5);
+        */
  
         //--- 
         /*
@@ -11711,9 +11730,11 @@ class GameTundraL51 extends Phaser.State {
         var timer = this.add.sprite(5, 40, 'timer', 1);
 
         //--- 
-        var fish_progress = this.add.image(175, 50, 'clownfish_grey');
+        /*
+        var fish_progress = this.add.image(175,50, 'clownfish_grey');
         fish_progress.scale.setTo(-0.3, 0.3);
         fish_progress.anchor.setTo(.5,.5);
+        */
  
         //--- 
         /*
@@ -17108,11 +17129,14 @@ var UserModule = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "environment", function() { return environment; });
+// This file can be replaced during build by using the `fileReplacements` array.
+// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
+// The list of file replacements can be found in `angular.json`.
 var environment = {
     production: false,
     userServer: "http://adaptsdata.research.chop.edu:5000",
-    //oneSignalAppId: "de3580a2-4aae-42c4-87cf-2c319c2df0c3",
-    oneSignalAppId: "f9c4370d-cbcb-4e6f-ab1f-25d1c41b8f3a",
+    oneSignalAppId: "de3580a2-4aae-42c4-87cf-2c319c2df0c3",
+    encyptString: "+Xr?SwA?EJ7m+g$c",
     firebaseConfig: {
         apiKey: "AIzaSyBK_PwjnsC01Q-a-sV7LsA7qIeIhCx4ts0",
         authDomain: "sarav2-6a033.firebaseapp.com",
@@ -17128,43 +17152,54 @@ var environment = {
         containerName: 'mycontainer'
     },
     awsConfig: {
+        // CHOP
         bucketName: 'chop-sara',
         bucketRegion: 'us-east-1',
-        IdentityPoolId: 'us-east-1:667b1ad5-ccdc-4d90-b94f-300732b55448',
-        accessKeyId: 'AKIA35724R3PLF24HO3C',
-        secretAccessKey: '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'
+        IdentityPoolId: 'us-east-1:667b1ad5-ccdc-4d90-b94f-300732b55448'
     },
     googleAnalytic: {
         id: 'UA-152399644-1'
-    },
-    encyptString: "+Xr?SwA?EJ7m+g$c"
-    // firebase: {
-    //   apiKey: "AIzaSyDM8d1yG2rNPc8AotB0NoN3Q2wMq4HDooo",
-    //   authDomain: "adapts-331ee.firebaseapp.com",
-    //   databaseURL: "https://adapts-331ee.firebaseio.com",
-    //   projectId: "adapts-331ee",
-    //   storageBucket: "adapts-331ee.appspot.com",
-    //   messagingSenderId: "110945766941",
-    //   appId: "1:110945766941:web:7c940aefa53553c39bc0f4",
-    //   measurementId: "G-TL8MFZNE2M"
-    //   // apiKey: "AIzaSyBK_PwjnsC01Q-a-sV7LsA7qIeIhCx4ts0",
-    //   // authDomain: "sarav2-6a033.firebaseapp.com",
-    //   // databaseURL: "https://sarav2-6a033.firebaseio.com",
-    //   // projectId: "sarav2-6a033",
-    //   // storageBucket: "sarav2-6a033.appspot.com",
-    //   // messagingSenderId: "489827689493",
-    //   // appId: "1:489827689493:web:7f72eb7033e9acf5"
-    // },
-    // firebaseConfig: {
-    //       // apiKey: "AIzaSyBK_PwjnsC01Q-a-sV7LsA7qIeIhCx4ts0",
-    //   // authDomain: "sarav2-6a033.firebaseapp.com",
-    //   // databaseURL: "https://sarav2-6a033.firebaseio.com",
-    //   // projectId: "sarav2-6a033",
-    //   // storageBucket: "sarav2-6a033.appspot.com",
-    //   // messagingSenderId: "489827689493",
-    //   // appId: "1:489827689493:web:7f72eb7033e9acf5"
-    // }
+    }
 };
+// export const environment = {
+//   production: false,
+//   userServer:"http://autherServerName.com",
+//   oneSignalAppId: "<insert Id here>",
+//   firebase: {
+//     apiKey: "AIzaSyDM8d1yG2rNPc8AotB0NoN3Q2wMq4HDooo",
+//     authDomain: "adapts-331ee.firebaseapp.com",
+//     databaseURL: "https://adapts-331ee.firebaseio.com",
+//     projectId: "adapts-331ee",
+//     storageBucket: "adapts-331ee.appspot.com",
+//     messagingSenderId: "110945766941",
+//     appId: "1:110945766941:web:7c940aefa53553c39bc0f4",
+//     measurementId: "G-TL8MFZNE2M"
+//     // apiKey: "AIzaSyBK_PwjnsC01Q-a-sV7LsA7qIeIhCx4ts0",
+//     // authDomain: "sarav2-6a033.firebaseapp.com",
+//     // databaseURL: "https://sarav2-6a033.firebaseio.com",
+//     // projectId: "sarav2-6a033",
+//     // storageBucket: "sarav2-6a033.appspot.com",
+//     // messagingSenderId: "489827689493",
+//     // appId: "1:489827689493:web:7f72eb7033e9acf5"
+//   },
+//   firebaseConfig: {
+//         // apiKey: "AIzaSyBK_PwjnsC01Q-a-sV7LsA7qIeIhCx4ts0",
+//     // authDomain: "sarav2-6a033.firebaseapp.com",
+//     // databaseURL: "https://sarav2-6a033.firebaseio.com",
+//     // projectId: "sarav2-6a033",
+//     // storageBucket: "sarav2-6a033.appspot.com",
+//      messagingSenderId: "489827689493",
+//     // appId: "1:489827689493:web:7f72eb7033e9acf5"
+//   }
+// };
+/*
+ * For easier debugging in development mode, you can import the following file
+ * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
+ *
+ * This import should be commented out in production mode because it will have a negative impact
+ * on performance if an error is thrown.
+ */
+// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
 
 
 /***/ }),

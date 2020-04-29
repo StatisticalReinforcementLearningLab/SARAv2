@@ -76,9 +76,11 @@ export class GameRainforestL6 extends Phaser.State {
         //this.animateRain();
 
         //--- 
-        var fish_progress = this.add.image(175, 50, 'clownfish_grey');
+        /*
+        var fish_progress = this.add.image(175,50, 'clownfish_grey');
         fish_progress.scale.setTo(-0.3, 0.3);
         fish_progress.anchor.setTo(.5,.5);
+        */
 
 
         //add the rock to cover the carnivorous plant
