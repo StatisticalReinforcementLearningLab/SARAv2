@@ -49,6 +49,7 @@
     <allow-intent href="geo:*" />
     <allow-navigation href="*" />
     <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
     <allow-navigation href="file://*/*" />
     <allow-intent href="*" />
     <allow-navigation href="http://localhost:8100" sessionid="27e85f6c" />
@@ -88,4 +89,7 @@
     <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="AndroidExtraFilesystems" value="files,cache, sdcard, cache-external, files-external" />
     <preference name="android-targetSdkVersion" value="28" />
+    <feature name="SQLitePlugin">
+        <param name="android-package" value="io.sqlc.SQLitePlugin" />
+    </feature>
 </widget>
