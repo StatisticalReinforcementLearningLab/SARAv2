@@ -223,7 +223,7 @@ export class DynamicSurveyComponent implements OnInit {
 
         this.survey2['reponse_ts'][questions] = {};
         this.survey2['reponse_ts'][questions].ts = Date.now();
-        this.survey2['reponse_ts'][questions].readable_ts = moment().format("MMMM Do YYYY, h:mm:ss a");
+        this.survey2['reponse_ts'][questions].readable_ts = moment().format("MMMM Do YYYY, h:mm:ss a Z");
 
         delete this.isQuestionIncomplete[questions]; //remove the key from isQuestionIncomplete
         //console.log(JSON.stringify(this.survey2));
