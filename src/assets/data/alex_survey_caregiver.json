@@ -1,6 +1,6 @@
 [
     {
-      "name":"Q1p",
+      "name":"Q1",
       "text": "1. How <b>positive</b> were you feeling (for example, happy or joyful) just before you received this survey?",
       "tag": "1",
       "type":"radiobutton",
@@ -12,7 +12,7 @@
     },
   
     {
-      "name": "Q7d",
+      "name": "Q2",
       "text": "2. How <b>negative</b> were you feeling (for example, stressed, mad/angry, nervous/anxious, or sad) just before you received this survey?",
       "tag": "2",
       "type": "radiobutton",
@@ -24,7 +24,7 @@
     },
   
     {
-      "name": "Q9d",
+      "name": "Q3",
       "text": "3. In the past 24 hours, have you had a <b>misunderstanding or disagreement</b> with your child?",
       "tag": "3",
       "type": "radiobutton",
@@ -36,7 +36,7 @@
     },
   
     {
-      "name": "Q10",
+      "name": "Q4",
       "text": "4. In the past 24 hours, how <b>easy</b> was it for your child to talk to you about their thoughts and feelings?",
       "tag": "4",
       "type": "radiobutton",

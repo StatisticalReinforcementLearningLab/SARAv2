@@ -32,6 +32,7 @@ export class AquariumComponent implements OnInit {
   unlockedItems$: Observable<any>;
   modalDataSubscription$: any;
   title = "";
+  isIOS = false;
 
 
   get isActive(){
@@ -77,6 +78,10 @@ export class AquariumComponent implements OnInit {
           window.localStorage.setItem("AwardDollar", ""+0); 
           this.money = 0;
         }
+    }
+
+    if(this.platform.is('ios')){
+      this.isIOS=true;
     }
 
   }
@@ -160,7 +165,7 @@ export class AquariumComponent implements OnInit {
     var startTime = moment({hour: 18});  // 6pm
     var endTime = moment({hour: 23, minute: 59});  // 11:59pm
     if(!currentTime.isBetween(startTime, endTime)) {
-      this.presentAlert('Survey is only available between 6PM and midnight');
+      this.presentAlert('Please come back between 6 PM and midnight');
     } else if(this.userProfileService.surveyTakenForCurrentDay()) {
       this.presentAlert('You have already completed the survey for the day.');
     } else {
