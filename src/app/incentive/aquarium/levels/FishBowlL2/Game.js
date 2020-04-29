@@ -38,10 +38,11 @@ export class FishBowlL2 extends Phaser.State {
         this.add.sprite(5, 40, 'timer', 1);
 
         //
+        /*
         var fish_progress = this.add.image(175,50, 'clownfish_grey');
         fish_progress.scale.setTo(-0.3, 0.3);
         fish_progress.anchor.setTo(.5,.5);
-
+        */
 
         /*
         var pouch = this.add.image(15,80, 'diamond');
