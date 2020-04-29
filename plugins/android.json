@@ -32,6 +32,12 @@
     },
     "onesignal-cordova-plugin": {
       "PACKAGE_NAME": "edu.harvard.srl.SARA"
+    },
+    "uk.co.workingedge.cordova.plugin.sqliteporter": {
+      "PACKAGE_NAME": "edu.harvard.srl.SARA"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "edu.harvard.srl.SARA"
     }
   },
   "dependent_plugins": {
