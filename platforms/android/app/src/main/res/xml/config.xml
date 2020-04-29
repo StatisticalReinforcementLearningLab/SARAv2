@@ -49,6 +49,7 @@
     <allow-intent href="geo:*" />
     <allow-navigation href="*" />
     <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
     <allow-navigation href="file://*/*" />
     <allow-intent href="*" />
     <allow-navigation href="http://localhost:8100" sessionid="27e85f6c" />
