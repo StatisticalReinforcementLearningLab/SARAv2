@@ -1,0 +1,81 @@
+{
+  "_from": "uk.co.workingedge.cordova.plugin.sqliteporter@^1.1.1",
+  "_id": "uk.co.workingedge.cordova.plugin.sqliteporter@1.1.1",
+  "_inBundle": false,
+  "_integrity": "sha512-VlIZNbZ+RFMZmAc8r2EnR+JPnlIBrvNaer78xh8EPSpgZqPlyVgIFuxnXMsVck84nMAbgQteh4H/4hVK+yc/Lw==",
+  "_location": "/uk.co.workingedge.cordova.plugin.sqliteporter",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "uk.co.workingedge.cordova.plugin.sqliteporter@^1.1.1",
+    "name": "uk.co.workingedge.cordova.plugin.sqliteporter",
+    "escapedName": "uk.co.workingedge.cordova.plugin.sqliteporter",
+    "rawSpec": "^1.1.1",
+    "saveSpec": null,
+    "fetchSpec": "^1.1.1"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/uk.co.workingedge.cordova.plugin.sqliteporter/-/uk.co.workingedge.cordova.plugin.sqliteporter-1.1.1.tgz",
+  "_shasum": "b3a1d6fee4d0da55d19b4d733536668c546cad7f",
+  "_spec": "uk.co.workingedge.cordova.plugin.sqliteporter@^1.1.1",
+  "_where": "/Users/mash2/Dropbox (PAC LAB)/codes/ionic_projects/SARAV3/SARA_modular",
+  "author": {
+    "name": "Dave Alden"
+  },
+  "bugs": {
+    "url": "https://github.com/dpa99c/cordova-sqlite-porter/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "uk.co.workingedge.cordova.plugin.sqliteporter",
+    "platforms": [
+      "android",
+      "amazon-fireos",
+      "ios",
+      "blackberry10",
+      "wp7",
+      "wp8",
+      "windows8",
+      "windows",
+      "tizen",
+      "browser"
+    ]
+  },
+  "cordova_name": "sqlite porter",
+  "deprecated": false,
+  "description": "Enables importing/exporting of SQLite databases to/from JSON/SQL.",
+  "homepage": "https://github.com/dpa99c/cordova-sqlite-porter#readme",
+  "issue": "https://github.com/dpa99c/cordova-sqlite-porter/issues",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova",
+    "android",
+    "fireos",
+    "ios",
+    "blackberry",
+    "wp7",
+    "windows phone 8",
+    "windows 8",
+    "windows",
+    "tizen",
+    "browser",
+    "phonegap",
+    "database",
+    "sqlite",
+    "websql",
+    "import",
+    "export"
+  ],
+  "license": "MIT",
+  "main": "www/sqlitePorter.js",
+  "name": "uk.co.workingedge.cordova.plugin.sqliteporter",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dpa99c/cordova-sqlite-porter.git"
+  },
+  "version": "1.1.1"
+}
