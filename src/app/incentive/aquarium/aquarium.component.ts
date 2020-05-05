@@ -73,7 +73,7 @@ export class AquariumComponent implements OnInit {
         this.money = 0;
     else{
         try{
-          this.money = JSON.parse(localStorage.getItem("AwardDollar"));
+          this.money = parseInt(window.localStorage['AwardDollar']);
         }catch(error){
           window.localStorage.setItem("AwardDollar", ""+0); 
           this.money = 0;
