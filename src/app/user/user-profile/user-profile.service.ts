@@ -160,6 +160,10 @@ export class UserProfileService {
     this.saveProfileToDevice();
   }
 
+  get oneSignalPlayerId(){
+    return this.userProfile.oneSignalPlayerId;
+  }
+
   saveToServer(){ 
     this.loadProfileFromDevice(); 
     const userProfile: UserProfile = this.userProfile;
@@ -314,8 +318,6 @@ export class UserProfileService {
     this.saveProfileToDevice();
     this.saveToServer();
   }
-
-  
 
 
   removeUserProfile(){

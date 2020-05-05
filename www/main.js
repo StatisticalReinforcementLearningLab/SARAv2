@@ -4680,14 +4680,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _notification_one_signal_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./notification/one-signal.service */ "./src/app/notification/one-signal.service.ts");
-/* harmony import */ var _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/google-analytics/ngx */ "./node_modules/@ionic-native/google-analytics/ngx/index.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
-/* harmony import */ var _user_auth_auth_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./user/auth/auth.service */ "./src/app/user/auth/auth.service.ts");
-
+/* harmony import */ var _notification_one_signal_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./notification/one-signal.service */ "./src/app/notification/one-signal.service.ts");
+/* harmony import */ var _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/google-analytics/ngx */ "./node_modules/@ionic-native/google-analytics/ngx/index.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
+/* harmony import */ var _user_auth_auth_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./user/auth/auth.service */ "./src/app/user/auth/auth.service.ts");
 
 
 
@@ -4701,13 +4699,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(router, platform, splashScreen, statusBar, httpClient, oneSignalService, authService, userProfileService, loadingController, ga) {
+    function AppComponent(router, platform, splashScreen, statusBar, oneSignalService, authService, userProfileService, loadingController, ga) {
         var _this = this;
         this.router = router;
         this.platform = platform;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
-        this.httpClient = httpClient;
         this.oneSignalService = oneSignalService;
         this.authService = authService;
         this.userProfileService = userProfileService;
@@ -4719,7 +4716,7 @@ var AppComponent = /** @class */ (function () {
         router.events.subscribe(function (event) {
             //this.isShowingRouteLoadIndicator = false;
             var asyncLoadCount = 0;
-            if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_9__["RouteConfigLoadStart"]) {
+            if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_8__["RouteConfigLoadStart"]) {
                 asyncLoadCount++;
                 console.log("Routing started");
                 //console.log(event);
@@ -4728,7 +4725,7 @@ var AppComponent = /** @class */ (function () {
                 // if(event.route.path == "survey")
                 //    this.showLaoding();
             }
-            else if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_9__["RouteConfigLoadEnd"]) {
+            else if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_8__["RouteConfigLoadEnd"]) {
                 asyncLoadCount--;
                 console.log("Routing ended");
                 console.log(event.route.path);
@@ -4738,11 +4735,11 @@ var AppComponent = /** @class */ (function () {
                 //this.survey_text = "Start survey";
                 //console.log(this.router.url);
             }
-            else if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_9__["NavigationStart"]) {
+            else if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_8__["NavigationStart"]) {
                 console.log("Navigation started");
                 //this.survey_text = "Start survey";
             }
-            else if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_9__["NavigationEnd"]) {
+            else if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_8__["NavigationEnd"]) {
                 asyncLoadCount--;
                 console.log("Navigation ended");
                 //this.survey_text = "Start survey";
@@ -4793,7 +4790,7 @@ var AppComponent = /** @class */ (function () {
             }
             _this.splashScreen.hide();
             _this.oneSignalService.initOneSignal();
-            _this.ga.startTrackerWithId(_environments_environment__WEBPACK_IMPORTED_MODULE_8__["environment"].googleAnalytic.id)
+            _this.ga.startTrackerWithId(_environments_environment__WEBPACK_IMPORTED_MODULE_7__["environment"].googleAnalytic.id)
                 .then(function () {
                 console.log('Google analytics is ready now');
                 _this.ga.setUserId("Liying");
@@ -4881,32 +4878,30 @@ var AppComponent = /** @class */ (function () {
         });
     };
     AppComponent.ctorParameters = function () { return [
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_9__["Router"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_8__["Router"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
         { type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"] },
         { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"] },
-        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"] },
-        { type: _notification_one_signal_service__WEBPACK_IMPORTED_MODULE_6__["OneSignalService"] },
-        { type: _user_auth_auth_service__WEBPACK_IMPORTED_MODULE_11__["AuthService"] },
-        { type: _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_10__["UserProfileService"] },
+        { type: _notification_one_signal_service__WEBPACK_IMPORTED_MODULE_5__["OneSignalService"] },
+        { type: _user_auth_auth_service__WEBPACK_IMPORTED_MODULE_10__["AuthService"] },
+        { type: _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_9__["UserProfileService"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"] },
-        { type: _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_7__["GoogleAnalytics"] }
+        { type: _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_6__["GoogleAnalytics"] }
     ]; };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-root',
             template: __webpack_require__(/*! raw-loader!./app.component.html */ "./node_modules/raw-loader/index.js!./src/app/app.component.html")
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_9__["Router"],
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_8__["Router"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"],
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"],
-            _notification_one_signal_service__WEBPACK_IMPORTED_MODULE_6__["OneSignalService"],
-            _user_auth_auth_service__WEBPACK_IMPORTED_MODULE_11__["AuthService"],
-            _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_10__["UserProfileService"],
+            _notification_one_signal_service__WEBPACK_IMPORTED_MODULE_5__["OneSignalService"],
+            _user_auth_auth_service__WEBPACK_IMPORTED_MODULE_10__["AuthService"],
+            _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_9__["UserProfileService"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"],
-            _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_7__["GoogleAnalytics"]])
+            _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_6__["GoogleAnalytics"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -4935,24 +4930,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
 /* harmony import */ var _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/onesignal/ngx */ "./node_modules/@ionic-native/onesignal/ngx/index.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _notification_notification_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./notification/notification.module */ "./src/app/notification/notification.module.ts");
-/* harmony import */ var _incentive_incentive_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./incentive/incentive.module */ "./src/app/incentive/incentive.module.ts");
-/* harmony import */ var _incentive_life_insights_life_insights_module__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./incentive/life-insights/life-insights.module */ "./src/app/incentive/life-insights/life-insights.module.ts");
-/* harmony import */ var _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic-native/google-analytics/ngx */ "./node_modules/@ionic-native/google-analytics/ngx/index.js");
-/* harmony import */ var _survey_survey_module__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./survey/survey.module */ "./src/app/survey/survey.module.ts");
-/* harmony import */ var _incentive_aquarium_aquarium_module__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./incentive/aquarium/aquarium.module */ "./src/app/incentive/aquarium/aquarium.module.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./incentive/aquarium/cheatpage/cheatpage.component */ "./src/app/incentive/aquarium/cheatpage/cheatpage.component.ts");
-/* harmony import */ var _user_user_module__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./user/user.module */ "./src/app/user/user.module.ts");
-/* harmony import */ var _home_home_module__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./home/home.module */ "./src/app/home/home.module.ts");
-/* harmony import */ var _incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./incentive/award-money/award-dollar.service */ "./src/app/incentive/award-money/award-dollar.service.ts");
-/* harmony import */ var _ionic_native_app_version_ngx__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @ionic-native/app-version/ngx */ "./node_modules/@ionic-native/app-version/ngx/index.js");
-/* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
-/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./reducers */ "./src/app/reducers/index.ts");
-/* harmony import */ var _ngrx_store_devtools__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @ngrx/store-devtools */ "./node_modules/@ngrx/store-devtools/fesm5/store-devtools.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _ionic_native_sqlite_porter_ngx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic-native/sqlite-porter/ngx */ "./node_modules/@ionic-native/sqlite-porter/ngx/index.js");
+/* harmony import */ var _ionic_native_sqlite_ngx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic-native/sqlite/ngx */ "./node_modules/@ionic-native/sqlite/ngx/index.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _notification_notification_module__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./notification/notification.module */ "./src/app/notification/notification.module.ts");
+/* harmony import */ var _incentive_incentive_module__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./incentive/incentive.module */ "./src/app/incentive/incentive.module.ts");
+/* harmony import */ var _incentive_life_insights_life_insights_module__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./incentive/life-insights/life-insights.module */ "./src/app/incentive/life-insights/life-insights.module.ts");
+/* harmony import */ var _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/google-analytics/ngx */ "./node_modules/@ionic-native/google-analytics/ngx/index.js");
+/* harmony import */ var _survey_survey_module__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./survey/survey.module */ "./src/app/survey/survey.module.ts");
+/* harmony import */ var _incentive_aquarium_aquarium_module__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./incentive/aquarium/aquarium.module */ "./src/app/incentive/aquarium/aquarium.module.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./incentive/aquarium/cheatpage/cheatpage.component */ "./src/app/incentive/aquarium/cheatpage/cheatpage.component.ts");
+/* harmony import */ var _user_user_module__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./user/user.module */ "./src/app/user/user.module.ts");
+/* harmony import */ var _home_home_module__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./home/home.module */ "./src/app/home/home.module.ts");
+/* harmony import */ var _incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./incentive/award-money/award-dollar.service */ "./src/app/incentive/award-money/award-dollar.service.ts");
+/* harmony import */ var _ionic_native_app_version_ngx__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @ionic-native/app-version/ngx */ "./node_modules/@ionic-native/app-version/ngx/index.js");
+/* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
+/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./reducers */ "./src/app/reducers/index.ts");
+/* harmony import */ var _ngrx_store_devtools__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @ngrx/store-devtools */ "./node_modules/@ngrx/store-devtools/fesm5/store-devtools.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+
+
 
 
 
@@ -4994,43 +4993,45 @@ var AppModule = /** @class */ (function () {
     ]; };
     AppModule = AppModule_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"], _incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_19__["CheatpageComponent"]],
-            entryComponents: [_incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_19__["CheatpageComponent"]],
+            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_12__["AppComponent"], _incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_21__["CheatpageComponent"]],
+            entryComponents: [_incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_21__["CheatpageComponent"]],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicModule"].forRoot(),
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_11__["AppRoutingModule"],
-                _survey_survey_module__WEBPACK_IMPORTED_MODULE_16__["SurveyModule"],
-                _incentive_incentive_module__WEBPACK_IMPORTED_MODULE_13__["IncentiveModule"],
-                _incentive_life_insights_life_insights_module__WEBPACK_IMPORTED_MODULE_14__["LifeInsightsModule"],
-                _notification_notification_module__WEBPACK_IMPORTED_MODULE_12__["NotificationModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_13__["AppRoutingModule"],
+                _survey_survey_module__WEBPACK_IMPORTED_MODULE_18__["SurveyModule"],
+                _incentive_incentive_module__WEBPACK_IMPORTED_MODULE_15__["IncentiveModule"],
+                _incentive_life_insights_life_insights_module__WEBPACK_IMPORTED_MODULE_16__["LifeInsightsModule"],
+                _notification_notification_module__WEBPACK_IMPORTED_MODULE_14__["NotificationModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
-                _incentive_aquarium_aquarium_module__WEBPACK_IMPORTED_MODULE_17__["AquariumModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_18__["FormsModule"],
-                _user_user_module__WEBPACK_IMPORTED_MODULE_20__["UserModule"],
-                _home_home_module__WEBPACK_IMPORTED_MODULE_21__["HomePageModule"],
+                _incentive_aquarium_aquarium_module__WEBPACK_IMPORTED_MODULE_19__["AquariumModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_20__["FormsModule"],
+                _user_user_module__WEBPACK_IMPORTED_MODULE_22__["UserModule"],
+                _home_home_module__WEBPACK_IMPORTED_MODULE_23__["HomePageModule"],
                 angular_azure_blob_service__WEBPACK_IMPORTED_MODULE_5__["BlobModule"].forRoot(),
                 //this ngrx import
-                _ngrx_store__WEBPACK_IMPORTED_MODULE_24__["StoreModule"].forRoot(_reducers__WEBPACK_IMPORTED_MODULE_25__["reducers"], {
-                    metaReducers: _reducers__WEBPACK_IMPORTED_MODULE_25__["metaReducers"],
+                _ngrx_store__WEBPACK_IMPORTED_MODULE_26__["StoreModule"].forRoot(_reducers__WEBPACK_IMPORTED_MODULE_27__["reducers"], {
+                    metaReducers: _reducers__WEBPACK_IMPORTED_MODULE_27__["metaReducers"],
                     runtimeChecks: {
                         strictStateImmutability: true,
                         strictActionImmutability: true
                     }
                 }),
                 //dev tool maxAge 25 versions of the data
-                _ngrx_store_devtools__WEBPACK_IMPORTED_MODULE_26__["StoreDevtoolsModule"].instrument({ maxAge: 25, logOnly: _environments_environment__WEBPACK_IMPORTED_MODULE_27__["environment"].production })
+                _ngrx_store_devtools__WEBPACK_IMPORTED_MODULE_28__["StoreDevtoolsModule"].instrument({ maxAge: 25, logOnly: _environments_environment__WEBPACK_IMPORTED_MODULE_29__["environment"].production })
             ],
             providers: [
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_8__["StatusBar"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_7__["SplashScreen"],
                 _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_9__["OneSignal"],
-                _incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_22__["AwardDollarService"],
-                _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_15__["GoogleAnalytics"],
-                _ionic_native_app_version_ngx__WEBPACK_IMPORTED_MODULE_23__["AppVersion"],
+                _incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_24__["AwardDollarService"],
+                _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_17__["GoogleAnalytics"],
+                _ionic_native_app_version_ngx__WEBPACK_IMPORTED_MODULE_25__["AppVersion"],
+                _ionic_native_sqlite_ngx__WEBPACK_IMPORTED_MODULE_11__["SQLite"],
+                _ionic_native_sqlite_porter_ngx__WEBPACK_IMPORTED_MODULE_10__["SQLitePorter"],
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicRouteStrategy"] }
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_12__["AppComponent"]]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"]])
     ], AppModule);
@@ -5285,11 +5286,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var HomePage = /** @class */ (function () {
-    //@PreLoad('aquarium')
     function HomePage() {
     }
     HomePage.prototype.ngOnInit = function () {
-        //throw new Error("Method not implemented.");
     };
     HomePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -5297,7 +5296,6 @@ var HomePage = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./home.page.html */ "./node_modules/raw-loader/index.js!./src/app/home/home.page.html"),
             styles: [__webpack_require__(/*! ./home.page.scss */ "./src/app/home/home.page.scss")]
         })
-        //@PreLoad('aquarium')
     ], HomePage);
     return HomePage;
 }());
@@ -5448,7 +5446,7 @@ var AquariumComponent = /** @class */ (function () {
             this.money = 0;
         else {
             try {
-                this.money = JSON.parse(localStorage.getItem("AwardDollar"));
+                this.money = parseInt(window.localStorage['AwardDollar']);
             }
             catch (error) {
                 window.localStorage.setItem("AwardDollar", "" + 0);
@@ -5946,6 +5944,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @ionic-native/google-analytics/ngx */ "./node_modules/@ionic-native/google-analytics/ngx/index.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! src/app/user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_30___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_30__);
+/* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 
 
 
@@ -5978,6 +5980,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 var DemoAquariumComponent = /** @class */ (function () {
     /*   get surveyPath(){
         if (this.userProfileService.isParent){
@@ -5988,7 +5993,7 @@ var DemoAquariumComponent = /** @class */ (function () {
       } */
     function DemoAquariumComponent(router, alertCtrl, modalController, 
     //private pickGameService: PickGameService,
-    ga, platform, route, userProfileService) {
+    ga, platform, route, userProfileService, httpClient, db) {
         this.router = router;
         this.alertCtrl = alertCtrl;
         this.modalController = modalController;
@@ -5996,7 +6001,10 @@ var DemoAquariumComponent = /** @class */ (function () {
         this.platform = platform;
         this.route = route;
         this.userProfileService = userProfileService;
+        this.httpClient = httpClient;
+        this.db = db;
         this.isLoaded = false;
+        this.pageTitle = "Aquarium";
         console.log("Constructor called");
         /*
           this.route.queryParams.subscribe(params => {
@@ -6055,10 +6063,42 @@ var DemoAquariumComponent = /** @class */ (function () {
         s.rotation = 0.14;
     };
     DemoAquariumComponent.prototype.ngOnInit = function () {
-        this.ga.trackView('Aquarium')
+        this.ga.trackView(this.pageTitle)
             .then(function () { console.log("trackView at Aquarium!"); })
             .catch(function (e) { return console.log(e); });
         //this.loadFunction();
+        this.sendUserIdToServerFor8PMNotification();
+    };
+    DemoAquariumComponent.prototype.sendUserIdToServerFor8PMNotification = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var oneSignalPlayerId, username, currentTimeTs, currentTimeReadableTs, headers, body;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                // Simple POST request with a JSON body and response type <any>
+                console.log("--aquarium-- " + "sendUserIdToServerFor8PMNotification");
+                oneSignalPlayerId = window.localStorage['oneSignalPlayerId'];
+                if (oneSignalPlayerId == "null" || oneSignalPlayerId == null || oneSignalPlayerId == undefined) {
+                    console.log("oneSignalId is null, " + oneSignalPlayerId);
+                    //return;
+                }
+                username = this.userProfileService.username;
+                currentTimeTs = Date.now();
+                currentTimeReadableTs = moment__WEBPACK_IMPORTED_MODULE_30__().format("MMMM Do YYYY, h:mm:ss a Z");
+                headers = { "Content-Type": "application/json;charset=UTF-8" };
+                body = { "user_id": username, "oneSignalPlayerId": oneSignalPlayerId, "currentTimeTs": currentTimeTs, "currentTimeReadableTs": currentTimeReadableTs };
+                /*
+                this.httpClient.post<any>("http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/store-onesignal-id", body, { headers }).subscribe({
+                  next: data => console.log(data),
+                  error: error => console.error('There was an error!', error)
+                });
+                */
+                this.httpClient.post("http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/store-onesignal-id", body)
+                    .subscribe({
+                    next: function (data) { return console.log("--aquarium-- " + JSON.stringify(data)); },
+                    error: function (error) { return console.error('There was an error!', error); }
+                });
+                return [2 /*return*/];
+            });
+        });
     };
     DemoAquariumComponent.prototype.ionViewDidEnter = function () {
         //if(this.isLoaded == true)
@@ -6067,7 +6107,13 @@ var DemoAquariumComponent = /** @class */ (function () {
     };
     //this function gets called from the above the "aquarium.component.ts"
     DemoAquariumComponent.prototype.loadFunction = function () {
-        console.log(window.localStorage['TotalPoints']);
+        //console.log(window.localStorage['TotalPoints']);
+        var _this = this;
+        this.db.getDatabaseState().subscribe(function (rdy) {
+            if (rdy) {
+                _this.db.addTrack(_this.pageTitle, "Enter", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
+            }
+        });
         //this.totalPoints = parseInt(window.localStorage['TotalPoints'] || "0");
         /*
          if(window.localStorage['TotalPoints'] == undefined)
@@ -6083,14 +6129,14 @@ var DemoAquariumComponent = /** @class */ (function () {
         console.log("w: " + window.innerWidth + ", h: " + window.innerHeight + ", dp: " + window.devicePixelRatio);
         if (window.innerWidth > GameApp.CANVAS_WIDTH)
             GameApp.CANVAS_WIDTH = window.innerWidth;
-        GameApp.CANVAS_HEIGHT = window.innerHeight;
+        GameApp.CANVAS_HEIGHT = window.innerHeight - 35;
         //var game;
         if (this.platform.is('ios')) {
             if (GameApp.CANVAS_HEIGHT < 642.0) { //iphone SE fix.
                 GameApp.CANVAS_HEIGHT += 30;
                 GameApp.CANVAS_WIDTH = window.innerWidth;
             }
-            this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 36 * window.devicePixelRatio, Phaser.AUTO, 'gameDiv');
+            this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 42 * window.devicePixelRatio, Phaser.AUTO, 'gameDiv');
         }
         else if (this.platform.is('android'))
             this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 74, Phaser.AUTO, 'gameDiv');
@@ -6181,8 +6227,14 @@ var DemoAquariumComponent = /** @class */ (function () {
         //this.pickGameService.currentGame.subscribe(game => this.pickedGame = game)
     };
     DemoAquariumComponent.prototype.ionViewDidLeaveFunction = function () {
+        var _this = this;
         console.log("Aquarium, ionDidLeave");
         this.survey_text = "Start survey";
+        this.db.getDatabaseState().subscribe(function (rdy) {
+            if (rdy) {
+                _this.db.addTrack(_this.pageTitle, "Leave", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
+            }
+        });
         this.game.destroy();
     };
     DemoAquariumComponent.prototype.pauseGameRendering = function () {
@@ -6206,7 +6258,9 @@ var DemoAquariumComponent = /** @class */ (function () {
         { type: _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_27__["GoogleAnalytics"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_28__["Platform"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_26__["ActivatedRoute"] },
-        { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_29__["UserProfileService"] }
+        { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_29__["UserProfileService"] },
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_32__["HttpClient"] },
+        { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_31__["DatabaseService"] }
     ]; };
     DemoAquariumComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -6222,7 +6276,9 @@ var DemoAquariumComponent = /** @class */ (function () {
             _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_27__["GoogleAnalytics"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_28__["Platform"],
             _angular_router__WEBPACK_IMPORTED_MODULE_26__["ActivatedRoute"],
-            src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_29__["UserProfileService"]])
+            src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_29__["UserProfileService"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_32__["HttpClient"],
+            src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_31__["DatabaseService"]])
     ], DemoAquariumComponent);
     return DemoAquariumComponent;
 }());
@@ -7848,7 +7904,7 @@ class GameRainforestL6 extends Phaser.State {
     animateRain(){
         //console.log("snow button loaded");
         this.rainingswitch = this.add.image(this.game.width - 100, 10, 'rain_start');
-        this.rainingswitch.scale.setTo(0.15, 0.15);
+        this.rainingswitch.scale.setTo(0.6, 0.6);
         this.rainingswitch.inputEnabled = true;
         this.rainingswitch.events.onInputDown.addOnce(this.startraining, this);
     }
@@ -10924,7 +10980,7 @@ class GameTundraL5 extends Phaser.State {
     animateSnow(){
         //console.log("snow button loaded");
         this.snowgswitch = this.add.image(5, 70, 'snow_start');
-        this.snowgswitch.scale.setTo(0.15, 0.15);
+        this.snowgswitch.scale.setTo(0.6, 0.6);
         this.snowgswitch.inputEnabled = true;
         this.snowgswitch.events.onInputDown.addOnce(this.startsnowing, this);
     }
@@ -11955,7 +12011,7 @@ class GameTundraL51 extends Phaser.State {
     animateSnow(){
         //console.log("snow button loaded");
         this.snowgswitch = this.add.image(5, 70, 'snow_start');
-        this.snowgswitch.scale.setTo(0.15, 0.15);
+        this.snowgswitch.scale.setTo(0.6, 0.6);
         this.snowgswitch.inputEnabled = true;
         this.snowgswitch.events.onInputDown.addOnce(this.startsnowing, this);
     }
@@ -12764,6 +12820,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_storage_aws_s3_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/storage/aws-s3.service */ "./src/app/storage/aws-s3.service.ts");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
+
 
 
 
@@ -12772,15 +12830,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AwardAltruismComponent = /** @class */ (function () {
-    function AwardAltruismComponent(ga, route, userProfileService, awsS3Service, router) {
+    function AwardAltruismComponent(ga, route, userProfileService, awsS3Service, db, router) {
         this.ga = ga;
         this.route = route;
         this.userProfileService = userProfileService;
         this.awsS3Service = awsS3Service;
+        this.db = db;
         this.router = router;
         this.reinforcementObj = {};
         this.reinforcement_data = {};
         this.modalObjectNavigationExtras = {};
+        this.pageTitle = " Award_Altruism";
         this.HeartsBackground = {
             heartHeight: 60,
             heartWidth: 64,
@@ -12967,7 +13027,21 @@ var AwardAltruismComponent = /** @class */ (function () {
             });
         }); });
     };
+    AwardAltruismComponent.prototype.ionViewDidEnter = function () {
+        var _this = this;
+        this.db.getDatabaseState().subscribe(function (rdy) {
+            if (rdy) {
+                _this.db.addTrack(_this.pageTitle, "Enter", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
+            }
+        });
+    };
     AwardAltruismComponent.prototype.ionViewDidLeave = function () {
+        var _this = this;
+        this.db.getDatabaseState().subscribe(function (rdy) {
+            if (rdy) {
+                _this.db.addTrack(_this.pageTitle, "Leave", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
+            }
+        });
     };
     AwardAltruismComponent.prototype.showaltruism = function () {
         var _this = this;
@@ -13078,6 +13152,7 @@ var AwardAltruismComponent = /** @class */ (function () {
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
         { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__["UserProfileService"] },
         { type: src_app_storage_aws_s3_service__WEBPACK_IMPORTED_MODULE_5__["AwsS3Service"] },
+        { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_7__["DatabaseService"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
     ]; };
     AwardAltruismComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -13090,6 +13165,7 @@ var AwardAltruismComponent = /** @class */ (function () {
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
             src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__["UserProfileService"],
             src_app_storage_aws_s3_service__WEBPACK_IMPORTED_MODULE_5__["AwsS3Service"],
+            src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_7__["DatabaseService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], AwardAltruismComponent);
     return AwardAltruismComponent;
@@ -13128,6 +13204,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_storage_aws_s3_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/storage/aws-s3.service */ "./src/app/storage/aws-s3.service.ts");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
+
 
 
 
@@ -13137,14 +13215,16 @@ __webpack_require__.r(__webpack_exports__);
 
 var AwardMemesComponent = /** @class */ (function () {
     //src="{{whichImage}}"
-    function AwardMemesComponent(ga, route, userProfileService, awsS3Service, router) {
+    function AwardMemesComponent(ga, route, userProfileService, awsS3Service, db, router) {
         this.ga = ga;
         this.route = route;
         this.userProfileService = userProfileService;
         this.awsS3Service = awsS3Service;
+        this.db = db;
         this.router = router;
         this.reinforcementObj = {};
         this.reinforcement_data = {};
+        this.pageTitle = " Award_Meme";
         this.viewWidth = 512;
         this.viewHeight = 350;
         this.timeStep = (1 / 60);
@@ -13187,6 +13267,22 @@ var AwardMemesComponent = /** @class */ (function () {
                 }
             });
         }); });
+    };
+    AwardMemesComponent.prototype.ionViewDidEnter = function () {
+        var _this = this;
+        this.db.getDatabaseState().subscribe(function (rdy) {
+            if (rdy) {
+                _this.db.addTrack(_this.pageTitle, "Enter", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
+            }
+        });
+    };
+    AwardMemesComponent.prototype.ionViewDidLeave = function () {
+        var _this = this;
+        this.db.getDatabaseState().subscribe(function (rdy) {
+            if (rdy) {
+                _this.db.addTrack(_this.pageTitle, "Leave", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
+            }
+        });
     };
     AwardMemesComponent.prototype.showmemes = function () {
         var _this = this;
@@ -13410,6 +13506,7 @@ var AwardMemesComponent = /** @class */ (function () {
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
         { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__["UserProfileService"] },
         { type: src_app_storage_aws_s3_service__WEBPACK_IMPORTED_MODULE_5__["AwsS3Service"] },
+        { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_7__["DatabaseService"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
     ]; };
     AwardMemesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -13424,6 +13521,7 @@ var AwardMemesComponent = /** @class */ (function () {
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
             src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__["UserProfileService"],
             src_app_storage_aws_s3_service__WEBPACK_IMPORTED_MODULE_5__["AwsS3Service"],
+            src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_7__["DatabaseService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], AwardMemesComponent);
     return AwardMemesComponent;
@@ -14470,6 +14568,177 @@ var UnlockedMemesComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/monitor/database.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/monitor/database.service.ts ***!
+  \*********************************************/
+/*! exports provided: DatabaseService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DatabaseService", function() { return DatabaseService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ionic_native_sqlite_porter_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/sqlite-porter/ngx */ "./node_modules/@ionic-native/sqlite-porter/ngx/index.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _ionic_native_sqlite_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/sqlite/ngx */ "./node_modules/@ionic-native/sqlite/ngx/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_7__);
+/* Installation:
+
+ionic install @ionic-native/sqlite @ionic-native/sqlite-porter
+ionic cordova plugin add cordova-sqlite-storage
+ionic cordova plugin add uk.co.workingedge.cordova.plugin.sqliteporter
+
+Follow reference: https://devdactic.com/ionic-4-sqlite-queries/
+*/
+
+
+
+
+
+
+
+
+var DatabaseService = /** @class */ (function () {
+    function DatabaseService(plt, sqlitePorter, sqlite, http) {
+        var _this = this;
+        this.plt = plt;
+        this.sqlitePorter = sqlitePorter;
+        this.sqlite = sqlite;
+        this.http = http;
+        this.dbReady = new rxjs__WEBPACK_IMPORTED_MODULE_6__["BehaviorSubject"](false);
+        this.tracks = new rxjs__WEBPACK_IMPORTED_MODULE_6__["BehaviorSubject"]([]);
+        this.plt.ready().then(function () {
+            _this.sqlite.create({
+                name: 'tracks.db',
+                location: 'default'
+            }).then(function (db) {
+                _this.database = db;
+                //this.dropTable();
+                //console.log("table deleted!");
+                _this.createDatabase();
+            });
+        });
+    }
+    DatabaseService.prototype.createDatabase = function () {
+        var _this = this;
+        console.log("start seedDatabase!");
+        return this.http.get('assets/track.sql', { responseType: 'text' })
+            .subscribe(function (sql) {
+            _this.sqlitePorter.importSqlToDb(_this.database, sql)
+                .then(function (_) {
+                console.log('Before displayTracks');
+                _this.displayTracks();
+                console.log('Tracks displayed');
+                _this.dbReady.next(true);
+            })
+                .catch(function (e) { return console.error("In seedDatabase:" + e); });
+        });
+    };
+    DatabaseService.prototype.getDatabaseState = function () {
+        return this.dbReady.asObservable();
+    };
+    DatabaseService.prototype.getTracks = function () {
+        return this.tracks.asObservable();
+    };
+    DatabaseService.prototype.dropTable = function () {
+        return this.database.executeSql('DROP TABLE IF EXISTS tracks').then(function (data) {
+            console.log('Table deleted!');
+        }).catch(function (e) {
+            console.log("dropTable:" + JSON.stringify(e));
+            //this.isTableExist();
+        });
+    };
+    DatabaseService.prototype.isTableExist = function () {
+        console.log("Inside isTableEmpty:");
+        //return this.database.executeSql('SELECT * FROM tracks', []).then(data => {
+        return this.database.executeSql("SELECT * FROM sqlite_master WHERE name ='tracks' and type='table'", []).then(function (data) {
+            var rowlength = data.rows.length;
+            console.log("isTableEmpty rowlength= " + rowlength);
+            return rowlength != 0;
+        }).catch(function (e) {
+            console.log("At isTableNotEmpty:" + JSON.stringify(e));
+        });
+    };
+    DatabaseService.prototype.isTableEmpty = function () {
+        console.log("Inside isTableEmpty:");
+        return this.database.executeSql('SELECT * FROM tracks', []).then(function (data) {
+            var rowlength = data.rows.length;
+            console.log("isTableEmpty rowlength= " + rowlength);
+            return rowlength == 0;
+        }).catch(function (e) {
+            console.log("At isTableNotEmpty:" + JSON.stringify(e));
+        });
+    };
+    DatabaseService.prototype.addTrack = function (pageName, eventStatus, username, day_count) {
+        var currentTime = moment__WEBPACK_IMPORTED_MODULE_7__().format('MMMM Do YYYY, h:mm:ss a Z');
+        var currentDate = moment__WEBPACK_IMPORTED_MODULE_7__().format('YYYYMMDD');
+        var unix_ts = new Date().getTime();
+        var data = [pageName, currentTime, currentDate, unix_ts, day_count, eventStatus, username];
+        return this.database.executeSql('INSERT INTO tracks (pageName, eventTime, eventDate, unix_ts, day_count, eventStatus, username) VALUES (?, ?, ?, ?, ?, ?, ?)', data).then(function (data) {
+            console.log(pageName + ' Track added!');
+            //this.displayTracks();
+        }).catch(function (e) { return console.log("In addTrack:" + pageName + " " + JSON.stringify(e)); });
+    };
+    DatabaseService.prototype.displayTracks = function () {
+        //let query = 'SELECT product.name, product.id, developer.name AS creator FROM product JOIN developer ON developer.id = product.creatorId';
+        return this.database.executeSql('SELECT * FROM tracks', []).then(function (data) {
+            var currentTracks = [];
+            var rowlength = data.rows.length;
+            console.log("data.rows= " + rowlength);
+            if (rowlength > 0) {
+                for (var i = 0; i < rowlength; i++) {
+                    console.log("data.rows= " + rowlength);
+                    console.log("displayTracks " + i + " pageName: " + data.rows.item(i).pageName);
+                    console.log("displayTracks " + i + " time: " + data.rows.item(i).eventTime);
+                    currentTracks.push({
+                        id: data.rows.item(i).id,
+                        pageName: data.rows.item(i).pageName,
+                        eventTime: data.rows.item(i).eventTime,
+                        eventDate: data.rows.item(i).eventDate,
+                        unix_ts: data.rows.item(i).unix_ts,
+                        day_count: data.rows.item(i).day_count,
+                        eventStatus: data.rows.item(i).eventStatus,
+                        username: data.rows.item(i).username,
+                    });
+                }
+                //console.log("currentTracks length: "+currentTracks.length);
+            }
+            //this.tracks.next(currentTracks);  announce new value to all subscribers
+        }).catch(function (e) { return console.log("In displayTracks:" + e); });
+    };
+    DatabaseService.prototype.exportDatabaseToJson = function () {
+        return this.sqlitePorter.exportDbToJson(this.database).then(function (res) {
+            console.log('Exported ' + JSON.stringify(res));
+            return res;
+        }).catch(function (e) { return console.error(e); });
+    };
+    DatabaseService.ctorParameters = function () { return [
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["Platform"] },
+        { type: _ionic_native_sqlite_porter_ngx__WEBPACK_IMPORTED_MODULE_3__["SQLitePorter"] },
+        { type: _ionic_native_sqlite_ngx__WEBPACK_IMPORTED_MODULE_5__["SQLite"] },
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"] }
+    ]; };
+    DatabaseService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_1__["Platform"],
+            _ionic_native_sqlite_porter_ngx__WEBPACK_IMPORTED_MODULE_3__["SQLitePorter"],
+            _ionic_native_sqlite_ngx__WEBPACK_IMPORTED_MODULE_5__["SQLite"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]])
+    ], DatabaseService);
+    return DatabaseService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/notification/notification.module.ts":
 /*!*****************************************************!*\
   !*** ./src/app/notification/notification.module.ts ***!
@@ -14549,6 +14818,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
+
+
 
 
 
@@ -14556,14 +14829,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var OneSignalService = /** @class */ (function () {
-    function OneSignalService(oneSignal, alertCtrl) {
+    function OneSignalService(oneSignal, alertCtrl, http, userProfileService) {
         this.oneSignal = oneSignal;
         this.alertCtrl = alertCtrl;
+        this.http = http;
+        this.userProfileService = userProfileService;
     }
     OneSignalService.prototype.initOneSignal = function () {
         //link for one signal tutorial ==========> https://devdactic.com/push-notifications-ionic-onesignal/
         var _this = this;
         //this.oneSignal.startInit('YOUR ONESIGNAL APP ID', 'YOUR ANDROID ID');
+        console.log("--Onesignal-- " + "init called");
         this.oneSignal.startInit(src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].oneSignalAppId, src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].firebaseConfig.messagingSenderId);
         this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.None);
         //this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
@@ -14590,11 +14866,20 @@ var OneSignalService = /** @class */ (function () {
             console.log("notification is opened at: " + _this.time + " formatted: " + _this.formattedTime);
             var additionalData = data.notification.payload.additionalData;
             //this.showAlert('Notification opened', 'You already read this before', additionalData.task);     
-            //this.showAlert('Notification opened',  "notification is opened at: "+this.time+" formatted: "+this.formattedTime);     
+            //this.showAlert('Notification opened',  "notification is opened at: "+this.time+" formatted: "+this.formattedTime);
         });
         //--- clearOneSignalNotifications
         //--- https://documentation.onesignal.com/docs/cordova-sdk
         this.oneSignal.endInit();
+        this.oneSignal.getPermissionSubscriptionState().then(function (status) {
+            console.log("--Onesignal-- " + JSON.stringify(status));
+            window.localStorage.setItem("oneSignalPlayerId", "" + status.subscriptionStatus.userId);
+            /*
+            this.userProfileService.userProfile.oneSignalPlayerId  = status.subscriptionStatus.userId;
+            this.userProfileService.saveProfileToDevice();
+            this.userProfileService.saveToServer();
+            */
+        });
     };
     OneSignalService.prototype.showAlert = function (title, msg) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
@@ -14624,14 +14909,18 @@ var OneSignalService = /** @class */ (function () {
     };
     OneSignalService.ctorParameters = function () { return [
         { type: _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_2__["OneSignal"] },
-        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"] }
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"] },
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClient"] },
+        { type: _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_7__["UserProfileService"] }
     ]; };
     OneSignalService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_2__["OneSignal"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"]])
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClient"],
+            _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_7__["UserProfileService"]])
     ], OneSignalService);
     return OneSignalService;
 }());
@@ -15220,19 +15509,57 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AyaSampleSurveyComponent", function() { return AyaSampleSurveyComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/google-analytics/ngx */ "./node_modules/@ionic-native/google-analytics/ngx/index.js");
+/* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
+/* harmony import */ var src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
+
+
+
 
 
 var AyaSampleSurveyComponent = /** @class */ (function () {
-    function AyaSampleSurveyComponent() {
+    function AyaSampleSurveyComponent(ga, userProfileService, db) {
+        this.ga = ga;
+        this.userProfileService = userProfileService;
+        this.db = db;
+        this.pageTitle = "Survey_aya";
     }
-    AyaSampleSurveyComponent.prototype.ngOnInit = function () { };
+    AyaSampleSurveyComponent.prototype.ngOnInit = function () {
+        this.ga.trackView(this.pageTitle)
+            .then(function () { console.log("trackView at Survey_aya!"); })
+            .catch(function (e) { return console.log('Error starting GoogleAnalytics == ' + e); });
+    };
+    AyaSampleSurveyComponent.prototype.ionViewDidEnter = function () {
+        var _this = this;
+        this.db.getDatabaseState().subscribe(function (rdy) {
+            if (rdy) {
+                _this.db.addTrack(_this.pageTitle, "Enter", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
+            }
+        });
+    };
+    AyaSampleSurveyComponent.prototype.ionViewDidLeave = function () {
+        var _this = this;
+        console.log(this.pageTitle + ": ionViewDidLeave");
+        this.db.getDatabaseState().subscribe(function (rdy) {
+            if (rdy) {
+                _this.db.addTrack(_this.pageTitle, "Leave", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
+            }
+        });
+    };
+    AyaSampleSurveyComponent.ctorParameters = function () { return [
+        { type: _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleAnalytics"] },
+        { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__["UserProfileService"] },
+        { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_3__["DatabaseService"] }
+    ]; };
     AyaSampleSurveyComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-aya-sample-survey',
             template: __webpack_require__(/*! raw-loader!./aya-sample-survey.component.html */ "./node_modules/raw-loader/index.js!./src/app/survey/aya-sample-survey/aya-sample-survey.component.html"),
             styles: [__webpack_require__(/*! ./aya-sample-survey.component.scss */ "./src/app/survey/aya-sample-survey/aya-sample-survey.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleAnalytics"],
+            src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__["UserProfileService"],
+            src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_3__["DatabaseService"]])
     ], AyaSampleSurveyComponent);
     return AyaSampleSurveyComponent;
 }());
@@ -15458,7 +15785,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 //console.log('holla: ' + questions);
                 this.survey2['reponse_ts'][questions] = {};
                 this.survey2['reponse_ts'][questions].ts = Date.now();
-                this.survey2['reponse_ts'][questions].readable_ts = moment__WEBPACK_IMPORTED_MODULE_7__().format("MMMM Do YYYY, h:mm:ss a");
+                this.survey2['reponse_ts'][questions].readable_ts = moment__WEBPACK_IMPORTED_MODULE_7__().format("MMMM Do YYYY, h:mm:ss a Z");
                 delete this.isQuestionIncomplete[questions]; //remove the key from isQuestionIncomplete
                 //console.log(JSON.stringify(this.survey2));
             };
@@ -15981,21 +16308,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/google-analytics/ngx */ "./node_modules/@ionic-native/google-analytics/ngx/index.js");
+/* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
+/* harmony import */ var src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
 
 
 //import { PreLoad } from '../../PreLoad';
 
+
+
 var SampleSurveyComponent = /** @class */ (function () {
-    function SampleSurveyComponent(ga) {
+    function SampleSurveyComponent(ga, userProfileService, db) {
         this.ga = ga;
+        this.userProfileService = userProfileService;
+        this.db = db;
+        this.pageTitle = "Survey_caregiver";
     }
     SampleSurveyComponent.prototype.ngOnInit = function () {
-        this.ga.trackView('Survey')
+        this.ga.trackView(this.pageTitle)
             .then(function () { console.log("trackView at Survey!"); })
             .catch(function (e) { return console.log('Error starting GoogleAnalytics == ' + e); });
     };
+    SampleSurveyComponent.prototype.ionViewDidEnter = function () {
+        var _this = this;
+        this.db.getDatabaseState().subscribe(function (rdy) {
+            if (rdy) {
+                _this.db.addTrack(_this.pageTitle, "Enter", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
+            }
+        });
+    };
+    SampleSurveyComponent.prototype.ionViewDidLeave = function () {
+        var _this = this;
+        console.log(this.pageTitle + ": ionViewDidLeave");
+        this.db.getDatabaseState().subscribe(function (rdy) {
+            if (rdy) {
+                _this.db.addTrack(_this.pageTitle, "Leave", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
+            }
+        });
+    };
     SampleSurveyComponent.ctorParameters = function () { return [
-        { type: _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleAnalytics"] }
+        { type: _ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleAnalytics"] },
+        { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__["UserProfileService"] },
+        { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_3__["DatabaseService"] }
     ]; };
     SampleSurveyComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -16005,7 +16358,9 @@ var SampleSurveyComponent = /** @class */ (function () {
         })
         //@PreLoad('life-insights')
         ,
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleAnalytics"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_native_google_analytics_ngx__WEBPACK_IMPORTED_MODULE_2__["GoogleAnalytics"],
+            src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__["UserProfileService"],
+            src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_3__["DatabaseService"]])
     ], SampleSurveyComponent);
     return SampleSurveyComponent;
 }());
@@ -16895,6 +17250,13 @@ var UserProfileService = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(UserProfileService.prototype, "oneSignalPlayerId", {
+        get: function () {
+            return this.userProfile.oneSignalPlayerId;
+        },
+        enumerable: true,
+        configurable: true
+    });
     UserProfileService.prototype.saveToServer = function () {
         this.loadProfileFromDevice();
         var userProfile = this.userProfile;
@@ -17135,7 +17497,7 @@ __webpack_require__.r(__webpack_exports__);
 var environment = {
     production: false,
     userServer: "http://adaptsdata.research.chop.edu:5000",
-    oneSignalAppId: "de3580a2-4aae-42c4-87cf-2c319c2df0c3",
+    oneSignalAppId: "f9c4370d-cbcb-4e6f-ab1f-25d1c41b8f3a",
     encyptString: "+Xr?SwA?EJ7m+g$c",
     firebaseConfig: {
         apiKey: "AIzaSyBK_PwjnsC01Q-a-sV7LsA7qIeIhCx4ts0",

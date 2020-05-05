@@ -219,7 +219,7 @@ export class GameRainforestL6 extends Phaser.State {
     animateRain(){
         //console.log("snow button loaded");
         this.rainingswitch = this.add.image(this.game.width - 100, 10, 'rain_start');
-        this.rainingswitch.scale.setTo(0.15, 0.15);
+        this.rainingswitch.scale.setTo(0.6, 0.6);
         this.rainingswitch.inputEnabled = true;
         this.rainingswitch.events.onInputDown.addOnce(this.startraining, this);
     }
