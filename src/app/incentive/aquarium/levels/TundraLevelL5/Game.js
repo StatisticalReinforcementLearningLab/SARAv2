@@ -263,7 +263,7 @@ export class GameTundraL5 extends Phaser.State {
     animateSnow(){
         //console.log("snow button loaded");
         this.snowgswitch = this.add.image(5, 70, 'snow_start');
-        this.snowgswitch.scale.setTo(0.15, 0.15);
+        this.snowgswitch.scale.setTo(0.6, 0.6);
         this.snowgswitch.inputEnabled = true;
         this.snowgswitch.events.onInputDown.addOnce(this.startsnowing, this);
     }
