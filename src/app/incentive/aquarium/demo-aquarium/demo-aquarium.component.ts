@@ -347,7 +347,6 @@ export class DemoAquariumComponent implements OnInit {
         this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
       }
     }); 
-  
     this.game.destroy();
   }
 
@@ -362,11 +361,4 @@ export class DemoAquariumComponent implements OnInit {
   ngAfterViewInit(){
         
   }  
-
-  ionViewDidLeave(){
-    this.game.destroy();
-  }
-
- 
-
 }
