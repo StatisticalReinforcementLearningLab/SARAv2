@@ -114,6 +114,8 @@ export class FishBowlL1 extends Phaser.State {
               if(data[i].name.valueOf() === "The clown fish")
                   this.animateClownFish();
 
+              //if(data[i].name.valueOf() === "Puffer fish")
+              //    this.animatePufferFish();
               
               //starfish
               if(data[i].name.valueOf() === "Star fish")

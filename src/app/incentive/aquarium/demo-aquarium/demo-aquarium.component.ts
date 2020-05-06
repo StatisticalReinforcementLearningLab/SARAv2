@@ -187,7 +187,7 @@ export class DemoAquariumComponent implements OnInit {
       .subscribe({
         next: data => console.log("--aquarium-- " + JSON.stringify(data)),
         error: error => console.error('There was an error!', error)
-      });
+    });
 }
 
   ionViewDidEnter(){
