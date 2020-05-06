@@ -30,6 +30,7 @@
     "@ionic-native/sqlite-porter": "^5.24.0",
     "@ionic-native/status-bar": "^5.17.0",
     "@ionic/angular": "^4.7.1",
+    "@ngrx/effects": "^9.1.1",
     "@ngrx/schematics": "^9.1.0",
     "@ngrx/store": "^8.5.2",
     "@ngrx/store-devtools": "^8.5.2",

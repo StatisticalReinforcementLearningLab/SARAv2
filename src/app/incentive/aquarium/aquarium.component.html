@@ -5,7 +5,7 @@
       <ion-buttons slot="start" *ngIf="isIOS">
         
         <ion-button style="color:#fff;" (click)="startInfoPage()">
-          <ion-icon name="information-circle"></ion-icon>
+          <ion-icon name="ios-help-circle"></ion-icon>
         </ion-button>
 
         <ion-button style="color:#fff;" (click)="startCheatPage()">
@@ -29,16 +29,16 @@
           -->
   
           <ion-button style="color:#fff;" (click)="startInfoPage()" *ngIf="!isIOS">
-            <ion-icon name="information-circle"></ion-icon>
+            <ion-icon name="ios-help-circle"></ion-icon>
           </ion-button>
   
           <ion-button (click)="startSurvey()"   *ngIf="isActive">
-              <ion-icon name="journal" style="color : white;"></ion-icon>
+              <ion-icon name="ios-create" style="color : white;"></ion-icon>
           </ion-button>
   
   
           <ion-button *ngIf="!isActive" (click)="dispalySurveyPausedMsg()" >
-              <ion-icon name="journal" style="color : #e74c3c;"></ion-icon>
+              <ion-icon name="ios-create" style="color : #e74c3c;"></ion-icon>
           </ion-button>
           <!--
           <ion-button href="{{surveyPath}}" *ngIf="isActive">Start Survey</ion-button> 
