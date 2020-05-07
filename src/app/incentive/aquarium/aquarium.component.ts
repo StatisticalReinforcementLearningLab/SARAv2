@@ -164,7 +164,8 @@ export class AquariumComponent implements OnInit {
     var currentTime = moment(); 
     var startTime = moment({hour: 18});  // 6pm
     var endTime = moment({hour: 23, minute: 59});  // 11:59pm
-    if(!currentTime.isBetween(startTime, endTime)) {
+    var notFirstTime = Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length > 0;
+    if(!currentTime.isBetween(startTime, endTime) && notFirstTime) {
       this.presentAlert('Please come back between 6 PM and midnight');
     } else if(this.userProfileService.surveyTakenForCurrentDay()) {
       this.presentAlert('You have already completed the survey for the day.');
