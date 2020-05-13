@@ -3,9 +3,11 @@ import { UserProfile, UserProfileFixed } from './user-profile.model';
 import { HttpClient } from '@angular/common/http';
 import * as firebase from 'firebase';
 import { environment } from 'src/environments/environment';
-import { BehaviorSubject, forkJoin } from 'rxjs';
+import { BehaviorSubject, forkJoin, Subscription } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import * as moment from 'moment';
+import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { NetworkService, ConnectionStatus } from '../../storage/network.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,15 +16,17 @@ export class UserProfileService {
   userProfile: UserProfile;
   userProfileFixed: UserProfileFixed;
   me = this;
+  saveToServerRequestInQueue = false;
   initialLoading =  new BehaviorSubject<boolean>(true);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private networkSvc: NetworkService,
+              private oneSignal: OneSignal) { }
 
-  //returns Observable that we can subsrbie to so as to trigger an action after 
-  //user profile has been initialized
+  //returns Observable that we can subscribed to so as to trigger an action after 
+  //user profiles have been initialized
   initializeObs(){
-    //get profile from server
-    // 
+    //get profiles from server
     console.log("user-profile.service.ts - initializeObs method");
     let getProfile = this.http.post<any>(environment.userServer+'/userinfo',{"empty":"empty"}); 
     let getProfileFixed = this.http.get<any>(environment.userServer+'/userinfofixed');
@@ -37,9 +41,9 @@ export class UserProfileService {
           let response2=response[1];
           console.log("initializeObs response1: "+  JSON.stringify(response1));
           console.log("initializeObs response2: "+  JSON.stringify(response2));
-          console.log("initializeOb - response1.username: " + response1.username);
-          console.log("initializeOb - !response1.username: " + !response1.username);
-          console.log("initializeOb - !response1.hasOwnProperty('username'): " + !response1.hasOwnProperty('username'));
+          // console.log("initializeOb - response1.username: " + response1.username);
+          // console.log("initializeOb - !response1.username: " + !response1.username);
+          // console.log("initializeOb - !response1.hasOwnProperty('username'): " + !response1.hasOwnProperty('username'));
 
           if (!response1.username || !response1.hasOwnProperty('username') ){
             console.log("blank or empty user_name");
@@ -62,6 +66,69 @@ export class UserProfileService {
       ));
   }
 
+  fetchUserProfile(){
+    //get userProfile from server
+    console.log("user-profile.service.ts - fetchUserProfile method");
+    let getProfile = this.http.post<any>(environment.userServer+'/userinfo',{"empty":"empty"}); 
+
+    return getProfile
+      .pipe(tap(
+        response =>
+        {
+          let serverCopyNewer = false;
+          console.log("fetchUserProfile response: "+  JSON.stringify(response));
+          // check if server copy is newer
+          if(response.hasOwnProperty("lastupdate") && response.lastupdate > this.userProfile.lastupdate)
+          {
+            this.userProfile = response;
+            if(this.userProfile.hasOwnProperty("AwardDollarDates")){
+              localStorage.setItem("AwardDollarDates", JSON.stringify( this.userProfile.AwardDollarDates));
+            }
+            localStorage.setItem("AwardDollar", JSON.stringify(this.userProfile.dollars));
+            this.userProfileFixed = response;
+            this.saveProfileToDevice();
+            serverCopyNewer = true;
+          }
+          else{
+            serverCopyNewer = false;
+          }         
+          return { "serverCopyNewer": serverCopyNewer}
+        }
+      ));
+  }
+
+
+  fetchUserProfileFixed(){
+    //get userProfileFixed from server
+    console.log("user-profile.service.ts - fetchUserProfileFixed method");
+    let getProfileFixed = this.http.get<any>(environment.userServer+'/userinfofixed');
+
+    return getProfileFixed
+      .pipe(tap(
+        response =>
+        {
+          let changed = false;
+          console.log("fetchUserProfileFixed response: "+  JSON.stringify(response));
+          let receivedUserFixedProfile:UserProfileFixed = response;
+          if(receivedUserFixedProfile.isActive !== this.userProfileFixed.isActive){
+            this.userProfileFixed = response;
+            this.saveProfileToDevice();
+            changed = true;
+          }
+          return { "changed": changed}
+        }
+      ));
+  }
+
+  addOneSignalPlayerId(){
+    this.oneSignal.getIds().then(async (id) =>  {
+      const playerId = id.userId;
+      this.userProfile.oneSignalPlayerId = id.userId;
+      console.log("onesignal player id: " + id);
+      this.saveProfileToDevice();
+      this.saveToServer();
+    });
+  }
   /* 
   addReinforcementData returns true if successful at adding the element (it doesn't already exist for the given date)
   date is a string of the format YYYYMMDD (e.g. "20170430")
@@ -159,20 +226,46 @@ export class UserProfileService {
     this.userProfile.versionNumber = versionNumber;
     this.saveProfileToDevice();
   }
+  saveToServerSub :Subscription;
 
   get oneSignalPlayerId(){
     return this.userProfile.oneSignalPlayerId;
   }
 
   saveToServer(){ 
-    this.loadProfileFromDevice(); 
-    const userProfile: UserProfile = this.userProfile;
-    this.http
-      .post(environment.userServer+'/setuserinfo',userProfile)
-      .subscribe(response =>{
-        console.log(response);
+    this.saveToServerRequestInQueue = true;
+    if(this.networkSvc.getCurrentNetworkStatus() == ConnectionStatus.Online){
+
+      this.loadProfileFromDevice(); 
+      const userProfile: UserProfile = this.userProfile;
+
+      this.http
+        .post(environment.userServer+'/setuserinfo',userProfile)
+        .subscribe(response =>{
+          console.log(response);
+          this.saveToServerRequestInQueue = false;
+        });
+    }
+    else{
+       this.saveToServerSub = this.networkSvc.onNetworkChange().subscribe(()=>{
+          if(this.networkSvc.getCurrentNetworkStatus() == ConnectionStatus.Online){
+            this.loadProfileFromDevice(); 
+            const userProfile: UserProfile = this.userProfile;
+      
+            this.http
+              .post(environment.userServer+'/setuserinfo',userProfile)
+              .subscribe(response =>{
+                console.log(response);
+                this.saveToServerRequestInQueue = false;
+                this.saveToServerSub.unsubscribe();
+              });
+          }
       });
-      console.log("saveToServer userProfile: " + JSON.stringify(userProfile));
+
+    }
+
+
+      // console.log("saveToServer userProfile: " + JSON.stringify(userProfile));
   } 
 
   retrieve(userID: string){
@@ -208,6 +301,7 @@ export class UserProfileService {
 
   loadProfileFromDevice(){
     this.userProfile = JSON.parse(localStorage.getItem('userProfile'));
+    this.userProfileFixed = JSON.parse(localStorage.getItem('userProfileFixed'));
     //temporarily commenting out below line (see other instance for more info)
     // this.userProfileFixed = JSON.parse(localStorage.getItem('userProfileFixed'));
 
