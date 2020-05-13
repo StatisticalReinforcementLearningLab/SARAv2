@@ -20,7 +20,7 @@ import { Subscription } from 'rxjs';
 export class AppComponent {
   public isShowingRouteLoadIndicator: boolean;
   loading;
-  isLoading = true;
+  // isLoading = true;
 
   get username(){
     if(this.userProfileService == undefined)
@@ -106,22 +106,35 @@ export class AppComponent {
 
   initializeApp() {
 
-    this.authService.autoLogin();
     if(this.authService.isLoggedIn()){
-      this.showLoading();
-      this.userSub = this.userProfileService.initializeObs().subscribe(() =>{        
-        this.dismissLoading();
-        this.isLoading = false;
-        console.log("successfully logged in");
+      this.userProfileService.loadProfileFromDevice();
+      // this.isLoading = false;
+
+      // get up to date userProfileFixed - to see if isActive has changed
+      this.userProfileService.fetchUserProfileFixed().subscribe(response=>{
+        if(response.changed){
+          // there was a change to isActive
+          // accessible via
+          // this.userProfileService.isActive
+        }
       });
-      // this.userProfileService.initialize();
-      // if we can for things to wait to progress in here
-      // then, we'll only need to load user profile here and at login in Auth component
+
+      // fetch a copy from server of userProfile to see if it's newer 
+      this.userProfileService.fetchUserProfile().subscribe(response=>{
+        if(response.serverCopyNewer){
+          // the server copy of the userProfile was newer (and has been updated locally)
+          // accessible via
+          // this.userProfileService.userProfile
+        }
+      });
+
+
     }
-    else{
-      console.log("log in unsuccessful.");
-      this.dismissLoading();
-      this.isLoading = false;
+
+    else {
+      // not logged in; so do nothing
+      // should be routed via the authguard to the login screen
+      // after login occurs we should load the UP and UPF - which happens via the auth.component
     }
 
     this.platform.ready().then(() => {
