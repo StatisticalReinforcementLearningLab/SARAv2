@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { DemoAquariumComponent } from '../../incentive/aquarium/demo-aquarium/demo-aquarium.component';
-import { Platform, AlertController, ModalController, NavController } from '@ionic/angular';
+import { Platform, AlertController, ModalController, NavController, MenuController } from '@ionic/angular';
 import * as moment from 'moment';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserProfileService } from '../../user/user-profile/user-profile.service';
@@ -33,6 +33,7 @@ export class AquariumComponent implements OnInit {
   modalDataSubscription$: any;
   title = "";
   isIOS = false;
+  navigate : any;
 
 
   get isActive(){
@@ -58,6 +59,7 @@ export class AquariumComponent implements OnInit {
     private modalController: ModalController,
     private store: Store<AppState>,
     public navController: NavController,
+    private menu: MenuController,
     private userProfileService: UserProfileService) { 
     console.log("Constructor called");
     this.sub1$=this.platform.pause.subscribe(() => {        
@@ -85,6 +87,37 @@ export class AquariumComponent implements OnInit {
       this.isIOS=true;
     }
 
+    this.sideMenu();
+
+  }
+
+  sideMenu()
+  {
+    this.navigate =
+    [
+      {
+        title : "Home",
+        url   : "/home",
+        icon  : "home"
+      },
+      {
+        title : "Chat",
+        url   : "/chat",
+        icon  : "chatboxes"
+      },
+      {
+        title : "Contacts",
+        url   : "/contacts",
+        icon  : "contacts"
+      },
+    ]
+  }
+
+  //show side menu
+  showSideMenu() {
+    console.log("side menu called");
+    this.menu.enable(true, 'first');
+    this.menu.open('first');
   }
 
   ionViewDidLeaveFunction(){
@@ -137,6 +170,7 @@ export class AquariumComponent implements OnInit {
 
     this.title = "ADAPTS";
     console.log("aquarium.component.ts --- start");
+    //this.menu.enable(true);
 
   }
 

@@ -119,6 +119,11 @@ export class DemoAquariumComponent implements OnInit {
 
 
 
+  showInfoModal(text){
+    console.log("rewards page");
+    this.presentAlert(text);
+  }
+
 
   goToRewardsPage(){
     console.log("rewards page");
@@ -231,7 +236,7 @@ export class DemoAquariumComponent implements OnInit {
             GameApp.CANVAS_HEIGHT += 30;
             GameApp.CANVAS_WIDTH = window.innerWidth;
         }
-        this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 42*window.devicePixelRatio, Phaser.AUTO, 'gameDiv');
+        this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 32*window.devicePixelRatio, Phaser.AUTO, 'gameDiv');
     }else if(this.platform.is('android'))
         this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 74, Phaser.AUTO, 'gameDiv');    
     else
@@ -361,4 +366,29 @@ export class DemoAquariumComponent implements OnInit {
   ngAfterViewInit(){
         
   }  
+
+  async presentAlert(alertMessage) {
+    
+    const alert = await this.alertCtrl.create({
+      //<div style="font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center">Thank you for completing the survey. You have unlocked a meme.</div>
+      //header: '<div style="line-height: 25px;padding-bottom:10px;text-align:center">Daily survey unavilable</div>',
+      header: 'Daily survey unavilable',
+      //subHeader: "Survey is not avaibable!",
+      message: alertMessage,
+      //defined in theme/variables.scss
+      //buttons: [{text: 'OK', cssClass: 'secondary'}]
+      buttons: [{text: 'OK'}]
+    });
+    
+    /*
+      let alert = this.alertCtrl.create({
+        title: 'Low battery',
+        subTitle: '10% of battery remaining',
+        buttons: ['Dismiss']
+      });
+    */
+
+    //----
+    await alert.present();
+  }
 }
