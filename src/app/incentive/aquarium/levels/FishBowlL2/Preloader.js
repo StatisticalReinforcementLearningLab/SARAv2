@@ -11,10 +11,29 @@ export class PreloaderL2 extends Phaser.State {
 		this.load.setPreloadSprite(this.preloadBar);
         
         //---- both aquariums
-        this.load.bitmapFont('eightbitwonder', 'assets/fonts/eightbitwonder.png', 'assets/fonts/eightbitwonder.fnt');
+		this.load.bitmapFont('eightbitwonder', 'assets/fonts/eightbitwonder.png', 'assets/fonts/eightbitwonder.fnt');
+		this.add.text(0, 0, "hack", {font:"1px dumbo_regular", fill:"#FFFFFF"});
 		this.load.json('fishpoints', 'assets/game/fishpoints.json');//fish json, points
 		this.load.image('fish_progress', 'assets/game/sprite/fish_progress_s.png');
-		this.load.spritesheet('timer', 'assets/game/sprite/timer.png', 150, 20);
+		//this.load.spritesheet('timer', 'assets/game/sprite/timer.png', 150, 20);
+		this.load.spritesheet('timer', 'assets/img/timer_red.png', 150, 20);
+		this.load.image('points_progress_2', 'assets/img/points_progress_2.png');
+		this.load.image('levels_progress', 'assets/img/levels_progress_2.png');
+		this.load.image('streak_info', 'assets/img/streak_info_2.png');
+		this.load.spritesheet('timer_grey', 'assets/img/timer_grey.png', 150, 20);
+		this.load.spritesheet('timer_yellow', 'assets/img/timer_yellow.png', 150, 20);
+		this.load.spritesheet('timer_pumpkin', 'assets/img/timer_pumpkin.png', 150, 20);
+		this.load.image('alt_icon', 'assets/img/heart.png');
+		this.load.image('next_fish_icon', 'assets/img/fish_icon_2.png');
+		this.load.image('meme_icon', 'assets/img/smiley_face.png');
+		this.load.spritesheet('level_up_progress', 'assets/img/level_up.png', 150, 20);
+		this.load.image('level_up_icon', 'assets/img/level_icon.png');
+		this.load.image('level_up_2', 'assets/img/level_up_2.png');
+		this.load.image('streak_green', 'assets/img/streak_green.png');
+		this.load.image('streak_red', 'assets/img/streak_red_2.png');
+		this.load.image('streak_grey', 'assets/img/streak_grey.png');
+		this.load.image('star_point', 'assets/img/star.png');
+		
 
 		var max = 8;
 		var min = 1;
@@ -31,7 +50,9 @@ export class PreloaderL2 extends Phaser.State {
 		//this.load.atlasJSONArray('banner', 'sprite/RedBanner.png', 'sprite/RedBanner.json');
 		this.load.image('banner', 'assets/img/RedBanner.png');
 		this.load.image('banner_fish', 'assets/img/banner_fish.png');
-
+		this.load.image('info', 'assets/img/info.png');
+		this.load.atlasJSONArray('info_sprite', 'assets/game/sprite/info_sprite.png', 'assets/game/sprite/info_sprite.json');
+		
 
 		//----
 		var next_fish = window.localStorage['next_fish'] || 'assets/img/aquarium_grey/clownfish.png';
