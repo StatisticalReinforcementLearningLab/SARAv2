@@ -33,6 +33,12 @@ export class AuthComponent implements OnInit, OnDestroy {
   // }
 
   ngOnInit(){
+    console.log("in auth.component - ngOnInit");
+    if(this.authService.isLoggedIn()){
+      console.log("auth.component.ts - ngOnInit - is logged in");
+      this.router.navigate(['home']);
+
+    }
     console.log(environment.userServer);
   }
 
@@ -71,34 +77,25 @@ export class AuthComponent implements OnInit, OnDestroy {
         .pipe(
           tap(
               ()=>{
-                this.oneSignal.getIds().then(async (id) =>  {
-                  const playerId = id.userId;
-                  this.userProfileService.userProfile.oneSignalPlayerId = id.userId;
-                  console.log("onesignal player id: " + id);
-                  this.userProfileService.saveProfileToDevice();
-                  this.userProfileService.saveToServer();
-                });
+                this.userProfileService.addOneSignalPlayerId();
               }
           )
         )
         .subscribe(
           ()=>
           {
-            //this.router.navigateByUrl('/home');
+            console.log("in subscribe - got profiles init");
             this.router.navigate(['home']);
-            this.isLoading = false;
-          }        
-        );      
+            console.log("in subscribe - got profiles init - post navigate to home");
+          });
+
       }
       else
       {
+        console.log("doesn't have access token");
         this.isLoading = false;
         this.authService.loggedInUser.next(null);
-
-        //for testing purposes.
-        // this.router.navigateByUrl('/home');
-        // console.log("log in did not succeed");
-
+        
         if(resData.hasOwnProperty('message')){
           this.error = resData.message;
         }
@@ -106,13 +103,13 @@ export class AuthComponent implements OnInit, OnDestroy {
           this.error = "Unknown error\n" + JSON.stringify(resData);
         }
       }
-      // console.log(resData);
     }, errorMessage=> {
       console.log(errorMessage);
       this.error = errorMessage;
       this.isLoading = false;
     });
     form.reset();
+
   }
 
 

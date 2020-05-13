@@ -109,6 +109,10 @@ export class AuthService {
 
   private handleError(errorRes: HttpErrorResponse){
       console.log("auth.service.ts - handleError method - begin");
+      if(errorRes.message.startsWith('Http failure response for')){
+        let errorMessage = 'You appear to be offline or unable to reach ' + errorRes.url;
+        return throwError(errorMessage);
+      }
       let errorMessage = 'An unknown error occurred!!!! \n' + JSON.stringify(errorRes);
       if(!errorRes.error || !errorRes.error.error){
         return throwError(errorMessage);
