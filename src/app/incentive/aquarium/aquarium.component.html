@@ -1,18 +1,31 @@
 <ion-header>
     <ion-toolbar class="new-background-color">
 
-
-      <ion-buttons slot="start" *ngIf="isIOS">
-        
-        <ion-button style="color:#fff;" (click)="startInfoPage()">
-          <ion-icon name="information-circle"></ion-icon>
+      <ion-buttons slot="start">
+        <ion-menu-button style="color:#fff;" menuId="first"></ion-menu-button>
+        <ion-button style="color:#fff;" (click)="startInfoPage()" *ngIf="isIOS">
+          <ion-icon name="ios-help-circle"></ion-icon>
         </ion-button>
 
-        <ion-button style="color:#fff;" (click)="startCheatPage()">
+        <ion-button style="color:#fff;" (click)="startCheatPage()" *ngIf="isIOS">
           <ion-icon name="alert"></ion-icon>
         </ion-button>
-
       </ion-buttons>
+
+      <!--
+        <ion-menu-button autoHide="false" style="color:#fff;" menuId="first" (click)="showSideMenu()"></ion-menu-button>
+        <ion-button style="color:#fff;" (click)="showSideMenu()">
+          <ion-icon name="menu"></ion-icon>
+        </ion-button>
+        
+        <ion-button style="color:#fff;" (click)="startInfoPage()" *ngIf="isIOS">
+          <ion-icon name="ios-help-circle"></ion-icon>
+        </ion-button>
+
+        <ion-button style="color:#fff;" (click)="startCheatPage()" *ngIf="isIOS">
+          <ion-icon name="alert"></ion-icon>
+        </ion-button>
+      -->
 
 
       <ion-buttons slot="end">
@@ -29,16 +42,16 @@
           -->
   
           <ion-button style="color:#fff;" (click)="startInfoPage()" *ngIf="!isIOS">
-            <ion-icon name="information-circle"></ion-icon>
+            <ion-icon name="ios-help-circle"></ion-icon>
           </ion-button>
   
           <ion-button (click)="startSurvey()"   *ngIf="isActive">
-              <ion-icon name="journal" style="color : white;"></ion-icon>
+              <ion-icon name="ios-create" style="color : white;"></ion-icon>
           </ion-button>
   
   
           <ion-button *ngIf="!isActive" (click)="dispalySurveyPausedMsg()" >
-              <ion-icon name="journal" style="color : #e74c3c;"></ion-icon>
+              <ion-icon name="ios-create" style="color : #e74c3c;"></ion-icon>
           </ion-button>
           <!--
           <ion-button href="{{surveyPath}}" *ngIf="isActive">Start Survey</ion-button> 

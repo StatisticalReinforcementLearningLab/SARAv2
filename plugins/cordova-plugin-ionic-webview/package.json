@@ -1,31 +1,27 @@
 {
-  "_args": [
-    [
-      "cordova-plugin-ionic-webview@4.1.3",
-      "/Users/mash2/Dropbox (PAC LAB)/codes/ionic_projects/SARAV3/SARA_modular"
-    ]
-  ],
-  "_from": "cordova-plugin-ionic-webview@4.1.3",
-  "_id": "cordova-plugin-ionic-webview@4.1.3",
+  "_from": "cordova-plugin-ionic-webview@4.2.1",
+  "_id": "cordova-plugin-ionic-webview@4.2.1",
   "_inBundle": false,
-  "_integrity": "sha512-hlrUF0kLjjEkZmpYlLJO0NnXmVjMmQ3MOZVXm1ytDihLPKHklYCOpCvjA5Wz3hJrPD1shFEsqi/SPnp873AsdQ==",
+  "_integrity": "sha512-7KrmqLaOGq1RP8N2z1ezN1kqkWFzTwwMvQ3/qAkd+exxFZuOe3DIN4eaU1gdNphsxdirI8Ajnr9q4So5vQbWqw==",
   "_location": "/cordova-plugin-ionic-webview",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "cordova-plugin-ionic-webview@4.1.3",
+    "raw": "cordova-plugin-ionic-webview@4.2.1",
     "name": "cordova-plugin-ionic-webview",
     "escapedName": "cordova-plugin-ionic-webview",
-    "rawSpec": "4.1.3",
+    "rawSpec": "4.2.1",
     "saveSpec": null,
-    "fetchSpec": "4.1.3"
+    "fetchSpec": "4.2.1"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-4.1.3.tgz",
-  "_spec": "4.1.3",
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-4.2.1.tgz",
+  "_shasum": "42a67bef248472659d421494feb8245ef27becfa",
+  "_spec": "cordova-plugin-ionic-webview@4.2.1",
   "_where": "/Users/mash2/Dropbox (PAC LAB)/codes/ionic_projects/SARAV3/SARA_modular",
   "author": {
     "name": "Ionic Team"
@@ -33,11 +29,13 @@
   "bugs": {
     "url": "https://github.com/ionic-team/cordova-plugin-ionic-webview/issues"
   },
+  "bundleDependencies": false,
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
+  "deprecated": false,
   "description": "Ionic Web View Engine Plugin",
   "devDependencies": {
     "@semantic-release/changelog": "^3.0.0",
@@ -105,5 +103,5 @@
     "sync_plugin_xml": "sync-cordova-xml package.json plugin.xml --output=plugin.xml",
     "version": "npm run sync_plugin_xml && git add plugin.xml"
   },
-  "version": "4.1.3"
+  "version": "4.2.1"
 }
