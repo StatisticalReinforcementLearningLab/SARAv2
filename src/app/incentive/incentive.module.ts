@@ -16,6 +16,10 @@ import { StoreModule } from '@ngrx/store';
 import {incentiveReducer} from './reducers';
 import { UnlockedMemesComponent } from './unlocked-memes/unlocked-memes.component';
 import { UnlockedAltuisticMessagesComponent } from './unlocked-altuistic-messages/unlocked-altuistic-messages.component';
+import { FishbowlComponent } from './aquarium/previews/fishbowl/fishbowl.component';
+import { SeaComponent } from './aquarium/previews/sea/sea.component';
+import { TundraComponent } from './aquarium/previews/tundra/tundra.component';
+import { RainforestComponent } from './aquarium/previews/rainforest/rainforest.component';
 
 const routes: Routes = [
 //  { path: 'award', component: AwardComponent },
@@ -24,7 +28,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AwardMemesComponent, AwardAltruismComponent, TreasurechestComponent, ModalUnlockedPageComponent,InfoPageComponent, UnlockedMemesComponent, UnlockedAltuisticMessagesComponent],
+  declarations: [AwardMemesComponent, AwardAltruismComponent, TreasurechestComponent, ModalUnlockedPageComponent,InfoPageComponent, UnlockedMemesComponent, UnlockedAltuisticMessagesComponent, FishbowlComponent, SeaComponent, TundraComponent, RainforestComponent],
   imports: [
     CommonModule,
     IonicModule.forRoot(),

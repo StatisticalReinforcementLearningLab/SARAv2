@@ -96,7 +96,6 @@ export class AppComponent {
 
   initializeApp() {
 
-
     this.authService.autoLogin();
     if(this.authService.isLoggedIn()){
       this.showLoading();

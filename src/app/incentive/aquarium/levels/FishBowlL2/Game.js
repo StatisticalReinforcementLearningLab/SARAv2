@@ -13,9 +13,12 @@ export class FishBowlL2 extends Phaser.State {
         this.isPrawnAdded = false;
         this.isClownFishAdded = false;
 
-        this.CANVAS_WIDTH = 382.0;
-        if(window.innerWidth > this.CANVAS_WIDTH)
-            this.CANVAS_WIDTH = window.innerWidth;
+        this.previoous_fish_point  = 0;
+        this.next_fish_point  = 0;
+
+        // = 382.0;
+        //if(window.innerWidth > this.CANVAS_WIDTH)
+        this.CANVAS_WIDTH = window.innerWidth;
         
         this.buildWorld();
         this.inputEnabled = false;
@@ -35,13 +38,25 @@ export class FishBowlL2 extends Phaser.State {
         titlescreen.scale.setTo(0.85, 0.85);
 
         //
-        this.add.sprite(5, 40, 'timer', 1);
-
-        //
         /*
         var fish_progress = this.add.image(175,50, 'clownfish_grey');
         fish_progress.scale.setTo(-0.3, 0.3);
         fish_progress.anchor.setTo(.5,.5);
+        */
+
+        //var info_progress_bar = this.add.image(175,50, 'info');
+        //info_progress_bar.scale.setTo(0.3, 0.3);
+        //info_progress_bar.anchor.setTo(.5,.5);
+
+        /*
+        var info_progress_bar = this.add.sprite(175,53, 'info_sprite');
+        info_progress_bar.animations.add('swim');
+        info_progress_bar.animations.play('swim', 1, true);
+        info_progress_bar.scale.setTo(0.3, 0.3);
+        info_progress_bar.anchor.setTo(.5,.5);
+        info_progress_bar.inputEnabled = true;
+        //function(){doAlert(textString)
+        info_progress_bar.events.onInputDown.add(function(){this.showInforBox("Info pregess bar cliccked")}, this);
         */
 
         /*
@@ -51,9 +66,24 @@ export class FishBowlL2 extends Phaser.State {
         this.badgecount = this.add.bitmapText(30, 73, 'eightbitwonder', "" + 2, 12);
         */
 
-        //this.totalPoints = 1000;
-        this.buildFish();
-        this.addFishes();
+        var treasure = this.add.image(90, this.height-70, 'treasure');
+        treasure.scale.setTo(0.3, 0.3);
+        treasure.inputEnabled = true;
+        treasure.events.onInputDown.add(this.showunlockables, this);
+
+        //this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Fishes Fed: ' + this.totalClicks, 20);
+        /*
+        this.totalPoints = 100;
+        var points_str = "" + this.totalPoints;
+        if(this.totalPoints < 10)
+            points_str = "000" + this.totalPoints;
+        if(this.totalPoints>=10 && this.totalPoints<100)
+            points_str = "00" + this.totalPoints;
+        if(this.totalPoints>=100 && this.totalPoints<1000)
+            points_str = "0" + this.totalPoints;
+        */
+
+           
 
         //
         /*
@@ -63,10 +93,7 @@ export class FishBowlL2 extends Phaser.State {
         journal.events.onInputDown.add(this.logdata, this);  
         */ 
 
-        var treasure = this.add.image(90, this.height-70, 'treasure');
-        treasure.scale.setTo(0.3, 0.3);
-        treasure.inputEnabled = true;
-        treasure.events.onInputDown.add(this.showunlockables, this);
+        
 
         //
         this.game.onPause.add(this.yourGamePausedFunc, this);
@@ -74,11 +101,284 @@ export class FishBowlL2 extends Phaser.State {
 
 
 
-        //this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Fishes Fed: ' + this.totalClicks, 20);
-        this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
+        
+
+        //this.totalPoints = 1000;
+        this.buildFish();
+        this.addFishes();
+
+        //
+        this.showProgressBars();
 
         //this.checkReinforcement();
+        this.showBanner();
 
+    }
+
+    showProgressBars(){
+
+        var current_points = this.totalPoints;
+
+        //------ Left side
+
+        
+
+        //level info
+        //var levels_progress = this.add.image(5, 55, 'levels_progress');
+        //levels_progress.scale.setTo(.27, .30);
+
+        /*
+        //
+        var levels_progress = this.add.sprite(10, 58, 'level_up_progress', 0);
+        levels_progress.scale.setTo(0.95, 1.2);
+
+        //var progress_sprite = this.game.add.sprite(88, 59, 'level_up_progress', 1);
+        var progress_sprite = this.game.add.sprite(10, 59, 'level_up_progress', 1);
+        var rect = new Phaser.Rectangle(50, 0, 0, progress_sprite.height);
+        var percent = (current_points-this.previoous_fish_point)/(this.next_fish_point-this.previoous_fish_point);
+        if(percent == 0)
+          percent = 0.05;
+        console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        //progress_sprite.anchor.setTo(0,0);
+        progress_sprite.scale.setTo(1,1.1);
+
+
+        var level_up_icon = this.add.image(18, 68, 'level_up_icon');
+        level_up_icon.scale.setTo(.5, .5);
+        level_up_icon.anchor.setTo(.5, .5);
+
+        var info_level_progress = this.add.sprite(2 + levels_progress.width + 18, 74, 'info_sprite');
+        info_level_progress.animations.add('swim');
+        info_level_progress.animations.play('swim', 1, true);
+        info_level_progress.scale.setTo(0.3, 0.3);
+        info_level_progress.anchor.setTo(.5,.5);
+        info_level_progress.inputEnabled = true;
+        info_level_progress.events.onInputDown.add(function(){this.showInforBox("Info level progress bar clicked")}, this); 
+
+        
+        //progress_sprite.anchor.setTo(1,0);
+        //progress_sprite.scale.setTo(0.8,0.8);
+        */
+
+
+
+        //streak_info
+        var streak_info = this.add.image(5, 5, 'streak_info');
+        streak_info.scale.setTo(.30, .30);
+
+        var info_level_streak = this.add.sprite(2 + streak_info.width + 14, 24, 'info_sprite');
+        info_level_streak.animations.add('swim');
+        info_level_streak.animations.play('swim', 1, true);
+        info_level_streak.scale.setTo(0.3, 0.3);
+        info_level_streak.anchor.setTo(.5,.5);
+        info_level_streak.inputEnabled = true;
+        info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
+
+        var colors = ['green','green','green','green','grey','green','grey'];
+        var streak_tile;
+        for(var i=0; i < colors.length; i++){
+            streak_tile = this.add.image(40 + i*15, 11, 'streak_' + colors[i]);
+            streak_tile.scale.setTo(.15*4, .27*4);
+        }
+
+
+        //------ Right side
+
+
+        //points bar
+        vertical_position_offset = 13;
+        var points_progress = this.add.image(this.CANVAS_WIDTH, 2, 'points_progress_2');
+        points_progress.scale.setTo(.36, .30);
+        points_progress.anchor.setTo(1,0);
+        var points_text = this.add.text(this.CANVAS_WIDTH - 70, 10, "" + this.totalPoints, {font:"20px dumbo_regular", fill:"#4c3d01"});
+        points_text.anchor.setTo(0.5,0);
+
+        var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+5, 'star_point');
+        star_icon.scale.setTo(.52, .52);
+        star_icon.anchor.setTo(.5, .5);
+
+        /*
+        var info_points = this.add.sprite(2 + points_progress.width + 13, 32, 'info_sprite');
+        info_points.animations.add('swim');
+        info_points.animations.play('swim', 1, true);
+        info_points.scale.setTo(0.3, 0.3);
+        info_points.anchor.setTo(.5,.5);
+        info_points.inputEnabled = true;
+        //function(){doAlert(textString)
+        info_points.events.onInputDown.add(function(){this.showInforBox("Info pregess bar cliccked 2")}, this); 
+        */
+
+        
+        //points to get to next fish.
+        vertical_position_offset = 40;
+        var progress_bar_fish =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_grey', 1);
+        progress_bar_fish.anchor.setTo(1,0);
+        progress_bar_fish.scale.setTo(0.8,0.5);
+
+        var progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_grey', 0);
+        var rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        var percent = (current_points-this.previoous_fish_point)/(this.next_fish_point-this.previoous_fish_point);
+        if(percent == 0)
+          percent = 0.05;
+        console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8,0.5);
+
+        var fish_progress_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+8, 'next_fish_icon');
+        fish_progress_icon.scale.setTo(.2*0.8, .2*0.8);
+        fish_progress_icon.anchor.setTo(.5, .5);
+        
+
+        
+        //points to get to meme.
+        vertical_position_offset = 65;
+        var progress_bar_memes =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 1);
+        progress_bar_memes.anchor.setTo(1,0);
+        progress_bar_memes.scale.setTo(0.8,0.5);
+
+        var start_number_of_memes = 0;
+        var total_number_of_memes = 31;
+        var already_shown_memes = window.localStorage["already_shown_memes3"];
+        if(already_shown_memes == undefined)
+            already_shown_memes = [{"filename": "assets/memes/4.jpg", "unlock_date": "blah"}]
+        else
+            already_shown_memes = JSON.parse(window.localStorage["already_shown_memes3"]);
+        var currently_number_of_unlocked_memes = already_shown_memes.length;
+
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (currently_number_of_unlocked_memes-start_number_of_memes)/
+                  (total_number_of_memes-start_number_of_memes);
+        percent = percent*0.8 + 0.2;
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8,0.5);
+
+        var meme_icon = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+10, 'meme_icon');
+        meme_icon.scale.setTo(.52*0.8, .52*0.8);
+        meme_icon.anchor.setTo(.5, .5);
+
+
+        //points to get to alt message.
+        var vertical_position_offset = 90;
+        var progress_bar_altruism_message =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer', 1);
+        progress_bar_altruism_message.anchor.setTo(1,0);
+        progress_bar_altruism_message.scale.setTo(0.8,0.5);
+
+        var start_number_of_alt_messages = 0;
+        var total_number_of_alt_messages = 21;
+
+        var already_shown_altruism_msgs = window.localStorage["already_shown_alt_msg3"];
+        if(already_shown_altruism_msgs == undefined)
+            already_shown_altruism_msgs = [{"filename": "assets/altruism/altruism_1.png", "unlock_date": "blah"}]
+        else
+            already_shown_altruism_msgs = JSON.parse(window.localStorage["already_shown_alt_msg3"]);
+        var currently_number_of_unlocked_alt_messages = already_shown_altruism_msgs.length;
+
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (currently_number_of_unlocked_alt_messages-start_number_of_alt_messages)/
+                        (total_number_of_alt_messages-start_number_of_alt_messages);
+        //if(percent < 0.05)
+        percent = percent*0.8 + 0.2;
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Alt Width, " + rect.width  + "," + percent);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8,0.5);
+
+        
+        var alt_icon = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+12, 'alt_icon');
+        alt_icon.scale.setTo(.12*0.8, .12*0.8);
+        alt_icon.anchor.setTo(.5, .5);
+        
+
+
+        //points to get to level up.
+        var vertical_position_offset = 115;
+        var progress_bar_level_up =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 1);
+        progress_bar_level_up.anchor.setTo(1,0);
+        progress_bar_level_up.scale.setTo(0.8,0.5);
+
+        // end of level is 1060, start is at 0
+        var start_point_for_level = 0;
+        var end_point_for_level = 1060;
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (current_points-start_point_for_level)/(end_point_for_level-start_point_for_level);
+        percent = percent*0.8 + 0.2;
+        //console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        //console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8,0.5);
+
+        var level_up_2 = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+12, 'level_up_2');
+        level_up_2.scale.setTo(.12*0.9, .12*0.9);
+        level_up_2.anchor.setTo(.5, .5);
+
+
+
+
+
+
+        //this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
+        //console.log("countdown.width " + this.countdown.width);
+
+        
+    }
+
+    showBanner(){
+        this.banner_object = this.add.group();
+        //--- banner
+        var banner = this.add.image(0, this.height-180, 'banner');
+        banner.scale.setTo(.65, .95);
+        banner.inputEnabled = true;
+        //banner.events.onInputDown.add(this.hideBanner, this);
+        this.banner_object.add(banner);
+        banner.events.onInputDown.add(this.hideBanner, this);
+
+        var banner_fish = this.add.image(290, this.height-210, 'info');
+        banner_fish.scale.setTo(1, 1);
+        banner_fish.inputEnabled = true;
+        //banner_fish.events.onInputDown.add(this.hideBanner, this);
+        this.banner_object.add(banner_fish);
+        banner_fish.events.onInputDown.add(this.hideBanner, this);
+
+        //
+        var style = { font: "18px Arial", fill: "#f1c40f", align: "left", fontWeights: 'lighter' };
+        var text = this.add.text(10, this.height-165, "New sea level is unlocked.\nClick the fish bowl\nto go to earlier level.", style);
+        text.strokeThickness = 0;
+        text.inputEnabled = true;
+        //text.events.onInputDown.add(this.hideBanner, this);
+        this.banner_object.add(text);
+        text.events.onInputDown.add(this.hideBanner, this);
+
+        //
+        var style = { font: "13px Arial", fill: "#f1c40f", align: "left", fontStyle: 'italic', fontWeights: 'lighter'};
+        var text2 = this.add.text(215, this.height-105, "Tap to hide", style);
+        text2.strokeThickness = 0;
+        text2.inputEnabled = true;
+        //text2.events.onInputDown.add(this.hideBanner, this);
+        this.banner_object.add(text2);
+        text2.events.onInputDown.add(this.hideBanner, this);
+
+        //make a left ot right animation.
+    }
+
+    hideBanner(elem){
+        console.log("clicked");
+        this.banner_object.destroy(true);
+        window.localStorage['banner_shown_2'] = "1";
+        //deleted all the elements
     }
     
 
@@ -119,6 +419,9 @@ export class FishBowlL2 extends Phaser.State {
                 //nemo
                 if(data[i].name.valueOf() === "The clown fish")
                     this.animateClownFish();
+
+                //if(data[i].name.valueOf() === "Puffer fish")
+                //    this.animatePufferFish();
 
                 //starfish
                 if(data[i].name.valueOf() === "Star fish")
@@ -171,25 +474,17 @@ export class FishBowlL2 extends Phaser.State {
           }
 
           //set the progres bar
-          var previoous_fish_point = 0;
-          var next_fish_point = 0;
+          this.previoous_fish_point = 0;
+          this.next_fish_point = 0;
           for(var i = 0; i < data.length; i++) {
               if(current_points < data[i].points){
-                next_fish_point = data[i].points;
+                this.next_fish_point = data[i].points;
                 break;
               }else{
-                previoous_fish_point = data[i].points;
+                this.previoous_fish_point = data[i].points;
               }
           }
-          //console.log("" + current_points + "," + previoous_fish_point + "," + next_fish_point);
-          this.progress_sprite = this.game.add.sprite(5, 40, 'timer', 0);
-          var rect = new Phaser.Rectangle(0, 0, 0, this.progress_sprite.height);
-          var percent = (current_points-previoous_fish_point)/(next_fish_point-previoous_fish_point);
-          console.log("" + current_points + "," + previoous_fish_point + "," + next_fish_point + "," + percent);
-          rect.width = Math.max(0, percent * this.progress_sprite.width);
-
-          console.log("Width, " + rect.width  + "," + this.progress_sprite.width);
-          this.progress_sprite.crop(rect);
+          
 
     }  
 
@@ -465,6 +760,11 @@ export class FishBowlL2 extends Phaser.State {
     showunlockables(){
         console.log('treasure box clicked');
         this.componentObject.goToRewardsPage();
+    }
+
+    showInforBox(text){
+        //console.log('treasure box clicked');
+        this.componentObject.showInfoModal(text);
     }
 
     logdata() {

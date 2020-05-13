@@ -21,6 +21,11 @@ import { AyaSampleSurveyComponent } from './survey/aya-sample-survey/aya-sample-
 import { AuthGuard } from './user/auth/auth.guard';
 import { AuthComponent } from './user/auth/auth.component';
 import { InfoPageComponent } from './incentive/info-page/info-page.component';
+import { ContactComponent } from './home/contact/contact.component';
+import { FishbowlComponent } from './incentive/aquarium/previews/fishbowl/fishbowl.component';
+import { SeaComponent } from './incentive/aquarium/previews/sea/sea.component';
+import { TundraComponent } from './incentive/aquarium/previews/tundra/tundra.component';
+import { RainforestComponent } from './incentive/aquarium/previews/rainforest/rainforest.component';
 
 
 const routes: Routes = [
@@ -52,7 +57,12 @@ const routes: Routes = [
   { path: 'incentive/aquariumone', component: DemoAquariumComponent, canActivate: [AuthGuard]},
   { path: 'incentive/award-memes', component: AwardMemesComponent, canActivate: [AuthGuard]},
   { path: 'incentive/award-altruism', component: AwardAltruismComponent, canActivate: [AuthGuard]},
-  { path: 'incentive/infopage', component: InfoPageComponent, canActivate: [AuthGuard]}
+  { path: 'contact-study-staff', component: ContactComponent, canActivate: [AuthGuard]},
+  { path: 'incentive/infopage', component: InfoPageComponent, canActivate: [AuthGuard]},
+  { path: 'preview/fishbowl', component: FishbowlComponent, canActivate: [AuthGuard]},
+  { path: 'preview/sea', component: SeaComponent, canActivate: [AuthGuard]},
+  { path: 'preview/tundra', component: TundraComponent, canActivate: [AuthGuard]},
+  { path: 'preview/rainforest', component: RainforestComponent, canActivate: [AuthGuard]}
 
   //{ path: 'incentive/award-memes', component: AwardMemesComponent },
   //{ path: 'incentive/aquariumone', component: DemoAquariumComponent },  
