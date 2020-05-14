@@ -30,6 +30,10 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { ErrorsModule } from './errors/errors.module';
+import { HttpService } from './errors/http.service';
+import { NotificationService } from './errors/notification.service';
+
 
 
 @NgModule({
@@ -44,6 +48,7 @@ import { environment } from '../environments/environment';
     LifeInsightsModule,
     NotificationModule,
     HttpClientModule,
+    ErrorsModule,
     AquariumModule,
     FormsModule,
     UserModule,
@@ -66,6 +71,8 @@ import { environment } from '../environments/environment';
     OneSignal,
     AwardDollarService,
     AppVersion,
+    HttpService,
+    NotificationService,
     SQLite,
     SQLitePorter,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy}

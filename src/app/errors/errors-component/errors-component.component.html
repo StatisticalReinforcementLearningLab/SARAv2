@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-title style="color:#fff;">Error</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding no-border>
+<div class="error-container" class="scroll" scrollY="true">
+
+    <div  *ngIf="routeParams?.error">
+      <p>ERROR {{ routeParams?.error }}</p>
+     </div>
+    
+  </div>
+
+  <ion-button style="color:#fff;" (click)="reportError()">Report error</ion-button> <br>
+
+</ion-content>

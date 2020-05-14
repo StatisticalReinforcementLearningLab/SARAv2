@@ -12,6 +12,7 @@ import { LoadingController } from '@ionic/angular';
 import { UserProfileService } from './user/user-profile/user-profile.service';
 import { AuthService } from './user/auth/auth.service';
 import { Subscription } from 'rxjs';
+import { NotificationService } from './errors/notification.service';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,8 @@ export class AppComponent {
   public isShowingRouteLoadIndicator: boolean;
   loading;
   isLoading = true;
+  notification: string;
+  showNotification: boolean;
 
   constructor(
     private router: Router, 
@@ -30,7 +33,8 @@ export class AppComponent {
     private oneSignalService: OneSignalService,
     private authService: AuthService,
     private userProfileService: UserProfileService,
-    public loadingController: LoadingController
+    private notificationService: NotificationService,
+    public loadingController: LoadingController    
    ) {
     this.initializeApp();
 
@@ -86,6 +90,12 @@ export class AppComponent {
   private userSub: Subscription;
 
   ngOnInit(){
+    this.notificationService
+            .notification$
+            .subscribe(message => { 
+              this.notification = message;
+              this.showNotification = false;
+            });
   }
 
   ngOnDestroy(){
