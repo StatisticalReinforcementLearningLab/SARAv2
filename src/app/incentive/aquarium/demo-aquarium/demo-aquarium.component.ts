@@ -47,7 +47,7 @@ import * as moment from 'moment';
 import { AlertController } from '@ionic/angular';
 import { ModalUnlockedPageComponent } from '../modal-unlocked-page/modal-unlocked-page.component';
 import { DatabaseService } from 'src/app/monitor/database.service';
-
+import { HttpClient } from '@angular/common/http';
 
 declare let Phaser: any;
 
@@ -81,6 +81,51 @@ export class DemoAquariumComponent implements OnInit {
     }
   }
 
+  //Get total submitted survey
+  getTotalSurveyCount(){
+    return Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;
+  }
+
+  /* Get last seven days of indicator for survey completion, 
+  return an array of 7 elements like [0, 1, 0, 0, 0, 1, 0] 
+  with 1 indicating submitted survey, 0 otherwise, the first
+  element is current day.               */
+
+  getIndicatorForSurveyDone(){
+    var daily_survey = this.userProfileService.userProfile.survey_data.daily_survey;
+
+    console.log("daily_survey:");
+    console.log(JSON.stringify(daily_survey));
+    var indicatorArray = [];
+
+    //daily_survey = {};
+    if(Object.keys(daily_survey).length == 0){
+      indicatorArray.push(0);
+      return indicatorArray;
+    }
+      
+    const orderedDatesKeys = Object.keys(daily_survey).sort()
+    var first_date = orderedDatesKeys[0];
+    //first_date = "20200515";
+
+    for(let i = 0; i < 7; i++) {
+      var previousdate = moment().subtract(i, "days").format("YYYYMMDD");
+      //console.log(JSON.stringify(this.userProfileService.userProfile.survey_data.daily_survey));
+      var indicator = 0;
+      if(previousdate in daily_survey){
+        indicator = 1;
+      }
+      indicatorArray.push(indicator);
+
+      // as may days user is in in the study. no blank filling
+      if(first_date == previousdate)
+        break;
+    }
+
+
+    return indicatorArray;
+
+  }
 
 /*   get surveyPath(){
     if (this.userProfileService.isParent){
@@ -98,6 +143,7 @@ export class DemoAquariumComponent implements OnInit {
     private platform: Platform,
     private route: ActivatedRoute,
     private userProfileService: UserProfileService,
+    private httpClient: HttpClient,
     private db: DatabaseService) { 
     console.log("Constructor called");
     
@@ -116,6 +162,11 @@ export class DemoAquariumComponent implements OnInit {
 
 
 
+
+  showInfoModal(text){
+    console.log("rewards page");
+    this.presentAlert(text);
+  }
 
 
   goToRewardsPage(){
@@ -156,7 +207,37 @@ export class DemoAquariumComponent implements OnInit {
   ngOnInit() {
      //this.loadFunction();
     
+    this.sendUserIdToServerFor8PMNotification();
   }
+
+  async sendUserIdToServerFor8PMNotification(){
+    // Simple POST request with a JSON body and response type <any>
+
+    console.log("--aquarium-- " + "sendUserIdToServerFor8PMNotification");
+    var oneSignalPlayerId = window.localStorage['oneSignalPlayerId']; //this.userProfileService.oneSignalPlayerId;
+    if(oneSignalPlayerId=="null" || oneSignalPlayerId==null || oneSignalPlayerId==undefined){
+      console.log("oneSignalId is null, " + oneSignalPlayerId);
+      //return;
+    }
+      
+
+    var username = this.userProfileService.username;
+    var currentTimeTs = Date.now();
+    var currentTimeReadableTs = moment().format("MMMM Do YYYY, h:mm:ss a Z");
+    const headers = { "Content-Type": "application/json;charset=UTF-8"};
+    const body = {"user_id": username, "oneSignalPlayerId": oneSignalPlayerId, "currentTimeTs": currentTimeTs, "currentTimeReadableTs": currentTimeReadableTs};
+    /*
+    this.httpClient.post<any>("http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/store-onesignal-id", body, { headers }).subscribe({
+      next: data => console.log(data),
+      error: error => console.error('There was an error!', error)
+    });
+    */
+    this.httpClient.post("http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/store-onesignal-id", body)
+      .subscribe({
+        next: data => console.log("--aquarium-- " + JSON.stringify(data)),
+        error: error => console.error('There was an error!', error)
+    });
+}
 
   ionViewDidEnter(){
     //if(this.isLoaded == true)
@@ -167,7 +248,7 @@ export class DemoAquariumComponent implements OnInit {
   //this function gets called from the above the "aquarium.component.ts"
   loadFunction(){
 
-    console.log(window.localStorage['TotalPoints']);
+    //console.log(window.localStorage['TotalPoints']);
 
     this.db.getDatabaseState().subscribe(rdy => {
       if (rdy) {     
@@ -191,7 +272,7 @@ export class DemoAquariumComponent implements OnInit {
     console.log("w: " + window.innerWidth + ", h: " + window.innerHeight + ", dp: " + window.devicePixelRatio);
     if(window.innerWidth > GameApp.CANVAS_WIDTH)
         GameApp.CANVAS_WIDTH = window.innerWidth;
-    GameApp.CANVAS_HEIGHT = window.innerHeight;
+    GameApp.CANVAS_HEIGHT = window.innerHeight - 35;
 
     //var game;
     if(this.platform.is('ios')){
@@ -199,7 +280,7 @@ export class DemoAquariumComponent implements OnInit {
             GameApp.CANVAS_HEIGHT += 30;
             GameApp.CANVAS_WIDTH = window.innerWidth;
         }
-        this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 36*window.devicePixelRatio, Phaser.AUTO, 'gameDiv');
+        this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 32*window.devicePixelRatio, Phaser.AUTO, 'gameDiv');
     }else if(this.platform.is('android'))
         this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 74, Phaser.AUTO, 'gameDiv');    
     else
@@ -224,6 +305,7 @@ export class DemoAquariumComponent implements OnInit {
       this.game.state.add('Preloader', preLoader);
       var fishBowlL1 = new FishBowlL1();
       fishBowlL1.setTotalPoints(this.totalPoints);
+
       this.game.state.add('FishBowlL1', fishBowlL1);
 
 
@@ -235,6 +317,8 @@ export class DemoAquariumComponent implements OnInit {
       this.game.state.add('Preloader', preLoader);
       var fishBowlL2 = new FishBowlL2();
       fishBowlL2.setTotalPoints(this.totalPoints);
+      var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+      fishBowlL2.setSurveyHistory(surveyCompletionHistory);
       this.game.state.add('FishBowlL2', fishBowlL2);
 
 
@@ -315,7 +399,6 @@ export class DemoAquariumComponent implements OnInit {
         this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
       }
     }); 
-  
     this.game.destroy();
   }
 
@@ -331,10 +414,28 @@ export class DemoAquariumComponent implements OnInit {
         
   }  
 
-  ionViewDidLeave(){
-    this.game.destroy();
+  async presentAlert(alertMessage) {
+    
+    const alert = await this.alertCtrl.create({
+      //<div style="font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center">Thank you for completing the survey. You have unlocked a meme.</div>
+      //header: '<div style="line-height: 25px;padding-bottom:10px;text-align:center">Daily survey unavilable</div>',
+      header: 'Daily survey unavilable',
+      //subHeader: "Survey is not avaibable!",
+      message: alertMessage,
+      //defined in theme/variables.scss
+      //buttons: [{text: 'OK', cssClass: 'secondary'}]
+      buttons: [{text: 'OK'}]
+    });
+    
+    /*
+      let alert = this.alertCtrl.create({
+        title: 'Low battery',
+        subTitle: '10% of battery remaining',
+        buttons: ['Dismiss']
+      });
+    */
+
+    //----
+    await alert.present();
   }
-
- 
-
 }

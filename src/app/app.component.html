@@ -1,5 +1,62 @@
 <ion-app> 
   <app-terms-of-service *ngIf="!agreeToTerms"></app-terms-of-service>
-  <ion-router-outlet *ngIf="agreeToTerms && !isLoading"></ion-router-outlet>
+
+
+  <ion-menu content-id="menu" side="start" menuId="first" type="overlay" swipeEnabled="false" *ngIf="agreeToTerms && !isLoading">
+    <!--
+    <ion-header>
+      <ion-toolbar>
+        <ion-icon name="contact"></ion-icon>
+        <ion-title>mash_aya</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    -->
+    <ion-content>
+      
+      <ion-header>
+        <ion-toolbar>
+          <br>
+          <ion-avatar style="margin: auto;">
+            <img src="https://raw.githubusercontent.com/ionic-team/ionic-docs/master/src/demos/api/avatar/avatar.svg">
+          </ion-avatar>
+          <h2 style="text-align: center;">mash_aya</h2>
+        </ion-toolbar>
+      </ion-header>
+
+      
+
+      <ion-list>
+        <ion-item><h2>Levels</h2></ion-item>
+        <ion-item>
+          <p><br>ADAPTS app contains 4-levels. Preview/review the levels by clicking the links below</p>
+        </ion-item>
+
+        <ion-item [routerLink]="['/preview/fishbowl']">
+          Level 1: Fishbowl
+        </ion-item>
+        <ion-item [routerLink]="['/preview/sea']">
+          Level 2: Sea
+        </ion-item>
+        <ion-item  [routerLink]="['/preview/tundra']">
+          Level 3: Tundra
+        </ion-item>
+        <ion-item [routerLink]="['/preview/rainforest']">
+          Level 4: Reinforest
+        </ion-item>
+        <ion-item><br><br></ion-item>
+        <ion-item [routerLink]="['/contact-study-staff']">
+          <ion-icon name="call"></ion-icon>
+          &nbsp; Contact study staff
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet *ngIf="agreeToTerms && !isLoading" id="menu"></ion-router-outlet>
+
+  <!--
+  <ion-router-outlet id="menu"></ion-router-outlet>
+  
+  
+  -->
 </ion-app>
 

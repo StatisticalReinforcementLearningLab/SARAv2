@@ -50,6 +50,13 @@ export class FishBowlL1 extends Phaser.State {
         */
 
         //
+        var treasure = this.add.image(90, this.height-80, 'treasure');
+        treasure.scale.setTo(0.3, 0.3);
+        treasure.inputEnabled = true;
+        treasure.events.onInputDown.add(this.showunlockables, this);
+
+        
+        //
         this.buildFish();
         this.addFishes();
 
@@ -61,11 +68,7 @@ export class FishBowlL1 extends Phaser.State {
         journal.events.onInputDown.add(this.logdata, this);
         */
 
-        //
-        var treasure = this.add.image(90, this.height-80, 'treasure');
-        treasure.scale.setTo(0.3, 0.3);
-        treasure.inputEnabled = true;
-        treasure.events.onInputDown.add(this.showunlockables, this);
+        
 
         //
         this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
@@ -114,6 +117,8 @@ export class FishBowlL1 extends Phaser.State {
               if(data[i].name.valueOf() === "The clown fish")
                   this.animateClownFish();
 
+              //if(data[i].name.valueOf() === "Puffer fish")
+              //    this.animatePufferFish();
               
               //starfish
               if(data[i].name.valueOf() === "Star fish")

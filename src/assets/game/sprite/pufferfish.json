@@ -1,76 +1,76 @@
-{"frames": [
+{"frames": {
 
+"pufferfish-0.png":
 {
-	"filename": "0.png",
-	"frame": {"x":0,"y":0,"w":91,"h":86},
+	"frame": {"x":1,"y":387,"w":91,"h":44},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":28,"w":91,"h":44},
+	"sourceSize": {"w":91,"h":86}
+},
+"pufferfish-1.png":
+{
+	"frame": {"x":1,"y":327,"w":91,"h":58},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":28,"w":91,"h":58},
+	"sourceSize": {"w":91,"h":86}
+},
+"pufferfish-2.png":
+{
+	"frame": {"x":1,"y":253,"w":91,"h":72},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":10,"w":91,"h":72},
+	"sourceSize": {"w":91,"h":86}
+},
+"pufferfish-3.png":
+{
+	"frame": {"x":1,"y":433,"w":90,"h":86},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":90,"h":86},
+	"sourceSize": {"w":91,"h":86}
+},
+"pufferfish-4.png":
+{
+	"frame": {"x":1,"y":521,"w":90,"h":86},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":0,"w":90,"h":86},
+	"sourceSize": {"w":91,"h":86}
+},
+"pufferfish-5.png":
+{
+	"frame": {"x":1,"y":1,"w":91,"h":86},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":91,"h":86},
 	"sourceSize": {"w":91,"h":86}
 },
+"pufferfish-6.png":
 {
-	"filename": "2.png",
-	"frame": {"x":91,"y":0,"w":91,"h":86},
+	"frame": {"x":1,"y":89,"w":91,"h":84},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":91,"h":86},
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":91,"h":84},
 	"sourceSize": {"w":91,"h":86}
 },
+"pufferfish-7.png":
 {
-	"filename": "4.png",
-	"frame": {"x":182,"y":0,"w":91,"h":86},
+	"frame": {"x":1,"y":175,"w":91,"h":76},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":91,"h":86},
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":91,"h":76},
 	"sourceSize": {"w":91,"h":86}
-},
-{
-	"filename": "6.png",
-	"frame": {"x":273,"y":0,"w":91,"h":86},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":91,"h":86},
-	"sourceSize": {"w":91,"h":86}
-},
-{
-	"filename": "8.png",
-	"frame": {"x":364,"y":0,"w":91,"h":86},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":91,"h":86},
-	"sourceSize": {"w":91,"h":86}
-},
-{
-	"filename": "10.png",
-	"frame": {"x":455,"y":0,"w":91,"h":86},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":91,"h":86},
-	"sourceSize": {"w":91,"h":86}
-},
-{
-	"filename": "12.png",
-	"frame": {"x":546,"y":0,"w":91,"h":86},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":91,"h":86},
-	"sourceSize": {"w":91,"h":86}
-},
-{
-	"filename": "14.png",
-	"frame": {"x":637,"y":0,"w":91,"h":86},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":91,"h":86},
-	"sourceSize": {"w":91,"h":86}
-}],
+}},
 "meta": {
-	"app": "http://www.codeandweb.com/texturepacker",
+	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "pufferfish.png",
+	"image": "puffer.png",
 	"format": "RGBA8888",
-	"size": {"w":728,"h":86},
+	"size": {"w":93,"h":608},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:34ad2a6c34a10ef0d0ea320150918da1:ea8577d55807ab4e3805f9350629fb51:f1e6183fc2b774cb2ef298e74ede9be9$"
+	"smartupdate": "$TexturePacker:SmartUpdate:8cf220bec3bab0af863beb0f8f89a16f:1b5ce1a9af89a2253d56212629df3505:7e6c41f3d280e856bf28c6c50a9d21f2$"
 }
 }
