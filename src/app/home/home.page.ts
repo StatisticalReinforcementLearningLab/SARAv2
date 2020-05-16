@@ -1,4 +1,5 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
+import { AquariumComponent } from '../incentive/aquarium/aquarium.component';
 
 
 @Component({
@@ -8,6 +9,21 @@ import { Component, OnInit} from '@angular/core';
 })
 
 export class HomePage  implements OnInit {
+
+  @ViewChild(AquariumComponent, {static: true}) child;
+
   ngOnInit(): void {
   }
+
+  ionViewDidEnter(){
+    console.log("ionViewDidEnterFunction");
+    //this.child.ionViewDidEnterFunction();
+  }
+
+
+  ionViewDidLeave(){
+    console.log("ionViewDidLeaveFunction");
+    //this.child.ionViewDidLeaveFunction();
+  }
+
 }

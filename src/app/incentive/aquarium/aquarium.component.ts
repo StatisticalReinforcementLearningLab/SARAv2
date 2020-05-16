@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { DemoAquariumComponent } from '../../incentive/aquarium/demo-aquarium/demo-aquarium.component';
-import { Platform, AlertController, ModalController } from '@ionic/angular';
+import { Platform, AlertController, ModalController, NavController, MenuController } from '@ionic/angular';
 import * as moment from 'moment';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserProfileService } from '../../user/user-profile/user-profile.service';
@@ -33,6 +33,7 @@ export class AquariumComponent implements OnInit {
   modalDataSubscription$: any;
   title = "";
   isIOS = false;
+  navigate : any;
 
 
   get isActive(){
@@ -45,11 +46,11 @@ export class AquariumComponent implements OnInit {
 
   startCheatPage(){
     //this.router.navigate(['incentive/tundra']);
-    this.router.navigate(['incentive/cheatpoints']);
+    this.navController.navigateRoot(['incentive/cheatpoints']);
   }
 
   startInfoPage(){
-    this.router.navigate(['incentive/infopage']);
+    this.navController.navigateRoot(['incentive/infopage']);
   }
 
   constructor(private platform: Platform, private alertCtrl: AlertController, 
@@ -57,6 +58,8 @@ export class AquariumComponent implements OnInit {
     private route: ActivatedRoute, 
     private modalController: ModalController,
     private store: Store<AppState>,
+    public navController: NavController,
+    private menu: MenuController,
     private userProfileService: UserProfileService) { 
     console.log("Constructor called");
     this.sub1$=this.platform.pause.subscribe(() => {        
@@ -73,7 +76,7 @@ export class AquariumComponent implements OnInit {
         this.money = 0;
     else{
         try{
-          this.money = JSON.parse(localStorage.getItem("AwardDollar"));
+          this.money = parseInt(window.localStorage['AwardDollar']);
         }catch(error){
           window.localStorage.setItem("AwardDollar", ""+0); 
           this.money = 0;
@@ -84,17 +87,54 @@ export class AquariumComponent implements OnInit {
       this.isIOS=true;
     }
 
+    this.sideMenu();
+
   }
 
-  ionViewDidLeave(){
-    console.log("ionDidLeave");
+  sideMenu()
+  {
+    this.navigate =
+    [
+      {
+        title : "Home",
+        url   : "/home",
+        icon  : "home"
+      },
+      {
+        title : "Chat",
+        url   : "/chat",
+        icon  : "chatboxes"
+      },
+      {
+        title : "Contacts",
+        url   : "/contacts",
+        icon  : "contacts"
+      },
+    ]
+  }
+
+  //show side menu
+  showSideMenu() {
+    console.log("side menu called");
+    this.menu.enable(true, 'first');
+    this.menu.open('first');
+  }
+
+  ionViewDidLeaveFunction(){
     this.child.ionViewDidLeaveFunction();
 
     //unsubscribe from model view.
     this.modalDataSubscription$.unsubscribe();
   }
 
+  ionViewDidLeave() {
+    console.log("ionDidLeave");
+    this.ionViewDidLeaveFunction();
+  }
+
   ionViewDidEnter() {
+
+    console.log("ionViewDidEnter");
     this.child.loadFunction();
       
     //decide if we want to show the modal view with unlockables.
@@ -103,8 +143,7 @@ export class AquariumComponent implements OnInit {
   }
 
   ionViewWillUnload() {
-    this.sub1$.unsubscribe();
-    this.sub2$.unsubscribe();
+    
   }
 
   ngOnInit(): void {
@@ -131,10 +170,15 @@ export class AquariumComponent implements OnInit {
 
     this.title = "ADAPTS";
     console.log("aquarium.component.ts --- start");
+    //this.menu.enable(true);
 
   }
 
   ngOnDestroy(){
+    this.sub1$.unsubscribe();
+    this.sub2$.unsubscribe();
+
+    this.ionViewDidLeaveFunction();
     console.log("aquarium.component.ts --- destroy");
   }
 
@@ -164,22 +208,28 @@ export class AquariumComponent implements OnInit {
     var currentTime = moment(); 
     var startTime = moment({hour: 18});  // 6pm
     var endTime = moment({hour: 23, minute: 59});  // 11:59pm
-    if(!currentTime.isBetween(startTime, endTime)) {
+    var firstLogin = this.userProfileService.userProfile.firstlogin;
+    if(firstLogin == undefined)  firstLogin = true;
+    this.userProfileService.userProfile.firstlogin = false;
+    this.userProfileService.saveProfileToDevice();
+    this.userProfileService.saveToServer();
+    if(!currentTime.isBetween(startTime, endTime) && !firstLogin) {
       this.presentAlert('Please come back between 6 PM and midnight');
     } else if(this.userProfileService.surveyTakenForCurrentDay()) {
       this.presentAlert('You have already completed the survey for the day.');
     } else {
       if (this.userProfileService.isParent){
-        this.router.navigate(['survey/samplesurvey']);  //caregiversurvey
+        this.navController.navigateRoot(['survey/samplesurvey']);  //caregiversurvey
       } else{
-        this.router.navigate(['survey/samplesurvey2']);  //aya
+        this.navController.navigateRoot(['survey/samplesurvey2']);  //aya
       }
 
     } 
+
   }
 
   async openSurvey(location){
-    this.router.navigate([location]);
+    this.navController.navigateRoot([location]);
   }
 
   async presentAlert(alertMessage) {

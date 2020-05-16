@@ -6,6 +6,7 @@ import { TreasurechestComponent } from '../incentive/treasurechest/treasurechest
 import { UnlockedMemesComponent } from '../incentive/unlocked-memes/unlocked-memes.component';
 import { UnlockedAltuisticMessagesComponent } from '../incentive/unlocked-altuistic-messages/unlocked-altuistic-messages.component';
 import { AuthGuard } from '../user/auth/auth.guard';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,9 @@ const routes: Routes = [
       },
       {
         path: 'thankyous', component: UnlockedAltuisticMessagesComponent, canActivate: [AuthGuard]
+      },
+      {
+        path: 'contact', component: ContactComponent, canActivate: [AuthGuard]
       },
       {
         path: '',
