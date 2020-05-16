@@ -15,6 +15,8 @@ import { IncentiveModule } from '../incentive/incentive.module';
 import { AyaSampleSurveyComponent } from './aya-sample-survey/aya-sample-survey.component';
 import { StoreModule } from '@ngrx/store';
 import {surveyReducer} from './reducers';
+import {EffectsModule} from '@ngrx/effects';
+import { SurveyEffects } from './survey.effects';
 
 const routes: Routes = [
     { path: 'samplesurvey', component: SampleSurveyComponent }
@@ -37,7 +39,8 @@ const routes: Routes = [
     StorageModule,
     IncentiveModule,
     RouterModule.forChild(routes),
-    StoreModule.forFeature('survey', surveyReducer)
+    StoreModule.forFeature('survey', surveyReducer),
+    EffectsModule.forFeature([SurveyEffects])
   ],
   exports:[
     //InitiatedDrinkComponent,
