@@ -164,6 +164,13 @@ var UserProfileService = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(UserProfileService.prototype, "oneSignalPlayerId", {
+        get: function () {
+            return this.userProfile.oneSignalPlayerId;
+        },
+        enumerable: true,
+        configurable: true
+    });
     UserProfileService.prototype.saveToServer = function () {
         this.loadProfileFromDevice();
         var userProfile = this.userProfile;
@@ -222,7 +229,13 @@ var UserProfileService = /** @class */ (function () {
             this.userProfile.readable_ts = dateString;
             // console.log("in SurveyCompleted, AwardDollarDates: "+ localStorage.getItem("AwardDollarDates"));
             this.userProfile.AwardDollarDates = JSON.parse(localStorage.getItem("AwardDollarDates")); //fetch AwardDollarDates from local storage and add it to the UserProfile
-            this.userProfile.dollars = JSON.parse(localStorage.getItem("AwardDollar"));
+            try {
+                this.userProfile.dollars = JSON.parse(localStorage.getItem("AwardDollar"));
+            }
+            catch (error) {
+                window.localStorage.setItem("AwardDollar", "" + 0);
+                this.userProfile.dollars = 0;
+            }
             this.saveProfileToDevice();
             this.saveToServer();
         }
@@ -280,7 +293,7 @@ var UserProfileService = /** @class */ (function () {
     };
     UserProfileService.prototype.addSurveyPoints = function () {
         console.log("user-profile.service.ts - addSurveyPoints method - begin");
-        var pointsPerSurvey = 100;
+        var pointsPerSurvey = 60;
         this.addPoints(pointsPerSurvey);
     };
     UserProfileService.prototype.addPoints = function (points) {

@@ -4,6 +4,7 @@ export class FishBowlL2 extends Phaser.State {
     constructor(){
         super();
         this.componentObject;
+        this.surveyHistory = [];
     }
     
     create() {
@@ -15,6 +16,8 @@ export class FishBowlL2 extends Phaser.State {
 
         this.previoous_fish_point  = 0;
         this.next_fish_point  = 0;
+
+        
 
         // = 382.0;
         //if(window.innerWidth > this.CANVAS_WIDTH)
@@ -177,9 +180,21 @@ export class FishBowlL2 extends Phaser.State {
         info_level_streak.inputEnabled = true;
         info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
 
-        var colors = ['green','green','green','green','grey','green','grey'];
+
+        var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
+        for(var i=0; i < this.surveyHistory.length; i++){
+            if(this.surveyHistory[i] == 1)
+                colors[i] = 'green';
+            else
+                colors[i] = 'grey';
+        }   
+        colors = colors.reverse()
+        
+        //console.log("this.surveyHistory " + this.surveyHistory);
+        console.log("colors " + colors);
+        //colors = ['green','green','green','green','grey','green','grey'];
         var streak_tile;
-        for(var i=0; i < colors.length; i++){
+        for(var i=0; i < this.surveyHistory.length; i++){
             streak_tile = this.add.image(40 + i*15, 11, 'streak_' + colors[i]);
             streak_tile.scale.setTo(.15*4, .27*4);
         }
@@ -781,5 +796,14 @@ export class FishBowlL2 extends Phaser.State {
 
 	setTotalPoints(totalPoints){
 		this.totalPoints = totalPoints;
-	}    
+    }   
+    
+    setSurveyHistory(survey_history){
+        console.log("survey_history " + survey_history + ", length: " + survey_history.length);
+        //this.surveyHistory = survey_history;
+        for(var i=0; i<survey_history.length; i++)
+            this.surveyHistory.push(survey_history[i]);
+
+        //console.log("setSurveyHistory function finished");
+    }
 }
