@@ -97,15 +97,32 @@ export class DemoAquariumComponent implements OnInit {
     console.log("daily_survey:");
     console.log(JSON.stringify(daily_survey));
     var indicatorArray = [];
+
+    //daily_survey = {};
+    if(Object.keys(daily_survey).length == 0){
+      indicatorArray.push(0);
+      return indicatorArray;
+    }
+      
+    const orderedDatesKeys = Object.keys(daily_survey).sort()
+    var first_date = orderedDatesKeys[0];
+    //first_date = "20200515";
+
     for(let i = 0; i < 7; i++) {
       var previousdate = moment().subtract(i, "days").format("YYYYMMDD");
-      console.log(JSON.stringify(this.userProfileService.userProfile.survey_data.daily_survey));
+      //console.log(JSON.stringify(this.userProfileService.userProfile.survey_data.daily_survey));
       var indicator = 0;
       if(previousdate in daily_survey){
         indicator = 1;
       }
       indicatorArray.push(indicator);
+
+      // as may days user is in in the study. no blank filling
+      if(first_date == previousdate)
+        break;
     }
+
+
     return indicatorArray;
 
   }
@@ -288,6 +305,7 @@ export class DemoAquariumComponent implements OnInit {
       this.game.state.add('Preloader', preLoader);
       var fishBowlL1 = new FishBowlL1();
       fishBowlL1.setTotalPoints(this.totalPoints);
+
       this.game.state.add('FishBowlL1', fishBowlL1);
 
 
@@ -299,6 +317,8 @@ export class DemoAquariumComponent implements OnInit {
       this.game.state.add('Preloader', preLoader);
       var fishBowlL2 = new FishBowlL2();
       fishBowlL2.setTotalPoints(this.totalPoints);
+      var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+      fishBowlL2.setSurveyHistory(surveyCompletionHistory);
       this.game.state.add('FishBowlL2', fishBowlL2);
 
 
