@@ -237,7 +237,7 @@ export class AquariumComponent implements OnInit {
     const alert = await this.alertCtrl.create({
       //<div style="font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center">Thank you for completing the survey. You have unlocked a meme.</div>
       //header: '<div style="line-height: 25px;padding-bottom:10px;text-align:center">Daily survey unavilable</div>',
-      header: 'Daily survey unavilable',
+      header: 'Daily survey unavailable',
       //subHeader: "Survey is not avaibable!",
       message: alertMessage,
       //defined in theme/variables.scss
