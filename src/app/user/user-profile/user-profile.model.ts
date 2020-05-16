@@ -28,6 +28,7 @@ export class UserProfile {
     public datesTaken: string[];
     public points: number;
     public badgeCount: number;
+    public firstlogin: any;
 
     // created constructor to initialize UserProfile - early on
     constructor(username: string, 
