@@ -9,6 +9,7 @@ import { AquariumModule } from '../incentive/aquarium/aquarium.module';
 import { HeaderComponent } from './header/header.component';
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
 import { HomeRoutingModule } from './home-routing.module';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,7 @@ import { HomeRoutingModule } from './home-routing.module';
       }
     ])
   ],
-  declarations: [HomePage, HeaderComponent, TermsOfServiceComponent],
+  declarations: [HomePage, HeaderComponent, TermsOfServiceComponent, ContactComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports:[TermsOfServiceComponent]
 })

@@ -17,10 +17,6 @@
     "cordova-plugin-ionic-keyboard": {
       "PACKAGE_NAME": "edu.harvard.srl.SARA"
     },
-    "cordova-plugin-ionic-webview": {
-      "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
-      "PACKAGE_NAME": "edu.harvard.srl.SARA"
-    },
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "edu.harvard.srl.SARA"
     },
@@ -37,6 +33,10 @@
       "PACKAGE_NAME": "edu.harvard.srl.SARA"
     },
     "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "edu.harvard.srl.SARA"
+    },
+    "cordova-plugin-ionic-webview": {
+      "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
       "PACKAGE_NAME": "edu.harvard.srl.SARA"
     }
   },

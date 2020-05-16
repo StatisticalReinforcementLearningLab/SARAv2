@@ -1,39 +1,40 @@
 import * as tslib_1 from "tslib";
 import { Component } from '@angular/core';
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import { AwsS3Service } from 'src/app/storage/aws-s3.service';
+import * as moment from 'moment';
+import { DatabaseService } from 'src/app/monitor/database.service';
 var AwardMemesComponent = /** @class */ (function () {
     //src="{{whichImage}}"
-    function AwardMemesComponent(ga, route, userProfileService, awsS3Service, router) {
-        var _this = this;
-        this.ga = ga;
+    function AwardMemesComponent(route, userProfileService, awsS3Service, db, router) {
         this.route = route;
         this.userProfileService = userProfileService;
         this.awsS3Service = awsS3Service;
+        this.db = db;
         this.router = router;
         this.reinforcementObj = {};
         this.reinforcement_data = {};
+        this.pageTitle = " Award_Meme";
         this.viewWidth = 512;
         this.viewHeight = 350;
         this.timeStep = (1 / 60);
+        this.modalObjectNavigationExtras = {};
         this.reinforcementObj['ds'] = 1;
         this.reinforcementObj['reward'] = 1;
         this.reinforcementObj['reward_type'] = 'meme';
+    }
+    AwardMemesComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.route.queryParams.subscribe(function (params) {
             if (_this.router.getCurrentNavigation().extras.state) {
                 _this.date = _this.router.getCurrentNavigation().extras.state.date;
                 _this.reinforcementObj['prob'] = _this.router.getCurrentNavigation().extras.state.prob;
                 _this.reinforcement_data = _this.router.getCurrentNavigation().extras.state.reinforcement_data;
+                _this.modalObjectNavigationExtras = _this.router.getCurrentNavigation().extras.state.modalObjectNavigationExtras;
                 console.log("Inside AwardMemes, date is: " + _this.date + " prob is: " + _this.reinforcementObj['prob']);
             }
         });
-    }
-    AwardMemesComponent.prototype.ngOnInit = function () {
-        this.ga.trackView('Life-insight')
-            .then(function () { console.log("trackView at Life-insight!"); })
-            .catch(function (e) { return console.log(e); });
     };
     AwardMemesComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
@@ -55,6 +56,22 @@ var AwardMemesComponent = /** @class */ (function () {
             });
         }); });
     };
+    AwardMemesComponent.prototype.ionViewDidEnter = function () {
+        var _this = this;
+        this.db.getDatabaseState().subscribe(function (rdy) {
+            if (rdy) {
+                _this.db.addTrack(_this.pageTitle, "Enter", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
+            }
+        });
+    };
+    AwardMemesComponent.prototype.ionViewDidLeave = function () {
+        var _this = this;
+        this.db.getDatabaseState().subscribe(function (rdy) {
+            if (rdy) {
+                _this.db.addTrack(_this.pageTitle, "Leave", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
+            }
+        });
+    };
     AwardMemesComponent.prototype.showmemes = function () {
         var _this = this;
         //window.localStorage['meme_shuffle5'] = "[]";
@@ -64,7 +81,14 @@ var AwardMemesComponent = /** @class */ (function () {
         this.meme_data = this.shuffle(this.meme_data);
         //console.log('Meme suffled: ' + JSON.stringify(this.meme_data));
         var picked_meme = this.pick_meme(this.meme_data);
-        //console.log('picked_meme: ' + JSON.stringify(picked_meme));
+        var already_shown = window.localStorage["already_shown_memes3"];
+        if (already_shown == undefined)
+            already_shown = [{ "filename": "assets/memes/4.jpg", "unlock_date": moment().format('MM/DD/YYYY') }];
+        else
+            already_shown = JSON.parse(window.localStorage["already_shown_memes3"]);
+        console.log("already_shown: " + already_shown);
+        already_shown.push({ "filename": "assets/memes/" + picked_meme[0]["filename"], "unlock_date": moment().format('MM/DD/YYYY') });
+        window.localStorage["already_shown_memes3"] = JSON.stringify(already_shown);
         this.whichImage = "./assets/memes/" + picked_meme[0]["filename"];
         this.reinforcementObj['reward_img_link'] = "/memes/" + picked_meme[0]["filename"];
         this.reinforcement_data['reward_img_link'] = "/memes/" + picked_meme[0]["filename"];
@@ -85,8 +109,13 @@ var AwardMemesComponent = /** @class */ (function () {
             window.localStorage.setItem("Like", "Yes");
             this.awsS3Service.upload('reinforcement_data', this.reinforcement_data);
         }
-        //this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);    
-        this.router.navigate(['home']);
+        this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);
+        var navigationExtras = {
+            state: {
+                modalObjectNavigationExtras: this.modalObjectNavigationExtras
+            }
+        };
+        this.router.navigate(['home'], navigationExtras);
     };
     /**
      * Shuffles array in place if it is not already shuffled
@@ -268,10 +297,10 @@ var AwardMemesComponent = /** @class */ (function () {
         })
         //declare let confetti: any;
         ,
-        tslib_1.__metadata("design:paramtypes", [GoogleAnalytics,
-            ActivatedRoute,
+        tslib_1.__metadata("design:paramtypes", [ActivatedRoute,
             UserProfileService,
             AwsS3Service,
+            DatabaseService,
             Router])
     ], AwardMemesComponent);
     return AwardMemesComponent;
