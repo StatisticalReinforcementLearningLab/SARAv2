@@ -49,7 +49,6 @@ import { ModalUnlockedPageComponent } from '../modal-unlocked-page/modal-unlocke
 import { DatabaseService } from 'src/app/monitor/database.service';
 import { HttpClient } from '@angular/common/http';
 
-
 declare let Phaser: any;
 
 @Component({
@@ -82,6 +81,34 @@ export class DemoAquariumComponent implements OnInit {
     }
   }
 
+  //Get total submitted survey
+  getTotalSurveyCount(){
+    return Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;
+  }
+
+  /* Get last seven days of indicator for survey completion, 
+  return an array of 7 elements like [0, 1, 0, 0, 0, 1, 0] 
+  with 1 indicating submitted survey, 0 otherwise, the first
+  element is current day.               */
+
+  getIndicatorForSurveyDone(){
+    var daily_survey = this.userProfileService.userProfile.survey_data.daily_survey;
+
+    console.log("daily_survey:");
+    console.log(JSON.stringify(daily_survey));
+    var indicatorArray = [];
+    for(let i = 0; i < 7; i++) {
+      var previousdate = moment().subtract(i, "days").format("YYYYMMDD");
+      console.log(JSON.stringify(this.userProfileService.userProfile.survey_data.daily_survey));
+      var indicator = 0;
+      if(previousdate in daily_survey){
+        indicator = 1;
+      }
+      indicatorArray.push(indicator);
+    }
+    return indicatorArray;
+
+  }
 
 /*   get surveyPath(){
     if (this.userProfileService.isParent){
