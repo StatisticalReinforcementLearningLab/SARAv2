@@ -16,12 +16,12 @@ export class SampleSurveyComponent implements OnInit {
 
   constructor(
     private userProfileService: UserProfileService,
-    private mobileAccessibility: MobileAccessibility,
+    //private mobileAccessibility: MobileAccessibility,
     private db: DatabaseService
   ) { }
 
   ngOnInit() {
-    this.mobileAccessibility.usePreferredTextZoom(false);
+    //this.mobileAccessibility.usePreferredTextZoom(false);
 
   }
   
@@ -41,7 +41,7 @@ export class SampleSurveyComponent implements OnInit {
        this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
      }
    }); 
-   this.mobileAccessibility.usePreferredTextZoom(true);
+   //this.mobileAccessibility.usePreferredTextZoom(true);
 
  }
 
