@@ -80,5 +80,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "phonegap-plugin-mobile-accessibility": {
+    "source": {
+      "type": "registry",
+      "id": "phonegap-plugin-mobile-accessibility@^1.0.5"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }
