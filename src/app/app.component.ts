@@ -12,6 +12,7 @@ import { LoadingController } from '@ionic/angular';
 import { UserProfileService } from './user/user-profile/user-profile.service';
 import { AuthService } from './user/auth/auth.service';
 import { Subscription } from 'rxjs';
+import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 
 @Component({
   selector: 'app-root',
@@ -30,6 +31,7 @@ export class AppComponent {
     private oneSignalService: OneSignalService,
     private authService: AuthService,
     private userProfileService: UserProfileService,
+    private mobileAccessibility: MobileAccessibility,
     public loadingController: LoadingController
    ) {
     this.initializeApp();
@@ -86,6 +88,7 @@ export class AppComponent {
   private userSub: Subscription;
 
   ngOnInit(){
+    this.mobileAccessibility.usePreferredTextZoom(false);
   }
 
   ngOnDestroy(){
