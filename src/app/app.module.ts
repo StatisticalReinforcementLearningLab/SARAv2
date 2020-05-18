@@ -31,6 +31,7 @@ import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import {EffectsModule} from '@ngrx/effects';
+import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 
 
 @NgModule({
@@ -68,6 +69,7 @@ import {EffectsModule} from '@ngrx/effects';
     OneSignal,
     AwardDollarService,
     AppVersion,
+    MobileAccessibility,
     SQLite,
     SQLitePorter,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
