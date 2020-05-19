@@ -1,3 +1,59 @@
 .new-background-color{
     --background: #005486;
 }
+
+
+
+
+ion-tab-button.tab-selected {
+    ion-icon {
+      color: #fff !important;
+      --ion-color-base: #fff !important;
+      width: 50%;
+      height: 50%;
+    }
+}
+
+ion-tab-button.tab-selected {
+    ion-label {
+        color: #fff !important;
+       --ion-color-base: #fff !important;
+    }
+}
+
+ion-tab-button {
+    ion-icon {
+        width: 40%;
+        height: 40%;
+        color: #ccecff !important;
+        --ion-color-base: #ccecff !important;
+    }
+}
+
+ion-tab-button {
+    ion-label {
+        color: #ccecff !important;
+       --ion-color-base: #ccecff !important;
+    }
+}
+
+/*
+
+.tab-btn-selected, .tab-btn:hover {
+    color: #e6f6ff;
+}
+
+
+    
+ion-tab-button:focus {
+    ion-icon {
+        width: 60%;
+        height: 60%;
+        color: #fff !important;
+    }
+}
+*/
+    
+    
+    
+    

@@ -26,28 +26,43 @@
       
 
       <ion-list>
-        <ion-item><h2>Levels</h2></ion-item>
-        <ion-item>
-          <p><br>ADAPTS app contains 4-levels. Preview/review the levels by clicking the links below</p>
+        <ion-item [routerLink]="['/incentive/infopage']">
+          <ion-icon name="ios-help-circle"></ion-icon>
+          &nbsp; How this app works
         </ion-item>
 
-        <ion-item [routerLink]="['/preview/fishbowl']">
-          Level 1: Fishbowl
-        </ion-item>
-        <ion-item [routerLink]="['/preview/sea']">
-          Level 2: Sea
-        </ion-item>
-        <ion-item  [routerLink]="['/preview/tundra']">
-          Level 3: Tundra
-        </ion-item>
-        <ion-item [routerLink]="['/preview/rainforest']">
-          Level 4: Reinforest
-        </ion-item>
-        <ion-item><br><br></ion-item>
         <ion-item [routerLink]="['/contact-study-staff']">
           <ion-icon name="call"></ion-icon>
           &nbsp; Contact study staff
         </ion-item>
+
+
+        <ion-item><br><br><h3 style="font-size: 16px;padding-top: 24px;">Preview/review levels</h3></ion-item>
+        <ion-item [routerLink]="['/preview/fishbowl']"> 
+          <ion-label text-wrap>
+            Level 1: Fishbowl
+          </ion-label>
+        </ion-item>
+        <ion-item [routerLink]="['/preview/sea']">
+          <ion-label text-wrap>
+            Level 2: Sea
+            <p>Unlocks at 1060 points</p>
+          </ion-label>
+        </ion-item>
+        
+        <ion-item  [routerLink]="['/preview/tundra']">
+          <ion-label text-wrap>
+            Level 3: Tundra
+            <p>Unlocks at 2120 points</p>
+          </ion-label>
+        </ion-item>
+        <ion-item [routerLink]="['/preview/rainforest']">
+          <ion-label text-wrap>
+            Level 4: Reinforest
+            <p>Unlocks at 3020 points</p>
+          </ion-label>
+        </ion-item>
+        
       </ion-list>
     </ion-content>
   </ion-menu>

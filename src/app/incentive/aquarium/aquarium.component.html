@@ -3,9 +3,6 @@
 
       <ion-buttons slot="start">
         <ion-menu-button style="color:#fff;" menuId="first"></ion-menu-button>
-        <ion-button style="color:#fff;" (click)="startInfoPage()" *ngIf="isIOS">
-          <ion-icon name="ios-help-circle"></ion-icon>
-        </ion-button>
 
         <ion-button style="color:#fff;" (click)="startCheatPage()" *ngIf="isIOS">
           <ion-icon name="alert"></ion-icon>
@@ -13,6 +10,9 @@
       </ion-buttons>
 
       <!--
+        <ion-button style="color:#fff;" (click)="startInfoPage()" *ngIf="isIOS">
+          <ion-icon name="ios-help-circle"></ion-icon>
+        </ion-button>
         <ion-menu-button autoHide="false" style="color:#fff;" menuId="first" (click)="showSideMenu()"></ion-menu-button>
         <ion-button style="color:#fff;" (click)="showSideMenu()">
           <ion-icon name="menu"></ion-icon>
@@ -24,6 +24,10 @@
 
         <ion-button style="color:#fff;" (click)="startCheatPage()" *ngIf="isIOS">
           <ion-icon name="alert"></ion-icon>
+        </ion-button>
+
+        <ion-button style="color:#fff;" (click)="startInfoPage()" *ngIf="!isIOS">
+            <ion-icon name="ios-help-circle"></ion-icon>
         </ion-button>
       -->
 
@@ -41,9 +45,7 @@
           </ion-button>
           -->
   
-          <ion-button style="color:#fff;" (click)="startInfoPage()" *ngIf="!isIOS">
-            <ion-icon name="ios-help-circle"></ion-icon>
-          </ion-button>
+          
   
           <ion-button (click)="startSurvey()"   *ngIf="isActive">
               <ion-icon name="ios-create" style="color : white;"></ion-icon>
@@ -78,9 +80,12 @@
     </div-->
   
     <app-demo-aquarium></app-demo-aquarium>
+
+    <!--
     <ion-button color="primary" (click)="showModalDemo()">Unlockables</ion-button>
     <ion-button color="primary" (click)="showMemeDemo()">Meme</ion-button>
     <ion-button color="primary" (click)="showAltruisticDemo()">Altruistic msg</ion-button>
+    -->
   </ion-content>
   
   
