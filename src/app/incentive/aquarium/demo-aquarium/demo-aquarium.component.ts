@@ -66,6 +66,7 @@ export class DemoAquariumComponent implements OnInit {
   public isShowingRouteLoadIndicator: boolean;
   survey_text; 
   pageTitle = "Aquarium";
+  fishFunFactListViewItems = [];
   
   // totalPoints = 0;
   get totalPoints(){
@@ -208,6 +209,69 @@ export class DemoAquariumComponent implements OnInit {
      //this.loadFunction();
     
     this.sendUserIdToServerFor8PMNotification();
+
+
+    this.addFishFunFactsBelow();
+
+    //get inspirational quotes
+    this.getInspirationalQuotes();
+  }
+
+
+  getInspirationalQuotes() {
+    this.httpClient.post('http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/get-inspirational-quote', { "user_id": 'mash_aya' }).subscribe({
+        next: data => console.log("Inspirational quote: " + JSON.stringify(data)),
+        error: error => console.error('There was an error!', error)
+    });
+  }
+
+
+
+  addFishFunFactsBelow() {
+    //add the fish fun facts below:
+
+
+    if(this.totalPoints <1060 && this.totalPoints >= 0) //fishbowl
+      this.addFishFunFactsBetween(0, this.totalPoints);
+    
+    else if(this.totalPoints >=1060 && this.totalPoints <2120) //sea
+      this.addFishFunFactsBetween(1060, this.totalPoints);
+
+    else if(this.totalPoints >=2120 && this.totalPoints <3020) //tundra
+      this.addFishFunFactsBetween(2120, this.totalPoints);
+
+    else if(this.totalPoints >= 3020) //rainforest
+      this.addFishFunFactsBetween(3020, this.totalPoints);
+
+  }
+
+  addFishFunFactsBetween(startPoint: number, totalPoints: number) {
+
+    fetch('../../../../assets/game/fishpoints.json').then(async res => {
+      //console.log("Fishes: " + data);
+
+      var data = await res.json();
+      var current_points = 700;
+      var fishFunFactListViewItem = {};
+      for(var i = 0; i < data.length; i++) {
+
+          if(data[i].points < startPoint)
+            continue;
+
+          if(totalPoints < data[i].points)
+            break;
+
+          fishFunFactListViewItem = {
+              funFact: data[i].trivia,
+              image: "assets/" + data[i].img.substring(0, data[i].img.length-4) + '_tn.jpg',
+              fishName: data[i].name
+          };
+
+          this.fishFunFactListViewItems.push(fishFunFactListViewItem);
+          
+      }
+      this.fishFunFactListViewItems = this.fishFunFactListViewItems.reverse();
+    });
   }
 
   async sendUserIdToServerFor8PMNotification(){

@@ -20,6 +20,7 @@ import { FishbowlComponent } from './aquarium/previews/fishbowl/fishbowl.compone
 import { SeaComponent } from './aquarium/previews/sea/sea.component';
 import { TundraComponent } from './aquarium/previews/tundra/tundra.component';
 import { RainforestComponent } from './aquarium/previews/rainforest/rainforest.component';
+import { UnlockedInspirationalQuotesComponent } from './unlocked-inspirational-quotes/unlocked-inspirational-quotes.component';
 
 const routes: Routes = [
 //  { path: 'award', component: AwardComponent },
@@ -28,7 +29,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AwardMemesComponent, AwardAltruismComponent, TreasurechestComponent, ModalUnlockedPageComponent,InfoPageComponent, UnlockedMemesComponent, UnlockedAltuisticMessagesComponent, FishbowlComponent, SeaComponent, TundraComponent, RainforestComponent],
+  declarations: [AwardMemesComponent, AwardAltruismComponent, TreasurechestComponent, ModalUnlockedPageComponent,InfoPageComponent, UnlockedMemesComponent, UnlockedAltuisticMessagesComponent, FishbowlComponent, SeaComponent, TundraComponent, RainforestComponent, UnlockedInspirationalQuotesComponent],
   imports: [
     CommonModule,
     IonicModule.forRoot(),
