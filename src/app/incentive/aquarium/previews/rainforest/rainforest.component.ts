@@ -21,13 +21,16 @@ export class RainforestComponent implements OnInit, AfterViewInit {
   }
 
   goHome(){
+    /*
     this.child.ionViewDidLeaveFunction();
     // Create an Observable that will publish a value on an interval
     const secondsCounter2 = interval(1000).subscribe(n =>{
       console.log(`It's been ${n} seconds since subscribing!`);
       secondsCounter2.unsubscribe();
-      this.navController.navigateRoot(['/home']);
+     
     });
+    */
+    this.navController.navigateRoot(['/home']);
   }
 
   ionViewDidEnter() {
@@ -36,6 +39,7 @@ export class RainforestComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(){
+    /*
     console.log("aqarium.ts --- ngAfterInit");
     console.log("aqarium.ts --- " + this.child);
     //this.child.loadFunction();
@@ -46,6 +50,7 @@ export class RainforestComponent implements OnInit, AfterViewInit {
       secondsCounter.unsubscribe();
       this.child.loadFunction();
     });
+    */
     
   }
 
