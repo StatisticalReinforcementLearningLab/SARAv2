@@ -128,13 +128,13 @@ export class AquariumComponent implements OnInit {
   }
 
   ionViewDidLeave() {
-    console.log("ionDidLeave");
+    console.log("aqarium.ts --- ionDidLeave");
     this.ionViewDidLeaveFunction();
   }
 
   ionViewDidEnter() {
 
-    console.log("ionViewDidEnter");
+    console.log("aqarium.ts --- ionViewDidEnter");
     this.child.loadFunction();
       
     //decide if we want to show the modal view with unlockables.
@@ -208,7 +208,12 @@ export class AquariumComponent implements OnInit {
     var currentTime = moment(); 
     var startTime = moment({hour: 18});  // 6pm
     var endTime = moment({hour: 23, minute: 59});  // 11:59pm
-    if(!currentTime.isBetween(startTime, endTime)) {
+    var firstLogin = this.userProfileService.userProfile.firstlogin;
+    if(firstLogin == undefined)  firstLogin = true;
+    this.userProfileService.userProfile.firstlogin = false;
+    this.userProfileService.saveProfileToDevice();
+    this.userProfileService.saveToServer();
+    if(!currentTime.isBetween(startTime, endTime) && !firstLogin) {
       this.presentAlert('Please come back between 6 PM and midnight');
     } else if(this.userProfileService.surveyTakenForCurrentDay()) {
       this.presentAlert('You have already completed the survey for the day.');
@@ -220,6 +225,7 @@ export class AquariumComponent implements OnInit {
       }
 
     } 
+
   }
 
   async openSurvey(location){
@@ -231,7 +237,7 @@ export class AquariumComponent implements OnInit {
     const alert = await this.alertCtrl.create({
       //<div style="font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center">Thank you for completing the survey. You have unlocked a meme.</div>
       //header: '<div style="line-height: 25px;padding-bottom:10px;text-align:center">Daily survey unavilable</div>',
-      header: 'Daily survey unavilable',
+      header: 'Daily survey unavailable',
       //subHeader: "Survey is not avaibable!",
       message: alertMessage,
       //defined in theme/variables.scss

@@ -14,6 +14,10 @@ import { SampleSurveyComponent } from './sample-survey/sample-survey.component';
 import { RouterModule } from '@angular/router';
 import { IncentiveModule } from '../incentive/incentive.module';
 import { AyaSampleSurveyComponent } from './aya-sample-survey/aya-sample-survey.component';
+import { StoreModule } from '@ngrx/store';
+import { surveyReducer } from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { SurveyEffects } from './survey.effects';
 var routes = [
     { path: 'samplesurvey', component: SampleSurveyComponent }
 ];
@@ -38,7 +42,9 @@ var SurveyModule = /** @class */ (function () {
                 FormsModule,
                 StorageModule,
                 IncentiveModule,
-                RouterModule.forChild(routes)
+                RouterModule.forChild(routes),
+                StoreModule.forFeature('survey', surveyReducer),
+                EffectsModule.forFeature([SurveyEffects])
             ],
             exports: [
                 //InitiatedDrinkComponent,

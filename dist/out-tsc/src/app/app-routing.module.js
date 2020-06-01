@@ -16,11 +16,16 @@ import { SampleLifeInsightsComponent } from './incentive/life-insights/sample-li
 import { TreasurechestComponent } from './incentive/treasurechest/treasurechest.component';
 import { SampleSurveyComponent } from './survey/sample-survey/sample-survey.component';
 import { AwardAltruismComponent } from './incentive/award-altruism/award-altruism.component';
-import { DemoTundraComponent } from './incentive/aquarium/demo-tundra/demo-tundra.component';
 import { CheatpageComponent } from './incentive/aquarium/cheatpage/cheatpage.component';
 import { AyaSampleSurveyComponent } from './survey/aya-sample-survey/aya-sample-survey.component';
 import { AuthGuard } from './user/auth/auth.guard';
 import { AuthComponent } from './user/auth/auth.component';
+import { InfoPageComponent } from './incentive/info-page/info-page.component';
+import { ContactComponent } from './home/contact/contact.component';
+import { FishbowlComponent } from './incentive/aquarium/previews/fishbowl/fishbowl.component';
+import { SeaComponent } from './incentive/aquarium/previews/sea/sea.component';
+import { TundraComponent } from './incentive/aquarium/previews/tundra/tundra.component';
+import { RainforestComponent } from './incentive/aquarium/previews/rainforest/rainforest.component';
 var routes = [
     /*
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -42,13 +47,18 @@ var routes = [
     //{ path: 'home', component: DemoAquariumComponent, canActivate: [AuthGuard]},
     { path: 'incentive/sample-life-insight', component: SampleLifeInsightsComponent, canActivate: [AuthGuard] },
     { path: 'incentive/treasurechest', component: TreasurechestComponent, canActivate: [AuthGuard] },
-    { path: 'incentive/tundra', component: DemoTundraComponent, canActivate: [AuthGuard] },
     { path: 'incentive/cheatpoints', component: CheatpageComponent, canActivate: [AuthGuard] },
     { path: 'survey/samplesurvey', component: SampleSurveyComponent, canActivate: [AuthGuard] },
     { path: 'survey/samplesurvey2', component: AyaSampleSurveyComponent, canActivate: [AuthGuard] },
     { path: 'incentive/aquariumone', component: DemoAquariumComponent, canActivate: [AuthGuard] },
     { path: 'incentive/award-memes', component: AwardMemesComponent, canActivate: [AuthGuard] },
-    { path: 'incentive/award-altruism', component: AwardAltruismComponent, canActivate: [AuthGuard] }
+    { path: 'incentive/award-altruism', component: AwardAltruismComponent, canActivate: [AuthGuard] },
+    { path: 'contact-study-staff', component: ContactComponent, canActivate: [AuthGuard] },
+    { path: 'incentive/infopage', component: InfoPageComponent, canActivate: [AuthGuard] },
+    { path: 'preview/fishbowl', component: FishbowlComponent, canActivate: [AuthGuard] },
+    { path: 'preview/sea', component: SeaComponent, canActivate: [AuthGuard] },
+    { path: 'preview/tundra', component: TundraComponent, canActivate: [AuthGuard] },
+    { path: 'preview/rainforest', component: RainforestComponent, canActivate: [AuthGuard] }
     //{ path: 'incentive/award-memes', component: AwardMemesComponent },
     //{ path: 'incentive/aquariumone', component: DemoAquariumComponent },  
     /*

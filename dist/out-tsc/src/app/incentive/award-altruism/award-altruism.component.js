@@ -1,19 +1,21 @@
 import * as tslib_1 from "tslib";
 import { Component } from '@angular/core';
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import { AwsS3Service } from 'src/app/storage/aws-s3.service';
+import * as moment from 'moment';
+import { DatabaseService } from 'src/app/monitor/database.service';
 var AwardAltruismComponent = /** @class */ (function () {
-    function AwardAltruismComponent(ga, route, userProfileService, awsS3Service, router) {
-        var _this = this;
-        this.ga = ga;
+    function AwardAltruismComponent(route, userProfileService, awsS3Service, db, router) {
         this.route = route;
         this.userProfileService = userProfileService;
         this.awsS3Service = awsS3Service;
+        this.db = db;
         this.router = router;
         this.reinforcementObj = {};
         this.reinforcement_data = {};
+        this.modalObjectNavigationExtras = {};
+        this.pageTitle = " Award_Altruism";
         this.HeartsBackground = {
             heartHeight: 60,
             heartWidth: 64,
@@ -140,9 +142,9 @@ var AwardAltruismComponent = /** @class */ (function () {
                         hearts[a].image = image;
                         hearts[a].image.style.height = hearts[a].height;
                     }
-                    intervalVar = setInterval(function (e) { return self_this.angularDraw(); }, 30);
+                    intervalVar = setInterval(function (e) { return self_this.angularDraw(); }, 15);
                 };
-                setTimeout(function (e) { return _this.stopInterval(intervalVar); }, 1200);
+                setTimeout(function (e) { return _this.stopInterval(intervalVar); }, 800);
             },
             stopInterval: function (intervalVar) {
                 this.ctx.clearRect(0, 0, this.w, this.h);
@@ -167,19 +169,18 @@ var AwardAltruismComponent = /** @class */ (function () {
         this.reinforcementObj['ds'] = 1;
         this.reinforcementObj['reward'] = 2;
         this.reinforcementObj['reward_type'] = 'altruistic message';
+    }
+    AwardAltruismComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.route.queryParams.subscribe(function (params) {
             if (_this.router.getCurrentNavigation().extras.state) {
                 _this.date = _this.router.getCurrentNavigation().extras.state.date;
                 _this.reinforcementObj['prob'] = _this.router.getCurrentNavigation().extras.state.prob;
                 _this.reinforcement_data = _this.router.getCurrentNavigation().extras.state.reinforcement_data;
+                _this.modalObjectNavigationExtras = _this.router.getCurrentNavigation().extras.state.modalObjectNavigationExtras;
                 console.log("Inside AwardAltruism, date is: " + _this.date + " prob is: " + _this.reinforcementObj['prob']);
             }
         });
-    }
-    AwardAltruismComponent.prototype.ngOnInit = function () {
-        this.ga.trackView('Award-altruism')
-            .then(function () { console.log("trackView at award-altruism!"); })
-            .catch(function (e) { return console.log(e); });
     };
     AwardAltruismComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
@@ -198,15 +199,37 @@ var AwardAltruismComponent = /** @class */ (function () {
             });
         }); });
     };
+    AwardAltruismComponent.prototype.ionViewDidEnter = function () {
+        var _this = this;
+        this.db.getDatabaseState().subscribe(function (rdy) {
+            if (rdy) {
+                _this.db.addTrack(_this.pageTitle, "Enter", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
+            }
+        });
+    };
     AwardAltruismComponent.prototype.ionViewDidLeave = function () {
+        var _this = this;
+        this.db.getDatabaseState().subscribe(function (rdy) {
+            if (rdy) {
+                _this.db.addTrack(_this.pageTitle, "Leave", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
+            }
+        });
     };
     AwardAltruismComponent.prototype.showaltruism = function () {
         var _this = this;
         console.log('Altruism data: ' + JSON.stringify(this.altruism_data));
         this.altruism_data = this.shuffle(this.altruism_data);
-        console.log('Altruism images suffled: ' + JSON.stringify(this.altruism_data));
+        //console.log('Altruism images suffled: ' + JSON.stringify(this.altruism_data));
         var picked_altruism_image = this.pick_altrusim(this.altruism_data);
-        console.log('picked_altruism_image: ' + JSON.stringify(picked_altruism_image));
+        //console.log('picked_altruism_image: ' + JSON.stringify(picked_altruism_image));
+        var already_shown = window.localStorage["already_shown_alt_msg3"];
+        if (already_shown == undefined)
+            already_shown = [{ "filename": "assets/altruism/altruism_1.png", "unlock_date": moment().format('MM/DD/YYYY') }];
+        else
+            already_shown = JSON.parse(window.localStorage["already_shown_alt_msg3"]);
+        console.log("already_shown: " + already_shown);
+        already_shown.push({ "filename": "assets/altruism/" + picked_altruism_image[0]["filename"], "unlock_date": moment().format('MM/DD/YYYY') });
+        window.localStorage["already_shown_alt_msg3"] = JSON.stringify(already_shown);
         this.whichImage = "./assets/altruism/" + picked_altruism_image[0]["filename"];
         this.reinforcementObj['reward_img_link'] = "/altruism/" + picked_altruism_image[0]["filename"];
         this.reinforcement_data['reward_img_link'] = "/altruism/" + picked_altruism_image[0]["filename"];
@@ -227,8 +250,13 @@ var AwardAltruismComponent = /** @class */ (function () {
             window.localStorage.setItem("Like", "Yes");
             this.awsS3Service.upload('reinforcement_data', this.reinforcement_data);
         }
-        //this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);    
-        this.router.navigate(['home']);
+        this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);
+        var navigationExtras = {
+            state: {
+                modalObjectNavigationExtras: this.modalObjectNavigationExtras
+            }
+        };
+        this.router.navigate(['home'], navigationExtras);
     };
     /**
       * Shuffles array in place if it is not already shuffled
@@ -297,10 +325,10 @@ var AwardAltruismComponent = /** @class */ (function () {
             templateUrl: './award-altruism.component.html',
             styleUrls: ['./award-altruism.component.scss'],
         }),
-        tslib_1.__metadata("design:paramtypes", [GoogleAnalytics,
-            ActivatedRoute,
+        tslib_1.__metadata("design:paramtypes", [ActivatedRoute,
             UserProfileService,
             AwsS3Service,
+            DatabaseService,
             Router])
     ], AwardAltruismComponent);
     return AwardAltruismComponent;
