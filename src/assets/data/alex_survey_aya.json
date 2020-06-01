@@ -29,7 +29,8 @@
         "Sister(s)/Brother(s)", 
         "Other family", 
         "Friend(s)", 
-        "Classmates", 
+        "Classmates",
+        "boyfriend/girlfriend/significant other", 
         "Someone else"],
       "orientation": "vertical"
     }
