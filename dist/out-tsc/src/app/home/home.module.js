@@ -8,6 +8,8 @@ import { HomePage } from './home.page';
 import { AquariumModule } from '../incentive/aquarium/aquarium.module';
 import { HeaderComponent } from './header/header.component';
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
+import { HomeRoutingModule } from './home-routing.module';
+import { ContactComponent } from './contact/contact.component';
 var HomePageModule = /** @class */ (function () {
     function HomePageModule() {
     }
@@ -18,6 +20,7 @@ var HomePageModule = /** @class */ (function () {
                 FormsModule,
                 IonicModule,
                 AquariumModule,
+                HomeRoutingModule,
                 RouterModule.forChild([
                     {
                         path: '',
@@ -25,7 +28,7 @@ var HomePageModule = /** @class */ (function () {
                     }
                 ])
             ],
-            declarations: [HomePage, HeaderComponent, TermsOfServiceComponent],
+            declarations: [HomePage, HeaderComponent, TermsOfServiceComponent, ContactComponent],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
             exports: [TermsOfServiceComponent]
         })

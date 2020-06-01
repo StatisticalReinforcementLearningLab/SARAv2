@@ -43,9 +43,6 @@
   "dependent_plugins": {
     "cordova-plugin-app-version": {
       "PACKAGE_NAME": "edu.harvard.srl.SARA"
-    },
-    "cordova-plugin-network-information": {
-      "PACKAGE_NAME": "edu.harvard.srl.SARA"
     }
   }
 }

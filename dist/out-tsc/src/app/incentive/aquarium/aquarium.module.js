@@ -5,7 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { DemoAquariumComponent } from './demo-aquarium/demo-aquarium.component';
 import { SurveyModule } from '../../survey/survey.module';
 import { RouterModule } from '@angular/router';
-import { DemoTundraComponent } from './demo-tundra/demo-tundra.component';
+import { AquariumComponent } from './aquarium.component';
 var routes = [
     { path: 'aquariumone', component: DemoAquariumComponent }
 ];
@@ -14,7 +14,7 @@ var AquariumModule = /** @class */ (function () {
     }
     AquariumModule = tslib_1.__decorate([
         NgModule({
-            declarations: [DemoAquariumComponent, DemoTundraComponent],
+            declarations: [DemoAquariumComponent, AquariumComponent],
             imports: [
                 CommonModule,
                 SurveyModule,
@@ -22,8 +22,7 @@ var AquariumModule = /** @class */ (function () {
                 RouterModule.forChild(routes)
             ],
             exports: [
-                DemoAquariumComponent,
-                DemoTundraComponent
+                DemoAquariumComponent, AquariumComponent
             ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA]
         })

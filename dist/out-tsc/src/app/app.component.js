@@ -3,27 +3,22 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { HttpClient } from '@angular/common/http';
 import { OneSignalService } from './notification/one-signal.service';
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
-import { environment } from '../environments/environment';
 import { Router, RouteConfigLoadStart, RouteConfigLoadEnd, NavigationStart, NavigationEnd } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { UserProfileService } from './user/user-profile/user-profile.service';
 import { AuthService } from './user/auth/auth.service';
 var AppComponent = /** @class */ (function () {
-    function AppComponent(router, platform, splashScreen, statusBar, httpClient, oneSignalService, authService, userProfileService, loadingController, ga) {
+    function AppComponent(router, platform, splashScreen, statusBar, oneSignalService, authService, userProfileService, loadingController) {
         var _this = this;
         this.router = router;
         this.platform = platform;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
-        this.httpClient = httpClient;
         this.oneSignalService = oneSignalService;
         this.authService = authService;
         this.userProfileService = userProfileService;
         this.loadingController = loadingController;
-        this.ga = ga;
         this.isLoading = true;
         this.agreeToTerms = JSON.parse(localStorage.getItem("agreeToTerms"));
         this.initializeApp();
@@ -104,12 +99,6 @@ var AppComponent = /** @class */ (function () {
             }
             _this.splashScreen.hide();
             _this.oneSignalService.initOneSignal();
-            _this.ga.startTrackerWithId(environment.googleAnalytic.id)
-                .then(function () {
-                console.log('Google analytics is ready now');
-                _this.ga.setUserId("Liying");
-                //this.ga.debugMode();
-            }).catch(function (e) { return console.log('Error starting GoogleAnalytics == ' + e); });
         });
         //window.localStorage.setItem("TotalPoints", "0");
         // let status bar overlay webview
@@ -200,12 +189,10 @@ var AppComponent = /** @class */ (function () {
             Platform,
             SplashScreen,
             StatusBar,
-            HttpClient,
             OneSignalService,
             AuthService,
             UserProfileService,
-            LoadingController,
-            GoogleAnalytics])
+            LoadingController])
     ], AppComponent);
     return AppComponent;
 }());
