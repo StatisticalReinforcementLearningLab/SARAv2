@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { OneSignalService } from './notification/one-signal.service';
@@ -22,6 +22,15 @@ export class AppComponent {
   loading;
   isLoading = true;
 
+  get username(){
+    if(this.userProfileService == undefined)
+      return "test";
+    else{
+      //console.log("User profile -- username -- called from here");
+      return this.userProfileService.username;
+    }
+  }
+
   constructor(
     private router: Router, 
     private platform: Platform,
@@ -30,7 +39,8 @@ export class AppComponent {
     private oneSignalService: OneSignalService,
     private authService: AuthService,
     private userProfileService: UserProfileService,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    public navController: NavController
    ) {
     this.initializeApp();
 
@@ -181,6 +191,23 @@ export class AppComponent {
       cssClass: 'custom-class custom-loading'
     });
     return await loading.present();
+  }
+
+  //
+  async showPreviewOfFishBowl(){
+    this.navController.navigateRoot(['/preview/fishbowl']);
+  }
+
+  async showPreviewOfSea(){
+    this.navController.navigateRoot(['/preview/sea']);
+  }
+
+  async showPreviewOfTundra(){
+    this.navController.navigateRoot(['/preview/tundra']);
+  }
+
+  async showPreviewOfRainforest(){
+    this.navController.navigateRoot(['/preview/rainforest']);
   }
 
 }
