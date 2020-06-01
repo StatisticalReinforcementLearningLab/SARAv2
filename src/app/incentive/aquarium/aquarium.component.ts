@@ -128,13 +128,13 @@ export class AquariumComponent implements OnInit {
   }
 
   ionViewDidLeave() {
-    console.log("ionDidLeave");
+    console.log("aqarium.ts --- ionDidLeave");
     this.ionViewDidLeaveFunction();
   }
 
   ionViewDidEnter() {
 
-    console.log("ionViewDidEnter");
+    console.log("aqarium.ts --- ionViewDidEnter");
     this.child.loadFunction();
       
     //decide if we want to show the modal view with unlockables.
