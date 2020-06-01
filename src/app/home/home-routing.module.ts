@@ -7,6 +7,7 @@ import { UnlockedMemesComponent } from '../incentive/unlocked-memes/unlocked-mem
 import { UnlockedAltuisticMessagesComponent } from '../incentive/unlocked-altuistic-messages/unlocked-altuistic-messages.component';
 import { AuthGuard } from '../user/auth/auth.guard';
 import { ContactComponent } from './contact/contact.component';
+import { UnlockedInspirationalQuotesComponent } from '../incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,7 @@ const routes: Routes = [
         path: 'incentive', component: AquariumComponent, canActivate: [AuthGuard]
       },
       {
-        path: 'unlocables', component: TreasurechestComponent, canActivate: [AuthGuard]
+        path: 'quotes', component: UnlockedInspirationalQuotesComponent, canActivate: [AuthGuard]
       },
       {
         path: 'memes', component: UnlockedMemesComponent, canActivate: [AuthGuard]

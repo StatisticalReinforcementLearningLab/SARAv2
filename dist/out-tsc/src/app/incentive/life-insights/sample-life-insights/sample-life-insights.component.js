@@ -4,10 +4,8 @@ import { Chart } from 'chart.js';
 import * as moment from 'moment';
 //import * as lifeInsightProfile from "../../../../assets/data/life_insight.json";
 //import { PreLoad } from '../../../PreLoad';
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 var SampleLifeInsightsComponent = /** @class */ (function () {
-    function SampleLifeInsightsComponent(ga) {
-        this.ga = ga;
+    function SampleLifeInsightsComponent() {
         this.index = 0;
     }
     /*   get jsonObj(): any {
@@ -22,9 +20,6 @@ var SampleLifeInsightsComponent = /** @class */ (function () {
         this._jsonObj = jsonObj;
       } */
     SampleLifeInsightsComponent.prototype.ngOnInit = function () {
-        this.ga.trackView('Life-insight')
-            .then(function () { console.log("trackView at Life-insight!"); })
-            .catch(function (e) { return console.log(e); });
         this.init(this.index);
     };
     SampleLifeInsightsComponent.prototype.init = function (index) {
@@ -188,7 +183,7 @@ var SampleLifeInsightsComponent = /** @class */ (function () {
         })
         //@PreLoad('q1lifeinsight')
         ,
-        tslib_1.__metadata("design:paramtypes", [GoogleAnalytics])
+        tslib_1.__metadata("design:paramtypes", [])
     ], SampleLifeInsightsComponent);
     return SampleLifeInsightsComponent;
 }());

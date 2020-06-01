@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { BootL1 } from '../levels/FishBowlL1/Boot';
 import { PreloaderL1 } from '../levels/FishBowlL1/Preloader';
@@ -66,6 +66,8 @@ export class DemoAquariumComponent implements OnInit {
   public isShowingRouteLoadIndicator: boolean;
   survey_text; 
   pageTitle = "Aquarium";
+  fishFunFactListViewItems = [];
+  @Input() isPreview: string;
   
   // totalPoints = 0;
   get totalPoints(){
@@ -76,7 +78,6 @@ export class DemoAquariumComponent implements OnInit {
     if(this.userProfileService == undefined)
       return "test";
     else{
-      //console.log("User profile -- username -- called from here");
       return this.userProfileService.username;
     }
   }
@@ -89,7 +90,7 @@ export class DemoAquariumComponent implements OnInit {
   /* Get last seven days of indicator for survey completion, 
   return an array of 7 elements like [0, 1, 0, 0, 0, 1, 0] 
   with 1 indicating submitted survey, 0 otherwise, the first
-  element is current day.               */
+  element is current day. */
 
   getIndicatorForSurveyDone(){
     var daily_survey = this.userProfileService.userProfile.survey_data.daily_survey;
@@ -97,15 +98,32 @@ export class DemoAquariumComponent implements OnInit {
     console.log("daily_survey:");
     console.log(JSON.stringify(daily_survey));
     var indicatorArray = [];
+
+    //daily_survey = {};
+    if(Object.keys(daily_survey).length == 0){
+      indicatorArray.push(0);
+      return indicatorArray;
+    }
+      
+    const orderedDatesKeys = Object.keys(daily_survey).sort()
+    var first_date = orderedDatesKeys[0];
+    //first_date = "20200515";
+
     for(let i = 0; i < 7; i++) {
       var previousdate = moment().subtract(i, "days").format("YYYYMMDD");
-      console.log(JSON.stringify(this.userProfileService.userProfile.survey_data.daily_survey));
+      //console.log(JSON.stringify(this.userProfileService.userProfile.survey_data.daily_survey));
       var indicator = 0;
       if(previousdate in daily_survey){
         indicator = 1;
       }
       indicatorArray.push(indicator);
+
+      // as may days user is in in the study. no blank filling
+      if(first_date == previousdate)
+        break;
     }
+
+
     return indicatorArray;
 
   }
@@ -148,7 +166,9 @@ export class DemoAquariumComponent implements OnInit {
 
   showInfoModal(text){
     console.log("rewards page");
-    this.presentAlert(text);
+    var header_text = "Survey Completion Bar";
+    text = " Shows the number of surveys you have completed in the past week (shown as green) and the ones you missed (shown as gray)."
+    this.presentAlert(text, header_text);
   }
 
 
@@ -191,6 +211,69 @@ export class DemoAquariumComponent implements OnInit {
      //this.loadFunction();
     
     this.sendUserIdToServerFor8PMNotification();
+
+
+    this.addFishFunFactsBelow();
+
+    //get inspirational quotes
+    this.getInspirationalQuotes();
+  }
+
+
+  getInspirationalQuotes() {
+    this.httpClient.post('http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/get-inspirational-quote', { "user_id": 'mash_aya' }).subscribe({
+        next: data => console.log("Inspirational quote: " + JSON.stringify(data)),
+        error: error => console.error('There was an error!', error)
+    });
+  }
+
+
+
+  addFishFunFactsBelow() {
+    //add the fish fun facts below:
+
+
+    if(this.totalPoints <1060 && this.totalPoints >= 0) //fishbowl
+      this.addFishFunFactsBetween(0, this.totalPoints);
+    
+    else if(this.totalPoints >=1060 && this.totalPoints <2120) //sea
+      this.addFishFunFactsBetween(1060, this.totalPoints);
+
+    else if(this.totalPoints >=2120 && this.totalPoints <3020) //tundra
+      this.addFishFunFactsBetween(2120, this.totalPoints);
+
+    else if(this.totalPoints >= 3020) //rainforest
+      this.addFishFunFactsBetween(3020, this.totalPoints);
+
+  }
+
+  addFishFunFactsBetween(startPoint: number, totalPoints: number) {
+
+    fetch('../../../../assets/game/fishpoints.json').then(async res => {
+      //console.log("Fishes: " + data);
+
+      var data = await res.json();
+      var current_points = 700;
+      var fishFunFactListViewItem = {};
+      for(var i = 0; i < data.length; i++) {
+
+          if(data[i].points < startPoint)
+            continue;
+
+          if(totalPoints < data[i].points)
+            break;
+
+          fishFunFactListViewItem = {
+              funFact: data[i].trivia,
+              image: "assets/" + data[i].img.substring(0, data[i].img.length-4) + '_tn.jpg',
+              fishName: data[i].name
+          };
+
+          this.fishFunFactListViewItems.push(fishFunFactListViewItem);
+          
+      }
+      this.fishFunFactListViewItems = this.fishFunFactListViewItems.reverse();
+    });
   }
 
   async sendUserIdToServerFor8PMNotification(){
@@ -220,7 +303,7 @@ export class DemoAquariumComponent implements OnInit {
         next: data => console.log("--aquarium-- " + JSON.stringify(data)),
         error: error => console.error('There was an error!', error)
     });
-}
+  }
 
   ionViewDidEnter(){
     //if(this.isLoaded == true)
@@ -263,7 +346,7 @@ export class DemoAquariumComponent implements OnInit {
             GameApp.CANVAS_HEIGHT += 30;
             GameApp.CANVAS_WIDTH = window.innerWidth;
         }
-        this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 32*window.devicePixelRatio, Phaser.AUTO, 'gameDiv');
+        this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 45*window.devicePixelRatio, Phaser.AUTO, 'gameDiv');
     }else if(this.platform.is('android'))
         this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 74, Phaser.AUTO, 'gameDiv');    
     else
@@ -271,97 +354,115 @@ export class DemoAquariumComponent implements OnInit {
 
     //this.totalPoints = 2125;
 
-
-    if(this.totalPoints < 0){
-      this.game.state.add('Boot', BootGameOver);
-      this.pickedGame = 'GameOver';
-      var preLoader = new PreloaderGameOver();
-      this.game.state.add('Preloader', preLoader);
-      var gameover = new GameOver();
-      this.game.state.add('GameOver', gameover);
-
-    } else if(this.totalPoints <770 && this.totalPoints >= 0){
-
-      this.game.state.add('Boot', BootL1);
-      this.pickedGame = 'FishBowlL1';
-      var preLoader = new PreloaderL1();
-      this.game.state.add('Preloader', preLoader);
-      var fishBowlL1 = new FishBowlL1();
-      fishBowlL1.setTotalPoints(this.totalPoints);
-      this.game.state.add('FishBowlL1', fishBowlL1);
-
-
-    } else if ( this.totalPoints >=770 && this.totalPoints <1060 ){
-
-      this.game.state.add('Boot', BootL2);
-      this.pickedGame = 'FishBowlL2';
-      var preLoader = new PreloaderL2();
-      this.game.state.add('Preloader', preLoader);
-      var fishBowlL2 = new FishBowlL2();
-      fishBowlL2.setTotalPoints(this.totalPoints);
-      this.game.state.add('FishBowlL2', fishBowlL2);
-
-
-    } else if( this.totalPoints >=1060 && this.totalPoints <1710 ){
-
-      this.game.state.add('Boot', BootL3);
-      this.pickedGame = 'SeaLevelL3';
-      var preLoader = new PreloaderL3();
-      this.game.state.add('Preloader', preLoader);
-      var seaLevelL3 = new SeaLevelL3();
-      seaLevelL3.setTotalPoints(this.totalPoints);
-      this.game.state.add('SeaLevelL3', seaLevelL3);
-
-    } else if( this.totalPoints >=1710 && this.totalPoints <2120){
-
-      this.game.state.add('Boot', BootL4);
-      this.pickedGame = 'SeaLevelL4';
-      var preLoader = new PreloaderL4();
-      this.game.state.add('Preloader', preLoader);
-      var seaLevelL4 = new SeaLevelL4();
-      seaLevelL4.setTotalPoints(this.totalPoints);
-      this.game.state.add('SeaLevelL4', seaLevelL4);
-
-    } else if( this.totalPoints >=2120 && this.totalPoints <2720){
-
-      this.game.state.add('Boot', BootTundraL5);
-      this.pickedGame = "TundraLevel1";
-      var preLoader = new PreloaderTundraL5();
-      this.game.state.add('Preloader', preLoader);
-      var level5 = new GameTundraL5();
-      level5.setTotalPoints(this.totalPoints);
-      this.game.state.add('TundraLevel1', level5);
-
-    }else if( this.totalPoints >=2720 && this.totalPoints <3020){
-
-      this.game.state.add('Boot', BootTundraL51);
-      this.pickedGame = "TundraLevel2";
-      var preLoader = new PreloaderTundraL51();
-      this.game.state.add('Preloader', preLoader);
-      var level51 = new GameTundraL51();
-      level51.setTotalPoints(this.totalPoints);
-      this.game.state.add('TundraLevel2', level51
-      );
-
-    }else if( this.totalPoints >=3020){
-
-        this.game.state.add('Boot', BootRainforestL6);
-        this.pickedGame = "RainforestLevel6";
-        var preLoader = new PreloaderRainforestL6();
+    if(this.isPreview == "false"){
+      if(this.totalPoints < 0){
+        this.game.state.add('Boot', BootGameOver);
+        this.pickedGame = 'GameOver';
+        var preLoader = new PreloaderGameOver();
         this.game.state.add('Preloader', preLoader);
-        var level6 = new GameRainforestL6();
-        level6.setTotalPoints(this.totalPoints);
-        this.game.state.add('RainforestLevel6', level6);
+        var gameover = new GameOver();
+        this.game.state.add('GameOver', gameover);
 
-    } else {
-      
-      //---
-      var preLoader = new PreloaderL1();
-      preLoader.setGameName(this.pickedGame = "GameOver");
-      this.game.state.add('Preloader', preLoader);
+      } else if(this.totalPoints <770 && this.totalPoints >= 0){
+
+        this.game.state.add('Boot', BootL1);
+        this.pickedGame = 'FishBowlL1';
+        var preLoader = new PreloaderL1();
+        this.game.state.add('Preloader', preLoader);
+        var fishBowlL1 = new FishBowlL1();
+        fishBowlL1.setTotalPoints(this.totalPoints);
+        var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+        fishBowlL1.setSurveyHistory(surveyCompletionHistory);
+        this.game.state.add('FishBowlL1', fishBowlL1);
 
 
+      } else if ( this.totalPoints >=770 && this.totalPoints <1060 ){
+
+        this.game.state.add('Boot', BootL2);
+        this.pickedGame = 'FishBowlL2';
+        var preLoader = new PreloaderL2();
+        this.game.state.add('Preloader', preLoader);
+        var fishBowlL2 = new FishBowlL2();
+        fishBowlL2.setTotalPoints(this.totalPoints);
+        var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+        fishBowlL2.setSurveyHistory(surveyCompletionHistory);
+        this.game.state.add('FishBowlL2', fishBowlL2);
+
+
+      } else if( this.totalPoints >=1060 && this.totalPoints <1710 ){
+
+        this.game.state.add('Boot', BootL3);
+        this.pickedGame = 'SeaLevelL3';
+        var preLoader = new PreloaderL3();
+        this.game.state.add('Preloader', preLoader);
+        var seaLevelL3 = new SeaLevelL3();
+        seaLevelL3.setTotalPoints(this.totalPoints);
+        var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+        seaLevelL3.setSurveyHistory(surveyCompletionHistory);
+        this.game.state.add('SeaLevelL3', seaLevelL3);
+
+      } else if( this.totalPoints >=1710 && this.totalPoints <2120){
+
+        this.game.state.add('Boot', BootL4);
+        this.pickedGame = 'SeaLevelL4';
+        var preLoader = new PreloaderL4();
+        this.game.state.add('Preloader', preLoader);
+        var seaLevelL4 = new SeaLevelL4();
+        seaLevelL4.setTotalPoints(this.totalPoints);
+        var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+        seaLevelL4.setSurveyHistory(surveyCompletionHistory);
+        this.game.state.add('SeaLevelL4', seaLevelL4);
+
+      } else if( this.totalPoints >=2120 && this.totalPoints <2720){
+
+        this.game.state.add('Boot', BootTundraL5);
+        this.pickedGame = "TundraLevel1";
+        var preLoader = new PreloaderTundraL5();
+        this.game.state.add('Preloader', preLoader);
+        var level5 = new GameTundraL5();
+        level5.setTotalPoints(this.totalPoints);
+        var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+        level5.setSurveyHistory(surveyCompletionHistory);
+        this.game.state.add('TundraLevel1', level5);
+
+      }else if( this.totalPoints >=2720 && this.totalPoints <3020){
+
+        this.game.state.add('Boot', BootTundraL51);
+        this.pickedGame = "TundraLevel2";
+        var preLoader = new PreloaderTundraL51();
+        this.game.state.add('Preloader', preLoader);
+        var level51 = new GameTundraL51();
+        level51.setTotalPoints(this.totalPoints);
+        var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+        level51.setSurveyHistory(surveyCompletionHistory);
+        this.game.state.add('TundraLevel2', level51
+        );
+
+      }else if( this.totalPoints >=3020){
+
+          this.game.state.add('Boot', BootRainforestL6);
+          this.pickedGame = "RainforestLevel6";
+          var preLoader = new PreloaderRainforestL6();
+          this.game.state.add('Preloader', preLoader);
+          var level6 = new GameRainforestL6();
+          level6.setTotalPoints(this.totalPoints);
+          var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+          level6.setSurveyHistory(surveyCompletionHistory);
+          this.game.state.add('RainforestLevel6', level6);
+
+      } else {
+        //---
+        var preLoader = new PreloaderL1();
+        preLoader.setGameName(this.pickedGame = "GameOver");
+        this.game.state.add('Preloader', preLoader);
+      }
     }
+
+
+    if(this.isPreview == "true"){
+      
+    }
+
     //this.game.state.add('GameOver', GameOver);
     this.game.state.start('Boot');
     //self = this;
@@ -373,7 +474,7 @@ export class DemoAquariumComponent implements OnInit {
  
   ionViewDidLeaveFunction(){
     console.log("Aquarium, ionDidLeave");
-    this.survey_text = "Start survey";
+    //this.survey_text = "Start survey";
     this.db.getDatabaseState().subscribe(rdy => {
       if (rdy) {     
         this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
@@ -394,12 +495,12 @@ export class DemoAquariumComponent implements OnInit {
         
   }  
 
-  async presentAlert(alertMessage) {
+  async presentAlert(alertMessage, header_text) {
     
     const alert = await this.alertCtrl.create({
       //<div style="font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center">Thank you for completing the survey. You have unlocked a meme.</div>
       //header: '<div style="line-height: 25px;padding-bottom:10px;text-align:center">Daily survey unavilable</div>',
-      header: 'Daily survey unavilable',
+      header: header_text,
       //subHeader: "Survey is not avaibable!",
       message: alertMessage,
       //defined in theme/variables.scss

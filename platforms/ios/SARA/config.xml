@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="edu.harvard.srl.SARA" version="0.0.37" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="edu.harvard.srl.SARA" version="0.0.49" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage" />
     </feature>
@@ -51,6 +51,9 @@
     </feature>
     <feature name="OneSignalPush">
         <param name="ios-package" value="OneSignalPush" />
+    </feature>
+    <feature name="MobileAccessibility">
+        <param name="ios-package" onload="true" value="CDVMobileAccessibility" />
     </feature>
     <name>SARA</name>
     <description>An awesome Ionic/Cordova app.</description>
@@ -137,6 +140,7 @@
     <preference name="PaginationMode" value="unpaginated" />
     <preference name="deployment-target" value="11.0" />
     <preference name="StatusBarStyle" value="lightcontent" />
+    <preference name="KeepRunning" value="true" />
     <preference name="ScrollEnabled" value="false" />
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="FadeSplashScreenDuration" value="300" />

@@ -34,6 +34,9 @@
     "onesignal-cordova-plugin": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
+    "phonegap-plugin-mobile-accessibility": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
     "uk.co.workingedge.cordova.plugin.sqliteporter": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     }
