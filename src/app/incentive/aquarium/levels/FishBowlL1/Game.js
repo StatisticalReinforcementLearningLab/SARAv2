@@ -169,7 +169,7 @@ export class FishBowlL1 extends Phaser.State {
         //var progressBars = this.add.group();
 
         //points bar
-        vertical_position_offset = 13;
+        var vertical_position_offset = 13;
         var points_progress = this.add.image(this.CANVAS_WIDTH, 2, 'points_progress_2');
         points_progress.scale.setTo(.36*SCALING_FACTOR, .30*SCALING_FACTOR);
         points_progress.anchor.setTo(1,0);
@@ -226,6 +226,9 @@ export class FishBowlL1 extends Phaser.State {
         
         //points to get to meme.
         vertical_position_offset = 57;
+
+
+        /*
         var progress_bar_memes =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 1);
         progress_bar_memes.anchor.setTo(1,0);
         progress_bar_memes.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
@@ -291,6 +294,8 @@ export class FishBowlL1 extends Phaser.State {
 
         //points to get to level up.
         var vertical_position_offset = 101;
+        */
+
         var progress_bar_level_up =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 1);
         progress_bar_level_up.anchor.setTo(1,0);
         progress_bar_level_up.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
