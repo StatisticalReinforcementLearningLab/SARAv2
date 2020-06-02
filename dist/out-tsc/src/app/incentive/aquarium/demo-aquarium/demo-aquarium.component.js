@@ -32,6 +32,10 @@ import * as moment from 'moment';
 import { AlertController } from '@ionic/angular';
 import { DatabaseService } from 'src/app/monitor/database.service';
 import { HttpClient } from '@angular/common/http';
+
+
+import { environment } from '../../environments/environment';
+
 var DemoAquariumComponent = /** @class */ (function () {
     /*   get surveyPath(){
         if (this.userProfileService.isParent){
