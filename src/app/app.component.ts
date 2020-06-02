@@ -45,6 +45,10 @@ export class AppComponent {
    ) {
     this.initializeApp();
 
+    this.isAYA = true;
+    if(this.userProfileService.isParent == true)
+      this.isAYA = false;
+
     router.events.subscribe(
 			( event: RouterEvent ) : void => {
 
