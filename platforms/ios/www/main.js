@@ -6898,7 +6898,7 @@ class FishBowlL1 extends Phaser.State {
         //var progressBars = this.add.group();
 
         //points bar
-        vertical_position_offset = 13;
+        var vertical_position_offset = 13;
         var points_progress = this.add.image(this.CANVAS_WIDTH, 2, 'points_progress_2');
         points_progress.scale.setTo(.36*SCALING_FACTOR, .30*SCALING_FACTOR);
         points_progress.anchor.setTo(1,0);
@@ -6955,6 +6955,9 @@ class FishBowlL1 extends Phaser.State {
         
         //points to get to meme.
         vertical_position_offset = 57;
+
+
+        /*
         var progress_bar_memes =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 1);
         progress_bar_memes.anchor.setTo(1,0);
         progress_bar_memes.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
@@ -7020,6 +7023,8 @@ class FishBowlL1 extends Phaser.State {
 
         //points to get to level up.
         var vertical_position_offset = 101;
+        */
+
         var progress_bar_level_up =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 1);
         progress_bar_level_up.anchor.setTo(1,0);
         progress_bar_level_up.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
@@ -7780,7 +7785,7 @@ class FishBowlL2 extends Phaser.State {
         //var progressBars = this.add.group();
 
         //points bar
-        vertical_position_offset = 13;
+        var vertical_position_offset = 13;
         var points_progress = this.add.image(this.CANVAS_WIDTH, 2, 'points_progress_2');
         points_progress.scale.setTo(.36*SCALING_FACTOR, .30*SCALING_FACTOR);
         points_progress.anchor.setTo(1,0);
@@ -7813,6 +7818,8 @@ class FishBowlL2 extends Phaser.State {
         
         //points to get to next fish.
         vertical_position_offset = 35;
+
+        
         var progress_bar_fish =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_grey', 1);
         progress_bar_fish.anchor.setTo(1,0);
         progress_bar_fish.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
@@ -7837,6 +7844,8 @@ class FishBowlL2 extends Phaser.State {
         
         //points to get to meme.
         vertical_position_offset = 57;
+        
+        /*
         var progress_bar_memes =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 1);
         progress_bar_memes.anchor.setTo(1,0);
         progress_bar_memes.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
@@ -7902,6 +7911,8 @@ class FishBowlL2 extends Phaser.State {
 
         //points to get to level up.
         var vertical_position_offset = 101;
+        */
+
         var progress_bar_level_up =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 1);
         progress_bar_level_up.anchor.setTo(1,0);
         progress_bar_level_up.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
@@ -7909,7 +7920,7 @@ class FishBowlL2 extends Phaser.State {
         // end of level is 1060, start is at 0
         var start_point_for_level = 0;
         var end_point_for_level = 1060;
-        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 0);
+        var progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 0);
         rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
         percent = (current_points-start_point_for_level)/(end_point_for_level-start_point_for_level);
         percent = percent*0.8 + 0.2;
@@ -8970,7 +8981,9 @@ class GameRainforestL6 extends Phaser.State {
 
         
         //points to get to meme.
-        vertical_position_offset = 57;
+        var vertical_position_offset = 57;
+
+        /*
         var progress_bar_memes =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 1);
         progress_bar_memes.anchor.setTo(1,0);
         progress_bar_memes.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
@@ -9036,6 +9049,8 @@ class GameRainforestL6 extends Phaser.State {
 
         //points to get to level up.
         var vertical_position_offset = 101;
+        */
+
         var progress_bar_level_up =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 1);
         progress_bar_level_up.anchor.setTo(1,0);
         progress_bar_level_up.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
@@ -10089,7 +10104,9 @@ class SeaLevelL3 extends Phaser.State {
 
         
         //points to get to next fish.
-        vertical_position_offset = 35;
+        var vertical_position_offset = 35;
+
+        
         var progress_bar_fish =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_grey', 1);
         progress_bar_fish.anchor.setTo(1,0);
         progress_bar_fish.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
@@ -10114,6 +10131,8 @@ class SeaLevelL3 extends Phaser.State {
         
         //points to get to meme.
         vertical_position_offset = 57;
+
+        /*
         var progress_bar_memes =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 1);
         progress_bar_memes.anchor.setTo(1,0);
         progress_bar_memes.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
@@ -10179,6 +10198,9 @@ class SeaLevelL3 extends Phaser.State {
 
         //points to get to level up.
         var vertical_position_offset = 101;
+        */
+
+
         var progress_bar_level_up =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 1);
         progress_bar_level_up.anchor.setTo(1,0);
         progress_bar_level_up.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
@@ -11536,7 +11558,9 @@ class SeaLevelL4 extends Phaser.State {
 
         
         //points to get to meme.
-        vertical_position_offset = 57;
+        var vertical_position_offset = 57;
+
+        /*
         var progress_bar_memes =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 1);
         progress_bar_memes.anchor.setTo(1,0);
         progress_bar_memes.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
@@ -11602,6 +11626,8 @@ class SeaLevelL4 extends Phaser.State {
 
         //points to get to level up.
         var vertical_position_offset = 101;
+        */
+
         var progress_bar_level_up =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 1);
         progress_bar_level_up.anchor.setTo(1,0);
         progress_bar_level_up.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
@@ -12813,7 +12839,9 @@ class GameTundraL5 extends Phaser.State {
 
         
         //points to get to next fish.
-        vertical_position_offset = 35;
+        var vertical_position_offset = 35;
+
+        
         var progress_bar_fish =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_grey', 1);
         progress_bar_fish.anchor.setTo(1,0);
         progress_bar_fish.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
@@ -12838,6 +12866,8 @@ class GameTundraL5 extends Phaser.State {
         
         //points to get to meme.
         vertical_position_offset = 57;
+
+        /*
         var progress_bar_memes =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 1);
         progress_bar_memes.anchor.setTo(1,0);
         progress_bar_memes.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
@@ -12903,6 +12933,8 @@ class GameTundraL5 extends Phaser.State {
 
         //points to get to level up.
         var vertical_position_offset = 101;
+        */
+
         var progress_bar_level_up =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 1);
         progress_bar_level_up.anchor.setTo(1,0);
         progress_bar_level_up.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
@@ -14153,7 +14185,9 @@ class GameTundraL51 extends Phaser.State {
 
         
         //points to get to meme.
-        vertical_position_offset = 57;
+        var vertical_position_offset = 57;
+
+        /*
         var progress_bar_memes =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 1);
         progress_bar_memes.anchor.setTo(1,0);
         progress_bar_memes.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
@@ -14219,6 +14253,8 @@ class GameTundraL51 extends Phaser.State {
 
         //points to get to level up.
         var vertical_position_offset = 101;
+        */
+
         var progress_bar_level_up =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 1);
         progress_bar_level_up.anchor.setTo(1,0);
         progress_bar_level_up.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);

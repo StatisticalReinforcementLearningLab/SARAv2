@@ -7,6 +7,9 @@ import { SurveyActions } from './action-types';
 import { UserProfileService } from '../user/user-profile/user-profile.service';
 import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment';
+import { environment } from '../../environments/environment';
+
+
 var SurveyEffects = /** @class */ (function () {
     function SurveyEffects(actions$, router, userProfileService, httpClient) {
         var _this = this;
@@ -14,6 +17,8 @@ var SurveyEffects = /** @class */ (function () {
         this.router = router;
         this.userProfileService = userProfileService;
         this.httpClient = httpClient;
+        this.flaskServerAPIEndpoint = environment.flaskServerForIncentives;
+
         this.login$ = createEffect(function () {
             return _this.actions$.pipe(ofType(SurveyActions.surveyCompleted), tap(function (action) {
                 //store on a server
@@ -31,7 +36,7 @@ var SurveyEffects = /** @class */ (function () {
                 error: error => console.error('There was an error!', error)
                 });
                 */
-                _this.httpClient.post("http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/store-survey-completed", body)
+                _this.httpClient.post(this.flaskServerAPIEndpoint + "/store-survey-completed", body)
                     .subscribe({
                     next: function (data) { return console.log("--survey_completed-- " + JSON.stringify(data)); },
                     error: function (error) { return console.error('There was an error!', error); }
