@@ -6,6 +6,8 @@ import { SurveyActions } from './action-types';
 import { UserProfileService } from '../user/user-profile/user-profile.service';
 import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment';
+import { environment } from '../../environments/environment';
+
 
 @Injectable()
 export class SurveyEffects {
@@ -32,7 +34,8 @@ export class SurveyEffects {
                     error: error => console.error('There was an error!', error)
                     });
                     */
-                    this.httpClient.post("http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/store-survey-completed", body)
+                    var flaskServerAPIEndpoint = environment.flaskServerForIncentives;
+                    this.httpClient.post(flaskServerAPIEndpoint + "/store-survey-completed", body)
                     .subscribe({
                         next: data => console.log("--survey_completed-- " + JSON.stringify(data)),
                         error: error => console.error('There was an error!', error)
