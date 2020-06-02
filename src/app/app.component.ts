@@ -21,6 +21,7 @@ export class AppComponent {
   public isShowingRouteLoadIndicator: boolean;
   loading;
   // isLoading = true;
+
   isAYA: boolean;
 
   get username(){
@@ -132,7 +133,6 @@ export class AppComponent {
           // this.userProfileService.userProfile
         }
       });
-
 
     }
 
