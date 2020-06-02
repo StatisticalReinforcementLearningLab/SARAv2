@@ -239,7 +239,9 @@ export class GameTundraL51 extends Phaser.State {
 
         
         //points to get to meme.
-        vertical_position_offset = 57;
+        var vertical_position_offset = 57;
+
+        /*
         var progress_bar_memes =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 1);
         progress_bar_memes.anchor.setTo(1,0);
         progress_bar_memes.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
@@ -305,6 +307,8 @@ export class GameTundraL51 extends Phaser.State {
 
         //points to get to level up.
         var vertical_position_offset = 101;
+        */
+
         var progress_bar_level_up =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 1);
         progress_bar_level_up.anchor.setTo(1,0);
         progress_bar_level_up.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);

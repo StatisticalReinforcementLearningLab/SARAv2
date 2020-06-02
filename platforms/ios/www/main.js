@@ -710,7 +710,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-app> \n  <app-terms-of-service *ngIf=\"!agreeToTerms\"></app-terms-of-service>\n\n\n  <ion-menu content-id=\"menu\" side=\"start\" menuId=\"first\" type=\"overlay\" swipeEnabled=\"false\" *ngIf=\"agreeToTerms && !isLoading\">\n    <!--\n    <ion-header>\n      <ion-toolbar>\n        <ion-icon name=\"contact\"></ion-icon>\n        <ion-title>mash_aya</ion-title>\n      </ion-toolbar>\n    </ion-header>\n    -->\n    <ion-content>\n      \n      <ion-header>\n        <ion-toolbar>\n          <br>\n          <ion-avatar style=\"margin: auto;\">\n            <img src=\"https://raw.githubusercontent.com/ionic-team/ionic-docs/master/src/demos/api/avatar/avatar.svg\">\n          </ion-avatar>\n          <h2 style=\"text-align: center;\">{{username}}</h2>\n        </ion-toolbar>\n      </ion-header>\n\n      \n\n      <ion-list>\n        <ion-item [routerLink]=\"['/incentive/infopage']\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n          &nbsp; How this app works\n        </ion-item>\n\n        <ion-item [routerLink]=\"['/contact-study-staff']\">\n          <ion-icon name=\"call\"></ion-icon>\n          &nbsp; Contact study staff\n        </ion-item>\n\n\n        <ion-item><br><br><h3 style=\"font-size: 16px;padding-top: 24px;\">Preview/review levels</h3></ion-item>\n        <ion-item [routerLink]=\"['/preview/fishbowl']\"> \n          <ion-label text-wrap>\n            Level 1: Fishbowl\n          </ion-label>\n        </ion-item>\n        <ion-item [routerLink]=\"['/preview/sea']\">\n          <ion-label text-wrap>\n            Level 2: Sea\n            <p>Unlocks at 1060 points</p>\n          </ion-label>\n        </ion-item>\n        \n        <ion-item  [routerLink]=\"['/preview/tundra']\">\n          <ion-label text-wrap>\n            Level 3: Tundra\n            <p>Unlocks at 2120 points</p>\n          </ion-label>\n        </ion-item>\n        <ion-item [routerLink]=\"['/preview/rainforest']\">\n          <ion-label text-wrap>\n            Level 4: Rainforest\n            <p>Unlocks at 3020 points</p>\n          </ion-label>\n        </ion-item>\n        \n      </ion-list>\n    </ion-content>\n  </ion-menu>\n  <ion-router-outlet *ngIf=\"agreeToTerms && !isLoading\" id=\"menu\"></ion-router-outlet>\n\n  <!--\n  <ion-router-outlet id=\"menu\"></ion-router-outlet>\n  \n  \n  -->\n</ion-app>\n\n"
+module.exports = "<ion-app> \n  <app-terms-of-service *ngIf=\"!agreeToTerms\"></app-terms-of-service>\n\n\n  <ion-menu content-id=\"menu\" side=\"start\" menuId=\"first\" type=\"overlay\" swipeEnabled=\"false\" *ngIf=\"agreeToTerms\">\n    <!--\n    <ion-header>\n      <ion-toolbar>\n        <ion-icon name=\"contact\"></ion-icon>\n        <ion-title>mash_aya</ion-title>\n      </ion-toolbar>\n    </ion-header>\n    -->\n    <ion-content>\n      \n      <ion-header>\n        <ion-toolbar>\n          <br>\n          <ion-avatar style=\"margin: auto;\">\n            <img src=\"https://raw.githubusercontent.com/ionic-team/ionic-docs/master/src/demos/api/avatar/avatar.svg\">\n          </ion-avatar>\n          <h2 style=\"text-align: center;\">{{username}}</h2>\n        </ion-toolbar>\n      </ion-header>\n\n      \n\n      <ion-list>\n        <ion-item [routerLink]=\"['/incentive/infopage']\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n          &nbsp; How this app works\n        </ion-item>\n\n        <ion-item [routerLink]=\"['/contact-study-staff']\" *ngIf=\"isAYA\">\n          <ion-icon name=\"call\"></ion-icon>\n          &nbsp; Contact study staff\n        </ion-item>\n\n\n        <ion-item><br><br><h3 style=\"font-size: 16px;padding-top: 24px;\">Preview/review levels</h3></ion-item>\n        <!--\n          [routerLink]=\"['/preview/fishbowl']\"\n        -->\n        <ion-item (click)=\"showPreviewOfFishBowl()\"> \n          <ion-label text-wrap>\n            Level 1: Fishbowl\n          </ion-label>\n        </ion-item>\n        <ion-item (click)=\"showPreviewOfSea()\">\n          <ion-label text-wrap>\n            Level 2: Sea\n            <p>Unlocks at 1060 points</p>\n          </ion-label>\n        </ion-item>\n        \n        <ion-item  (click)=\"showPreviewOfTundra()\">\n          <ion-label text-wrap>\n            Level 3: Tundra\n            <p>Unlocks at 2120 points</p>\n          </ion-label>\n        </ion-item>\n        <ion-item (click)=\"showPreviewOfRainforest()\">\n          <ion-label text-wrap>\n            Level 4: Rainforest\n            <p>Unlocks at 3020 points</p>\n          </ion-label>\n        </ion-item>\n        \n      </ion-list>\n    </ion-content>\n  </ion-menu>\n  <ion-router-outlet *ngIf=\"agreeToTerms && !isLoading\" id=\"menu\"></ion-router-outlet>\n\n  <!--\n  <ion-router-outlet id=\"menu\"></ion-router-outlet>\n  \n  \n  -->\n</ion-app>\n\n"
 
 /***/ }),
 
@@ -743,7 +743,7 @@ module.exports = "<!-- \n<div class=\"container\">\n    <div class=\"row\">\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--\n  <app-aquarium></app-aquarium>\n-->\n\n<ion-tabs>\n\n  <ion-tab-bar slot=\"bottom\" style=\"background: #005486;\">\n    <ion-tab-button tab=\"incentive\" style=\"background: #005486;\"  class=“ion-no-padding”>\n      <ion-icon src=\"/assets/img/fish_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Home</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"quotes\" style=\"background: #005486;\"  class=“ion-no-padding”>\n      <ion-icon src=\"/assets/img/brain.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Quotes</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"memes\" style=\"background: #005486;\"  class=“ion-no-padding”>\n      <ion-icon src=\"/assets/img/happy_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Memes</ion-label>\n    </ion-tab-button>\n\n\n    <ion-tab-button tab=\"thankyous\" style=\"background: #005486;\"  class=“ion-no-padding”>\n      <ion-icon src=\"/assets/img/help_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Thank yous</ion-label>\n    </ion-tab-button>\n\n\n    <!--\n\n    <ion-tab-button tab=\"contact\" style=\"background: #005486;\"  class=“ion-no-padding”>\n      <ion-icon name=\"call\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Contact</ion-label>\n    </ion-tab-button>\n\n\n    <ion-tab-button tab=\"tab2\">\n      <ion-icon name=\"create\"></ion-icon>\n      <ion-label>Memes</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"tab3\">\n      <ion-icon name=\"locate\"></ion-icon>\n      <ion-label>Thank yous</ion-label>\n    </ion-tab-button>\n    -->\n  </ion-tab-bar>\n\n</ion-tabs>"
+module.exports = "<!--\n  <app-aquarium></app-aquarium>\n-->\n\n<ion-tabs>\n\n  <ion-tab-bar slot=\"bottom\" style=\"background: #005486;\">\n    \n    <ion-tab-button tab=\"incentive\" style=\"background: #005486;\"  class=“ion-no-padding”>\n      <ion-icon src=\"/assets/img/fish_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Home</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"quotes\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"isAYA\">\n      <ion-icon src=\"/assets/img/brain.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Quotes</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"memes\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"isAYA\">\n      <ion-icon src=\"/assets/img/happy_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Memes</ion-label>\n    </ion-tab-button>\n\n\n    <ion-tab-button tab=\"thankyous\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"isAYA\">\n      <ion-icon src=\"/assets/img/help_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Thank yous</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"contact\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"!isAYA\">\n      <ion-icon name=\"call\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Contact</ion-label>\n    </ion-tab-button>\n\n\n\n    <!--\n\n    <ion-tab-button tab=\"contact\" style=\"background: #005486;\"  class=“ion-no-padding”>\n      <ion-icon name=\"call\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Contact</ion-label>\n    </ion-tab-button>\n\n\n    <ion-tab-button tab=\"tab2\">\n      <ion-icon name=\"create\"></ion-icon>\n      <ion-label>Memes</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"tab3\">\n      <ion-icon name=\"locate\"></ion-icon>\n      <ion-label>Thank yous</ion-label>\n    </ion-tab-button>\n    -->\n  </ion-tab-bar>\n\n</ion-tabs>"
 
 /***/ }),
 
@@ -765,7 +765,7 @@ module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n\n      <ion-buttons slot=\"start\">\n        <ion-menu-button style=\"color:#fff;\" menuId=\"first\"></ion-menu-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n      </ion-buttons>\n\n      <!--\n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n        <ion-menu-button autoHide=\"false\" style=\"color:#fff;\" menuId=\"first\" (click)=\"showSideMenu()\"></ion-menu-button>\n        <ion-button style=\"color:#fff;\" (click)=\"showSideMenu()\">\n          <ion-icon name=\"menu\"></ion-icon>\n        </ion-button>\n        \n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"!isIOS\">\n            <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n      -->\n\n\n      <ion-buttons slot=\"end\">\n          <font color=\"white\">${{money}}</font>\n          <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\"  *ngIf=\"!isIOS\">\n            <ion-icon name=\"alert\"></ion-icon>\n          </ion-button>\n  \n          <!-- Mash codes:\n          <ion-text  *ngIf=\"!isActive\" style=\"color:#fff;\"><strong>Account is Paused</strong> </ion-text>\n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button>\n          -->\n  \n          \n  \n          <ion-button (click)=\"startSurvey()\"   *ngIf=\"isActive\">\n              <ion-icon name=\"ios-create\" style=\"color : white;\"></ion-icon>\n          </ion-button>\n  \n  \n          <ion-button *ngIf=\"!isActive\" (click)=\"dispalySurveyPausedMsg()\" >\n              <ion-icon name=\"ios-create\" style=\"color : #e74c3c;\"></ion-icon>\n          </ion-button>\n          <!--\n          <ion-button href=\"{{surveyPath}}\" *ngIf=\"isActive\">Start Survey</ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurveyAYA()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          -->\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">{{title}}</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  \n  \n  <ion-content>\n    <!--div class=\"ion-padding\">\n      <ion-button href=\"/survey/samplesurvey\">Sample survey (demo)</ion-button> <br>\n      <ion-button href=\"/incentive/aquariumone\">Incentive: Aquarium 1</ion-button> <br>\n      <ion-button href=\"/incentive/award-memes\" >Incentive: meme</ion-button> <br>\n      <ion-button href=\"/incentive/visualization\">Incentive: Life-inisight</ion-button> <br>\n    </div-->\n  \n    <app-demo-aquarium></app-demo-aquarium>\n\n    <!--\n    <ion-button color=\"primary\" (click)=\"showModalDemo()\">Unlockables</ion-button>\n    <ion-button color=\"primary\" (click)=\"showMemeDemo()\">Meme</ion-button>\n    <ion-button color=\"primary\" (click)=\"showAltruisticDemo()\">Altruistic msg</ion-button>\n    -->\n  </ion-content>\n  \n  "
+module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n\n      <ion-buttons slot=\"start\">\n        <ion-menu-button style=\"color:#fff;\" menuId=\"first\"></ion-menu-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n      </ion-buttons>\n\n      <!--\n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n        <ion-menu-button autoHide=\"false\" style=\"color:#fff;\" menuId=\"first\" (click)=\"showSideMenu()\"></ion-menu-button>\n        <ion-button style=\"color:#fff;\" (click)=\"showSideMenu()\">\n          <ion-icon name=\"menu\"></ion-icon>\n        </ion-button>\n        \n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"!isIOS\">\n            <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n      -->\n\n\n      <ion-buttons slot=\"end\">\n          <font color=\"white\">${{money}}</font>\n          <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\"  *ngIf=\"!isIOS\">\n            <ion-icon name=\"alert\"></ion-icon>\n          </ion-button>\n  \n          <!-- Mash codes:\n          <ion-text  *ngIf=\"!isActive\" style=\"color:#fff;\"><strong>Account is Paused</strong> </ion-text>\n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button>\n          -->\n  \n          \n  \n          <ion-button (click)=\"startSurvey()\"   *ngIf=\"isActive\">\n              <ion-icon name=\"ios-create\" style=\"color : white;\"></ion-icon>\n          </ion-button>\n  \n  \n          <ion-button *ngIf=\"!isActive\" (click)=\"dispalySurveyPausedMsg()\" >\n              <ion-icon name=\"ios-create\" style=\"color : #e74c3c;\"></ion-icon>\n          </ion-button>\n          <!--\n          <ion-button href=\"{{surveyPath}}\" *ngIf=\"isActive\">Start Survey</ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurveyAYA()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          -->\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">{{title}}</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  \n  \n  <ion-content>\n    <!--div class=\"ion-padding\">\n      <ion-button href=\"/survey/samplesurvey\">Sample survey (demo)</ion-button> <br>\n      <ion-button href=\"/incentive/aquariumone\">Incentive: Aquarium 1</ion-button> <br>\n      <ion-button href=\"/incentive/award-memes\" >Incentive: meme</ion-button> <br>\n      <ion-button href=\"/incentive/visualization\">Incentive: Life-inisight</ion-button> <br>\n    </div-->\n  \n    <app-demo-aquarium isPreview=\"false\"></app-demo-aquarium>\n\n    <!--\n    <ion-button color=\"primary\" (click)=\"showModalDemo()\">Unlockables</ion-button>\n    <ion-button color=\"primary\" (click)=\"showMemeDemo()\">Meme</ion-button>\n    <ion-button color=\"primary\" (click)=\"showAltruisticDemo()\">Altruistic msg</ion-button>\n    -->\n  </ion-content>\n  \n  "
 
 /***/ }),
 
@@ -809,7 +809,7 @@ module.exports = "\n<ion-header>\n    <ion-list-header>Congratulations!!!</ion-l
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Level 1: Fishbowl</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n  <img style=\"width:100%;\" id=\"image\" src=\"assets/img/at_1050_points.png\">\n</ion-content>\n"
+module.exports = "\n<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Level 1: Fishbowl</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n  <ion-card>\n    <ion-card-content>\n      <ion-card-title style=\"color:black;\">A preview of Level 1: Fishbowl</ion-card-title>\n      This level is the first level.\n    </ion-card-content>\n  </ion-card>\n  <ion-card>\n    <img src=\"assets/img/at_1050_points.png\">\n  </ion-card>\n</ion-content>\n\n\n"
 
 /***/ }),
 
@@ -820,7 +820,7 @@ module.exports = "\n<ion-header>\n    <ion-toolbar class=\"new-background-color\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Level 4: Rainforest</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n  <img style=\"width:100%;\" id=\"image\" src=\"assets/img/at_4000_points.png\">\n</ion-content>\n"
+module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-button (click)=\"goHome()\">\n          <ion-icon name=\"arrow-back\" style=\"color:#fff;\"></ion-icon>\n        </ion-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Level 4: Rainforest</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <!--\n  <app-demo-aquarium isPreview=\"false\"></app-demo-aquarium>\n  -->\n  \n  <ion-card>\n    <ion-card-content>\n      <ion-card-title style=\"color:black;\">A preview of Level 4: Rainforest</ion-card-title>\n      This level will be unlocked at 3020 points.\n    </ion-card-content>\n  </ion-card>\n  <ion-card>\n    <img src=\"assets/img/at_4000_points.png\">\n  </ion-card>\n</ion-content>\n"
 
 /***/ }),
 
@@ -831,7 +831,7 @@ module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Level 2: Sea</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n  <img style=\"width:100%;\" id=\"image\" src=\"assets/img/at_2100_points.png\">\n</ion-content>\n"
+module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Level 2: Sea</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <!--\n  <app-demo-aquarium isPreview=\"false\"></app-demo-aquarium>\n  -->\n  \n  <ion-card>\n    <ion-card-content>\n      <ion-card-title style=\"color:black;\">A preview of Level 2: Sea</ion-card-title>\n      This level will be unlocked at 1060 points.\n    </ion-card-content>\n  </ion-card>\n  <ion-card>\n    <img src=\"assets/img/at_2100_points.png\">\n  </ion-card>\n</ion-content>"
 
 /***/ }),
 
@@ -842,7 +842,7 @@ module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Level 3: Tundra</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n  <img style=\"width:100%;\" id=\"image\" src=\"assets/img/at_3000_points.png\">\n</ion-content>\n"
+module.exports = "\n<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Level 3: Tundra</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <!--\n  <app-demo-aquarium isPreview=\"false\"></app-demo-aquarium>\n  -->\n  \n  <ion-card>\n    <ion-card-content>\n      <ion-card-title style=\"color:black;\">A preview of Level 3: Tundra</ion-card-title>\n      This level will be unlocked at 2120 points.\n    </ion-card-content>\n  </ion-card>\n  <ion-card>\n    <img src=\"assets/img/at_3000_points.png\">\n  </ion-card>\n</ion-content>\n"
 
 /***/ }),
 
@@ -4776,7 +4776,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(router, platform, splashScreen, statusBar, oneSignalService, authService, userProfileService, loadingController) {
+    function AppComponent(router, platform, splashScreen, statusBar, oneSignalService, authService, userProfileService, loadingController, navController) {
         var _this = this;
         this.router = router;
         this.platform = platform;
@@ -4786,9 +4786,12 @@ var AppComponent = /** @class */ (function () {
         this.authService = authService;
         this.userProfileService = userProfileService;
         this.loadingController = loadingController;
-        this.isLoading = true;
+        this.navController = navController;
         this.agreeToTerms = JSON.parse(localStorage.getItem("agreeToTerms"));
         this.initializeApp();
+        this.isAYA = true;
+        if (this.userProfileService.isParent == true)
+            this.isAYA = false;
         router.events.subscribe(function (event) {
             //this.isShowingRouteLoadIndicator = false;
             var asyncLoadCount = 0;
@@ -4849,22 +4852,30 @@ var AppComponent = /** @class */ (function () {
     };
     AppComponent.prototype.initializeApp = function () {
         var _this = this;
-        this.authService.autoLogin();
         if (this.authService.isLoggedIn()) {
-            this.showLoading();
-            this.userSub = this.userProfileService.initializeObs().subscribe(function () {
-                _this.dismissLoading();
-                _this.isLoading = false;
-                console.log("successfully logged in");
+            this.userProfileService.loadProfileFromDevice();
+            // this.isLoading = false;
+            // get up to date userProfileFixed - to see if isActive has changed
+            this.userProfileService.fetchUserProfileFixed().subscribe(function (response) {
+                if (response.changed) {
+                    // there was a change to isActive
+                    // accessible via
+                    // this.userProfileService.isActive
+                }
             });
-            // this.userProfileService.initialize();
-            // if we can for things to wait to progress in here
-            // then, we'll only need to load user profile here and at login in Auth component
+            // fetch a copy from server of userProfile to see if it's newer 
+            this.userProfileService.fetchUserProfile().subscribe(function (response) {
+                if (response.serverCopyNewer) {
+                    // the server copy of the userProfile was newer (and has been updated locally)
+                    // accessible via
+                    // this.userProfileService.userProfile
+                }
+            });
         }
         else {
-            console.log("log in unsuccessful.");
-            this.dismissLoading();
-            this.isLoading = false;
+            // not logged in; so do nothing
+            // should be routed via the authguard to the login screen
+            // after login occurs we should load the UP and UPF - which happens via the auth.component
         }
         this.platform.ready().then(function () {
             //this.statusBar.styleDefault();
@@ -4959,6 +4970,39 @@ var AppComponent = /** @class */ (function () {
             });
         });
     };
+    //
+    AppComponent.prototype.showPreviewOfFishBowl = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                this.navController.navigateRoot(['/preview/fishbowl']);
+                return [2 /*return*/];
+            });
+        });
+    };
+    AppComponent.prototype.showPreviewOfSea = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                this.navController.navigateRoot(['/preview/sea']);
+                return [2 /*return*/];
+            });
+        });
+    };
+    AppComponent.prototype.showPreviewOfTundra = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                this.navController.navigateRoot(['/preview/tundra']);
+                return [2 /*return*/];
+            });
+        });
+    };
+    AppComponent.prototype.showPreviewOfRainforest = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                this.navController.navigateRoot(['/preview/rainforest']);
+                return [2 /*return*/];
+            });
+        });
+    };
     AppComponent.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
@@ -4967,7 +5011,8 @@ var AppComponent = /** @class */ (function () {
         { type: _notification_one_signal_service__WEBPACK_IMPORTED_MODULE_5__["OneSignalService"] },
         { type: _user_auth_auth_service__WEBPACK_IMPORTED_MODULE_8__["AuthService"] },
         { type: _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_7__["UserProfileService"] },
-        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"] }
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"] }
     ]; };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -4981,7 +5026,8 @@ var AppComponent = /** @class */ (function () {
             _notification_one_signal_service__WEBPACK_IMPORTED_MODULE_5__["OneSignalService"],
             _user_auth_auth_service__WEBPACK_IMPORTED_MODULE_8__["AuthService"],
             _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_7__["UserProfileService"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"]])
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -5423,11 +5469,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _incentive_aquarium_aquarium_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../incentive/aquarium/aquarium.component */ "./src/app/incentive/aquarium/aquarium.component.ts");
+/* harmony import */ var _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
+
 
 
 
 var HomePage = /** @class */ (function () {
-    function HomePage() {
+    function HomePage(userProfileService) {
+        this.userProfileService = userProfileService;
+        this.isAYA = true;
+        if (this.userProfileService.isParent == true)
+            this.isAYA = false;
     }
     HomePage.prototype.ngOnInit = function () {
     };
@@ -5439,6 +5491,9 @@ var HomePage = /** @class */ (function () {
         console.log("ionViewDidLeaveFunction");
         //this.child.ionViewDidLeaveFunction();
     };
+    HomePage.ctorParameters = function () { return [
+        { type: _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__["UserProfileService"] }
+    ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_incentive_aquarium_aquarium_component__WEBPACK_IMPORTED_MODULE_2__["AquariumComponent"], { static: true }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
@@ -5448,7 +5503,8 @@ var HomePage = /** @class */ (function () {
             selector: 'app-home',
             template: __webpack_require__(/*! raw-loader!./home.page.html */ "./node_modules/raw-loader/index.js!./src/app/home/home.page.html"),
             styles: [__webpack_require__(/*! ./home.page.scss */ "./src/app/home/home.page.scss")]
-        })
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__["UserProfileService"]])
     ], HomePage);
     return HomePage;
 }());
@@ -5663,11 +5719,11 @@ var AquariumComponent = /** @class */ (function () {
         this.modalDataSubscription$.unsubscribe();
     };
     AquariumComponent.prototype.ionViewDidLeave = function () {
-        console.log("ionDidLeave");
+        console.log("aqarium.ts --- ionDidLeave");
         this.ionViewDidLeaveFunction();
     };
     AquariumComponent.prototype.ionViewDidEnter = function () {
-        console.log("ionViewDidEnter");
+        console.log("aqarium.ts --- ionViewDidEnter");
         this.child.loadFunction();
         //decide if we want to show the modal view with unlockables.
         this.subscribeForModalView();
@@ -5970,6 +6026,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _survey_survey_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../survey/survey.module */ "./src/app/survey/survey.module.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _aquarium_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./aquarium.component */ "./src/app/incentive/aquarium/aquarium.component.ts");
+/* harmony import */ var _previews_rainforest_rainforest_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./previews/rainforest/rainforest.component */ "./src/app/incentive/aquarium/previews/rainforest/rainforest.component.ts");
+
 
 
 
@@ -5986,7 +6044,7 @@ var AquariumModule = /** @class */ (function () {
     }
     AquariumModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_demo_aquarium_demo_aquarium_component__WEBPACK_IMPORTED_MODULE_4__["DemoAquariumComponent"], _aquarium_component__WEBPACK_IMPORTED_MODULE_7__["AquariumComponent"]],
+            declarations: [_demo_aquarium_demo_aquarium_component__WEBPACK_IMPORTED_MODULE_4__["DemoAquariumComponent"], _aquarium_component__WEBPACK_IMPORTED_MODULE_7__["AquariumComponent"], _previews_rainforest_rainforest_component__WEBPACK_IMPORTED_MODULE_8__["RainforestComponent"]],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _survey_survey_module__WEBPACK_IMPORTED_MODULE_5__["SurveyModule"],
@@ -6221,7 +6279,6 @@ var DemoAquariumComponent = /** @class */ (function () {
             if (this.userProfileService == undefined)
                 return "test";
             else {
-                //console.log("User profile -- username -- called from here");
                 return this.userProfileService.username;
             }
         },
@@ -6235,7 +6292,7 @@ var DemoAquariumComponent = /** @class */ (function () {
     /* Get last seven days of indicator for survey completion,
     return an array of 7 elements like [0, 1, 0, 0, 0, 1, 0]
     with 1 indicating submitted survey, 0 otherwise, the first
-    element is current day.               */
+    element is current day. */
     DemoAquariumComponent.prototype.getIndicatorForSurveyDone = function () {
         var daily_survey = this.userProfileService.userProfile.survey_data.daily_survey;
         console.log("daily_survey:");
@@ -6421,96 +6478,100 @@ var DemoAquariumComponent = /** @class */ (function () {
         else
             this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 100, Phaser.AUTO, 'gameDiv');
         //this.totalPoints = 2125;
-        if (this.totalPoints < 0) {
-            this.game.state.add('Boot', _levels_GameOver_Boot__WEBPACK_IMPORTED_MODULE_14__["BootGameOver"]);
-            this.pickedGame = 'GameOver';
-            var preLoader = new _levels_GameOver_Preloader__WEBPACK_IMPORTED_MODULE_15__["PreloaderGameOver"]();
-            this.game.state.add('Preloader', preLoader);
-            var gameover = new _levels_GameOver_GameOver__WEBPACK_IMPORTED_MODULE_16__["GameOver"]();
-            this.game.state.add('GameOver', gameover);
+        if (this.isPreview == "false") {
+            if (this.totalPoints < 0) {
+                this.game.state.add('Boot', _levels_GameOver_Boot__WEBPACK_IMPORTED_MODULE_14__["BootGameOver"]);
+                this.pickedGame = 'GameOver';
+                var preLoader = new _levels_GameOver_Preloader__WEBPACK_IMPORTED_MODULE_15__["PreloaderGameOver"]();
+                this.game.state.add('Preloader', preLoader);
+                var gameover = new _levels_GameOver_GameOver__WEBPACK_IMPORTED_MODULE_16__["GameOver"]();
+                this.game.state.add('GameOver', gameover);
+            }
+            else if (this.totalPoints < 770 && this.totalPoints >= 0) {
+                this.game.state.add('Boot', _levels_FishBowlL1_Boot__WEBPACK_IMPORTED_MODULE_2__["BootL1"]);
+                this.pickedGame = 'FishBowlL1';
+                var preLoader = new _levels_FishBowlL1_Preloader__WEBPACK_IMPORTED_MODULE_3__["PreloaderL1"]();
+                this.game.state.add('Preloader', preLoader);
+                var fishBowlL1 = new _levels_FishBowlL1_Game__WEBPACK_IMPORTED_MODULE_4__["FishBowlL1"]();
+                fishBowlL1.setTotalPoints(this.totalPoints);
+                var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+                fishBowlL1.setSurveyHistory(surveyCompletionHistory);
+                this.game.state.add('FishBowlL1', fishBowlL1);
+            }
+            else if (this.totalPoints >= 770 && this.totalPoints < 1060) {
+                this.game.state.add('Boot', _levels_FishBowlL2_Boot__WEBPACK_IMPORTED_MODULE_5__["BootL2"]);
+                this.pickedGame = 'FishBowlL2';
+                var preLoader = new _levels_FishBowlL2_Preloader__WEBPACK_IMPORTED_MODULE_6__["PreloaderL2"]();
+                this.game.state.add('Preloader', preLoader);
+                var fishBowlL2 = new _levels_FishBowlL2_Game__WEBPACK_IMPORTED_MODULE_7__["FishBowlL2"]();
+                fishBowlL2.setTotalPoints(this.totalPoints);
+                var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+                fishBowlL2.setSurveyHistory(surveyCompletionHistory);
+                this.game.state.add('FishBowlL2', fishBowlL2);
+            }
+            else if (this.totalPoints >= 1060 && this.totalPoints < 1710) {
+                this.game.state.add('Boot', _levels_SeaLevelL3_Boot__WEBPACK_IMPORTED_MODULE_8__["BootL3"]);
+                this.pickedGame = 'SeaLevelL3';
+                var preLoader = new _levels_SeaLevelL3_Preloader__WEBPACK_IMPORTED_MODULE_9__["PreloaderL3"]();
+                this.game.state.add('Preloader', preLoader);
+                var seaLevelL3 = new _levels_SeaLevelL3_Game__WEBPACK_IMPORTED_MODULE_10__["SeaLevelL3"]();
+                seaLevelL3.setTotalPoints(this.totalPoints);
+                var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+                seaLevelL3.setSurveyHistory(surveyCompletionHistory);
+                this.game.state.add('SeaLevelL3', seaLevelL3);
+            }
+            else if (this.totalPoints >= 1710 && this.totalPoints < 2120) {
+                this.game.state.add('Boot', _levels_SeaLevelL4_Boot__WEBPACK_IMPORTED_MODULE_11__["BootL4"]);
+                this.pickedGame = 'SeaLevelL4';
+                var preLoader = new _levels_SeaLevelL4_Preloader__WEBPACK_IMPORTED_MODULE_12__["PreloaderL4"]();
+                this.game.state.add('Preloader', preLoader);
+                var seaLevelL4 = new _levels_SeaLevelL4_Game__WEBPACK_IMPORTED_MODULE_13__["SeaLevelL4"]();
+                seaLevelL4.setTotalPoints(this.totalPoints);
+                var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+                seaLevelL4.setSurveyHistory(surveyCompletionHistory);
+                this.game.state.add('SeaLevelL4', seaLevelL4);
+            }
+            else if (this.totalPoints >= 2120 && this.totalPoints < 2720) {
+                this.game.state.add('Boot', _levels_TundraLevelL5_Boot__WEBPACK_IMPORTED_MODULE_17__["BootTundraL5"]);
+                this.pickedGame = "TundraLevel1";
+                var preLoader = new _levels_TundraLevelL5_Preloader__WEBPACK_IMPORTED_MODULE_18__["PreloaderTundraL5"]();
+                this.game.state.add('Preloader', preLoader);
+                var level5 = new _levels_TundraLevelL5_Game__WEBPACK_IMPORTED_MODULE_19__["GameTundraL5"]();
+                level5.setTotalPoints(this.totalPoints);
+                var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+                level5.setSurveyHistory(surveyCompletionHistory);
+                this.game.state.add('TundraLevel1', level5);
+            }
+            else if (this.totalPoints >= 2720 && this.totalPoints < 3020) {
+                this.game.state.add('Boot', _levels_TundraLevelL51_Boot__WEBPACK_IMPORTED_MODULE_20__["BootTundraL51"]);
+                this.pickedGame = "TundraLevel2";
+                var preLoader = new _levels_TundraLevelL51_Preloader__WEBPACK_IMPORTED_MODULE_21__["PreloaderTundraL51"]();
+                this.game.state.add('Preloader', preLoader);
+                var level51 = new _levels_TundraLevelL51_Game__WEBPACK_IMPORTED_MODULE_22__["GameTundraL51"]();
+                level51.setTotalPoints(this.totalPoints);
+                var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+                level51.setSurveyHistory(surveyCompletionHistory);
+                this.game.state.add('TundraLevel2', level51);
+            }
+            else if (this.totalPoints >= 3020) {
+                this.game.state.add('Boot', _levels_RainforestL6_Boot__WEBPACK_IMPORTED_MODULE_23__["BootRainforestL6"]);
+                this.pickedGame = "RainforestLevel6";
+                var preLoader = new _levels_RainforestL6_Preloader__WEBPACK_IMPORTED_MODULE_24__["PreloaderRainforestL6"]();
+                this.game.state.add('Preloader', preLoader);
+                var level6 = new _levels_RainforestL6_Game__WEBPACK_IMPORTED_MODULE_25__["GameRainforestL6"]();
+                level6.setTotalPoints(this.totalPoints);
+                var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+                level6.setSurveyHistory(surveyCompletionHistory);
+                this.game.state.add('RainforestLevel6', level6);
+            }
+            else {
+                //---
+                var preLoader = new _levels_FishBowlL1_Preloader__WEBPACK_IMPORTED_MODULE_3__["PreloaderL1"]();
+                preLoader.setGameName(this.pickedGame = "GameOver");
+                this.game.state.add('Preloader', preLoader);
+            }
         }
-        else if (this.totalPoints < 770 && this.totalPoints >= 0) {
-            this.game.state.add('Boot', _levels_FishBowlL1_Boot__WEBPACK_IMPORTED_MODULE_2__["BootL1"]);
-            this.pickedGame = 'FishBowlL1';
-            var preLoader = new _levels_FishBowlL1_Preloader__WEBPACK_IMPORTED_MODULE_3__["PreloaderL1"]();
-            this.game.state.add('Preloader', preLoader);
-            var fishBowlL1 = new _levels_FishBowlL1_Game__WEBPACK_IMPORTED_MODULE_4__["FishBowlL1"]();
-            fishBowlL1.setTotalPoints(this.totalPoints);
-            var surveyCompletionHistory = this.getIndicatorForSurveyDone();
-            fishBowlL1.setSurveyHistory(surveyCompletionHistory);
-            this.game.state.add('FishBowlL1', fishBowlL1);
-        }
-        else if (this.totalPoints >= 770 && this.totalPoints < 1060) {
-            this.game.state.add('Boot', _levels_FishBowlL2_Boot__WEBPACK_IMPORTED_MODULE_5__["BootL2"]);
-            this.pickedGame = 'FishBowlL2';
-            var preLoader = new _levels_FishBowlL2_Preloader__WEBPACK_IMPORTED_MODULE_6__["PreloaderL2"]();
-            this.game.state.add('Preloader', preLoader);
-            var fishBowlL2 = new _levels_FishBowlL2_Game__WEBPACK_IMPORTED_MODULE_7__["FishBowlL2"]();
-            fishBowlL2.setTotalPoints(this.totalPoints);
-            var surveyCompletionHistory = this.getIndicatorForSurveyDone();
-            fishBowlL2.setSurveyHistory(surveyCompletionHistory);
-            this.game.state.add('FishBowlL2', fishBowlL2);
-        }
-        else if (this.totalPoints >= 1060 && this.totalPoints < 1710) {
-            this.game.state.add('Boot', _levels_SeaLevelL3_Boot__WEBPACK_IMPORTED_MODULE_8__["BootL3"]);
-            this.pickedGame = 'SeaLevelL3';
-            var preLoader = new _levels_SeaLevelL3_Preloader__WEBPACK_IMPORTED_MODULE_9__["PreloaderL3"]();
-            this.game.state.add('Preloader', preLoader);
-            var seaLevelL3 = new _levels_SeaLevelL3_Game__WEBPACK_IMPORTED_MODULE_10__["SeaLevelL3"]();
-            seaLevelL3.setTotalPoints(this.totalPoints);
-            var surveyCompletionHistory = this.getIndicatorForSurveyDone();
-            seaLevelL3.setSurveyHistory(surveyCompletionHistory);
-            this.game.state.add('SeaLevelL3', seaLevelL3);
-        }
-        else if (this.totalPoints >= 1710 && this.totalPoints < 2120) {
-            this.game.state.add('Boot', _levels_SeaLevelL4_Boot__WEBPACK_IMPORTED_MODULE_11__["BootL4"]);
-            this.pickedGame = 'SeaLevelL4';
-            var preLoader = new _levels_SeaLevelL4_Preloader__WEBPACK_IMPORTED_MODULE_12__["PreloaderL4"]();
-            this.game.state.add('Preloader', preLoader);
-            var seaLevelL4 = new _levels_SeaLevelL4_Game__WEBPACK_IMPORTED_MODULE_13__["SeaLevelL4"]();
-            seaLevelL4.setTotalPoints(this.totalPoints);
-            var surveyCompletionHistory = this.getIndicatorForSurveyDone();
-            seaLevelL4.setSurveyHistory(surveyCompletionHistory);
-            this.game.state.add('SeaLevelL4', seaLevelL4);
-        }
-        else if (this.totalPoints >= 2120 && this.totalPoints < 2720) {
-            this.game.state.add('Boot', _levels_TundraLevelL5_Boot__WEBPACK_IMPORTED_MODULE_17__["BootTundraL5"]);
-            this.pickedGame = "TundraLevel1";
-            var preLoader = new _levels_TundraLevelL5_Preloader__WEBPACK_IMPORTED_MODULE_18__["PreloaderTundraL5"]();
-            this.game.state.add('Preloader', preLoader);
-            var level5 = new _levels_TundraLevelL5_Game__WEBPACK_IMPORTED_MODULE_19__["GameTundraL5"]();
-            level5.setTotalPoints(this.totalPoints);
-            var surveyCompletionHistory = this.getIndicatorForSurveyDone();
-            level5.setSurveyHistory(surveyCompletionHistory);
-            this.game.state.add('TundraLevel1', level5);
-        }
-        else if (this.totalPoints >= 2720 && this.totalPoints < 3020) {
-            this.game.state.add('Boot', _levels_TundraLevelL51_Boot__WEBPACK_IMPORTED_MODULE_20__["BootTundraL51"]);
-            this.pickedGame = "TundraLevel2";
-            var preLoader = new _levels_TundraLevelL51_Preloader__WEBPACK_IMPORTED_MODULE_21__["PreloaderTundraL51"]();
-            this.game.state.add('Preloader', preLoader);
-            var level51 = new _levels_TundraLevelL51_Game__WEBPACK_IMPORTED_MODULE_22__["GameTundraL51"]();
-            level51.setTotalPoints(this.totalPoints);
-            var surveyCompletionHistory = this.getIndicatorForSurveyDone();
-            level51.setSurveyHistory(surveyCompletionHistory);
-            this.game.state.add('TundraLevel2', level51);
-        }
-        else if (this.totalPoints >= 3020) {
-            this.game.state.add('Boot', _levels_RainforestL6_Boot__WEBPACK_IMPORTED_MODULE_23__["BootRainforestL6"]);
-            this.pickedGame = "RainforestLevel6";
-            var preLoader = new _levels_RainforestL6_Preloader__WEBPACK_IMPORTED_MODULE_24__["PreloaderRainforestL6"]();
-            this.game.state.add('Preloader', preLoader);
-            var level6 = new _levels_RainforestL6_Game__WEBPACK_IMPORTED_MODULE_25__["GameRainforestL6"]();
-            level6.setTotalPoints(this.totalPoints);
-            var surveyCompletionHistory = this.getIndicatorForSurveyDone();
-            level6.setSurveyHistory(surveyCompletionHistory);
-            this.game.state.add('RainforestLevel6', level6);
-        }
-        else {
-            //---
-            var preLoader = new _levels_FishBowlL1_Preloader__WEBPACK_IMPORTED_MODULE_3__["PreloaderL1"]();
-            preLoader.setGameName(this.pickedGame = "GameOver");
-            this.game.state.add('Preloader', preLoader);
+        if (this.isPreview == "true") {
         }
         //this.game.state.add('GameOver', GameOver);
         this.game.state.start('Boot');
@@ -6521,7 +6582,7 @@ var DemoAquariumComponent = /** @class */ (function () {
     DemoAquariumComponent.prototype.ionViewDidLeaveFunction = function () {
         var _this = this;
         console.log("Aquarium, ionDidLeave");
-        this.survey_text = "Start survey";
+        //this.survey_text = "Start survey";
         this.db.getDatabaseState().subscribe(function (rdy) {
             if (rdy) {
                 _this.db.addTrack(_this.pageTitle, "Leave", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
@@ -6588,6 +6649,10 @@ var DemoAquariumComponent = /** @class */ (function () {
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_31__["HttpClient"] },
         { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_30__["DatabaseService"] }
     ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], DemoAquariumComponent.prototype, "isPreview", void 0);
     DemoAquariumComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-demo-aquarium',
@@ -15252,26 +15317,65 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _demo_aquarium_demo_aquarium_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../demo-aquarium/demo-aquarium.component */ "./src/app/incentive/aquarium/demo-aquarium/demo-aquarium.component.ts");
+
 
 
 
 var RainforestComponent = /** @class */ (function () {
-    function RainforestComponent(menuCtrl) {
+    function RainforestComponent(menuCtrl, navController) {
         this.menuCtrl = menuCtrl;
+        this.navController = navController;
     }
     RainforestComponent.prototype.ngOnInit = function () {
         this.menuCtrl.close();
     };
+    RainforestComponent.prototype.goHome = function () {
+        /*
+        this.child.ionViewDidLeaveFunction();
+        // Create an Observable that will publish a value on an interval
+        const secondsCounter2 = interval(1000).subscribe(n =>{
+          console.log(`It's been ${n} seconds since subscribing!`);
+          secondsCounter2.unsubscribe();
+         
+        });
+        */
+        this.navController.navigateRoot(['/home']);
+    };
+    RainforestComponent.prototype.ionViewDidEnter = function () {
+        console.log("aqarium.ts --- ionViewDidEnter");
+        //this.child.loadFunction();
+    };
+    RainforestComponent.prototype.ngAfterViewInit = function () {
+        /*
+        console.log("aqarium.ts --- ngAfterInit");
+        console.log("aqarium.ts --- " + this.child);
+        //this.child.loadFunction();
+    
+        // Create an Observable that will publish a value on an interval
+        const secondsCounter = interval(1000).subscribe(n =>{
+          console.log(`It's been ${n} seconds since subscribing!`);
+          secondsCounter.unsubscribe();
+          this.child.loadFunction();
+        });
+        */
+    };
     RainforestComponent.ctorParameters = function () { return [
-        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"] }
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"] }
     ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_demo_aquarium_demo_aquarium_component__WEBPACK_IMPORTED_MODULE_3__["DemoAquariumComponent"], { static: true }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], RainforestComponent.prototype, "child", void 0);
     RainforestComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-rainforest',
             template: __webpack_require__(/*! raw-loader!./rainforest.component.html */ "./node_modules/raw-loader/index.js!./src/app/incentive/aquarium/previews/rainforest/rainforest.component.html"),
             styles: [__webpack_require__(/*! ./rainforest.component.css */ "./src/app/incentive/aquarium/previews/rainforest/rainforest.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"]])
     ], RainforestComponent);
     return RainforestComponent;
 }());
@@ -16269,8 +16373,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _aquarium_previews_fishbowl_fishbowl_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./aquarium/previews/fishbowl/fishbowl.component */ "./src/app/incentive/aquarium/previews/fishbowl/fishbowl.component.ts");
 /* harmony import */ var _aquarium_previews_sea_sea_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./aquarium/previews/sea/sea.component */ "./src/app/incentive/aquarium/previews/sea/sea.component.ts");
 /* harmony import */ var _aquarium_previews_tundra_tundra_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./aquarium/previews/tundra/tundra.component */ "./src/app/incentive/aquarium/previews/tundra/tundra.component.ts");
-/* harmony import */ var _aquarium_previews_rainforest_rainforest_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./aquarium/previews/rainforest/rainforest.component */ "./src/app/incentive/aquarium/previews/rainforest/rainforest.component.ts");
-/* harmony import */ var _unlocked_inspirational_quotes_unlocked_inspirational_quotes_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./unlocked-inspirational-quotes/unlocked-inspirational-quotes.component */ "./src/app/incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component.ts");
+/* harmony import */ var _unlocked_inspirational_quotes_unlocked_inspirational_quotes_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./unlocked-inspirational-quotes/unlocked-inspirational-quotes.component */ "./src/app/incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component.ts");
 
 
 
@@ -16293,7 +16396,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var routes = [
     //  { path: 'award', component: AwardComponent },
     { path: 'award-memes', component: _award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__["AwardMemesComponent"] },
@@ -16303,7 +16405,7 @@ var IncentiveModule = /** @class */ (function () {
     }
     IncentiveModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__["AwardMemesComponent"], _award_altruism_award_altruism_component__WEBPACK_IMPORTED_MODULE_7__["AwardAltruismComponent"], _treasurechest_treasurechest_component__WEBPACK_IMPORTED_MODULE_6__["TreasurechestComponent"], _aquarium_modal_unlocked_page_modal_unlocked_page_component__WEBPACK_IMPORTED_MODULE_8__["ModalUnlockedPageComponent"], _info_page_info_page_component__WEBPACK_IMPORTED_MODULE_9__["InfoPageComponent"], _unlocked_memes_unlocked_memes_component__WEBPACK_IMPORTED_MODULE_12__["UnlockedMemesComponent"], _unlocked_altuistic_messages_unlocked_altuistic_messages_component__WEBPACK_IMPORTED_MODULE_13__["UnlockedAltuisticMessagesComponent"], _aquarium_previews_fishbowl_fishbowl_component__WEBPACK_IMPORTED_MODULE_14__["FishbowlComponent"], _aquarium_previews_sea_sea_component__WEBPACK_IMPORTED_MODULE_15__["SeaComponent"], _aquarium_previews_tundra_tundra_component__WEBPACK_IMPORTED_MODULE_16__["TundraComponent"], _aquarium_previews_rainforest_rainforest_component__WEBPACK_IMPORTED_MODULE_17__["RainforestComponent"], _unlocked_inspirational_quotes_unlocked_inspirational_quotes_component__WEBPACK_IMPORTED_MODULE_18__["UnlockedInspirationalQuotesComponent"]],
+            declarations: [_award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__["AwardMemesComponent"], _award_altruism_award_altruism_component__WEBPACK_IMPORTED_MODULE_7__["AwardAltruismComponent"], _treasurechest_treasurechest_component__WEBPACK_IMPORTED_MODULE_6__["TreasurechestComponent"], _aquarium_modal_unlocked_page_modal_unlocked_page_component__WEBPACK_IMPORTED_MODULE_8__["ModalUnlockedPageComponent"], _info_page_info_page_component__WEBPACK_IMPORTED_MODULE_9__["InfoPageComponent"], _unlocked_memes_unlocked_memes_component__WEBPACK_IMPORTED_MODULE_12__["UnlockedMemesComponent"], _unlocked_altuistic_messages_unlocked_altuistic_messages_component__WEBPACK_IMPORTED_MODULE_13__["UnlockedAltuisticMessagesComponent"], _aquarium_previews_fishbowl_fishbowl_component__WEBPACK_IMPORTED_MODULE_14__["FishbowlComponent"], _aquarium_previews_sea_sea_component__WEBPACK_IMPORTED_MODULE_15__["SeaComponent"], _aquarium_previews_tundra_tundra_component__WEBPACK_IMPORTED_MODULE_16__["TundraComponent"], _unlocked_inspirational_quotes_unlocked_inspirational_quotes_component__WEBPACK_IMPORTED_MODULE_17__["UnlockedInspirationalQuotesComponent"]],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["IonicModule"].forRoot(),
@@ -18480,7 +18582,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
                             case 0: return [4 /*yield*/, this.alertCtrl.create({
                                     //<div style="font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center">Thank you for completing the survey. You have unlocked a meme.</div>
                                     //header: '<div style="line-height: 25px;padding-bottom:10px;text-align:center">Daily survey unavilable</div>',
-                                    header: 'Daily survey unavilable',
+                                    header: 'Oops! You missed a question',
                                     //subHeader: "Survey is not avaibable!",
                                     message: alertMessage,
                                     //defined in theme/variables.scss
@@ -19275,6 +19377,11 @@ var AuthComponent = /** @class */ (function () {
     //   this.isLoginMode = !this.isLoginMode;
     // }
     AuthComponent.prototype.ngOnInit = function () {
+        console.log("in auth.component - ngOnInit");
+        if (this.authService.isLoggedIn()) {
+            console.log("auth.component.ts - ngOnInit - is logged in");
+            this.router.navigate(['home']);
+        }
         console.log(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].userServer);
     };
     //login button was clicked
@@ -19304,30 +19411,18 @@ var AuthComponent = /** @class */ (function () {
                 // then below we can get the OneSignal Player id when UserProfile has been intialized 
                 _this.userSub = _this.userProfileService.initializeObs()
                     .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["tap"])(function () {
-                    _this.oneSignal.getIds().then(function (id) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
-                        var playerId;
-                        return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                            playerId = id.userId;
-                            this.userProfileService.userProfile.oneSignalPlayerId = id.userId;
-                            console.log("onesignal player id: " + id);
-                            this.userProfileService.saveProfileToDevice();
-                            this.userProfileService.saveToServer();
-                            return [2 /*return*/];
-                        });
-                    }); });
+                    _this.userProfileService.addOneSignalPlayerId();
                 }))
                     .subscribe(function () {
-                    //this.router.navigateByUrl('/home');
+                    console.log("in subscribe - got profiles init");
                     _this.router.navigate(['home']);
-                    _this.isLoading = false;
+                    console.log("in subscribe - got profiles init - post navigate to home");
                 });
             }
             else {
+                console.log("doesn't have access token");
                 _this.isLoading = false;
                 _this.authService.loggedInUser.next(null);
-                //for testing purposes.
-                // this.router.navigateByUrl('/home');
-                // console.log("log in did not succeed");
                 if (resData.hasOwnProperty('message')) {
                     _this.error = resData.message;
                 }
@@ -19335,7 +19430,6 @@ var AuthComponent = /** @class */ (function () {
                     _this.error = "Unknown error\n" + JSON.stringify(resData);
                 }
             }
-            // console.log(resData);
         }, function (errorMessage) {
             console.log(errorMessage);
             _this.error = errorMessage;
@@ -19537,6 +19631,10 @@ var AuthService = /** @class */ (function () {
     };
     AuthService.prototype.handleError = function (errorRes) {
         console.log("auth.service.ts - handleError method - begin");
+        if (errorRes.message.startsWith('Http failure response for')) {
+            var errorMessage_1 = 'You appear to be offline or unable to reach ' + errorRes.url;
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(errorMessage_1);
+        }
         var errorMessage = 'An unknown error occurred!!!! \n' + JSON.stringify(errorRes);
         if (!errorRes.error || !errorRes.error.error) {
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(errorMessage);
@@ -19833,6 +19931,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic-native/onesignal/ngx */ "./node_modules/@ionic-native/onesignal/ngx/index.js");
+/* harmony import */ var _storage_network_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../storage/network.service */ "./src/app/storage/network.service.ts");
+
+
 
 
 
@@ -19842,17 +19944,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var UserProfileService = /** @class */ (function () {
-    function UserProfileService(http) {
+    function UserProfileService(http, networkSvc, oneSignal) {
         this.http = http;
+        this.networkSvc = networkSvc;
+        this.oneSignal = oneSignal;
         this.me = this;
+        this.saveToServerRequestInQueue = false;
         this.initialLoading = new rxjs__WEBPACK_IMPORTED_MODULE_5__["BehaviorSubject"](true);
     }
-    //returns Observable that we can subsrbie to so as to trigger an action after 
-    //user profile has been initialized
+    //returns Observable that we can subscribed to so as to trigger an action after 
+    //user profiles have been initialized
     UserProfileService.prototype.initializeObs = function () {
         var _this = this;
-        //get profile from server
-        // 
+        //get profiles from server
         console.log("user-profile.service.ts - initializeObs method");
         var getProfile = this.http.post(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].userServer + '/userinfo', { "empty": "empty" });
         var getProfileFixed = this.http.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].userServer + '/userinfofixed');
@@ -19864,9 +19968,9 @@ var UserProfileService = /** @class */ (function () {
             var response2 = response[1];
             console.log("initializeObs response1: " + JSON.stringify(response1));
             console.log("initializeObs response2: " + JSON.stringify(response2));
-            console.log("initializeOb - response1.username: " + response1.username);
-            console.log("initializeOb - !response1.username: " + !response1.username);
-            console.log("initializeOb - !response1.hasOwnProperty('username'): " + !response1.hasOwnProperty('username'));
+            // console.log("initializeOb - response1.username: " + response1.username);
+            // console.log("initializeOb - !response1.username: " + !response1.username);
+            // console.log("initializeOb - !response1.hasOwnProperty('username'): " + !response1.hasOwnProperty('username'));
             if (!response1.username || !response1.hasOwnProperty('username')) {
                 console.log("blank or empty user_name");
                 var username = localStorage.getItem('loggedInUser');
@@ -19885,6 +19989,64 @@ var UserProfileService = /** @class */ (function () {
             _this.saveProfileToDevice();
             _this.initialLoading.next(false);
         }));
+    };
+    UserProfileService.prototype.fetchUserProfile = function () {
+        var _this = this;
+        //get userProfile from server
+        console.log("user-profile.service.ts - fetchUserProfile method");
+        var getProfile = this.http.post(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].userServer + '/userinfo', { "empty": "empty" });
+        return getProfile
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["tap"])(function (response) {
+            var serverCopyNewer = false;
+            console.log("fetchUserProfile response: " + JSON.stringify(response));
+            // check if server copy is newer
+            if (response.hasOwnProperty("lastupdate") && response.lastupdate > _this.userProfile.lastupdate) {
+                _this.userProfile = response;
+                if (_this.userProfile.hasOwnProperty("AwardDollarDates")) {
+                    localStorage.setItem("AwardDollarDates", JSON.stringify(_this.userProfile.AwardDollarDates));
+                }
+                localStorage.setItem("AwardDollar", JSON.stringify(_this.userProfile.dollars));
+                _this.userProfileFixed = response;
+                _this.saveProfileToDevice();
+                serverCopyNewer = true;
+            }
+            else {
+                serverCopyNewer = false;
+            }
+            return { "serverCopyNewer": serverCopyNewer };
+        }));
+    };
+    UserProfileService.prototype.fetchUserProfileFixed = function () {
+        var _this = this;
+        //get userProfileFixed from server
+        console.log("user-profile.service.ts - fetchUserProfileFixed method");
+        var getProfileFixed = this.http.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].userServer + '/userinfofixed');
+        return getProfileFixed
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["tap"])(function (response) {
+            var changed = false;
+            console.log("fetchUserProfileFixed response: " + JSON.stringify(response));
+            var receivedUserFixedProfile = response;
+            if (receivedUserFixedProfile.isActive !== _this.userProfileFixed.isActive) {
+                _this.userProfileFixed = response;
+                _this.saveProfileToDevice();
+                changed = true;
+            }
+            return { "changed": changed };
+        }));
+    };
+    UserProfileService.prototype.addOneSignalPlayerId = function () {
+        var _this = this;
+        this.oneSignal.getIds().then(function (id) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+            var playerId;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                playerId = id.userId;
+                this.userProfile.oneSignalPlayerId = id.userId;
+                console.log("onesignal player id: " + id);
+                this.saveProfileToDevice();
+                this.saveToServer();
+                return [2 /*return*/];
+            });
+        }); });
     };
     /*
     addReinforcementData returns true if successful at adding the element (it doesn't already exist for the given date)
@@ -20007,14 +20169,34 @@ var UserProfileService = /** @class */ (function () {
         configurable: true
     });
     UserProfileService.prototype.saveToServer = function () {
-        this.loadProfileFromDevice();
-        var userProfile = this.userProfile;
-        this.http
-            .post(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].userServer + '/setuserinfo', userProfile)
-            .subscribe(function (response) {
-            console.log(response);
-        });
-        console.log("saveToServer userProfile: " + JSON.stringify(userProfile));
+        var _this = this;
+        this.saveToServerRequestInQueue = true;
+        if (this.networkSvc.getCurrentNetworkStatus() == _storage_network_service__WEBPACK_IMPORTED_MODULE_9__["ConnectionStatus"].Online) {
+            this.loadProfileFromDevice();
+            var userProfile = this.userProfile;
+            this.http
+                .post(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].userServer + '/setuserinfo', userProfile)
+                .subscribe(function (response) {
+                console.log(response);
+                _this.saveToServerRequestInQueue = false;
+            });
+        }
+        else {
+            this.saveToServerSub = this.networkSvc.onNetworkChange().subscribe(function () {
+                if (_this.networkSvc.getCurrentNetworkStatus() == _storage_network_service__WEBPACK_IMPORTED_MODULE_9__["ConnectionStatus"].Online) {
+                    _this.loadProfileFromDevice();
+                    var userProfile = _this.userProfile;
+                    _this.http
+                        .post(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].userServer + '/setuserinfo', userProfile)
+                        .subscribe(function (response) {
+                        console.log(response);
+                        _this.saveToServerRequestInQueue = false;
+                        _this.saveToServerSub.unsubscribe();
+                    });
+                }
+            });
+        }
+        // console.log("saveToServer userProfile: " + JSON.stringify(userProfile));
     };
     UserProfileService.prototype.retrieve = function (userID) {
     };
@@ -20043,6 +20225,7 @@ var UserProfileService = /** @class */ (function () {
     };
     UserProfileService.prototype.loadProfileFromDevice = function () {
         this.userProfile = JSON.parse(localStorage.getItem('userProfile'));
+        this.userProfileFixed = JSON.parse(localStorage.getItem('userProfileFixed'));
         //temporarily commenting out below line (see other instance for more info)
         // this.userProfileFixed = JSON.parse(localStorage.getItem('userProfileFixed'));
     };
@@ -20149,13 +20332,17 @@ var UserProfileService = /** @class */ (function () {
         localStorage.removeItem('userProfile');
     };
     UserProfileService.ctorParameters = function () { return [
-        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] }
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] },
+        { type: _storage_network_service__WEBPACK_IMPORTED_MODULE_9__["NetworkService"] },
+        { type: _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_8__["OneSignal"] }
     ]; };
     UserProfileService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"],
+            _storage_network_service__WEBPACK_IMPORTED_MODULE_9__["NetworkService"],
+            _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_8__["OneSignal"]])
     ], UserProfileService);
     return UserProfileService;
 }());
