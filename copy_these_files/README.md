@@ -1,4 +1,4 @@
-## Overview of this folder.
+## Overview
 
 We use onesignal notification library to push notifications to phones. Onesignal is a great library and it is widely used. 
 However, a limitation of onesignal is, it doesn't provide anyway to track notifications (when notification was
