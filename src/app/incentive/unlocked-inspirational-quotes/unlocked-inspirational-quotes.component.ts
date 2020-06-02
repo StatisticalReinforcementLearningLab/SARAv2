@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-unlocked-inspirational-quotes',
@@ -37,7 +38,8 @@ export class UnlockedInspirationalQuotesComponent implements OnInit {
 
   getInspirationalQuotes() {
     
-    this.httpClient.post('http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/get-inspirational-quote', { "user_id": this.username }).subscribe({
+    var flaskServerAPIEndpoint = environment.flaskServerForIncentives;
+    this.httpClient.post(flaskServerAPIEndpoint + '/get-inspirational-quote', { "user_id": this.username }).subscribe({
         next: data => {
           //console.log("Inspirational quote: " + JSON.stringify(data));
           var json_data = JSON.parse(JSON.stringify(data));

@@ -49,6 +49,8 @@ import { ModalUnlockedPageComponent } from '../modal-unlocked-page/modal-unlocke
 import { DatabaseService } from 'src/app/monitor/database.service';
 import { HttpClient } from '@angular/common/http';
 
+import { environment } from '../../../../environments/environment';
+
 declare let Phaser: any;
 
 @Component({
@@ -221,7 +223,8 @@ export class DemoAquariumComponent implements OnInit {
 
 
   getInspirationalQuotes() {
-    this.httpClient.post('http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/get-inspirational-quote', { "user_id": 'mash_aya' }).subscribe({
+    var flaskServerAPIEndpoint = environment.flaskServerForIncentives;
+    this.httpClient.post(flaskServerAPIEndpoint + '/get-inspirational-quote', { "user_id": 'mash_aya' }).subscribe({
         next: data => console.log("Inspirational quote: " + JSON.stringify(data)),
         error: error => console.error('There was an error!', error)
     });
@@ -298,7 +301,8 @@ export class DemoAquariumComponent implements OnInit {
       error: error => console.error('There was an error!', error)
     });
     */
-    this.httpClient.post("http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/store-onesignal-id", body)
+    var flaskServerAPIEndpoint = environment.flaskServerForIncentives;
+    this.httpClient.post(flaskServerAPIEndpoint + "/store-onesignal-id", body)
       .subscribe({
         next: data => console.log("--aquarium-- " + JSON.stringify(data)),
         error: error => console.error('There was an error!', error)
