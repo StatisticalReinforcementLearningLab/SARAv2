@@ -9,8 +9,14 @@ The files in this folder provide extra code to track these notifications.
 
 ## Steps to install the files on iOS and Andriod
 
-### iOS
 
 ### Android
 
+
+### iOS (language Objective C)
+- Follow the exact steps from Onesignal website to push notification for iOS using Ionic. It is necessary to include the extra step of `Onesignal Service Extension`.
+
+- `` 
+
+- ``
 
