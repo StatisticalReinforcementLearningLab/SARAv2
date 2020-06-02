@@ -13,10 +13,16 @@ The files in this folder provide extra code to track these notifications.
 ### Android
 
 
-### iOS (language Objective C)
-- Follow the exact steps from Onesignal website to push notification for iOS using Ionic. It is necessary to include the extra step of `Onesignal Service Extension`.
 
-- `` 
 
-- ``
+### iOS 
+
+- Note onesignal uses objective C
+
+- Follow the exact steps from Onesignal website to push notification for iOS using Ionic. It is necessary to include the extra step of `Onesignal Service Extension`
+
+
+- `ios/NotificationService.m`: This file should be used to change the `NotificationService.m` file in `OnesignalNotificationServiceExtension` directory. Change the function  `didReceiveNotificationRequest`.  Once you make the changes, notification will be tracked once the notification is received.
+
+- `ios/OneSignalPush.m`:  This file should be used to change the `OneSignalPush.m` file in the `Plugins` directory. Change the function  `processNotificationOpened`.  Once you make the changes, we will be able to track like and dislike. 
 
