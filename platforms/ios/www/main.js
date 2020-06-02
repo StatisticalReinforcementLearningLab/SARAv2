@@ -919,7 +919,7 @@ module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">Thank you messages</ion-title>\n  </ion-toolbar>\n</ion-header>\n  \n  <ion-content [fullscreen]=\"true\">\n\n    <ion-card>\n        <ion-card-content>\n          <ion-card-title style=\"color:black;\">{{unlockedAltMessagesCount}} out of 21 thank you messages unlocked</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n    <ion-card *ngFor=\"let x of already_shown_altruism_msgs;\">\n        <img src=\"{{x.filename}}\" />\n        <ion-card-content>\n            <b>Unlock date:</b> {{x.unlock_date}}    \n        </ion-card-content>\n    </ion-card>\n  \n    <!--\n    <ion-card>\n      <img src=\"./assets/cnn_billgates.png\" />\n      <ion-card-header>\n        <ion-card-subtitle>বিল গেটস</ion-card-subtitle>\n        <ion-card-title>ডেভেলপিং দেশে করোনার ঝুঁকি আরো বেশি </ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        বিল গেটস সম্প্রতি CNN এর একটি ইন্টারভিউ তে বলছেন ডেভেলপিং দেশে করোনা বন্ধ করা বেশি কঠিন। Youtube-এর ইন্টারভিউ লিংক এখানে পাওয়া যাবে। https://youtu.be/A71lfXrQlxU\n  \n        <br><br><p style=\"color:green;\">৯৪ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    <ion-card>\n      <img src=\"./assets/anthony_faucci.jpg\" />\n      <ion-card-header>\n        <ion-card-subtitle>এন্থনি ফাউচি</ion-card-subtitle>\n        <ion-card-title>ভ্যাকসিন এখনো পাওয়া যাইনি। ঘরে থাকুন</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        মার্কিন যুক্তরাষ্টের করোনা ভাইরাস বিষয়ক টাস্ক ফোর্সের প্রধান এবং সম্মানিত বিজ্ঞানী এন্থনি ফাউচি বলেছেন কোরোনার কোনো ভ্যাকসিন আবিষ্কার হয়নি। এ বিষয় অনেক গবেষণা চলছে। ভ্যাকসিন না বের হওয়া পর্যন্ত সবাইকে ড: ফাউচি ঘরে থাকতে বলেছেন।  \n  \n        <br><br><p style=\"color:green;\">৫১ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    -->\n  </ion-content>\n  \n"
+module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">Thank you messages</ion-title>\n  </ion-toolbar>\n</ion-header>\n  \n  <ion-content [fullscreen]=\"true\">\n\n    <ion-card>\n        <ion-card-content>\n          <ion-card-title style=\"color:black;\">{{unlockedAltMessagesCount}} out of 21 thank you messages unlocked</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n    <ion-card *ngFor=\"let x of already_shown_altruism_msgs;\">\n        <img src=\"{{x.filename}}\" />\n        <!--\n        <ion-card-content>\n            <b>Unlock date:</b> {{x.unlock_date}}    \n        </ion-card-content>\n        -->\n    </ion-card>\n  \n    <!--\n    <ion-card>\n      <img src=\"./assets/cnn_billgates.png\" />\n      <ion-card-header>\n        <ion-card-subtitle>বিল গেটস</ion-card-subtitle>\n        <ion-card-title>ডেভেলপিং দেশে করোনার ঝুঁকি আরো বেশি </ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        বিল গেটস সম্প্রতি CNN এর একটি ইন্টারভিউ তে বলছেন ডেভেলপিং দেশে করোনা বন্ধ করা বেশি কঠিন। Youtube-এর ইন্টারভিউ লিংক এখানে পাওয়া যাবে। https://youtu.be/A71lfXrQlxU\n  \n        <br><br><p style=\"color:green;\">৯৪ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    <ion-card>\n      <img src=\"./assets/anthony_faucci.jpg\" />\n      <ion-card-header>\n        <ion-card-subtitle>এন্থনি ফাউচি</ion-card-subtitle>\n        <ion-card-title>ভ্যাকসিন এখনো পাওয়া যাইনি। ঘরে থাকুন</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        মার্কিন যুক্তরাষ্টের করোনা ভাইরাস বিষয়ক টাস্ক ফোর্সের প্রধান এবং সম্মানিত বিজ্ঞানী এন্থনি ফাউচি বলেছেন কোরোনার কোনো ভ্যাকসিন আবিষ্কার হয়নি। এ বিষয় অনেক গবেষণা চলছে। ভ্যাকসিন না বের হওয়া পর্যন্ত সবাইকে ড: ফাউচি ঘরে থাকতে বলেছেন।  \n  \n        <br><br><p style=\"color:green;\">৫১ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    -->\n  </ion-content>\n  \n"
 
 /***/ }),
 
@@ -941,7 +941,7 @@ module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Memes</ion-title>\n    </ion-toolbar>\n</ion-header>\n  \n  <ion-content [fullscreen]=\"true\">\n\n    <ion-card>\n        <ion-card-content>\n          <ion-card-title style=\"color:black;\">{{unlockedMemeCount}} out of 31 memes unlocked</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n    <ion-card *ngFor=\"let x of already_shown_memes;\">\n        <img src=\"{{x.filename}}\" />\n        <ion-card-content>\n            <b>Unlock date:</b> {{x.unlock_date}}    \n        </ion-card-content>\n    </ion-card>\n  \n    <!--\n    <ion-card>\n      <img src=\"./assets/cnn_billgates.png\" />\n      <ion-card-header>\n        <ion-card-subtitle>বিল গেটস</ion-card-subtitle>\n        <ion-card-title>ডেভেলপিং দেশে করোনার ঝুঁকি আরো বেশি </ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        বিল গেটস সম্প্রতি CNN এর একটি ইন্টারভিউ তে বলছেন ডেভেলপিং দেশে করোনা বন্ধ করা বেশি কঠিন। Youtube-এর ইন্টারভিউ লিংক এখানে পাওয়া যাবে। https://youtu.be/A71lfXrQlxU\n  \n        <br><br><p style=\"color:green;\">৯৪ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    <ion-card>\n      <img src=\"./assets/anthony_faucci.jpg\" />\n      <ion-card-header>\n        <ion-card-subtitle>এন্থনি ফাউচি</ion-card-subtitle>\n        <ion-card-title>ভ্যাকসিন এখনো পাওয়া যাইনি। ঘরে থাকুন</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        মার্কিন যুক্তরাষ্টের করোনা ভাইরাস বিষয়ক টাস্ক ফোর্সের প্রধান এবং সম্মানিত বিজ্ঞানী এন্থনি ফাউচি বলেছেন কোরোনার কোনো ভ্যাকসিন আবিষ্কার হয়নি। এ বিষয় অনেক গবেষণা চলছে। ভ্যাকসিন না বের হওয়া পর্যন্ত সবাইকে ড: ফাউচি ঘরে থাকতে বলেছেন।  \n  \n        <br><br><p style=\"color:green;\">৫১ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    -->\n  </ion-content>\n  \n"
+module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Memes</ion-title>\n    </ion-toolbar>\n</ion-header>\n  \n  <ion-content [fullscreen]=\"true\">\n\n    <ion-card>\n        <ion-card-content>\n          <ion-card-title style=\"color:black;\">{{unlockedMemeCount}} out of 31 memes unlocked</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n    <ion-card *ngFor=\"let x of already_shown_memes;\">\n        <img src=\"{{x.filename}}\" />\n        <!--\n        <ion-card-content>\n            <b>Unlock date:</b> {{x.unlock_date}}    \n        </ion-card-content>\n        -->\n    </ion-card>\n  \n    <!--\n    <ion-card>\n      <img src=\"./assets/cnn_billgates.png\" />\n      <ion-card-header>\n        <ion-card-subtitle>বিল গেটস</ion-card-subtitle>\n        <ion-card-title>ডেভেলপিং দেশে করোনার ঝুঁকি আরো বেশি </ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        বিল গেটস সম্প্রতি CNN এর একটি ইন্টারভিউ তে বলছেন ডেভেলপিং দেশে করোনা বন্ধ করা বেশি কঠিন। Youtube-এর ইন্টারভিউ লিংক এখানে পাওয়া যাবে। https://youtu.be/A71lfXrQlxU\n  \n        <br><br><p style=\"color:green;\">৯৪ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    <ion-card>\n      <img src=\"./assets/anthony_faucci.jpg\" />\n      <ion-card-header>\n        <ion-card-subtitle>এন্থনি ফাউচি</ion-card-subtitle>\n        <ion-card-title>ভ্যাকসিন এখনো পাওয়া যাইনি। ঘরে থাকুন</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        মার্কিন যুক্তরাষ্টের করোনা ভাইরাস বিষয়ক টাস্ক ফোর্সের প্রধান এবং সম্মানিত বিজ্ঞানী এন্থনি ফাউচি বলেছেন কোরোনার কোনো ভ্যাকসিন আবিষ্কার হয়নি। এ বিষয় অনেক গবেষণা চলছে। ভ্যাকসিন না বের হওয়া পর্যন্ত সবাইকে ড: ফাউচি ঘরে থাকতে বলেছেন।  \n  \n        <br><br><p style=\"color:green;\">৫১ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    -->\n  </ion-content>\n  \n"
 
 /***/ }),
 
@@ -6198,6 +6198,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_29___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_29__);
 /* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ../../../../environments/environment */ "./src/environments/environment.ts");
 
 
 
@@ -6226,6 +6227,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 //import { PreLoad } from '../../../PreLoad';
+
 
 
 
@@ -6359,7 +6361,8 @@ var DemoAquariumComponent = /** @class */ (function () {
         this.getInspirationalQuotes();
     };
     DemoAquariumComponent.prototype.getInspirationalQuotes = function () {
-        this.httpClient.post('http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/get-inspirational-quote', { "user_id": 'mash_aya' }).subscribe({
+        var flaskServerAPIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_32__["environment"].flaskServerForIncentives;
+        this.httpClient.post(flaskServerAPIEndpoint + '/get-inspirational-quote', { "user_id": 'mash_aya' }).subscribe({
             next: function (data) { return console.log("Inspirational quote: " + JSON.stringify(data)); },
             error: function (error) { return console.error('There was an error!', error); }
         });
@@ -6406,7 +6409,7 @@ var DemoAquariumComponent = /** @class */ (function () {
     };
     DemoAquariumComponent.prototype.sendUserIdToServerFor8PMNotification = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var oneSignalPlayerId, username, currentTimeTs, currentTimeReadableTs, headers, body;
+            var oneSignalPlayerId, username, currentTimeTs, currentTimeReadableTs, headers, body, flaskServerAPIEndpoint;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 // Simple POST request with a JSON body and response type <any>
                 console.log("--aquarium-- " + "sendUserIdToServerFor8PMNotification");
@@ -6420,13 +6423,8 @@ var DemoAquariumComponent = /** @class */ (function () {
                 currentTimeReadableTs = moment__WEBPACK_IMPORTED_MODULE_29__().format("MMMM Do YYYY, h:mm:ss a Z");
                 headers = { "Content-Type": "application/json;charset=UTF-8" };
                 body = { "user_id": username, "oneSignalPlayerId": oneSignalPlayerId, "currentTimeTs": currentTimeTs, "currentTimeReadableTs": currentTimeReadableTs };
-                /*
-                this.httpClient.post<any>("http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/store-onesignal-id", body, { headers }).subscribe({
-                  next: data => console.log(data),
-                  error: error => console.error('There was an error!', error)
-                });
-                */
-                this.httpClient.post("http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/store-onesignal-id", body)
+                flaskServerAPIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_32__["environment"].flaskServerForIncentives;
+                this.httpClient.post(flaskServerAPIEndpoint + "/store-onesignal-id", body)
                     .subscribe({
                     next: function (data) { return console.log("--aquarium-- " + JSON.stringify(data)); },
                     error: function (error) { return console.error('There was an error!', error); }
@@ -17259,6 +17257,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../environments/environment */ "./src/environments/environment.ts");
+
 
 
 
@@ -17289,7 +17289,8 @@ var UnlockedInspirationalQuotesComponent = /** @class */ (function () {
     };
     UnlockedInspirationalQuotesComponent.prototype.getInspirationalQuotes = function () {
         var _this = this;
-        this.httpClient.post('http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/get-inspirational-quote', { "user_id": this.username }).subscribe({
+        var flaskServerAPIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].flaskServerForIncentives;
+        this.httpClient.post(flaskServerAPIEndpoint + '/get-inspirational-quote', { "user_id": this.username }).subscribe({
             next: function (data) {
                 //console.log("Inspirational quote: " + JSON.stringify(data));
                 var json_data = JSON.parse(JSON.stringify(data));
@@ -19207,6 +19208,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
 
 
 
@@ -19240,7 +19243,8 @@ var SurveyEffects = /** @class */ (function () {
                 error: error => console.error('There was an error!', error)
                 });
                 */
-                _this.httpClient.post("http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/store-survey-completed", body)
+                var flaskServerAPIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_9__["environment"].flaskServerForIncentives;
+                _this.httpClient.post(flaskServerAPIEndpoint + "/store-survey-completed", body)
                     .subscribe({
                     next: function (data) { return console.log("--survey_completed-- " + JSON.stringify(data)); },
                     error: function (error) { return console.error('There was an error!', error); }
@@ -20471,6 +20475,7 @@ var environment = {
     userServer: "http://adaptsdata.research.chop.edu:5000",
     oneSignalAppId: "f9c4370d-cbcb-4e6f-ab1f-25d1c41b8f3a",
     encyptString: "+Xr?SwA?EJ7m+g$c",
+    flaskServerForIncentives: "http://ec2-54-91-131-166.compute-1.amazonaws.com:56733",
     firebaseConfig: {
         apiKey: "AIzaSyBK_PwjnsC01Q-a-sV7LsA7qIeIhCx4ts0",
         authDomain: "sarav2-6a033.firebaseapp.com",
