@@ -31,7 +31,7 @@
           &nbsp; How this app works
         </ion-item>
 
-        <ion-item [routerLink]="['/contact-study-staff']">
+        <ion-item [routerLink]="['/contact-study-staff']" *ngIf="isAYA">
           <ion-icon name="call"></ion-icon>
           &nbsp; Contact study staff
         </ion-item>

@@ -22,6 +22,8 @@ export class AppComponent {
   loading;
   // isLoading = true;
 
+  isAYA: boolean;
+
   get username(){
     if(this.userProfileService == undefined)
       return "test";
@@ -43,6 +45,10 @@ export class AppComponent {
     public navController: NavController
    ) {
     this.initializeApp();
+
+    this.isAYA = true;
+    if(this.userProfileService.isParent == true)
+      this.isAYA = false;
 
     router.events.subscribe(
 			( event: RouterEvent ) : void => {
@@ -127,7 +133,6 @@ export class AppComponent {
           // this.userProfileService.userProfile
         }
       });
-
 
     }
 
