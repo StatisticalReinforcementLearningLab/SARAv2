@@ -40,11 +40,8 @@ For the following changes, files in the platforms directory have to changed dire
 ### Flask
 Inside the `flask_server` directory, there is a flask app. The `requirements.txt` will install all the dependencies, when called using `pip.` There flask server is responsible to (i) track 4PM notifications and 'like/nope' responses, (ii) send 8PM notifications if surveys are not completed (iii) list all 4PM to populate the 'inspirational_quote' view.<br/>
 
-### MySQL
-Inside the `mysql` directory, there are server create table statement in the `create_table.sql` file. We will need these tables to get flask server to work.<br/>
-
-### MySQL
-Inside the `mysql` directory, there are server create table statement in the `create_table.sql` file. We will need these tables to get.<br/>
-
 ### notification_send_codes
-The `notification_send_codes` folder contains all the quotes, python scripts to send 4PM/6PM/8PM notifications.
+The `notification_send_codes` folder contains all the quotes, python scripts to send 4PM/6PM/8PM notifications.<br>
+
+### MySQL
+Inside the `mysql` directory, there are server create table statement in the `create_table.sql` file. We will need these tables to get flask server and notification_send_codes to work.<br/>
