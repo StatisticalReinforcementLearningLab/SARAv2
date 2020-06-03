@@ -15,9 +15,9 @@ For the following changes, files in the platforms directory have to changed dire
 ### Android
 - Follow instruction from the Onesignal website on how to add `NotificationExtenderService`
 
-- `android/NotificationExtenderOneSignal.java`: make changes to the `onNotificationProcessing` function in `edu.harvard.srl.SARA.NotificationExtenderOneSignal`. Once you make the changes, notification will be tracked once the notification is received. 
+- `android/NotificationExtenderOneSignal.java`: make changes to the `onNotificationProcessing` function in `edu.harvard.srl.SARA.NotificationExtenderOneSignal`. Once you make the changes, notifications will be tracked once they are  received. *(Note, you have to change the server address/port, and install a flask server script).*
 
-- `android/NotificationExtenderOneSignal.java`: make changes to the `onNotificationProcessing` function in `com.plugin.gcm.OneSignalPush` and `CordovaNotificationOpenedHandler`. Once you make the changes, we will be able to track like and dislike.
+- `android/NotificationExtenderOneSignal.java`: make changes to the `onNotificationProcessing` function in `com.plugin.gcm.OneSignalPush` and `CordovaNotificationOpenedHandler`. Once you make the changes, we will be able to track like and dislike. *(Note, you have to change the server address/port, and install a flask server script).*
 
 - Once you make the changes, you can use `ionic cordova run android` to see the changes. It is not necessary to use Android studio.
 
@@ -33,4 +33,8 @@ For the following changes, files in the platforms directory have to changed dire
 - `ios/NotificationService.m`: This file should be used to change the `NotificationService.m` file in `OnesignalNotificationServiceExtension` directory. Change the function  `didReceiveNotificationRequest`.  Once you make the changes, notification will be tracked once the notification is received.
 
 - `ios/OneSignalPush.m`:  This file should be used to change the `OneSignalPush.m` file in the `Plugins` directory. Change the function  `processNotificationOpened`.  Once you make the changes, we will be able to track like and dislike. 
+
+
+## Steps to install the Flask server and MySQL
+
 
