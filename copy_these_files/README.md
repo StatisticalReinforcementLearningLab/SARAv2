@@ -7,7 +7,7 @@ received, and when notification was clicked).
 The files in this folder provide extra code to track these notifications.<br/><br/><br/>
 
 
-## Steps to install the files on iOS and Andriod
+## Steps to install the files on iOS and Android
 For the following changes, files in the platforms directory have to changed directly. You can use Xcode and Android Studio to make this changes.<br/>
 
 
