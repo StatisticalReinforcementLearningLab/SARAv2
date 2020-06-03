@@ -25,12 +25,7 @@
     self.bestAttemptContent = [request.content mutableCopy];
     
     [OneSignal didReceiveNotificationExtensionRequest:self.receivedRequest withMutableNotificationContent:self.bestAttemptContent];
-    
-    // DEBUGGING: Uncomment the 2 lines below and comment out the one above to ensure this extension is excuting
-    //            Note, this extension only runs when mutable-content is set
-    //            Setting an attachment or action buttons automatically adds this
     NSLog(@"Running NotificationServiceExtension");
-    //self.bestAttemptContent.body = [@"[Modified] " stringByAppendingString:self.bestAttemptContent.body];
     
     NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd-MMM-yyyy"];
@@ -39,12 +34,10 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS Z"];
     NSString* formattedReadbleTs = [dateFormatter stringFromDate:[NSDate date]];
     
-    long long whenReceivedTs = (long long)[[NSDate date] timeIntervalSince1970] * 1000; //System.currentTimeMillis()
+    long long whenReceivedTs = (long long)[[NSDate date] timeIntervalSince1970] * 1000;
     
     NSDictionary* additionalData = request.content.userInfo;
     NSLog(@"additionalData = %@", additionalData);
-    //NSLog(@"payload = %@", request.content);
-    //NSString* Street=[[dictionaryOfAddresses objectForKey:@"Home Address"] objectForKey:@"Street"];
     NSString* notificationID = [[additionalData objectForKey:@"custom"] objectForKey:@"i"];
     NSString* participantID = [[[additionalData objectForKey:@"custom"] objectForKey:@"a"]
                                objectForKey:@"user"];
@@ -69,7 +62,11 @@
     
     
     NSMutableURLRequest *requestPost = [[NSMutableURLRequest alloc] init];
-    [requestPost setURL:[NSURL URLWithString:@"http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/adapts-notification-insert"]];
+    //
+    // TODO: change the URL to a flask end-point. 
+    // The flask file is available in the 'flask' directory of 'copy_these_files'.
+    //
+    [requestPost setURL:[NSURL URLWithString:@"http://SERVER-IP-ADDRESS:PORT/adapts-notification-insert"]];
     [requestPost setHTTPMethod:@"POST"];
     [requestPost setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [requestPost setValue:@"application/json" forHTTPHeaderField:@"Accept"];
