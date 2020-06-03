@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-toolbar class="new-background-color">
+      <ion-buttons slot="start">
+        <ion-back-button style="color:#fff;" defaultHref="home"></ion-back-button>
+      </ion-buttons>
+      <ion-title style="color:#fff;">Inspirational quotes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+    
+<ion-content >
+    
+    <ion-card>
+        <ion-card-content>
+          <ion-card-title style="color:black;">You received the following inspirational quotes</ion-card-title>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-list padding>        
+        <ion-item *ngFor="let item of unlockedInspirationalQuotes">
+          <ion-thumbnail item-left>
+            <img [src]="item.image"/>
+          </ion-thumbnail>
+          <ion-label class="ion-text-wrap" style="padding-left: 10px;">
+            <h3>{{item.author}}</h3>
+            <p>{{item.quote_text}}</p>
+          </ion-label>
+        </ion-item>
+    </ion-list> 
+      
+</ion-content>
+    
+  

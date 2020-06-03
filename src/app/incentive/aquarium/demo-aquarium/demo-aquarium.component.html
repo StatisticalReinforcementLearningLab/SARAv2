@@ -1,6 +1,27 @@
 <div id="gameDiv"></div>
-<p  style="padding-top:10px;padding-bottom:0px;padding-left:10px;"><b>Username</b>: {{username}}</p>  
+<ion-list padding>
+    
+
+  <ion-list-header lines="inset">
+    <ion-label><h2><br>You unlocked the following animals in this level <br>so far</h2><br></ion-label>
+  </ion-list-header>
+
+  <ion-item *ngFor="let item of fishFunFactListViewItems">
+    <ion-thumbnail item-left>
+      <img [src]="item.image"/>
+    </ion-thumbnail>
+    <ion-label text-wrap style="padding-left: 10px;">
+      <h3>{{item.fishName}}</h3>
+      <p>{{item.funFact}}</p>
+    </ion-label>
+  </ion-item>
+
+  
+</ion-list> 
+
   <!--
+  <p  style="padding-top:10px;padding-bottom:0px;padding-left:10px;"><b>Username</b>: {{username}}</p> 
+
   <ion-button color="primary" (click)="presentModal()">Show modal</ion-button>
   <ion-button color="primary" (click)="presentModal()">Show modal</ion-button>
   <ion-button color="primary" (click)="startTundraLevel()">Tundra level</ion-button>

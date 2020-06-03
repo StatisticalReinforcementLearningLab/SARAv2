@@ -17,18 +17,25 @@ import { PreloaderGameOver } from '../levels/GameOver/Preloader';
 import { GameOver } from '../levels/GameOver/GameOver';
 import { BootTundraL5 } from '../levels/TundraLevelL5/Boot';
 import { PreloaderTundraL5 } from '../levels/TundraLevelL5/Preloader';
-import { GameTundraL5 } from '../levels/TundraLevelL5//Game';
+import { GameTundraL5 } from '../levels/TundraLevelL5/Game';
+import { BootTundraL51 } from '../levels/TundraLevelL51/Boot';
+import { PreloaderTundraL51 } from '../levels/TundraLevelL51/Preloader';
+import { GameTundraL51 } from '../levels/TundraLevelL51/Game';
 import { BootRainforestL6 } from '../levels/RainforestL6/Boot';
 import { PreloaderRainforestL6 } from '../levels/RainforestL6/Preloader';
 import { GameRainforestL6 } from '../levels/RainforestL6/Game';
-//import { FormsModule } from '@angular/forms';
-//import { PickGameService } from './pick-game.service';
 import { ActivatedRoute, Router } from '@angular/router';
 //import { PreLoad } from '../../../PreLoad';
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { Platform, ModalController } from '@ionic/angular';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
+import * as moment from 'moment';
 import { AlertController } from '@ionic/angular';
+import { DatabaseService } from 'src/app/monitor/database.service';
+import { HttpClient } from '@angular/common/http';
+
+
+import { environment } from '../../environments/environment';
+
 var DemoAquariumComponent = /** @class */ (function () {
     /*   get surveyPath(){
         if (this.userProfileService.isParent){
@@ -39,15 +46,17 @@ var DemoAquariumComponent = /** @class */ (function () {
       } */
     function DemoAquariumComponent(router, alertCtrl, modalController, 
     //private pickGameService: PickGameService,
-    ga, platform, route, userProfileService) {
+    platform, route, userProfileService, httpClient, db) {
         this.router = router;
         this.alertCtrl = alertCtrl;
         this.modalController = modalController;
-        this.ga = ga;
         this.platform = platform;
         this.route = route;
         this.userProfileService = userProfileService;
+        this.httpClient = httpClient;
+        this.db = db;
         this.isLoaded = false;
+        this.pageTitle = "Aquarium";
         console.log("Constructor called");
         /*
           this.route.queryParams.subscribe(params => {
@@ -80,6 +89,34 @@ var DemoAquariumComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    //Get total submitted survey
+    DemoAquariumComponent.prototype.getTotalSurveyCount = function () {
+        return Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;
+    };
+    /* Get last seven days of indicator for survey completion,
+    return an array of 7 elements like [0, 1, 0, 0, 0, 1, 0]
+    with 1 indicating submitted survey, 0 otherwise, the first
+    element is current day.               */
+    DemoAquariumComponent.prototype.getIndicatorForSurveyDone = function () {
+        var daily_survey = this.userProfileService.userProfile.survey_data.daily_survey;
+        console.log("daily_survey:");
+        console.log(JSON.stringify(daily_survey));
+        var indicatorArray = [];
+        for (var i = 0; i < 7; i++) {
+            var previousdate = moment().subtract(i, "days").format("YYYYMMDD");
+            console.log(JSON.stringify(this.userProfileService.userProfile.survey_data.daily_survey));
+            var indicator = 0;
+            if (previousdate in daily_survey) {
+                indicator = 1;
+            }
+            indicatorArray.push(indicator);
+        }
+        return indicatorArray;
+    };
+    DemoAquariumComponent.prototype.showInfoModal = function (text) {
+        console.log("rewards page");
+        this.presentAlert(text);
+    };
     DemoAquariumComponent.prototype.goToRewardsPage = function () {
         console.log("rewards page");
         //this.router.navigate(['/home']);
@@ -106,18 +143,54 @@ var DemoAquariumComponent = /** @class */ (function () {
         s.rotation = 0.14;
     };
     DemoAquariumComponent.prototype.ngOnInit = function () {
-        this.ga.trackView('Aquarium')
-            .then(function () { console.log("trackView at Aquarium!"); })
-            .catch(function (e) { return console.log(e); });
         //this.loadFunction();
+        this.sendUserIdToServerFor8PMNotification();
+    };
+    DemoAquariumComponent.prototype.sendUserIdToServerFor8PMNotification = function () {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var oneSignalPlayerId, username, currentTimeTs, currentTimeReadableTs, headers, body;
+            return tslib_1.__generator(this, function (_a) {
+                // Simple POST request with a JSON body and response type <any>
+                console.log("--aquarium-- " + "sendUserIdToServerFor8PMNotification");
+                oneSignalPlayerId = window.localStorage['oneSignalPlayerId'];
+                if (oneSignalPlayerId == "null" || oneSignalPlayerId == null || oneSignalPlayerId == undefined) {
+                    console.log("oneSignalId is null, " + oneSignalPlayerId);
+                    //return;
+                }
+                username = this.userProfileService.username;
+                currentTimeTs = Date.now();
+                currentTimeReadableTs = moment().format("MMMM Do YYYY, h:mm:ss a Z");
+                headers = { "Content-Type": "application/json;charset=UTF-8" };
+                body = { "user_id": username, "oneSignalPlayerId": oneSignalPlayerId, "currentTimeTs": currentTimeTs, "currentTimeReadableTs": currentTimeReadableTs };
+                /*
+                this.httpClient.post<any>("http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/store-onesignal-id", body, { headers }).subscribe({
+                  next: data => console.log(data),
+                  error: error => console.error('There was an error!', error)
+                });
+                */
+                this.httpClient.post("http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/store-onesignal-id", body)
+                    .subscribe({
+                    next: function (data) { return console.log("--aquarium-- " + JSON.stringify(data)); },
+                    error: function (error) { return console.error('There was an error!', error); }
+                });
+                return [2 /*return*/];
+            });
+        });
     };
     DemoAquariumComponent.prototype.ionViewDidEnter = function () {
         //if(this.isLoaded == true)
         //    this.loadFunction();
         this.survey_text = "Start survey";
     };
+    //this function gets called from the above the "aquarium.component.ts"
     DemoAquariumComponent.prototype.loadFunction = function () {
-        console.log(window.localStorage['TotalPoints']);
+        //console.log(window.localStorage['TotalPoints']);
+        var _this = this;
+        this.db.getDatabaseState().subscribe(function (rdy) {
+            if (rdy) {
+                _this.db.addTrack(_this.pageTitle, "Enter", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
+            }
+        });
         //this.totalPoints = parseInt(window.localStorage['TotalPoints'] || "0");
         /*
          if(window.localStorage['TotalPoints'] == undefined)
@@ -133,14 +206,14 @@ var DemoAquariumComponent = /** @class */ (function () {
         console.log("w: " + window.innerWidth + ", h: " + window.innerHeight + ", dp: " + window.devicePixelRatio);
         if (window.innerWidth > GameApp.CANVAS_WIDTH)
             GameApp.CANVAS_WIDTH = window.innerWidth;
-        GameApp.CANVAS_HEIGHT = window.innerHeight;
+        GameApp.CANVAS_HEIGHT = window.innerHeight - 35;
         //var game;
         if (this.platform.is('ios')) {
             if (GameApp.CANVAS_HEIGHT < 642.0) { //iphone SE fix.
                 GameApp.CANVAS_HEIGHT += 30;
                 GameApp.CANVAS_WIDTH = window.innerWidth;
             }
-            this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 36 * window.devicePixelRatio, Phaser.AUTO, 'gameDiv');
+            this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 32 * window.devicePixelRatio, Phaser.AUTO, 'gameDiv');
         }
         else if (this.platform.is('android'))
             this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 74, Phaser.AUTO, 'gameDiv');
@@ -171,6 +244,7 @@ var DemoAquariumComponent = /** @class */ (function () {
             this.game.state.add('Preloader', preLoader);
             var fishBowlL2 = new FishBowlL2();
             fishBowlL2.setTotalPoints(this.totalPoints);
+            fishBowlL2.setSurveyHistory(this.getIndicatorForSurveyDone());
             this.game.state.add('FishBowlL2', fishBowlL2);
         }
         else if (this.totalPoints >= 1060 && this.totalPoints < 1710) {
@@ -191,7 +265,7 @@ var DemoAquariumComponent = /** @class */ (function () {
             seaLevelL4.setTotalPoints(this.totalPoints);
             this.game.state.add('SeaLevelL4', seaLevelL4);
         }
-        else if (this.totalPoints >= 2120 && this.totalPoints < 3020) {
+        else if (this.totalPoints >= 2120 && this.totalPoints < 2720) {
             this.game.state.add('Boot', BootTundraL5);
             this.pickedGame = "TundraLevel1";
             var preLoader = new PreloaderTundraL5();
@@ -199,6 +273,15 @@ var DemoAquariumComponent = /** @class */ (function () {
             var level5 = new GameTundraL5();
             level5.setTotalPoints(this.totalPoints);
             this.game.state.add('TundraLevel1', level5);
+        }
+        else if (this.totalPoints >= 2720 && this.totalPoints < 3020) {
+            this.game.state.add('Boot', BootTundraL51);
+            this.pickedGame = "TundraLevel2";
+            var preLoader = new PreloaderTundraL51();
+            this.game.state.add('Preloader', preLoader);
+            var level51 = new GameTundraL51();
+            level51.setTotalPoints(this.totalPoints);
+            this.game.state.add('TundraLevel2', level51);
         }
         else if (this.totalPoints >= 3020) {
             this.game.state.add('Boot', BootRainforestL6);
@@ -222,8 +305,14 @@ var DemoAquariumComponent = /** @class */ (function () {
         //this.pickGameService.currentGame.subscribe(game => this.pickedGame = game)
     };
     DemoAquariumComponent.prototype.ionViewDidLeaveFunction = function () {
+        var _this = this;
         console.log("Aquarium, ionDidLeave");
         this.survey_text = "Start survey";
+        this.db.getDatabaseState().subscribe(function (rdy) {
+            if (rdy) {
+                _this.db.addTrack(_this.pageTitle, "Leave", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
+            }
+        });
         this.game.destroy();
     };
     DemoAquariumComponent.prototype.pauseGameRendering = function () {
@@ -233,12 +322,47 @@ var DemoAquariumComponent = /** @class */ (function () {
         this.game.state.states[this.pickedGame].yourGameResumedFunc();
     };
     DemoAquariumComponent.prototype.ngAfterViewInit = function () {
-        this.ga.trackView('Aquarium')
-            .then(function () { console.log("trackView at Aquarium!"); })
-            .catch(function (e) { return console.log(e); });
     };
-    DemoAquariumComponent.prototype.ionViewDidLeave = function () {
-        this.game.destroy();
+    DemoAquariumComponent.prototype.presentAlert = function (alertMessage) {
+        return tslib_1.__awaiter(this, void 0, void 0, function () {
+            var alert;
+            return tslib_1.__generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.alertCtrl.create({
+                            //<div style="font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center">Thank you for completing the survey. You have unlocked a meme.</div>
+                            //header: '<div style="line-height: 25px;padding-bottom:10px;text-align:center">Daily survey unavilable</div>',
+                            header: 'Daily survey unavilable',
+                            //subHeader: "Survey is not avaibable!",
+                            message: alertMessage,
+                            //defined in theme/variables.scss
+                            //buttons: [{text: 'OK', cssClass: 'secondary'}]
+                            buttons: [{ text: 'OK' }]
+                        })];
+                    case 1:
+                        alert = _a.sent();
+                        /*
+                          let alert = this.alertCtrl.create({
+                            title: 'Low battery',
+                            subTitle: '10% of battery remaining',
+                            buttons: ['Dismiss']
+                          });
+                        */
+                        //----
+                        return [4 /*yield*/, alert.present()];
+                    case 2:
+                        /*
+                          let alert = this.alertCtrl.create({
+                            title: 'Low battery',
+                            subTitle: '10% of battery remaining',
+                            buttons: ['Dismiss']
+                          });
+                        */
+                        //----
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     DemoAquariumComponent = tslib_1.__decorate([
         Component({
@@ -251,10 +375,11 @@ var DemoAquariumComponent = /** @class */ (function () {
         tslib_1.__metadata("design:paramtypes", [Router,
             AlertController,
             ModalController,
-            GoogleAnalytics,
             Platform,
             ActivatedRoute,
-            UserProfileService])
+            UserProfileService,
+            HttpClient,
+            DatabaseService])
     ], DemoAquariumComponent);
     return DemoAquariumComponent;
 }());

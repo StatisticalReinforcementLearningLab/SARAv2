@@ -1,12 +1,26 @@
 <ion-header>
     <ion-toolbar class="new-background-color">
       <ion-buttons slot="start">
-        <ion-back-button style="color:#fff;" defaultHref="home"></ion-back-button>
+        <ion-button (click)="goHome()">
+          <ion-icon name="arrow-back" style="color:#fff;"></ion-icon>
+        </ion-button>
       </ion-buttons>
       <ion-title style="color:#fff;">Level 4: Rainforest</ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <img style="width:100%;" id="image" src="assets/img/at_4000_points.png">
+<ion-content>
+  <!--
+  <app-demo-aquarium isPreview="false"></app-demo-aquarium>
+  -->
+  
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title style="color:black;">A preview of Level 4: Rainforest</ion-card-title>
+      This level will be unlocked at 3020 points.
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <img src="assets/img/at_4000_points.png">
+  </ion-card>
 </ion-content>

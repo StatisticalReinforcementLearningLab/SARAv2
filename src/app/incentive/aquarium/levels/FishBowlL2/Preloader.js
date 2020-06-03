@@ -16,6 +16,7 @@ export class PreloaderL2 extends Phaser.State {
 		this.load.json('fishpoints', 'assets/game/fishpoints.json');//fish json, points
 		this.load.image('fish_progress', 'assets/game/sprite/fish_progress_s.png');
 		//this.load.spritesheet('timer', 'assets/game/sprite/timer.png', 150, 20);
+		
 		this.load.spritesheet('timer', 'assets/img/timer_red.png', 150, 20);
 		this.load.image('points_progress_2', 'assets/img/points_progress_2.png');
 		this.load.image('levels_progress', 'assets/img/levels_progress_2.png');

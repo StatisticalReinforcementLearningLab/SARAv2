@@ -16,13 +16,16 @@ import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 //import * as lifeInsightProfile from "../../../assets/data/life_insight.json";
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import { AwardDollarService } from 'src/app/incentive/award-money/award-dollar.service';
+import { environment } from '../../../environments/environment';
+import { Store } from '@ngrx/store';
+import { surveyCompleted } from '../survey.actions';
+import { surveyCompletedRegisterUnlocked } from 'src/app/incentive/incentive.actions';
 var DynamicSurveyComponent = /** @class */ (function () {
     function DynamicSurveyComponent(_compiler, _injector, _m, awsS3Service, 
     //private storeToFirebaseService: StoreToFirebaseService,
-    EncrDecr, router, ga, changeDetector, appVersion, alertCtrl, plt, userProfileService, awardDollarService) {
+    EncrDecr, router, changeDetector, appVersion, alertCtrl, plt, userProfileService, store, awardDollarService) {
         var _this = this;
         this._compiler = _compiler;
         this._injector = _injector;
@@ -30,12 +33,12 @@ var DynamicSurveyComponent = /** @class */ (function () {
         this.awsS3Service = awsS3Service;
         this.EncrDecr = EncrDecr;
         this.router = router;
-        this.ga = ga;
         this.changeDetector = changeDetector;
         this.appVersion = appVersion;
         this.alertCtrl = alertCtrl;
         this.plt = plt;
         this.userProfileService = userProfileService;
+        this.store = store;
         this.awardDollarService = awardDollarService;
         this.title = "mash is here";
         this.isLoading = true;
@@ -172,9 +175,9 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 //console.log('holla: ' + questions);
                 this.survey2['reponse_ts'][questions] = {};
                 this.survey2['reponse_ts'][questions].ts = Date.now();
-                this.survey2['reponse_ts'][questions].readable_ts = moment().format("MMMM Do YYYY, h:mm:ss a");
+                this.survey2['reponse_ts'][questions].readable_ts = moment().format("MMMM Do YYYY, h:mm:ss a Z");
                 delete this.isQuestionIncomplete[questions]; //remove the key from isQuestionIncomplete
-                console.log(JSON.stringify(this.survey2));
+                //console.log(JSON.stringify(this.survey2));
             };
             class_1.prototype.submitSurvey = function () {
                 if (this.isEmpty(this.isQuestionIncomplete)) //means all questions have been removed
@@ -231,8 +234,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
             };
             class_1.prototype.storeData = function () {
                 //console.log("Inside storeData");
-                console.log(JSON.stringify(this.survey2));
-                this.ga.trackEvent('Submit Button', 'Tapped Action', 'Submit the completed survey', 0);
+                //console.log(JSON.stringify(this.survey2));
                 var endTime = new Date().getTime();
                 var readable_time = moment().format('MMMM Do YYYY, h:mm:ss a Z');
                 this.survey2['endtimeUTC'] = endTime;
@@ -242,11 +244,13 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 //Store app version number
                 this.survey2['appVersion'] = this.versionNumber;
                 this.userProfileService.versionNumber = this.versionNumber;
-                var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.survey2), "Z&wz=BGw;%q49/<)");
+                var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.survey2), environment.encyptString);
                 //var encrypted = this.EncrDecr.encrypt("holla", "Z&wz=BGw;%q49/<)");
-                var decrypted = this.EncrDecr.decrypt(encrypted, "Z&wz=BGw;%q49/<)");
-                console.log('Encrypted :' + encrypted);
-                console.log('Decrypted :' + decrypted);
+                var decrypted = this.EncrDecr.decrypt(encrypted, environment.encyptString);
+                var survey3 = {};
+                survey3['encrypted'] = encrypted;
+                //console.log('Encrypted :' + encrypted);
+                //console.log('Decrypted :' + decrypted);
                 this.survey2['encrypted'] = encrypted;
                 //compute and store "TotalPoints" to localStorage
                 if (window.localStorage['TotalPoints'] == undefined)
@@ -258,13 +262,8 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 //get "awardDollars"
                 var pastDollars = this.awardDollarService.getDollars();
                 var dollars = this.awardDollarService.giveDollars();
-                console.log("Dollars: " + dollars);
+                //console.log("Dollars: " + dollars);
                 this.userProfileService.surveyCompleted();
-                window.localStorage.setItem("LastSurveyCompletionDate", "" + moment().format('YYYYMMDD'));
-                window.localStorage.setItem("CurrentPoints", "" + this.userProfileService.points);
-                window.localStorage.setItem("PreviousPoints", "" + (this.userProfileService.points - 60));
-                window.localStorage.setItem("AwardedDollar", "" + (dollars - pastDollars));
-                window.localStorage.setItem("IsModalShown", "false");
                 //Save 7-day date and value for each question in localStorage to generate lifeInsight chart
                 var lifeInsightProfile = {
                     "questions": ["Q3d", "Q4d", "Q5d", "Q8d"],
@@ -338,10 +337,10 @@ var DynamicSurveyComponent = /** @class */ (function () {
                         }
                     }
                 }
-                console.log("lifeInsightObj: " + JSON.stringify(this.lifeInsightObj));
+                //console.log("lifeInsightObj: "+JSON.stringify(this.lifeInsightObj));
                 window.localStorage.setItem("lifeInsight", JSON.stringify(this.lifeInsightObj));
                 //save to Amazon AWS S3
-                this.awsS3Service.upload(this.fileLink, this.survey2);
+                this.awsS3Service.upload(this.fileLink, survey3);
                 //console.log("End of storeData");
                 //navigate to award-memes/award-altruism with equal probability after submit survey
                 var currentProb = Math.random();
@@ -356,6 +355,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 //prepare reinforcement data to upload to AWS S3
                 var reinforcement_data = {};
                 reinforcement_data['userName'] = this.userProfileService.username;
+                reinforcement_data['appVersion'] = this.versionNumber;
                 reinforcement_data['Prob'] = currentProb;
                 reinforcement_data['day_count'] = Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;
                 reinforcement_data['isRandomized'] = 1; //what is this one??
@@ -363,27 +363,50 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 reinforcement_data['readable_ts'] = readable_time;
                 reinforcement_data['date'] = currentDate;
                 //save to Amazon AWS S3
+                //add for the  modal object
+                var modalObjectNavigationExtras = {};
+                modalObjectNavigationExtras["LastSurveyCompletionDate"] = moment().format('YYYYMMDD');
+                modalObjectNavigationExtras["CurrentPoints"] = this.userProfileService.points;
+                modalObjectNavigationExtras["PreviousPoints"] = this.userProfileService.points - 60;
+                modalObjectNavigationExtras["AwardedDollar"] = dollars - pastDollars;
+                modalObjectNavigationExtras["IsModalShownYet"] = false;
+                //currentProb = 0.8;
                 if (this.fileLink.includes('caregiver') || currentProb <= 0.4) {
                     var reinforcementObj = {};
                     reinforcementObj['ds'] = 1;
                     reinforcementObj['reward'] = 0;
                     reinforcementObj['prob'] = currentProb;
                     reinforcement_data['reward'] = "No push";
+                    reinforcement_data['reward_img_link'] = "";
+                    reinforcement_data['Like'] = "";
                     this.awsS3Service.upload('reinforcement_data', reinforcement_data);
-                    //this.userProfileService.addReinforcementData(currentDate, reinforcementObj);    
-                    navigationExtras['state']['IsShowModal'] = true;
+                    this.userProfileService.addReinforcementData(currentDate, reinforcementObj);
+                    navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
                     this.router.navigate(['home'], navigationExtras);
                 }
                 else if ((currentProb > 0.4) && (currentProb <= 0.7)) {
                     reinforcement_data['reward'] = "Meme";
                     navigationExtras['state']['reinforcement_data'] = reinforcement_data;
+                    navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
                     this.router.navigate(['incentive/award-memes'], navigationExtras);
                 }
                 else if (currentProb > 0.7) {
                     reinforcement_data['reward'] = "Altruistic message";
                     navigationExtras['state']['reinforcement_data'] = reinforcement_data;
+                    navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
                     this.router.navigate(['incentive/award-altruism'], navigationExtras);
                 }
+                var surveyTimeline = { user_id: this.userProfileService.username,
+                    timeline: [{ dateOfCompletion: currentDate, timestamp: endTime, readableTimestamp: readable_time }] };
+                this.store.dispatch(surveyCompleted({ surveyTimeline: surveyTimeline }));
+                var payload = { user_id: this.userProfileService.username,
+                    last_date: moment().format('YYYYMMDD'),
+                    unlocked_points: 60,
+                    unlocked_money: dollars - pastDollars,
+                    current_point: this.userProfileService.points,
+                    date: moment().format('YYYYMMDD'),
+                    isUnlockedViewShown: false };
+                this.store.dispatch(surveyCompletedRegisterUnlocked({ payload: payload }));
             };
             return class_1;
         }()));
@@ -410,9 +433,9 @@ var DynamicSurveyComponent = /** @class */ (function () {
             cmpRef.instance.userProfileService = _this.userProfileService;
             cmpRef.instance.awardDollarService = _this.awardDollarService;
             cmpRef.instance.EncrDecr = _this.EncrDecr;
-            cmpRef.instance.ga = _this.ga;
             cmpRef.instance.plt = _this.plt;
             cmpRef.instance.router = _this.router; // Router,
+            cmpRef.instance.store = _this.store;
             cmpRef.instance.name = 'dynamic';
             //console.log('called');
         });
@@ -572,12 +595,12 @@ var DynamicSurveyComponent = /** @class */ (function () {
             AwsS3Service,
             EncrDecrService,
             Router,
-            GoogleAnalytics,
             ChangeDetectorRef,
             AppVersion,
             AlertController,
             Platform,
             UserProfileService,
+            Store,
             AwardDollarService])
     ], DynamicSurveyComponent);
     return DynamicSurveyComponent;

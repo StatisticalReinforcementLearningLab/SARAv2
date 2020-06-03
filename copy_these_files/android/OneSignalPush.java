@@ -649,6 +649,7 @@ public class OneSignalPush extends CordovaPlugin {
 
       try {
         Log.e("OneSignalExampleCordova", "Payload: " + data.toString());
+        
         if (actionType == OSNotificationAction.ActionType.ActionTaken) {
           Log.e("OneSignalExampleCordova", "Button pressed with id: " + result.action.actionID);
         }
@@ -658,7 +659,11 @@ public class OneSignalPush extends CordovaPlugin {
           public void run() {
             try {
 
-              URL url = new URL("http://mashfiqui.pythonanywhere.com/adapts-notification-update");
+              //
+              // TODO: change the URL to a flask end-point. 
+              // The flask file is available in the 'flask' directory of 'copy_these_files'.
+              //
+              URL url = new URL("http://SERVER-IP-ADDRESS:PORT/adapts-notification-update");
               HttpURLConnection conn = (HttpURLConnection) url.openConnection();
               conn.setRequestMethod("POST");
               conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");

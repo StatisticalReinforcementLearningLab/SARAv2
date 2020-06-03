@@ -4,15 +4,20 @@ import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { AlertController } from '@ionic/angular';
 import * as moment from 'moment';
 import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { UserProfileService } from '../user/user-profile/user-profile.service';
 var OneSignalService = /** @class */ (function () {
-    function OneSignalService(oneSignal, alertCtrl) {
+    function OneSignalService(oneSignal, alertCtrl, http, userProfileService) {
         this.oneSignal = oneSignal;
         this.alertCtrl = alertCtrl;
+        this.http = http;
+        this.userProfileService = userProfileService;
     }
     OneSignalService.prototype.initOneSignal = function () {
         //link for one signal tutorial ==========> https://devdactic.com/push-notifications-ionic-onesignal/
         var _this = this;
         //this.oneSignal.startInit('YOUR ONESIGNAL APP ID', 'YOUR ANDROID ID');
+        console.log("--Onesignal-- " + "init called");
         this.oneSignal.startInit(environment.oneSignalAppId, environment.firebaseConfig.messagingSenderId);
         this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.None);
         //this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
@@ -39,11 +44,20 @@ var OneSignalService = /** @class */ (function () {
             console.log("notification is opened at: " + _this.time + " formatted: " + _this.formattedTime);
             var additionalData = data.notification.payload.additionalData;
             //this.showAlert('Notification opened', 'You already read this before', additionalData.task);     
-            //this.showAlert('Notification opened',  "notification is opened at: "+this.time+" formatted: "+this.formattedTime);     
+            //this.showAlert('Notification opened',  "notification is opened at: "+this.time+" formatted: "+this.formattedTime);
         });
         //--- clearOneSignalNotifications
         //--- https://documentation.onesignal.com/docs/cordova-sdk
         this.oneSignal.endInit();
+        this.oneSignal.getPermissionSubscriptionState().then(function (status) {
+            console.log("--Onesignal-- " + JSON.stringify(status));
+            window.localStorage.setItem("oneSignalPlayerId", "" + status.subscriptionStatus.userId);
+            /*
+            this.userProfileService.userProfile.oneSignalPlayerId  = status.subscriptionStatus.userId;
+            this.userProfileService.saveProfileToDevice();
+            this.userProfileService.saveToServer();
+            */
+        });
     };
     OneSignalService.prototype.showAlert = function (title, msg) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
@@ -76,7 +90,9 @@ var OneSignalService = /** @class */ (function () {
             providedIn: 'root'
         }),
         tslib_1.__metadata("design:paramtypes", [OneSignal,
-            AlertController])
+            AlertController,
+            HttpClient,
+            UserProfileService])
     ], OneSignalService);
     return OneSignalService;
 }());

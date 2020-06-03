@@ -5,13 +5,14 @@ import { DemoAquariumComponent } from './demo-aquarium/demo-aquarium.component';
 import { SurveyModule } from '../../survey/survey.module';
 import { Routes, RouterModule } from '@angular/router';
 import { AquariumComponent } from './aquarium.component';
+import { RainforestComponent } from './previews/rainforest/rainforest.component';
 
 const routes: Routes = [
      { path: 'aquariumone', component: DemoAquariumComponent }
 ];
 
 @NgModule({
-  declarations: [DemoAquariumComponent, AquariumComponent],
+  declarations: [DemoAquariumComponent, AquariumComponent, RainforestComponent],
   imports: [
     CommonModule,
     SurveyModule,

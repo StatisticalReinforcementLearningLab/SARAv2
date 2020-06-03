@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { OneSignalService } from './notification/one-signal.service';
@@ -20,7 +20,18 @@ import { Subscription } from 'rxjs';
 export class AppComponent {
   public isShowingRouteLoadIndicator: boolean;
   loading;
-  isLoading = true;
+  // isLoading = true;
+
+  isAYA: boolean;
+
+  get username(){
+    if(this.userProfileService == undefined)
+      return "test";
+    else{
+      //console.log("User profile -- username -- called from here");
+      return this.userProfileService.username;
+    }
+  }
 
   constructor(
     private router: Router, 
@@ -30,9 +41,14 @@ export class AppComponent {
     private oneSignalService: OneSignalService,
     private authService: AuthService,
     private userProfileService: UserProfileService,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    public navController: NavController
    ) {
     this.initializeApp();
+
+    this.isAYA = true;
+    if(this.userProfileService.isParent == true)
+      this.isAYA = false;
 
     router.events.subscribe(
 			( event: RouterEvent ) : void => {
@@ -96,22 +112,34 @@ export class AppComponent {
 
   initializeApp() {
 
-    this.authService.autoLogin();
     if(this.authService.isLoggedIn()){
-      this.showLoading();
-      this.userSub = this.userProfileService.initializeObs().subscribe(() =>{        
-        this.dismissLoading();
-        this.isLoading = false;
-        console.log("successfully logged in");
+      this.userProfileService.loadProfileFromDevice();
+      // this.isLoading = false;
+
+      // get up to date userProfileFixed - to see if isActive has changed
+      this.userProfileService.fetchUserProfileFixed().subscribe(response=>{
+        if(response.changed){
+          // there was a change to isActive
+          // accessible via
+          // this.userProfileService.isActive
+        }
       });
-      // this.userProfileService.initialize();
-      // if we can for things to wait to progress in here
-      // then, we'll only need to load user profile here and at login in Auth component
+
+      // fetch a copy from server of userProfile to see if it's newer 
+      this.userProfileService.fetchUserProfile().subscribe(response=>{
+        if(response.serverCopyNewer){
+          // the server copy of the userProfile was newer (and has been updated locally)
+          // accessible via
+          // this.userProfileService.userProfile
+        }
+      });
+
     }
-    else{
-      console.log("log in unsuccessful.");
-      this.dismissLoading();
-      this.isLoading = false;
+
+    else {
+      // not logged in; so do nothing
+      // should be routed via the authguard to the login screen
+      // after login occurs we should load the UP and UPF - which happens via the auth.component
     }
 
     this.platform.ready().then(() => {
@@ -181,6 +209,23 @@ export class AppComponent {
       cssClass: 'custom-class custom-loading'
     });
     return await loading.present();
+  }
+
+  //
+  async showPreviewOfFishBowl(){
+    this.navController.navigateRoot(['/preview/fishbowl']);
+  }
+
+  async showPreviewOfSea(){
+    this.navController.navigateRoot(['/preview/sea']);
+  }
+
+  async showPreviewOfTundra(){
+    this.navController.navigateRoot(['/preview/tundra']);
+  }
+
+  async showPreviewOfRainforest(){
+    this.navController.navigateRoot(['/preview/rainforest']);
   }
 
 }
