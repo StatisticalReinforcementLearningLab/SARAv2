@@ -78,6 +78,10 @@ void processNotificationReceived(OSNotification* _notif) {
 
 void sendActionDataToServer(OSNotificationOpenedResult* result){
 
+    /*
+    * This custom function uploads the notification opened data to the flask server.
+    */
+
     NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS Z"];
     NSString* formattedReadbleTs = [dateFormatter stringFromDate:[NSDate date]];
@@ -86,7 +90,6 @@ void sendActionDataToServer(OSNotificationOpenedResult* result){
     
     NSDictionary* additionalData = result.notification.payload.additionalData;
     NSString* participantID = [additionalData objectForKey:@"user"];
-    //NSLog(@"additionalData = %@", additionalData);
     
     NSDictionary *jsonBodyDict = @{
         @"PARTICIAPANT_ID": participantID,
@@ -101,7 +104,11 @@ void sendActionDataToServer(OSNotificationOpenedResult* result){
     
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/adapts-notification-update"]];
+    //
+    // TODO: change the URL to a flask end-point. 
+    // The flask file is available in the 'flask' directory of 'copy_these_files'.
+    //
+    [request setURL:[NSURL URLWithString:@"http://SERVER-IP-ADDRESS:PORT/adapts-notification-update"]];
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
@@ -128,13 +135,11 @@ void processNotificationOpened(OSNotificationOpenedResult* result) {
         successCallback(notificationOpenedCallbackId, json);
         actionNotification = nil;
         
+        /*
+        * Once a like or dislike option has been pressed, we  upload the data to the server.
+        */
         NSLog(@"One signal notification has been opened");
-        
-        //OSNotificationPayload* payload = result.notification.payload;
-        //NSLog(@"NotificationID: %@", payload.notificationID);
-        
         if (result.action.actionID) {
-            //NSLog(@"Action ID: %@", result.action.actionID);
             sendActionDataToServer(result);
         }
     }
