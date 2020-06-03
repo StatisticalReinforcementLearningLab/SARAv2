@@ -35,6 +35,16 @@ For the following changes, files in the platforms directory have to changed dire
 - `ios/OneSignalPush.m`:  This file should be used to change the `OneSignalPush.m` file in the `Plugins` directory. Change the function  `processNotificationOpened`.  Once you make the changes, we will be able to track like and dislike. 
 
 
-## Steps to install the Flask server and MySQL
+## Steps to install the Flask server, MySQL, and 'send notification codes'
 
+### Flask
+Inside the `flask_server` directory, there is a flask app. The `requirements.txt` will install all the dependencies, when called using `pip.` There flask server is responsible to (i) track 4PM notifications and 'like/nope' responses, (ii) send 8PM notifications if surveys are not completed (iii) list all 4PM to populate the 'inspirational_quote' view.
 
+### MySQL
+Inside the `mysql` directory, there are server create table statement in the `create_table.sql` file. We will need these tables to get flask server to work.
+
+### MySQL
+Inside the `mysql` directory, there are server create table statement in the `create_table.sql` file. We will need these tables to get 
+
+### notification_send_codes
+The `notification_send_codes` folder contains all the quotes, python scripts to send 4PM/6PM/8PM notifications.
