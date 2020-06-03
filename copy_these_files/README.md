@@ -4,11 +4,11 @@ We use onesignal notification library to push notifications to phones. Onesignal
 However, a limitation of onesignal is, it doesn't provide anyway to track notifications (when notification was
 received, and when notification was clicked). 
 
-The files in this folder provide extra code to track these notifications.
+The files in this folder provide extra code to track these notifications.<br/><br/>
 
 
 ## Steps to install the files on iOS and Andriod
-For the following changes, files in the platforms directory have to changed directly. You can use Xcode and Android Studio to make this changes.
+For the following changes, files in the platforms directory have to changed directly. You can use Xcode and Android Studio to make this changes.<br/>
 
 
 
@@ -19,7 +19,7 @@ For the following changes, files in the platforms directory have to changed dire
 
 - `android/NotificationExtenderOneSignal.java`: make changes to the `onNotificationProcessing` function in `com.plugin.gcm.OneSignalPush` and `CordovaNotificationOpenedHandler`. Once you make the changes, we will be able to track like and dislike. *(Note, you have to change the server address/port, and install a flask server script).*
 
-- Once you make the changes, you can use `ionic cordova run android` to see the changes. It is not necessary to use Android studio.
+- Once you make the changes, you can use `ionic cordova run android` to see the changes. It is not necessary to use Android studio.<br/>
 
 
 
@@ -32,19 +32,19 @@ For the following changes, files in the platforms directory have to changed dire
 
 - `ios/NotificationService.m`: This file should be used to change the `NotificationService.m` file in `OnesignalNotificationServiceExtension` directory. Change the function  `didReceiveNotificationRequest`.  Once you make the changes, notification will be tracked once the notification is received.
 
-- `ios/OneSignalPush.m`:  This file should be used to change the `OneSignalPush.m` file in the `Plugins` directory. Change the function  `processNotificationOpened`.  Once you make the changes, we will be able to track like and dislike. 
+- `ios/OneSignalPush.m`:  This file should be used to change the `OneSignalPush.m` file in the `Plugins` directory. Change the function  `processNotificationOpened`.  Once you make the changes, we will be able to track like and dislike.<br/><br/> 
 
 
-## Steps to install the Flask server, MySQL, and 'send notification codes'
+## Steps to install the Flask server, MySQL, and 'send notification codes'<br/>
 
 ### Flask
-Inside the `flask_server` directory, there is a flask app. The `requirements.txt` will install all the dependencies, when called using `pip.` There flask server is responsible to (i) track 4PM notifications and 'like/nope' responses, (ii) send 8PM notifications if surveys are not completed (iii) list all 4PM to populate the 'inspirational_quote' view.
+Inside the `flask_server` directory, there is a flask app. The `requirements.txt` will install all the dependencies, when called using `pip.` There flask server is responsible to (i) track 4PM notifications and 'like/nope' responses, (ii) send 8PM notifications if surveys are not completed (iii) list all 4PM to populate the 'inspirational_quote' view.<br/>
 
 ### MySQL
-Inside the `mysql` directory, there are server create table statement in the `create_table.sql` file. We will need these tables to get flask server to work.
+Inside the `mysql` directory, there are server create table statement in the `create_table.sql` file. We will need these tables to get flask server to work.<br/>
 
 ### MySQL
-Inside the `mysql` directory, there are server create table statement in the `create_table.sql` file. We will need these tables to get 
+Inside the `mysql` directory, there are server create table statement in the `create_table.sql` file. We will need these tables to get.<br/>
 
 ### notification_send_codes
 The `notification_send_codes` folder contains all the quotes, python scripts to send 4PM/6PM/8PM notifications.
