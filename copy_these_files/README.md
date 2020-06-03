@@ -4,7 +4,7 @@ We use onesignal notification library to push notifications to phones. Onesignal
 However, a limitation of onesignal is, it doesn't provide anyway to track notifications (when notification was
 received, and when notification was clicked). 
 
-The files in this folder provide extra code to track these notifications.<br/><br/>
+The files in this folder provide extra code to track these notifications.<br/><br/><br/>
 
 
 ## Steps to install the files on iOS and Andriod
@@ -32,7 +32,7 @@ For the following changes, files in the platforms directory have to changed dire
 
 - `ios/NotificationService.m`: This file should be used to change the `NotificationService.m` file in `OnesignalNotificationServiceExtension` directory. Change the function  `didReceiveNotificationRequest`.  Once you make the changes, notification will be tracked once the notification is received.
 
-- `ios/OneSignalPush.m`:  This file should be used to change the `OneSignalPush.m` file in the `Plugins` directory. Change the function  `processNotificationOpened`.  Once you make the changes, we will be able to track like and dislike.<br/><br/> 
+- `ios/OneSignalPush.m`:  This file should be used to change the `OneSignalPush.m` file in the `Plugins` directory. Change the function  `processNotificationOpened`.  Once you make the changes, we will be able to track like and dislike.<br/><br/><br/> 
 
 
 ## Steps to install the Flask server, MySQL, and 'send notification codes'<br/>
