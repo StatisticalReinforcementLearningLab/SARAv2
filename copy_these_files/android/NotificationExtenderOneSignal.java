@@ -40,24 +40,17 @@ public class NotificationExtenderOneSignal extends NotificationExtenderService {
            </intent-filter>
         </service>
 
-     */
+    */
 
-    private static final String TAG = "MyNotificationExtender";
+    private static final String TAG = "NotificationExtenderOneSignal";
 
     @Override
     protected boolean onNotificationProcessing(OSNotificationReceivedResult receivedResult) {
-        // Read properties from result.
+        
 
         // Read properties from result.
-
-        // Return true to stop the notification from displaying.
-
+        //receivedResult contains a detailed payload of the notification.
         Log.i(TAG, receivedResult.toString());
-
-
-
-        /* Do something with notification payload */
-        //receivedResult.payload.notificationID
         String title = receivedResult.payload.title;
         String body  = receivedResult.payload.body;
         String additionalData = receivedResult.payload.additionalData.toString();
@@ -66,75 +59,38 @@ public class NotificationExtenderOneSignal extends NotificationExtenderService {
         Log.e(TAG, "Body: " + body);
         Log.e(TAG, "AdditionalData: " + additionalData);
 
-
-        //
-
-
-
-        //---------------------------------------------------------------------
-        // in the following we are writing when notification was sent in a list
-        //---------------------------------------------------------------------
-
-        SharedPreferences prefs = getSharedPreferences(
-                "ActionInMyReceiver", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        Set<String> pastNotificationData = prefs.getStringSet(TAG, null);
-
-
-        //---- Add past notification data to present list
-        Set<String> presentNotificationData = new LinkedHashSet<String>();
-        if(pastNotificationData != null)
-            presentNotificationData.addAll(pastNotificationData);
-
-
-
+        //Write a JSON object
         JSONObject object = new JSONObject();
         try {
-
             //
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
             String currentDateandTime = sdf.format(new Date());
             object.put("ReceivedTime", currentDateandTime);
-
-            //
             object.put("ReceivedTs", System.currentTimeMillis());
             object.put("NoticationID", receivedResult.payload.notificationID);
             object.put("ParticipantID", receivedResult.payload.additionalData.getString("user"));
             object.put("NotificationType", receivedResult.payload.additionalData.getString("type"));
 
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        presentNotificationData.add(object.toString());
-        editor.putStringSet(TAG, presentNotificationData);
-        editor.apply();
-
-
-        //---------------------------------------------------------------------
-        // print everything in the list
-        //---------------------------------------------------------------------
-        List<String> list = new ArrayList<String>(presentNotificationData);
-        Log.i(TAG,TAG+" fetched size: "+presentNotificationData.size());
-        for (int i = 0; i < presentNotificationData.size(); i++) {
-            Log.i(TAG,TAG+"fetch value " + list.get(i));
-        }
-
-
+        //upload it to the cloud.
         upload(object);
 
         return false;
     }
 
-    //
     private void upload(JSONObject object){
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
 
-                    URL url = new URL("http://mashfiqui.pythonanywhere.com/adapts-notification-insert");
+                    // TODO: change the URL to a flask end-point. 
+                    // The flask file is available in the 'flask' directory of 'copy_these_files'.
+
+                    URL url = new URL("http://SERVER-IP-ADDRESS:PORT/adapts-notification-insert");
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("POST");
                     conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
@@ -155,8 +111,9 @@ public class NotificationExtenderOneSignal extends NotificationExtenderService {
                     jsonParam.put("Notification_Id", object.getString("NoticationID"));
                     jsonParam.put("whenReceivedTs", System.currentTimeMillis());
                     jsonParam.put("whenReceivedReadableTs", formattedReadbleTs);
-                    jsonParam.put("typeOfNotification", object.getString("NotificationType")); //NotificationType
+                    jsonParam.put("typeOfNotification", object.getString("NotificationType"));
                     jsonParam.put("JSON_dump", "empty");
+                    jsonParam.put("device_type", "android");
 
 
                     Log.i("JSON", jsonParam.toString());
