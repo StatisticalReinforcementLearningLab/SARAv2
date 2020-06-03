@@ -710,7 +710,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-app> \n  <app-terms-of-service *ngIf=\"!agreeToTerms\"></app-terms-of-service>\n  <ion-router-outlet *ngIf=\"agreeToTerms && !isLoading\"></ion-router-outlet>\n</ion-app>\n\n"
+module.exports = "<ion-app> \n  <app-terms-of-service *ngIf=\"!agreeToTerms\"></app-terms-of-service>\n\n\n  <ion-menu content-id=\"menu\" side=\"start\" menuId=\"first\" type=\"overlay\" swipeEnabled=\"false\" *ngIf=\"agreeToTerms\">\n    <!--\n    <ion-header>\n      <ion-toolbar>\n        <ion-icon name=\"contact\"></ion-icon>\n        <ion-title>mash_aya</ion-title>\n      </ion-toolbar>\n    </ion-header>\n    -->\n    <ion-content>\n      \n      <ion-header>\n        <ion-toolbar>\n          <br>\n          <ion-avatar style=\"margin: auto;\">\n            <img src=\"https://raw.githubusercontent.com/ionic-team/ionic-docs/master/src/demos/api/avatar/avatar.svg\">\n          </ion-avatar>\n          <h2 style=\"text-align: center;\">{{username}}</h2>\n        </ion-toolbar>\n      </ion-header>\n\n      \n\n      <ion-list>\n        <ion-item [routerLink]=\"['/incentive/infopage']\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n          &nbsp; How this app works\n        </ion-item>\n\n        <ion-item [routerLink]=\"['/contact-study-staff']\" *ngIf=\"isAYA\">\n          <ion-icon name=\"call\"></ion-icon>\n          &nbsp; Contact study staff\n        </ion-item>\n\n\n        <ion-item><br><br><h3 style=\"font-size: 16px;padding-top: 24px;\">Preview/review levels</h3></ion-item>\n        <!--\n          [routerLink]=\"['/preview/fishbowl']\"\n        -->\n        <ion-item (click)=\"showPreviewOfFishBowl()\"> \n          <ion-label text-wrap>\n            Level 1: Fishbowl\n          </ion-label>\n        </ion-item>\n        <ion-item (click)=\"showPreviewOfSea()\">\n          <ion-label text-wrap>\n            Level 2: Sea\n            <p>Unlocks at 1060 points</p>\n          </ion-label>\n        </ion-item>\n        \n        <ion-item  (click)=\"showPreviewOfTundra()\">\n          <ion-label text-wrap>\n            Level 3: Tundra\n            <p>Unlocks at 2120 points</p>\n          </ion-label>\n        </ion-item>\n        <ion-item (click)=\"showPreviewOfRainforest()\">\n          <ion-label text-wrap>\n            Level 4: Rainforest\n            <p>Unlocks at 3020 points</p>\n          </ion-label>\n        </ion-item>\n        \n      </ion-list>\n    </ion-content>\n  </ion-menu>\n  <ion-router-outlet *ngIf=\"agreeToTerms && !isLoading\" id=\"menu\"></ion-router-outlet>\n\n  <!--\n  <ion-router-outlet id=\"menu\"></ion-router-outlet>\n  \n  \n  -->\n</ion-app>\n\n"
 
 /***/ }),
 
@@ -743,7 +743,7 @@ module.exports = "<!-- \n<div class=\"container\">\n    <div class=\"row\">\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--\n  <app-aquarium></app-aquarium>\n-->\n\n<ion-tabs>\n\n  <ion-tab-bar slot=\"bottom\" style=\"background: #005486;\">\n    <ion-tab-button tab=\"incentive\" style=\"background: #005486;\">\n      <ion-icon src=\"/assets/img/fish_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Aquarium</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"unlocables\" style=\"background: #005486;\">\n      <ion-icon src=\"/assets/img/treasure_chest_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Unlockables</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"memes\" style=\"background: #005486;\">\n      <ion-icon src=\"/assets/img/happy_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">memes</ion-label>\n    </ion-tab-button>\n\n\n    <ion-tab-button tab=\"thankyous\" style=\"background: #005486;\">\n      <ion-icon src=\"/assets/img/help_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Thank yous</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"contact\" style=\"background: #005486;\">\n      <ion-icon name=\"call\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Contact</ion-label>\n    </ion-tab-button>\n\n    <!--\n    <ion-tab-button tab=\"tab2\">\n      <ion-icon name=\"create\"></ion-icon>\n      <ion-label>Memes</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"tab3\">\n      <ion-icon name=\"locate\"></ion-icon>\n      <ion-label>Thank yous</ion-label>\n    </ion-tab-button>\n    -->\n  </ion-tab-bar>\n\n</ion-tabs>"
+module.exports = "<!--\n  <app-aquarium></app-aquarium>\n-->\n\n<ion-tabs>\n\n  <ion-tab-bar slot=\"bottom\" style=\"background: #005486;\">\n    \n    <ion-tab-button tab=\"incentive\" style=\"background: #005486;\"  class=“ion-no-padding”>\n      <ion-icon src=\"/assets/img/fish_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Home</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"quotes\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"isAYA\">\n      <ion-icon src=\"/assets/img/brain.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Quotes</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"memes\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"isAYA\">\n      <ion-icon src=\"/assets/img/happy_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Memes</ion-label>\n    </ion-tab-button>\n\n\n    <ion-tab-button tab=\"thankyous\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"isAYA\">\n      <ion-icon src=\"/assets/img/help_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Thank yous</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"contact\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"!isAYA\">\n      <ion-icon name=\"call\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Contact</ion-label>\n    </ion-tab-button>\n\n\n\n    <!--\n\n    <ion-tab-button tab=\"contact\" style=\"background: #005486;\"  class=“ion-no-padding”>\n      <ion-icon name=\"call\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Contact</ion-label>\n    </ion-tab-button>\n\n\n    <ion-tab-button tab=\"tab2\">\n      <ion-icon name=\"create\"></ion-icon>\n      <ion-label>Memes</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"tab3\">\n      <ion-icon name=\"locate\"></ion-icon>\n      <ion-label>Thank yous</ion-label>\n    </ion-tab-button>\n    -->\n  </ion-tab-bar>\n\n</ion-tabs>"
 
 /***/ }),
 
@@ -754,7 +754,7 @@ module.exports = "<!--\n  <app-aquarium></app-aquarium>\n-->\n\n<ion-tabs>\n\n  
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-title style=\"color:#fff;\">ADAPTS</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content padding no-border>\n        <h1>Terms of Service</h1>\n        <div class=\"scroll\" scrollY=\"true\">\n          <p># Released under MIT License</p>\n          <p> Copyright 2019 Children's Hospital of Philadelphia</p>\n          <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p> \n          <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>\n          <p>THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>\n        </div>   \n        <ion-item>\n          <ion-label>Agree to terms</ion-label>\n          <ion-checkbox [(ngModel)]=\"agreeToTerms\"  ></ion-checkbox>\n        </ion-item>    \n</ion-content>\n\n<ion-footer align=\"center\" style=\"height:10px;\" no-border>\n  <ion-button style=\"margin-right:10px;\" (click)=\"onSubmit()\" [disabled]=\"!agreeToTerms\">Submit</ion-button>\n</ion-footer>"
+module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-title style=\"color:#fff;\">ADAPTS</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content padding no-border>\n        <h1>Terms of Service</h1>\n        <div class=\"scroll\" scrollY=\"true\">\n          <p># Released under MIT License</p>\n          <p> Copyright 2019 Children's Hospital of Philadelphia</p>\n          <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p> \n          <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>\n          <p>THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>\n        </div>   \n        <ion-item>\n          <ion-label>Agree to terms</ion-label>\n          <ion-checkbox [(ngModel)]=\"agreeToTerms\"  ></ion-checkbox>\n        </ion-item>    \n</ion-content>\n\n<ion-footer align=\"center\" style=\"height:20px;\" no-border>\n  <ion-button style=\"margin-right:10px;\" (click)=\"onSubmit()\" [disabled]=\"!agreeToTerms\">Submit</ion-button>\n</ion-footer>"
 
 /***/ }),
 
@@ -765,7 +765,7 @@ module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n\n      <ion-buttons slot=\"start\">\n\n        <ion-button style=\"color:#fff;\" (click)=\"showSideMenu()\">\n          <ion-icon name=\"menu\"></ion-icon>\n        </ion-button>\n        \n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n\n      </ion-buttons>\n\n\n      <ion-buttons slot=\"end\">\n          <font color=\"white\">${{money}}</font>\n          <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\"  *ngIf=\"!isIOS\">\n            <ion-icon name=\"alert\"></ion-icon>\n          </ion-button>\n  \n          <!-- Mash codes:\n          <ion-text  *ngIf=\"!isActive\" style=\"color:#fff;\"><strong>Account is Paused</strong> </ion-text>\n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button>\n          -->\n  \n          <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"!isIOS\">\n            <ion-icon name=\"ios-help-circle\"></ion-icon>\n          </ion-button>\n  \n          <ion-button (click)=\"startSurvey()\"   *ngIf=\"isActive\">\n              <ion-icon name=\"ios-create\" style=\"color : white;\"></ion-icon>\n          </ion-button>\n  \n  \n          <ion-button *ngIf=\"!isActive\" (click)=\"dispalySurveyPausedMsg()\" >\n              <ion-icon name=\"ios-create\" style=\"color : #e74c3c;\"></ion-icon>\n          </ion-button>\n          <!--\n          <ion-button href=\"{{surveyPath}}\" *ngIf=\"isActive\">Start Survey</ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurveyAYA()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          -->\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">{{title}}</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  \n  \n  <ion-content>\n    <!--div class=\"ion-padding\">\n      <ion-button href=\"/survey/samplesurvey\">Sample survey (demo)</ion-button> <br>\n      <ion-button href=\"/incentive/aquariumone\">Incentive: Aquarium 1</ion-button> <br>\n      <ion-button href=\"/incentive/award-memes\" >Incentive: meme</ion-button> <br>\n      <ion-button href=\"/incentive/visualization\">Incentive: Life-inisight</ion-button> <br>\n    </div-->\n  \n    <app-demo-aquarium></app-demo-aquarium>\n    <ion-button color=\"primary\" (click)=\"showModalDemo()\">Unlockables</ion-button>\n    <ion-button color=\"primary\" (click)=\"showMemeDemo()\">Meme</ion-button>\n    <ion-button color=\"primary\" (click)=\"showAltruisticDemo()\">Altruistic msg</ion-button>\n  </ion-content>\n  \n  "
+module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n\n      <ion-buttons slot=\"start\">\n        <ion-menu-button style=\"color:#fff;\" menuId=\"first\"></ion-menu-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n      </ion-buttons>\n\n      <!--\n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n        <ion-menu-button autoHide=\"false\" style=\"color:#fff;\" menuId=\"first\" (click)=\"showSideMenu()\"></ion-menu-button>\n        <ion-button style=\"color:#fff;\" (click)=\"showSideMenu()\">\n          <ion-icon name=\"menu\"></ion-icon>\n        </ion-button>\n        \n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"!isIOS\">\n            <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n      -->\n\n\n      <ion-buttons slot=\"end\">\n          <font color=\"white\">${{money}}</font>\n          <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\"  *ngIf=\"!isIOS\">\n            <ion-icon name=\"alert\"></ion-icon>\n          </ion-button>\n  \n          <!-- Mash codes:\n          <ion-text  *ngIf=\"!isActive\" style=\"color:#fff;\"><strong>Account is Paused</strong> </ion-text>\n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button>\n          -->\n  \n          \n  \n          <ion-button (click)=\"startSurvey()\"   *ngIf=\"isActive\">\n              <ion-icon name=\"ios-create\" style=\"color : white;\"></ion-icon>\n          </ion-button>\n  \n  \n          <ion-button *ngIf=\"!isActive\" (click)=\"dispalySurveyPausedMsg()\" >\n              <ion-icon name=\"ios-create\" style=\"color : #e74c3c;\"></ion-icon>\n          </ion-button>\n          <!--\n          <ion-button href=\"{{surveyPath}}\" *ngIf=\"isActive\">Start Survey</ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurveyAYA()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          -->\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">{{title}}</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  \n  \n  <ion-content>\n    <!--div class=\"ion-padding\">\n      <ion-button href=\"/survey/samplesurvey\">Sample survey (demo)</ion-button> <br>\n      <ion-button href=\"/incentive/aquariumone\">Incentive: Aquarium 1</ion-button> <br>\n      <ion-button href=\"/incentive/award-memes\" >Incentive: meme</ion-button> <br>\n      <ion-button href=\"/incentive/visualization\">Incentive: Life-inisight</ion-button> <br>\n    </div-->\n  \n    <app-demo-aquarium isPreview=\"false\"></app-demo-aquarium>\n\n    <!--\n    <ion-button color=\"primary\" (click)=\"showModalDemo()\">Unlockables</ion-button>\n    <ion-button color=\"primary\" (click)=\"showMemeDemo()\">Meme</ion-button>\n    <ion-button color=\"primary\" (click)=\"showAltruisticDemo()\">Altruistic msg</ion-button>\n    -->\n  </ion-content>\n  \n  "
 
 /***/ }),
 
@@ -787,7 +787,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"gameDiv\"></div>\n<p  style=\"padding-top:10px;padding-bottom:0px;padding-left:10px;\"><b>Username</b>: {{username}}</p>  \n  <!--\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"startTundraLevel()\">Tundra level</ion-button>\n\n  <app-loading-spinner></app-loading-spinner>\n\n  <ion-card> \n    <div class=\"quetiontextstyle\">\n        This is the question\n    </div>\n    <div class=\"radiovertical\">\n      <ul>\n        \n        <li>\n          <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n          <label for=\"ff-option\">Pizza</label> \n          <div class=\"check\"></div>\n        </li>\n\n        <li>\n          <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n          <label for=\"ss-option\">Boyfriend</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n        \n        <li>\n          <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n          <label for=\"tt-option\">Cats</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n\n      </ul>\n    </div>\n  </ion-card>\n  -->\n\n\n"
+module.exports = "<div id=\"gameDiv\"></div>\n<ion-list padding>\n    \n\n  <ion-list-header lines=\"inset\">\n    <ion-label><h2><br>You unlocked the following animals in this level <br>so far</h2><br></ion-label>\n  </ion-list-header>\n\n  <ion-item *ngFor=\"let item of fishFunFactListViewItems\">\n    <ion-thumbnail item-left>\n      <img [src]=\"item.image\"/>\n    </ion-thumbnail>\n    <ion-label text-wrap style=\"padding-left: 10px;\">\n      <h3>{{item.fishName}}</h3>\n      <p>{{item.funFact}}</p>\n    </ion-label>\n  </ion-item>\n\n  \n</ion-list> \n\n  <!--\n  <p  style=\"padding-top:10px;padding-bottom:0px;padding-left:10px;\"><b>Username</b>: {{username}}</p> \n\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"startTundraLevel()\">Tundra level</ion-button>\n\n  <app-loading-spinner></app-loading-spinner>\n\n  <ion-card> \n    <div class=\"quetiontextstyle\">\n        This is the question\n    </div>\n    <div class=\"radiovertical\">\n      <ul>\n        \n        <li>\n          <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n          <label for=\"ff-option\">Pizza</label> \n          <div class=\"check\"></div>\n        </li>\n\n        <li>\n          <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n          <label for=\"ss-option\">Boyfriend</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n        \n        <li>\n          <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n          <label for=\"tt-option\">Cats</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n\n      </ul>\n    </div>\n  </ion-card>\n  -->\n\n\n"
 
 /***/ }),
 
@@ -799,6 +799,50 @@ module.exports = "<div id=\"gameDiv\"></div>\n<p  style=\"padding-top:10px;paddi
 /***/ (function(module, exports) {
 
 module.exports = "\n<ion-header>\n    <ion-list-header>Congratulations!!!</ion-list-header>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n    <ion-list>\n      <ion-item *ngFor=\"let reinforcement of reinforcements\"> \n        <ion-thumbnail slot=\"start\">\n          <img src=\"{{reinforcement.img}}\">\n        </ion-thumbnail>\n        <ion-label text-wrap>\n          <h2>{{reinforcement.header}}</h2>\n          <h3>{{reinforcement.text}}</h3>\n        </ion-label>\n      </ion-item>\n    </ion-list>\n</ion-content>\n\n<ion-footer align=\"right\" no-border class=\"ion-padding\">\n  <ion-button expand=\"block\" color=\"primary\" (click)=\"dismiss()\">Close</ion-button>\n</ion-footer>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/incentive/aquarium/previews/fishbowl/fishbowl.component.html":
+/*!********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/incentive/aquarium/previews/fishbowl/fishbowl.component.html ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Level 1: Fishbowl</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n  <ion-card>\n    <ion-card-content>\n      <ion-card-title style=\"color:black;\">A preview of Level 1: Fishbowl</ion-card-title>\n      This level is the first level.\n    </ion-card-content>\n  </ion-card>\n  <ion-card>\n    <img src=\"assets/img/at_1050_points.png\">\n  </ion-card>\n</ion-content>\n\n\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/incentive/aquarium/previews/rainforest/rainforest.component.html":
+/*!************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/incentive/aquarium/previews/rainforest/rainforest.component.html ***!
+  \************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-button (click)=\"goHome()\">\n          <ion-icon name=\"arrow-back\" style=\"color:#fff;\"></ion-icon>\n        </ion-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Level 4: Rainforest</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <!--\n  <app-demo-aquarium isPreview=\"false\"></app-demo-aquarium>\n  -->\n  \n  <ion-card>\n    <ion-card-content>\n      <ion-card-title style=\"color:black;\">A preview of Level 4: Rainforest</ion-card-title>\n      This level will be unlocked at 3020 points.\n    </ion-card-content>\n  </ion-card>\n  <ion-card>\n    <img src=\"assets/img/at_4000_points.png\">\n  </ion-card>\n</ion-content>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/incentive/aquarium/previews/sea/sea.component.html":
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/incentive/aquarium/previews/sea/sea.component.html ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Level 2: Sea</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <!--\n  <app-demo-aquarium isPreview=\"false\"></app-demo-aquarium>\n  -->\n  \n  <ion-card>\n    <ion-card-content>\n      <ion-card-title style=\"color:black;\">A preview of Level 2: Sea</ion-card-title>\n      This level will be unlocked at 1060 points.\n    </ion-card-content>\n  </ion-card>\n  <ion-card>\n    <img src=\"assets/img/at_2100_points.png\">\n  </ion-card>\n</ion-content>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/incentive/aquarium/previews/tundra/tundra.component.html":
+/*!****************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/incentive/aquarium/previews/tundra/tundra.component.html ***!
+  \****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Level 3: Tundra</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <!--\n  <app-demo-aquarium isPreview=\"false\"></app-demo-aquarium>\n  -->\n  \n  <ion-card>\n    <ion-card-content>\n      <ion-card-title style=\"color:black;\">A preview of Level 3: Tundra</ion-card-title>\n      This level will be unlocked at 2120 points.\n    </ion-card-content>\n  </ion-card>\n  <ion-card>\n    <img src=\"assets/img/at_3000_points.png\">\n  </ion-card>\n</ion-content>\n"
 
 /***/ }),
 
@@ -875,7 +919,18 @@ module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">Thank you messages</ion-title>\n  </ion-toolbar>\n</ion-header>\n  \n  <ion-content [fullscreen]=\"true\">\n\n    <ion-card>\n        <ion-card-content>\n          <ion-card-title style=\"color:black;\">{{unlockedAltMessagesCount}} out of 21 thank you messages unlocked</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n    <ion-card *ngFor=\"let x of already_shown_altruism_msgs;\">\n        <img src=\"{{x.filename}}\" />\n        <ion-card-content>\n            <b>Unlock date:</b> {{x.unlock_date}}    \n        </ion-card-content>\n    </ion-card>\n  \n    <!--\n    <ion-card>\n      <img src=\"./assets/cnn_billgates.png\" />\n      <ion-card-header>\n        <ion-card-subtitle>বিল গেটস</ion-card-subtitle>\n        <ion-card-title>ডেভেলপিং দেশে করোনার ঝুঁকি আরো বেশি </ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        বিল গেটস সম্প্রতি CNN এর একটি ইন্টারভিউ তে বলছেন ডেভেলপিং দেশে করোনা বন্ধ করা বেশি কঠিন। Youtube-এর ইন্টারভিউ লিংক এখানে পাওয়া যাবে। https://youtu.be/A71lfXrQlxU\n  \n        <br><br><p style=\"color:green;\">৯৪ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    <ion-card>\n      <img src=\"./assets/anthony_faucci.jpg\" />\n      <ion-card-header>\n        <ion-card-subtitle>এন্থনি ফাউচি</ion-card-subtitle>\n        <ion-card-title>ভ্যাকসিন এখনো পাওয়া যাইনি। ঘরে থাকুন</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        মার্কিন যুক্তরাষ্টের করোনা ভাইরাস বিষয়ক টাস্ক ফোর্সের প্রধান এবং সম্মানিত বিজ্ঞানী এন্থনি ফাউচি বলেছেন কোরোনার কোনো ভ্যাকসিন আবিষ্কার হয়নি। এ বিষয় অনেক গবেষণা চলছে। ভ্যাকসিন না বের হওয়া পর্যন্ত সবাইকে ড: ফাউচি ঘরে থাকতে বলেছেন।  \n  \n        <br><br><p style=\"color:green;\">৫১ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    -->\n  </ion-content>\n  \n"
+module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">Thank you messages</ion-title>\n  </ion-toolbar>\n</ion-header>\n  \n  <ion-content [fullscreen]=\"true\">\n\n    <ion-card>\n        <ion-card-content>\n          <ion-card-title style=\"color:black;\">{{unlockedAltMessagesCount}} out of 21 thank you messages unlocked</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n    <ion-card *ngFor=\"let x of already_shown_altruism_msgs;\">\n        <img src=\"{{x.filename}}\" />\n        <!--\n        <ion-card-content>\n            <b>Unlock date:</b> {{x.unlock_date}}    \n        </ion-card-content>\n        -->\n    </ion-card>\n  \n    <!--\n    <ion-card>\n      <img src=\"./assets/cnn_billgates.png\" />\n      <ion-card-header>\n        <ion-card-subtitle>বিল গেটস</ion-card-subtitle>\n        <ion-card-title>ডেভেলপিং দেশে করোনার ঝুঁকি আরো বেশি </ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        বিল গেটস সম্প্রতি CNN এর একটি ইন্টারভিউ তে বলছেন ডেভেলপিং দেশে করোনা বন্ধ করা বেশি কঠিন। Youtube-এর ইন্টারভিউ লিংক এখানে পাওয়া যাবে। https://youtu.be/A71lfXrQlxU\n  \n        <br><br><p style=\"color:green;\">৯৪ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    <ion-card>\n      <img src=\"./assets/anthony_faucci.jpg\" />\n      <ion-card-header>\n        <ion-card-subtitle>এন্থনি ফাউচি</ion-card-subtitle>\n        <ion-card-title>ভ্যাকসিন এখনো পাওয়া যাইনি। ঘরে থাকুন</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        মার্কিন যুক্তরাষ্টের করোনা ভাইরাস বিষয়ক টাস্ক ফোর্সের প্রধান এবং সম্মানিত বিজ্ঞানী এন্থনি ফাউচি বলেছেন কোরোনার কোনো ভ্যাকসিন আবিষ্কার হয়নি। এ বিষয় অনেক গবেষণা চলছে। ভ্যাকসিন না বের হওয়া পর্যন্ত সবাইকে ড: ফাউচি ঘরে থাকতে বলেছেন।  \n  \n        <br><br><p style=\"color:green;\">৫১ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    -->\n  </ion-content>\n  \n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component.html":
+/*!********************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component.html ***!
+  \********************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Inspirational quotes</ion-title>\n    </ion-toolbar>\n  </ion-header>\n    \n<ion-content >\n    \n    <ion-card>\n        <ion-card-content>\n          <ion-card-title style=\"color:black;\">You received the following inspirational quotes</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n\n    <ion-list padding>        \n        <ion-item *ngFor=\"let item of unlockedInspirationalQuotes\">\n          <ion-thumbnail item-left>\n            <img [src]=\"item.image\"/>\n          </ion-thumbnail>\n          <ion-label class=\"ion-text-wrap\" style=\"padding-left: 10px;\">\n            <h3>{{item.author}}</h3>\n            <p>{{item.quote_text}}</p>\n          </ion-label>\n        </ion-item>\n    </ion-list> \n      \n</ion-content>\n    \n  \n"
 
 /***/ }),
 
@@ -886,7 +941,7 @@ module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Memes</ion-title>\n    </ion-toolbar>\n</ion-header>\n  \n  <ion-content [fullscreen]=\"true\">\n\n    <ion-card>\n        <ion-card-content>\n          <ion-card-title style=\"color:black;\">{{unlockedMemeCount}} out of 31 memes unlocked</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n    <ion-card *ngFor=\"let x of already_shown_memes;\">\n        <img src=\"{{x.filename}}\" />\n        <ion-card-content>\n            <b>Unlock date:</b> {{x.unlock_date}}    \n        </ion-card-content>\n    </ion-card>\n  \n    <!--\n    <ion-card>\n      <img src=\"./assets/cnn_billgates.png\" />\n      <ion-card-header>\n        <ion-card-subtitle>বিল গেটস</ion-card-subtitle>\n        <ion-card-title>ডেভেলপিং দেশে করোনার ঝুঁকি আরো বেশি </ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        বিল গেটস সম্প্রতি CNN এর একটি ইন্টারভিউ তে বলছেন ডেভেলপিং দেশে করোনা বন্ধ করা বেশি কঠিন। Youtube-এর ইন্টারভিউ লিংক এখানে পাওয়া যাবে। https://youtu.be/A71lfXrQlxU\n  \n        <br><br><p style=\"color:green;\">৯৪ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    <ion-card>\n      <img src=\"./assets/anthony_faucci.jpg\" />\n      <ion-card-header>\n        <ion-card-subtitle>এন্থনি ফাউচি</ion-card-subtitle>\n        <ion-card-title>ভ্যাকসিন এখনো পাওয়া যাইনি। ঘরে থাকুন</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        মার্কিন যুক্তরাষ্টের করোনা ভাইরাস বিষয়ক টাস্ক ফোর্সের প্রধান এবং সম্মানিত বিজ্ঞানী এন্থনি ফাউচি বলেছেন কোরোনার কোনো ভ্যাকসিন আবিষ্কার হয়নি। এ বিষয় অনেক গবেষণা চলছে। ভ্যাকসিন না বের হওয়া পর্যন্ত সবাইকে ড: ফাউচি ঘরে থাকতে বলেছেন।  \n  \n        <br><br><p style=\"color:green;\">৫১ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    -->\n  </ion-content>\n  \n"
+module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Memes</ion-title>\n    </ion-toolbar>\n</ion-header>\n  \n  <ion-content [fullscreen]=\"true\">\n\n    <ion-card>\n        <ion-card-content>\n          <ion-card-title style=\"color:black;\">{{unlockedMemeCount}} out of 31 memes unlocked</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n    <ion-card *ngFor=\"let x of already_shown_memes;\">\n        <img src=\"{{x.filename}}\" />\n        <!--\n        <ion-card-content>\n            <b>Unlock date:</b> {{x.unlock_date}}    \n        </ion-card-content>\n        -->\n    </ion-card>\n  \n    <!--\n    <ion-card>\n      <img src=\"./assets/cnn_billgates.png\" />\n      <ion-card-header>\n        <ion-card-subtitle>বিল গেটস</ion-card-subtitle>\n        <ion-card-title>ডেভেলপিং দেশে করোনার ঝুঁকি আরো বেশি </ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        বিল গেটস সম্প্রতি CNN এর একটি ইন্টারভিউ তে বলছেন ডেভেলপিং দেশে করোনা বন্ধ করা বেশি কঠিন। Youtube-এর ইন্টারভিউ লিংক এখানে পাওয়া যাবে। https://youtu.be/A71lfXrQlxU\n  \n        <br><br><p style=\"color:green;\">৯৪ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    <ion-card>\n      <img src=\"./assets/anthony_faucci.jpg\" />\n      <ion-card-header>\n        <ion-card-subtitle>এন্থনি ফাউচি</ion-card-subtitle>\n        <ion-card-title>ভ্যাকসিন এখনো পাওয়া যাইনি। ঘরে থাকুন</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        মার্কিন যুক্তরাষ্টের করোনা ভাইরাস বিষয়ক টাস্ক ফোর্সের প্রধান এবং সম্মানিত বিজ্ঞানী এন্থনি ফাউচি বলেছেন কোরোনার কোনো ভ্যাকসিন আবিষ্কার হয়নি। এ বিষয় অনেক গবেষণা চলছে। ভ্যাকসিন না বের হওয়া পর্যন্ত সবাইকে ড: ফাউচি ঘরে থাকতে বলেছেন।  \n  \n        <br><br><p style=\"color:green;\">৫১ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    -->\n  </ion-content>\n  \n"
 
 /***/ }),
 
@@ -4540,6 +4595,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./user/auth/auth.guard */ "./src/app/user/auth/auth.guard.ts");
 /* harmony import */ var _user_auth_auth_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./user/auth/auth.component */ "./src/app/user/auth/auth.component.ts");
 /* harmony import */ var _incentive_info_page_info_page_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./incentive/info-page/info-page.component */ "./src/app/incentive/info-page/info-page.component.ts");
+/* harmony import */ var _home_contact_contact_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./home/contact/contact.component */ "./src/app/home/contact/contact.component.ts");
+/* harmony import */ var _incentive_aquarium_previews_fishbowl_fishbowl_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./incentive/aquarium/previews/fishbowl/fishbowl.component */ "./src/app/incentive/aquarium/previews/fishbowl/fishbowl.component.ts");
+/* harmony import */ var _incentive_aquarium_previews_sea_sea_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./incentive/aquarium/previews/sea/sea.component */ "./src/app/incentive/aquarium/previews/sea/sea.component.ts");
+/* harmony import */ var _incentive_aquarium_previews_tundra_tundra_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./incentive/aquarium/previews/tundra/tundra.component */ "./src/app/incentive/aquarium/previews/tundra/tundra.component.ts");
+/* harmony import */ var _incentive_aquarium_previews_rainforest_rainforest_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./incentive/aquarium/previews/rainforest/rainforest.component */ "./src/app/incentive/aquarium/previews/rainforest/rainforest.component.ts");
 
 
 
@@ -4554,6 +4614,11 @@ __webpack_require__.r(__webpack_exports__);
 //import { DynamicSurveyComponent } from './survey/dynamic-survey/dynamic-survey.component';
 //import { Q1MotivatedComponent } from './incentive/life-insights/q1-motivated/q1-motivated.component';
 //import { SampleSurveyComponent } from './survey/sample-survey/sample-survey.component';
+
+
+
+
+
 
 
 
@@ -4590,7 +4655,12 @@ var routes = [
     { path: 'incentive/aquariumone', component: _incentive_aquarium_demo_aquarium_demo_aquarium_component__WEBPACK_IMPORTED_MODULE_4__["DemoAquariumComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'incentive/award-memes', component: _incentive_award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_3__["AwardMemesComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'incentive/award-altruism', component: _incentive_award_altruism_award_altruism_component__WEBPACK_IMPORTED_MODULE_8__["AwardAltruismComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
-    { path: 'incentive/infopage', component: _incentive_info_page_info_page_component__WEBPACK_IMPORTED_MODULE_13__["InfoPageComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] }
+    { path: 'contact-study-staff', component: _home_contact_contact_component__WEBPACK_IMPORTED_MODULE_14__["ContactComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
+    { path: 'incentive/infopage', component: _incentive_info_page_info_page_component__WEBPACK_IMPORTED_MODULE_13__["InfoPageComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
+    { path: 'preview/fishbowl', component: _incentive_aquarium_previews_fishbowl_fishbowl_component__WEBPACK_IMPORTED_MODULE_15__["FishbowlComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
+    { path: 'preview/sea', component: _incentive_aquarium_previews_sea_sea_component__WEBPACK_IMPORTED_MODULE_16__["SeaComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
+    { path: 'preview/tundra', component: _incentive_aquarium_previews_tundra_tundra_component__WEBPACK_IMPORTED_MODULE_17__["TundraComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
+    { path: 'preview/rainforest', component: _incentive_aquarium_previews_rainforest_rainforest_component__WEBPACK_IMPORTED_MODULE_18__["RainforestComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] }
     //{ path: 'incentive/award-memes', component: AwardMemesComponent },
     //{ path: 'incentive/aquariumone', component: DemoAquariumComponent },  
     /*
@@ -4706,7 +4776,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(router, platform, splashScreen, statusBar, oneSignalService, authService, userProfileService, loadingController) {
+    function AppComponent(router, platform, splashScreen, statusBar, oneSignalService, authService, userProfileService, loadingController, navController) {
         var _this = this;
         this.router = router;
         this.platform = platform;
@@ -4716,9 +4786,12 @@ var AppComponent = /** @class */ (function () {
         this.authService = authService;
         this.userProfileService = userProfileService;
         this.loadingController = loadingController;
-        this.isLoading = true;
+        this.navController = navController;
         this.agreeToTerms = JSON.parse(localStorage.getItem("agreeToTerms"));
         this.initializeApp();
+        this.isAYA = true;
+        if (this.userProfileService.isParent == true)
+            this.isAYA = false;
         router.events.subscribe(function (event) {
             //this.isShowingRouteLoadIndicator = false;
             var asyncLoadCount = 0;
@@ -4758,6 +4831,18 @@ var AppComponent = /** @class */ (function () {
             _this.isShowingRouteLoadIndicator = !!asyncLoadCount;
         });
     }
+    Object.defineProperty(AppComponent.prototype, "username", {
+        get: function () {
+            if (this.userProfileService == undefined)
+                return "test";
+            else {
+                //console.log("User profile -- username -- called from here");
+                return this.userProfileService.username;
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
     AppComponent.prototype.ngOnInit = function () {
     };
     AppComponent.prototype.ngOnDestroy = function () {
@@ -4767,22 +4852,30 @@ var AppComponent = /** @class */ (function () {
     };
     AppComponent.prototype.initializeApp = function () {
         var _this = this;
-        this.authService.autoLogin();
         if (this.authService.isLoggedIn()) {
-            this.showLoading();
-            this.userSub = this.userProfileService.initializeObs().subscribe(function () {
-                _this.dismissLoading();
-                _this.isLoading = false;
-                console.log("successfully logged in");
+            this.userProfileService.loadProfileFromDevice();
+            // this.isLoading = false;
+            // get up to date userProfileFixed - to see if isActive has changed
+            this.userProfileService.fetchUserProfileFixed().subscribe(function (response) {
+                if (response.changed) {
+                    // there was a change to isActive
+                    // accessible via
+                    // this.userProfileService.isActive
+                }
             });
-            // this.userProfileService.initialize();
-            // if we can for things to wait to progress in here
-            // then, we'll only need to load user profile here and at login in Auth component
+            // fetch a copy from server of userProfile to see if it's newer 
+            this.userProfileService.fetchUserProfile().subscribe(function (response) {
+                if (response.serverCopyNewer) {
+                    // the server copy of the userProfile was newer (and has been updated locally)
+                    // accessible via
+                    // this.userProfileService.userProfile
+                }
+            });
         }
         else {
-            console.log("log in unsuccessful.");
-            this.dismissLoading();
-            this.isLoading = false;
+            // not logged in; so do nothing
+            // should be routed via the authguard to the login screen
+            // after login occurs we should load the UP and UPF - which happens via the auth.component
         }
         this.platform.ready().then(function () {
             //this.statusBar.styleDefault();
@@ -4877,6 +4970,39 @@ var AppComponent = /** @class */ (function () {
             });
         });
     };
+    //
+    AppComponent.prototype.showPreviewOfFishBowl = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                this.navController.navigateRoot(['/preview/fishbowl']);
+                return [2 /*return*/];
+            });
+        });
+    };
+    AppComponent.prototype.showPreviewOfSea = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                this.navController.navigateRoot(['/preview/sea']);
+                return [2 /*return*/];
+            });
+        });
+    };
+    AppComponent.prototype.showPreviewOfTundra = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                this.navController.navigateRoot(['/preview/tundra']);
+                return [2 /*return*/];
+            });
+        });
+    };
+    AppComponent.prototype.showPreviewOfRainforest = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                this.navController.navigateRoot(['/preview/rainforest']);
+                return [2 /*return*/];
+            });
+        });
+    };
     AppComponent.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
@@ -4885,7 +5011,8 @@ var AppComponent = /** @class */ (function () {
         { type: _notification_one_signal_service__WEBPACK_IMPORTED_MODULE_5__["OneSignalService"] },
         { type: _user_auth_auth_service__WEBPACK_IMPORTED_MODULE_8__["AuthService"] },
         { type: _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_7__["UserProfileService"] },
-        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"] }
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"] }
     ]; };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -4899,7 +5026,8 @@ var AppComponent = /** @class */ (function () {
             _notification_one_signal_service__WEBPACK_IMPORTED_MODULE_5__["OneSignalService"],
             _user_auth_auth_service__WEBPACK_IMPORTED_MODULE_8__["AuthService"],
             _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_7__["UserProfileService"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"]])
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -5063,20 +5191,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ContactComponent", function() { return ContactComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
 
 
 var ContactComponent = /** @class */ (function () {
-    function ContactComponent() {
+    function ContactComponent(menuCtrl) {
+        this.menuCtrl = menuCtrl;
     }
     ContactComponent.prototype.ngOnInit = function () {
+        this.menuCtrl.close();
     };
+    ContactComponent.ctorParameters = function () { return [
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"] }
+    ]; };
     ContactComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-contact',
             template: __webpack_require__(/*! raw-loader!./contact.component.html */ "./node_modules/raw-loader/index.js!./src/app/home/contact/contact.component.html"),
             styles: [__webpack_require__(/*! ./contact.component.css */ "./src/app/home/contact/contact.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"]])
     ], ContactComponent);
     return ContactComponent;
 }());
@@ -5182,11 +5317,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _home_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./home.page */ "./src/app/home/home.page.ts");
 /* harmony import */ var _incentive_aquarium_aquarium_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../incentive/aquarium/aquarium.component */ "./src/app/incentive/aquarium/aquarium.component.ts");
-/* harmony import */ var _incentive_treasurechest_treasurechest_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../incentive/treasurechest/treasurechest.component */ "./src/app/incentive/treasurechest/treasurechest.component.ts");
-/* harmony import */ var _incentive_unlocked_memes_unlocked_memes_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../incentive/unlocked-memes/unlocked-memes.component */ "./src/app/incentive/unlocked-memes/unlocked-memes.component.ts");
-/* harmony import */ var _incentive_unlocked_altuistic_messages_unlocked_altuistic_messages_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../incentive/unlocked-altuistic-messages/unlocked-altuistic-messages.component */ "./src/app/incentive/unlocked-altuistic-messages/unlocked-altuistic-messages.component.ts");
-/* harmony import */ var _user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../user/auth/auth.guard */ "./src/app/user/auth/auth.guard.ts");
-/* harmony import */ var _contact_contact_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./contact/contact.component */ "./src/app/home/contact/contact.component.ts");
+/* harmony import */ var _incentive_unlocked_memes_unlocked_memes_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../incentive/unlocked-memes/unlocked-memes.component */ "./src/app/incentive/unlocked-memes/unlocked-memes.component.ts");
+/* harmony import */ var _incentive_unlocked_altuistic_messages_unlocked_altuistic_messages_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../incentive/unlocked-altuistic-messages/unlocked-altuistic-messages.component */ "./src/app/incentive/unlocked-altuistic-messages/unlocked-altuistic-messages.component.ts");
+/* harmony import */ var _user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../user/auth/auth.guard */ "./src/app/user/auth/auth.guard.ts");
+/* harmony import */ var _contact_contact_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./contact/contact.component */ "./src/app/home/contact/contact.component.ts");
+/* harmony import */ var _incentive_unlocked_inspirational_quotes_unlocked_inspirational_quotes_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component */ "./src/app/incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component.ts");
 
 
 
@@ -5203,19 +5338,19 @@ var routes = [
         component: _home_page__WEBPACK_IMPORTED_MODULE_3__["HomePage"],
         children: [
             {
-                path: 'incentive', component: _incentive_aquarium_aquarium_component__WEBPACK_IMPORTED_MODULE_4__["AquariumComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_8__["AuthGuard"]]
+                path: 'incentive', component: _incentive_aquarium_aquarium_component__WEBPACK_IMPORTED_MODULE_4__["AquariumComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]]
             },
             {
-                path: 'unlocables', component: _incentive_treasurechest_treasurechest_component__WEBPACK_IMPORTED_MODULE_5__["TreasurechestComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_8__["AuthGuard"]]
+                path: 'quotes', component: _incentive_unlocked_inspirational_quotes_unlocked_inspirational_quotes_component__WEBPACK_IMPORTED_MODULE_9__["UnlockedInspirationalQuotesComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]]
             },
             {
-                path: 'memes', component: _incentive_unlocked_memes_unlocked_memes_component__WEBPACK_IMPORTED_MODULE_6__["UnlockedMemesComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_8__["AuthGuard"]]
+                path: 'memes', component: _incentive_unlocked_memes_unlocked_memes_component__WEBPACK_IMPORTED_MODULE_5__["UnlockedMemesComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]]
             },
             {
-                path: 'thankyous', component: _incentive_unlocked_altuistic_messages_unlocked_altuistic_messages_component__WEBPACK_IMPORTED_MODULE_7__["UnlockedAltuisticMessagesComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_8__["AuthGuard"]]
+                path: 'thankyous', component: _incentive_unlocked_altuistic_messages_unlocked_altuistic_messages_component__WEBPACK_IMPORTED_MODULE_6__["UnlockedAltuisticMessagesComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]]
             },
             {
-                path: 'contact', component: _contact_contact_component__WEBPACK_IMPORTED_MODULE_9__["ContactComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_8__["AuthGuard"]]
+                path: 'contact', component: _contact_contact_component__WEBPACK_IMPORTED_MODULE_8__["ContactComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]]
             },
             {
                 path: '',
@@ -5317,7 +5452,7 @@ var HomePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".new-background-color {\n  --background: #005486;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYXNoMi9Ecm9wYm94IChQQUMgTEFCKS9jb2Rlcy9pb25pY19wcm9qZWN0cy9TQVJBVjMvU0FSQV9tb2R1bGFyL3NyYy9hcHAvaG9tZS9ob21lLnBhZ2Uuc2NzcyIsInNyYy9hcHAvaG9tZS9ob21lLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFCQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9ob21lL2hvbWUucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5ldy1iYWNrZ3JvdW5kLWNvbG9ye1xuICAgIC0tYmFja2dyb3VuZDogIzAwNTQ4Njtcbn1cbiIsIi5uZXctYmFja2dyb3VuZC1jb2xvciB7XG4gIC0tYmFja2dyb3VuZDogIzAwNTQ4Njtcbn0iXX0= */"
+module.exports = ".new-background-color {\n  --background: #005486;\n}\n\nion-tab-button.tab-selected ion-icon {\n  color: #fff !important;\n  --ion-color-base: #fff !important;\n  width: 50%;\n  height: 50%;\n}\n\nion-tab-button.tab-selected ion-label {\n  color: #fff !important;\n  --ion-color-base: #fff !important;\n}\n\nion-tab-button ion-icon {\n  width: 40%;\n  height: 40%;\n  color: #ccecff !important;\n  --ion-color-base: #ccecff !important;\n}\n\nion-tab-button ion-label {\n  color: #ccecff !important;\n  --ion-color-base: #ccecff !important;\n}\n\n/*\n\n.tab-btn-selected, .tab-btn:hover {\n    color: #e6f6ff;\n}\n\n\n\nion-tab-button:focus {\n    ion-icon {\n        width: 60%;\n        height: 60%;\n        color: #fff !important;\n    }\n}\n*/\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYXNoMi9Ecm9wYm94IChQQUMgTEFCKS9jb2Rlcy9pb25pY19wcm9qZWN0cy9TQVJBVjMvU0FSQV9tb2R1bGFyL3NyYy9hcHAvaG9tZS9ob21lLnBhZ2Uuc2NzcyIsInNyYy9hcHAvaG9tZS9ob21lLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFCQUFBO0FDQ0o7O0FETUk7RUFDRSxzQkFBQTtFQUNBLGlDQUFBO0VBQ0EsVUFBQTtFQUNBLFdBQUE7QUNITjs7QURRSTtFQUNJLHNCQUFBO0VBQ0QsaUNBQUE7QUNMUDs7QURVSTtFQUNJLFVBQUE7RUFDQSxXQUFBO0VBQ0EseUJBQUE7RUFDQSxvQ0FBQTtBQ1BSOztBRFlJO0VBQ0kseUJBQUE7RUFDRCxvQ0FBQTtBQ1RQOztBRGFBOzs7Ozs7Ozs7Ozs7Ozs7Q0FBQSIsImZpbGUiOiJzcmMvYXBwL2hvbWUvaG9tZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubmV3LWJhY2tncm91bmQtY29sb3J7XG4gICAgLS1iYWNrZ3JvdW5kOiAjMDA1NDg2O1xufVxuXG5cblxuXG5pb24tdGFiLWJ1dHRvbi50YWItc2VsZWN0ZWQge1xuICAgIGlvbi1pY29uIHtcbiAgICAgIGNvbG9yOiAjZmZmICFpbXBvcnRhbnQ7XG4gICAgICAtLWlvbi1jb2xvci1iYXNlOiAjZmZmICFpbXBvcnRhbnQ7XG4gICAgICB3aWR0aDogNTAlO1xuICAgICAgaGVpZ2h0OiA1MCU7XG4gICAgfVxufVxuXG5pb24tdGFiLWJ1dHRvbi50YWItc2VsZWN0ZWQge1xuICAgIGlvbi1sYWJlbCB7XG4gICAgICAgIGNvbG9yOiAjZmZmICFpbXBvcnRhbnQ7XG4gICAgICAgLS1pb24tY29sb3ItYmFzZTogI2ZmZiAhaW1wb3J0YW50O1xuICAgIH1cbn1cblxuaW9uLXRhYi1idXR0b24ge1xuICAgIGlvbi1pY29uIHtcbiAgICAgICAgd2lkdGg6IDQwJTtcbiAgICAgICAgaGVpZ2h0OiA0MCU7XG4gICAgICAgIGNvbG9yOiAjY2NlY2ZmICFpbXBvcnRhbnQ7XG4gICAgICAgIC0taW9uLWNvbG9yLWJhc2U6ICNjY2VjZmYgIWltcG9ydGFudDtcbiAgICB9XG59XG5cbmlvbi10YWItYnV0dG9uIHtcbiAgICBpb24tbGFiZWwge1xuICAgICAgICBjb2xvcjogI2NjZWNmZiAhaW1wb3J0YW50O1xuICAgICAgIC0taW9uLWNvbG9yLWJhc2U6ICNjY2VjZmYgIWltcG9ydGFudDtcbiAgICB9XG59XG5cbi8qXG5cbi50YWItYnRuLXNlbGVjdGVkLCAudGFiLWJ0bjpob3ZlciB7XG4gICAgY29sb3I6ICNlNmY2ZmY7XG59XG5cblxuICAgIFxuaW9uLXRhYi1idXR0b246Zm9jdXMge1xuICAgIGlvbi1pY29uIHtcbiAgICAgICAgd2lkdGg6IDYwJTtcbiAgICAgICAgaGVpZ2h0OiA2MCU7XG4gICAgICAgIGNvbG9yOiAjZmZmICFpbXBvcnRhbnQ7XG4gICAgfVxufVxuKi9cbiAgICBcbiAgICBcbiAgICBcbiAgICAiLCIubmV3LWJhY2tncm91bmQtY29sb3Ige1xuICAtLWJhY2tncm91bmQ6ICMwMDU0ODY7XG59XG5cbmlvbi10YWItYnV0dG9uLnRhYi1zZWxlY3RlZCBpb24taWNvbiB7XG4gIGNvbG9yOiAjZmZmICFpbXBvcnRhbnQ7XG4gIC0taW9uLWNvbG9yLWJhc2U6ICNmZmYgIWltcG9ydGFudDtcbiAgd2lkdGg6IDUwJTtcbiAgaGVpZ2h0OiA1MCU7XG59XG5cbmlvbi10YWItYnV0dG9uLnRhYi1zZWxlY3RlZCBpb24tbGFiZWwge1xuICBjb2xvcjogI2ZmZiAhaW1wb3J0YW50O1xuICAtLWlvbi1jb2xvci1iYXNlOiAjZmZmICFpbXBvcnRhbnQ7XG59XG5cbmlvbi10YWItYnV0dG9uIGlvbi1pY29uIHtcbiAgd2lkdGg6IDQwJTtcbiAgaGVpZ2h0OiA0MCU7XG4gIGNvbG9yOiAjY2NlY2ZmICFpbXBvcnRhbnQ7XG4gIC0taW9uLWNvbG9yLWJhc2U6ICNjY2VjZmYgIWltcG9ydGFudDtcbn1cblxuaW9uLXRhYi1idXR0b24gaW9uLWxhYmVsIHtcbiAgY29sb3I6ICNjY2VjZmYgIWltcG9ydGFudDtcbiAgLS1pb24tY29sb3ItYmFzZTogI2NjZWNmZiAhaW1wb3J0YW50O1xufVxuXG4vKlxuXG4udGFiLWJ0bi1zZWxlY3RlZCwgLnRhYi1idG46aG92ZXIge1xuICAgIGNvbG9yOiAjZTZmNmZmO1xufVxuXG5cblxuaW9uLXRhYi1idXR0b246Zm9jdXMge1xuICAgIGlvbi1pY29uIHtcbiAgICAgICAgd2lkdGg6IDYwJTtcbiAgICAgICAgaGVpZ2h0OiA2MCU7XG4gICAgICAgIGNvbG9yOiAjZmZmICFpbXBvcnRhbnQ7XG4gICAgfVxufVxuKi8iXX0= */"
 
 /***/ }),
 
@@ -5334,11 +5469,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _incentive_aquarium_aquarium_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../incentive/aquarium/aquarium.component */ "./src/app/incentive/aquarium/aquarium.component.ts");
+/* harmony import */ var _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
+
 
 
 
 var HomePage = /** @class */ (function () {
-    function HomePage() {
+    function HomePage(userProfileService) {
+        this.userProfileService = userProfileService;
+        this.isAYA = true;
+        if (this.userProfileService.isParent == true)
+            this.isAYA = false;
     }
     HomePage.prototype.ngOnInit = function () {
     };
@@ -5350,6 +5491,9 @@ var HomePage = /** @class */ (function () {
         console.log("ionViewDidLeaveFunction");
         //this.child.ionViewDidLeaveFunction();
     };
+    HomePage.ctorParameters = function () { return [
+        { type: _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__["UserProfileService"] }
+    ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_incentive_aquarium_aquarium_component__WEBPACK_IMPORTED_MODULE_2__["AquariumComponent"], { static: true }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
@@ -5359,7 +5503,8 @@ var HomePage = /** @class */ (function () {
             selector: 'app-home',
             template: __webpack_require__(/*! raw-loader!./home.page.html */ "./node_modules/raw-loader/index.js!./src/app/home/home.page.html"),
             styles: [__webpack_require__(/*! ./home.page.scss */ "./src/app/home/home.page.scss")]
-        })
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__["UserProfileService"]])
     ], HomePage);
     return HomePage;
 }());
@@ -5484,7 +5629,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AquariumComponent = /** @class */ (function () {
-    function AquariumComponent(platform, alertCtrl, router, route, modalController, store, navController, userProfileService) {
+    function AquariumComponent(platform, alertCtrl, router, route, modalController, store, navController, menu, userProfileService) {
         var _this = this;
         this.platform = platform;
         this.alertCtrl = alertCtrl;
@@ -5493,6 +5638,7 @@ var AquariumComponent = /** @class */ (function () {
         this.modalController = modalController;
         this.store = store;
         this.navController = navController;
+        this.menu = menu;
         this.userProfileService = userProfileService;
         this.money = 0;
         this.modalObjectNavigationExtras = {};
@@ -5563,7 +5709,9 @@ var AquariumComponent = /** @class */ (function () {
     };
     //show side menu
     AquariumComponent.prototype.showSideMenu = function () {
-        console.log("side menu activated");
+        console.log("side menu called");
+        this.menu.enable(true, 'first');
+        this.menu.open('first');
     };
     AquariumComponent.prototype.ionViewDidLeaveFunction = function () {
         this.child.ionViewDidLeaveFunction();
@@ -5571,11 +5719,11 @@ var AquariumComponent = /** @class */ (function () {
         this.modalDataSubscription$.unsubscribe();
     };
     AquariumComponent.prototype.ionViewDidLeave = function () {
-        console.log("ionDidLeave");
+        console.log("aqarium.ts --- ionDidLeave");
         this.ionViewDidLeaveFunction();
     };
     AquariumComponent.prototype.ionViewDidEnter = function () {
-        console.log("ionViewDidEnter");
+        console.log("aqarium.ts --- ionViewDidEnter");
         this.child.loadFunction();
         //decide if we want to show the modal view with unlockables.
         this.subscribeForModalView();
@@ -5603,6 +5751,7 @@ var AquariumComponent = /** @class */ (function () {
         */
         this.title = "ADAPTS";
         console.log("aquarium.component.ts --- start");
+        //this.menu.enable(true);
     };
     AquariumComponent.prototype.ngOnDestroy = function () {
         this.sub1$.unsubscribe();
@@ -5631,7 +5780,13 @@ var AquariumComponent = /** @class */ (function () {
         var currentTime = moment__WEBPACK_IMPORTED_MODULE_4__();
         var startTime = moment__WEBPACK_IMPORTED_MODULE_4__({ hour: 18 }); // 6pm
         var endTime = moment__WEBPACK_IMPORTED_MODULE_4__({ hour: 23, minute: 59 }); // 11:59pm
-        if (!currentTime.isBetween(startTime, endTime)) {
+        var firstLogin = this.userProfileService.userProfile.firstlogin;
+        if (firstLogin == undefined)
+            firstLogin = true;
+        this.userProfileService.userProfile.firstlogin = false;
+        this.userProfileService.saveProfileToDevice();
+        this.userProfileService.saveToServer();
+        if (!currentTime.isBetween(startTime, endTime) && !firstLogin) {
             this.presentAlert('Please come back between 6 PM and midnight');
         }
         else if (this.userProfileService.surveyTakenForCurrentDay()) {
@@ -5662,7 +5817,7 @@ var AquariumComponent = /** @class */ (function () {
                     case 0: return [4 /*yield*/, this.alertCtrl.create({
                             //<div style="font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center">Thank you for completing the survey. You have unlocked a meme.</div>
                             //header: '<div style="line-height: 25px;padding-bottom:10px;text-align:center">Daily survey unavilable</div>',
-                            header: 'Daily survey unavilable',
+                            header: 'Daily survey unavailable',
                             //subHeader: "Survey is not avaibable!",
                             message: alertMessage,
                             //defined in theme/variables.scss
@@ -5824,6 +5979,7 @@ var AquariumComponent = /** @class */ (function () {
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"] },
         { type: _ngrx_store__WEBPACK_IMPORTED_MODULE_10__["Store"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["MenuController"] },
         { type: _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_6__["UserProfileService"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -5842,6 +5998,7 @@ var AquariumComponent = /** @class */ (function () {
             _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"],
             _ngrx_store__WEBPACK_IMPORTED_MODULE_10__["Store"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["MenuController"],
             _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_6__["UserProfileService"]])
     ], AquariumComponent);
     return AquariumComponent;
@@ -5869,6 +6026,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _survey_survey_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../survey/survey.module */ "./src/app/survey/survey.module.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _aquarium_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./aquarium.component */ "./src/app/incentive/aquarium/aquarium.component.ts");
+/* harmony import */ var _previews_rainforest_rainforest_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./previews/rainforest/rainforest.component */ "./src/app/incentive/aquarium/previews/rainforest/rainforest.component.ts");
+
 
 
 
@@ -5885,7 +6044,7 @@ var AquariumModule = /** @class */ (function () {
     }
     AquariumModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_demo_aquarium_demo_aquarium_component__WEBPACK_IMPORTED_MODULE_4__["DemoAquariumComponent"], _aquarium_component__WEBPACK_IMPORTED_MODULE_7__["AquariumComponent"]],
+            declarations: [_demo_aquarium_demo_aquarium_component__WEBPACK_IMPORTED_MODULE_4__["DemoAquariumComponent"], _aquarium_component__WEBPACK_IMPORTED_MODULE_7__["AquariumComponent"], _previews_rainforest_rainforest_component__WEBPACK_IMPORTED_MODULE_8__["RainforestComponent"]],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _survey_survey_module__WEBPACK_IMPORTED_MODULE_5__["SurveyModule"],
@@ -6039,6 +6198,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_29___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_29__);
 /* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ../../../../environments/environment */ "./src/environments/environment.ts");
 
 
 
@@ -6073,6 +6233,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var DemoAquariumComponent = /** @class */ (function () {
     /*   get surveyPath(){
         if (this.userProfileService.isParent){
@@ -6094,6 +6255,7 @@ var DemoAquariumComponent = /** @class */ (function () {
         this.db = db;
         this.isLoaded = false;
         this.pageTitle = "Aquarium";
+        this.fishFunFactListViewItems = [];
         console.log("Constructor called");
         /*
           this.route.queryParams.subscribe(params => {
@@ -6119,13 +6281,53 @@ var DemoAquariumComponent = /** @class */ (function () {
             if (this.userProfileService == undefined)
                 return "test";
             else {
-                //console.log("User profile -- username -- called from here");
                 return this.userProfileService.username;
             }
         },
         enumerable: true,
         configurable: true
     });
+    //Get total submitted survey
+    DemoAquariumComponent.prototype.getTotalSurveyCount = function () {
+        return Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;
+    };
+    /* Get last seven days of indicator for survey completion,
+    return an array of 7 elements like [0, 1, 0, 0, 0, 1, 0]
+    with 1 indicating submitted survey, 0 otherwise, the first
+    element is current day. */
+    DemoAquariumComponent.prototype.getIndicatorForSurveyDone = function () {
+        var daily_survey = this.userProfileService.userProfile.survey_data.daily_survey;
+        console.log("daily_survey:");
+        console.log(JSON.stringify(daily_survey));
+        var indicatorArray = [];
+        //daily_survey = {};
+        if (Object.keys(daily_survey).length == 0) {
+            indicatorArray.push(0);
+            return indicatorArray;
+        }
+        var orderedDatesKeys = Object.keys(daily_survey).sort();
+        var first_date = orderedDatesKeys[0];
+        //first_date = "20200515";
+        for (var i = 0; i < 7; i++) {
+            var previousdate = moment__WEBPACK_IMPORTED_MODULE_29__().subtract(i, "days").format("YYYYMMDD");
+            //console.log(JSON.stringify(this.userProfileService.userProfile.survey_data.daily_survey));
+            var indicator = 0;
+            if (previousdate in daily_survey) {
+                indicator = 1;
+            }
+            indicatorArray.push(indicator);
+            // as may days user is in in the study. no blank filling
+            if (first_date == previousdate)
+                break;
+        }
+        return indicatorArray;
+    };
+    DemoAquariumComponent.prototype.showInfoModal = function (text) {
+        console.log("rewards page");
+        var header_text = "Survey Completion Bar";
+        text = " Shows the number of surveys you have completed in the past week (shown as green) and the ones you missed (shown as gray).";
+        this.presentAlert(text, header_text);
+    };
     DemoAquariumComponent.prototype.goToRewardsPage = function () {
         console.log("rewards page");
         //this.router.navigate(['/home']);
@@ -6154,10 +6356,60 @@ var DemoAquariumComponent = /** @class */ (function () {
     DemoAquariumComponent.prototype.ngOnInit = function () {
         //this.loadFunction();
         this.sendUserIdToServerFor8PMNotification();
+        this.addFishFunFactsBelow();
+        //get inspirational quotes
+        this.getInspirationalQuotes();
+    };
+    DemoAquariumComponent.prototype.getInspirationalQuotes = function () {
+        var flaskServerAPIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_32__["environment"].flaskServerForIncentives;
+        this.httpClient.post(flaskServerAPIEndpoint + '/get-inspirational-quote', { "user_id": 'mash_aya' }).subscribe({
+            next: function (data) { return console.log("Inspirational quote: " + JSON.stringify(data)); },
+            error: function (error) { return console.error('There was an error!', error); }
+        });
+    };
+    DemoAquariumComponent.prototype.addFishFunFactsBelow = function () {
+        //add the fish fun facts below:
+        if (this.totalPoints < 1060 && this.totalPoints >= 0) //fishbowl
+            this.addFishFunFactsBetween(0, this.totalPoints);
+        else if (this.totalPoints >= 1060 && this.totalPoints < 2120) //sea
+            this.addFishFunFactsBetween(1060, this.totalPoints);
+        else if (this.totalPoints >= 2120 && this.totalPoints < 3020) //tundra
+            this.addFishFunFactsBetween(2120, this.totalPoints);
+        else if (this.totalPoints >= 3020) //rainforest
+            this.addFishFunFactsBetween(3020, this.totalPoints);
+    };
+    DemoAquariumComponent.prototype.addFishFunFactsBetween = function (startPoint, totalPoints) {
+        var _this = this;
+        fetch('../../../../assets/game/fishpoints.json').then(function (res) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+            var data, current_points, fishFunFactListViewItem, i;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, res.json()];
+                    case 1:
+                        data = _a.sent();
+                        current_points = 700;
+                        fishFunFactListViewItem = {};
+                        for (i = 0; i < data.length; i++) {
+                            if (data[i].points < startPoint)
+                                continue;
+                            if (totalPoints < data[i].points)
+                                break;
+                            fishFunFactListViewItem = {
+                                funFact: data[i].trivia,
+                                image: "assets/" + data[i].img.substring(0, data[i].img.length - 4) + '_tn.jpg',
+                                fishName: data[i].name
+                            };
+                            this.fishFunFactListViewItems.push(fishFunFactListViewItem);
+                        }
+                        this.fishFunFactListViewItems = this.fishFunFactListViewItems.reverse();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
     };
     DemoAquariumComponent.prototype.sendUserIdToServerFor8PMNotification = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var oneSignalPlayerId, username, currentTimeTs, currentTimeReadableTs, headers, body;
+            var oneSignalPlayerId, username, currentTimeTs, currentTimeReadableTs, headers, body, flaskServerAPIEndpoint;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 // Simple POST request with a JSON body and response type <any>
                 console.log("--aquarium-- " + "sendUserIdToServerFor8PMNotification");
@@ -6171,13 +6423,8 @@ var DemoAquariumComponent = /** @class */ (function () {
                 currentTimeReadableTs = moment__WEBPACK_IMPORTED_MODULE_29__().format("MMMM Do YYYY, h:mm:ss a Z");
                 headers = { "Content-Type": "application/json;charset=UTF-8" };
                 body = { "user_id": username, "oneSignalPlayerId": oneSignalPlayerId, "currentTimeTs": currentTimeTs, "currentTimeReadableTs": currentTimeReadableTs };
-                /*
-                this.httpClient.post<any>("http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/store-onesignal-id", body, { headers }).subscribe({
-                  next: data => console.log(data),
-                  error: error => console.error('There was an error!', error)
-                });
-                */
-                this.httpClient.post("http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/store-onesignal-id", body)
+                flaskServerAPIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_32__["environment"].flaskServerForIncentives;
+                this.httpClient.post(flaskServerAPIEndpoint + "/store-onesignal-id", body)
                     .subscribe({
                     next: function (data) { return console.log("--aquarium-- " + JSON.stringify(data)); },
                     error: function (error) { return console.error('There was an error!', error); }
@@ -6222,89 +6469,107 @@ var DemoAquariumComponent = /** @class */ (function () {
                 GameApp.CANVAS_HEIGHT += 30;
                 GameApp.CANVAS_WIDTH = window.innerWidth;
             }
-            this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 42 * window.devicePixelRatio, Phaser.AUTO, 'gameDiv');
+            this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 45 * window.devicePixelRatio, Phaser.AUTO, 'gameDiv');
         }
         else if (this.platform.is('android'))
             this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 74, Phaser.AUTO, 'gameDiv');
         else
             this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 100, Phaser.AUTO, 'gameDiv');
         //this.totalPoints = 2125;
-        if (this.totalPoints < 0) {
-            this.game.state.add('Boot', _levels_GameOver_Boot__WEBPACK_IMPORTED_MODULE_14__["BootGameOver"]);
-            this.pickedGame = 'GameOver';
-            var preLoader = new _levels_GameOver_Preloader__WEBPACK_IMPORTED_MODULE_15__["PreloaderGameOver"]();
-            this.game.state.add('Preloader', preLoader);
-            var gameover = new _levels_GameOver_GameOver__WEBPACK_IMPORTED_MODULE_16__["GameOver"]();
-            this.game.state.add('GameOver', gameover);
+        if (this.isPreview == "false") {
+            if (this.totalPoints < 0) {
+                this.game.state.add('Boot', _levels_GameOver_Boot__WEBPACK_IMPORTED_MODULE_14__["BootGameOver"]);
+                this.pickedGame = 'GameOver';
+                var preLoader = new _levels_GameOver_Preloader__WEBPACK_IMPORTED_MODULE_15__["PreloaderGameOver"]();
+                this.game.state.add('Preloader', preLoader);
+                var gameover = new _levels_GameOver_GameOver__WEBPACK_IMPORTED_MODULE_16__["GameOver"]();
+                this.game.state.add('GameOver', gameover);
+            }
+            else if (this.totalPoints < 770 && this.totalPoints >= 0) {
+                this.game.state.add('Boot', _levels_FishBowlL1_Boot__WEBPACK_IMPORTED_MODULE_2__["BootL1"]);
+                this.pickedGame = 'FishBowlL1';
+                var preLoader = new _levels_FishBowlL1_Preloader__WEBPACK_IMPORTED_MODULE_3__["PreloaderL1"]();
+                this.game.state.add('Preloader', preLoader);
+                var fishBowlL1 = new _levels_FishBowlL1_Game__WEBPACK_IMPORTED_MODULE_4__["FishBowlL1"]();
+                fishBowlL1.setTotalPoints(this.totalPoints);
+                var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+                fishBowlL1.setSurveyHistory(surveyCompletionHistory);
+                this.game.state.add('FishBowlL1', fishBowlL1);
+            }
+            else if (this.totalPoints >= 770 && this.totalPoints < 1060) {
+                this.game.state.add('Boot', _levels_FishBowlL2_Boot__WEBPACK_IMPORTED_MODULE_5__["BootL2"]);
+                this.pickedGame = 'FishBowlL2';
+                var preLoader = new _levels_FishBowlL2_Preloader__WEBPACK_IMPORTED_MODULE_6__["PreloaderL2"]();
+                this.game.state.add('Preloader', preLoader);
+                var fishBowlL2 = new _levels_FishBowlL2_Game__WEBPACK_IMPORTED_MODULE_7__["FishBowlL2"]();
+                fishBowlL2.setTotalPoints(this.totalPoints);
+                var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+                fishBowlL2.setSurveyHistory(surveyCompletionHistory);
+                this.game.state.add('FishBowlL2', fishBowlL2);
+            }
+            else if (this.totalPoints >= 1060 && this.totalPoints < 1710) {
+                this.game.state.add('Boot', _levels_SeaLevelL3_Boot__WEBPACK_IMPORTED_MODULE_8__["BootL3"]);
+                this.pickedGame = 'SeaLevelL3';
+                var preLoader = new _levels_SeaLevelL3_Preloader__WEBPACK_IMPORTED_MODULE_9__["PreloaderL3"]();
+                this.game.state.add('Preloader', preLoader);
+                var seaLevelL3 = new _levels_SeaLevelL3_Game__WEBPACK_IMPORTED_MODULE_10__["SeaLevelL3"]();
+                seaLevelL3.setTotalPoints(this.totalPoints);
+                var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+                seaLevelL3.setSurveyHistory(surveyCompletionHistory);
+                this.game.state.add('SeaLevelL3', seaLevelL3);
+            }
+            else if (this.totalPoints >= 1710 && this.totalPoints < 2120) {
+                this.game.state.add('Boot', _levels_SeaLevelL4_Boot__WEBPACK_IMPORTED_MODULE_11__["BootL4"]);
+                this.pickedGame = 'SeaLevelL4';
+                var preLoader = new _levels_SeaLevelL4_Preloader__WEBPACK_IMPORTED_MODULE_12__["PreloaderL4"]();
+                this.game.state.add('Preloader', preLoader);
+                var seaLevelL4 = new _levels_SeaLevelL4_Game__WEBPACK_IMPORTED_MODULE_13__["SeaLevelL4"]();
+                seaLevelL4.setTotalPoints(this.totalPoints);
+                var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+                seaLevelL4.setSurveyHistory(surveyCompletionHistory);
+                this.game.state.add('SeaLevelL4', seaLevelL4);
+            }
+            else if (this.totalPoints >= 2120 && this.totalPoints < 2720) {
+                this.game.state.add('Boot', _levels_TundraLevelL5_Boot__WEBPACK_IMPORTED_MODULE_17__["BootTundraL5"]);
+                this.pickedGame = "TundraLevel1";
+                var preLoader = new _levels_TundraLevelL5_Preloader__WEBPACK_IMPORTED_MODULE_18__["PreloaderTundraL5"]();
+                this.game.state.add('Preloader', preLoader);
+                var level5 = new _levels_TundraLevelL5_Game__WEBPACK_IMPORTED_MODULE_19__["GameTundraL5"]();
+                level5.setTotalPoints(this.totalPoints);
+                var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+                level5.setSurveyHistory(surveyCompletionHistory);
+                this.game.state.add('TundraLevel1', level5);
+            }
+            else if (this.totalPoints >= 2720 && this.totalPoints < 3020) {
+                this.game.state.add('Boot', _levels_TundraLevelL51_Boot__WEBPACK_IMPORTED_MODULE_20__["BootTundraL51"]);
+                this.pickedGame = "TundraLevel2";
+                var preLoader = new _levels_TundraLevelL51_Preloader__WEBPACK_IMPORTED_MODULE_21__["PreloaderTundraL51"]();
+                this.game.state.add('Preloader', preLoader);
+                var level51 = new _levels_TundraLevelL51_Game__WEBPACK_IMPORTED_MODULE_22__["GameTundraL51"]();
+                level51.setTotalPoints(this.totalPoints);
+                var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+                level51.setSurveyHistory(surveyCompletionHistory);
+                this.game.state.add('TundraLevel2', level51);
+            }
+            else if (this.totalPoints >= 3020) {
+                this.game.state.add('Boot', _levels_RainforestL6_Boot__WEBPACK_IMPORTED_MODULE_23__["BootRainforestL6"]);
+                this.pickedGame = "RainforestLevel6";
+                var preLoader = new _levels_RainforestL6_Preloader__WEBPACK_IMPORTED_MODULE_24__["PreloaderRainforestL6"]();
+                this.game.state.add('Preloader', preLoader);
+                var level6 = new _levels_RainforestL6_Game__WEBPACK_IMPORTED_MODULE_25__["GameRainforestL6"]();
+                level6.setTotalPoints(this.totalPoints);
+                var surveyCompletionHistory = this.getIndicatorForSurveyDone();
+                level6.setSurveyHistory(surveyCompletionHistory);
+                this.game.state.add('RainforestLevel6', level6);
+            }
+            else {
+                //---
+                var preLoader = new _levels_FishBowlL1_Preloader__WEBPACK_IMPORTED_MODULE_3__["PreloaderL1"]();
+                preLoader.setGameName(this.pickedGame = "GameOver");
+                this.game.state.add('Preloader', preLoader);
+            }
         }
-        else if (this.totalPoints < 770 && this.totalPoints >= 0) {
-            this.game.state.add('Boot', _levels_FishBowlL1_Boot__WEBPACK_IMPORTED_MODULE_2__["BootL1"]);
-            this.pickedGame = 'FishBowlL1';
-            var preLoader = new _levels_FishBowlL1_Preloader__WEBPACK_IMPORTED_MODULE_3__["PreloaderL1"]();
-            this.game.state.add('Preloader', preLoader);
-            var fishBowlL1 = new _levels_FishBowlL1_Game__WEBPACK_IMPORTED_MODULE_4__["FishBowlL1"]();
-            fishBowlL1.setTotalPoints(this.totalPoints);
-            this.game.state.add('FishBowlL1', fishBowlL1);
-        }
-        else if (this.totalPoints >= 770 && this.totalPoints < 1060) {
-            this.game.state.add('Boot', _levels_FishBowlL2_Boot__WEBPACK_IMPORTED_MODULE_5__["BootL2"]);
-            this.pickedGame = 'FishBowlL2';
-            var preLoader = new _levels_FishBowlL2_Preloader__WEBPACK_IMPORTED_MODULE_6__["PreloaderL2"]();
-            this.game.state.add('Preloader', preLoader);
-            var fishBowlL2 = new _levels_FishBowlL2_Game__WEBPACK_IMPORTED_MODULE_7__["FishBowlL2"]();
-            fishBowlL2.setTotalPoints(this.totalPoints);
-            this.game.state.add('FishBowlL2', fishBowlL2);
-        }
-        else if (this.totalPoints >= 1060 && this.totalPoints < 1710) {
-            this.game.state.add('Boot', _levels_SeaLevelL3_Boot__WEBPACK_IMPORTED_MODULE_8__["BootL3"]);
-            this.pickedGame = 'SeaLevelL3';
-            var preLoader = new _levels_SeaLevelL3_Preloader__WEBPACK_IMPORTED_MODULE_9__["PreloaderL3"]();
-            this.game.state.add('Preloader', preLoader);
-            var seaLevelL3 = new _levels_SeaLevelL3_Game__WEBPACK_IMPORTED_MODULE_10__["SeaLevelL3"]();
-            seaLevelL3.setTotalPoints(this.totalPoints);
-            this.game.state.add('SeaLevelL3', seaLevelL3);
-        }
-        else if (this.totalPoints >= 1710 && this.totalPoints < 2120) {
-            this.game.state.add('Boot', _levels_SeaLevelL4_Boot__WEBPACK_IMPORTED_MODULE_11__["BootL4"]);
-            this.pickedGame = 'SeaLevelL4';
-            var preLoader = new _levels_SeaLevelL4_Preloader__WEBPACK_IMPORTED_MODULE_12__["PreloaderL4"]();
-            this.game.state.add('Preloader', preLoader);
-            var seaLevelL4 = new _levels_SeaLevelL4_Game__WEBPACK_IMPORTED_MODULE_13__["SeaLevelL4"]();
-            seaLevelL4.setTotalPoints(this.totalPoints);
-            this.game.state.add('SeaLevelL4', seaLevelL4);
-        }
-        else if (this.totalPoints >= 2120 && this.totalPoints < 2720) {
-            this.game.state.add('Boot', _levels_TundraLevelL5_Boot__WEBPACK_IMPORTED_MODULE_17__["BootTundraL5"]);
-            this.pickedGame = "TundraLevel1";
-            var preLoader = new _levels_TundraLevelL5_Preloader__WEBPACK_IMPORTED_MODULE_18__["PreloaderTundraL5"]();
-            this.game.state.add('Preloader', preLoader);
-            var level5 = new _levels_TundraLevelL5_Game__WEBPACK_IMPORTED_MODULE_19__["GameTundraL5"]();
-            level5.setTotalPoints(this.totalPoints);
-            this.game.state.add('TundraLevel1', level5);
-        }
-        else if (this.totalPoints >= 2720 && this.totalPoints < 3020) {
-            this.game.state.add('Boot', _levels_TundraLevelL51_Boot__WEBPACK_IMPORTED_MODULE_20__["BootTundraL51"]);
-            this.pickedGame = "TundraLevel2";
-            var preLoader = new _levels_TundraLevelL51_Preloader__WEBPACK_IMPORTED_MODULE_21__["PreloaderTundraL51"]();
-            this.game.state.add('Preloader', preLoader);
-            var level51 = new _levels_TundraLevelL51_Game__WEBPACK_IMPORTED_MODULE_22__["GameTundraL51"]();
-            level51.setTotalPoints(this.totalPoints);
-            this.game.state.add('TundraLevel2', level51);
-        }
-        else if (this.totalPoints >= 3020) {
-            this.game.state.add('Boot', _levels_RainforestL6_Boot__WEBPACK_IMPORTED_MODULE_23__["BootRainforestL6"]);
-            this.pickedGame = "RainforestLevel6";
-            var preLoader = new _levels_RainforestL6_Preloader__WEBPACK_IMPORTED_MODULE_24__["PreloaderRainforestL6"]();
-            this.game.state.add('Preloader', preLoader);
-            var level6 = new _levels_RainforestL6_Game__WEBPACK_IMPORTED_MODULE_25__["GameRainforestL6"]();
-            level6.setTotalPoints(this.totalPoints);
-            this.game.state.add('RainforestLevel6', level6);
-        }
-        else {
-            //---
-            var preLoader = new _levels_FishBowlL1_Preloader__WEBPACK_IMPORTED_MODULE_3__["PreloaderL1"]();
-            preLoader.setGameName(this.pickedGame = "GameOver");
-            this.game.state.add('Preloader', preLoader);
+        if (this.isPreview == "true") {
         }
         //this.game.state.add('GameOver', GameOver);
         this.game.state.start('Boot');
@@ -6315,7 +6580,7 @@ var DemoAquariumComponent = /** @class */ (function () {
     DemoAquariumComponent.prototype.ionViewDidLeaveFunction = function () {
         var _this = this;
         console.log("Aquarium, ionDidLeave");
-        this.survey_text = "Start survey";
+        //this.survey_text = "Start survey";
         this.db.getDatabaseState().subscribe(function (rdy) {
             if (rdy) {
                 _this.db.addTrack(_this.pageTitle, "Leave", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
@@ -6331,6 +6596,47 @@ var DemoAquariumComponent = /** @class */ (function () {
     };
     DemoAquariumComponent.prototype.ngAfterViewInit = function () {
     };
+    DemoAquariumComponent.prototype.presentAlert = function (alertMessage, header_text) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var alert;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.alertCtrl.create({
+                            //<div style="font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center">Thank you for completing the survey. You have unlocked a meme.</div>
+                            //header: '<div style="line-height: 25px;padding-bottom:10px;text-align:center">Daily survey unavilable</div>',
+                            header: header_text,
+                            //subHeader: "Survey is not avaibable!",
+                            message: alertMessage,
+                            //defined in theme/variables.scss
+                            //buttons: [{text: 'OK', cssClass: 'secondary'}]
+                            buttons: [{ text: 'OK' }]
+                        })];
+                    case 1:
+                        alert = _a.sent();
+                        /*
+                          let alert = this.alertCtrl.create({
+                            title: 'Low battery',
+                            subTitle: '10% of battery remaining',
+                            buttons: ['Dismiss']
+                          });
+                        */
+                        //----
+                        return [4 /*yield*/, alert.present()];
+                    case 2:
+                        /*
+                          let alert = this.alertCtrl.create({
+                            title: 'Low battery',
+                            subTitle: '10% of battery remaining',
+                            buttons: ['Dismiss']
+                          });
+                        */
+                        //----
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     DemoAquariumComponent.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_26__["Router"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_27__["AlertController"] },
@@ -6341,6 +6647,10 @@ var DemoAquariumComponent = /** @class */ (function () {
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_31__["HttpClient"] },
         { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_30__["DatabaseService"] }
     ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], DemoAquariumComponent.prototype, "isPreview", void 0);
     DemoAquariumComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-demo-aquarium',
@@ -6421,6 +6731,7 @@ class FishBowlL1 extends Phaser.State {
     constructor(){
         super();
         this.componentObject;
+        this.surveyHistory = [];
     }
     
     create() {
@@ -6448,10 +6759,11 @@ class FishBowlL1 extends Phaser.State {
 
         //
         this.height = this.game.height;
-        this.add.image(0, this.height-210, 'titlescreen');
+        var titlescreen = this.add.image(0, this.height-210, 'titlescreen');
+        //titlescreen.scale.setTo(0.85, 0.85);
 
         //
-        var timer = this.add.sprite(5, 40, 'timer', 1);
+        //var timer = this.add.sprite(5, 40, 'timer', 1);
 
         /*
         var fish_progress = this.add.image(175,50, 'clownfish_grey');
@@ -6467,8 +6779,17 @@ class FishBowlL1 extends Phaser.State {
         */
 
         //
+        var treasure = this.add.image(90, this.height-80, 'treasure');
+        treasure.scale.setTo(0.3, 0.3);
+        treasure.inputEnabled = true;
+        treasure.events.onInputDown.add(this.showunlockables, this);
+
+        
+        //
         this.buildFish();
         this.addFishes();
+
+        this.showProgressBars();
 
         //
         /*
@@ -6478,19 +6799,275 @@ class FishBowlL1 extends Phaser.State {
         journal.events.onInputDown.add(this.logdata, this);
         */
 
-        //
-        var treasure = this.add.image(90, this.height-80, 'treasure');
-        treasure.scale.setTo(0.3, 0.3);
-        treasure.inputEnabled = true;
-        treasure.events.onInputDown.add(this.showunlockables, this);
+        
 
         //
-        this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
+        //this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
 
         //
         this.game.onPause.add(this.yourGamePausedFunc, this);
         this.game.onResume.add(this.yourGameResumedFunc, this);
 
+    }
+
+    showProgressBars(){
+
+        var current_points = this.totalPoints;
+
+        //------ Left side
+
+        
+
+        //level info
+        //var levels_progress = this.add.image(5, 55, 'levels_progress');
+        //levels_progress.scale.setTo(.27, .30);
+
+        /*
+        //
+        var levels_progress = this.add.sprite(10, 58, 'level_up_progress', 0);
+        levels_progress.scale.setTo(0.95, 1.2);
+
+        //var progress_sprite = this.game.add.sprite(88, 59, 'level_up_progress', 1);
+        var progress_sprite = this.game.add.sprite(10, 59, 'level_up_progress', 1);
+        var rect = new Phaser.Rectangle(50, 0, 0, progress_sprite.height);
+        var percent = (current_points-this.previoous_fish_point)/(this.next_fish_point-this.previoous_fish_point);
+        if(percent == 0)
+          percent = 0.05;
+        console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        //progress_sprite.anchor.setTo(0,0);
+        progress_sprite.scale.setTo(1,1.1);
+
+
+        var level_up_icon = this.add.image(18, 68, 'level_up_icon');
+        level_up_icon.scale.setTo(.5, .5);
+        level_up_icon.anchor.setTo(.5, .5);
+
+        var info_level_progress = this.add.sprite(2 + levels_progress.width + 18, 74, 'info_sprite');
+        info_level_progress.animations.add('swim');
+        info_level_progress.animations.play('swim', 1, true);
+        info_level_progress.scale.setTo(0.3, 0.3);
+        info_level_progress.anchor.setTo(.5,.5);
+        info_level_progress.inputEnabled = true;
+        info_level_progress.events.onInputDown.add(function(){this.showInforBox("Info level progress bar clicked")}, this); 
+
+        
+        //progress_sprite.anchor.setTo(1,0);
+        //progress_sprite.scale.setTo(0.8,0.8);
+        */
+
+        var SCALING_FACTOR = 0.8;
+
+        //streak_info
+        var streak_info = this.add.image(5, 5, 'streak_info');
+        streak_info.scale.setTo(.30*SCALING_FACTOR, .30*SCALING_FACTOR);
+
+        var info_level_streak = this.add.sprite(2 + streak_info.width + 12, 20, 'info_sprite');
+        info_level_streak.animations.add('swim');
+        info_level_streak.animations.play('swim', 1, true);
+        info_level_streak.scale.setTo(0.3*SCALING_FACTOR, 0.3*SCALING_FACTOR);
+        info_level_streak.anchor.setTo(.5,.5);
+        info_level_streak.inputEnabled = true;
+        info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
+
+
+        var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
+        for(var i=0; i < this.surveyHistory.length; i++){
+            if(this.surveyHistory[i] == 1)
+                colors[i] = 'green';
+            else
+                colors[i] = 'grey';
+        }   
+        colors = colors.reverse()
+        
+        //console.log("this.surveyHistory " + this.surveyHistory);
+        console.log("colors " + colors);
+        //colors = ['green','green','green','green','grey','green','grey'];
+        var streak_tile;
+        for(var i=0; i < this.surveyHistory.length; i++){
+            streak_tile = this.add.image(32 + i*12, 10, 'streak_' + colors[i]);
+            streak_tile.scale.setTo(.15*4*SCALING_FACTOR, .27*4*SCALING_FACTOR);
+        }
+
+
+        //------ Right side
+        //var progressBars = this.add.group();
+
+        //points bar
+        var vertical_position_offset = 13;
+        var points_progress = this.add.image(this.CANVAS_WIDTH, 2, 'points_progress_2');
+        points_progress.scale.setTo(.36*SCALING_FACTOR, .30*SCALING_FACTOR);
+        points_progress.anchor.setTo(1,0);
+        //progressBars.add(points_progress);
+
+        //point text
+        var points_text = this.add.text(this.CANVAS_WIDTH - 60, 8, "" + this.totalPoints, {font:"20px dumbo_regular", fill:"#4c3d01"});
+        points_text.anchor.setTo(0.5,0);
+        points_text.scale.setTo(SCALING_FACTOR, SCALING_FACTOR);
+        //progressBars.add(points_text);
+
+        var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+4, 'star_point');
+        star_icon.scale.setTo(.52*SCALING_FACTOR, .52*SCALING_FACTOR);
+        star_icon.anchor.setTo(.5, .5);
+        //progressBars.add(points_text);
+
+        //progressBars.scale.setTo(.8, .8);
+
+        /*
+        var info_points = this.add.sprite(2 + points_progress.width + 13, 32, 'info_sprite');
+        info_points.animations.add('swim');
+        info_points.animations.play('swim', 1, true);
+        info_points.scale.setTo(0.3, 0.3);
+        info_points.anchor.setTo(.5,.5);
+        info_points.inputEnabled = true;
+        //function(){doAlert(textString)
+        info_points.events.onInputDown.add(function(){this.showInforBox("Info pregess bar cliccked 2")}, this); 
+        */
+
+        
+        //points to get to next fish.
+        vertical_position_offset = 35;
+        var progress_bar_fish =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_grey', 1);
+        progress_bar_fish.anchor.setTo(1,0);
+        progress_bar_fish.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_grey', 0);
+        var rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        var percent = (current_points-this.previoous_fish_point)/(this.next_fish_point-this.previoous_fish_point);
+        if(percent == 0)
+          percent = 0.05;
+        console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var fish_progress_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+8, 'next_fish_icon');
+        fish_progress_icon.scale.setTo(.2*0.8*SCALING_FACTOR, .2*0.8*SCALING_FACTOR);
+        fish_progress_icon.anchor.setTo(.5, .5);
+        
+
+        
+        //points to get to meme.
+        vertical_position_offset = 57;
+
+
+        /*
+        var progress_bar_memes =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 1);
+        progress_bar_memes.anchor.setTo(1,0);
+        progress_bar_memes.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var start_number_of_memes = 0;
+        var total_number_of_memes = 31;
+        var already_shown_memes = window.localStorage["already_shown_memes3"];
+        if(already_shown_memes == undefined)
+            already_shown_memes = [{"filename": "assets/memes/4.jpg", "unlock_date": "blah"}]
+        else
+            already_shown_memes = JSON.parse(window.localStorage["already_shown_memes3"]);
+        var currently_number_of_unlocked_memes = already_shown_memes.length;
+
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (currently_number_of_unlocked_memes-start_number_of_memes)/
+                  (total_number_of_memes-start_number_of_memes);
+        percent = percent*0.8 + 0.2;
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var meme_icon = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+10, 'meme_icon');
+        meme_icon.scale.setTo(.52*0.8*SCALING_FACTOR, .52*0.8*SCALING_FACTOR);
+        meme_icon.anchor.setTo(.5, .5);
+
+
+        //points to get to alt message.
+        var vertical_position_offset = 79;
+        var progress_bar_altruism_message =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer', 1);
+        progress_bar_altruism_message.anchor.setTo(1,0);
+        progress_bar_altruism_message.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var start_number_of_alt_messages = 0;
+        var total_number_of_alt_messages = 21;
+
+        var already_shown_altruism_msgs = window.localStorage["already_shown_alt_msg3"];
+        if(already_shown_altruism_msgs == undefined)
+            already_shown_altruism_msgs = [{"filename": "assets/altruism/altruism_1.png", "unlock_date": "blah"}]
+        else
+            already_shown_altruism_msgs = JSON.parse(window.localStorage["already_shown_alt_msg3"]);
+        var currently_number_of_unlocked_alt_messages = already_shown_altruism_msgs.length;
+
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (currently_number_of_unlocked_alt_messages-start_number_of_alt_messages)/
+                        (total_number_of_alt_messages-start_number_of_alt_messages);
+        //if(percent < 0.05)
+        percent = percent*0.8 + 0.2;
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Alt Width, " + rect.width  + "," + percent);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        
+        var alt_icon = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+12, 'alt_icon');
+        alt_icon.scale.setTo(.12*0.8*SCALING_FACTOR, .12*0.8*SCALING_FACTOR);
+        alt_icon.anchor.setTo(.5, .5);
+        
+
+
+        //points to get to level up.
+        var vertical_position_offset = 101;
+        */
+
+        var progress_bar_level_up =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 1);
+        progress_bar_level_up.anchor.setTo(1,0);
+        progress_bar_level_up.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        // end of level is 1060, start is at 0
+        var start_point_for_level = 0;
+        var end_point_for_level = 1060;
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (current_points-start_point_for_level)/(end_point_for_level-start_point_for_level);
+        percent = percent*0.8 + 0.2;
+        //console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        //console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var level_up_2 = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+12, 'level_up_2');
+        level_up_2.scale.setTo(.12*0.9*SCALING_FACTOR, .12*0.9*SCALING_FACTOR);
+        level_up_2.anchor.setTo(.5, .5);
+
+
+
+
+
+
+        //this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
+        //console.log("countdown.width " + this.countdown.width);
+
+        
+    }
+
+    setSurveyHistory(survey_history){
+        console.log("survey_history " + survey_history + ", length: " + survey_history.length);
+        //this.surveyHistory = survey_history;
+        for(var i=0; i<survey_history.length; i++)
+            this.surveyHistory.push(survey_history[i]);
+
+        //console.log("setSurveyHistory function finished");
+    }
+
+    showInforBox(text){
+        //console.log('treasure box clicked');
+        this.componentObject.showInfoModal(text);
     }
     
 
@@ -6570,18 +7147,19 @@ class FishBowlL1 extends Phaser.State {
             }
         }
 
-         //set the progres bar
-        var previoous_fish_point = 0;
-        var next_fish_point = 0;
+        //set the progres bar
+        this.previoous_fish_point = 0;
+        this.next_fish_point = 0;
         for(var i = 0; i < data.length; i++) {
             if(current_points < data[i].points){
-              next_fish_point = data[i].points;
+              this.next_fish_point = data[i].points;
               break;
             }else{
-              previoous_fish_point = data[i].points;
+              this.previoous_fish_point = data[i].points;
             }
         }
 
+        /*
         this.progress_sprite = this.game.add.sprite(5, 40, 'timer', 0);
         var rect = new Phaser.Rectangle(0, 0, 0, this.progress_sprite.height);
         var percent = (current_points-previoous_fish_point)/(next_fish_point-previoous_fish_point);
@@ -6590,6 +7168,7 @@ class FishBowlL1 extends Phaser.State {
 
         console.log("Width, " + rect.width  + "," + this.progress_sprite.width);
         this.progress_sprite.crop(rect);
+        */
     }  
 
     animateClownFish(){
@@ -6827,7 +7406,28 @@ class PreloaderL1 extends Phaser.State {
         this.load.bitmapFont('eightbitwonder', 'assets/fonts/eightbitwonder.png', 'assets/fonts/eightbitwonder.fnt');
 		this.load.json('fishpoints', 'assets/game/fishpoints.json');//fish json, points
 		this.load.image('fish_progress', 'assets/game/sprite/fish_progress_s.png');
-		this.load.spritesheet('timer', 'assets/game/sprite/timer.png', 150, 20);
+		
+		this.add.text(0, 0, "hack", {font:"1px dumbo_regular", fill:"#FFFFFF"});
+		//this.load.spritesheet('timer', 'assets/game/sprite/timer.png', 150, 20);
+		this.load.spritesheet('timer', 'assets/img/timer_red.png', 150, 20);
+		this.load.image('points_progress_2', 'assets/img/points_progress_2.png');
+		this.load.image('levels_progress', 'assets/img/levels_progress_2.png');
+		this.load.image('streak_info', 'assets/img/streak_info_2.png');
+		this.load.spritesheet('timer_grey', 'assets/img/timer_grey.png', 150, 20);
+		this.load.spritesheet('timer_yellow', 'assets/img/timer_yellow.png', 150, 20);
+		this.load.spritesheet('timer_pumpkin', 'assets/img/timer_pumpkin.png', 150, 20);
+		this.load.image('alt_icon', 'assets/img/heart.png');
+		this.load.image('next_fish_icon', 'assets/img/fish_icon_2.png');
+		this.load.image('meme_icon', 'assets/img/smiley_face.png');
+		this.load.spritesheet('level_up_progress', 'assets/img/level_up.png', 150, 20);
+		this.load.image('level_up_icon', 'assets/img/level_icon.png');
+		this.load.image('level_up_2', 'assets/img/level_up_2.png');
+		this.load.image('streak_green', 'assets/img/streak_green.png');
+		this.load.image('streak_red', 'assets/img/streak_red_2.png');
+		this.load.image('streak_grey', 'assets/img/streak_grey.png');
+		this.load.image('star_point', 'assets/img/star.png');
+		this.load.atlasJSONArray('info_sprite', 'assets/game/sprite/info_sprite.png', 'assets/game/sprite/info_sprite.json');
+		
 
 		//
 		//Returns a random integer between min (inclusive) and max (inclusive)
@@ -6983,6 +7583,7 @@ class FishBowlL2 extends Phaser.State {
     constructor(){
         super();
         this.componentObject;
+        this.surveyHistory = [];
     }
     
     create() {
@@ -6992,9 +7593,14 @@ class FishBowlL2 extends Phaser.State {
         this.isPrawnAdded = false;
         this.isClownFishAdded = false;
 
-        this.CANVAS_WIDTH = 382.0;
-        if(window.innerWidth > this.CANVAS_WIDTH)
-            this.CANVAS_WIDTH = window.innerWidth;
+        this.previoous_fish_point  = 0;
+        this.next_fish_point  = 0;
+
+        
+
+        // = 382.0;
+        //if(window.innerWidth > this.CANVAS_WIDTH)
+        this.CANVAS_WIDTH = window.innerWidth;
         
         this.buildWorld();
         this.inputEnabled = false;
@@ -7014,13 +7620,25 @@ class FishBowlL2 extends Phaser.State {
         titlescreen.scale.setTo(0.85, 0.85);
 
         //
-        this.add.sprite(5, 40, 'timer', 1);
-
-        //
         /*
         var fish_progress = this.add.image(175,50, 'clownfish_grey');
         fish_progress.scale.setTo(-0.3, 0.3);
         fish_progress.anchor.setTo(.5,.5);
+        */
+
+        //var info_progress_bar = this.add.image(175,50, 'info');
+        //info_progress_bar.scale.setTo(0.3, 0.3);
+        //info_progress_bar.anchor.setTo(.5,.5);
+
+        /*
+        var info_progress_bar = this.add.sprite(175,53, 'info_sprite');
+        info_progress_bar.animations.add('swim');
+        info_progress_bar.animations.play('swim', 1, true);
+        info_progress_bar.scale.setTo(0.3, 0.3);
+        info_progress_bar.anchor.setTo(.5,.5);
+        info_progress_bar.inputEnabled = true;
+        //function(){doAlert(textString)
+        info_progress_bar.events.onInputDown.add(function(){this.showInforBox("Info pregess bar cliccked")}, this);
         */
 
         /*
@@ -7030,9 +7648,24 @@ class FishBowlL2 extends Phaser.State {
         this.badgecount = this.add.bitmapText(30, 73, 'eightbitwonder', "" + 2, 12);
         */
 
-        //this.totalPoints = 1000;
-        this.buildFish();
-        this.addFishes();
+        var treasure = this.add.image(90, this.height-70, 'treasure');
+        treasure.scale.setTo(0.3, 0.3);
+        treasure.inputEnabled = true;
+        treasure.events.onInputDown.add(this.showunlockables, this);
+
+        //this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Fishes Fed: ' + this.totalClicks, 20);
+        /*
+        this.totalPoints = 100;
+        var points_str = "" + this.totalPoints;
+        if(this.totalPoints < 10)
+            points_str = "000" + this.totalPoints;
+        if(this.totalPoints>=10 && this.totalPoints<100)
+            points_str = "00" + this.totalPoints;
+        if(this.totalPoints>=100 && this.totalPoints<1000)
+            points_str = "0" + this.totalPoints;
+        */
+
+           
 
         //
         /*
@@ -7042,10 +7675,7 @@ class FishBowlL2 extends Phaser.State {
         journal.events.onInputDown.add(this.logdata, this);  
         */ 
 
-        var treasure = this.add.image(90, this.height-70, 'treasure');
-        treasure.scale.setTo(0.3, 0.3);
-        treasure.inputEnabled = true;
-        treasure.events.onInputDown.add(this.showunlockables, this);
+        
 
         //
         this.game.onPause.add(this.yourGamePausedFunc, this);
@@ -7053,11 +7683,310 @@ class FishBowlL2 extends Phaser.State {
 
 
 
-        //this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Fishes Fed: ' + this.totalClicks, 20);
-        this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
+        
+
+        //this.totalPoints = 1000;
+        this.buildFish();
+        this.addFishes();
+
+        //
+        this.showProgressBars();
 
         //this.checkReinforcement();
+        //this.showBanner();
 
+    }
+
+    showProgressBars(){
+
+        var current_points = this.totalPoints;
+
+        //------ Left side
+
+        
+
+        //level info
+        //var levels_progress = this.add.image(5, 55, 'levels_progress');
+        //levels_progress.scale.setTo(.27, .30);
+
+        /*
+        //
+        var levels_progress = this.add.sprite(10, 58, 'level_up_progress', 0);
+        levels_progress.scale.setTo(0.95, 1.2);
+
+        //var progress_sprite = this.game.add.sprite(88, 59, 'level_up_progress', 1);
+        var progress_sprite = this.game.add.sprite(10, 59, 'level_up_progress', 1);
+        var rect = new Phaser.Rectangle(50, 0, 0, progress_sprite.height);
+        var percent = (current_points-this.previoous_fish_point)/(this.next_fish_point-this.previoous_fish_point);
+        if(percent == 0)
+          percent = 0.05;
+        console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        //progress_sprite.anchor.setTo(0,0);
+        progress_sprite.scale.setTo(1,1.1);
+
+
+        var level_up_icon = this.add.image(18, 68, 'level_up_icon');
+        level_up_icon.scale.setTo(.5, .5);
+        level_up_icon.anchor.setTo(.5, .5);
+
+        var info_level_progress = this.add.sprite(2 + levels_progress.width + 18, 74, 'info_sprite');
+        info_level_progress.animations.add('swim');
+        info_level_progress.animations.play('swim', 1, true);
+        info_level_progress.scale.setTo(0.3, 0.3);
+        info_level_progress.anchor.setTo(.5,.5);
+        info_level_progress.inputEnabled = true;
+        info_level_progress.events.onInputDown.add(function(){this.showInforBox("Info level progress bar clicked")}, this); 
+
+        
+        //progress_sprite.anchor.setTo(1,0);
+        //progress_sprite.scale.setTo(0.8,0.8);
+        */
+
+        var SCALING_FACTOR = 0.8;
+
+        //streak_info
+        var streak_info = this.add.image(5, 5, 'streak_info');
+        streak_info.scale.setTo(.30*SCALING_FACTOR, .30*SCALING_FACTOR);
+
+        var info_level_streak = this.add.sprite(2 + streak_info.width + 12, 20, 'info_sprite');
+        info_level_streak.animations.add('swim');
+        info_level_streak.animations.play('swim', 1, true);
+        info_level_streak.scale.setTo(0.3*SCALING_FACTOR, 0.3*SCALING_FACTOR);
+        info_level_streak.anchor.setTo(.5,.5);
+        info_level_streak.inputEnabled = true;
+        info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
+
+
+        var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
+        for(var i=0; i < this.surveyHistory.length; i++){
+            if(this.surveyHistory[i] == 1)
+                colors[i] = 'green';
+            else
+                colors[i] = 'grey';
+        }   
+        colors = colors.reverse()
+        
+        //console.log("this.surveyHistory " + this.surveyHistory);
+        console.log("colors " + colors);
+        //colors = ['green','green','green','green','grey','green','grey'];
+        var streak_tile;
+        for(var i=0; i < this.surveyHistory.length; i++){
+            streak_tile = this.add.image(32 + i*12, 10, 'streak_' + colors[i]);
+            streak_tile.scale.setTo(.15*4*SCALING_FACTOR, .27*4*SCALING_FACTOR);
+        }
+
+
+        //------ Right side
+        //var progressBars = this.add.group();
+
+        //points bar
+        var vertical_position_offset = 13;
+        var points_progress = this.add.image(this.CANVAS_WIDTH, 2, 'points_progress_2');
+        points_progress.scale.setTo(.36*SCALING_FACTOR, .30*SCALING_FACTOR);
+        points_progress.anchor.setTo(1,0);
+        //progressBars.add(points_progress);
+
+        //point text
+        var points_text = this.add.text(this.CANVAS_WIDTH - 60, 8, "" + this.totalPoints, {font:"20px dumbo_regular", fill:"#4c3d01"});
+        points_text.anchor.setTo(0.5,0);
+        points_text.scale.setTo(SCALING_FACTOR, SCALING_FACTOR);
+        //progressBars.add(points_text);
+
+        var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+4, 'star_point');
+        star_icon.scale.setTo(.52*SCALING_FACTOR, .52*SCALING_FACTOR);
+        star_icon.anchor.setTo(.5, .5);
+        //progressBars.add(points_text);
+
+        //progressBars.scale.setTo(.8, .8);
+
+        /*
+        var info_points = this.add.sprite(2 + points_progress.width + 13, 32, 'info_sprite');
+        info_points.animations.add('swim');
+        info_points.animations.play('swim', 1, true);
+        info_points.scale.setTo(0.3, 0.3);
+        info_points.anchor.setTo(.5,.5);
+        info_points.inputEnabled = true;
+        //function(){doAlert(textString)
+        info_points.events.onInputDown.add(function(){this.showInforBox("Info pregess bar cliccked 2")}, this); 
+        */
+
+        
+        //points to get to next fish.
+        vertical_position_offset = 35;
+
+        
+        var progress_bar_fish =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_grey', 1);
+        progress_bar_fish.anchor.setTo(1,0);
+        progress_bar_fish.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_grey', 0);
+        var rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        var percent = (current_points-this.previoous_fish_point)/(this.next_fish_point-this.previoous_fish_point);
+        if(percent == 0)
+          percent = 0.05;
+        console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var fish_progress_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+8, 'next_fish_icon');
+        fish_progress_icon.scale.setTo(.2*0.8*SCALING_FACTOR, .2*0.8*SCALING_FACTOR);
+        fish_progress_icon.anchor.setTo(.5, .5);
+        
+
+        
+        //points to get to meme.
+        vertical_position_offset = 57;
+        
+        /*
+        var progress_bar_memes =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 1);
+        progress_bar_memes.anchor.setTo(1,0);
+        progress_bar_memes.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var start_number_of_memes = 0;
+        var total_number_of_memes = 31;
+        var already_shown_memes = window.localStorage["already_shown_memes3"];
+        if(already_shown_memes == undefined)
+            already_shown_memes = [{"filename": "assets/memes/4.jpg", "unlock_date": "blah"}]
+        else
+            already_shown_memes = JSON.parse(window.localStorage["already_shown_memes3"]);
+        var currently_number_of_unlocked_memes = already_shown_memes.length;
+
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (currently_number_of_unlocked_memes-start_number_of_memes)/
+                  (total_number_of_memes-start_number_of_memes);
+        percent = percent*0.8 + 0.2;
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var meme_icon = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+10, 'meme_icon');
+        meme_icon.scale.setTo(.52*0.8*SCALING_FACTOR, .52*0.8*SCALING_FACTOR);
+        meme_icon.anchor.setTo(.5, .5);
+
+
+        //points to get to alt message.
+        var vertical_position_offset = 79;
+        var progress_bar_altruism_message =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer', 1);
+        progress_bar_altruism_message.anchor.setTo(1,0);
+        progress_bar_altruism_message.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var start_number_of_alt_messages = 0;
+        var total_number_of_alt_messages = 21;
+
+        var already_shown_altruism_msgs = window.localStorage["already_shown_alt_msg3"];
+        if(already_shown_altruism_msgs == undefined)
+            already_shown_altruism_msgs = [{"filename": "assets/altruism/altruism_1.png", "unlock_date": "blah"}]
+        else
+            already_shown_altruism_msgs = JSON.parse(window.localStorage["already_shown_alt_msg3"]);
+        var currently_number_of_unlocked_alt_messages = already_shown_altruism_msgs.length;
+
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (currently_number_of_unlocked_alt_messages-start_number_of_alt_messages)/
+                        (total_number_of_alt_messages-start_number_of_alt_messages);
+        //if(percent < 0.05)
+        percent = percent*0.8 + 0.2;
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Alt Width, " + rect.width  + "," + percent);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        
+        var alt_icon = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+12, 'alt_icon');
+        alt_icon.scale.setTo(.12*0.8*SCALING_FACTOR, .12*0.8*SCALING_FACTOR);
+        alt_icon.anchor.setTo(.5, .5);
+        
+
+
+        //points to get to level up.
+        var vertical_position_offset = 101;
+        */
+
+        var progress_bar_level_up =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 1);
+        progress_bar_level_up.anchor.setTo(1,0);
+        progress_bar_level_up.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        // end of level is 1060, start is at 0
+        var start_point_for_level = 0;
+        var end_point_for_level = 1060;
+        var progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (current_points-start_point_for_level)/(end_point_for_level-start_point_for_level);
+        percent = percent*0.8 + 0.2;
+        //console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        //console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var level_up_2 = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+12, 'level_up_2');
+        level_up_2.scale.setTo(.12*0.9*SCALING_FACTOR, .12*0.9*SCALING_FACTOR);
+        level_up_2.anchor.setTo(.5, .5);
+
+
+
+
+
+
+        //this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
+        //console.log("countdown.width " + this.countdown.width);
+
+        
+    }
+
+    showBanner(){
+        this.banner_object = this.add.group();
+        //--- banner
+        var banner = this.add.image(0, this.height-180, 'banner');
+        banner.scale.setTo(.65, .95);
+        banner.inputEnabled = true;
+        //banner.events.onInputDown.add(this.hideBanner, this);
+        this.banner_object.add(banner);
+        banner.events.onInputDown.add(this.hideBanner, this);
+
+        var banner_fish = this.add.image(290, this.height-210, 'info');
+        banner_fish.scale.setTo(1, 1);
+        banner_fish.inputEnabled = true;
+        //banner_fish.events.onInputDown.add(this.hideBanner, this);
+        this.banner_object.add(banner_fish);
+        banner_fish.events.onInputDown.add(this.hideBanner, this);
+
+        //
+        var style = { font: "18px Arial", fill: "#f1c40f", align: "left", fontWeights: 'lighter' };
+        var text = this.add.text(10, this.height-165, "New sea level is unlocked.\nClick the fish bowl\nto go to earlier level.", style);
+        text.strokeThickness = 0;
+        text.inputEnabled = true;
+        //text.events.onInputDown.add(this.hideBanner, this);
+        this.banner_object.add(text);
+        text.events.onInputDown.add(this.hideBanner, this);
+
+        //
+        var style = { font: "13px Arial", fill: "#f1c40f", align: "left", fontStyle: 'italic', fontWeights: 'lighter'};
+        var text2 = this.add.text(215, this.height-105, "Tap to hide", style);
+        text2.strokeThickness = 0;
+        text2.inputEnabled = true;
+        //text2.events.onInputDown.add(this.hideBanner, this);
+        this.banner_object.add(text2);
+        text2.events.onInputDown.add(this.hideBanner, this);
+
+        //make a left ot right animation.
+    }
+
+    hideBanner(elem){
+        console.log("clicked");
+        this.banner_object.destroy(true);
+        window.localStorage['banner_shown_2'] = "1";
+        //deleted all the elements
     }
     
 
@@ -7153,25 +8082,17 @@ class FishBowlL2 extends Phaser.State {
           }
 
           //set the progres bar
-          var previoous_fish_point = 0;
-          var next_fish_point = 0;
+          this.previoous_fish_point = 0;
+          this.next_fish_point = 0;
           for(var i = 0; i < data.length; i++) {
               if(current_points < data[i].points){
-                next_fish_point = data[i].points;
+                this.next_fish_point = data[i].points;
                 break;
               }else{
-                previoous_fish_point = data[i].points;
+                this.previoous_fish_point = data[i].points;
               }
           }
-          //console.log("" + current_points + "," + previoous_fish_point + "," + next_fish_point);
-          this.progress_sprite = this.game.add.sprite(5, 40, 'timer', 0);
-          var rect = new Phaser.Rectangle(0, 0, 0, this.progress_sprite.height);
-          var percent = (current_points-previoous_fish_point)/(next_fish_point-previoous_fish_point);
-          console.log("" + current_points + "," + previoous_fish_point + "," + next_fish_point + "," + percent);
-          rect.width = Math.max(0, percent * this.progress_sprite.width);
-
-          console.log("Width, " + rect.width  + "," + this.progress_sprite.width);
-          this.progress_sprite.crop(rect);
+          
 
     }  
 
@@ -7449,6 +8370,11 @@ class FishBowlL2 extends Phaser.State {
         this.componentObject.goToRewardsPage();
     }
 
+    showInforBox(text){
+        //console.log('treasure box clicked');
+        this.componentObject.showInfoModal(text);
+    }
+
     logdata() {
         console.log('show surveys');
         this.componentObject.goToSurveyPage();
@@ -7463,7 +8389,16 @@ class FishBowlL2 extends Phaser.State {
 
 	setTotalPoints(totalPoints){
 		this.totalPoints = totalPoints;
-	}    
+    }   
+    
+    setSurveyHistory(survey_history){
+        console.log("survey_history " + survey_history + ", length: " + survey_history.length);
+        //this.surveyHistory = survey_history;
+        for(var i=0; i<survey_history.length; i++)
+            this.surveyHistory.push(survey_history[i]);
+
+        //console.log("setSurveyHistory function finished");
+    }
 }
 
 /***/ }),
@@ -7491,10 +8426,30 @@ class PreloaderL2 extends Phaser.State {
 		this.load.setPreloadSprite(this.preloadBar);
         
         //---- both aquariums
-        this.load.bitmapFont('eightbitwonder', 'assets/fonts/eightbitwonder.png', 'assets/fonts/eightbitwonder.fnt');
+		this.load.bitmapFont('eightbitwonder', 'assets/fonts/eightbitwonder.png', 'assets/fonts/eightbitwonder.fnt');
+		this.add.text(0, 0, "hack", {font:"1px dumbo_regular", fill:"#FFFFFF"});
 		this.load.json('fishpoints', 'assets/game/fishpoints.json');//fish json, points
 		this.load.image('fish_progress', 'assets/game/sprite/fish_progress_s.png');
-		this.load.spritesheet('timer', 'assets/game/sprite/timer.png', 150, 20);
+		//this.load.spritesheet('timer', 'assets/game/sprite/timer.png', 150, 20);
+		
+		this.load.spritesheet('timer', 'assets/img/timer_red.png', 150, 20);
+		this.load.image('points_progress_2', 'assets/img/points_progress_2.png');
+		this.load.image('levels_progress', 'assets/img/levels_progress_2.png');
+		this.load.image('streak_info', 'assets/img/streak_info_2.png');
+		this.load.spritesheet('timer_grey', 'assets/img/timer_grey.png', 150, 20);
+		this.load.spritesheet('timer_yellow', 'assets/img/timer_yellow.png', 150, 20);
+		this.load.spritesheet('timer_pumpkin', 'assets/img/timer_pumpkin.png', 150, 20);
+		this.load.image('alt_icon', 'assets/img/heart.png');
+		this.load.image('next_fish_icon', 'assets/img/fish_icon_2.png');
+		this.load.image('meme_icon', 'assets/img/smiley_face.png');
+		this.load.spritesheet('level_up_progress', 'assets/img/level_up.png', 150, 20);
+		this.load.image('level_up_icon', 'assets/img/level_icon.png');
+		this.load.image('level_up_2', 'assets/img/level_up_2.png');
+		this.load.image('streak_green', 'assets/img/streak_green.png');
+		this.load.image('streak_red', 'assets/img/streak_red_2.png');
+		this.load.image('streak_grey', 'assets/img/streak_grey.png');
+		this.load.image('star_point', 'assets/img/star.png');
+		
 
 		var max = 8;
 		var min = 1;
@@ -7511,7 +8466,9 @@ class PreloaderL2 extends Phaser.State {
 		//this.load.atlasJSONArray('banner', 'sprite/RedBanner.png', 'sprite/RedBanner.json');
 		this.load.image('banner', 'assets/img/RedBanner.png');
 		this.load.image('banner_fish', 'assets/img/banner_fish.png');
-
+		this.load.image('info', 'assets/img/info.png');
+		this.load.atlasJSONArray('info_sprite', 'assets/game/sprite/info_sprite.png', 'assets/game/sprite/info_sprite.json');
+		
 
 		//----
 		var next_fish = window.localStorage['next_fish'] || 'assets/img/aquarium_grey/clownfish.png';
@@ -7784,12 +8741,15 @@ class GameRainforestL6 extends Phaser.State {
         this.koala;
         this.corn;
         this.emitter;
-        this.rainingswitch
+        this.rainingswitch;
+        this.surveyHistory = [];
     }
 
     //gets executed after preload
     create(){
         console.log("create called");
+
+        this.CANVAS_WIDTH = window.innerWidth;
 
         //reinforestBackgroundBottom1
         var reinforestBackgroundBottom1 = this.add.image(0, this.game.height-320, 'reinforestBackgroundBottom1');
@@ -7827,15 +8787,15 @@ class GameRainforestL6 extends Phaser.State {
         //
         this.height = this.game.height;
 
-        //---
-        this.CANVAS_WIDTH = 382.0;
-        if(window.innerWidth > this.CANVAS_WIDTH)
-            this.CANVAS_WIDTH = window.innerWidth;
-
 
         //add monkey
         this.animateMonkey();
 
+        //
+        var treasure = this.add.image(10, this.game.height - 135, 'treasure');
+        treasure.scale.setTo(0.07, 0.07);
+        treasure.inputEnabled = true;
+        treasure.events.onInputDown.add(this.showunlockables, this);
 
         
         this.animatePegions();
@@ -7863,13 +8823,9 @@ class GameRainforestL6 extends Phaser.State {
 
 
         //
-        this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
-
-        //
-        var treasure = this.add.image(10, this.game.height - 135, 'treasure');
-        treasure.scale.setTo(0.07, 0.07);
-        treasure.inputEnabled = true;
-        treasure.events.onInputDown.add(this.showunlockables, this);
+        //this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
+        this.showProgressBars();
+        
         
 
         //
@@ -7878,6 +8834,266 @@ class GameRainforestL6 extends Phaser.State {
 
 
 
+    }
+
+
+    showProgressBars(){
+
+        var current_points = this.totalPoints;
+
+        //------ Left side
+
+        
+
+        //level info
+        //var levels_progress = this.add.image(5, 55, 'levels_progress');
+        //levels_progress.scale.setTo(.27, .30);
+
+        /*
+        //
+        var levels_progress = this.add.sprite(10, 58, 'level_up_progress', 0);
+        levels_progress.scale.setTo(0.95, 1.2);
+
+        //var progress_sprite = this.game.add.sprite(88, 59, 'level_up_progress', 1);
+        var progress_sprite = this.game.add.sprite(10, 59, 'level_up_progress', 1);
+        var rect = new Phaser.Rectangle(50, 0, 0, progress_sprite.height);
+        var percent = (current_points-this.previoous_fish_point)/(this.next_fish_point-this.previoous_fish_point);
+        if(percent == 0)
+          percent = 0.05;
+        console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        //progress_sprite.anchor.setTo(0,0);
+        progress_sprite.scale.setTo(1,1.1);
+
+
+        var level_up_icon = this.add.image(18, 68, 'level_up_icon');
+        level_up_icon.scale.setTo(.5, .5);
+        level_up_icon.anchor.setTo(.5, .5);
+
+        var info_level_progress = this.add.sprite(2 + levels_progress.width + 18, 74, 'info_sprite');
+        info_level_progress.animations.add('swim');
+        info_level_progress.animations.play('swim', 1, true);
+        info_level_progress.scale.setTo(0.3, 0.3);
+        info_level_progress.anchor.setTo(.5,.5);
+        info_level_progress.inputEnabled = true;
+        info_level_progress.events.onInputDown.add(function(){this.showInforBox("Info level progress bar clicked")}, this); 
+
+        
+        //progress_sprite.anchor.setTo(1,0);
+        //progress_sprite.scale.setTo(0.8,0.8);
+        */
+
+        var SCALING_FACTOR = 0.8;
+
+        //streak_info
+        var streak_info = this.add.image(5, 5, 'streak_info');
+        streak_info.scale.setTo(.30*SCALING_FACTOR, .30*SCALING_FACTOR);
+
+        var info_level_streak = this.add.sprite(2 + streak_info.width + 12, 20, 'info_sprite');
+        info_level_streak.animations.add('swim');
+        info_level_streak.animations.play('swim', 1, true);
+        info_level_streak.scale.setTo(0.3*SCALING_FACTOR, 0.3*SCALING_FACTOR);
+        info_level_streak.anchor.setTo(.5,.5);
+        info_level_streak.inputEnabled = true;
+        info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
+
+
+        var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
+        for(var i=0; i < this.surveyHistory.length; i++){
+            if(this.surveyHistory[i] == 1)
+                colors[i] = 'green';
+            else
+                colors[i] = 'grey';
+        }   
+        colors = colors.reverse()
+        
+        //console.log("this.surveyHistory " + this.surveyHistory);
+        console.log("colors " + colors);
+        //colors = ['green','green','green','green','grey','green','grey'];
+        var streak_tile;
+        for(var i=0; i < this.surveyHistory.length; i++){
+            streak_tile = this.add.image(32 + i*12, 10, 'streak_' + colors[i]);
+            streak_tile.scale.setTo(.15*4*SCALING_FACTOR, .27*4*SCALING_FACTOR);
+        }
+
+
+        //------ Right side
+        //var progressBars = this.add.group();
+
+        //points bar
+        vertical_position_offset = 13;
+        var points_progress = this.add.image(this.CANVAS_WIDTH, 2, 'points_progress_2');
+        points_progress.scale.setTo(.36*SCALING_FACTOR, .30*SCALING_FACTOR);
+        points_progress.anchor.setTo(1,0);
+        //progressBars.add(points_progress);
+
+        //point text
+        var points_text = this.add.text(this.CANVAS_WIDTH - 60, 8, "" + this.totalPoints, {font:"20px dumbo_regular", fill:"#4c3d01"});
+        points_text.anchor.setTo(0.5,0);
+        points_text.scale.setTo(SCALING_FACTOR, SCALING_FACTOR);
+        //progressBars.add(points_text);
+
+        var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+4, 'star_point');
+        star_icon.scale.setTo(.52*SCALING_FACTOR, .52*SCALING_FACTOR);
+        star_icon.anchor.setTo(.5, .5);
+        //progressBars.add(points_text);
+
+        //progressBars.scale.setTo(.8, .8);
+
+        /*
+        var info_points = this.add.sprite(2 + points_progress.width + 13, 32, 'info_sprite');
+        info_points.animations.add('swim');
+        info_points.animations.play('swim', 1, true);
+        info_points.scale.setTo(0.3, 0.3);
+        info_points.anchor.setTo(.5,.5);
+        info_points.inputEnabled = true;
+        //function(){doAlert(textString)
+        info_points.events.onInputDown.add(function(){this.showInforBox("Info pregess bar cliccked 2")}, this); 
+        */
+
+        
+        //points to get to next fish.
+        vertical_position_offset = 35;
+        var progress_bar_fish =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_grey', 1);
+        progress_bar_fish.anchor.setTo(1,0);
+        progress_bar_fish.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_grey', 0);
+        var rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        var percent = (current_points-this.previoous_fish_point)/(this.next_fish_point-this.previoous_fish_point);
+        if(percent == 0)
+          percent = 0.05;
+        console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var fish_progress_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+8, 'next_fish_icon');
+        fish_progress_icon.scale.setTo(.2*0.8*SCALING_FACTOR, .2*0.8*SCALING_FACTOR);
+        fish_progress_icon.anchor.setTo(.5, .5);
+        
+
+        
+        //points to get to meme.
+        var vertical_position_offset = 57;
+
+        /*
+        var progress_bar_memes =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 1);
+        progress_bar_memes.anchor.setTo(1,0);
+        progress_bar_memes.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var start_number_of_memes = 0;
+        var total_number_of_memes = 31;
+        var already_shown_memes = window.localStorage["already_shown_memes3"];
+        if(already_shown_memes == undefined)
+            already_shown_memes = [{"filename": "assets/memes/4.jpg", "unlock_date": "blah"}]
+        else
+            already_shown_memes = JSON.parse(window.localStorage["already_shown_memes3"]);
+        var currently_number_of_unlocked_memes = already_shown_memes.length;
+
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (currently_number_of_unlocked_memes-start_number_of_memes)/
+                  (total_number_of_memes-start_number_of_memes);
+        percent = percent*0.8 + 0.2;
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var meme_icon = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+10, 'meme_icon');
+        meme_icon.scale.setTo(.52*0.8*SCALING_FACTOR, .52*0.8*SCALING_FACTOR);
+        meme_icon.anchor.setTo(.5, .5);
+
+
+        //points to get to alt message.
+        var vertical_position_offset = 79;
+        var progress_bar_altruism_message =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer', 1);
+        progress_bar_altruism_message.anchor.setTo(1,0);
+        progress_bar_altruism_message.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var start_number_of_alt_messages = 0;
+        var total_number_of_alt_messages = 21;
+
+        var already_shown_altruism_msgs = window.localStorage["already_shown_alt_msg3"];
+        if(already_shown_altruism_msgs == undefined)
+            already_shown_altruism_msgs = [{"filename": "assets/altruism/altruism_1.png", "unlock_date": "blah"}]
+        else
+            already_shown_altruism_msgs = JSON.parse(window.localStorage["already_shown_alt_msg3"]);
+        var currently_number_of_unlocked_alt_messages = already_shown_altruism_msgs.length;
+
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (currently_number_of_unlocked_alt_messages-start_number_of_alt_messages)/
+                        (total_number_of_alt_messages-start_number_of_alt_messages);
+        //if(percent < 0.05)
+        percent = percent*0.8 + 0.2;
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Alt Width, " + rect.width  + "," + percent);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        
+        var alt_icon = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+12, 'alt_icon');
+        alt_icon.scale.setTo(.12*0.8*SCALING_FACTOR, .12*0.8*SCALING_FACTOR);
+        alt_icon.anchor.setTo(.5, .5);
+        
+
+
+        //points to get to level up.
+        var vertical_position_offset = 101;
+        */
+
+        var progress_bar_level_up =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 1);
+        progress_bar_level_up.anchor.setTo(1,0);
+        progress_bar_level_up.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        // end of level is 1060, start is at 0
+        var start_point_for_level = 3020;
+        var end_point_for_level = 3800;
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (current_points-start_point_for_level)/(end_point_for_level-start_point_for_level);
+        percent = percent*0.8 + 0.2;
+        //console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        //console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var level_up_2 = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+12, 'level_up_2');
+        level_up_2.scale.setTo(.12*0.9*SCALING_FACTOR, .12*0.9*SCALING_FACTOR);
+        level_up_2.anchor.setTo(.5, .5);
+
+
+
+
+
+
+        //this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
+        //console.log("countdown.width " + this.countdown.width);
+
+        
+    }
+
+    setSurveyHistory(survey_history){
+        console.log("survey_history " + survey_history + ", length: " + survey_history.length);
+        //this.surveyHistory = survey_history;
+        for(var i=0; i<survey_history.length; i++)
+            this.surveyHistory.push(survey_history[i]);
+
+        //console.log("setSurveyHistory function finished");
+    }
+
+    showInforBox(text){
+        //console.log('treasure box clicked');
+        this.componentObject.showInfoModal(text);
     }
 
     addAnimals(){
@@ -7955,22 +9171,26 @@ class GameRainforestL6 extends Phaser.State {
                 if(key === "Butterfly")
                     this.animateButterFly();
 
-                if(key === "Rain")
-                    this.animateRain();
+                if(key === "Rain"){
+                    //this.animateRain();
+                }
+                    
             }
         }
 
          //set the progres bar
-        var previoous_fish_point = 0;
-        var next_fish_point = 0;
+        this.previoous_fish_point = 0;
+        this.next_fish_point = 0;
         for(var i = 0; i < data.length; i++) {
             if(current_points < data[i].points){
-              next_fish_point = data[i].points;
+              this.next_fish_point = data[i].points;
               break;
             }else{
-              previoous_fish_point = data[i].points;
+              this.previoous_fish_point = data[i].points;
             }
         }
+
+        /*
         //---
         var timer = this.add.sprite(5, 40, 'timer', 1);
 
@@ -7982,6 +9202,7 @@ class GameRainforestL6 extends Phaser.State {
 
         //console.log("Width, " + rect.width  + "," + this.progress_sprite.width);
         this.progress_sprite.crop(rect);
+        */
     }
 
     animateRain(){
@@ -8464,7 +9685,33 @@ class PreloaderRainforestL6 extends Phaser.State {
         this.load.bitmapFont('eightbitwonder', 'assets/fonts/eightbitwonder.png', 'assets/fonts/eightbitwonder.fnt');
 		this.load.json('fishpoints', 'assets/game/fishpoints.json');//fish json, points
 		this.load.image('fish_progress', 'assets/game/sprite/fish_progress_s.png');
-		this.load.spritesheet('timer', 'assets/game/sprite/timer.png', 150, 20);
+
+		
+		this.add.text(0, 0, "hack", {font:"1px dumbo_regular", fill:"#FFFFFF"});
+		//this.load.spritesheet('timer', 'assets/game/sprite/timer.png', 150, 20);
+		this.load.spritesheet('timer', 'assets/img/timer_red.png', 150, 20);
+		this.load.image('points_progress_2', 'assets/img/points_progress_2.png');
+		this.load.image('levels_progress', 'assets/img/levels_progress_2.png');
+		this.load.image('streak_info', 'assets/img/streak_info_2.png');
+		this.load.spritesheet('timer_grey', 'assets/img/timer_grey.png', 150, 20);
+		this.load.spritesheet('timer_yellow', 'assets/img/timer_yellow.png', 150, 20);
+		this.load.spritesheet('timer_pumpkin', 'assets/img/timer_pumpkin.png', 150, 20);
+		this.load.image('alt_icon', 'assets/img/heart.png');
+		this.load.image('next_fish_icon', 'assets/img/fish_icon_2.png');
+		this.load.image('meme_icon', 'assets/img/smiley_face.png');
+		this.load.spritesheet('level_up_progress', 'assets/img/level_up.png', 150, 20);
+		this.load.image('level_up_icon', 'assets/img/level_icon.png');
+		this.load.image('level_up_2', 'assets/img/level_up_2.png');
+		this.load.image('streak_green', 'assets/img/streak_green.png');
+		this.load.image('streak_red', 'assets/img/streak_red_2.png');
+		this.load.image('streak_grey', 'assets/img/streak_grey.png');
+		this.load.image('star_point', 'assets/img/star.png');
+		this.load.atlasJSONArray('info_sprite', 'assets/game/sprite/info_sprite.png', 'assets/game/sprite/info_sprite.json');
+		
+
+
+
+
 		this.load.image('diamond', 'assets/img/diamond.png');
 
 
@@ -8489,7 +9736,7 @@ class PreloaderRainforestL6 extends Phaser.State {
 
 		this.game.load.image('rock2','assets/pics/rock2.png');
 		
-		this.game.load.image('reinforest1','assets/pics/bg-rainforest-top.png');
+		this.game.load.image('reinforest1','assets/pics/bg-rainforest-top-V2.png');
 		this.load.image('reinforestBackgroundBottom1', 'assets/pics/bg-rainforest-bottom-1.png'); 
 		this.load.image('reinforestBackgroundBottom2', 'assets/pics/bg-rainforest-bottom-2.png'); 
 
@@ -8616,6 +9863,7 @@ class SeaLevelL3 extends Phaser.State {
     constructor(){
         super();
         this.componentObject;
+        this.surveyHistory = [];
     }
     
     create() {
@@ -8656,7 +9904,7 @@ class SeaLevelL3 extends Phaser.State {
         //this.addWater();
         
         //
-        this.add.sprite(5, 40, 'timer', 1);
+        //this.add.sprite(5, 40, 'timer', 1);
 
 
         //
@@ -8678,7 +9926,7 @@ class SeaLevelL3 extends Phaser.State {
 
         //this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Fishes Fed: ' + this.totalClicks, 20);
 
-        this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
+        //this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
 
         //
         /*
@@ -8697,6 +9945,8 @@ class SeaLevelL3 extends Phaser.State {
 
         //this.buildFish();
         this.buildAquarium();
+
+        this.showProgressBars();
 
         //
         /*
@@ -8732,6 +9982,268 @@ class SeaLevelL3 extends Phaser.State {
         this.isPaused = false;
 
         //this.checkReinforcement();
+    }
+
+    showProgressBars(){
+
+        var current_points = this.totalPoints;
+
+        //------ Left side
+
+        
+
+        //level info
+        //var levels_progress = this.add.image(5, 55, 'levels_progress');
+        //levels_progress.scale.setTo(.27, .30);
+
+        /*
+        //
+        var levels_progress = this.add.sprite(10, 58, 'level_up_progress', 0);
+        levels_progress.scale.setTo(0.95, 1.2);
+
+        //var progress_sprite = this.game.add.sprite(88, 59, 'level_up_progress', 1);
+        var progress_sprite = this.game.add.sprite(10, 59, 'level_up_progress', 1);
+        var rect = new Phaser.Rectangle(50, 0, 0, progress_sprite.height);
+        var percent = (current_points-this.previoous_fish_point)/(this.next_fish_point-this.previoous_fish_point);
+        if(percent == 0)
+          percent = 0.05;
+        console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        //progress_sprite.anchor.setTo(0,0);
+        progress_sprite.scale.setTo(1,1.1);
+
+
+        var level_up_icon = this.add.image(18, 68, 'level_up_icon');
+        level_up_icon.scale.setTo(.5, .5);
+        level_up_icon.anchor.setTo(.5, .5);
+
+        var info_level_progress = this.add.sprite(2 + levels_progress.width + 18, 74, 'info_sprite');
+        info_level_progress.animations.add('swim');
+        info_level_progress.animations.play('swim', 1, true);
+        info_level_progress.scale.setTo(0.3, 0.3);
+        info_level_progress.anchor.setTo(.5,.5);
+        info_level_progress.inputEnabled = true;
+        info_level_progress.events.onInputDown.add(function(){this.showInforBox("Info level progress bar clicked")}, this); 
+
+        
+        //progress_sprite.anchor.setTo(1,0);
+        //progress_sprite.scale.setTo(0.8,0.8);
+        */
+
+        var SCALING_FACTOR = 0.8;
+
+        //streak_info
+        var streak_info = this.add.image(5, 5, 'streak_info');
+        streak_info.scale.setTo(.30*SCALING_FACTOR, .30*SCALING_FACTOR);
+
+        var info_level_streak = this.add.sprite(2 + streak_info.width + 12, 20, 'info_sprite');
+        info_level_streak.animations.add('swim');
+        info_level_streak.animations.play('swim', 1, true);
+        info_level_streak.scale.setTo(0.3*SCALING_FACTOR, 0.3*SCALING_FACTOR);
+        info_level_streak.anchor.setTo(.5,.5);
+        info_level_streak.inputEnabled = true;
+        info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
+
+
+        var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
+        for(var i=0; i < this.surveyHistory.length; i++){
+            if(this.surveyHistory[i] == 1)
+                colors[i] = 'green';
+            else
+                colors[i] = 'grey';
+        }   
+        colors = colors.reverse()
+        
+        //console.log("this.surveyHistory " + this.surveyHistory);
+        console.log("colors " + colors);
+        //colors = ['green','green','green','green','grey','green','grey'];
+        var streak_tile;
+        for(var i=0; i < this.surveyHistory.length; i++){
+            streak_tile = this.add.image(32 + i*12, 10, 'streak_' + colors[i]);
+            streak_tile.scale.setTo(.15*4*SCALING_FACTOR, .27*4*SCALING_FACTOR);
+        }
+
+
+        //------ Right side
+        //var progressBars = this.add.group();
+
+        //points bar
+        vertical_position_offset = 13;
+        var points_progress = this.add.image(this.CANVAS_WIDTH, 2, 'points_progress_2');
+        points_progress.scale.setTo(.36*SCALING_FACTOR, .30*SCALING_FACTOR);
+        points_progress.anchor.setTo(1,0);
+        //progressBars.add(points_progress);
+
+        //point text
+        var points_text = this.add.text(this.CANVAS_WIDTH - 60, 8, "" + this.totalPoints, {font:"20px dumbo_regular", fill:"#4c3d01"});
+        points_text.anchor.setTo(0.5,0);
+        points_text.scale.setTo(SCALING_FACTOR, SCALING_FACTOR);
+        //progressBars.add(points_text);
+
+        var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+4, 'star_point');
+        star_icon.scale.setTo(.52*SCALING_FACTOR, .52*SCALING_FACTOR);
+        star_icon.anchor.setTo(.5, .5);
+        //progressBars.add(points_text);
+
+        //progressBars.scale.setTo(.8, .8);
+
+        /*
+        var info_points = this.add.sprite(2 + points_progress.width + 13, 32, 'info_sprite');
+        info_points.animations.add('swim');
+        info_points.animations.play('swim', 1, true);
+        info_points.scale.setTo(0.3, 0.3);
+        info_points.anchor.setTo(.5,.5);
+        info_points.inputEnabled = true;
+        //function(){doAlert(textString)
+        info_points.events.onInputDown.add(function(){this.showInforBox("Info pregess bar cliccked 2")}, this); 
+        */
+
+        
+        //points to get to next fish.
+        var vertical_position_offset = 35;
+
+        
+        var progress_bar_fish =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_grey', 1);
+        progress_bar_fish.anchor.setTo(1,0);
+        progress_bar_fish.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_grey', 0);
+        var rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        var percent = (current_points-this.previoous_fish_point)/(this.next_fish_point-this.previoous_fish_point);
+        if(percent == 0)
+          percent = 0.05;
+        console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var fish_progress_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+8, 'next_fish_icon');
+        fish_progress_icon.scale.setTo(.2*0.8*SCALING_FACTOR, .2*0.8*SCALING_FACTOR);
+        fish_progress_icon.anchor.setTo(.5, .5);
+        
+
+        
+        //points to get to meme.
+        vertical_position_offset = 57;
+
+        /*
+        var progress_bar_memes =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 1);
+        progress_bar_memes.anchor.setTo(1,0);
+        progress_bar_memes.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var start_number_of_memes = 0;
+        var total_number_of_memes = 31;
+        var already_shown_memes = window.localStorage["already_shown_memes3"];
+        if(already_shown_memes == undefined)
+            already_shown_memes = [{"filename": "assets/memes/4.jpg", "unlock_date": "blah"}]
+        else
+            already_shown_memes = JSON.parse(window.localStorage["already_shown_memes3"]);
+        var currently_number_of_unlocked_memes = already_shown_memes.length;
+
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (currently_number_of_unlocked_memes-start_number_of_memes)/
+                  (total_number_of_memes-start_number_of_memes);
+        percent = percent*0.8 + 0.2;
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var meme_icon = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+10, 'meme_icon');
+        meme_icon.scale.setTo(.52*0.8*SCALING_FACTOR, .52*0.8*SCALING_FACTOR);
+        meme_icon.anchor.setTo(.5, .5);
+
+
+        //points to get to alt message.
+        var vertical_position_offset = 79;
+        var progress_bar_altruism_message =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer', 1);
+        progress_bar_altruism_message.anchor.setTo(1,0);
+        progress_bar_altruism_message.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var start_number_of_alt_messages = 0;
+        var total_number_of_alt_messages = 21;
+
+        var already_shown_altruism_msgs = window.localStorage["already_shown_alt_msg3"];
+        if(already_shown_altruism_msgs == undefined)
+            already_shown_altruism_msgs = [{"filename": "assets/altruism/altruism_1.png", "unlock_date": "blah"}]
+        else
+            already_shown_altruism_msgs = JSON.parse(window.localStorage["already_shown_alt_msg3"]);
+        var currently_number_of_unlocked_alt_messages = already_shown_altruism_msgs.length;
+
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (currently_number_of_unlocked_alt_messages-start_number_of_alt_messages)/
+                        (total_number_of_alt_messages-start_number_of_alt_messages);
+        //if(percent < 0.05)
+        percent = percent*0.8 + 0.2;
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Alt Width, " + rect.width  + "," + percent);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        
+        var alt_icon = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+12, 'alt_icon');
+        alt_icon.scale.setTo(.12*0.8*SCALING_FACTOR, .12*0.8*SCALING_FACTOR);
+        alt_icon.anchor.setTo(.5, .5);
+        
+
+
+        //points to get to level up.
+        var vertical_position_offset = 101;
+        */
+
+
+        var progress_bar_level_up =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 1);
+        progress_bar_level_up.anchor.setTo(1,0);
+        progress_bar_level_up.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        // end of level is 1060, start is at 0
+        var start_point_for_level = 1060;
+        var end_point_for_level = 2120;
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (current_points-start_point_for_level)/(end_point_for_level-start_point_for_level);
+        percent = percent*0.8 + 0.2;
+        //console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        //console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var level_up_2 = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+12, 'level_up_2');
+        level_up_2.scale.setTo(.12*0.9*SCALING_FACTOR, .12*0.9*SCALING_FACTOR);
+        level_up_2.anchor.setTo(.5, .5);
+
+
+
+
+
+
+        //this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
+        //console.log("countdown.width " + this.countdown.width);
+
+        
+    }
+
+    setSurveyHistory(survey_history){
+        console.log("survey_history " + survey_history + ", length: " + survey_history.length);
+        //this.surveyHistory = survey_history;
+        for(var i=0; i<survey_history.length; i++)
+            this.surveyHistory.push(survey_history[i]);
+
+        //console.log("setSurveyHistory function finished");
+    }
+
+    showInforBox(text){
+        //console.log('treasure box clicked');
+        this.componentObject.showInfoModal(text);
     }
 
     //show the reward
@@ -9175,16 +10687,18 @@ class SeaLevelL3 extends Phaser.State {
         this.addCoral();
 
         //set the progres bar
-          var previoous_fish_point = 0;
-          var next_fish_point = 0;
-          for(var i = 0; i < data.length; i++) {
-              if(current_points < data[i].points){
-                next_fish_point = data[i].points;
-                break;
-              }else{
-                previoous_fish_point = data[i].points;
-              }
-          }
+        this.previoous_fish_point = 0;
+        this.next_fish_point = 0;
+        for(var i = 0; i < data.length; i++) {
+            if(current_points < data[i].points){
+              this.next_fish_point = data[i].points;
+              break;
+            }else{
+              this.previoous_fish_point = data[i].points;
+            }
+        }
+
+        /*
           //console.log("" + current_points + "," + previoous_fish_point + "," + next_fish_point);
           this.progress_sprite = this.game.add.sprite(5, 40, 'timer', 0);
           var rect = new Phaser.Rectangle(0, 0, 0, this.progress_sprite.height);
@@ -9194,6 +10708,7 @@ class SeaLevelL3 extends Phaser.State {
 
           console.log("Width, " + rect.width  + "," + this.progress_sprite.width);
           this.progress_sprite.crop(rect);
+        */
 
     }
 
@@ -9593,7 +11108,29 @@ class PreloaderL3 extends Phaser.State {
         this.load.bitmapFont('eightbitwonder', 'assets/fonts/eightbitwonder.png', 'assets/fonts/eightbitwonder.fnt');
 		this.load.json('fishpoints', 'assets/game/fishpoints.json');//fish json, points
 		this.load.image('fish_progress', 'assets/game/sprite/fish_progress_s.png');
-		this.load.spritesheet('timer', 'assets/game/sprite/timer.png', 150, 20);
+		//this.load.spritesheet('timer', 'assets/game/sprite/timer.png', 150, 20);
+
+		this.add.text(0, 0, "hack", {font:"1px dumbo_regular", fill:"#FFFFFF"});
+		//this.load.spritesheet('timer', 'assets/game/sprite/timer.png', 150, 20);
+		this.load.spritesheet('timer', 'assets/img/timer_red.png', 150, 20);
+		this.load.image('points_progress_2', 'assets/img/points_progress_2.png');
+		this.load.image('levels_progress', 'assets/img/levels_progress_2.png');
+		this.load.image('streak_info', 'assets/img/streak_info_2.png');
+		this.load.spritesheet('timer_grey', 'assets/img/timer_grey.png', 150, 20);
+		this.load.spritesheet('timer_yellow', 'assets/img/timer_yellow.png', 150, 20);
+		this.load.spritesheet('timer_pumpkin', 'assets/img/timer_pumpkin.png', 150, 20);
+		this.load.image('alt_icon', 'assets/img/heart.png');
+		this.load.image('next_fish_icon', 'assets/img/fish_icon_2.png');
+		this.load.image('meme_icon', 'assets/img/smiley_face.png');
+		this.load.spritesheet('level_up_progress', 'assets/img/level_up.png', 150, 20);
+		this.load.image('level_up_icon', 'assets/img/level_icon.png');
+		this.load.image('level_up_2', 'assets/img/level_up_2.png');
+		this.load.image('streak_green', 'assets/img/streak_green.png');
+		this.load.image('streak_red', 'assets/img/streak_red_2.png');
+		this.load.image('streak_grey', 'assets/img/streak_grey.png');
+		this.load.image('star_point', 'assets/img/star.png');
+		this.load.atlasJSONArray('info_sprite', 'assets/game/sprite/info_sprite.png', 'assets/game/sprite/info_sprite.json');
+		
 
 		var max = 8;
 		var min = 1;
@@ -9755,6 +11292,7 @@ class SeaLevelL4 extends Phaser.State {
     constructor(){
         super();
         this.componentObject;
+        this.surveyHistory = [];
     }
         
     create(){
@@ -9787,7 +11325,7 @@ class SeaLevelL4 extends Phaser.State {
         undersea.width = this.game.width*5;
 
         //
-        this.add.sprite(5, 40, 'timer', 1);
+        //this.add.sprite(5, 40, 'timer', 1);
 
 
         //
@@ -9804,7 +11342,7 @@ class SeaLevelL4 extends Phaser.State {
         treasure.events.onInputDown.add(this.showunlockables, this);
         treasure.angle += 10;
 
-        this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
+        //this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
 
         //
         /*
@@ -9823,6 +11361,8 @@ class SeaLevelL4 extends Phaser.State {
 
         //this.buildFish();
         this.buildAquarium();
+
+        this.showProgressBars();
 
         //
         /*
@@ -9872,6 +11412,265 @@ class SeaLevelL4 extends Phaser.State {
         this.game.onResume.add(this.yourGameResumedFunc, this);
 
         //this.checkReinforcement();
+    }
+
+    showProgressBars(){
+
+        var current_points = this.totalPoints;
+
+        //------ Left side
+
+        
+
+        //level info
+        //var levels_progress = this.add.image(5, 55, 'levels_progress');
+        //levels_progress.scale.setTo(.27, .30);
+
+        /*
+        //
+        var levels_progress = this.add.sprite(10, 58, 'level_up_progress', 0);
+        levels_progress.scale.setTo(0.95, 1.2);
+
+        //var progress_sprite = this.game.add.sprite(88, 59, 'level_up_progress', 1);
+        var progress_sprite = this.game.add.sprite(10, 59, 'level_up_progress', 1);
+        var rect = new Phaser.Rectangle(50, 0, 0, progress_sprite.height);
+        var percent = (current_points-this.previoous_fish_point)/(this.next_fish_point-this.previoous_fish_point);
+        if(percent == 0)
+          percent = 0.05;
+        console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        //progress_sprite.anchor.setTo(0,0);
+        progress_sprite.scale.setTo(1,1.1);
+
+
+        var level_up_icon = this.add.image(18, 68, 'level_up_icon');
+        level_up_icon.scale.setTo(.5, .5);
+        level_up_icon.anchor.setTo(.5, .5);
+
+        var info_level_progress = this.add.sprite(2 + levels_progress.width + 18, 74, 'info_sprite');
+        info_level_progress.animations.add('swim');
+        info_level_progress.animations.play('swim', 1, true);
+        info_level_progress.scale.setTo(0.3, 0.3);
+        info_level_progress.anchor.setTo(.5,.5);
+        info_level_progress.inputEnabled = true;
+        info_level_progress.events.onInputDown.add(function(){this.showInforBox("Info level progress bar clicked")}, this); 
+
+        
+        //progress_sprite.anchor.setTo(1,0);
+        //progress_sprite.scale.setTo(0.8,0.8);
+        */
+
+        var SCALING_FACTOR = 0.8;
+
+        //streak_info
+        var streak_info = this.add.image(5, 5, 'streak_info');
+        streak_info.scale.setTo(.30*SCALING_FACTOR, .30*SCALING_FACTOR);
+
+        var info_level_streak = this.add.sprite(2 + streak_info.width + 12, 20, 'info_sprite');
+        info_level_streak.animations.add('swim');
+        info_level_streak.animations.play('swim', 1, true);
+        info_level_streak.scale.setTo(0.3*SCALING_FACTOR, 0.3*SCALING_FACTOR);
+        info_level_streak.anchor.setTo(.5,.5);
+        info_level_streak.inputEnabled = true;
+        info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
+
+
+        var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
+        for(var i=0; i < this.surveyHistory.length; i++){
+            if(this.surveyHistory[i] == 1)
+                colors[i] = 'green';
+            else
+                colors[i] = 'grey';
+        }   
+        colors = colors.reverse()
+        
+        //console.log("this.surveyHistory " + this.surveyHistory);
+        console.log("colors " + colors);
+        //colors = ['green','green','green','green','grey','green','grey'];
+        var streak_tile;
+        for(var i=0; i < this.surveyHistory.length; i++){
+            streak_tile = this.add.image(32 + i*12, 10, 'streak_' + colors[i]);
+            streak_tile.scale.setTo(.15*4*SCALING_FACTOR, .27*4*SCALING_FACTOR);
+        }
+
+
+        //------ Right side
+        //var progressBars = this.add.group();
+
+        //points bar
+        vertical_position_offset = 13;
+        var points_progress = this.add.image(this.CANVAS_WIDTH, 2, 'points_progress_2');
+        points_progress.scale.setTo(.36*SCALING_FACTOR, .30*SCALING_FACTOR);
+        points_progress.anchor.setTo(1,0);
+        //progressBars.add(points_progress);
+
+        //point text
+        var points_text = this.add.text(this.CANVAS_WIDTH - 60, 8, "" + this.totalPoints, {font:"20px dumbo_regular", fill:"#4c3d01"});
+        points_text.anchor.setTo(0.5,0);
+        points_text.scale.setTo(SCALING_FACTOR, SCALING_FACTOR);
+        //progressBars.add(points_text);
+
+        var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+4, 'star_point');
+        star_icon.scale.setTo(.52*SCALING_FACTOR, .52*SCALING_FACTOR);
+        star_icon.anchor.setTo(.5, .5);
+        //progressBars.add(points_text);
+
+        //progressBars.scale.setTo(.8, .8);
+
+        /*
+        var info_points = this.add.sprite(2 + points_progress.width + 13, 32, 'info_sprite');
+        info_points.animations.add('swim');
+        info_points.animations.play('swim', 1, true);
+        info_points.scale.setTo(0.3, 0.3);
+        info_points.anchor.setTo(.5,.5);
+        info_points.inputEnabled = true;
+        //function(){doAlert(textString)
+        info_points.events.onInputDown.add(function(){this.showInforBox("Info pregess bar cliccked 2")}, this); 
+        */
+
+        
+        //points to get to next fish.
+        vertical_position_offset = 35;
+        var progress_bar_fish =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_grey', 1);
+        progress_bar_fish.anchor.setTo(1,0);
+        progress_bar_fish.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_grey', 0);
+        var rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        var percent = (current_points-this.previoous_fish_point)/(this.next_fish_point-this.previoous_fish_point);
+        if(percent == 0)
+          percent = 0.05;
+        console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var fish_progress_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+8, 'next_fish_icon');
+        fish_progress_icon.scale.setTo(.2*0.8*SCALING_FACTOR, .2*0.8*SCALING_FACTOR);
+        fish_progress_icon.anchor.setTo(.5, .5);
+        
+
+        
+        //points to get to meme.
+        var vertical_position_offset = 57;
+
+        /*
+        var progress_bar_memes =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 1);
+        progress_bar_memes.anchor.setTo(1,0);
+        progress_bar_memes.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var start_number_of_memes = 0;
+        var total_number_of_memes = 31;
+        var already_shown_memes = window.localStorage["already_shown_memes3"];
+        if(already_shown_memes == undefined)
+            already_shown_memes = [{"filename": "assets/memes/4.jpg", "unlock_date": "blah"}]
+        else
+            already_shown_memes = JSON.parse(window.localStorage["already_shown_memes3"]);
+        var currently_number_of_unlocked_memes = already_shown_memes.length;
+
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (currently_number_of_unlocked_memes-start_number_of_memes)/
+                  (total_number_of_memes-start_number_of_memes);
+        percent = percent*0.8 + 0.2;
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var meme_icon = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+10, 'meme_icon');
+        meme_icon.scale.setTo(.52*0.8*SCALING_FACTOR, .52*0.8*SCALING_FACTOR);
+        meme_icon.anchor.setTo(.5, .5);
+
+
+        //points to get to alt message.
+        var vertical_position_offset = 79;
+        var progress_bar_altruism_message =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer', 1);
+        progress_bar_altruism_message.anchor.setTo(1,0);
+        progress_bar_altruism_message.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var start_number_of_alt_messages = 0;
+        var total_number_of_alt_messages = 21;
+
+        var already_shown_altruism_msgs = window.localStorage["already_shown_alt_msg3"];
+        if(already_shown_altruism_msgs == undefined)
+            already_shown_altruism_msgs = [{"filename": "assets/altruism/altruism_1.png", "unlock_date": "blah"}]
+        else
+            already_shown_altruism_msgs = JSON.parse(window.localStorage["already_shown_alt_msg3"]);
+        var currently_number_of_unlocked_alt_messages = already_shown_altruism_msgs.length;
+
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (currently_number_of_unlocked_alt_messages-start_number_of_alt_messages)/
+                        (total_number_of_alt_messages-start_number_of_alt_messages);
+        //if(percent < 0.05)
+        percent = percent*0.8 + 0.2;
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Alt Width, " + rect.width  + "," + percent);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        
+        var alt_icon = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+12, 'alt_icon');
+        alt_icon.scale.setTo(.12*0.8*SCALING_FACTOR, .12*0.8*SCALING_FACTOR);
+        alt_icon.anchor.setTo(.5, .5);
+        
+
+
+        //points to get to level up.
+        var vertical_position_offset = 101;
+        */
+
+        var progress_bar_level_up =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 1);
+        progress_bar_level_up.anchor.setTo(1,0);
+        progress_bar_level_up.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        // end of level is 1060, start is at 0
+        var start_point_for_level = 1060;
+        var end_point_for_level = 2120;
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (current_points-start_point_for_level)/(end_point_for_level-start_point_for_level);
+        percent = percent*0.8 + 0.2;
+        //console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        //console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var level_up_2 = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+12, 'level_up_2');
+        level_up_2.scale.setTo(.12*0.9*SCALING_FACTOR, .12*0.9*SCALING_FACTOR);
+        level_up_2.anchor.setTo(.5, .5);
+
+
+
+
+
+
+        //this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
+        //console.log("countdown.width " + this.countdown.width);
+
+        
+    }
+
+    setSurveyHistory(survey_history){
+        console.log("survey_history " + survey_history + ", length: " + survey_history.length);
+        //this.surveyHistory = survey_history;
+        for(var i=0; i<survey_history.length; i++)
+            this.surveyHistory.push(survey_history[i]);
+
+        //console.log("setSurveyHistory function finished");
+    }
+
+    showInforBox(text){
+        //console.log('treasure box clicked');
+        this.componentObject.showInfoModal(text);
     }
 
     yourGamePausedFunc(){
@@ -10222,16 +12021,18 @@ class SeaLevelL4 extends Phaser.State {
         this.addCoral();
 
         //set the progres bar
-          var previoous_fish_point = 0;
-          var next_fish_point = 0;
+          this.previoous_fish_point = 0;
+          this.next_fish_point = 0;
           for(var i = 0; i < data.length; i++) {
               if(current_points < data[i].points){
-                next_fish_point = data[i].points;
+                this.next_fish_point = data[i].points;
                 break;
               }else{
-                previoous_fish_point = data[i].points;
+                this.previoous_fish_point = data[i].points;
               }
           }
+
+          /*
           //console.log("" + current_points + "," + previoous_fish_point + "," + next_fish_point);
           this.progress_sprite = this.game.add.sprite(5, 40, 'timer', 0);
           var rect = new Phaser.Rectangle(0, 0, 0, this.progress_sprite.height);
@@ -10241,6 +12042,7 @@ class SeaLevelL4 extends Phaser.State {
 
           console.log("Width, " + rect.width  + "," + this.progress_sprite.width);
           this.progress_sprite.crop(rect);
+          */
     }
 
     addAFish(added_point){
@@ -10640,7 +12442,29 @@ class PreloaderL4 extends Phaser.State {
         this.load.bitmapFont('eightbitwonder', 'assets/fonts/eightbitwonder.png', 'assets/fonts/eightbitwonder.fnt');
 		this.load.json('fishpoints', 'assets/game/fishpoints.json');//fish json, points
 		this.load.image('fish_progress', 'assets/game/sprite/fish_progress_s.png');
-		this.load.spritesheet('timer', 'assets/game/sprite/timer.png', 150, 20);
+		//this.load.spritesheet('timer', 'assets/game/sprite/timer.png', 150, 20);
+
+		this.add.text(0, 0, "hack", {font:"1px dumbo_regular", fill:"#FFFFFF"});
+		//this.load.spritesheet('timer', 'assets/game/sprite/timer.png', 150, 20);
+		this.load.spritesheet('timer', 'assets/img/timer_red.png', 150, 20);
+		this.load.image('points_progress_2', 'assets/img/points_progress_2.png');
+		this.load.image('levels_progress', 'assets/img/levels_progress_2.png');
+		this.load.image('streak_info', 'assets/img/streak_info_2.png');
+		this.load.spritesheet('timer_grey', 'assets/img/timer_grey.png', 150, 20);
+		this.load.spritesheet('timer_yellow', 'assets/img/timer_yellow.png', 150, 20);
+		this.load.spritesheet('timer_pumpkin', 'assets/img/timer_pumpkin.png', 150, 20);
+		this.load.image('alt_icon', 'assets/img/heart.png');
+		this.load.image('next_fish_icon', 'assets/img/fish_icon_2.png');
+		this.load.image('meme_icon', 'assets/img/smiley_face.png');
+		this.load.spritesheet('level_up_progress', 'assets/img/level_up.png', 150, 20);
+		this.load.image('level_up_icon', 'assets/img/level_icon.png');
+		this.load.image('level_up_2', 'assets/img/level_up_2.png');
+		this.load.image('streak_green', 'assets/img/streak_green.png');
+		this.load.image('streak_red', 'assets/img/streak_red_2.png');
+		this.load.image('streak_grey', 'assets/img/streak_grey.png');
+		this.load.image('star_point', 'assets/img/star.png');
+		this.load.atlasJSONArray('info_sprite', 'assets/game/sprite/info_sprite.png', 'assets/game/sprite/info_sprite.json');
+		
 
 		var max = 8;
 		var min = 1;
@@ -10808,6 +12632,7 @@ class GameTundraL5 extends Phaser.State {
         this.back_emitter;
         this.mid_emitter;
         this.yeti;
+        this.surveyHistory = [];
     }
 
     //
@@ -10826,6 +12651,8 @@ class GameTundraL5 extends Phaser.State {
         titlescreen.scale.setTo(0.6, 0.6);
 
 
+        this.CANVAS_WIDTH = window.innerWidth;
+        
         //
         this.height = this.game.height;
 
@@ -10835,7 +12662,7 @@ class GameTundraL5 extends Phaser.State {
         //    this.CANVAS_WIDTH = window.innerWidth;
 
         //---
-        var timer = this.add.sprite(5, 40, 'timer', 1);
+        //var timer = this.add.sprite(5, 40, 'timer', 1);
 
         //--- 
         /*
@@ -10870,26 +12697,290 @@ class GameTundraL5 extends Phaser.State {
         //this.animateDuck();
         //this.animateSnowOwl();
         
-        
-
-        //
-        this.addAnimals();
-
         //
         var treasure = this.add.image(this.game.width/2, this.height-85, 'treasure_tundra');
         treasure.scale.setTo(-0.5, 0.5);
         treasure.anchor.setTo(.5,.5);
         treasure.inputEnabled = true;
         treasure.events.onInputDown.add(this.showunlockables, this);
+        
 
         //
-        this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
+        this.addAnimals();
+
+        this.showProgressBars();
+
+        //
+        //this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
 
         //
         this.game.onPause.add(this.yourGamePausedFunc, this);
         this.game.onResume.add(this.yourGameResumedFunc, this);
 
     }
+
+    showProgressBars(){
+
+        var current_points = this.totalPoints;
+
+        //------ Left side
+
+        
+
+        //level info
+        //var levels_progress = this.add.image(5, 55, 'levels_progress');
+        //levels_progress.scale.setTo(.27, .30);
+
+        /*
+        //
+        var levels_progress = this.add.sprite(10, 58, 'level_up_progress', 0);
+        levels_progress.scale.setTo(0.95, 1.2);
+
+        //var progress_sprite = this.game.add.sprite(88, 59, 'level_up_progress', 1);
+        var progress_sprite = this.game.add.sprite(10, 59, 'level_up_progress', 1);
+        var rect = new Phaser.Rectangle(50, 0, 0, progress_sprite.height);
+        var percent = (current_points-this.previoous_fish_point)/(this.next_fish_point-this.previoous_fish_point);
+        if(percent == 0)
+          percent = 0.05;
+        console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        //progress_sprite.anchor.setTo(0,0);
+        progress_sprite.scale.setTo(1,1.1);
+
+
+        var level_up_icon = this.add.image(18, 68, 'level_up_icon');
+        level_up_icon.scale.setTo(.5, .5);
+        level_up_icon.anchor.setTo(.5, .5);
+
+        var info_level_progress = this.add.sprite(2 + levels_progress.width + 18, 74, 'info_sprite');
+        info_level_progress.animations.add('swim');
+        info_level_progress.animations.play('swim', 1, true);
+        info_level_progress.scale.setTo(0.3, 0.3);
+        info_level_progress.anchor.setTo(.5,.5);
+        info_level_progress.inputEnabled = true;
+        info_level_progress.events.onInputDown.add(function(){this.showInforBox("Info level progress bar clicked")}, this); 
+
+        
+        //progress_sprite.anchor.setTo(1,0);
+        //progress_sprite.scale.setTo(0.8,0.8);
+        */
+
+        var SCALING_FACTOR = 0.8;
+
+        //streak_info
+        var streak_info = this.add.image(5, 5, 'streak_info');
+        streak_info.scale.setTo(.30*SCALING_FACTOR, .30*SCALING_FACTOR);
+
+        var info_level_streak = this.add.sprite(2 + streak_info.width + 12, 20, 'info_sprite');
+        info_level_streak.animations.add('swim');
+        info_level_streak.animations.play('swim', 1, true);
+        info_level_streak.scale.setTo(0.3*SCALING_FACTOR, 0.3*SCALING_FACTOR);
+        info_level_streak.anchor.setTo(.5,.5);
+        info_level_streak.inputEnabled = true;
+        info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
+
+
+        var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
+        for(var i=0; i < this.surveyHistory.length; i++){
+            if(this.surveyHistory[i] == 1)
+                colors[i] = 'green';
+            else
+                colors[i] = 'grey';
+        }   
+        colors = colors.reverse()
+        
+        //console.log("this.surveyHistory " + this.surveyHistory);
+        console.log("colors " + colors);
+        //colors = ['green','green','green','green','grey','green','grey'];
+        var streak_tile;
+        for(var i=0; i < this.surveyHistory.length; i++){
+            streak_tile = this.add.image(32 + i*12, 10, 'streak_' + colors[i]);
+            streak_tile.scale.setTo(.15*4*SCALING_FACTOR, .27*4*SCALING_FACTOR);
+        }
+
+
+        //------ Right side
+        //var progressBars = this.add.group();
+
+        //points bar
+        vertical_position_offset = 13;
+        var points_progress = this.add.image(this.CANVAS_WIDTH, 2, 'points_progress_2');
+        points_progress.scale.setTo(.36*SCALING_FACTOR, .30*SCALING_FACTOR);
+        points_progress.anchor.setTo(1,0);
+        //progressBars.add(points_progress);
+
+        //point text
+        var points_text = this.add.text(this.CANVAS_WIDTH - 60, 8, "" + this.totalPoints, {font:"20px dumbo_regular", fill:"#4c3d01"});
+        points_text.anchor.setTo(0.5,0);
+        points_text.scale.setTo(SCALING_FACTOR, SCALING_FACTOR);
+        //progressBars.add(points_text);
+
+        var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+4, 'star_point');
+        star_icon.scale.setTo(.52*SCALING_FACTOR, .52*SCALING_FACTOR);
+        star_icon.anchor.setTo(.5, .5);
+        //progressBars.add(points_text);
+
+        //progressBars.scale.setTo(.8, .8);
+
+        /*
+        var info_points = this.add.sprite(2 + points_progress.width + 13, 32, 'info_sprite');
+        info_points.animations.add('swim');
+        info_points.animations.play('swim', 1, true);
+        info_points.scale.setTo(0.3, 0.3);
+        info_points.anchor.setTo(.5,.5);
+        info_points.inputEnabled = true;
+        //function(){doAlert(textString)
+        info_points.events.onInputDown.add(function(){this.showInforBox("Info pregess bar cliccked 2")}, this); 
+        */
+
+        
+        //points to get to next fish.
+        var vertical_position_offset = 35;
+
+        
+        var progress_bar_fish =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_grey', 1);
+        progress_bar_fish.anchor.setTo(1,0);
+        progress_bar_fish.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_grey', 0);
+        var rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        var percent = (current_points-this.previoous_fish_point)/(this.next_fish_point-this.previoous_fish_point);
+        if(percent == 0)
+          percent = 0.05;
+        console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var fish_progress_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+8, 'next_fish_icon');
+        fish_progress_icon.scale.setTo(.2*0.8*SCALING_FACTOR, .2*0.8*SCALING_FACTOR);
+        fish_progress_icon.anchor.setTo(.5, .5);
+        
+
+        
+        //points to get to meme.
+        vertical_position_offset = 57;
+
+        /*
+        var progress_bar_memes =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 1);
+        progress_bar_memes.anchor.setTo(1,0);
+        progress_bar_memes.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var start_number_of_memes = 0;
+        var total_number_of_memes = 31;
+        var already_shown_memes = window.localStorage["already_shown_memes3"];
+        if(already_shown_memes == undefined)
+            already_shown_memes = [{"filename": "assets/memes/4.jpg", "unlock_date": "blah"}]
+        else
+            already_shown_memes = JSON.parse(window.localStorage["already_shown_memes3"]);
+        var currently_number_of_unlocked_memes = already_shown_memes.length;
+
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (currently_number_of_unlocked_memes-start_number_of_memes)/
+                  (total_number_of_memes-start_number_of_memes);
+        percent = percent*0.8 + 0.2;
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var meme_icon = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+10, 'meme_icon');
+        meme_icon.scale.setTo(.52*0.8*SCALING_FACTOR, .52*0.8*SCALING_FACTOR);
+        meme_icon.anchor.setTo(.5, .5);
+
+
+        //points to get to alt message.
+        var vertical_position_offset = 79;
+        var progress_bar_altruism_message =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer', 1);
+        progress_bar_altruism_message.anchor.setTo(1,0);
+        progress_bar_altruism_message.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var start_number_of_alt_messages = 0;
+        var total_number_of_alt_messages = 21;
+
+        var already_shown_altruism_msgs = window.localStorage["already_shown_alt_msg3"];
+        if(already_shown_altruism_msgs == undefined)
+            already_shown_altruism_msgs = [{"filename": "assets/altruism/altruism_1.png", "unlock_date": "blah"}]
+        else
+            already_shown_altruism_msgs = JSON.parse(window.localStorage["already_shown_alt_msg3"]);
+        var currently_number_of_unlocked_alt_messages = already_shown_altruism_msgs.length;
+
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (currently_number_of_unlocked_alt_messages-start_number_of_alt_messages)/
+                        (total_number_of_alt_messages-start_number_of_alt_messages);
+        //if(percent < 0.05)
+        percent = percent*0.8 + 0.2;
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Alt Width, " + rect.width  + "," + percent);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        
+        var alt_icon = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+12, 'alt_icon');
+        alt_icon.scale.setTo(.12*0.8*SCALING_FACTOR, .12*0.8*SCALING_FACTOR);
+        alt_icon.anchor.setTo(.5, .5);
+        
+
+
+        //points to get to level up.
+        var vertical_position_offset = 101;
+        */
+
+        var progress_bar_level_up =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 1);
+        progress_bar_level_up.anchor.setTo(1,0);
+        progress_bar_level_up.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        // end of level is 1060, start is at 0
+        var start_point_for_level = 2120;
+        var end_point_for_level = 3020;
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (current_points-start_point_for_level)/(end_point_for_level-start_point_for_level);
+        percent = percent*0.8 + 0.2;
+        //console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        //console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var level_up_2 = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+12, 'level_up_2');
+        level_up_2.scale.setTo(.12*0.9*SCALING_FACTOR, .12*0.9*SCALING_FACTOR);
+        level_up_2.anchor.setTo(.5, .5);
+
+
+
+
+
+
+        //this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
+        //console.log("countdown.width " + this.countdown.width);
+
+        
+    }
+
+    setSurveyHistory(survey_history){
+        console.log("survey_history " + survey_history + ", length: " + survey_history.length);
+        //this.surveyHistory = survey_history;
+        for(var i=0; i<survey_history.length; i++)
+            this.surveyHistory.push(survey_history[i]);
+
+        //console.log("setSurveyHistory function finished");
+    }
+
+    showInforBox(text){
+        //console.log('treasure box clicked');
+        this.componentObject.showInfoModal(text);
+    }
+    
+
 
     startsnowing(){
         console.log("start snowing");
@@ -11039,17 +13130,18 @@ class GameTundraL5 extends Phaser.State {
         
 
          //set the progres bar
-        var previoous_fish_point = 0;
-        var next_fish_point = 0;
+        this.previoous_fish_point = 0;
+        this.next_fish_point = 0;
         for(var i = 0; i < data.length; i++) {
             if(current_points < data[i].points){
-              next_fish_point = data[i].points;
+                this.next_fish_point = data[i].points;
               break;
             }else{
-              previoous_fish_point = data[i].points;
+                this.previoous_fish_point = data[i].points;
             }
         }
 
+        /*
         this.progress_sprite = this.game.add.sprite(5, 40, 'timer', 0);
         var rect = new Phaser.Rectangle(0, 0, 0, this.progress_sprite.height);
         var percent = (current_points-previoous_fish_point)/(next_fish_point-previoous_fish_point);
@@ -11058,6 +13150,7 @@ class GameTundraL5 extends Phaser.State {
 
         console.log("Width, " + rect.width  + "," + this.progress_sprite.width);
         this.progress_sprite.crop(rect);
+        */
     }
 
     animateSnow(){
@@ -11658,7 +13751,28 @@ class PreloaderTundraL5 extends Phaser.State {
         this.load.bitmapFont('eightbitwonder', 'assets/fonts/eightbitwonder.png', 'assets/fonts/eightbitwonder.fnt');
 		this.load.json('fishpoints', 'assets/game/fishpoints.json');//fish json, points
 		this.load.image('fish_progress', 'assets/game/sprite/fish_progress_s.png');
-		this.load.spritesheet('timer', 'assets/game/sprite/timer.png', 150, 20);
+		//this.load.spritesheet('timer', 'assets/game/sprite/timer.png', 150, 20);
+
+		this.add.text(0, 0, "hack", {font:"1px dumbo_regular", fill:"#FFFFFF"});
+		this.load.spritesheet('timer', 'assets/img/timer_red.png', 150, 20);
+		this.load.image('points_progress_2', 'assets/img/points_progress_2.png');
+		this.load.image('levels_progress', 'assets/img/levels_progress_2.png');
+		this.load.image('streak_info', 'assets/img/streak_info_2.png');
+		this.load.spritesheet('timer_grey', 'assets/img/timer_grey.png', 150, 20);
+		this.load.spritesheet('timer_yellow', 'assets/img/timer_yellow.png', 150, 20);
+		this.load.spritesheet('timer_pumpkin', 'assets/img/timer_pumpkin.png', 150, 20);
+		this.load.image('alt_icon', 'assets/img/heart.png');
+		this.load.image('next_fish_icon', 'assets/img/fish_icon_2.png');
+		this.load.image('meme_icon', 'assets/img/smiley_face.png');
+		this.load.spritesheet('level_up_progress', 'assets/img/level_up.png', 150, 20);
+		this.load.image('level_up_icon', 'assets/img/level_icon.png');
+		this.load.image('level_up_2', 'assets/img/level_up_2.png');
+		this.load.image('streak_green', 'assets/img/streak_green.png');
+		this.load.image('streak_red', 'assets/img/streak_red_2.png');
+		this.load.image('streak_grey', 'assets/img/streak_grey.png');
+		this.load.image('star_point', 'assets/img/star.png');
+		this.load.atlasJSONArray('info_sprite', 'assets/game/sprite/info_sprite.png', 'assets/game/sprite/info_sprite.json');
+		
 
 		this.load.image('diamond', 'assets/img/diamond.png');
 
@@ -11839,6 +13953,7 @@ class GameTundraL51 extends Phaser.State {
         this.mid_emitter;
         this.yeti;
         this.scaleFactor=0.8;
+        this.surveyHistory = [];
     }
 
     //
@@ -11856,6 +13971,7 @@ class GameTundraL51 extends Phaser.State {
         var titlescreen = this.add.image(0, this.game.height-60, 'titlescreen');
         titlescreen.scale.setTo(0.6, 0.6);
 
+        this.CANVAS_WIDTH = window.innerWidth;
 
         //
         this.height = this.game.height;
@@ -11866,7 +13982,7 @@ class GameTundraL51 extends Phaser.State {
         //    this.CANVAS_WIDTH = window.innerWidth;
 
         //---
-        var timer = this.add.sprite(5, 40, 'timer', 1);
+        //var timer = this.add.sprite(5, 40, 'timer', 1);
 
         //--- 
         /*
@@ -11904,9 +14020,6 @@ class GameTundraL51 extends Phaser.State {
         
 
         //
-        this.addAnimals();
-
-        //
         var treasure = this.add.image(this.game.width/2, this.height-85, 'treasure_tundra');
         treasure.scale.setTo(-0.5*this.scaleFactor, 0.5*this.scaleFactor);
         treasure.anchor.setTo(.5,.5);
@@ -11914,12 +14027,277 @@ class GameTundraL51 extends Phaser.State {
         treasure.events.onInputDown.add(this.showunlockables, this);
 
         //
-        this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
+        this.addAnimals();
+
+        //
+        this.showProgressBars();
+
+        //
+        //this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
 
         //
         this.game.onPause.add(this.yourGamePausedFunc, this);
         this.game.onResume.add(this.yourGameResumedFunc, this);
 
+    }
+
+    showProgressBars(){
+
+        var current_points = this.totalPoints;
+
+        //------ Left side
+
+        
+
+        //level info
+        //var levels_progress = this.add.image(5, 55, 'levels_progress');
+        //levels_progress.scale.setTo(.27, .30);
+
+        /*
+        //
+        var levels_progress = this.add.sprite(10, 58, 'level_up_progress', 0);
+        levels_progress.scale.setTo(0.95, 1.2);
+
+        //var progress_sprite = this.game.add.sprite(88, 59, 'level_up_progress', 1);
+        var progress_sprite = this.game.add.sprite(10, 59, 'level_up_progress', 1);
+        var rect = new Phaser.Rectangle(50, 0, 0, progress_sprite.height);
+        var percent = (current_points-this.previoous_fish_point)/(this.next_fish_point-this.previoous_fish_point);
+        if(percent == 0)
+          percent = 0.05;
+        console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        //progress_sprite.anchor.setTo(0,0);
+        progress_sprite.scale.setTo(1,1.1);
+
+
+        var level_up_icon = this.add.image(18, 68, 'level_up_icon');
+        level_up_icon.scale.setTo(.5, .5);
+        level_up_icon.anchor.setTo(.5, .5);
+
+        var info_level_progress = this.add.sprite(2 + levels_progress.width + 18, 74, 'info_sprite');
+        info_level_progress.animations.add('swim');
+        info_level_progress.animations.play('swim', 1, true);
+        info_level_progress.scale.setTo(0.3, 0.3);
+        info_level_progress.anchor.setTo(.5,.5);
+        info_level_progress.inputEnabled = true;
+        info_level_progress.events.onInputDown.add(function(){this.showInforBox("Info level progress bar clicked")}, this); 
+
+        
+        //progress_sprite.anchor.setTo(1,0);
+        //progress_sprite.scale.setTo(0.8,0.8);
+        */
+
+        var SCALING_FACTOR = 0.8;
+
+        //streak_info
+        var streak_info = this.add.image(5, 5, 'streak_info');
+        streak_info.scale.setTo(.30*SCALING_FACTOR, .30*SCALING_FACTOR);
+
+        var info_level_streak = this.add.sprite(2 + streak_info.width + 12, 20, 'info_sprite');
+        info_level_streak.animations.add('swim');
+        info_level_streak.animations.play('swim', 1, true);
+        info_level_streak.scale.setTo(0.3*SCALING_FACTOR, 0.3*SCALING_FACTOR);
+        info_level_streak.anchor.setTo(.5,.5);
+        info_level_streak.inputEnabled = true;
+        info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
+
+
+        var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
+        for(var i=0; i < this.surveyHistory.length; i++){
+            if(this.surveyHistory[i] == 1)
+                colors[i] = 'green';
+            else
+                colors[i] = 'grey';
+        }   
+        colors = colors.reverse()
+        
+        //console.log("this.surveyHistory " + this.surveyHistory);
+        console.log("colors " + colors);
+        //colors = ['green','green','green','green','grey','green','grey'];
+        var streak_tile;
+        for(var i=0; i < this.surveyHistory.length; i++){
+            streak_tile = this.add.image(32 + i*12, 10, 'streak_' + colors[i]);
+            streak_tile.scale.setTo(.15*4*SCALING_FACTOR, .27*4*SCALING_FACTOR);
+        }
+
+
+        //------ Right side
+        //var progressBars = this.add.group();
+
+        //points bar
+        vertical_position_offset = 13;
+        var points_progress = this.add.image(this.CANVAS_WIDTH, 2, 'points_progress_2');
+        points_progress.scale.setTo(.36*SCALING_FACTOR, .30*SCALING_FACTOR);
+        points_progress.anchor.setTo(1,0);
+        //progressBars.add(points_progress);
+
+        //point text
+        var points_text = this.add.text(this.CANVAS_WIDTH - 60, 8, "" + this.totalPoints, {font:"20px dumbo_regular", fill:"#4c3d01"});
+        points_text.anchor.setTo(0.5,0);
+        points_text.scale.setTo(SCALING_FACTOR, SCALING_FACTOR);
+        //progressBars.add(points_text);
+
+        var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+4, 'star_point');
+        star_icon.scale.setTo(.52*SCALING_FACTOR, .52*SCALING_FACTOR);
+        star_icon.anchor.setTo(.5, .5);
+        //progressBars.add(points_text);
+
+        //progressBars.scale.setTo(.8, .8);
+
+        /*
+        var info_points = this.add.sprite(2 + points_progress.width + 13, 32, 'info_sprite');
+        info_points.animations.add('swim');
+        info_points.animations.play('swim', 1, true);
+        info_points.scale.setTo(0.3, 0.3);
+        info_points.anchor.setTo(.5,.5);
+        info_points.inputEnabled = true;
+        //function(){doAlert(textString)
+        info_points.events.onInputDown.add(function(){this.showInforBox("Info pregess bar cliccked 2")}, this); 
+        */
+
+        
+        //points to get to next fish.
+        vertical_position_offset = 35;
+        var progress_bar_fish =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_grey', 1);
+        progress_bar_fish.anchor.setTo(1,0);
+        progress_bar_fish.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_grey', 0);
+        var rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        var percent = (current_points-this.previoous_fish_point)/(this.next_fish_point-this.previoous_fish_point);
+        if(percent == 0)
+          percent = 0.05;
+        console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var fish_progress_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+8, 'next_fish_icon');
+        fish_progress_icon.scale.setTo(.2*0.8*SCALING_FACTOR, .2*0.8*SCALING_FACTOR);
+        fish_progress_icon.anchor.setTo(.5, .5);
+        
+
+        
+        //points to get to meme.
+        var vertical_position_offset = 57;
+
+        /*
+        var progress_bar_memes =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 1);
+        progress_bar_memes.anchor.setTo(1,0);
+        progress_bar_memes.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var start_number_of_memes = 0;
+        var total_number_of_memes = 31;
+        var already_shown_memes = window.localStorage["already_shown_memes3"];
+        if(already_shown_memes == undefined)
+            already_shown_memes = [{"filename": "assets/memes/4.jpg", "unlock_date": "blah"}]
+        else
+            already_shown_memes = JSON.parse(window.localStorage["already_shown_memes3"]);
+        var currently_number_of_unlocked_memes = already_shown_memes.length;
+
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_yellow', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (currently_number_of_unlocked_memes-start_number_of_memes)/
+                  (total_number_of_memes-start_number_of_memes);
+        percent = percent*0.8 + 0.2;
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var meme_icon = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+10, 'meme_icon');
+        meme_icon.scale.setTo(.52*0.8*SCALING_FACTOR, .52*0.8*SCALING_FACTOR);
+        meme_icon.anchor.setTo(.5, .5);
+
+
+        //points to get to alt message.
+        var vertical_position_offset = 79;
+        var progress_bar_altruism_message =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer', 1);
+        progress_bar_altruism_message.anchor.setTo(1,0);
+        progress_bar_altruism_message.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var start_number_of_alt_messages = 0;
+        var total_number_of_alt_messages = 21;
+
+        var already_shown_altruism_msgs = window.localStorage["already_shown_alt_msg3"];
+        if(already_shown_altruism_msgs == undefined)
+            already_shown_altruism_msgs = [{"filename": "assets/altruism/altruism_1.png", "unlock_date": "blah"}]
+        else
+            already_shown_altruism_msgs = JSON.parse(window.localStorage["already_shown_alt_msg3"]);
+        var currently_number_of_unlocked_alt_messages = already_shown_altruism_msgs.length;
+
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (currently_number_of_unlocked_alt_messages-start_number_of_alt_messages)/
+                        (total_number_of_alt_messages-start_number_of_alt_messages);
+        //if(percent < 0.05)
+        percent = percent*0.8 + 0.2;
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        console.log("Alt Width, " + rect.width  + "," + percent);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        
+        var alt_icon = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+12, 'alt_icon');
+        alt_icon.scale.setTo(.12*0.8*SCALING_FACTOR, .12*0.8*SCALING_FACTOR);
+        alt_icon.anchor.setTo(.5, .5);
+        
+
+
+        //points to get to level up.
+        var vertical_position_offset = 101;
+        */
+
+        var progress_bar_level_up =  this.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 1);
+        progress_bar_level_up.anchor.setTo(1,0);
+        progress_bar_level_up.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        // end of level is 1060, start is at 0
+        var start_point_for_level = 2120;
+        var end_point_for_level = 3020;
+        progress_sprite = this.game.add.sprite(this.CANVAS_WIDTH-15, vertical_position_offset+5, 'timer_pumpkin', 0);
+        rect = new Phaser.Rectangle(0, 0, 0, progress_sprite.height);
+        percent = (current_points-start_point_for_level)/(end_point_for_level-start_point_for_level);
+        percent = percent*0.8 + 0.2;
+        //console.log("" + current_points + "," + this.previoous_fish_point + "," + this.next_fish_point + "," + percent);
+        rect.width = Math.max(0, percent * progress_sprite.width);
+        //console.log("Width, " + rect.width  + "," + progress_sprite.width);
+        progress_sprite.crop(rect);
+        progress_sprite.anchor.setTo(1,0);
+        progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
+
+        var level_up_2 = this.add.image(this.CANVAS_WIDTH-18, vertical_position_offset+12, 'level_up_2');
+        level_up_2.scale.setTo(.12*0.9*SCALING_FACTOR, .12*0.9*SCALING_FACTOR);
+        level_up_2.anchor.setTo(.5, .5);
+
+
+
+
+
+
+        //this.countdown = this.add.bitmapText(10, 10, 'eightbitwonder', 'Points: ' + this.totalPoints, 20);
+        //console.log("countdown.width " + this.countdown.width);
+
+        
+    }
+
+    setSurveyHistory(survey_history){
+        console.log("survey_history " + survey_history + ", length: " + survey_history.length);
+        //this.surveyHistory = survey_history;
+        for(var i=0; i<survey_history.length; i++)
+            this.surveyHistory.push(survey_history[i]);
+
+        //console.log("setSurveyHistory function finished");
+    }
+
+    showInforBox(text){
+        //console.log('treasure box clicked');
+        this.componentObject.showInfoModal(text);
     }
 
     startsnowing(){
@@ -12070,17 +14448,18 @@ class GameTundraL51 extends Phaser.State {
         
 
          //set the progres bar
-        var previoous_fish_point = 0;
-        var next_fish_point = 0;
+        this.previoous_fish_point = 0;
+        this.next_fish_point = 0;
         for(var i = 0; i < data.length; i++) {
             if(current_points < data[i].points){
-              next_fish_point = data[i].points;
+                this.next_fish_point = data[i].points;
               break;
             }else{
-              previoous_fish_point = data[i].points;
+                this.previoous_fish_point = data[i].points;
             }
         }
 
+        /*
         this.progress_sprite = this.game.add.sprite(5, 40, 'timer', 0);
         var rect = new Phaser.Rectangle(0, 0, 0, this.progress_sprite.height);
         var percent = (current_points-previoous_fish_point)/(next_fish_point-previoous_fish_point);
@@ -12089,6 +14468,7 @@ class GameTundraL51 extends Phaser.State {
 
         console.log("Width, " + rect.width  + "," + this.progress_sprite.width);
         this.progress_sprite.crop(rect);
+        */
     }
 
     animateSnow(){
@@ -12689,7 +15069,28 @@ class PreloaderTundraL51 extends Phaser.State {
         this.load.bitmapFont('eightbitwonder', 'assets/fonts/eightbitwonder.png', 'assets/fonts/eightbitwonder.fnt');
 		this.load.json('fishpoints', 'assets/game/fishpoints.json');//fish json, points
 		this.load.image('fish_progress', 'assets/game/sprite/fish_progress_s.png');
-		this.load.spritesheet('timer', 'assets/game/sprite/timer.png', 150, 20);
+		
+		this.add.text(0, 0, "hack", {font:"1px dumbo_regular", fill:"#FFFFFF"});
+		//this.load.spritesheet('timer', 'assets/game/sprite/timer.png', 150, 20);
+		this.load.spritesheet('timer', 'assets/img/timer_red.png', 150, 20);
+		this.load.image('points_progress_2', 'assets/img/points_progress_2.png');
+		this.load.image('levels_progress', 'assets/img/levels_progress_2.png');
+		this.load.image('streak_info', 'assets/img/streak_info_2.png');
+		this.load.spritesheet('timer_grey', 'assets/img/timer_grey.png', 150, 20);
+		this.load.spritesheet('timer_yellow', 'assets/img/timer_yellow.png', 150, 20);
+		this.load.spritesheet('timer_pumpkin', 'assets/img/timer_pumpkin.png', 150, 20);
+		this.load.image('alt_icon', 'assets/img/heart.png');
+		this.load.image('next_fish_icon', 'assets/img/fish_icon_2.png');
+		this.load.image('meme_icon', 'assets/img/smiley_face.png');
+		this.load.spritesheet('level_up_progress', 'assets/img/level_up.png', 150, 20);
+		this.load.image('level_up_icon', 'assets/img/level_icon.png');
+		this.load.image('level_up_2', 'assets/img/level_up_2.png');
+		this.load.image('streak_green', 'assets/img/streak_green.png');
+		this.load.image('streak_red', 'assets/img/streak_red_2.png');
+		this.load.image('streak_grey', 'assets/img/streak_grey.png');
+		this.load.image('star_point', 'assets/img/star.png');
+		this.load.atlasJSONArray('info_sprite', 'assets/game/sprite/info_sprite.png', 'assets/game/sprite/info_sprite.json');
+		
 
 		this.load.image('diamond', 'assets/img/diamond.png');
 
@@ -12868,6 +15269,253 @@ var ModalUnlockedPageComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__["UserProfileService"]])
     ], ModalUnlockedPageComponent);
     return ModalUnlockedPageComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/incentive/aquarium/previews/fishbowl/fishbowl.component.css":
+/*!*****************************************************************************!*\
+  !*** ./src/app/incentive/aquarium/previews/fishbowl/fishbowl.component.css ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".new-background-color{\n    --background: #005486;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaW5jZW50aXZlL2FxdWFyaXVtL3ByZXZpZXdzL2Zpc2hib3dsL2Zpc2hib3dsLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxxQkFBcUI7QUFDekIiLCJmaWxlIjoic3JjL2FwcC9pbmNlbnRpdmUvYXF1YXJpdW0vcHJldmlld3MvZmlzaGJvd2wvZmlzaGJvd2wuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5uZXctYmFja2dyb3VuZC1jb2xvcntcbiAgICAtLWJhY2tncm91bmQ6ICMwMDU0ODY7XG59Il19 */"
+
+/***/ }),
+
+/***/ "./src/app/incentive/aquarium/previews/fishbowl/fishbowl.component.ts":
+/*!****************************************************************************!*\
+  !*** ./src/app/incentive/aquarium/previews/fishbowl/fishbowl.component.ts ***!
+  \****************************************************************************/
+/*! exports provided: FishbowlComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FishbowlComponent", function() { return FishbowlComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
+
+var FishbowlComponent = /** @class */ (function () {
+    function FishbowlComponent(menuCtrl) {
+        this.menuCtrl = menuCtrl;
+    }
+    FishbowlComponent.prototype.ngOnInit = function () {
+        this.menuCtrl.close();
+    };
+    FishbowlComponent.ctorParameters = function () { return [
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"] }
+    ]; };
+    FishbowlComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-fishbowl',
+            template: __webpack_require__(/*! raw-loader!./fishbowl.component.html */ "./node_modules/raw-loader/index.js!./src/app/incentive/aquarium/previews/fishbowl/fishbowl.component.html"),
+            styles: [__webpack_require__(/*! ./fishbowl.component.css */ "./src/app/incentive/aquarium/previews/fishbowl/fishbowl.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"]])
+    ], FishbowlComponent);
+    return FishbowlComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/incentive/aquarium/previews/rainforest/rainforest.component.css":
+/*!*********************************************************************************!*\
+  !*** ./src/app/incentive/aquarium/previews/rainforest/rainforest.component.css ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".new-background-color{\n    --background: #005486;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaW5jZW50aXZlL2FxdWFyaXVtL3ByZXZpZXdzL3JhaW5mb3Jlc3QvcmFpbmZvcmVzdC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0kscUJBQXFCO0FBQ3pCIiwiZmlsZSI6InNyYy9hcHAvaW5jZW50aXZlL2FxdWFyaXVtL3ByZXZpZXdzL3JhaW5mb3Jlc3QvcmFpbmZvcmVzdC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5ldy1iYWNrZ3JvdW5kLWNvbG9ye1xuICAgIC0tYmFja2dyb3VuZDogIzAwNTQ4Njtcbn0iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/incentive/aquarium/previews/rainforest/rainforest.component.ts":
+/*!********************************************************************************!*\
+  !*** ./src/app/incentive/aquarium/previews/rainforest/rainforest.component.ts ***!
+  \********************************************************************************/
+/*! exports provided: RainforestComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RainforestComponent", function() { return RainforestComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _demo_aquarium_demo_aquarium_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../demo-aquarium/demo-aquarium.component */ "./src/app/incentive/aquarium/demo-aquarium/demo-aquarium.component.ts");
+
+
+
+
+var RainforestComponent = /** @class */ (function () {
+    function RainforestComponent(menuCtrl, navController) {
+        this.menuCtrl = menuCtrl;
+        this.navController = navController;
+    }
+    RainforestComponent.prototype.ngOnInit = function () {
+        this.menuCtrl.close();
+    };
+    RainforestComponent.prototype.goHome = function () {
+        /*
+        this.child.ionViewDidLeaveFunction();
+        // Create an Observable that will publish a value on an interval
+        const secondsCounter2 = interval(1000).subscribe(n =>{
+          console.log(`It's been ${n} seconds since subscribing!`);
+          secondsCounter2.unsubscribe();
+         
+        });
+        */
+        this.navController.navigateRoot(['/home']);
+    };
+    RainforestComponent.prototype.ionViewDidEnter = function () {
+        console.log("aqarium.ts --- ionViewDidEnter");
+        //this.child.loadFunction();
+    };
+    RainforestComponent.prototype.ngAfterViewInit = function () {
+        /*
+        console.log("aqarium.ts --- ngAfterInit");
+        console.log("aqarium.ts --- " + this.child);
+        //this.child.loadFunction();
+    
+        // Create an Observable that will publish a value on an interval
+        const secondsCounter = interval(1000).subscribe(n =>{
+          console.log(`It's been ${n} seconds since subscribing!`);
+          secondsCounter.unsubscribe();
+          this.child.loadFunction();
+        });
+        */
+    };
+    RainforestComponent.ctorParameters = function () { return [
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"] }
+    ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_demo_aquarium_demo_aquarium_component__WEBPACK_IMPORTED_MODULE_3__["DemoAquariumComponent"], { static: true }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], RainforestComponent.prototype, "child", void 0);
+    RainforestComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-rainforest',
+            template: __webpack_require__(/*! raw-loader!./rainforest.component.html */ "./node_modules/raw-loader/index.js!./src/app/incentive/aquarium/previews/rainforest/rainforest.component.html"),
+            styles: [__webpack_require__(/*! ./rainforest.component.css */ "./src/app/incentive/aquarium/previews/rainforest/rainforest.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"]])
+    ], RainforestComponent);
+    return RainforestComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/incentive/aquarium/previews/sea/sea.component.css":
+/*!*******************************************************************!*\
+  !*** ./src/app/incentive/aquarium/previews/sea/sea.component.css ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".new-background-color{\n    --background: #005486;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaW5jZW50aXZlL2FxdWFyaXVtL3ByZXZpZXdzL3NlYS9zZWEuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHFCQUFxQjtBQUN6QiIsImZpbGUiOiJzcmMvYXBwL2luY2VudGl2ZS9hcXVhcml1bS9wcmV2aWV3cy9zZWEvc2VhLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubmV3LWJhY2tncm91bmQtY29sb3J7XG4gICAgLS1iYWNrZ3JvdW5kOiAjMDA1NDg2O1xufSJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/incentive/aquarium/previews/sea/sea.component.ts":
+/*!******************************************************************!*\
+  !*** ./src/app/incentive/aquarium/previews/sea/sea.component.ts ***!
+  \******************************************************************/
+/*! exports provided: SeaComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SeaComponent", function() { return SeaComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
+
+var SeaComponent = /** @class */ (function () {
+    function SeaComponent(menuCtrl) {
+        this.menuCtrl = menuCtrl;
+    }
+    SeaComponent.prototype.ngOnInit = function () {
+        this.menuCtrl.close();
+    };
+    SeaComponent.ctorParameters = function () { return [
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"] }
+    ]; };
+    SeaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-sea',
+            template: __webpack_require__(/*! raw-loader!./sea.component.html */ "./node_modules/raw-loader/index.js!./src/app/incentive/aquarium/previews/sea/sea.component.html"),
+            styles: [__webpack_require__(/*! ./sea.component.css */ "./src/app/incentive/aquarium/previews/sea/sea.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"]])
+    ], SeaComponent);
+    return SeaComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/incentive/aquarium/previews/tundra/tundra.component.css":
+/*!*************************************************************************!*\
+  !*** ./src/app/incentive/aquarium/previews/tundra/tundra.component.css ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".new-background-color{\n    --background: #005486;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaW5jZW50aXZlL2FxdWFyaXVtL3ByZXZpZXdzL3R1bmRyYS90dW5kcmEuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHFCQUFxQjtBQUN6QiIsImZpbGUiOiJzcmMvYXBwL2luY2VudGl2ZS9hcXVhcml1bS9wcmV2aWV3cy90dW5kcmEvdHVuZHJhLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubmV3LWJhY2tncm91bmQtY29sb3J7XG4gICAgLS1iYWNrZ3JvdW5kOiAjMDA1NDg2O1xufSJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/incentive/aquarium/previews/tundra/tundra.component.ts":
+/*!************************************************************************!*\
+  !*** ./src/app/incentive/aquarium/previews/tundra/tundra.component.ts ***!
+  \************************************************************************/
+/*! exports provided: TundraComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TundraComponent", function() { return TundraComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
+
+var TundraComponent = /** @class */ (function () {
+    function TundraComponent(menuCtrl) {
+        this.menuCtrl = menuCtrl;
+    }
+    TundraComponent.prototype.ngOnInit = function () {
+        this.menuCtrl.close();
+    };
+    TundraComponent.ctorParameters = function () { return [
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"] }
+    ]; };
+    TundraComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-tundra',
+            template: __webpack_require__(/*! raw-loader!./tundra.component.html */ "./node_modules/raw-loader/index.js!./src/app/incentive/aquarium/previews/tundra/tundra.component.html"),
+            styles: [__webpack_require__(/*! ./tundra.component.css */ "./src/app/incentive/aquarium/previews/tundra/tundra.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"]])
+    ], TundraComponent);
+    return TundraComponent;
 }());
 
 
@@ -13756,6 +16404,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./reducers */ "./src/app/incentive/reducers/index.ts");
 /* harmony import */ var _unlocked_memes_unlocked_memes_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./unlocked-memes/unlocked-memes.component */ "./src/app/incentive/unlocked-memes/unlocked-memes.component.ts");
 /* harmony import */ var _unlocked_altuistic_messages_unlocked_altuistic_messages_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./unlocked-altuistic-messages/unlocked-altuistic-messages.component */ "./src/app/incentive/unlocked-altuistic-messages/unlocked-altuistic-messages.component.ts");
+/* harmony import */ var _aquarium_previews_fishbowl_fishbowl_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./aquarium/previews/fishbowl/fishbowl.component */ "./src/app/incentive/aquarium/previews/fishbowl/fishbowl.component.ts");
+/* harmony import */ var _aquarium_previews_sea_sea_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./aquarium/previews/sea/sea.component */ "./src/app/incentive/aquarium/previews/sea/sea.component.ts");
+/* harmony import */ var _aquarium_previews_tundra_tundra_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./aquarium/previews/tundra/tundra.component */ "./src/app/incentive/aquarium/previews/tundra/tundra.component.ts");
+/* harmony import */ var _unlocked_inspirational_quotes_unlocked_inspirational_quotes_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./unlocked-inspirational-quotes/unlocked-inspirational-quotes.component */ "./src/app/incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component.ts");
 
 
 
@@ -13774,6 +16426,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
 var routes = [
     //  { path: 'award', component: AwardComponent },
     { path: 'award-memes', component: _award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__["AwardMemesComponent"] },
@@ -13783,7 +16439,7 @@ var IncentiveModule = /** @class */ (function () {
     }
     IncentiveModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__["AwardMemesComponent"], _award_altruism_award_altruism_component__WEBPACK_IMPORTED_MODULE_7__["AwardAltruismComponent"], _treasurechest_treasurechest_component__WEBPACK_IMPORTED_MODULE_6__["TreasurechestComponent"], _aquarium_modal_unlocked_page_modal_unlocked_page_component__WEBPACK_IMPORTED_MODULE_8__["ModalUnlockedPageComponent"], _info_page_info_page_component__WEBPACK_IMPORTED_MODULE_9__["InfoPageComponent"], _unlocked_memes_unlocked_memes_component__WEBPACK_IMPORTED_MODULE_12__["UnlockedMemesComponent"], _unlocked_altuistic_messages_unlocked_altuistic_messages_component__WEBPACK_IMPORTED_MODULE_13__["UnlockedAltuisticMessagesComponent"]],
+            declarations: [_award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__["AwardMemesComponent"], _award_altruism_award_altruism_component__WEBPACK_IMPORTED_MODULE_7__["AwardAltruismComponent"], _treasurechest_treasurechest_component__WEBPACK_IMPORTED_MODULE_6__["TreasurechestComponent"], _aquarium_modal_unlocked_page_modal_unlocked_page_component__WEBPACK_IMPORTED_MODULE_8__["ModalUnlockedPageComponent"], _info_page_info_page_component__WEBPACK_IMPORTED_MODULE_9__["InfoPageComponent"], _unlocked_memes_unlocked_memes_component__WEBPACK_IMPORTED_MODULE_12__["UnlockedMemesComponent"], _unlocked_altuistic_messages_unlocked_altuistic_messages_component__WEBPACK_IMPORTED_MODULE_13__["UnlockedAltuisticMessagesComponent"], _aquarium_previews_fishbowl_fishbowl_component__WEBPACK_IMPORTED_MODULE_14__["FishbowlComponent"], _aquarium_previews_sea_sea_component__WEBPACK_IMPORTED_MODULE_15__["SeaComponent"], _aquarium_previews_tundra_tundra_component__WEBPACK_IMPORTED_MODULE_16__["TundraComponent"], _unlocked_inspirational_quotes_unlocked_inspirational_quotes_component__WEBPACK_IMPORTED_MODULE_17__["UnlockedInspirationalQuotesComponent"]],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["IonicModule"].forRoot(),
@@ -13860,19 +16516,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InfoPageComponent", function() { return InfoPageComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
 
 
 var InfoPageComponent = /** @class */ (function () {
-    function InfoPageComponent() {
+    function InfoPageComponent(menuCtrl) {
+        this.menuCtrl = menuCtrl;
     }
-    InfoPageComponent.prototype.ngOnInit = function () { };
+    InfoPageComponent.prototype.ngOnInit = function () {
+        this.menuCtrl.close();
+    };
+    InfoPageComponent.ctorParameters = function () { return [
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"] }
+    ]; };
     InfoPageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-info-page',
             template: __webpack_require__(/*! raw-loader!./info-page.component.html */ "./node_modules/raw-loader/index.js!./src/app/incentive/info-page/info-page.component.html"),
             styles: [__webpack_require__(/*! ./info-page.component.scss */ "./src/app/incentive/info-page/info-page.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"]])
     ], InfoPageComponent);
     return InfoPageComponent;
 }());
@@ -14562,6 +17226,101 @@ var UnlockedAltuisticMessagesComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], UnlockedAltuisticMessagesComponent);
     return UnlockedAltuisticMessagesComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component.css":
+/*!*****************************************************************************************************!*\
+  !*** ./src/app/incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component.css ***!
+  \*****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".new-background-color{\n    --background: #005486;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaW5jZW50aXZlL3VubG9ja2VkLWluc3BpcmF0aW9uYWwtcXVvdGVzL3VubG9ja2VkLWluc3BpcmF0aW9uYWwtcXVvdGVzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxxQkFBcUI7QUFDekIiLCJmaWxlIjoic3JjL2FwcC9pbmNlbnRpdmUvdW5sb2NrZWQtaW5zcGlyYXRpb25hbC1xdW90ZXMvdW5sb2NrZWQtaW5zcGlyYXRpb25hbC1xdW90ZXMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5uZXctYmFja2dyb3VuZC1jb2xvcntcbiAgICAtLWJhY2tncm91bmQ6ICMwMDU0ODY7XG59Il19 */"
+
+/***/ }),
+
+/***/ "./src/app/incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component.ts":
+/*!****************************************************************************************************!*\
+  !*** ./src/app/incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component.ts ***!
+  \****************************************************************************************************/
+/*! exports provided: UnlockedInspirationalQuotesComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UnlockedInspirationalQuotesComponent", function() { return UnlockedInspirationalQuotesComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../environments/environment */ "./src/environments/environment.ts");
+
+
+
+
+
+var UnlockedInspirationalQuotesComponent = /** @class */ (function () {
+    function UnlockedInspirationalQuotesComponent(userProfileService, httpClient) {
+        this.userProfileService = userProfileService;
+        this.httpClient = httpClient;
+        this.unlockedInspirationalQuotes = [];
+    }
+    Object.defineProperty(UnlockedInspirationalQuotesComponent.prototype, "username", {
+        get: function () {
+            if (this.userProfileService == undefined)
+                return "test";
+            else {
+                return this.userProfileService.username;
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    UnlockedInspirationalQuotesComponent.prototype.ngOnInit = function () {
+    };
+    UnlockedInspirationalQuotesComponent.prototype.ionViewDidEnter = function () {
+        //pre-populate
+        this.unlockedInspirationalQuotes = JSON.parse(window.localStorage.getItem("saved_quotes") || '[]');
+        this.getInspirationalQuotes();
+    };
+    UnlockedInspirationalQuotesComponent.prototype.getInspirationalQuotes = function () {
+        var _this = this;
+        var flaskServerAPIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].flaskServerForIncentives;
+        this.httpClient.post(flaskServerAPIEndpoint + '/get-inspirational-quote', { "user_id": this.username }).subscribe({
+            next: function (data) {
+                //console.log("Inspirational quote: " + JSON.stringify(data));
+                var json_data = JSON.parse(JSON.stringify(data));
+                _this.unlockedInspirationalQuotes = [];
+                for (var i = 0; i < json_data.length; i++) {
+                    _this.unlockedInspirationalQuotes.push({
+                        "image": "https://aws-website-sara-ubicomp-h28yp.s3.amazonaws.com/sarapp/engagement_images/" + json_data[i].image,
+                        "author": json_data[i].author,
+                        "quote_text": json_data[i].quote_text
+                    });
+                }
+                window.localStorage.setItem('saved_quotes', JSON.stringify(_this.unlockedInspirationalQuotes));
+            },
+            error: function (error) { return console.error('There was an error!', error); }
+        });
+    };
+    UnlockedInspirationalQuotesComponent.ctorParameters = function () { return [
+        { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_2__["UserProfileService"] },
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] }
+    ]; };
+    UnlockedInspirationalQuotesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-unlocked-inspirational-quotes',
+            template: __webpack_require__(/*! raw-loader!./unlocked-inspirational-quotes.component.html */ "./node_modules/raw-loader/index.js!./src/app/incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component.html"),
+            styles: [__webpack_require__(/*! ./unlocked-inspirational-quotes.component.css */ "./src/app/incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_2__["UserProfileService"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+    ], UnlockedInspirationalQuotesComponent);
+    return UnlockedInspirationalQuotesComponent;
 }());
 
 
@@ -15574,12 +18333,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AyaSampleSurveyComponent = /** @class */ (function () {
-    function AyaSampleSurveyComponent(userProfileService, db) {
+    function AyaSampleSurveyComponent(userProfileService, 
+    //private mobileAccessibility: MobileAccessibility,
+    db) {
         this.userProfileService = userProfileService;
         this.db = db;
         this.pageTitle = "Survey_aya";
     }
     AyaSampleSurveyComponent.prototype.ngOnInit = function () {
+        //this.mobileAccessibility.usePreferredTextZoom(false);
     };
     AyaSampleSurveyComponent.prototype.ionViewDidEnter = function () {
         var _this = this;
@@ -15597,6 +18359,7 @@ var AyaSampleSurveyComponent = /** @class */ (function () {
                 _this.db.addTrack(_this.pageTitle, "Leave", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
             }
         });
+        //this.mobileAccessibility.usePreferredTextZoom(true);
     };
     AyaSampleSurveyComponent.ctorParameters = function () { return [
         { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__["UserProfileService"] },
@@ -15856,7 +18619,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
                             case 0: return [4 /*yield*/, this.alertCtrl.create({
                                     //<div style="font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center">Thank you for completing the survey. You have unlocked a meme.</div>
                                     //header: '<div style="line-height: 25px;padding-bottom:10px;text-align:center">Daily survey unavilable</div>',
-                                    header: 'Daily survey unavilable',
+                                    header: 'Oops! You missed a question',
                                     //subHeader: "Survey is not avaibable!",
                                     message: alertMessage,
                                     //defined in theme/variables.scss
@@ -16358,12 +19121,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var SampleSurveyComponent = /** @class */ (function () {
-    function SampleSurveyComponent(userProfileService, db) {
+    function SampleSurveyComponent(userProfileService, 
+    //private mobileAccessibility: MobileAccessibility,
+    db) {
         this.userProfileService = userProfileService;
         this.db = db;
         this.pageTitle = "Survey_caregiver";
     }
     SampleSurveyComponent.prototype.ngOnInit = function () {
+        //this.mobileAccessibility.usePreferredTextZoom(false);
     };
     SampleSurveyComponent.prototype.ionViewDidEnter = function () {
         var _this = this;
@@ -16381,6 +19147,7 @@ var SampleSurveyComponent = /** @class */ (function () {
                 _this.db.addTrack(_this.pageTitle, "Leave", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
             }
         });
+        //this.mobileAccessibility.usePreferredTextZoom(true);
     };
     SampleSurveyComponent.ctorParameters = function () { return [
         { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__["UserProfileService"] },
@@ -16441,6 +19208,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
+
 
 
 
@@ -16474,7 +19243,8 @@ var SurveyEffects = /** @class */ (function () {
                 error: error => console.error('There was an error!', error)
                 });
                 */
-                _this.httpClient.post("http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/store-survey-completed", body)
+                var flaskServerAPIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_9__["environment"].flaskServerForIncentives;
+                _this.httpClient.post(flaskServerAPIEndpoint + "/store-survey-completed", body)
                     .subscribe({
                     next: function (data) { return console.log("--survey_completed-- " + JSON.stringify(data)); },
                     error: function (error) { return console.error('There was an error!', error); }
@@ -16647,6 +19417,11 @@ var AuthComponent = /** @class */ (function () {
     //   this.isLoginMode = !this.isLoginMode;
     // }
     AuthComponent.prototype.ngOnInit = function () {
+        console.log("in auth.component - ngOnInit");
+        if (this.authService.isLoggedIn()) {
+            console.log("auth.component.ts - ngOnInit - is logged in");
+            this.router.navigate(['home']);
+        }
         console.log(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].userServer);
     };
     //login button was clicked
@@ -16676,30 +19451,18 @@ var AuthComponent = /** @class */ (function () {
                 // then below we can get the OneSignal Player id when UserProfile has been intialized 
                 _this.userSub = _this.userProfileService.initializeObs()
                     .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["tap"])(function () {
-                    _this.oneSignal.getIds().then(function (id) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
-                        var playerId;
-                        return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                            playerId = id.userId;
-                            this.userProfileService.userProfile.oneSignalPlayerId = id.userId;
-                            console.log("onesignal player id: " + id);
-                            this.userProfileService.saveProfileToDevice();
-                            this.userProfileService.saveToServer();
-                            return [2 /*return*/];
-                        });
-                    }); });
+                    _this.userProfileService.addOneSignalPlayerId();
                 }))
                     .subscribe(function () {
-                    //this.router.navigateByUrl('/home');
+                    console.log("in subscribe - got profiles init");
                     _this.router.navigate(['home']);
-                    _this.isLoading = false;
+                    console.log("in subscribe - got profiles init - post navigate to home");
                 });
             }
             else {
+                console.log("doesn't have access token");
                 _this.isLoading = false;
                 _this.authService.loggedInUser.next(null);
-                //for testing purposes.
-                // this.router.navigateByUrl('/home');
-                // console.log("log in did not succeed");
                 if (resData.hasOwnProperty('message')) {
                     _this.error = resData.message;
                 }
@@ -16707,7 +19470,6 @@ var AuthComponent = /** @class */ (function () {
                     _this.error = "Unknown error\n" + JSON.stringify(resData);
                 }
             }
-            // console.log(resData);
         }, function (errorMessage) {
             console.log(errorMessage);
             _this.error = errorMessage;
@@ -16909,6 +19671,10 @@ var AuthService = /** @class */ (function () {
     };
     AuthService.prototype.handleError = function (errorRes) {
         console.log("auth.service.ts - handleError method - begin");
+        if (errorRes.message.startsWith('Http failure response for')) {
+            var errorMessage_1 = 'You appear to be offline or unable to reach ' + errorRes.url;
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(errorMessage_1);
+        }
         var errorMessage = 'An unknown error occurred!!!! \n' + JSON.stringify(errorRes);
         if (!errorRes.error || !errorRes.error.error) {
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(errorMessage);
@@ -17205,6 +19971,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic-native/onesignal/ngx */ "./node_modules/@ionic-native/onesignal/ngx/index.js");
+/* harmony import */ var _storage_network_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../storage/network.service */ "./src/app/storage/network.service.ts");
+
+
 
 
 
@@ -17214,17 +19984,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var UserProfileService = /** @class */ (function () {
-    function UserProfileService(http) {
+    function UserProfileService(http, networkSvc, oneSignal) {
         this.http = http;
+        this.networkSvc = networkSvc;
+        this.oneSignal = oneSignal;
         this.me = this;
+        this.saveToServerRequestInQueue = false;
         this.initialLoading = new rxjs__WEBPACK_IMPORTED_MODULE_5__["BehaviorSubject"](true);
     }
-    //returns Observable that we can subsrbie to so as to trigger an action after 
-    //user profile has been initialized
+    //returns Observable that we can subscribed to so as to trigger an action after 
+    //user profiles have been initialized
     UserProfileService.prototype.initializeObs = function () {
         var _this = this;
-        //get profile from server
-        // 
+        //get profiles from server
         console.log("user-profile.service.ts - initializeObs method");
         var getProfile = this.http.post(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].userServer + '/userinfo', { "empty": "empty" });
         var getProfileFixed = this.http.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].userServer + '/userinfofixed');
@@ -17236,9 +20008,9 @@ var UserProfileService = /** @class */ (function () {
             var response2 = response[1];
             console.log("initializeObs response1: " + JSON.stringify(response1));
             console.log("initializeObs response2: " + JSON.stringify(response2));
-            console.log("initializeOb - response1.username: " + response1.username);
-            console.log("initializeOb - !response1.username: " + !response1.username);
-            console.log("initializeOb - !response1.hasOwnProperty('username'): " + !response1.hasOwnProperty('username'));
+            // console.log("initializeOb - response1.username: " + response1.username);
+            // console.log("initializeOb - !response1.username: " + !response1.username);
+            // console.log("initializeOb - !response1.hasOwnProperty('username'): " + !response1.hasOwnProperty('username'));
             if (!response1.username || !response1.hasOwnProperty('username')) {
                 console.log("blank or empty user_name");
                 var username = localStorage.getItem('loggedInUser');
@@ -17257,6 +20029,64 @@ var UserProfileService = /** @class */ (function () {
             _this.saveProfileToDevice();
             _this.initialLoading.next(false);
         }));
+    };
+    UserProfileService.prototype.fetchUserProfile = function () {
+        var _this = this;
+        //get userProfile from server
+        console.log("user-profile.service.ts - fetchUserProfile method");
+        var getProfile = this.http.post(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].userServer + '/userinfo', { "empty": "empty" });
+        return getProfile
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["tap"])(function (response) {
+            var serverCopyNewer = false;
+            console.log("fetchUserProfile response: " + JSON.stringify(response));
+            // check if server copy is newer
+            if (response.hasOwnProperty("lastupdate") && response.lastupdate > _this.userProfile.lastupdate) {
+                _this.userProfile = response;
+                if (_this.userProfile.hasOwnProperty("AwardDollarDates")) {
+                    localStorage.setItem("AwardDollarDates", JSON.stringify(_this.userProfile.AwardDollarDates));
+                }
+                localStorage.setItem("AwardDollar", JSON.stringify(_this.userProfile.dollars));
+                _this.userProfileFixed = response;
+                _this.saveProfileToDevice();
+                serverCopyNewer = true;
+            }
+            else {
+                serverCopyNewer = false;
+            }
+            return { "serverCopyNewer": serverCopyNewer };
+        }));
+    };
+    UserProfileService.prototype.fetchUserProfileFixed = function () {
+        var _this = this;
+        //get userProfileFixed from server
+        console.log("user-profile.service.ts - fetchUserProfileFixed method");
+        var getProfileFixed = this.http.get(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].userServer + '/userinfofixed');
+        return getProfileFixed
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["tap"])(function (response) {
+            var changed = false;
+            console.log("fetchUserProfileFixed response: " + JSON.stringify(response));
+            var receivedUserFixedProfile = response;
+            if (receivedUserFixedProfile.isActive !== _this.userProfileFixed.isActive) {
+                _this.userProfileFixed = response;
+                _this.saveProfileToDevice();
+                changed = true;
+            }
+            return { "changed": changed };
+        }));
+    };
+    UserProfileService.prototype.addOneSignalPlayerId = function () {
+        var _this = this;
+        this.oneSignal.getIds().then(function (id) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+            var playerId;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                playerId = id.userId;
+                this.userProfile.oneSignalPlayerId = id.userId;
+                console.log("onesignal player id: " + id);
+                this.saveProfileToDevice();
+                this.saveToServer();
+                return [2 /*return*/];
+            });
+        }); });
     };
     /*
     addReinforcementData returns true if successful at adding the element (it doesn't already exist for the given date)
@@ -17379,14 +20209,34 @@ var UserProfileService = /** @class */ (function () {
         configurable: true
     });
     UserProfileService.prototype.saveToServer = function () {
-        this.loadProfileFromDevice();
-        var userProfile = this.userProfile;
-        this.http
-            .post(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].userServer + '/setuserinfo', userProfile)
-            .subscribe(function (response) {
-            console.log(response);
-        });
-        console.log("saveToServer userProfile: " + JSON.stringify(userProfile));
+        var _this = this;
+        this.saveToServerRequestInQueue = true;
+        if (this.networkSvc.getCurrentNetworkStatus() == _storage_network_service__WEBPACK_IMPORTED_MODULE_9__["ConnectionStatus"].Online) {
+            this.loadProfileFromDevice();
+            var userProfile = this.userProfile;
+            this.http
+                .post(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].userServer + '/setuserinfo', userProfile)
+                .subscribe(function (response) {
+                console.log(response);
+                _this.saveToServerRequestInQueue = false;
+            });
+        }
+        else {
+            this.saveToServerSub = this.networkSvc.onNetworkChange().subscribe(function () {
+                if (_this.networkSvc.getCurrentNetworkStatus() == _storage_network_service__WEBPACK_IMPORTED_MODULE_9__["ConnectionStatus"].Online) {
+                    _this.loadProfileFromDevice();
+                    var userProfile = _this.userProfile;
+                    _this.http
+                        .post(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].userServer + '/setuserinfo', userProfile)
+                        .subscribe(function (response) {
+                        console.log(response);
+                        _this.saveToServerRequestInQueue = false;
+                        _this.saveToServerSub.unsubscribe();
+                    });
+                }
+            });
+        }
+        // console.log("saveToServer userProfile: " + JSON.stringify(userProfile));
     };
     UserProfileService.prototype.retrieve = function (userID) {
     };
@@ -17415,6 +20265,7 @@ var UserProfileService = /** @class */ (function () {
     };
     UserProfileService.prototype.loadProfileFromDevice = function () {
         this.userProfile = JSON.parse(localStorage.getItem('userProfile'));
+        this.userProfileFixed = JSON.parse(localStorage.getItem('userProfileFixed'));
         //temporarily commenting out below line (see other instance for more info)
         // this.userProfileFixed = JSON.parse(localStorage.getItem('userProfileFixed'));
     };
@@ -17521,13 +20372,17 @@ var UserProfileService = /** @class */ (function () {
         localStorage.removeItem('userProfile');
     };
     UserProfileService.ctorParameters = function () { return [
-        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] }
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] },
+        { type: _storage_network_service__WEBPACK_IMPORTED_MODULE_9__["NetworkService"] },
+        { type: _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_8__["OneSignal"] }
     ]; };
     UserProfileService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"],
+            _storage_network_service__WEBPACK_IMPORTED_MODULE_9__["NetworkService"],
+            _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_8__["OneSignal"]])
     ], UserProfileService);
     return UserProfileService;
 }());
@@ -17620,6 +20475,7 @@ var environment = {
     userServer: "http://adaptsdata.research.chop.edu:5000",
     oneSignalAppId: "f9c4370d-cbcb-4e6f-ab1f-25d1c41b8f3a",
     encyptString: "+Xr?SwA?EJ7m+g$c",
+    flaskServerForIncentives: "http://ec2-54-91-131-166.compute-1.amazonaws.com:56733",
     firebaseConfig: {
         apiKey: "AIzaSyBK_PwjnsC01Q-a-sV7LsA7qIeIhCx4ts0",
         authDomain: "sarav2-6a033.firebaseapp.com",

@@ -1,7 +1,7 @@
 export var environment = {
     production: true,
     userServer: "http://adaptsdata.research.chop.edu:5000",
-    oneSignalAppId: "de3580a2-4aae-42c4-87cf-2c319c2df0c3",
+    oneSignalAppId: "f9c4370d-cbcb-4e6f-ab1f-25d1c41b8f3a",
     firebaseConfig: {
         apiKey: "AIzaSyBK_PwjnsC01Q-a-sV7LsA7qIeIhCx4ts0",
         authDomain: "sarav2-6a033.firebaseapp.com",
@@ -17,15 +17,15 @@ export var environment = {
         containerName: 'mycontainer'
     },
     awsConfig: {
-        bucketName: 'sara-testv',
-        bucketRegion: 'us-east-2',
-        IdentityPoolId: 'us-east-2:c9617754-1d3e-4058-bfa4-d54230cb72cf',
-        accessKeyId: 'AKIA5U5F73RGDIYD6DUQ',
-        secretAccessKey: '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'
+        // CHOP
+        bucketName: 'chop-sara',
+        bucketRegion: 'us-east-1',
+        IdentityPoolId: 'us-east-1:667b1ad5-ccdc-4d90-b94f-300732b55448'
     },
     googleAnalytic: {
         id: 'UA-152399644-1'
-    }
+    },
+    encyptString: "+Xr?SwA?EJ7m+g$c"
     // firebase: {
     //   apiKey: "AIzaSyDM8d1yG2rNPc8AotB0NoN3Q2wMq4HDooo",
     //   authDomain: "adapts-331ee.firebaseapp.com",
