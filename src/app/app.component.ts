@@ -47,8 +47,6 @@ export class AppComponent {
     this.initializeApp();
 
     this.isAYA = true;
-    if(this.userProfileService.isParent == true)
-      this.isAYA = false;
 
     router.events.subscribe(
 			( event: RouterEvent ) : void => {
@@ -139,7 +137,7 @@ export class AppComponent {
     else {
       // not logged in; so do nothing
       // should be routed via the authguard to the login screen
-      // after login occurs we should load the UP and UPF - which happens via the auth.component
+      // after login occurs we should load the 'user-profile' and 'user-profile-fixed' - which happens via the auth.component
     }
 
     this.platform.ready().then(() => {
@@ -157,6 +155,11 @@ export class AppComponent {
 
       this.splashScreen.hide();
       this.oneSignalService.initOneSignal();
+
+      //sidebar update.
+      if((this.userProfileService != undefined)  && (this.userProfileService.isParent == true))
+          this.isAYA = false;
+      
 
     });
     //window.localStorage.setItem("TotalPoints", "0");

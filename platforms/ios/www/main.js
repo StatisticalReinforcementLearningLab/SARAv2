@@ -4790,8 +4790,6 @@ var AppComponent = /** @class */ (function () {
         this.agreeToTerms = JSON.parse(localStorage.getItem("agreeToTerms"));
         this.initializeApp();
         this.isAYA = true;
-        if (this.userProfileService.isParent == true)
-            this.isAYA = false;
         router.events.subscribe(function (event) {
             //this.isShowingRouteLoadIndicator = false;
             var asyncLoadCount = 0;
@@ -4875,7 +4873,7 @@ var AppComponent = /** @class */ (function () {
         else {
             // not logged in; so do nothing
             // should be routed via the authguard to the login screen
-            // after login occurs we should load the UP and UPF - which happens via the auth.component
+            // after login occurs we should load the 'user-profile' and 'user-profile-fixed' - which happens via the auth.component
         }
         this.platform.ready().then(function () {
             //this.statusBar.styleDefault();
@@ -4889,6 +4887,9 @@ var AppComponent = /** @class */ (function () {
             }
             _this.splashScreen.hide();
             _this.oneSignalService.initOneSignal();
+            //sidebar update.
+            if ((_this.userProfileService != undefined) && (_this.userProfileService.isParent == true))
+                _this.isAYA = false;
         });
         //window.localStorage.setItem("TotalPoints", "0");
         // let status bar overlay webview
