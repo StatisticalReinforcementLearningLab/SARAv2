@@ -1,14 +1,19 @@
 
+# To use decrypt.js, need to install package in the same folder as
+# decrypt.js in Command Prompt: npm install crypto-js
+
 import json
 import csv
 import boto3
 import subprocess
 from collections import OrderedDict
 
+#Look at getConfig.py to create config Json file.
 from getConfig import ACCESS_KEY, SECRET_KEY
 
 #print(ACCESS_KEY)
 #print(SECRET_KEY)
+
 #Use Client to access s3 
 client = boto3.client("s3", region_name = "us-east-1",
                            aws_access_key_id=ACCESS_KEY,
