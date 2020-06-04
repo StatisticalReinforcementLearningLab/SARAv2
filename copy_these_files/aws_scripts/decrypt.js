@@ -1,5 +1,5 @@
 
-//Install "crypto-js": npm install crypto-js
+//Install "crypto-js" in Command Prompt: npm install crypto-js 
 
 var CryptoJS = require("crypto-js");
 
