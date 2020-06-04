@@ -1,10 +1,14 @@
 
+# To use decrypt.js, need to install package in the same folder as
+# decrypt.js in Command Prompt: npm install crypto-js
+
 import json
 import csv
 import boto3
 import subprocess
 from collections import OrderedDict
 
+#Look at getConfig.py to create config Json file.
 from getConfig import ACCESS_KEY, SECRET_KEY
 
 #print(ACCESS_KEY)
