@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-i
+
 import * as moment from 'moment';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import { UnlockedIncentives } from '../model/unlocked-incentives';
