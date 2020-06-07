@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
+import { environment } from '../../../environments/environment';
+import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-unlocked-memes',
@@ -8,27 +11,156 @@ import * as moment from 'moment';
 })
 export class UnlockedMemesComponent implements OnInit {
   already_shown_memes: any;
+  list_of_meme_to_display: any;
   unlockedMemeCount: number;
 
-  constructor() { }
+  constructor(private userProfileService: UserProfileService,
+    private httpClient: HttpClient) { 
+  }
+
+  get username(){
+    if(this.userProfileService == undefined)
+      return "test";
+    else{
+      return this.userProfileService.username;
+    }
+  }
 
   ngOnInit() {
   }
 
   ionViewDidEnter(){
     
-    this.already_shown_memes = window.localStorage["already_shown_memes3"];
+    this.already_shown_memes = window.localStorage["already_shown_memes4"];
 
-    if(this.already_shown_memes == undefined)
-        this.already_shown_memes = [{"filename": "assets/memes/4.jpg", "unlock_date": moment().format('MM/DD/YYYY')}]
-    else
-        this.already_shown_memes = JSON.parse(window.localStorage["already_shown_memes3"]);
+    if(this.already_shown_memes == undefined){
+        this.already_shown_memes = {
+            "last_updated": Date.now(),
+            "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
+            "unlocked_memes":[{"filename": "assets/memes/4.jpg", "unlock_date": moment().format('MM/DD/YYYY')}]
+        };
+        window.localStorage["already_shown_memes4"] = JSON.stringify(this.already_shown_memes);
+    }else
+        this.already_shown_memes = JSON.parse(window.localStorage["already_shown_memes4"]);
 
-    this.unlockedMemeCount = this.already_shown_memes.length;
+    if(this.already_shown_memes.unlocked_memes.length == 0){
+          this.already_shown_memes = {
+              "last_updated": Date.now(),
+              "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
+              "unlocked_memes":[{"filename": "assets/memes/4.jpg", "unlock_date": moment().format('MM/DD/YYYY')}]
+          };
+          window.localStorage["already_shown_memes4"] = JSON.stringify(this.already_shown_memes);
+    }
 
-    this.already_shown_memes.reverse();
-    console.log(this.already_shown_memes);
 
+    this.unlockedMemeCount = this.already_shown_memes["unlocked_memes"].length;
+    this.list_of_meme_to_display = this.already_shown_memes["unlocked_memes"];
+
+    this.list_of_meme_to_display.reverse();
+    console.log("already_shown_memes " + JSON.stringify(this.already_shown_memes));
+
+    
+    this.downloadAndUpdateUnlockedMemeList();
   }
+
+  
+  downloadAndUpdateUnlockedMemeList() {
+    
+    var flaskServerAPIEndpoint = environment.flaskServerForIncentives;
+    this.httpClient.post(flaskServerAPIEndpoint + '/get-unlocked-incentive', { "user_id": this.username, "incentive_type": "meme" }).subscribe({
+        next: data => {
+
+          var json_data = JSON.parse(JSON.stringify(data));
+
+          /*
+          
+          Sample of returned data
+
+          {
+            "last_updated": 1591509230223,
+            "last_updated_readable_ts": "June 6th 2020, 10:53:50 pm -07:00",
+            "unlocked_memes": [
+                {
+                    "filename": "assets/memes/4.jpg",
+                    "unlock_date": "06/06/2020"
+                }
+            ]
+          }
+          */
+
+          var lastUpdatedSeverSide = json_data["last_updated"];
+          var lastUpdatedReadableTsSeverSide = json_data["last_updated_readable_ts"];
+          var unlockedMemesServerSide = json_data["unlocked_memes"];
+          console.log("--unlockedMemesServerSide--- " + JSON.stringify(unlockedMemesServerSide));
+
+          var localMemeRecord = JSON.parse(window.localStorage["already_shown_memes4"]);
+          var lastUpdatedLocalStorage = localMemeRecord["last_updated"];
+          var lastUpdatedReadableTsLocalStorage = localMemeRecord["last_updated_readable_ts"];
+          var unlockedMemesLocalStorage = localMemeRecord["unlocked_memes"];
+          console.log("--unlockedMemesLocalStorage--- " + JSON.stringify(unlockedMemesLocalStorage));
+
+
+          //Following code creats a union of unlockedMemesServerSide and unlockedMemesLocalStorage
+          var unionOfLocalAndServer = {};
+          for(var i=0; i < unlockedMemesServerSide.length; i++)
+              unionOfLocalAndServer[unlockedMemesServerSide[i]["filename"]] = unlockedMemesServerSide[i];
+          for(var i=0; i < unlockedMemesLocalStorage.length; i++)
+              unionOfLocalAndServer[unlockedMemesLocalStorage[i]["filename"]] = unlockedMemesLocalStorage[i];
+
+          console.log("--unionOfLocalAndServer--- " + JSON.stringify(unionOfLocalAndServer));
+          var res = []
+          for (var k in unionOfLocalAndServer) {
+              res.push(unionOfLocalAndServer[k]);
+          }
+          this.list_of_meme_to_display = res.reverse();
+          this.unlockedMemeCount = res.length;
+
+
+          localMemeRecord["unlocked_memes"] = this.list_of_meme_to_display;
+          localMemeRecord["last_updated"] = Date.now();
+          localMemeRecord["last_updated_readable_ts"] = moment().format("MMMM Do YYYY, h:mm:ss a Z");
+          window.localStorage["already_shown_memes4"] = JSON.stringify(localMemeRecord);
+
+          console.log("--localMemeRecord--- " + JSON.stringify(localMemeRecord));
+          //
+          this.uploadCurrentlyUnlockedMemeList(localMemeRecord);
+        },
+        error: error => console.error('There was an error!', error)
+    });
+  }
+  
+
+  uploadCurrentlyUnlockedMemeList(already_shown_memes){
+
+    /*
+      {
+        "user_id": "test",
+        "incentiveString": "test",
+        "whenInserted": "test",
+        "whenInsertedReadableTs": 1234,
+        "incentiveType": "test"
+      }
+    */
+
+    var username = this.userProfileService.username;
+    var currentTimeTs = Date.now();
+    var currentTimeReadableTs = moment().format("MMMM Do YYYY, h:mm:ss a Z");
+    const headers = { "Content-Type": "application/json;charset=UTF-8"};
+    const body = {
+                    "user_id": username, 
+                    "whenInserted": currentTimeTs, 
+                    "whenInsertedReadableTs": currentTimeReadableTs,
+                    "incentiveType": "meme",
+                    "incentiveString": JSON.stringify(already_shown_memes)
+                };
+ 
+    var flaskServerAPIEndpoint = environment.flaskServerForIncentives;
+    this.httpClient.post(flaskServerAPIEndpoint + "/store-unlocked-incentive", body)
+      .subscribe({
+        next: data => console.log("--unlocked_meme-- " + JSON.stringify(data)),
+        error: error => console.error('There was an error!', error)
+    });
+  }
+
 
 }
