@@ -64,7 +64,7 @@ export class UnlockedMemesComponent implements OnInit {
   }
 
   
-  downloadAndUpdateUnlockedMemeList() {
+  async downloadAndUpdateUnlockedMemeList() {
     
     var flaskServerAPIEndpoint = environment.flaskServerForIncentives;
     this.httpClient.post(flaskServerAPIEndpoint + '/get-unlocked-incentive', { "user_id": this.username, "incentive_type": "meme" }).subscribe({
@@ -88,10 +88,20 @@ export class UnlockedMemesComponent implements OnInit {
           }
           */
 
-          var lastUpdatedSeverSide = json_data["last_updated"];
-          var lastUpdatedReadableTsSeverSide = json_data["last_updated_readable_ts"];
-          var unlockedMemesServerSide = json_data["unlocked_memes"];
-          console.log("--unlockedMemesServerSide--- " + JSON.stringify(unlockedMemesServerSide));
+          var lastUpdatedSeverSide: number;
+          var lastUpdatedReadableTsSeverSide: any;
+          var unlockedMemesServerSide: any;
+          if("last_updated" in json_data){
+              lastUpdatedSeverSide = json_data["last_updated"];
+              lastUpdatedReadableTsSeverSide = json_data["last_updated_readable_ts"];
+              unlockedMemesServerSide = json_data["unlocked_memes"];
+              console.log("--unlockedMemesServerSide--- " + JSON.stringify(unlockedMemesServerSide));
+          }else{
+              lastUpdatedSeverSide = -1;
+              lastUpdatedReadableTsSeverSide = -1;
+              unlockedMemesServerSide = [];
+              console.log("--unlockedMemesServerSide--- " + JSON.stringify(unlockedMemesServerSide));
+          }
 
           var localMemeRecord = JSON.parse(window.localStorage["already_shown_memes4"]);
           var lastUpdatedLocalStorage = localMemeRecord["last_updated"];
