@@ -17,6 +17,7 @@ export class AwardDollarService {
     
     getCurrentlyEarnedDollars(){
         /*
+        *  
         *  load current dollar amount user earned from local storage, 
         *  and if "undefined" (i.e.,user likely didn't earn anything) then assign value to zero.
         * 
@@ -38,7 +39,8 @@ export class AwardDollarService {
         
         /*
         *  
-        * Called after survey is completed. 
+        * Called after survey is completed.
+        * Gives participants money, based on three cretia.
         *  
         * Returns the total amount user has currently earned in total amount.
         * 
