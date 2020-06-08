@@ -95,15 +95,21 @@ export class AwardMemesComponent implements OnInit {
     //console.log('Meme suffled: ' + JSON.stringify(this.meme_data));
     var picked_meme = this.pick_meme(this.meme_data);
     
-    var already_shown = window.localStorage["already_shown_memes3"];
+    var already_shown = window.localStorage["already_shown_memes4"];
     if(already_shown == undefined)
-        already_shown = [{"filename": "assets/memes/4.jpg", "unlock_date": moment().format('MM/DD/YYYY')}]
+        already_shown = {
+          "last_updated": Date.now(),
+          "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
+          "unlocked_memes":[{"filename": "assets/memes/4.jpg", "unlock_date": moment().format('MM/DD/YYYY')}]
+        };
     else
-        already_shown = JSON.parse(window.localStorage["already_shown_memes3"]);
+        already_shown = JSON.parse(window.localStorage["already_shown_memes4"]);
 
     console.log("already_shown: " + already_shown);
-    already_shown.push({"filename": "assets/memes/"+picked_meme[0]["filename"], "unlock_date": moment().format('MM/DD/YYYY')});
-    window.localStorage["already_shown_memes3"] = JSON.stringify(already_shown);
+    already_shown["last_updated"] = Date.now();
+    already_shown["last_updated_readable_ts"] = moment().format("MMMM Do YYYY, h:mm:ss a Z");
+    already_shown["unlocked_memes"].push({"filename": "assets/memes/"+picked_meme[0]["filename"], "unlock_date": moment().format('MM/DD/YYYY')});
+    window.localStorage["already_shown_memes4"] = JSON.stringify(already_shown);
 
 
     this.whichImage = "./assets/memes/"+picked_meme[0]["filename"];

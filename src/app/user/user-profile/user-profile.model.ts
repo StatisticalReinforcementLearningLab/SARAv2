@@ -49,4 +49,5 @@ export class UserProfile {
 export class UserProfileFixed {
     public isActive?: boolean;                     
     public isParent?: boolean;
+    public onDates? ={};
 }
