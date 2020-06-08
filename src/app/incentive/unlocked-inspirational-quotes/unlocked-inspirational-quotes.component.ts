@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-unlocked-inspirational-quotes',
@@ -45,6 +46,22 @@ export class UnlockedInspirationalQuotesComponent implements OnInit {
           var json_data = JSON.parse(JSON.stringify(data));
           this.unlockedInspirationalQuotes = [];
           for(var i=0; i < json_data.length;  i++){
+
+            //exclude today if it is not yet 4PM.
+            var todaysDate = moment().format('YYYYMMDD');
+            if(json_data[i].date == todaysDate){
+              var currentTime = moment(); 
+              var startTime = moment({hour: 16});  // 6pm
+              var endTime = moment({hour: 23, minute: 59, second: 59});  // 11:59pm
+              if(!currentTime.isBetween(startTime, endTime)) 
+                  continue;
+            }
+
+            //sometimes tomorrow can get scheduled as well
+            var tomorrowsDate = moment().add(1,"days").format('YYYYMMDD');
+            if(json_data[i].date == tomorrowsDate)
+              continue;
+
             this.unlockedInspirationalQuotes.push({
               "image": "https://aws-website-sara-ubicomp-h28yp.s3.amazonaws.com/sarapp/engagement_images/"  + json_data[i].image,
               "author": json_data[i].author,

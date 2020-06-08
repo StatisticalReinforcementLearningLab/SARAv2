@@ -75,15 +75,21 @@ export class AwardAltruismComponent implements OnInit {
     var picked_altruism_image = this.pick_altrusim(this.altruism_data);
     //console.log('picked_altruism_image: ' + JSON.stringify(picked_altruism_image));
 
-    var already_shown = window.localStorage["already_shown_alt_msg3"];
+    var already_shown = window.localStorage["already_shown_alt_msg4"];
     if(already_shown == undefined)
-        already_shown = [{"filename": "assets/altruism/altruism_1.png", "unlock_date": moment().format('MM/DD/YYYY')}]
+        already_shown = {
+          "last_updated": Date.now(),
+          "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
+          "unlocked_alt_msgs":[{"filename": "assets/altruism/altruism_1.png", "unlock_date": moment().format('MM/DD/YYYY')}]
+        };
     else
-        already_shown = JSON.parse(window.localStorage["already_shown_alt_msg3"]);
+        already_shown = JSON.parse(window.localStorage["already_shown_alt_msg4"]);
 
     console.log("already_shown: " + already_shown);
-    already_shown.push({"filename": "assets/altruism/"+picked_altruism_image[0]["filename"], "unlock_date": moment().format('MM/DD/YYYY')});
-    window.localStorage["already_shown_alt_msg3"] = JSON.stringify(already_shown);
+    already_shown["last_updated"] = Date.now();
+    already_shown["last_updated_readable_ts"] = moment().format("MMMM Do YYYY, h:mm:ss a Z");
+    already_shown["unlocked_alt_msgs"].push({"filename": "assets/altruism/"+picked_altruism_image[0]["filename"], "unlock_date": moment().format('MM/DD/YYYY')});
+    window.localStorage["already_shown_alt_msg4"] = JSON.stringify(already_shown);
 
 
 
@@ -91,6 +97,7 @@ export class AwardAltruismComponent implements OnInit {
     this.reinforcementObj['reward_img_link'] = "/altruism/"+picked_altruism_image[0]["filename"];
     this.reinforcement_data['reward_img_link'] = "/altruism/"+picked_altruism_image[0]["filename"];
     setTimeout(e => this.drawImageOnCanvas(this.whichImage), 200);
+    
   }
   
   ratingChanged(rating){
