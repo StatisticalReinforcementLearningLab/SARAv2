@@ -919,7 +919,7 @@ module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">Thank you messages</ion-title>\n  </ion-toolbar>\n</ion-header>\n  \n  <ion-content [fullscreen]=\"true\">\n\n    <ion-card>\n        <ion-card-content>\n          <ion-card-title style=\"color:black;\">{{unlockedAltMessagesCount}} out of 21 thank you messages unlocked</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n    <ion-card *ngFor=\"let x of already_shown_altruism_msgs;\">\n        <img src=\"{{x.filename}}\" />\n        <!--\n        <ion-card-content>\n            <b>Unlock date:</b> {{x.unlock_date}}    \n        </ion-card-content>\n        -->\n    </ion-card>\n  \n    <!--\n    <ion-card>\n      <img src=\"./assets/cnn_billgates.png\" />\n      <ion-card-header>\n        <ion-card-subtitle>বিল গেটস</ion-card-subtitle>\n        <ion-card-title>ডেভেলপিং দেশে করোনার ঝুঁকি আরো বেশি </ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        বিল গেটস সম্প্রতি CNN এর একটি ইন্টারভিউ তে বলছেন ডেভেলপিং দেশে করোনা বন্ধ করা বেশি কঠিন। Youtube-এর ইন্টারভিউ লিংক এখানে পাওয়া যাবে। https://youtu.be/A71lfXrQlxU\n  \n        <br><br><p style=\"color:green;\">৯৪ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    <ion-card>\n      <img src=\"./assets/anthony_faucci.jpg\" />\n      <ion-card-header>\n        <ion-card-subtitle>এন্থনি ফাউচি</ion-card-subtitle>\n        <ion-card-title>ভ্যাকসিন এখনো পাওয়া যাইনি। ঘরে থাকুন</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        মার্কিন যুক্তরাষ্টের করোনা ভাইরাস বিষয়ক টাস্ক ফোর্সের প্রধান এবং সম্মানিত বিজ্ঞানী এন্থনি ফাউচি বলেছেন কোরোনার কোনো ভ্যাকসিন আবিষ্কার হয়নি। এ বিষয় অনেক গবেষণা চলছে। ভ্যাকসিন না বের হওয়া পর্যন্ত সবাইকে ড: ফাউচি ঘরে থাকতে বলেছেন।  \n  \n        <br><br><p style=\"color:green;\">৫১ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    -->\n  </ion-content>\n  \n"
+module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">Thank you messages</ion-title>\n  </ion-toolbar>\n</ion-header>\n  \n  <ion-content [fullscreen]=\"true\">\n\n    <ion-card>\n        <ion-card-content>\n          <ion-card-title style=\"color:black;\">{{unlockedAltMessagesCount}} out of 21 thank you messages unlocked</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n    <ion-card *ngFor=\"let x of list_of_alt_msg_to_display;\">\n        <img src=\"{{x.filename}}\" />\n        <!--\n        <ion-card-content>\n            <b>Unlock date:</b> {{x.unlock_date}}    \n        </ion-card-content>\n        -->\n    </ion-card>\n  \n    <!--\n    <ion-card>\n      <img src=\"./assets/cnn_billgates.png\" />\n      <ion-card-header>\n        <ion-card-subtitle>বিল গেটস</ion-card-subtitle>\n        <ion-card-title>ডেভেলপিং দেশে করোনার ঝুঁকি আরো বেশি </ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        বিল গেটস সম্প্রতি CNN এর একটি ইন্টারভিউ তে বলছেন ডেভেলপিং দেশে করোনা বন্ধ করা বেশি কঠিন। Youtube-এর ইন্টারভিউ লিংক এখানে পাওয়া যাবে। https://youtu.be/A71lfXrQlxU\n  \n        <br><br><p style=\"color:green;\">৯৪ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    <ion-card>\n      <img src=\"./assets/anthony_faucci.jpg\" />\n      <ion-card-header>\n        <ion-card-subtitle>এন্থনি ফাউচি</ion-card-subtitle>\n        <ion-card-title>ভ্যাকসিন এখনো পাওয়া যাইনি। ঘরে থাকুন</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        মার্কিন যুক্তরাষ্টের করোনা ভাইরাস বিষয়ক টাস্ক ফোর্সের প্রধান এবং সম্মানিত বিজ্ঞানী এন্থনি ফাউচি বলেছেন কোরোনার কোনো ভ্যাকসিন আবিষ্কার হয়নি। এ বিষয় অনেক গবেষণা চলছে। ভ্যাকসিন না বের হওয়া পর্যন্ত সবাইকে ড: ফাউচি ঘরে থাকতে বলেছেন।  \n  \n        <br><br><p style=\"color:green;\">৫১ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    -->\n  </ion-content>\n  \n"
 
 /***/ }),
 
@@ -941,7 +941,7 @@ module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Memes</ion-title>\n    </ion-toolbar>\n</ion-header>\n  \n  <ion-content [fullscreen]=\"true\">\n\n    <ion-card>\n        <ion-card-content>\n          <ion-card-title style=\"color:black;\">{{unlockedMemeCount}} out of 31 memes unlocked</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n    <ion-card *ngFor=\"let x of already_shown_memes;\">\n        <img src=\"{{x.filename}}\" />\n        <!--\n        <ion-card-content>\n            <b>Unlock date:</b> {{x.unlock_date}}    \n        </ion-card-content>\n        -->\n    </ion-card>\n  \n    <!--\n    <ion-card>\n      <img src=\"./assets/cnn_billgates.png\" />\n      <ion-card-header>\n        <ion-card-subtitle>বিল গেটস</ion-card-subtitle>\n        <ion-card-title>ডেভেলপিং দেশে করোনার ঝুঁকি আরো বেশি </ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        বিল গেটস সম্প্রতি CNN এর একটি ইন্টারভিউ তে বলছেন ডেভেলপিং দেশে করোনা বন্ধ করা বেশি কঠিন। Youtube-এর ইন্টারভিউ লিংক এখানে পাওয়া যাবে। https://youtu.be/A71lfXrQlxU\n  \n        <br><br><p style=\"color:green;\">৯৪ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    <ion-card>\n      <img src=\"./assets/anthony_faucci.jpg\" />\n      <ion-card-header>\n        <ion-card-subtitle>এন্থনি ফাউচি</ion-card-subtitle>\n        <ion-card-title>ভ্যাকসিন এখনো পাওয়া যাইনি। ঘরে থাকুন</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        মার্কিন যুক্তরাষ্টের করোনা ভাইরাস বিষয়ক টাস্ক ফোর্সের প্রধান এবং সম্মানিত বিজ্ঞানী এন্থনি ফাউচি বলেছেন কোরোনার কোনো ভ্যাকসিন আবিষ্কার হয়নি। এ বিষয় অনেক গবেষণা চলছে। ভ্যাকসিন না বের হওয়া পর্যন্ত সবাইকে ড: ফাউচি ঘরে থাকতে বলেছেন।  \n  \n        <br><br><p style=\"color:green;\">৫১ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    -->\n  </ion-content>\n  \n"
+module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Memes</ion-title>\n    </ion-toolbar>\n</ion-header>\n  \n  <ion-content [fullscreen]=\"true\">\n\n    <ion-card>\n        <ion-card-content>\n          <ion-card-title style=\"color:black;\">{{unlockedMemeCount}} out of 31 memes unlocked</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n    <ion-card *ngFor=\"let x of list_of_meme_to_display;\">\n        <img src=\"{{x.filename}}\" />\n        <!--\n        <ion-card-content>\n            <b>Unlock date:</b> {{x.unlock_date}}    \n        </ion-card-content>\n        -->\n    </ion-card>\n  \n    <!--\n    <ion-card>\n      <img src=\"./assets/cnn_billgates.png\" />\n      <ion-card-header>\n        <ion-card-subtitle>বিল গেটস</ion-card-subtitle>\n        <ion-card-title>ডেভেলপিং দেশে করোনার ঝুঁকি আরো বেশি </ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        বিল গেটস সম্প্রতি CNN এর একটি ইন্টারভিউ তে বলছেন ডেভেলপিং দেশে করোনা বন্ধ করা বেশি কঠিন। Youtube-এর ইন্টারভিউ লিংক এখানে পাওয়া যাবে। https://youtu.be/A71lfXrQlxU\n  \n        <br><br><p style=\"color:green;\">৯৪ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    <ion-card>\n      <img src=\"./assets/anthony_faucci.jpg\" />\n      <ion-card-header>\n        <ion-card-subtitle>এন্থনি ফাউচি</ion-card-subtitle>\n        <ion-card-title>ভ্যাকসিন এখনো পাওয়া যাইনি। ঘরে থাকুন</ion-card-title>\n      </ion-card-header>\n      <ion-card-content>\n        মার্কিন যুক্তরাষ্টের করোনা ভাইরাস বিষয়ক টাস্ক ফোর্সের প্রধান এবং সম্মানিত বিজ্ঞানী এন্থনি ফাউচি বলেছেন কোরোনার কোনো ভ্যাকসিন আবিষ্কার হয়নি। এ বিষয় অনেক গবেষণা চলছে। ভ্যাকসিন না বের হওয়া পর্যন্ত সবাইকে ড: ফাউচি ঘরে থাকতে বলেছেন।  \n  \n        <br><br><p style=\"color:green;\">৫১ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>\n      </ion-card-content>\n    </ion-card>\n    -->\n  </ion-content>\n  \n"
 
 /***/ }),
 
@@ -6417,7 +6417,7 @@ var DemoAquariumComponent = /** @class */ (function () {
                 oneSignalPlayerId = window.localStorage['oneSignalPlayerId'];
                 if (oneSignalPlayerId == "null" || oneSignalPlayerId == null || oneSignalPlayerId == undefined) {
                     console.log("oneSignalId is null, " + oneSignalPlayerId);
-                    //return;
+                    return [2 /*return*/];
                 }
                 username = this.userProfileService.username;
                 currentTimeTs = Date.now();
@@ -15776,14 +15776,20 @@ var AwardAltruismComponent = /** @class */ (function () {
         //console.log('Altruism images suffled: ' + JSON.stringify(this.altruism_data));
         var picked_altruism_image = this.pick_altrusim(this.altruism_data);
         //console.log('picked_altruism_image: ' + JSON.stringify(picked_altruism_image));
-        var already_shown = window.localStorage["already_shown_alt_msg3"];
+        var already_shown = window.localStorage["already_shown_alt_msg4"];
         if (already_shown == undefined)
-            already_shown = [{ "filename": "assets/altruism/altruism_1.png", "unlock_date": moment__WEBPACK_IMPORTED_MODULE_5__().format('MM/DD/YYYY') }];
+            already_shown = {
+                "last_updated": Date.now(),
+                "last_updated_readable_ts": moment__WEBPACK_IMPORTED_MODULE_5__().format("MMMM Do YYYY, h:mm:ss a Z"),
+                "unlocked_alt_msgs": [{ "filename": "assets/altruism/altruism_1.png", "unlock_date": moment__WEBPACK_IMPORTED_MODULE_5__().format('MM/DD/YYYY') }]
+            };
         else
-            already_shown = JSON.parse(window.localStorage["already_shown_alt_msg3"]);
+            already_shown = JSON.parse(window.localStorage["already_shown_alt_msg4"]);
         console.log("already_shown: " + already_shown);
-        already_shown.push({ "filename": "assets/altruism/" + picked_altruism_image[0]["filename"], "unlock_date": moment__WEBPACK_IMPORTED_MODULE_5__().format('MM/DD/YYYY') });
-        window.localStorage["already_shown_alt_msg3"] = JSON.stringify(already_shown);
+        already_shown["last_updated"] = Date.now();
+        already_shown["last_updated_readable_ts"] = moment__WEBPACK_IMPORTED_MODULE_5__().format("MMMM Do YYYY, h:mm:ss a Z");
+        already_shown["unlocked_alt_msgs"].push({ "filename": "assets/altruism/" + picked_altruism_image[0]["filename"], "unlock_date": moment__WEBPACK_IMPORTED_MODULE_5__().format('MM/DD/YYYY') });
+        window.localStorage["already_shown_alt_msg4"] = JSON.stringify(already_shown);
         this.whichImage = "./assets/altruism/" + picked_altruism_image[0]["filename"];
         this.reinforcementObj['reward_img_link'] = "/altruism/" + picked_altruism_image[0]["filename"];
         this.reinforcement_data['reward_img_link'] = "/altruism/" + picked_altruism_image[0]["filename"];
@@ -16011,14 +16017,20 @@ var AwardMemesComponent = /** @class */ (function () {
         this.meme_data = this.shuffle(this.meme_data);
         //console.log('Meme suffled: ' + JSON.stringify(this.meme_data));
         var picked_meme = this.pick_meme(this.meme_data);
-        var already_shown = window.localStorage["already_shown_memes3"];
+        var already_shown = window.localStorage["already_shown_memes4"];
         if (already_shown == undefined)
-            already_shown = [{ "filename": "assets/memes/4.jpg", "unlock_date": moment__WEBPACK_IMPORTED_MODULE_5__().format('MM/DD/YYYY') }];
+            already_shown = {
+                "last_updated": Date.now(),
+                "last_updated_readable_ts": moment__WEBPACK_IMPORTED_MODULE_5__().format("MMMM Do YYYY, h:mm:ss a Z"),
+                "unlocked_memes": [{ "filename": "assets/memes/4.jpg", "unlock_date": moment__WEBPACK_IMPORTED_MODULE_5__().format('MM/DD/YYYY') }]
+            };
         else
-            already_shown = JSON.parse(window.localStorage["already_shown_memes3"]);
+            already_shown = JSON.parse(window.localStorage["already_shown_memes4"]);
         console.log("already_shown: " + already_shown);
-        already_shown.push({ "filename": "assets/memes/" + picked_meme[0]["filename"], "unlock_date": moment__WEBPACK_IMPORTED_MODULE_5__().format('MM/DD/YYYY') });
-        window.localStorage["already_shown_memes3"] = JSON.stringify(already_shown);
+        already_shown["last_updated"] = Date.now();
+        already_shown["last_updated_readable_ts"] = moment__WEBPACK_IMPORTED_MODULE_5__().format("MMMM Do YYYY, h:mm:ss a Z");
+        already_shown["unlocked_memes"].push({ "filename": "assets/memes/" + picked_meme[0]["filename"], "unlock_date": moment__WEBPACK_IMPORTED_MODULE_5__().format('MM/DD/YYYY') });
+        window.localStorage["already_shown_memes4"] = JSON.stringify(already_shown);
         this.whichImage = "./assets/memes/" + picked_meme[0]["filename"];
         this.reinforcementObj['reward_img_link'] = "/memes/" + picked_meme[0]["filename"];
         this.reinforcement_data['reward_img_link'] = "/memes/" + picked_meme[0]["filename"];
@@ -16267,84 +16279,164 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AwardDollarService = /** @class */ (function () {
-    //userProfileService: UserProfileService;;
     function AwardDollarService(userProfileService) {
         this.userProfileService = userProfileService;
-        //this.userProfileService = userProfileService2;
     }
-    AwardDollarService.prototype.getDollars = function () {
-        //---- load dollar amount from local storage, and if "undefined" then assign value to zero.
+    AwardDollarService.prototype.getCurrentlyEarnedDollars = function () {
+        /*
+        *
+        *  load current dollar amount user earned from local storage,
+        *  and if "undefined" (i.e.,user likely didn't earn anything) then assign value to zero.
+        *
+        *  This function is called from dynamic-survey to update the current dollar amount.
+        *
+        */
         if (window.localStorage['AwardDollar'] == undefined)
-            this.awardDollar = 0;
+            this.usersCurrentDollars = 0;
         else
-            this.awardDollar = parseInt(window.localStorage['AwardDollar']);
-        //
-        return this.awardDollar;
+            this.usersCurrentDollars = parseInt(window.localStorage['AwardDollar']);
+        return this.usersCurrentDollars;
     };
     AwardDollarService.prototype.giveDollars = function () {
-        var daily_survey = this.userProfileService.userProfile.survey_data.daily_survey;
-        //get the first date
-        var first_date = moment__WEBPACK_IMPORTED_MODULE_2__().format('YYYYMMDD');
-        var first_date_moment_js = moment__WEBPACK_IMPORTED_MODULE_2__(first_date, "YYYYMMDD");
-        var key_moment_js;
-        for (var key in daily_survey) {
-            key_moment_js = moment__WEBPACK_IMPORTED_MODULE_2__(key, "YYYYMMDD");
-            //takes the first day only. But it may not be the first date.
-            if (key_moment_js < first_date_moment_js) {
-                first_date = key;
-                first_date_moment_js = moment__WEBPACK_IMPORTED_MODULE_2__(first_date, "YYYYMMDD");
+        /*
+        *
+        * Called after survey is completed.
+        * Gives participants money, based on three cretia.
+        *
+        * Returns the total amount user has currently earned in total amount.
+        *
+        */
+        var dailySurveyHistory = this.userProfileService.userProfile.survey_data.daily_survey;
+        /*
+        *
+        * Scenario 1:
+        *
+        * If user completed survey on the first day of the study then reward 2 dollars.
+        *
+        * Since this case can't include a 3-day streak or a pause, so return this current amount
+        *
+        */
+        //get the first date, by iterating through all dates and find the smallest one.
+        var firstDateSurveyIsCompleted = moment__WEBPACK_IMPORTED_MODULE_2__().format('YYYYMMDD');
+        var timestampeForFirstDataSurveyIsCompleted = moment__WEBPACK_IMPORTED_MODULE_2__(firstDateSurveyIsCompleted, "YYYYMMDD");
+        var timestampDateForASurveyCompleted;
+        for (var dateForASurveyCompleted in dailySurveyHistory) {
+            timestampDateForASurveyCompleted = moment__WEBPACK_IMPORTED_MODULE_2__(dateForASurveyCompleted, "YYYYMMDD");
+            if (timestampDateForASurveyCompleted < timestampeForFirstDataSurveyIsCompleted) {
+                firstDateSurveyIsCompleted = dateForASurveyCompleted;
+                timestampeForFirstDataSurveyIsCompleted = moment__WEBPACK_IMPORTED_MODULE_2__(firstDateSurveyIsCompleted, "YYYYMMDD");
             }
         }
-        var todays_date = moment__WEBPACK_IMPORTED_MODULE_2__().format('YYYYMMDD');
-        if (todays_date == first_date) {
-            this.awardDollar = 1;
-            //---- save the dollar ammount
-            window.localStorage.setItem("AwardDollar", "" + this.awardDollar);
-            return this.awardDollar;
+        // If today is the first day then award 2 dollars for survey completion; 
+        //  else load the last day, current amout user earned
+        var todaysDate = moment__WEBPACK_IMPORTED_MODULE_2__().format('YYYYMMDD');
+        if (todaysDate == firstDateSurveyIsCompleted) {
+            this.usersCurrentDollars = 2;
+            return this.usersCurrentDollars;
         }
-        //---- load dollar amount from local storage, and if "undefined" then assign value to zero.
-        if (window.localStorage['AwardDollar'] == undefined)
-            this.awardDollar = 0;
         else
-            this.awardDollar = parseInt(window.localStorage['AwardDollar']);
-        //console.log(window.localStorage["AwardDollarDates"]);
-        this.awardDollarObj = window.localStorage["AwardDollarDates"];
-        if ((this.awardDollarObj == undefined) || (JSON.parse(this.awardDollarObj) == null)) {
-            this.awardDollarObj = {};
-            this.awardDollarObj['dates'] = [moment__WEBPACK_IMPORTED_MODULE_2__().format("DD-MM-YYYY")];
-            window.localStorage.setItem("AwardDollarDates", JSON.stringify(this.awardDollarObj));
+            this.usersCurrentDollars = parseInt(window.localStorage['AwardDollar']);
+        /*
+        *
+        * Scenario 2:
+        *
+        * If survey is paused, and user comes back after >= 14 days, then give then extra 2 dollars
+        * after they complete the survey.
+        *
+        */
+        //
+        // Get the dates when survey  is turned on. This only contains days
+        // that the survey on button was physically clicked.
+        //  
+        var onDatesSurveyIsTurnedOn = this.userProfileService.userProfileFixed.onDates;
+        //
+        // set the last date to today, if 'onDatesSurveyPauseStarted' are not empty, will set it 
+        // to be the last date in 'onDatesSurveyPauseStarted'.
+        // 
+        var maxDateInOnDatesSurveyIsTurnedOn = moment__WEBPACK_IMPORTED_MODULE_2__().format('YYYY-MM-DD');
+        ;
+        var timestampForLastDate = moment__WEBPACK_IMPORTED_MODULE_2__("1970-01-01", "YYYY-MM-DD");
+        var timestampDateFor_date;
+        for (var _date in onDatesSurveyIsTurnedOn) {
+            timestampDateFor_date = moment__WEBPACK_IMPORTED_MODULE_2__(_date, "YYYY-MM-DD");
+            if (timestampDateFor_date > timestampForLastDate) {
+                maxDateInOnDatesSurveyIsTurnedOn = _date;
+                timestampForLastDate = moment__WEBPACK_IMPORTED_MODULE_2__(maxDateInOnDatesSurveyIsTurnedOn, "YYYY-MM-DD");
+            }
+        }
+        var day14BeforeToday = moment__WEBPACK_IMPORTED_MODULE_2__().subtract(14, "days").format("YYYY-MM-DD");
+        var timestampDay14BeforeToday = moment__WEBPACK_IMPORTED_MODULE_2__(day14BeforeToday, "YYYY-MM-DD");
+        var timestampMaxDateInOnDatesSurveyIsTurnedOn = moment__WEBPACK_IMPORTED_MODULE_2__(maxDateInOnDatesSurveyIsTurnedOn, "YYYY-MM-DD");
+        // if 14-day before today is more than (i.e., after) timestampMaxDateInOnDatesSurveyIsTurnedOn
+        // then user has come back after 14 days.
+        if (timestampDay14BeforeToday.isAfter(timestampMaxDateInOnDatesSurveyIsTurnedOn)) {
+            this.usersCurrentDollars = this.usersCurrentDollars + 2;
+            return this.usersCurrentDollars;
+        }
+        /*
+        *
+        * Scenario 3:
+        *
+        * Give money for  a three-day streak of survey completion, that does not include
+        * scenario 1 and 2. (Ideally scenario 1,2,3 are mutually exclusive).
+        *
+        */
+        this.users3DayStreakHistory = window.localStorage["AwardDollarDates"];
+        if ((this.users3DayStreakHistory == undefined) || (JSON.parse(this.users3DayStreakHistory) == null)) {
+            /*
+            * Means, no history exist for 3-day, so start a streak with the current date.
+            */
+            this.users3DayStreakHistory = {};
+            this.users3DayStreakHistory['dates'] = [moment__WEBPACK_IMPORTED_MODULE_2__().format("DD-MM-YYYY")];
+            window.localStorage.setItem("AwardDollarDates", JSON.stringify(this.users3DayStreakHistory));
         }
         else {
-            console.log(window.localStorage["AwardDollarDates"]);
-            this.awardDollarObj = JSON.parse(window.localStorage["AwardDollarDates"]);
-            if (this.awardDollarObj['dates'].length < 2) {
-                //compute previous date, and see if it exist
-                var previousdate = moment__WEBPACK_IMPORTED_MODULE_2__().subtract(1, "days").format("DD-MM-YYYY");
-                var dates = this.awardDollarObj["dates"];
-                var dateIndex = dates.indexOf(previousdate);
-                //
+            this.users3DayStreakHistory = JSON.parse(window.localStorage["AwardDollarDates"]);
+            if (this.users3DayStreakHistory['dates'].length < 2) {
+                /*
+                 * see if previous date exist in the current 'users3DayStreakHistory'
+                 * If not then clean 'users3DayStreakHistory' and start a new streak.
+                 */
+                var previousDate = moment__WEBPACK_IMPORTED_MODULE_2__().subtract(1, "days").format("DD-MM-YYYY");
+                var dates = this.users3DayStreakHistory["dates"];
+                var dateIndex = dates.indexOf(previousDate);
                 if (dateIndex > -1) {
-                    //previous date exist, we will pushing the current date to the "survey-completed" dates.
-                    this.awardDollarObj['dates'].push(moment__WEBPACK_IMPORTED_MODULE_2__().format("DD-MM-YYYY"));
+                    //previous date exist, we will pushing the current date and extend the streak.
+                    this.users3DayStreakHistory['dates'].push(moment__WEBPACK_IMPORTED_MODULE_2__().format("DD-MM-YYYY"));
                 }
                 else {
                     // if the date saved is not the previous day of today, remove it 
-                    // save current date to AwardDollarDates. This means a new streak has started.
-                    this.awardDollarObj['dates'] = [moment__WEBPACK_IMPORTED_MODULE_2__().format("DD-MM-YYYY")];
+                    // save current date to users3DayStreakHistory. This means a new streak has started.
+                    this.users3DayStreakHistory['dates'] = [moment__WEBPACK_IMPORTED_MODULE_2__().format("DD-MM-YYYY")];
                 }
-                window.localStorage.setItem("AwardDollarDates", JSON.stringify(this.awardDollarObj));
+                window.localStorage.setItem("AwardDollarDates", JSON.stringify(this.users3DayStreakHistory));
+                // no money here now since the streak length it most 2 here. 
             }
             else {
-                //means a streak has been completed, so awad one dollar, remove all dates.
-                this.awardDollar = this.awardDollar + 1;
-                //next time, it will be undefined and we will start a new streak next time.
-                window.localStorage.removeItem('AwardDollarDates');
+                /*
+                 * see if previous date exist in the current 'users3DayStreakHistory'
+                 * If not then clean 'users3DayStreakHistory' and start a new streak.
+                 */
+                var previousDate = moment__WEBPACK_IMPORTED_MODULE_2__().subtract(1, "days").format("DD-MM-YYYY");
+                var dates = this.users3DayStreakHistory["dates"];
+                var dateIndex = dates.indexOf(previousDate);
+                if (dateIndex > -1) {
+                    //means a streak has been completed, so award one dollar, remove all dates
+                    this.usersCurrentDollars = this.usersCurrentDollars + 1;
+                    //empty users3DayStreakHistory by making it null, and we will start a new streak.
+                    window.localStorage.removeItem('AwardDollarDates');
+                }
+                else {
+                    //the previous day is not in the array, means that we must have skipped the previous day,
+                    //Save current date to AwardDollarDates to start a new streak.
+                    this.usersCurrentDollars['dates'] = [moment__WEBPACK_IMPORTED_MODULE_2__().format("DD-MM-YYYY")];
+                    window.localStorage.setItem("AwardDollarDates", JSON.stringify(this.usersCurrentDollars));
+                }
             }
         }
-        console.log("awardDollarObj: " + JSON.stringify(this.awardDollarObj));
-        //---- save the dollar ammount
-        window.localStorage.setItem("AwardDollar", "" + this.awardDollar);
-        return this.awardDollar;
+        //save the dollar ammount in local storage
+        window.localStorage.setItem("AwardDollar", "" + this.usersCurrentDollars);
+        return this.usersCurrentDollars;
     };
     AwardDollarService.ctorParameters = function () { return [
         { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__["UserProfileService"] }
@@ -17200,31 +17292,170 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
 
 
 
 var UnlockedAltuisticMessagesComponent = /** @class */ (function () {
-    function UnlockedAltuisticMessagesComponent() {
+    function UnlockedAltuisticMessagesComponent(userProfileService, httpClient) {
+        this.userProfileService = userProfileService;
+        this.httpClient = httpClient;
     }
+    Object.defineProperty(UnlockedAltuisticMessagesComponent.prototype, "username", {
+        get: function () {
+            if (this.userProfileService == undefined)
+                return "test";
+            else {
+                return this.userProfileService.username;
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
     UnlockedAltuisticMessagesComponent.prototype.ngOnInit = function () {
     };
     UnlockedAltuisticMessagesComponent.prototype.ionViewDidEnter = function () {
-        this.already_shown_altruism_msgs = window.localStorage["already_shown_alt_msg3"];
-        if (this.already_shown_altruism_msgs == undefined)
-            this.already_shown_altruism_msgs = [{ "filename": "assets/altruism/altruism_1.png", "unlock_date": moment__WEBPACK_IMPORTED_MODULE_2__().format('MM/DD/YYYY') }];
+        this.already_shown_altruism_msgs = window.localStorage["already_shown_alt_msg4"];
+        if (this.already_shown_altruism_msgs == undefined) {
+            this.already_shown_altruism_msgs = {
+                "last_updated": Date.now(),
+                "last_updated_readable_ts": moment__WEBPACK_IMPORTED_MODULE_2__().format("MMMM Do YYYY, h:mm:ss a Z"),
+                "unlocked_alt_msgs": [{ "filename": "assets/altruism/altruism_1.png", "unlock_date": moment__WEBPACK_IMPORTED_MODULE_2__().format('MM/DD/YYYY') }]
+            };
+            window.localStorage["already_shown_alt_msg4"] = JSON.stringify(this.already_shown_altruism_msgs);
+        }
         else
-            this.already_shown_altruism_msgs = JSON.parse(window.localStorage["already_shown_alt_msg3"]);
-        this.unlockedAltMessagesCount = this.already_shown_altruism_msgs.length;
-        this.already_shown_altruism_msgs.reverse();
-        console.log(this.already_shown_altruism_msgs);
+            this.already_shown_altruism_msgs = JSON.parse(window.localStorage["already_shown_alt_msg4"]);
+        if (this.already_shown_altruism_msgs.unlocked_alt_msgs.length == 0) {
+            this.already_shown_altruism_msgs = {
+                "last_updated": Date.now(),
+                "last_updated_readable_ts": moment__WEBPACK_IMPORTED_MODULE_2__().format("MMMM Do YYYY, h:mm:ss a Z"),
+                "unlocked_alt_msgs": [{ "filename": "assets/altruism/altruism_1.png", "unlock_date": moment__WEBPACK_IMPORTED_MODULE_2__().format('MM/DD/YYYY') }]
+            };
+            window.localStorage["already_shown_alt_msg4"] = JSON.stringify(this.already_shown_altruism_msgs);
+        }
+        this.unlockedAltMessagesCount = this.already_shown_altruism_msgs.unlocked_alt_msgs.length;
+        this.list_of_alt_msg_to_display = this.already_shown_altruism_msgs["unlocked_alt_msgs"];
+        this.list_of_alt_msg_to_display.reverse();
+        console.log("already_shown_altruism_msgs " + this.already_shown_altruism_msgs);
+        this.downloadAndUpdateUnlockedAltsMsgsList();
     };
+    UnlockedAltuisticMessagesComponent.prototype.downloadAndUpdateUnlockedAltsMsgsList = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var flaskServerAPIEndpoint;
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                flaskServerAPIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].flaskServerForIncentives;
+                this.httpClient.post(flaskServerAPIEndpoint + '/get-unlocked-incentive', { "user_id": this.username, "incentive_type": "alt_msg" }).subscribe({
+                    next: function (data) {
+                        var json_data = JSON.parse(JSON.stringify(data));
+                        /*
+                        
+                        Sample of returned data
+              
+                        {
+                          "last_updated": 1591509230223,
+                          "last_updated_readable_ts": "June 6th 2020, 10:53:50 pm -07:00",
+                          "unlocked_memes": [
+                              {
+                                  "filename": "assets/memes/4.jpg",
+                                  "unlock_date": "06/06/2020"
+                              }
+                          ]
+                        }
+                        */
+                        var lastUpdatedSeverSide;
+                        var lastUpdatedReadableTsSeverSide;
+                        var unlockedAltMsgsServerSide;
+                        if ("last_updated" in json_data) {
+                            lastUpdatedSeverSide = json_data["last_updated"];
+                            lastUpdatedReadableTsSeverSide = json_data["last_updated_readable_ts"];
+                            unlockedAltMsgsServerSide = json_data["unlocked_alt_msgs"];
+                            console.log("--unlockedAltMsgsServerSide--- " + JSON.stringify(unlockedAltMsgsServerSide));
+                        }
+                        else {
+                            lastUpdatedSeverSide = -1;
+                            lastUpdatedReadableTsSeverSide = -1;
+                            unlockedAltMsgsServerSide = [];
+                            console.log("--unlockedAltMsgsServerSide--- " + JSON.stringify(unlockedAltMsgsServerSide));
+                        }
+                        var localAltMsgsRecord = JSON.parse(window.localStorage["already_shown_alt_msg4"]);
+                        var lastUpdatedLocalStorage = localAltMsgsRecord["last_updated"];
+                        var lastUpdatedReadableTsLocalStorage = localAltMsgsRecord["last_updated_readable_ts"];
+                        var unlockedAltMsgLocalStorage = localAltMsgsRecord["unlocked_alt_msgs"];
+                        console.log("--unlockedAltMsgLocalStorage--- " + JSON.stringify(unlockedAltMsgLocalStorage));
+                        //Following code creats a union of unlockedMemesServerSide and unlockedMemesLocalStorage
+                        var unionOfLocalAndServer = {};
+                        for (var i = 0; i < unlockedAltMsgsServerSide.length; i++)
+                            unionOfLocalAndServer[unlockedAltMsgsServerSide[i]["filename"]] = unlockedAltMsgsServerSide[i];
+                        for (var i = 0; i < unlockedAltMsgLocalStorage.length; i++)
+                            unionOfLocalAndServer[unlockedAltMsgLocalStorage[i]["filename"]] = unlockedAltMsgLocalStorage[i];
+                        console.log("--unionOfLocalAndServer--- " + JSON.stringify(unionOfLocalAndServer));
+                        var res = [];
+                        for (var k in unionOfLocalAndServer) {
+                            res.push(unionOfLocalAndServer[k]);
+                        }
+                        _this.list_of_alt_msg_to_display = res.reverse();
+                        _this.unlockedAltMessagesCount = res.length;
+                        localAltMsgsRecord["unlocked_alt_msgs"] = _this.list_of_alt_msg_to_display;
+                        localAltMsgsRecord["last_updated"] = Date.now();
+                        localAltMsgsRecord["last_updated_readable_ts"] = moment__WEBPACK_IMPORTED_MODULE_2__().format("MMMM Do YYYY, h:mm:ss a Z");
+                        window.localStorage["already_shown_alt_msg4"] = JSON.stringify(localAltMsgsRecord);
+                        console.log("--localAltMsgsRecord--- " + JSON.stringify(localAltMsgsRecord));
+                        //
+                        _this.uploadCurrentlyUnlockedAltMsgsList(localAltMsgsRecord);
+                    },
+                    error: function (error) { return console.error('There was an error!', error); }
+                });
+                return [2 /*return*/];
+            });
+        });
+    };
+    UnlockedAltuisticMessagesComponent.prototype.uploadCurrentlyUnlockedAltMsgsList = function (already_shown_alt_msgs) {
+        /*
+          {
+            "user_id": "test",
+            "incentiveString": "test",
+            "whenInserted": "test",
+            "whenInsertedReadableTs": 1234,
+            "incentiveType": "test"
+          }
+        */
+        var username = this.userProfileService.username;
+        var currentTimeTs = Date.now();
+        var currentTimeReadableTs = moment__WEBPACK_IMPORTED_MODULE_2__().format("MMMM Do YYYY, h:mm:ss a Z");
+        var headers = { "Content-Type": "application/json;charset=UTF-8" };
+        var body = {
+            "user_id": username,
+            "whenInserted": currentTimeTs,
+            "whenInsertedReadableTs": currentTimeReadableTs,
+            "incentiveType": "alt_msg",
+            "incentiveString": JSON.stringify(already_shown_alt_msgs)
+        };
+        var flaskServerAPIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].flaskServerForIncentives;
+        this.httpClient.post(flaskServerAPIEndpoint + "/store-unlocked-incentive", body)
+            .subscribe({
+            next: function (data) { return console.log("--unlocked_alt_msg-- " + JSON.stringify(data)); },
+            error: function (error) { return console.error('There was an error!', error); }
+        });
+    };
+    UnlockedAltuisticMessagesComponent.ctorParameters = function () { return [
+        { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__["UserProfileService"] },
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"] }
+    ]; };
     UnlockedAltuisticMessagesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-unlocked-altuistic-messages',
             template: __webpack_require__(/*! raw-loader!./unlocked-altuistic-messages.component.html */ "./node_modules/raw-loader/index.js!./src/app/incentive/unlocked-altuistic-messages/unlocked-altuistic-messages.component.html"),
             styles: [__webpack_require__(/*! ./unlocked-altuistic-messages.component.css */ "./src/app/incentive/unlocked-altuistic-messages/unlocked-altuistic-messages.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__["UserProfileService"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"]])
     ], UnlockedAltuisticMessagesComponent);
     return UnlockedAltuisticMessagesComponent;
 }());
@@ -17259,6 +17490,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_5__);
+
 
 
 
@@ -17297,6 +17531,19 @@ var UnlockedInspirationalQuotesComponent = /** @class */ (function () {
                 var json_data = JSON.parse(JSON.stringify(data));
                 _this.unlockedInspirationalQuotes = [];
                 for (var i = 0; i < json_data.length; i++) {
+                    //exclude today if it is not yet 4PM.
+                    var todaysDate = moment__WEBPACK_IMPORTED_MODULE_5__().format('YYYYMMDD');
+                    if (json_data[i].date == todaysDate) {
+                        var currentTime = moment__WEBPACK_IMPORTED_MODULE_5__();
+                        var startTime = moment__WEBPACK_IMPORTED_MODULE_5__({ hour: 16 }); // 6pm
+                        var endTime = moment__WEBPACK_IMPORTED_MODULE_5__({ hour: 23, minute: 59, second: 59 }); // 11:59pm
+                        if (!currentTime.isBetween(startTime, endTime))
+                            continue;
+                    }
+                    //sometimes tomorrow can get scheduled as well
+                    var tomorrowsDate = moment__WEBPACK_IMPORTED_MODULE_5__().add(1, "days").format('YYYYMMDD');
+                    if (json_data[i].date == tomorrowsDate)
+                        continue;
                     _this.unlockedInspirationalQuotes.push({
                         "image": "https://aws-website-sara-ubicomp-h28yp.s3.amazonaws.com/sarapp/engagement_images/" + json_data[i].image,
                         "author": json_data[i].author,
@@ -17353,31 +17600,170 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
 
 
 
 var UnlockedMemesComponent = /** @class */ (function () {
-    function UnlockedMemesComponent() {
+    function UnlockedMemesComponent(userProfileService, httpClient) {
+        this.userProfileService = userProfileService;
+        this.httpClient = httpClient;
     }
+    Object.defineProperty(UnlockedMemesComponent.prototype, "username", {
+        get: function () {
+            if (this.userProfileService == undefined)
+                return "test";
+            else {
+                return this.userProfileService.username;
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
     UnlockedMemesComponent.prototype.ngOnInit = function () {
     };
     UnlockedMemesComponent.prototype.ionViewDidEnter = function () {
-        this.already_shown_memes = window.localStorage["already_shown_memes3"];
-        if (this.already_shown_memes == undefined)
-            this.already_shown_memes = [{ "filename": "assets/memes/4.jpg", "unlock_date": moment__WEBPACK_IMPORTED_MODULE_2__().format('MM/DD/YYYY') }];
+        this.already_shown_memes = window.localStorage["already_shown_memes4"];
+        if (this.already_shown_memes == undefined) {
+            this.already_shown_memes = {
+                "last_updated": Date.now(),
+                "last_updated_readable_ts": moment__WEBPACK_IMPORTED_MODULE_2__().format("MMMM Do YYYY, h:mm:ss a Z"),
+                "unlocked_memes": [{ "filename": "assets/memes/4.jpg", "unlock_date": moment__WEBPACK_IMPORTED_MODULE_2__().format('MM/DD/YYYY') }]
+            };
+            window.localStorage["already_shown_memes4"] = JSON.stringify(this.already_shown_memes);
+        }
         else
-            this.already_shown_memes = JSON.parse(window.localStorage["already_shown_memes3"]);
-        this.unlockedMemeCount = this.already_shown_memes.length;
-        this.already_shown_memes.reverse();
-        console.log(this.already_shown_memes);
+            this.already_shown_memes = JSON.parse(window.localStorage["already_shown_memes4"]);
+        if (this.already_shown_memes.unlocked_memes.length == 0) {
+            this.already_shown_memes = {
+                "last_updated": Date.now(),
+                "last_updated_readable_ts": moment__WEBPACK_IMPORTED_MODULE_2__().format("MMMM Do YYYY, h:mm:ss a Z"),
+                "unlocked_memes": [{ "filename": "assets/memes/4.jpg", "unlock_date": moment__WEBPACK_IMPORTED_MODULE_2__().format('MM/DD/YYYY') }]
+            };
+            window.localStorage["already_shown_memes4"] = JSON.stringify(this.already_shown_memes);
+        }
+        this.unlockedMemeCount = this.already_shown_memes["unlocked_memes"].length;
+        this.list_of_meme_to_display = this.already_shown_memes["unlocked_memes"];
+        this.list_of_meme_to_display.reverse();
+        console.log("already_shown_memes " + JSON.stringify(this.already_shown_memes));
+        this.downloadAndUpdateUnlockedMemeList();
     };
+    UnlockedMemesComponent.prototype.downloadAndUpdateUnlockedMemeList = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var flaskServerAPIEndpoint;
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                flaskServerAPIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].flaskServerForIncentives;
+                this.httpClient.post(flaskServerAPIEndpoint + '/get-unlocked-incentive', { "user_id": this.username, "incentive_type": "meme" }).subscribe({
+                    next: function (data) {
+                        var json_data = JSON.parse(JSON.stringify(data));
+                        /*
+                        
+                        Sample of returned data
+              
+                        {
+                          "last_updated": 1591509230223,
+                          "last_updated_readable_ts": "June 6th 2020, 10:53:50 pm -07:00",
+                          "unlocked_memes": [
+                              {
+                                  "filename": "assets/memes/4.jpg",
+                                  "unlock_date": "06/06/2020"
+                              }
+                          ]
+                        }
+                        */
+                        var lastUpdatedSeverSide;
+                        var lastUpdatedReadableTsSeverSide;
+                        var unlockedMemesServerSide;
+                        if ("last_updated" in json_data) {
+                            lastUpdatedSeverSide = json_data["last_updated"];
+                            lastUpdatedReadableTsSeverSide = json_data["last_updated_readable_ts"];
+                            unlockedMemesServerSide = json_data["unlocked_memes"];
+                            console.log("--unlockedMemesServerSide--- " + JSON.stringify(unlockedMemesServerSide));
+                        }
+                        else {
+                            lastUpdatedSeverSide = -1;
+                            lastUpdatedReadableTsSeverSide = -1;
+                            unlockedMemesServerSide = [];
+                            console.log("--unlockedMemesServerSide--- " + JSON.stringify(unlockedMemesServerSide));
+                        }
+                        var localMemeRecord = JSON.parse(window.localStorage["already_shown_memes4"]);
+                        var lastUpdatedLocalStorage = localMemeRecord["last_updated"];
+                        var lastUpdatedReadableTsLocalStorage = localMemeRecord["last_updated_readable_ts"];
+                        var unlockedMemesLocalStorage = localMemeRecord["unlocked_memes"];
+                        console.log("--unlockedMemesLocalStorage--- " + JSON.stringify(unlockedMemesLocalStorage));
+                        //Following code creats a union of unlockedMemesServerSide and unlockedMemesLocalStorage
+                        var unionOfLocalAndServer = {};
+                        for (var i = 0; i < unlockedMemesServerSide.length; i++)
+                            unionOfLocalAndServer[unlockedMemesServerSide[i]["filename"]] = unlockedMemesServerSide[i];
+                        for (var i = 0; i < unlockedMemesLocalStorage.length; i++)
+                            unionOfLocalAndServer[unlockedMemesLocalStorage[i]["filename"]] = unlockedMemesLocalStorage[i];
+                        console.log("--unionOfLocalAndServer--- " + JSON.stringify(unionOfLocalAndServer));
+                        var res = [];
+                        for (var k in unionOfLocalAndServer) {
+                            res.push(unionOfLocalAndServer[k]);
+                        }
+                        _this.list_of_meme_to_display = res.reverse();
+                        _this.unlockedMemeCount = res.length;
+                        localMemeRecord["unlocked_memes"] = _this.list_of_meme_to_display;
+                        localMemeRecord["last_updated"] = Date.now();
+                        localMemeRecord["last_updated_readable_ts"] = moment__WEBPACK_IMPORTED_MODULE_2__().format("MMMM Do YYYY, h:mm:ss a Z");
+                        window.localStorage["already_shown_memes4"] = JSON.stringify(localMemeRecord);
+                        console.log("--localMemeRecord--- " + JSON.stringify(localMemeRecord));
+                        //
+                        _this.uploadCurrentlyUnlockedMemeList(localMemeRecord);
+                    },
+                    error: function (error) { return console.error('There was an error!', error); }
+                });
+                return [2 /*return*/];
+            });
+        });
+    };
+    UnlockedMemesComponent.prototype.uploadCurrentlyUnlockedMemeList = function (already_shown_memes) {
+        /*
+          {
+            "user_id": "test",
+            "incentiveString": "test",
+            "whenInserted": "test",
+            "whenInsertedReadableTs": 1234,
+            "incentiveType": "test"
+          }
+        */
+        var username = this.userProfileService.username;
+        var currentTimeTs = Date.now();
+        var currentTimeReadableTs = moment__WEBPACK_IMPORTED_MODULE_2__().format("MMMM Do YYYY, h:mm:ss a Z");
+        var headers = { "Content-Type": "application/json;charset=UTF-8" };
+        var body = {
+            "user_id": username,
+            "whenInserted": currentTimeTs,
+            "whenInsertedReadableTs": currentTimeReadableTs,
+            "incentiveType": "meme",
+            "incentiveString": JSON.stringify(already_shown_memes)
+        };
+        var flaskServerAPIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].flaskServerForIncentives;
+        this.httpClient.post(flaskServerAPIEndpoint + "/store-unlocked-incentive", body)
+            .subscribe({
+            next: function (data) { return console.log("--unlocked_meme-- " + JSON.stringify(data)); },
+            error: function (error) { return console.error('There was an error!', error); }
+        });
+    };
+    UnlockedMemesComponent.ctorParameters = function () { return [
+        { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__["UserProfileService"] },
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"] }
+    ]; };
     UnlockedMemesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-unlocked-memes',
             template: __webpack_require__(/*! raw-loader!./unlocked-memes.component.html */ "./node_modules/raw-loader/index.js!./src/app/incentive/unlocked-memes/unlocked-memes.component.html"),
             styles: [__webpack_require__(/*! ./unlocked-memes.component.css */ "./src/app/incentive/unlocked-memes/unlocked-memes.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__["UserProfileService"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"]])
     ], UnlockedMemesComponent);
     return UnlockedMemesComponent;
 }());
@@ -18681,7 +19067,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 this.totalPoints = this.totalPoints + 60;
                 window.localStorage.setItem("TotalPoints", "" + this.totalPoints);
                 //get "awardDollars"
-                var pastDollars = this.awardDollarService.getDollars();
+                var pastDollars = this.awardDollarService.getCurrentlyEarnedDollars();
                 var dollars = this.awardDollarService.giveDollars();
                 //console.log("Dollars: " + dollars);
                 this.userProfileService.surveyCompleted();
@@ -19945,6 +20331,7 @@ var UserProfile = /** @class */ (function () {
 
 var UserProfileFixed = /** @class */ (function () {
     function UserProfileFixed() {
+        this.onDates = {};
     }
     return UserProfileFixed;
 }());

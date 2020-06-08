@@ -14,7 +14,7 @@
           <ion-card-title style="color:black;">{{unlockedMemeCount}} out of 31 memes unlocked</ion-card-title>
         </ion-card-content>
     </ion-card>
-    <ion-card *ngFor="let x of already_shown_memes;">
+    <ion-card *ngFor="let x of list_of_meme_to_display;">
         <img src="{{x.filename}}" />
         <!--
         <ion-card-content>

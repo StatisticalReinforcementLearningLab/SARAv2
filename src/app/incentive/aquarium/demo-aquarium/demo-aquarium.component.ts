@@ -286,7 +286,7 @@ export class DemoAquariumComponent implements OnInit {
     var oneSignalPlayerId = window.localStorage['oneSignalPlayerId']; //this.userProfileService.oneSignalPlayerId;
     if(oneSignalPlayerId=="null" || oneSignalPlayerId==null || oneSignalPlayerId==undefined){
       console.log("oneSignalId is null, " + oneSignalPlayerId);
-      //return;
+      return;
     }
       
 
