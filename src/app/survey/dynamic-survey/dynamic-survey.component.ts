@@ -303,7 +303,7 @@ export class DynamicSurveyComponent implements OnInit {
         window.localStorage.setItem("TotalPoints", ""+this.totalPoints);
 
         //get "awardDollars"
-        var pastDollars = this.awardDollarService.getDollars();
+        var pastDollars = this.awardDollarService.getCurrentlyEarnedDollars();
         var dollars = this.awardDollarService.giveDollars();
         //console.log("Dollars: " + dollars);
 
