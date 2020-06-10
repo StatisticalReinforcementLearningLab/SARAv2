@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 import { isIncentivesUnlockedForTheDay } from '../../incentive/incentive.selectors';
 import { UnlockedIncentive } from '../../incentive/model/unlocked-incentives';
 import { unlockedScreenShownAlready } from '../incentive.actions';
+import { DatabaseService } from 'src/app/monitor/database.service';
 
 @Component({
   selector: 'app-aquarium',
@@ -60,6 +61,7 @@ export class AquariumComponent implements OnInit {
     private store: Store<AppState>,
     public navController: NavController,
     private menu: MenuController,
+    private appUsageDb: DatabaseService,
     private userProfileService: UserProfileService) { 
     console.log("Constructor called");
     this.sub1$=this.platform.pause.subscribe(() => {        
@@ -130,6 +132,9 @@ export class AquariumComponent implements OnInit {
   ionViewDidLeave() {
     console.log("aqarium.ts --- ionDidLeave");
     this.ionViewDidLeaveFunction();
+
+    //
+    this.appUsageDb.saveAppUsageExit("aquarium_tab");
   }
 
   ionViewDidEnter() {
@@ -139,6 +144,9 @@ export class AquariumComponent implements OnInit {
       
     //decide if we want to show the modal view with unlockables.
     this.subscribeForModalView();
+
+    //
+    this.appUsageDb.saveAppUsageEnter("aquarium_tab");
 
   }
 
