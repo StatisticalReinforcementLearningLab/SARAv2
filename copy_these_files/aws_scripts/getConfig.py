@@ -1,10 +1,8 @@
 import json
 import io
 
-'''
 
-aws_config.json:
-
+'''aws_config.json:
 {
     "ACCESS_KEY": "......",
     "SECRET_KEY": "......"
@@ -12,6 +10,7 @@ aws_config.json:
 '''
 
 # Open the JSON File and create a StringIO buffer to hold data
+
 with open('./aws_config.json', 'r') as datafile:
 
     # Load data into json file
@@ -23,3 +22,4 @@ with open('./aws_config.json', 'r') as datafile:
 
     # print(ACCESS_KEY)
     # print(SECRET_KEY)
+
