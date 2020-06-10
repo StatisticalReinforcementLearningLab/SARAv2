@@ -224,10 +224,10 @@ if __name__ == "__main__":
     # studyDataCheck.reinforcementRandomizationCheck('chop-sara', 'reinforcement_data/')
 
     #4PM notification list
-    studyDataCheck.notification4PMCheck()
+    # studyDataCheck.notification4PMCheck()
 
     #app usage tracking
-    # studyDataCheck.appUsageCheck('chop-sara', 'Tracking/')
+    studyDataCheck.appUsageCheck('chop-sara', 'Tracking/')
 
 
 
