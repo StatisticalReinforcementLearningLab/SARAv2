@@ -62,7 +62,7 @@ export class AquariumComponent implements OnInit {
     private store: Store<AppState>,
     public navController: NavController,
     private menu: MenuController,
-    private db: DatabaseService,
+    private appUsageDb: DatabaseService,
     private awsS3Service: AwsS3Service,
     private userProfileService: UserProfileService) { 
     console.log("Constructor called");
@@ -134,6 +134,9 @@ export class AquariumComponent implements OnInit {
   ionViewDidLeave() {
     console.log("aqarium.ts --- ionDidLeave");
     this.ionViewDidLeaveFunction();
+
+    //If "Leave Aquarium" is already tracked in demo-aquarium, duplication?
+    this.appUsageDb.saveAppUsageExit("aquarium_tab");
   }
 
   ionViewDidEnter() {
@@ -143,6 +146,10 @@ export class AquariumComponent implements OnInit {
       
     //decide if we want to show the modal view with unlockables.
     this.subscribeForModalView();
+
+    //If "Enter Aquarium" is already tracked in demo-aquarium, duplication?
+    this.appUsageDb.saveAppUsageEnter("aquarium_tab");
+
   }
 
    //Upload SQLite database to AWS in ionViewWillEnter which happens
@@ -151,7 +158,7 @@ export class AquariumComponent implements OnInit {
    //"come back" to aquarium after visit other pages and will 
    // be exported to AWS.
    ionViewWillEnter() {
-    this.db.isTableEmpty().then(tableEmpty => {
+    this.appUsageDb.isTableEmpty().then(tableEmpty => {
       console.log("tableEmpty: "+tableEmpty);
       if(!tableEmpty) {
         this.exportDeleteDatabase();
@@ -164,10 +171,10 @@ export class AquariumComponent implements OnInit {
 
   exportDeleteDatabase(){
     console.log("exportTable at Aquarium Page!");
-    this.db.exportDatabaseToJson().then((res) => {
+    this.appUsageDb.exportDatabaseToJson().then((res) => {
       console.log("upload to AWS at Aquarium Page: "+JSON.stringify(res));
       this.awsS3Service.upload("Tracking",res);
-      this.db.emptyTable();              
+      this.appUsageDb.emptyTable();              
     });   
   }  
 
