@@ -13,6 +13,8 @@ import { Observable } from 'rxjs';
 import { isIncentivesUnlockedForTheDay } from '../../incentive/incentive.selectors';
 import { UnlockedIncentive } from '../../incentive/model/unlocked-incentives';
 import { unlockedScreenShownAlready } from '../incentive.actions';
+import { DatabaseService } from 'src/app/monitor/database.service';
+import { AwsS3Service } from '../../storage/aws-s3.service';
 
 @Component({
   selector: 'app-aquarium',
@@ -25,9 +27,9 @@ export class AquariumComponent implements OnInit {
   private sub2$:any;
   money = 0;
   modalObjectNavigationExtras = {};
+  pageTitle = "Aquarium";
 
   @ViewChild(DemoAquariumComponent, {static: true}) child;
-
 
   unlockedItems$: Observable<any>;
   modalDataSubscription$: any;
@@ -60,6 +62,8 @@ export class AquariumComponent implements OnInit {
     private store: Store<AppState>,
     public navController: NavController,
     private menu: MenuController,
+    private db: DatabaseService,
+    private awsS3Service: AwsS3Service,
     private userProfileService: UserProfileService) { 
     console.log("Constructor called");
     this.sub1$=this.platform.pause.subscribe(() => {        
@@ -139,8 +143,33 @@ export class AquariumComponent implements OnInit {
       
     //decide if we want to show the modal view with unlockables.
     this.subscribeForModalView();
-
   }
+
+   //Upload SQLite database to AWS in ionViewWillEnter which happens
+   //before "ionViewDidEnter" in demo-aquarium, thus the table will 
+   //be empty first visit aquarium, will not be empty if user 
+   //"come back" to aquarium after visit other pages and will 
+   // be exported to AWS.
+   ionViewWillEnter() {
+    this.db.isTableEmpty().then(tableEmpty => {
+      console.log("tableEmpty: "+tableEmpty);
+      if(!tableEmpty) {
+        this.exportDeleteDatabase();
+      } 
+      }).catch(e => {
+        console.log("In ionViewWillEnter at Aqarium:"+e);
+    });
+
+    } 
+
+  exportDeleteDatabase(){
+    console.log("exportTable at Aquarium Page!");
+    this.db.exportDatabaseToJson().then((res) => {
+      console.log("upload to AWS at Aquarium Page: "+JSON.stringify(res));
+      this.awsS3Service.upload("Tracking",res);
+      this.db.emptyTable();              
+    });   
+  }  
 
   ionViewWillUnload() {
     
