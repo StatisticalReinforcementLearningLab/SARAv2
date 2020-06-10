@@ -161,7 +161,9 @@ export class AquariumComponent implements OnInit {
     this.appUsageDb.isTableEmpty().then(tableEmpty => {
       console.log("tableEmpty: "+tableEmpty);
       if(!tableEmpty) {
-        this.exportDeleteDatabase();
+        this.exportDatabase();
+        //Empty table to prepare another round of tracking
+        this.appUsageDb.emptyTable();   
       } 
       }).catch(e => {
         console.log("In ionViewWillEnter at Aqarium:"+e);
@@ -169,12 +171,11 @@ export class AquariumComponent implements OnInit {
 
     } 
 
-  exportDeleteDatabase(){
+  exportDatabase(){
     console.log("exportTable at Aquarium Page!");
     this.appUsageDb.exportDatabaseToJson().then((res) => {
       console.log("upload to AWS at Aquarium Page: "+JSON.stringify(res));
-      this.awsS3Service.upload("Tracking",res);
-      this.appUsageDb.emptyTable();              
+      this.awsS3Service.upload("Tracking",res);           
     });   
   }  
 
