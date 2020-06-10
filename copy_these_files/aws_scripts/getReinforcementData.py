@@ -38,26 +38,11 @@ for obj in resp['Contents']:
     if("result" in filename) :
         json_obj = client.get_object(Bucket='chop-sara', Key=filename)   
         json_data = json_obj['Body'].read().decode('utf-8')
-        #print("printing json_data")
         print(json_data)
-        #print(type(json_data))
         each_json=json.loads(json_data)
-        #print("json loaded data")
-        #print(each_json)
-        #print(type(each_json))
-        #if "appVersion" in each_json:
         ordered = OrderedDict((key, each_json.get(key)) for key in header)
         csvwriter.writerow(ordered.values())
-##        if count == 0:
-##            header = each_json.keys()
-##            csvwriter.writerow(header)
-##            count += 1
-##            csvwriter.writerow(each_json.values())
-##            key_order = list(header)
-##            #print(key_order)
-##        if count == 1:
-##            ordered = OrderedDict((key, each_json.get(key)) for key in key_order)
-##            csvwriter.writerow(ordered.values())
+
 
          
 cvs_data.close()
