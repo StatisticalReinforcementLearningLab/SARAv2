@@ -14,6 +14,7 @@ import { HttpClient } from '@angular/common/http';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 import { BehaviorSubject, Observable } from 'rxjs';
 import * as moment from 'moment';
+import { UserProfileService } from '../user/user-profile/user-profile.service';
 
 export interface TrackObj {
   id: number,
@@ -39,6 +40,7 @@ export class DatabaseService {
     private plt: Platform, 
     private sqlitePorter: SQLitePorter, 
     private sqlite: SQLite, 
+    private userProfileService: UserProfileService,
     private http: HttpClient) {  
        this.plt.ready().then(() => {
         this.sqlite.create({
@@ -119,6 +121,33 @@ export class DatabaseService {
       });
     }
 
+    saveAppUsageEnter(pageName){
+      this.getDatabaseState().subscribe(rdy => {
+        if (rdy) { 
+          var day_count = Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;    
+          this.addTrack(pageName, "Enter", this.userProfileService.username, day_count); 
+        }
+      }); 
+    }
+
+    saveAppUsageExit(pageName){
+      this.getDatabaseState().subscribe(rdy => {
+        if (rdy) {  
+          var day_count = Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;    
+          this.addTrack(pageName, "Exit", this.userProfileService.username, day_count); 
+        }
+      }); 
+    }
+
+
+    //save usage
+    saveAppUsage(pageName, eventStatus, username, day_count){
+      this.getDatabaseState().subscribe(rdy => {
+        if (rdy) {     
+          this.addTrack(pageName, eventStatus, username, day_count); 
+        }
+      }); 
+    }
       
     addTrack(pageName, eventStatus, username, day_count) {
       var currentTime = moment().format('MMMM Do YYYY, h:mm:ss a Z');
