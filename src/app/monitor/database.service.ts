@@ -86,6 +86,15 @@ export class DatabaseService {
         //this.isTableExist();
       });      
     }
+
+    emptyTable(){
+      return this.database.executeSql('DELETE FROM tracks').then(data => {
+        console.log('Table emptied!');
+      }).catch(e => {
+        console.log("deleteTable:"+JSON.stringify(e));
+      });      
+    }
+
     
     isTableExist() : Promise<any> {
       console.log("Inside isTableEmpty:");
@@ -96,6 +105,7 @@ export class DatabaseService {
         return rowlength != 0;
       }).catch(e => {
         console.log("At isTableNotEmpty:"+JSON.stringify(e));
+        return false;
       });
     }
 
@@ -107,6 +117,7 @@ export class DatabaseService {
         return rowlength == 0;
       }).catch(e => {
         console.log("At isTableNotEmpty:"+JSON.stringify(e));
+        return true;
       });
     }
 
