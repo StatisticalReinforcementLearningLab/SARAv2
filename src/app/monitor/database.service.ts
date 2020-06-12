@@ -86,6 +86,15 @@ export class DatabaseService {
         //this.isTableExist();
       });      
     }
+
+    emptyTable(){
+      return this.database.executeSql('DELETE FROM tracks').then(data => {
+        console.log('Table emptied!');
+      }).catch(e => {
+        console.log("deleteTable:"+JSON.stringify(e));
+      });      
+    }
+
     
     isTableExist() : Promise<any> {
       console.log("Inside isTableEmpty:");
@@ -96,6 +105,7 @@ export class DatabaseService {
         return rowlength != 0;
       }).catch(e => {
         console.log("At isTableNotEmpty:"+JSON.stringify(e));
+        return false;
       });
     }
 
@@ -107,6 +117,7 @@ export class DatabaseService {
         return rowlength == 0;
       }).catch(e => {
         console.log("At isTableNotEmpty:"+JSON.stringify(e));
+        return true;
       });
     }
 
@@ -130,6 +141,7 @@ export class DatabaseService {
 
 
     //save usage
+    /*
     saveAppUsage(pageName, eventStatus, username, day_count){
       this.getDatabaseState().subscribe(rdy => {
         if (rdy) {     
@@ -137,6 +149,7 @@ export class DatabaseService {
         }
       }); 
     }
+    */
       
     addTrack(pageName, eventStatus, username, day_count) {
       var currentTime = moment().format('MMMM Do YYYY, h:mm:ss a Z');
@@ -144,7 +157,7 @@ export class DatabaseService {
       var unix_ts = new Date().getTime();
       let data = [pageName, currentTime, currentDate, unix_ts, day_count, eventStatus, username];
       return this.database.executeSql('INSERT INTO tracks (pageName, eventTime, eventDate, unix_ts, day_count, eventStatus, username) VALUES (?, ?, ?, ?, ?, ?, ?)', data).then(data => {
-        console.log(pageName+' Track added!');
+        console.log('App usage added!! ' + pageName + ", " + eventStatus);
         //this.displayTracks();
       }).catch(e => console.log("In addTrack:"+pageName+" "+JSON.stringify(e)));
 
@@ -159,8 +172,8 @@ export class DatabaseService {
         if (rowlength > 0) {
           for (var i = 0; i < rowlength; i++) {
             console.log("data.rows= "+rowlength);
-            console.log("displayTracks "+i+" pageName: "+data.rows.item(i).pageName);
-            console.log("displayTracks "+i+" time: "+data.rows.item(i).eventTime);
+            console.log("displayTracks "+i+" pageName: "+ data.rows.item(i).pageName + ", eventTime " + data.rows.item(i).eventStatus);
+            //console.log("displayTracks "+i+" time: "+data.rows.item(i).eventTime);
             currentTracks.push({ 
               id: data.rows.item(i).id,
               pageName: data.rows.item(i).pageName,
@@ -180,7 +193,7 @@ export class DatabaseService {
     
     exportDatabaseToJson() : Promise<any> { 
       return this.sqlitePorter.exportDbToJson(this.database).then(res => {
-        console.log('Exported '+JSON.stringify(res));
+        //console.log('Exported '+JSON.stringify(res));
         return res;
       }).catch(e => console.error(e));
 
