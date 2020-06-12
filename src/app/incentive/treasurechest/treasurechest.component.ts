@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatabaseService } from 'src/app/monitor/database.service';
 
 @Component({
   selector: 'app-treasurechest',
@@ -12,8 +13,7 @@ export class TreasurechestComponent implements OnInit {
   pointsdata = [];
 
 
-  constructor() { 
-
+  constructor(private appUsageDb: DatabaseService) { 
   }
 
   ngOnInit() {
@@ -115,6 +115,15 @@ export class TreasurechestComponent implements OnInit {
       total += arr[i]; 
     }
     return total;
+  }
+
+  ionViewDidEnter() {
+    //
+    this.appUsageDb.saveAppUsageEnter("treasure_chest"); 
+  }
+
+  ionViewDidLeave(){
+    this.appUsageDb.saveAppUsageExit("treasure_chest");     
   }
 
 }

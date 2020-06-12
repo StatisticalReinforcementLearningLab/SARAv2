@@ -150,6 +150,9 @@ export class AquariumComponent implements OnInit {
     //If "Enter Aquarium" is already tracked in demo-aquarium, duplication?
     this.appUsageDb.saveAppUsageEnter("aquarium_tab");
 
+    //
+    this.saveDbToAWS();
+
   }
 
    //Upload SQLite database to AWS in ionViewWillEnter which happens
@@ -157,25 +160,29 @@ export class AquariumComponent implements OnInit {
    //be empty first visit aquarium, will not be empty if user 
    //"come back" to aquarium after visit other pages and will 
    // be exported to AWS.
-   ionViewWillEnter() {
+   //
+   // --- Moving to ionViewDidEnter()
+   //
+  saveDbToAWS() {
     this.appUsageDb.isTableEmpty().then(tableEmpty => {
       console.log("tableEmpty: "+tableEmpty);
       if(!tableEmpty) {
         this.exportDatabase();
-        //Empty table to prepare another round of tracking
-        this.appUsageDb.emptyTable();   
       } 
       }).catch(e => {
         console.log("In ionViewWillEnter at Aqarium:"+e);
-    });
-
-    } 
+     });
+  } 
 
   exportDatabase(){
     console.log("exportTable at Aquarium Page!");
     this.appUsageDb.exportDatabaseToJson().then((res) => {
       console.log("upload to AWS at Aquarium Page: "+JSON.stringify(res));
-      this.awsS3Service.upload("Tracking",res);           
+      this.awsS3Service.upload("Tracking",res);
+      
+      //Empty table to prepare another round of tracking
+      this.appUsageDb.emptyTable(); 
+
     });   
   }  
 
