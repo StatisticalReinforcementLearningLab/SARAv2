@@ -71,12 +71,14 @@ export class AwsS3Service extends StoreBaseService {
     if(this.networkSvc.getCurrentNetworkStatus() == ConnectionStatus.Online){
       if(window.localStorage.getItem(this.STORAGE_REQ_KEY) != undefined ) 
         this.uploadLocalData();
+
       this.uploadToS3(subfolder+"/"+fileName, result).catch(err => {
         if (err ) {
           console.log('Caught thrown error: '+err.message);
           this.storeResultLocally(result); 
         }
-      });     
+      });
+           
     } else {
       this.storeResultLocally(result);
     }
