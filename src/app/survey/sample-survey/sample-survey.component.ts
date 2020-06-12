@@ -17,7 +17,7 @@ export class SampleSurveyComponent implements OnInit {
   constructor(
     private userProfileService: UserProfileService,
     //private mobileAccessibility: MobileAccessibility,
-    private db: DatabaseService
+    private appUsageDb: DatabaseService
   ) { }
 
   ngOnInit() {
@@ -26,22 +26,14 @@ export class SampleSurveyComponent implements OnInit {
   }
   
   ionViewDidEnter(){
-    this.db.getDatabaseState().subscribe(rdy => {
-     if (rdy) {     
-       this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
-     }
-   }); 
+    //
+    this.appUsageDb.saveAppUsageEnter("cg_survey_page"); 
 
  }  
 
  ionViewDidLeave(){
-   console.log(this.pageTitle+": ionViewDidLeave");
-   this.db.getDatabaseState().subscribe(rdy => {
-     if (rdy) {     
-       this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
-     }
-   }); 
-   //this.mobileAccessibility.usePreferredTextZoom(true);
+    //
+    this.appUsageDb.saveAppUsageExit("cg_survey_page");   
 
  }
 

@@ -9,7 +9,6 @@ import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
   styleUrls: ['./aya-sample-survey.component.scss'],
 })
 export class AyaSampleSurveyComponent implements OnInit {
-  pageTitle = "Survey_aya";
 
   constructor(
     private userProfileService: UserProfileService,
@@ -28,7 +27,7 @@ export class AyaSampleSurveyComponent implements OnInit {
      }
     });
     */
-    this.appUsageDb.saveAppUsageEnter("survey_aya");
+    this.appUsageDb.saveAppUsageEnter("aya_survey_page");
  }  
 
  ionViewDidLeave(){
@@ -41,7 +40,7 @@ export class AyaSampleSurveyComponent implements OnInit {
    });
    */    
   //this.mobileAccessibility.usePreferredTextZoom(true);
-  this.appUsageDb.saveAppUsageExit("survey_aya");
+  this.appUsageDb.saveAppUsageExit("aya_survey_page");
   
  }
  
