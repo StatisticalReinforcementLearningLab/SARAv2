@@ -3,6 +3,7 @@ import * as moment from 'moment';
 import { environment } from '../../../environments/environment';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import { HttpClient } from '@angular/common/http';
+import { DatabaseService } from 'src/app/monitor/database.service';
 
 @Component({
   selector: 'app-unlocked-memes',
@@ -15,7 +16,8 @@ export class UnlockedMemesComponent implements OnInit {
   unlockedMemeCount: number;
 
   constructor(private userProfileService: UserProfileService,
-    private httpClient: HttpClient) { 
+    private httpClient: HttpClient,
+    private appUsageDb: DatabaseService) { 
   }
 
   get username(){
@@ -61,6 +63,20 @@ export class UnlockedMemesComponent implements OnInit {
 
     
     this.downloadAndUpdateUnlockedMemeList();
+
+    //
+    this.appUsageDb.saveAppUsageEnter("unlocked_meme_tab"); 
+  }
+
+  ionViewDidLeave(){
+    /*
+    this.db.getDatabaseState().subscribe(rdy => {
+      if (rdy) {     
+        this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
+      }
+    });
+    */ 
+    this.appUsageDb.saveAppUsageExit("unlocked_meme_tab");     
   }
 
   

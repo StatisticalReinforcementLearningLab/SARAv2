@@ -3,6 +3,7 @@ import * as moment from 'moment';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { DatabaseService } from 'src/app/monitor/database.service';
 
 @Component({
   selector: 'app-unlocked-altuistic-messages',
@@ -15,7 +16,8 @@ export class UnlockedAltuisticMessagesComponent implements OnInit {
   list_of_alt_msg_to_display: any;
 
   constructor(private userProfileService: UserProfileService,
-    private httpClient: HttpClient) { }
+    private httpClient: HttpClient,
+    private appUsageDb: DatabaseService) { }
 
   get username(){
     if(this.userProfileService == undefined)
@@ -57,8 +59,21 @@ export class UnlockedAltuisticMessagesComponent implements OnInit {
     console.log("already_shown_altruism_msgs " + this.already_shown_altruism_msgs);
 
     this.downloadAndUpdateUnlockedAltsMsgsList();
+
+    //
+    this.appUsageDb.saveAppUsageEnter("unlocked_altruism_message_tab");  
   }
 
+  ionViewDidLeave(){
+    /*
+    this.db.getDatabaseState().subscribe(rdy => {
+      if (rdy) {     
+        this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
+      }
+    });
+    */ 
+    this.appUsageDb.saveAppUsageExit("unlocked_altruism_message_tab");     
+  }
 
   async downloadAndUpdateUnlockedAltsMsgsList() {
     

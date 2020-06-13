@@ -161,9 +161,16 @@ class StudyDataCheck:
         resp = self.s3client.list_objects_v2(Bucket= bucketId, Prefix=prefix)
         isHeader = True
 
-        for obj in resp['Contents']:
-            filename = obj['Key']
-            print("Processing file: %s" %filename)
+        get_last_modified = lambda obj: int(obj['LastModified'].strftime('%s'))
+        objS3 = resp['Contents']
+        sortedS3DataModified = [obj['Key'] for obj in sorted(objS3, key=get_last_modified, reverse=True)]
+
+        numberOfFilesProcessed = 0
+        TOTAL_NUMBER_OF_RECORDS_TO_DISPLAY = 150
+
+
+        for filename in sortedS3DataModified:
+            # print("Processing file: %s" %filename)
             if("result" in filename) :
                 json_obj = self.s3client.get_object(Bucket=bucketId, Key=filename)  
                 json_data = json_obj['Body'].read().decode('utf-8')
