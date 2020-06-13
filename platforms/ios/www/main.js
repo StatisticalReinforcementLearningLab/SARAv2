@@ -765,7 +765,7 @@ module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n\n      <ion-buttons slot=\"start\">\n        <ion-menu-button style=\"color:#fff;\" menuId=\"first\"></ion-menu-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n      </ion-buttons>\n\n      <!--\n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n        <ion-menu-button autoHide=\"false\" style=\"color:#fff;\" menuId=\"first\" (click)=\"showSideMenu()\"></ion-menu-button>\n        <ion-button style=\"color:#fff;\" (click)=\"showSideMenu()\">\n          <ion-icon name=\"menu\"></ion-icon>\n        </ion-button>\n        \n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"!isIOS\">\n            <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n      -->\n\n\n      <ion-buttons slot=\"end\">\n          <font color=\"white\">${{money}}</font>\n          <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\"  *ngIf=\"!isIOS\">\n            <ion-icon name=\"alert\"></ion-icon>\n          </ion-button>\n  \n          <!-- Mash codes:\n          <ion-text  *ngIf=\"!isActive\" style=\"color:#fff;\"><strong>Account is Paused</strong> </ion-text>\n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button>\n          -->\n  \n          \n  \n          <ion-button (click)=\"startSurvey()\"   *ngIf=\"isActive\">\n              <ion-icon name=\"ios-create\" style=\"color : white;\"></ion-icon>\n          </ion-button>\n  \n  \n          <ion-button *ngIf=\"!isActive\" (click)=\"dispalySurveyPausedMsg()\" >\n              <ion-icon name=\"ios-create\" style=\"color : #e74c3c;\"></ion-icon>\n          </ion-button>\n          <!--\n          <ion-button href=\"{{surveyPath}}\" *ngIf=\"isActive\">Start Survey</ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurveyAYA()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          -->\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">{{title}}</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  \n  \n  <ion-content>\n    <!--div class=\"ion-padding\">\n      <ion-button href=\"/survey/samplesurvey\">Sample survey (demo)</ion-button> <br>\n      <ion-button href=\"/incentive/aquariumone\">Incentive: Aquarium 1</ion-button> <br>\n      <ion-button href=\"/incentive/award-memes\" >Incentive: meme</ion-button> <br>\n      <ion-button href=\"/incentive/visualization\">Incentive: Life-inisight</ion-button> <br>\n    </div-->\n  \n    <app-demo-aquarium isPreview=\"false\"></app-demo-aquarium>\n\n    <!--\n    <ion-button color=\"primary\" (click)=\"showModalDemo()\">Unlockables</ion-button>\n    <ion-button color=\"primary\" (click)=\"showMemeDemo()\">Meme</ion-button>\n    <ion-button color=\"primary\" (click)=\"showAltruisticDemo()\">Altruistic msg</ion-button>\n    -->\n  </ion-content>\n  \n  "
+module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n\n      <ion-buttons slot=\"start\">\n        <ion-menu-button style=\"color:#fff;\" menuId=\"first\"></ion-menu-button>\n\n        <!--\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n        -->\n      </ion-buttons>\n\n      <!--\n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n        <ion-menu-button autoHide=\"false\" style=\"color:#fff;\" menuId=\"first\" (click)=\"showSideMenu()\"></ion-menu-button>\n        <ion-button style=\"color:#fff;\" (click)=\"showSideMenu()\">\n          <ion-icon name=\"menu\"></ion-icon>\n        </ion-button>\n        \n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"!isIOS\">\n            <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n      -->\n\n\n      <ion-buttons slot=\"end\">\n          <font color=\"white\">${{money}}</font>\n\n          <!--\n          <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\"  *ngIf=\"!isIOS\">\n            <ion-icon name=\"alert\"></ion-icon>\n          </ion-button>\n          -->\n  \n          <!-- Mash codes:\n          <ion-text  *ngIf=\"!isActive\" style=\"color:#fff;\"><strong>Account is Paused</strong> </ion-text>\n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button>\n          -->\n  \n          \n  \n          <ion-button (click)=\"startSurvey()\"   *ngIf=\"isActive\">\n              <ion-icon name=\"ios-create\" style=\"color : white;\"></ion-icon>\n          </ion-button>\n  \n  \n          <ion-button *ngIf=\"!isActive\" (click)=\"dispalySurveyPausedMsg()\" >\n              <ion-icon name=\"ios-create\" style=\"color : #e74c3c;\"></ion-icon>\n          </ion-button>\n          <!--\n          <ion-button href=\"{{surveyPath}}\" *ngIf=\"isActive\">Start Survey</ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurveyAYA()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          -->\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">{{title}}</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  \n  \n  <ion-content>\n    <!--div class=\"ion-padding\">\n      <ion-button href=\"/survey/samplesurvey\">Sample survey (demo)</ion-button> <br>\n      <ion-button href=\"/incentive/aquariumone\">Incentive: Aquarium 1</ion-button> <br>\n      <ion-button href=\"/incentive/award-memes\" >Incentive: meme</ion-button> <br>\n      <ion-button href=\"/incentive/visualization\">Incentive: Life-inisight</ion-button> <br>\n    </div-->\n  \n    <app-demo-aquarium isPreview=\"false\"></app-demo-aquarium>\n\n    <!--\n    <ion-button color=\"primary\" (click)=\"showModalDemo()\">Unlockables</ion-button>\n    <ion-button color=\"primary\" (click)=\"showMemeDemo()\">Meme</ion-button>\n    <ion-button color=\"primary\" (click)=\"showAltruisticDemo()\">Altruistic msg</ion-button>\n    -->\n  </ion-content>\n  \n  "
 
 /***/ }),
 
@@ -952,7 +952,7 @@ module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\" style=\"color:#fff;\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">AYA Survey</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n    <!-- <app-dynamic-survey fileLink=\"alex_survey\"></app-dynamic-survey> -->\n    <app-dynamic-survey fileLink=\"alex_survey_aya\"></app-dynamic-survey>\n  <!--\n  <app-dynamic-survey fileLink=\"temp_survey\"></app-dynamic-survey>\n  -->\n</ion-content>\n\n\n"
+module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\" style=\"color:#fff;\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">Survey</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n    <!-- <app-dynamic-survey fileLink=\"alex_survey\"></app-dynamic-survey> -->\n    <app-dynamic-survey fileLink=\"alex_survey_aya\"></app-dynamic-survey>\n  <!--\n  <app-dynamic-survey fileLink=\"temp_survey\"></app-dynamic-survey>\n  -->\n</ion-content>\n\n\n"
 
 /***/ }),
 
@@ -5193,18 +5193,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
+
 
 
 
 var ContactComponent = /** @class */ (function () {
-    function ContactComponent(menuCtrl) {
+    function ContactComponent(menuCtrl, appUsageDb) {
         this.menuCtrl = menuCtrl;
+        this.appUsageDb = appUsageDb;
     }
     ContactComponent.prototype.ngOnInit = function () {
         this.menuCtrl.close();
     };
+    ContactComponent.prototype.ionViewDidEnter = function () {
+        /*
+        this.db.getDatabaseState().subscribe(rdy => {
+         if (rdy) {
+           this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+         }
+        });
+        */
+        this.appUsageDb.saveAppUsageEnter("study_contact_info_page");
+    };
+    ContactComponent.prototype.ionViewDidLeave = function () {
+        /*
+        this.db.getDatabaseState().subscribe(rdy => {
+          if (rdy) {
+            this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+          }
+        });
+        */
+        this.appUsageDb.saveAppUsageExit("study_contact_info_page");
+    };
     ContactComponent.ctorParameters = function () { return [
-        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"] }
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"] },
+        { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_3__["DatabaseService"] }
     ]; };
     ContactComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -5212,7 +5236,8 @@ var ContactComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./contact.component.html */ "./node_modules/raw-loader/index.js!./src/app/home/contact/contact.component.html"),
             styles: [__webpack_require__(/*! ./contact.component.css */ "./src/app/home/contact/contact.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"],
+            src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_3__["DatabaseService"]])
     ], ContactComponent);
     return ContactComponent;
 }());
@@ -5616,6 +5641,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
 /* harmony import */ var _incentive_incentive_selectors__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../incentive/incentive.selectors */ "./src/app/incentive/incentive.selectors.ts");
 /* harmony import */ var _incentive_actions__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../incentive.actions */ "./src/app/incentive/incentive.actions.ts");
+/* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
+/* harmony import */ var _storage_aws_s3_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../storage/aws-s3.service */ "./src/app/storage/aws-s3.service.ts");
+
+
 
 
 
@@ -5630,7 +5659,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AquariumComponent = /** @class */ (function () {
-    function AquariumComponent(platform, alertCtrl, router, route, modalController, store, navController, menu, userProfileService) {
+    function AquariumComponent(platform, alertCtrl, router, route, modalController, store, navController, menu, appUsageDb, awsS3Service, userProfileService) {
         var _this = this;
         this.platform = platform;
         this.alertCtrl = alertCtrl;
@@ -5640,9 +5669,12 @@ var AquariumComponent = /** @class */ (function () {
         this.store = store;
         this.navController = navController;
         this.menu = menu;
+        this.appUsageDb = appUsageDb;
+        this.awsS3Service = awsS3Service;
         this.userProfileService = userProfileService;
         this.money = 0;
         this.modalObjectNavigationExtras = {};
+        this.pageTitle = "Aquarium";
         this.title = "";
         this.isIOS = false;
         console.log("Constructor called");
@@ -5722,12 +5754,47 @@ var AquariumComponent = /** @class */ (function () {
     AquariumComponent.prototype.ionViewDidLeave = function () {
         console.log("aqarium.ts --- ionDidLeave");
         this.ionViewDidLeaveFunction();
+        //If "Leave Aquarium" is already tracked in demo-aquarium, duplication?
+        this.appUsageDb.saveAppUsageExit("aquarium_tab");
     };
     AquariumComponent.prototype.ionViewDidEnter = function () {
         console.log("aqarium.ts --- ionViewDidEnter");
         this.child.loadFunction();
         //decide if we want to show the modal view with unlockables.
         this.subscribeForModalView();
+        //If "Enter Aquarium" is already tracked in demo-aquarium, duplication?
+        this.appUsageDb.saveAppUsageEnter("aquarium_tab");
+        //
+        this.saveDbToAWS();
+    };
+    //Upload SQLite database to AWS in ionViewWillEnter which happens
+    //before "ionViewDidEnter" in demo-aquarium, thus the table will 
+    //be empty first visit aquarium, will not be empty if user 
+    //"come back" to aquarium after visit other pages and will 
+    // be exported to AWS.
+    //
+    // --- Moving to ionViewDidEnter()
+    //
+    AquariumComponent.prototype.saveDbToAWS = function () {
+        var _this = this;
+        this.appUsageDb.isTableEmpty().then(function (tableEmpty) {
+            console.log("tableEmpty: " + tableEmpty);
+            if (!tableEmpty) {
+                _this.exportDatabase();
+            }
+        }).catch(function (e) {
+            console.log("In ionViewWillEnter at Aqarium:" + e);
+        });
+    };
+    AquariumComponent.prototype.exportDatabase = function () {
+        var _this = this;
+        console.log("exportTable at Aquarium Page!");
+        this.appUsageDb.exportDatabaseToJson().then(function (res) {
+            console.log("upload to AWS at Aquarium Page: " + JSON.stringify(res));
+            _this.awsS3Service.upload("Tracking", res);
+            //Empty table to prepare another round of tracking
+            _this.appUsageDb.emptyTable();
+        });
     };
     AquariumComponent.prototype.ionViewWillUnload = function () {
     };
@@ -5981,6 +6048,8 @@ var AquariumComponent = /** @class */ (function () {
         { type: _ngrx_store__WEBPACK_IMPORTED_MODULE_10__["Store"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["MenuController"] },
+        { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_13__["DatabaseService"] },
+        { type: _storage_aws_s3_service__WEBPACK_IMPORTED_MODULE_14__["AwsS3Service"] },
         { type: _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_6__["UserProfileService"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -6000,6 +6069,8 @@ var AquariumComponent = /** @class */ (function () {
             _ngrx_store__WEBPACK_IMPORTED_MODULE_10__["Store"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["MenuController"],
+            src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_13__["DatabaseService"],
+            _storage_aws_s3_service__WEBPACK_IMPORTED_MODULE_14__["AwsS3Service"],
             _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_6__["UserProfileService"]])
     ], AquariumComponent);
     return AquariumComponent;
@@ -6197,9 +6268,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! src/app/user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_29___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_29__);
-/* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ../../../../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ../../../../environments/environment */ "./src/environments/environment.ts");
 
 
 
@@ -6234,7 +6304,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var DemoAquariumComponent = /** @class */ (function () {
     /*   get surveyPath(){
         if (this.userProfileService.isParent){
@@ -6245,7 +6314,7 @@ var DemoAquariumComponent = /** @class */ (function () {
       } */
     function DemoAquariumComponent(router, alertCtrl, modalController, 
     //private pickGameService: PickGameService,
-    platform, route, userProfileService, httpClient, db) {
+    platform, route, userProfileService, httpClient) {
         this.router = router;
         this.alertCtrl = alertCtrl;
         this.modalController = modalController;
@@ -6253,9 +6322,7 @@ var DemoAquariumComponent = /** @class */ (function () {
         this.route = route;
         this.userProfileService = userProfileService;
         this.httpClient = httpClient;
-        this.db = db;
         this.isLoaded = false;
-        this.pageTitle = "Aquarium";
         this.fishFunFactListViewItems = [];
         console.log("Constructor called");
         /*
@@ -6362,7 +6429,7 @@ var DemoAquariumComponent = /** @class */ (function () {
         this.getInspirationalQuotes();
     };
     DemoAquariumComponent.prototype.getInspirationalQuotes = function () {
-        var flaskServerAPIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_32__["environment"].flaskServerForIncentives;
+        var flaskServerAPIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_31__["environment"].flaskServerForIncentives;
         this.httpClient.post(flaskServerAPIEndpoint + '/get-inspirational-quote', { "user_id": 'mash_aya' }).subscribe({
             next: function (data) { return console.log("Inspirational quote: " + JSON.stringify(data)); },
             error: function (error) { return console.error('There was an error!', error); }
@@ -6424,7 +6491,7 @@ var DemoAquariumComponent = /** @class */ (function () {
                 currentTimeReadableTs = moment__WEBPACK_IMPORTED_MODULE_29__().format("MMMM Do YYYY, h:mm:ss a Z");
                 headers = { "Content-Type": "application/json;charset=UTF-8" };
                 body = { "user_id": username, "oneSignalPlayerId": oneSignalPlayerId, "currentTimeTs": currentTimeTs, "currentTimeReadableTs": currentTimeReadableTs };
-                flaskServerAPIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_32__["environment"].flaskServerForIncentives;
+                flaskServerAPIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_31__["environment"].flaskServerForIncentives;
                 this.httpClient.post(flaskServerAPIEndpoint + "/store-onesignal-id", body)
                     .subscribe({
                     next: function (data) { return console.log("--aquarium-- " + JSON.stringify(data)); },
@@ -6442,12 +6509,13 @@ var DemoAquariumComponent = /** @class */ (function () {
     //this function gets called from the above the "aquarium.component.ts"
     DemoAquariumComponent.prototype.loadFunction = function () {
         //console.log(window.localStorage['TotalPoints']);
-        var _this = this;
-        this.db.getDatabaseState().subscribe(function (rdy) {
-            if (rdy) {
-                _this.db.addTrack(_this.pageTitle, "Enter", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
-            }
+        /*
+        this.db.getDatabaseState().subscribe(rdy => {
+          if (rdy) {
+            this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+          }
         });
+        */
         //this.totalPoints = parseInt(window.localStorage['TotalPoints'] || "0");
         /*
          if(window.localStorage['TotalPoints'] == undefined)
@@ -6579,14 +6647,15 @@ var DemoAquariumComponent = /** @class */ (function () {
         //this.pickGameService.currentGame.subscribe(game => this.pickedGame = game)
     };
     DemoAquariumComponent.prototype.ionViewDidLeaveFunction = function () {
-        var _this = this;
         console.log("Aquarium, ionDidLeave");
         //this.survey_text = "Start survey";
-        this.db.getDatabaseState().subscribe(function (rdy) {
-            if (rdy) {
-                _this.db.addTrack(_this.pageTitle, "Leave", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
-            }
+        /*
+        this.db.getDatabaseState().subscribe(rdy => {
+          if (rdy) {
+            this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+          }
         });
+        */
         this.game.destroy();
     };
     DemoAquariumComponent.prototype.pauseGameRendering = function () {
@@ -6645,8 +6714,7 @@ var DemoAquariumComponent = /** @class */ (function () {
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_27__["Platform"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_26__["ActivatedRoute"] },
         { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_28__["UserProfileService"] },
-        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_31__["HttpClient"] },
-        { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_30__["DatabaseService"] }
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_30__["HttpClient"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
@@ -6666,8 +6734,7 @@ var DemoAquariumComponent = /** @class */ (function () {
             _ionic_angular__WEBPACK_IMPORTED_MODULE_27__["Platform"],
             _angular_router__WEBPACK_IMPORTED_MODULE_26__["ActivatedRoute"],
             src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_28__["UserProfileService"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_31__["HttpClient"],
-            src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_30__["DatabaseService"]])
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_30__["HttpClient"]])
     ], DemoAquariumComponent);
     return DemoAquariumComponent;
 }());
@@ -15560,11 +15627,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AwardAltruismComponent = /** @class */ (function () {
-    function AwardAltruismComponent(route, userProfileService, awsS3Service, db, router) {
+    function AwardAltruismComponent(route, userProfileService, awsS3Service, appUsageDb, router) {
         this.route = route;
         this.userProfileService = userProfileService;
         this.awsS3Service = awsS3Service;
-        this.db = db;
+        this.appUsageDb = appUsageDb;
         this.router = router;
         this.reinforcementObj = {};
         this.reinforcement_data = {};
@@ -15754,20 +15821,24 @@ var AwardAltruismComponent = /** @class */ (function () {
         }); });
     };
     AwardAltruismComponent.prototype.ionViewDidEnter = function () {
-        var _this = this;
-        this.db.getDatabaseState().subscribe(function (rdy) {
-            if (rdy) {
-                _this.db.addTrack(_this.pageTitle, "Enter", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
-            }
-        });
+        /*
+        this.db.getDatabaseState().subscribe(rdy => {
+         if (rdy) {
+           this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+         }
+       });
+       */
+        this.appUsageDb.saveAppUsageEnter("award_altruism_msg");
     };
     AwardAltruismComponent.prototype.ionViewDidLeave = function () {
-        var _this = this;
-        this.db.getDatabaseState().subscribe(function (rdy) {
-            if (rdy) {
-                _this.db.addTrack(_this.pageTitle, "Leave", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
-            }
+        /*
+        this.db.getDatabaseState().subscribe(rdy => {
+          if (rdy) {
+            this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+          }
         });
+        */
+        this.appUsageDb.saveAppUsageExit("award_altruism_msg");
     };
     AwardAltruismComponent.prototype.showaltruism = function () {
         var _this = this;
@@ -15943,11 +16014,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var AwardMemesComponent = /** @class */ (function () {
     //src="{{whichImage}}"
-    function AwardMemesComponent(route, userProfileService, awsS3Service, db, router) {
+    function AwardMemesComponent(route, userProfileService, awsS3Service, appUsageDb, router) {
         this.route = route;
         this.userProfileService = userProfileService;
         this.awsS3Service = awsS3Service;
-        this.db = db;
+        this.appUsageDb = appUsageDb;
         this.router = router;
         this.reinforcementObj = {};
         this.reinforcement_data = {};
@@ -15993,20 +16064,24 @@ var AwardMemesComponent = /** @class */ (function () {
         }); });
     };
     AwardMemesComponent.prototype.ionViewDidEnter = function () {
-        var _this = this;
-        this.db.getDatabaseState().subscribe(function (rdy) {
-            if (rdy) {
-                _this.db.addTrack(_this.pageTitle, "Enter", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
-            }
+        /*
+        this.db.getDatabaseState().subscribe(rdy => {
+         if (rdy) {
+           this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+         }
         });
+        */
+        this.appUsageDb.saveAppUsageEnter("award_meme");
     };
     AwardMemesComponent.prototype.ionViewDidLeave = function () {
-        var _this = this;
-        this.db.getDatabaseState().subscribe(function (rdy) {
-            if (rdy) {
-                _this.db.addTrack(_this.pageTitle, "Leave", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
-            }
+        /*
+        this.db.getDatabaseState().subscribe(rdy => {
+          if (rdy) {
+            this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+          }
         });
+        */
+        this.appUsageDb.saveAppUsageExit("award_meme");
     };
     AwardMemesComponent.prototype.showmemes = function () {
         var _this = this;
@@ -16610,18 +16685,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
+
 
 
 
 var InfoPageComponent = /** @class */ (function () {
-    function InfoPageComponent(menuCtrl) {
+    function InfoPageComponent(menuCtrl, appUsageDb) {
         this.menuCtrl = menuCtrl;
+        this.appUsageDb = appUsageDb;
     }
     InfoPageComponent.prototype.ngOnInit = function () {
         this.menuCtrl.close();
     };
+    InfoPageComponent.prototype.ionViewDidEnter = function () {
+        /*
+        this.db.getDatabaseState().subscribe(rdy => {
+         if (rdy) {
+           this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+         }
+        });
+        */
+        this.appUsageDb.saveAppUsageEnter("reward_info_page");
+    };
+    InfoPageComponent.prototype.ionViewDidLeave = function () {
+        /*
+        this.db.getDatabaseState().subscribe(rdy => {
+          if (rdy) {
+            this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+          }
+        });
+        */
+        this.appUsageDb.saveAppUsageExit("reward_info_page");
+    };
     InfoPageComponent.ctorParameters = function () { return [
-        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"] }
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"] },
+        { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_3__["DatabaseService"] }
     ]; };
     InfoPageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -16629,7 +16728,8 @@ var InfoPageComponent = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./info-page.component.html */ "./node_modules/raw-loader/index.js!./src/app/incentive/info-page/info-page.component.html"),
             styles: [__webpack_require__(/*! ./info-page.component.scss */ "./src/app/incentive/info-page/info-page.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"],
+            src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_3__["DatabaseService"]])
     ], InfoPageComponent);
     return InfoPageComponent;
 }());
@@ -17160,10 +17260,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TreasurechestComponent", function() { return TreasurechestComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
+
 
 
 var TreasurechestComponent = /** @class */ (function () {
-    function TreasurechestComponent() {
+    function TreasurechestComponent(appUsageDb) {
+        this.appUsageDb = appUsageDb;
         this.amount_earned = "$0";
         this.pearlsAndGems = [];
         this.pointsdata = [];
@@ -17252,13 +17355,23 @@ var TreasurechestComponent = /** @class */ (function () {
         }
         return total;
     };
+    TreasurechestComponent.prototype.ionViewDidEnter = function () {
+        //
+        this.appUsageDb.saveAppUsageEnter("treasure_chest");
+    };
+    TreasurechestComponent.prototype.ionViewDidLeave = function () {
+        this.appUsageDb.saveAppUsageExit("treasure_chest");
+    };
+    TreasurechestComponent.ctorParameters = function () { return [
+        { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_2__["DatabaseService"] }
+    ]; };
     TreasurechestComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-treasurechest',
             template: __webpack_require__(/*! raw-loader!./treasurechest.component.html */ "./node_modules/raw-loader/index.js!./src/app/incentive/treasurechest/treasurechest.component.html"),
             styles: [__webpack_require__(/*! ./treasurechest.component.scss */ "./src/app/incentive/treasurechest/treasurechest.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_2__["DatabaseService"]])
     ], TreasurechestComponent);
     return TreasurechestComponent;
 }());
@@ -17295,6 +17408,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../environments/environment */ "./src/environments/environment.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
+
 
 
 
@@ -17302,9 +17417,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var UnlockedAltuisticMessagesComponent = /** @class */ (function () {
-    function UnlockedAltuisticMessagesComponent(userProfileService, httpClient) {
+    function UnlockedAltuisticMessagesComponent(userProfileService, httpClient, appUsageDb) {
         this.userProfileService = userProfileService;
         this.httpClient = httpClient;
+        this.appUsageDb = appUsageDb;
     }
     Object.defineProperty(UnlockedAltuisticMessagesComponent.prototype, "username", {
         get: function () {
@@ -17344,6 +17460,18 @@ var UnlockedAltuisticMessagesComponent = /** @class */ (function () {
         this.list_of_alt_msg_to_display.reverse();
         console.log("already_shown_altruism_msgs " + this.already_shown_altruism_msgs);
         this.downloadAndUpdateUnlockedAltsMsgsList();
+        //
+        this.appUsageDb.saveAppUsageEnter("unlocked_altruism_message_tab");
+    };
+    UnlockedAltuisticMessagesComponent.prototype.ionViewDidLeave = function () {
+        /*
+        this.db.getDatabaseState().subscribe(rdy => {
+          if (rdy) {
+            this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+          }
+        });
+        */
+        this.appUsageDb.saveAppUsageExit("unlocked_altruism_message_tab");
     };
     UnlockedAltuisticMessagesComponent.prototype.downloadAndUpdateUnlockedAltsMsgsList = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
@@ -17446,7 +17574,8 @@ var UnlockedAltuisticMessagesComponent = /** @class */ (function () {
     };
     UnlockedAltuisticMessagesComponent.ctorParameters = function () { return [
         { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__["UserProfileService"] },
-        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"] }
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"] },
+        { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_6__["DatabaseService"] }
     ]; };
     UnlockedAltuisticMessagesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -17455,7 +17584,8 @@ var UnlockedAltuisticMessagesComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./unlocked-altuistic-messages.component.css */ "./src/app/incentive/unlocked-altuistic-messages/unlocked-altuistic-messages.component.css")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__["UserProfileService"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"]])
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"],
+            src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_6__["DatabaseService"]])
     ], UnlockedAltuisticMessagesComponent);
     return UnlockedAltuisticMessagesComponent;
 }());
@@ -17492,6 +17622,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../environments/environment */ "./src/environments/environment.ts");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
+
 
 
 
@@ -17499,9 +17631,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var UnlockedInspirationalQuotesComponent = /** @class */ (function () {
-    function UnlockedInspirationalQuotesComponent(userProfileService, httpClient) {
+    function UnlockedInspirationalQuotesComponent(userProfileService, httpClient, appUsageDb) {
         this.userProfileService = userProfileService;
         this.httpClient = httpClient;
+        this.appUsageDb = appUsageDb;
         this.unlockedInspirationalQuotes = [];
     }
     Object.defineProperty(UnlockedInspirationalQuotesComponent.prototype, "username", {
@@ -17521,6 +17654,18 @@ var UnlockedInspirationalQuotesComponent = /** @class */ (function () {
         //pre-populate
         this.unlockedInspirationalQuotes = JSON.parse(window.localStorage.getItem("saved_quotes") || '[]');
         this.getInspirationalQuotes();
+        //
+        this.appUsageDb.saveAppUsageEnter("unlocked_inspirational_quote_tab");
+    };
+    UnlockedInspirationalQuotesComponent.prototype.ionViewDidLeave = function () {
+        /*
+        this.db.getDatabaseState().subscribe(rdy => {
+          if (rdy) {
+            this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+          }
+        });
+        */
+        this.appUsageDb.saveAppUsageExit("unlocked_inspirational_quote_tab");
     };
     UnlockedInspirationalQuotesComponent.prototype.getInspirationalQuotes = function () {
         var _this = this;
@@ -17557,7 +17702,8 @@ var UnlockedInspirationalQuotesComponent = /** @class */ (function () {
     };
     UnlockedInspirationalQuotesComponent.ctorParameters = function () { return [
         { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_2__["UserProfileService"] },
-        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] }
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] },
+        { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_6__["DatabaseService"] }
     ]; };
     UnlockedInspirationalQuotesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -17566,7 +17712,8 @@ var UnlockedInspirationalQuotesComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./unlocked-inspirational-quotes.component.css */ "./src/app/incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component.css")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_2__["UserProfileService"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"],
+            src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_6__["DatabaseService"]])
     ], UnlockedInspirationalQuotesComponent);
     return UnlockedInspirationalQuotesComponent;
 }());
@@ -17603,6 +17750,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../environments/environment */ "./src/environments/environment.ts");
 /* harmony import */ var src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
+
 
 
 
@@ -17610,9 +17759,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var UnlockedMemesComponent = /** @class */ (function () {
-    function UnlockedMemesComponent(userProfileService, httpClient) {
+    function UnlockedMemesComponent(userProfileService, httpClient, appUsageDb) {
         this.userProfileService = userProfileService;
         this.httpClient = httpClient;
+        this.appUsageDb = appUsageDb;
     }
     Object.defineProperty(UnlockedMemesComponent.prototype, "username", {
         get: function () {
@@ -17652,6 +17802,18 @@ var UnlockedMemesComponent = /** @class */ (function () {
         this.list_of_meme_to_display.reverse();
         console.log("already_shown_memes " + JSON.stringify(this.already_shown_memes));
         this.downloadAndUpdateUnlockedMemeList();
+        //
+        this.appUsageDb.saveAppUsageEnter("unlocked_meme_tab");
+    };
+    UnlockedMemesComponent.prototype.ionViewDidLeave = function () {
+        /*
+        this.db.getDatabaseState().subscribe(rdy => {
+          if (rdy) {
+            this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+          }
+        });
+        */
+        this.appUsageDb.saveAppUsageExit("unlocked_meme_tab");
     };
     UnlockedMemesComponent.prototype.downloadAndUpdateUnlockedMemeList = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
@@ -17754,7 +17916,8 @@ var UnlockedMemesComponent = /** @class */ (function () {
     };
     UnlockedMemesComponent.ctorParameters = function () { return [
         { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__["UserProfileService"] },
-        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"] }
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"] },
+        { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_6__["DatabaseService"] }
     ]; };
     UnlockedMemesComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -17763,7 +17926,8 @@ var UnlockedMemesComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./unlocked-memes.component.css */ "./src/app/incentive/unlocked-memes/unlocked-memes.component.css")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_4__["UserProfileService"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"]])
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"],
+            src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_6__["DatabaseService"]])
     ], UnlockedMemesComponent);
     return UnlockedMemesComponent;
 }());
@@ -17791,6 +17955,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
 /* Installation:
 
 ionic install @ionic-native/sqlite @ionic-native/sqlite-porter
@@ -17807,12 +17972,14 @@ Follow reference: https://devdactic.com/ionic-4-sqlite-queries/
 
 
 
+
 var DatabaseService = /** @class */ (function () {
-    function DatabaseService(plt, sqlitePorter, sqlite, http) {
+    function DatabaseService(plt, sqlitePorter, sqlite, userProfileService, http) {
         var _this = this;
         this.plt = plt;
         this.sqlitePorter = sqlitePorter;
         this.sqlite = sqlite;
+        this.userProfileService = userProfileService;
         this.http = http;
         this.dbReady = new rxjs__WEBPACK_IMPORTED_MODULE_6__["BehaviorSubject"](false);
         this.tracks = new rxjs__WEBPACK_IMPORTED_MODULE_6__["BehaviorSubject"]([]);
@@ -17857,6 +18024,13 @@ var DatabaseService = /** @class */ (function () {
             //this.isTableExist();
         });
     };
+    DatabaseService.prototype.emptyTable = function () {
+        return this.database.executeSql('DELETE FROM tracks').then(function (data) {
+            console.log('Table emptied!');
+        }).catch(function (e) {
+            console.log("deleteTable:" + JSON.stringify(e));
+        });
+    };
     DatabaseService.prototype.isTableExist = function () {
         console.log("Inside isTableEmpty:");
         //return this.database.executeSql('SELECT * FROM tracks', []).then(data => {
@@ -17866,6 +18040,7 @@ var DatabaseService = /** @class */ (function () {
             return rowlength != 0;
         }).catch(function (e) {
             console.log("At isTableNotEmpty:" + JSON.stringify(e));
+            return false;
         });
     };
     DatabaseService.prototype.isTableEmpty = function () {
@@ -17876,15 +18051,44 @@ var DatabaseService = /** @class */ (function () {
             return rowlength == 0;
         }).catch(function (e) {
             console.log("At isTableNotEmpty:" + JSON.stringify(e));
+            return true;
         });
     };
+    DatabaseService.prototype.saveAppUsageEnter = function (pageName) {
+        var _this = this;
+        this.getDatabaseState().subscribe(function (rdy) {
+            if (rdy) {
+                var day_count = Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length;
+                _this.addTrack(pageName, "Enter", _this.userProfileService.username, day_count);
+            }
+        });
+    };
+    DatabaseService.prototype.saveAppUsageExit = function (pageName) {
+        var _this = this;
+        this.getDatabaseState().subscribe(function (rdy) {
+            if (rdy) {
+                var day_count = Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length;
+                _this.addTrack(pageName, "Exit", _this.userProfileService.username, day_count);
+            }
+        });
+    };
+    //save usage
+    /*
+    saveAppUsage(pageName, eventStatus, username, day_count){
+      this.getDatabaseState().subscribe(rdy => {
+        if (rdy) {
+          this.addTrack(pageName, eventStatus, username, day_count);
+        }
+      });
+    }
+    */
     DatabaseService.prototype.addTrack = function (pageName, eventStatus, username, day_count) {
         var currentTime = moment__WEBPACK_IMPORTED_MODULE_7__().format('MMMM Do YYYY, h:mm:ss a Z');
         var currentDate = moment__WEBPACK_IMPORTED_MODULE_7__().format('YYYYMMDD');
         var unix_ts = new Date().getTime();
         var data = [pageName, currentTime, currentDate, unix_ts, day_count, eventStatus, username];
         return this.database.executeSql('INSERT INTO tracks (pageName, eventTime, eventDate, unix_ts, day_count, eventStatus, username) VALUES (?, ?, ?, ?, ?, ?, ?)', data).then(function (data) {
-            console.log(pageName + ' Track added!');
+            console.log('App usage added!! ' + pageName + ", " + eventStatus);
             //this.displayTracks();
         }).catch(function (e) { return console.log("In addTrack:" + pageName + " " + JSON.stringify(e)); });
     };
@@ -17897,8 +18101,8 @@ var DatabaseService = /** @class */ (function () {
             if (rowlength > 0) {
                 for (var i = 0; i < rowlength; i++) {
                     console.log("data.rows= " + rowlength);
-                    console.log("displayTracks " + i + " pageName: " + data.rows.item(i).pageName);
-                    console.log("displayTracks " + i + " time: " + data.rows.item(i).eventTime);
+                    console.log("displayTracks " + i + " pageName: " + data.rows.item(i).pageName + ", eventTime " + data.rows.item(i).eventStatus);
+                    //console.log("displayTracks "+i+" time: "+data.rows.item(i).eventTime);
                     currentTracks.push({
                         id: data.rows.item(i).id,
                         pageName: data.rows.item(i).pageName,
@@ -17917,7 +18121,7 @@ var DatabaseService = /** @class */ (function () {
     };
     DatabaseService.prototype.exportDatabaseToJson = function () {
         return this.sqlitePorter.exportDbToJson(this.database).then(function (res) {
-            console.log('Exported ' + JSON.stringify(res));
+            //console.log('Exported '+JSON.stringify(res));
             return res;
         }).catch(function (e) { return console.error(e); });
     };
@@ -17925,6 +18129,7 @@ var DatabaseService = /** @class */ (function () {
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["Platform"] },
         { type: _ionic_native_sqlite_porter_ngx__WEBPACK_IMPORTED_MODULE_3__["SQLitePorter"] },
         { type: _ionic_native_sqlite_ngx__WEBPACK_IMPORTED_MODULE_5__["SQLite"] },
+        { type: _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_8__["UserProfileService"] },
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"] }
     ]; };
     DatabaseService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -17934,6 +18139,7 @@ var DatabaseService = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_1__["Platform"],
             _ionic_native_sqlite_porter_ngx__WEBPACK_IMPORTED_MODULE_3__["SQLitePorter"],
             _ionic_native_sqlite_ngx__WEBPACK_IMPORTED_MODULE_5__["SQLite"],
+            _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_8__["UserProfileService"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]])
     ], DatabaseService);
     return DatabaseService;
@@ -18722,31 +18928,34 @@ __webpack_require__.r(__webpack_exports__);
 var AyaSampleSurveyComponent = /** @class */ (function () {
     function AyaSampleSurveyComponent(userProfileService, 
     //private mobileAccessibility: MobileAccessibility,
-    db) {
+    appUsageDb) {
         this.userProfileService = userProfileService;
-        this.db = db;
-        this.pageTitle = "Survey_aya";
+        this.appUsageDb = appUsageDb;
     }
     AyaSampleSurveyComponent.prototype.ngOnInit = function () {
         //this.mobileAccessibility.usePreferredTextZoom(false);
     };
     AyaSampleSurveyComponent.prototype.ionViewDidEnter = function () {
-        var _this = this;
-        this.db.getDatabaseState().subscribe(function (rdy) {
-            if (rdy) {
-                _this.db.addTrack(_this.pageTitle, "Enter", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
-            }
+        /*
+        this.db.getDatabaseState().subscribe(rdy => {
+         if (rdy) {
+           this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+         }
         });
+        */
+        this.appUsageDb.saveAppUsageEnter("aya_survey_page");
     };
     AyaSampleSurveyComponent.prototype.ionViewDidLeave = function () {
-        var _this = this;
-        console.log(this.pageTitle + ": ionViewDidLeave");
-        this.db.getDatabaseState().subscribe(function (rdy) {
-            if (rdy) {
-                _this.db.addTrack(_this.pageTitle, "Leave", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
-            }
-        });
+        /*
+        console.log(this.pageTitle+": ionViewDidLeave");
+        this.db.getDatabaseState().subscribe(rdy => {
+           if (rdy) {
+             this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+           }
+         });
+         */
         //this.mobileAccessibility.usePreferredTextZoom(true);
+        this.appUsageDb.saveAppUsageExit("aya_survey_page");
     };
     AyaSampleSurveyComponent.ctorParameters = function () { return [
         { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__["UserProfileService"] },
@@ -19510,31 +19719,21 @@ __webpack_require__.r(__webpack_exports__);
 var SampleSurveyComponent = /** @class */ (function () {
     function SampleSurveyComponent(userProfileService, 
     //private mobileAccessibility: MobileAccessibility,
-    db) {
+    appUsageDb) {
         this.userProfileService = userProfileService;
-        this.db = db;
+        this.appUsageDb = appUsageDb;
         this.pageTitle = "Survey_caregiver";
     }
     SampleSurveyComponent.prototype.ngOnInit = function () {
         //this.mobileAccessibility.usePreferredTextZoom(false);
     };
     SampleSurveyComponent.prototype.ionViewDidEnter = function () {
-        var _this = this;
-        this.db.getDatabaseState().subscribe(function (rdy) {
-            if (rdy) {
-                _this.db.addTrack(_this.pageTitle, "Enter", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
-            }
-        });
+        //
+        this.appUsageDb.saveAppUsageEnter("cg_survey_page");
     };
     SampleSurveyComponent.prototype.ionViewDidLeave = function () {
-        var _this = this;
-        console.log(this.pageTitle + ": ionViewDidLeave");
-        this.db.getDatabaseState().subscribe(function (rdy) {
-            if (rdy) {
-                _this.db.addTrack(_this.pageTitle, "Leave", _this.userProfileService.username, Object.keys(_this.userProfileService.userProfile.survey_data.daily_survey).length);
-            }
-        });
-        //this.mobileAccessibility.usePreferredTextZoom(true);
+        //
+        this.appUsageDb.saveAppUsageExit("cg_survey_page");
     };
     SampleSurveyComponent.ctorParameters = function () { return [
         { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__["UserProfileService"] },
