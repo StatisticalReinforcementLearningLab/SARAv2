@@ -15,6 +15,7 @@ import { UnlockedIncentive } from '../../incentive/model/unlocked-incentives';
 import { unlockedScreenShownAlready } from '../incentive.actions';
 import { DatabaseService } from 'src/app/monitor/database.service';
 import { AwsS3Service } from '../../storage/aws-s3.service';
+import { NetworkService, ConnectionStatus } from '../../storage/network.service';
 
 @Component({
   selector: 'app-aquarium',
@@ -64,6 +65,7 @@ export class AquariumComponent implements OnInit {
     private menu: MenuController,
     private appUsageDb: DatabaseService,
     private awsS3Service: AwsS3Service,
+    private networkSvc: NetworkService,
     private userProfileService: UserProfileService) { 
     console.log("Constructor called");
     this.sub1$=this.platform.pause.subscribe(() => {        
@@ -158,18 +160,20 @@ export class AquariumComponent implements OnInit {
    //"come back" to aquarium after visit other pages and will 
    // be exported to AWS.
    ionViewWillEnter() {
-    this.appUsageDb.isTableEmpty().then(tableEmpty => {
-      console.log("tableEmpty: "+tableEmpty);
-      if(!tableEmpty) {
-        this.exportDatabase();
-        //Empty table to prepare another round of tracking
-        this.appUsageDb.emptyTable();   
-      } 
-      }).catch(e => {
-        console.log("In ionViewWillEnter at Aqarium:"+e);
-    });
+   if(this.networkSvc.getCurrentNetworkStatus() == ConnectionStatus.Online){
+      this.appUsageDb.isTableEmpty().then(tableEmpty => {
+        console.log("tableEmpty: "+tableEmpty);
+        if(!tableEmpty) {
+          this.exportDatabase();
+          //Empty table to prepare another round of tracking
+          this.appUsageDb.emptyTable();   
+        } 
+        }).catch(e => {
+          console.log("In ionViewWillEnter at Aqarium:"+e);
+      });
+    }
 
-    } 
+  } 
 
   exportDatabase(){
     console.log("exportTable at Aquarium Page!");

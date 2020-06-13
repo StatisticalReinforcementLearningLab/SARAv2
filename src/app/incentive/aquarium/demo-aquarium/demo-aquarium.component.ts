@@ -320,11 +320,7 @@ export class DemoAquariumComponent implements OnInit {
 
     //console.log(window.localStorage['TotalPoints']);
 
-    this.db.getDatabaseState().subscribe(rdy => {
-      if (rdy) {     
-        this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
-      }
-    }); 
+    this.db.saveAppUsageEnter(this.pageTitle);
 
     //this.totalPoints = parseInt(window.localStorage['TotalPoints'] || "0");
     /*
@@ -479,11 +475,8 @@ export class DemoAquariumComponent implements OnInit {
   ionViewDidLeaveFunction(){
     console.log("Aquarium, ionDidLeave");
     //this.survey_text = "Start survey";
-    this.db.getDatabaseState().subscribe(rdy => {
-      if (rdy) {     
-        this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
-      }
-    }); 
+    this.db.saveAppUsageExit(this.pageTitle);
+
     this.game.destroy();
   }
 
