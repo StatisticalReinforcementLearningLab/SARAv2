@@ -46,7 +46,6 @@ import { UserProfileService } from 'src/app/user/user-profile/user-profile.servi
 import * as moment from 'moment';
 import { AlertController } from '@ionic/angular';
 import { ModalUnlockedPageComponent } from '../modal-unlocked-page/modal-unlocked-page.component';
-import { DatabaseService } from 'src/app/monitor/database.service';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../../../environments/environment';
@@ -67,7 +66,6 @@ export class DemoAquariumComponent implements OnInit {
   isLoaded = false;
   public isShowingRouteLoadIndicator: boolean;
   survey_text; 
-  pageTitle = "Aquarium";
   fishFunFactListViewItems = [];
   @Input() isPreview: string;
   
@@ -146,8 +144,7 @@ export class DemoAquariumComponent implements OnInit {
     private platform: Platform,
     private route: ActivatedRoute,
     private userProfileService: UserProfileService,
-    private httpClient: HttpClient,
-    private db: DatabaseService) { 
+    private httpClient: HttpClient) { 
     console.log("Constructor called");
     
     /*    
@@ -320,7 +317,13 @@ export class DemoAquariumComponent implements OnInit {
 
     //console.log(window.localStorage['TotalPoints']);
 
-    this.db.saveAppUsageEnter(this.pageTitle);
+    /*
+    this.db.getDatabaseState().subscribe(rdy => {
+      if (rdy) {     
+        this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
+      }
+    }); 
+    */
 
     //this.totalPoints = parseInt(window.localStorage['TotalPoints'] || "0");
     /*
@@ -475,8 +478,13 @@ export class DemoAquariumComponent implements OnInit {
   ionViewDidLeaveFunction(){
     console.log("Aquarium, ionDidLeave");
     //this.survey_text = "Start survey";
-    this.db.saveAppUsageExit(this.pageTitle);
-
+    /*
+    this.db.getDatabaseState().subscribe(rdy => {
+      if (rdy) {     
+        this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
+      }
+    }); 
+    */
     this.game.destroy();
   }
 
