@@ -108,10 +108,10 @@ export class AwsS3Service extends StoreBaseService {
       for (let op of storedObj) {
         console.log(JSON.stringify(op));
         var fileName = "result_" + (new Date().getTime()) + "_" + this.EncrDecr.getSHA256(localStorage.getItem('loggedInUser')) + ".json";
-        this.uploadToS3(this.subfolder+"/"+fileName, [op.data]).catch(err => {
+        this.uploadToS3(this.subfolder+"/"+fileName, op.data).catch(err => {
           if (err ) {
             console.log('Caught thrown error: '+err.message);
-            this.saveJsonObjLocally(op); 
+            this.saveJsonObjLocally(op.data); 
           }
           console.log('In uploadLocalData: update file successfully');
         });     
