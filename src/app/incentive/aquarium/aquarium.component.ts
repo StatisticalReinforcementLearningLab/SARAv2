@@ -150,9 +150,13 @@ export class AquariumComponent implements OnInit {
     this.subscribeForModalView();
 
     //This function is better to be called before "saveAppUsageEnter", o.w. 
-    //the last entry in the table will be "enter aquarium_tab" and table will 
-    // never be empty.
-    this.saveDbToAWS();
+    //database will be uploaded to AWS when "saveAppUsageEnter" is called
+    // and table will never be empty.
+    if(this.networkSvc.getCurrentNetworkStatus() == ConnectionStatus.Online){
+      this.saveDbToAWS();
+      //Empty table to prepare another round of tracking
+      this.appUsageDb.emptyTable(); 
+    }
 
     //If "Enter Aquarium" is already tracked in demo-aquarium, duplication?
     this.appUsageDb.saveAppUsageEnter("aquarium_tab");
@@ -168,16 +172,14 @@ export class AquariumComponent implements OnInit {
    // --- Moving to ionViewDidEnter()
    //
   saveDbToAWS() {
-    if(this.networkSvc.getCurrentNetworkStatus() == ConnectionStatus.Online){
-        this.appUsageDb.isTableEmpty().then(tableEmpty => {
-        console.log("tableEmpty: "+tableEmpty);
-        if(!tableEmpty) {
-          this.exportDatabase();
-        } 
-        }).catch(e => {
-          console.log("In ionViewWillEnter at Aqarium:"+e);
-      });
-    }
+    this.appUsageDb.isTableEmpty().then(tableEmpty => {
+      console.log("tableEmpty: "+tableEmpty);
+      if(!tableEmpty) {
+        this.exportDatabase();
+      } 
+      }).catch(e => {
+        console.log("In ionViewWillEnter at Aqarium:"+e);
+    });
   } 
 
   exportDatabase(){
@@ -186,9 +188,6 @@ export class AquariumComponent implements OnInit {
       console.log("upload to AWS at Aquarium Page: "+JSON.stringify(res));
       this.awsS3Service.upload("Tracking",res);
       
-      //Empty table to prepare another round of tracking
-      this.appUsageDb.emptyTable(); 
-
     });   
   }  
 
