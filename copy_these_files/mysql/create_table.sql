@@ -69,3 +69,17 @@ CREATE TABLE `8PMNotificationTable` (
 
 
 
+
+CREATE TABLE `UnlockedIncentive` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(45) DEFAULT NULL,
+  `incentiveString` text,
+  `whenInserted` varchar(45) DEFAULT NULL,
+  `whenInsertedReadableTs` text,
+  `incentiveType` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=138 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+
