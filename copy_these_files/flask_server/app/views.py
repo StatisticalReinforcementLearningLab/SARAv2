@@ -107,6 +107,89 @@ def update_json_into_mysql_noti(json_string):
     return cursor.rowcount
 
 
+#===========================================================================================
+@app.route('/get-unlocked-incentive', methods=['POST']) #GET requests will be blocked
+def get_unlocked_incentives():
+    req_data = request.get_json()
+    # print(req_data)
+    user_id = req_data['user_id']
+    incentive_type = req_data['incentive_type']
+
+    # data = []
+    # sample1 = {"author":"Beyonce", "image":"beyonce.png", "quote_text" : "It's not about perfection. It's about purpose."}
+    # sample2  = {"author":"Casey Neistat", "image":"Casey_Neistat.png", "quote_text" : "The most dangerous thing you can do in life is play it safe."}
+    # data.append(sample1)
+    # data.append(sample2)
+
+    db = mysql.connect(
+        host = "ec2-54-91-131-166.compute-1.amazonaws.com",
+        port = 3308,
+        user = "root",
+        passwd = "password",
+        database = "SARAApp"
+    )
+
+    cursor = db.cursor()
+
+    cursor.execute("SELECT user_id, incentiveString FROM SARAApp.UnlockedIncentive where user_id='" + user_id +"' and incentiveType = '" + incentive_type +"' order by whenInserted DESC limit 1")
+    # cursor.execute("SELECT author_image, author_name, quote_text, date FROM UnlockedIncentive where user_id='" + user_id +"' order by whenSentTs DESC")
+    
+    result = cursor.fetchall()
+
+    # data = json.loads(result[0][1])
+    data = []
+    if len(result) > 0:
+        data = json.loads(result[0][1])
+
+    response = app.response_class(
+        response=json.dumps(data),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
+
+
+#===========================================================================================
+@app.route('/store-unlocked-incentive', methods=['POST']) #GET requests will be blocked
+def store_unlocked_incentives():
+    req_data = request.get_json()
+    print(req_data)
+    user_id = req_data['user_id']
+    incentiveString = req_data['incentiveString']
+    whenInsertedTs = req_data['whenInserted']
+    whenInsertedReadableTs = req_data['whenInsertedReadableTs']
+    incentiveType = req_data['incentiveType']
+
+    msg = '''
+           The user_id value is: {}
+           The incentiveString value is: {}
+           The whenInsertedTs version is: {}
+           The whenInsertedReadableTs is: {}
+           The incentiveType is: {}'''.format(user_id, incentiveString, whenInsertedTs, whenInsertedReadableTs, incentiveType)
+
+    db = mysql.connect(
+        host = "ec2-54-91-131-166.compute-1.amazonaws.com",
+        port = 3308,
+        user = "root",
+        passwd = "password",
+        database = "SARAApp"
+    )
+    cursor = db.cursor()
+    insert_stmt = (
+      "INSERT INTO UnlockedIncentive (user_id, incentiveString, whenInserted, whenInsertedReadableTs, incentiveType) "
+      "VALUES (%s, %s, %s, %s, %s)"
+    )
+    data = (user_id, incentiveString, whenInsertedTs, whenInsertedReadableTs, incentiveType)
+    #data = (user_id, oneSignalPlayerId, currentTimeReadableTs)
+    cursor.execute(insert_stmt, data)
+
+    ## to make final output we have to run the 'commit()' method of the database object
+    db.commit()
+
+    response_data = { "result": msg, "sucess": True, "status_code": 200}
+    return jsonify(response_data)
+
+
 
 #===========================================================================================
 @app.route('/store-onesignal-id', methods=['POST']) #GET requests will be blocked
