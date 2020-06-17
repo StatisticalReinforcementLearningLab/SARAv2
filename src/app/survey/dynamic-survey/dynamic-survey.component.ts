@@ -27,6 +27,7 @@ import { surveyCompleted } from '../survey.actions';
 import { SurveyTimeline } from '../model/surveyTimeline';
 import { UnlockedIncentives } from '../../incentive/model/unlocked-incentives';
 import { surveyCompletedRegisterUnlocked } from 'src/app/incentive/incentive.actions';
+import {LifeInsightsProfileService} from "../../incentive/life-insights/life-insights-profile.service";
 
 @Component({
   selector: 'app-dynamic-survey',
@@ -47,6 +48,7 @@ export class DynamicSurveyComponent implements OnInit {
   survey_string = "";
   survey = {};
   survey_data: any;
+
   versionNumber;
 
   //"vc" is the div tag where the dynamic survey will be added.
@@ -64,6 +66,7 @@ export class DynamicSurveyComponent implements OnInit {
     private alertCtrl: AlertController,
     public plt: Platform,
     private userProfileService: UserProfileService,
+    private lifeInsightsProfileService: LifeInsightsProfileService,
     private store: Store<AppState>,
     private awardDollarService:AwardDollarService) {
       this.appVersion.getVersionNumber().then(value => {
@@ -84,6 +87,8 @@ export class DynamicSurveyComponent implements OnInit {
         this.survey_data = await res.json();
         this.generateSurvey();
       });
+
+      this.lifeInsightsProfileService.importLifeInsightProfile(this.fileLink);
   }
 
   generateSurvey() {  
@@ -108,7 +113,7 @@ export class DynamicSurveyComponent implements OnInit {
       isQuestionIncomplete = {};
       fileLink;
       versionNumber;
-      lifeInsightObj = {};
+
       //storeToFirebaseService: StoreToFirebaseService;
       
       EncrDecr: EncrDecrService;
@@ -117,6 +122,7 @@ export class DynamicSurveyComponent implements OnInit {
       plt: Platform;
       router: Router;
       userProfileService: UserProfileService;
+      lifeInsightsProfileService: LifeInsightsProfileService;
       awardDollarService: AwardDollarService;
       survey_data = [];
       alertCtrl;
@@ -310,78 +316,9 @@ export class DynamicSurveyComponent implements OnInit {
         this.userProfileService.surveyCompleted(); 
 
 
-         //Save 7-day date and value for each question in localStorage to generate lifeInsight chart
-         var lifeInsightProfile = {
-            "questions":["Q3d","Q4d","Q5d","Q8d"],
-            "qimgs": ["assets/img/stress.png","assets/img/freetime.png","assets/img/dance2.png","assets/img/social.png"],
-            "lifeInsightsTitle": ["How much <b>pain</b> are you currently experiencing?", 
-                "How much <b>fatigue</b> are you currently experiencing?", 
-                "How much <b>nausea</b> are you currently experiencing?", 
-                "How <b>motivated</b> are you to take 6MP today?"],
-            "qYaxis": ["Pain level","Fatigue level","Nausea level","Degree of motivation"],
-            "qSubText": ["0 = low pain, 4 = severe pain", 
-                    "0 = low fatigue, 4 = severe fatigue",
-                    "0 = low nausea, 4 = severe nausea",
-                    "0 = less motivated, 4 = highly motivated"],
-            "lifeInsightsHighStress": [
-                "Stressed <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>", 
-                "Fatigued <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>", 
-                "Nausea <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>",
-                "Motivated <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>"],
-            "lifeInsightsLowStress": [
-                "Relaxed <i class='em em-sunglasses'></i><i class='em em-boat'></i>",  
-                "Fatigued <i class='em em-sunglasses'></i><i class='em em-boat'></i>", 
-                "Nausea <i class='em em-sunglasses'></i><i class='em em-boat'></i>", 
-                "Motivated <i class='em em-sunglasses'></i><i class='em em-boat'></i>"]          
-        };
-        
-        var questionsArray = lifeInsightProfile.questions;  //["Q3d","Q4d","Q5d","Q8d"]
-        if(window.localStorage['lifeInsight'] == undefined) {
 
-          for (let question of questionsArray) {          
-            this.lifeInsightObj[question] = {};
-            this.lifeInsightObj[question]['dates'] = [moment().format("DD-MM-YYYY")];
-            if(this.survey2.hasOwnProperty(question)) {
-              this.lifeInsightObj[question]['data'] = [parseInt(this.survey2[question])];
-            }
-            else {
-              this.lifeInsightObj[question]['data'] = [null];
-            }
-          }         
-        } else {
-           this.lifeInsightObj= JSON.parse(window.localStorage["lifeInsight"]);
-
-           for (let question of questionsArray) {   
-            var dateslength = this.lifeInsightObj[question]['dates'].length;
-            if(dateslength == 7) {
-              this.lifeInsightObj[question]['dates'].shift();
-              this.lifeInsightObj[question]['data'].shift();
-            }      
-            var currentdate = moment().format("DD-MM-YYYY");
-            var dates = this.lifeInsightObj[question]["dates"];
-            var dateIndex = dates.indexOf(currentdate);
-            console.log("Current date exist? "+dateIndex);
-            if( dateIndex > -1 ) {
-              this.lifeInsightObj[question]['dates'][dateIndex] =currentdate;
-              if(this.survey2.hasOwnProperty(question)) {
-                this.lifeInsightObj[question]['data'][dateIndex]=(parseInt(this.survey2[question]));
-              }
-              else {
-                this.lifeInsightObj[question][dateIndex]=null;
-              }
-            } else {
-              this.lifeInsightObj[question]['dates'].push(currentdate);
-              if(this.survey2.hasOwnProperty(question)) {
-                this.lifeInsightObj[question]['data'].push(parseInt(this.survey2[question]));
-              }
-              else {
-                this.lifeInsightObj[question]['data'].push(null);
-              }
-             } 
-          }
-      }
-      //console.log("lifeInsightObj: "+JSON.stringify(this.lifeInsightObj));
-      window.localStorage.setItem("lifeInsight", JSON.stringify(this.lifeInsightObj));
+      this.lifeInsightsProfileService.saveLifeInsightInfo(this.survey2);
+      //this.router.navigate(['incentive/sample-life-insight']);
 
       //save to Amazon AWS S3
       this.awsS3Service.upload(this.fileLink, survey3);
@@ -444,8 +381,7 @@ export class DynamicSurveyComponent implements OnInit {
         navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
         this.router.navigate(['incentive/award-altruism'],  navigationExtras);
       }
-      
-      
+       
       let surveyTimeline: SurveyTimeline = {user_id: this.userProfileService.username, 
             timeline: [{dateOfCompletion: currentDate, timestamp: endTime, readableTimestamp: readable_time}]};
       this.store.dispatch(surveyCompleted({surveyTimeline}));
@@ -477,6 +413,7 @@ export class DynamicSurveyComponent implements OnInit {
         const cmpRef = this.vc.createComponent(f);
         cmpRef.instance.awsS3Service = this.awsS3Service;
         cmpRef.instance.survey2 = this.survey;
+        cmpRef.instance.lifeInsightsProfileService = this.lifeInsightsProfileService;
         cmpRef.instance.fileLink = this.fileLink;  
         cmpRef.instance.versionNumber= this.versionNumber;      
         cmpRef.instance.survey_data = this.survey_data;    
