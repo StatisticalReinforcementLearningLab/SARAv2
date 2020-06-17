@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Chart } from 'chart.js';
 import * as moment from 'moment';
+import {LifeInsightsProfileService} from "../life-insights-profile.service";
 
 //import * as lifeInsightProfile from "../../../../assets/data/life_insight.json";
 //import { PreLoad } from '../../../PreLoad';
@@ -35,12 +36,10 @@ export class SampleLifeInsightsComponent implements OnInit {
   index = 0;
   //inputJson = {};
   selectedValue;
-  
-
 
   private lineChart: Chart;
 
-  constructor() {          
+  constructor(private lifeInsightsProfileService: LifeInsightsProfileService) {    
   }
 
 /*   get jsonObj(): any {
@@ -64,7 +63,7 @@ export class SampleLifeInsightsComponent implements OnInit {
     //console.log(this.inputStr);
     //this.jsonObj = JSON.parse(this.inputStr);
 
-      var lifeInsightProfile = {
+     /* var lifeInsightProfile = {
         "questions":["Q3d","Q4d","Q5d","Q8d"],
         "qimgs": ["assets/img/stress.png","assets/img/freetime.png","assets/img/dance2.png","assets/img/social.png"],
         "lifeInsightsTitle": ["How much <b>pain</b> are you currently experiencing?", 
@@ -86,19 +85,19 @@ export class SampleLifeInsightsComponent implements OnInit {
             "Fatigued <i class='em em-sunglasses'></i><i class='em em-boat'></i>", 
             "Nausea <i class='em em-sunglasses'></i><i class='em em-boat'></i>", 
             "Motivated <i class='em em-sunglasses'></i><i class='em em-boat'></i>"]          
-    };
+    };*/
 
-    this.index = Math.floor(Math.random() * lifeInsightProfile.questions.length);    
-    this.question = lifeInsightProfile.questions[this.index]; 
-    this.imgloc = lifeInsightProfile.qimgs[this.index];
-    this.title = lifeInsightProfile.lifeInsightsTitle[this.index];
-    this.qYaxis = lifeInsightProfile.qYaxis[this.index];
-    this.subtext = lifeInsightProfile.qSubText[this.index];
-    this.topSubtext = lifeInsightProfile.lifeInsightsHighStress[this.index];
-    this.bottomSubtext = lifeInsightProfile.lifeInsightsLowStress[this.index];
+    this.index = Math.floor(Math.random() * this.lifeInsightsProfileService.lifeInsightProfile.questions.length);    
+    this.question = this.lifeInsightsProfileService.lifeInsightProfile.questions[this.index]; 
+    this.imgloc = this.lifeInsightsProfileService.lifeInsightProfile.qimgs[this.index];
+    this.title = this.lifeInsightsProfileService.lifeInsightProfile.lifeInsightsTitle[this.index];
+    this.qYaxis = this.lifeInsightsProfileService.lifeInsightProfile.qYaxis[this.index];
+    this.subtext = this.lifeInsightsProfileService.lifeInsightProfile.qSubText[this.index];
+    this.topSubtext = this.lifeInsightsProfileService.lifeInsightProfile.lifeInsightsHighStress[this.index];
+    this.bottomSubtext = this.lifeInsightsProfileService.lifeInsightProfile.lifeInsightsLowStress[this.index];
 
-    this.qYaxisArray = lifeInsightProfile.qYaxis;
-    this.selectedValue = lifeInsightProfile.qYaxis[this.index];
+    this.qYaxisArray = this.lifeInsightsProfileService.lifeInsightProfile.qYaxis;
+    this.selectedValue = this.lifeInsightsProfileService.lifeInsightProfile.qYaxis[this.index];
 
     //read data from localStorage 
     if(window.localStorage.getItem("lifeInsight") == undefined) {
