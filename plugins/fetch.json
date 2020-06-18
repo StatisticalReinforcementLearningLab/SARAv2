@@ -81,12 +81,28 @@
     "is_top_level": true,
     "variables": {}
   },
+  "sentry-cordova": {
+    "source": {
+      "type": "registry",
+      "id": "sentry-cordova"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
   "phonegap-plugin-mobile-accessibility": {
     "source": {
       "type": "registry",
-      "id": "phonegap-plugin-mobile-accessibility@^1.0.5"
+      "id": "phonegap-plugin-mobile-accessibility"
     },
     "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-network-information": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/apache/cordova-plugin-network-information.git"
+    },
+    "is_top_level": false,
     "variables": {}
   }
 }
