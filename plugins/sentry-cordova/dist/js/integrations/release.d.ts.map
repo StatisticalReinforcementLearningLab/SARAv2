@@ -1,0 +1,1 @@
+{"version":3,"file":"release.d.ts","sourceRoot":"","sources":["../../../src/js/integrations/release.ts"],"names":[],"mappings":"AACA,OAAO,EAAS,WAAW,EAAE,MAAM,eAAe,CAAC;AAGnD,2CAA2C;AAC3C,qBAAa,OAAQ,YAAW,WAAW;IACzC;;OAEG;IACI,IAAI,EAAE,MAAM,CAAc;IACjC;;OAEG;IACH,OAAc,EAAE,EAAE,MAAM,CAAa;IAErC;;OAEG;IACI,SAAS,IAAI,IAAI;CA6BzB"}

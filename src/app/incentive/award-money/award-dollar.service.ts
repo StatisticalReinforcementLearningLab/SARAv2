@@ -76,6 +76,8 @@ export class AwardDollarService {
         var todaysDate = moment().format('YYYYMMDD');
         if(todaysDate == firstDateSurveyIsCompleted){
             this.usersCurrentDollars = 2;
+            //save the dollar ammount in local storage
+            window.localStorage.setItem("AwardDollar", ""+this.usersCurrentDollars); 
             return this.usersCurrentDollars;
         }else
             this.usersCurrentDollars = parseInt(window.localStorage['AwardDollar']);
@@ -122,6 +124,8 @@ export class AwardDollarService {
         // then user has come back after 14 days.
         if(timestampDay14BeforeToday.isAfter(timestampMaxDateInOnDatesSurveyIsTurnedOn)){
             this.usersCurrentDollars = this.usersCurrentDollars + 2; 
+            //save the dollar ammount in local storage
+            window.localStorage.setItem("AwardDollar", ""+this.usersCurrentDollars); 
             return this.usersCurrentDollars;
         }
 
