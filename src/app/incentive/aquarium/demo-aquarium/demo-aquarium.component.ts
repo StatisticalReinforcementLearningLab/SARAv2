@@ -50,6 +50,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../../../environments/environment';
 
+import * as Sentry from 'sentry-cordova';
+
 declare let Phaser: any;
 
 @Component({
@@ -60,6 +62,7 @@ declare let Phaser: any;
 
 //@PreLoad('survey')
 export class DemoAquariumComponent implements OnInit {
+  
 
   game;
   pickedGame;
@@ -78,10 +81,26 @@ export class DemoAquariumComponent implements OnInit {
     if(this.userProfileService == undefined)
       return "test";
     else{
+
+      //add username to sentry scope for better error handling
+      this.addSentryScope(this.userProfileService.username);
+
       return this.userProfileService.username;
     }
   }
 
+  addSentryScope(username: string) {
+    /*
+    *
+    *  This function adds errors in Sentry
+    * 
+    */
+    Sentry.configureScope(scope => {
+      scope.setUser({
+        username: username
+      })
+    });
+  }
   //Get total submitted survey
   getTotalSurveyCount(){
     return Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;
