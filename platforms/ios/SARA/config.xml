@@ -35,9 +35,6 @@
     <feature name="IonicWebView">
         <param name="ios-package" value="CDVWKWebViewEngine" />
     </feature>
-    <feature name="NetworkStatus">
-        <param name="ios-package" value="CDVConnection" />
-    </feature>
     <feature name="SplashScreen">
         <param name="ios-package" value="CDVSplashScreen" />
         <param name="onload" value="true" />
@@ -52,8 +49,8 @@
     <feature name="OneSignalPush">
         <param name="ios-package" value="OneSignalPush" />
     </feature>
-    <feature name="MobileAccessibility">
-        <param name="ios-package" onload="true" value="CDVMobileAccessibility" />
+    <feature name="Sentry">
+        <param name="ios-package" onload="true" value="SentryCordova" />
     </feature>
     <name>SARA</name>
     <description>An awesome Ionic/Cordova app.</description>
@@ -154,4 +151,10 @@
     <preference name="android-targetSdkVersion" value="28" />
     <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
     <preference name="WKWebViewOnly" value="true" />
+    <feature name="NetworkStatus">
+        <param name="ios-package" value="CDVConnection" />
+    </feature>
+    <feature name="MobileAccessibility">
+        <param name="ios-package" onload="true" value="CDVMobileAccessibility" />
+    </feature>
 </widget>

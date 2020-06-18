@@ -1,19 +1,19 @@
 {
-  "_from": "phonegap-plugin-mobile-accessibility@^1.0.5",
+  "_from": "phonegap-plugin-mobile-accessibility",
   "_id": "phonegap-plugin-mobile-accessibility@1.0.5",
   "_inBundle": false,
   "_integrity": "sha1-lah1TRJ1CLxuGuJZpTznZYNurAM=",
   "_location": "/phonegap-plugin-mobile-accessibility",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "tag",
     "registry": true,
-    "raw": "phonegap-plugin-mobile-accessibility@^1.0.5",
+    "raw": "phonegap-plugin-mobile-accessibility",
     "name": "phonegap-plugin-mobile-accessibility",
     "escapedName": "phonegap-plugin-mobile-accessibility",
-    "rawSpec": "^1.0.5",
+    "rawSpec": "",
     "saveSpec": null,
-    "fetchSpec": "^1.0.5"
+    "fetchSpec": "latest"
   },
   "_requiredBy": [
     "#USER",
@@ -21,7 +21,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/phonegap-plugin-mobile-accessibility/-/phonegap-plugin-mobile-accessibility-1.0.5.tgz",
   "_shasum": "95a8754d127508bc6e1ae259a53ce765836eac03",
-  "_spec": "phonegap-plugin-mobile-accessibility@^1.0.5",
+  "_spec": "phonegap-plugin-mobile-accessibility",
   "_where": "/Users/mash2/Dropbox (PAC LAB)/codes/ionic_projects/SARAV3/SARA_modular",
   "author": {
     "name": "Adobe PhoneGap Team"
