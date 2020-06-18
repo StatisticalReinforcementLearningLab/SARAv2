@@ -35,6 +35,7 @@
     "@ngrx/schematics": "^9.1.0",
     "@ngrx/store": "^8.5.2",
     "@ngrx/store-devtools": "^8.5.2",
+    "@sentry/browser": "^5.17.0",
     "@types/crypto-js": "^3.1.43",
     "angular-azure-blob-service": "^1.1.0",
     "angularfire2": "^5.1.3",
@@ -48,7 +49,7 @@
     "cordova-plugin-file": "^6.0.2",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
     "cordova-plugin-ionic-webview": "^4.2.1",
-    "cordova-plugin-network-information": "^2.0.2",
+    "cordova-plugin-network-information": "git+https://github.com/apache/cordova-plugin-network-information.git",
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-statusbar": "^2.4.2",
     "cordova-plugin-whitelist": "^1.3.4",
@@ -61,6 +62,8 @@
     "onesignal-cordova-plugin": "^2.8.2",
     "phonegap-plugin-mobile-accessibility": "^1.0.5",
     "rxjs": "~6.5.1",
+    "sentry-cordova": "^0.17.0",
+    "stacktrace-js": "^2.0.2",
     "tslib": "^1.9.0",
     "uk.co.workingedge.cordova.plugin.sqliteporter": "^1.1.1",
     "zone.js": "~0.9.1"
@@ -93,6 +96,9 @@
     "typescript": "~3.4.3"
   },
   "description": "An Ionic project",
+  "config": {
+    "ionic_generate_source_map": "true"
+  },
   "cordova": {
     "plugins": {
       "cordova-plugin-whitelist": {},
@@ -110,7 +116,11 @@
       "cordova-plugin-network-information": {},
       "cordova-plugin-ionic-webview": {
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
-      }
+      },
+      "sentry-cordova": {
+        "SENTRY_ANDROID_SDK_VERSION": "1+"
+      },
+      "phonegap-plugin-mobile-accessibility": {}
     },
     "platforms": [
       "android",

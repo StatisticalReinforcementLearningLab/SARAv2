@@ -33,6 +33,7 @@ export class SampleSurveyComponent implements OnInit {
 
  ionViewDidLeave(){
     //
+    //this.mobileAccessibility.usePreferredTextZoom(true);
     this.appUsageDb.saveAppUsageExit("cg_survey_page");   
 
  }

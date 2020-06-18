@@ -1,26 +1,24 @@
 {
-  "_from": "cordova-plugin-network-information@^2.0.2",
-  "_id": "cordova-plugin-network-information@2.0.2",
+  "_from": "git+https://github.com/apache/cordova-plugin-network-information.git",
+  "_id": "cordova-plugin-network-information@3.0.0-dev",
   "_inBundle": false,
-  "_integrity": "sha512-NwO3qDBNL/vJxUxBTPNOA1HvkDf9eTeGH8JSZiwy1jq2W2mJKQEDBwqWkaEQS19Yd/MQTiw0cykxg5D7u4J6cQ==",
+  "_integrity": "",
   "_location": "/cordova-plugin-network-information",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
-    "registry": true,
-    "raw": "cordova-plugin-network-information@^2.0.2",
-    "name": "cordova-plugin-network-information",
-    "escapedName": "cordova-plugin-network-information",
-    "rawSpec": "^2.0.2",
-    "saveSpec": null,
-    "fetchSpec": "^2.0.2"
+    "type": "git",
+    "raw": "https://github.com/apache/cordova-plugin-network-information.git",
+    "rawSpec": "https://github.com/apache/cordova-plugin-network-information.git",
+    "saveSpec": "git+https://github.com/apache/cordova-plugin-network-information.git",
+    "fetchSpec": "https://github.com/apache/cordova-plugin-network-information.git",
+    "gitCommittish": null
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-plugin-network-information/-/cordova-plugin-network-information-2.0.2.tgz",
-  "_shasum": "f48a92cbd7cccb63cb0a5e5a00030001b8ac4fea",
-  "_spec": "cordova-plugin-network-information@^2.0.2",
+  "_resolved": "git+https://github.com/apache/cordova-plugin-network-information.git#310b38f42b26b26f493d89f4e83aad6b98568e54",
+  "_spec": "https://github.com/apache/cordova-plugin-network-information.git",
   "_where": "/Users/mash2/Dropbox (PAC LAB)/codes/ionic_projects/SARAV3/SARA_modular",
   "author": {
     "name": "Apache Software Foundation"
@@ -41,17 +39,14 @@
   "deprecated": false,
   "description": "Cordova Network Information Plugin",
   "devDependencies": {
-    "eslint": "^4.0.0",
-    "eslint-config-semistandard": "^11.0.0",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-import": "^2.3.0",
-    "eslint-plugin-node": "^5.0.0",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "@cordova/eslint-config": "^3.0.0"
   },
   "engines": {
     "cordovaDependencies": {
       "3.0.0": {
+        "cordova": ">=9"
+      },
+      "4.0.0": {
         "cordova": ">100"
       }
     }
@@ -74,9 +69,9 @@
     "url": "git+https://github.com/apache/cordova-plugin-network-information.git"
   },
   "scripts": {
-    "eslint": "eslint www && eslint src && eslint tests",
-    "test": "npm run eslint"
+    "lint": "eslint .",
+    "test": "npm run lint"
   },
   "types": "./types/index.d.ts",
-  "version": "2.0.2"
+  "version": "3.0.0-dev"
 }
