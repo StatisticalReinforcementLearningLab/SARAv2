@@ -875,7 +875,7 @@ module.exports = "<ion-header>\n    <ion-toolbar>\n      <!--\n      <ion-button
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">How the app works?</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n\n  <ion-list>\n\n\n    <ion-item style=\"border: 1px solid #263238;border-left: 3px solid #263238;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/survey.png\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Complete survey and get rewarded</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">Every day complete a survey between <b>6PM</b> and <b>midnight</b>, and receive a vareity of different rewards described below.</h3> \n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n\n    <ion-item style=\"border: 1px solid #263238;border-left: 3px solid #263238;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/money.gif\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Money</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">Earn <b>one dollar</b> for completing a 3-day streak of your daily survey and <b>two dollars</b> for completing the 1st survey of every new cycle.</h3> \n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n    <ion-item style=\"border: 1px solid #263238;border-left: 3px solid #263238;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/60points.png\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Point</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">Each survey you complete = <b>60 points!</b></h3>\n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n    <ion-item style=\"border: 1px solid #4E342E; border-left: 3px solid #4E342E;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/clownfish_tn.jpg\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Animals</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">More <b>points</b> = more <b>animals</b> in your environment!</h3>\n        <h3 style=\"padding-top: 5px; color: #555;\">You can unlock <b>62</b> different animals and fish!!</h3>\n      </ion-label>\n    </ion-item>\n\n  </ion-list>\n  \n  <div class=\"list\">\n\n\n    <!--\n    <div class=\"card\" style=\"border-left: 3px solid #263238;border-top: 1px solid #263238;\"> \n        <img src=\"img/18_Rev.jpg\" style=\"float:left;width:100px;padding:10px;padding-right:20px;padding-top:15px;margin-bottom:0px;\" />\n        <p style=\"padding:15px;font-size:15px;color:#5a2d0c\">Longer <b>streaks</b> give higher<br>financial incentives<br></b></p>\n        <ul style=\"padding-left:100px;margin-top:1px;\">\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 3-day streak gives 25 cents</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 6-day streak gives 50 cents</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 12-day streak gives 1 dollars</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 18-day streak gives 1.5 dollars</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 30-day streak gives 2.5 dollars</li>\n            <li style=\"height:15px;\"></li>\n        </ul>\n        <br><p style=\"padding:10px;font-size: 12px;line-height:15px;color:#5a2d0c;\">Streaks for surveys and active tasks are separate. So, if you complete 3-day streaks on both survey and active tasks then you will get 50 cents.<p>\n    </div>\n    -->\n\n    <div class=\"card\"  style=\"border-left: 2px solid #263238;border-top: 1px solid #263238;\"> \n        <p style=\"padding:15px;font-size:15px;\">You will sometimes get <b>thank you messages</b> or <b>memes</b> for completing the surveys.</p>\n        <div class=\"item item-image\" style=\"border: 0px solid #4E342E;\">\n            <img src=\"assets/memes/4.jpg\" style=\"padding:20px;padding-top:5px;\">\n        </div>\n    </div>\n\n\n</div>\n\n\n\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">How the app works?</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n\n  <ion-list>\n\n\n    <ion-item style=\"border: 1px solid #263238;border-left: 3px solid #263238;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/survey.png\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Complete survey and get rewarded</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">Every day complete a survey between <b>6PM</b> and <b>midnight</b>, and receive a variety of different rewards described below.</h3> \n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n\n    <ion-item style=\"border: 1px solid #263238;border-left: 3px solid #263238;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/money.gif\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Money</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">Earn <b>one dollar</b> for completing a 3-day streak of your daily survey and <b>two dollars</b> for completing the 1st survey of every new month.</h3> \n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n    <ion-item style=\"border: 1px solid #263238;border-left: 3px solid #263238;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/60points.png\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Point</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">Each survey you complete = <b>60 points!</b></h3>\n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n    <ion-item style=\"border: 1px solid #4E342E; border-left: 3px solid #4E342E;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/clownfish_tn.jpg\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Animals</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">More <b>points</b> = more <b>animals</b> in your environment!</h3>\n        <h3 style=\"padding-top: 5px; color: #555;\">You can unlock <b>62</b> different animals and fish!!</h3>\n      </ion-label>\n    </ion-item>\n\n  </ion-list>\n  \n  <div class=\"list\">\n\n\n    <!--\n    <div class=\"card\" style=\"border-left: 3px solid #263238;border-top: 1px solid #263238;\"> \n        <img src=\"img/18_Rev.jpg\" style=\"float:left;width:100px;padding:10px;padding-right:20px;padding-top:15px;margin-bottom:0px;\" />\n        <p style=\"padding:15px;font-size:15px;color:#5a2d0c\">Longer <b>streaks</b> give higher<br>financial incentives<br></b></p>\n        <ul style=\"padding-left:100px;margin-top:1px;\">\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 3-day streak gives 25 cents</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 6-day streak gives 50 cents</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 12-day streak gives 1 dollars</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 18-day streak gives 1.5 dollars</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 30-day streak gives 2.5 dollars</li>\n            <li style=\"height:15px;\"></li>\n        </ul>\n        <br><p style=\"padding:10px;font-size: 12px;line-height:15px;color:#5a2d0c;\">Streaks for surveys and active tasks are separate. So, if you complete 3-day streaks on both survey and active tasks then you will get 50 cents.<p>\n    </div>\n    -->\n\n    <div class=\"card\"  style=\"border-left: 2px solid #263238;border-top: 1px solid #263238;\"> \n        <p style=\"padding:15px;font-size:15px;\">You will sometimes get <b>thank you messages</b> or <b>memes</b> for completing the surveys.</p>\n        <div class=\"item item-image\" style=\"border: 0px solid #4E342E;\">\n            <img src=\"assets/memes/4.jpg\" style=\"padding:20px;padding-top:5px;\">\n        </div>\n    </div>\n\n\n</div>\n\n\n\n</ion-content>"
 
 /***/ }),
 
@@ -5077,6 +5077,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ngrx_store_devtools__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @ngrx/store-devtools */ "./node_modules/@ngrx/store-devtools/fesm5/store-devtools.js");
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
 /* harmony import */ var _ngrx_effects__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @ngrx/effects */ "./node_modules/@ngrx/effects/fesm5/effects.js");
+/* harmony import */ var _error_handler_GlobalErrorHandler__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./error_handler/GlobalErrorHandler */ "./src/app/error_handler/GlobalErrorHandler.ts");
+
 
 
 
@@ -5156,13 +5158,97 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_app_version_ngx__WEBPACK_IMPORTED_MODULE_24__["AppVersion"],
                 _ionic_native_sqlite_ngx__WEBPACK_IMPORTED_MODULE_11__["SQLite"],
                 _ionic_native_sqlite_porter_ngx__WEBPACK_IMPORTED_MODULE_10__["SQLitePorter"],
-                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicRouteStrategy"] }
+                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicRouteStrategy"] },
+                { provide: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ErrorHandler"], useClass: _error_handler_GlobalErrorHandler__WEBPACK_IMPORTED_MODULE_30__["GlobalErrorHandler"] }
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_12__["AppComponent"]]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"]])
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/error_handler/GlobalErrorHandler.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/error_handler/GlobalErrorHandler.ts ***!
+  \*****************************************************/
+/*! exports provided: GlobalErrorHandler */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GlobalErrorHandler", function() { return GlobalErrorHandler; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var sentry_cordova__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sentry-cordova */ "./node_modules/sentry-cordova/dist/js/sentry-cordova.js");
+/* harmony import */ var sentry_cordova__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sentry_cordova__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
+
+sentry_cordova__WEBPACK_IMPORTED_MODULE_2__["init"]({
+    dsn: "https://b52fab19a7b54657aa485caf384beb23@o408765.ingest.sentry.io/5280045"
+    // TryCatch has to be configured to disable XMLHttpRequest wrapping, as we are going to handle
+    // http module exceptions manually in Angular's ErrorHandler and we don't want it to capture the same error twice.
+    // Please note that TryCatch configuration requires at least @sentry/browser v5.16.0.
+    // extra steps for ionic
+    // https://docs.sentry.io/platforms/javascript/ionic/
+});
+var GlobalErrorHandler = /** @class */ (function () {
+    function GlobalErrorHandler() {
+    }
+    GlobalErrorHandler.prototype.extractError = function (error) {
+        // Try to unwrap zone.js error.
+        // https://github.com/angular/angular/blob/master/packages/core/src/util/errors.ts
+        if (error && error.ngOriginalError) {
+            error = error.ngOriginalError;
+        }
+        // We can handle messages and Error objects directly.
+        if (typeof error === "string" || error instanceof Error) {
+            return error;
+        }
+        // If it's http module error, extract as much information from it as we can.
+        if (error instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpErrorResponse"]) {
+            // The `error` property of http exception can be either an `Error` object, which we can use directly...
+            if (error.error instanceof Error) {
+                return error.error;
+            }
+            // ... or an`ErrorEvent`, which can provide us with the message but no stack...
+            if (error.error instanceof ErrorEvent) {
+                return error.error.message;
+            }
+            // ...or the request body itself, which we can use as a message instead.
+            if (typeof error.error === "string") {
+                return "Server returned code " + error.status + " with body \"" + error.error + "\"";
+            }
+            // If we don't have any detailed information, fallback to the request message itself.
+            return error.message;
+        }
+        // Skip if there's no error, and let user decide what to do with it.
+        return null;
+    };
+    GlobalErrorHandler.prototype.handleError = function (error) {
+        var extractedError = this.extractError(error) || "Handled unknown error";
+        // Capture handled exception and send it to Sentry.
+        var eventId = sentry_cordova__WEBPACK_IMPORTED_MODULE_2__["captureException"](extractedError);
+        // When in development mode, log the error to console for immediate feedback.
+        //if (!environment.production) {
+        //    console.error(extractedError);
+        //}
+        //console.error(extractedError);
+        // Optionally show user dialog to provide details on what happened.
+        //Sentry.showReportDialog({ eventId });
+    };
+    GlobalErrorHandler = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], GlobalErrorHandler);
+    return GlobalErrorHandler;
 }());
 
 
@@ -6270,6 +6356,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_29___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_29__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ../../../../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var sentry_cordova__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! sentry-cordova */ "./node_modules/sentry-cordova/dist/js/sentry-cordova.js");
+/* harmony import */ var sentry_cordova__WEBPACK_IMPORTED_MODULE_32___default = /*#__PURE__*/__webpack_require__.n(sentry_cordova__WEBPACK_IMPORTED_MODULE_32__);
 
 
 
@@ -6298,6 +6386,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 //import { PreLoad } from '../../../PreLoad';
+
 
 
 
@@ -6349,12 +6438,26 @@ var DemoAquariumComponent = /** @class */ (function () {
             if (this.userProfileService == undefined)
                 return "test";
             else {
+                //add username to sentry scope for better error handling
+                this.addSentryScope(this.userProfileService.username);
                 return this.userProfileService.username;
             }
         },
         enumerable: true,
         configurable: true
     });
+    DemoAquariumComponent.prototype.addSentryScope = function (username) {
+        /*
+        *
+        *  This function adds errors in Sentry
+        *
+        */
+        sentry_cordova__WEBPACK_IMPORTED_MODULE_32__["configureScope"](function (scope) {
+            scope.setUser({
+                username: username
+            });
+        });
+    };
     //Get total submitted survey
     DemoAquariumComponent.prototype.getTotalSurveyCount = function () {
         return Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;
@@ -21060,9 +21163,10 @@ __webpack_require__.r(__webpack_exports__);
 var environment = {
     production: false,
     userServer: "http://adaptsdata.research.chop.edu:5000",
-    oneSignalAppId: "f9c4370d-cbcb-4e6f-ab1f-25d1c41b8f3a",
+    //oneSignalAppId: "f9c4370d-cbcb-4e6f-ab1f-25d1c41b8f3a",
+    oneSignalAppId: "de3580a2-4aae-42c4-87cf-2c319c2df0c3",
     encyptString: "+Xr?SwA?EJ7m+g$c",
-    flaskServerForIncentives: "http://ec2-54-91-131-166.compute-1.amazonaws.com:56733",
+    flaskServerForIncentives: "http://adaptsdata.research.chop.edu:5000",
     firebaseConfig: {
         apiKey: "AIzaSyBK_PwjnsC01Q-a-sV7LsA7qIeIhCx4ts0",
         authDomain: "sarav2-6a033.firebaseapp.com",
