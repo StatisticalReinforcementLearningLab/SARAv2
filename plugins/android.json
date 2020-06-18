@@ -38,10 +38,20 @@
     "cordova-plugin-ionic-webview": {
       "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
       "PACKAGE_NAME": "edu.harvard.srl.SARA"
+    },
+    "sentry-cordova": {
+      "SENTRY_ANDROID_SDK_VERSION": "1+",
+      "PACKAGE_NAME": "edu.harvard.srl.SARA"
+    },
+    "phonegap-plugin-mobile-accessibility": {
+      "PACKAGE_NAME": "edu.harvard.srl.SARA"
     }
   },
   "dependent_plugins": {
     "cordova-plugin-app-version": {
+      "PACKAGE_NAME": "edu.harvard.srl.SARA"
+    },
+    "cordova-plugin-network-information": {
       "PACKAGE_NAME": "edu.harvard.srl.SARA"
     }
   }
