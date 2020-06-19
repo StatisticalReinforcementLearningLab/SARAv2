@@ -12,11 +12,11 @@ export class AyaSampleSurveyComponent implements OnInit {
 
   constructor(
     private userProfileService: UserProfileService,
-    //private mobileAccessibility: MobileAccessibility,
+    private mobileAccessibility: MobileAccessibility,
     private appUsageDb: DatabaseService) { }
 
   ngOnInit() {
-    //this.mobileAccessibility.usePreferredTextZoom(false);
+    this.mobileAccessibility.usePreferredTextZoom(false);
   }
 
   ionViewDidEnter(){
@@ -39,7 +39,7 @@ export class AyaSampleSurveyComponent implements OnInit {
       }
     });
     */    
-    //this.mobileAccessibility.usePreferredTextZoom(true);
+    this.mobileAccessibility.usePreferredTextZoom(true);
     this.appUsageDb.saveAppUsageExit("aya_survey_page");
   
  }
