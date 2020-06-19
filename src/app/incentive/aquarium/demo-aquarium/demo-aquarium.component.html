@@ -5,7 +5,9 @@
   <ion-list-header lines="inset">
     <ion-label><h2><br>You unlocked the following animals in this level <br>so far</h2><br></ion-label>
   </ion-list-header>
-
+  <!--
+  {{debugText}}
+  -->
   <ion-item *ngFor="let item of fishFunFactListViewItems">
     <ion-thumbnail item-left>
       <img [src]="item.image"/>
