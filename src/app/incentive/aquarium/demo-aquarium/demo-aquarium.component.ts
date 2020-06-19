@@ -71,6 +71,7 @@ export class DemoAquariumComponent implements OnInit {
   survey_text; 
   fishFunFactListViewItems = [];
   @Input() isPreview: string;
+  debugText: String;
   
   // totalPoints = 0;
   get totalPoints(){
@@ -176,6 +177,7 @@ export class DemoAquariumComponent implements OnInit {
     */
 
     this.survey_text = "Start Survey";
+    this.debugText = "";
     //this.username = "test";
   }
 
@@ -368,12 +370,18 @@ export class DemoAquariumComponent implements OnInit {
             GameApp.CANVAS_HEIGHT += 30;
             GameApp.CANVAS_WIDTH = window.innerWidth;
         }
+        if(GameApp.CANVAS_HEIGHT > 800){//iphone XR fix.
+          GameApp.CANVAS_HEIGHT -= 40;
+          GameApp.CANVAS_WIDTH = window.innerWidth;
+        }
         this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 45*window.devicePixelRatio, Phaser.AUTO, 'gameDiv');
     }else if(this.platform.is('android'))
         this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 74, Phaser.AUTO, 'gameDiv');    
     else
         this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 100, Phaser.AUTO, 'gameDiv');
 
+    this.debugText = "" + GameApp.CANVAS_HEIGHT + ", " + window.innerHeight + ", " + window.devicePixelRatio;
+    
     //this.totalPoints = 2125;
 
     if(this.isPreview == "false"){
