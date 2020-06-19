@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { DatabaseService } from 'src/app/monitor/database.service';
+import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 
 @Component({
   selector: 'app-contact',
@@ -10,9 +11,11 @@ import { DatabaseService } from 'src/app/monitor/database.service';
 export class ContactComponent implements OnInit {
 
   constructor(private menuCtrl:MenuController,
+    private mobileAccessibility: MobileAccessibility,
     private appUsageDb: DatabaseService) { }
 
   ngOnInit() {
+    //this.mobileAccessibility.usePreferredTextZoom(false);
     this.menuCtrl.close();
   }
 
@@ -35,6 +38,7 @@ export class ContactComponent implements OnInit {
       }
     });
     */ 
+    //this.mobileAccessibility.usePreferredTextZoom(true);
     this.appUsageDb.saveAppUsageExit("study_contact_info_page");     
   }
 
