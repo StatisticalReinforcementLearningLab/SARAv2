@@ -787,7 +787,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"gameDiv\"></div>\n<ion-list padding>\n    \n\n  <ion-list-header lines=\"inset\">\n    <ion-label><h2><br>You unlocked the following animals in this level <br>so far</h2><br></ion-label>\n  </ion-list-header>\n\n  <ion-item *ngFor=\"let item of fishFunFactListViewItems\">\n    <ion-thumbnail item-left>\n      <img [src]=\"item.image\"/>\n    </ion-thumbnail>\n    <ion-label text-wrap style=\"padding-left: 10px;\">\n      <h3>{{item.fishName}}</h3>\n      <p>{{item.funFact}}</p>\n    </ion-label>\n  </ion-item>\n\n  \n</ion-list> \n\n  <!--\n  <p  style=\"padding-top:10px;padding-bottom:0px;padding-left:10px;\"><b>Username</b>: {{username}}</p> \n\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"startTundraLevel()\">Tundra level</ion-button>\n\n  <app-loading-spinner></app-loading-spinner>\n\n  <ion-card> \n    <div class=\"quetiontextstyle\">\n        This is the question\n    </div>\n    <div class=\"radiovertical\">\n      <ul>\n        \n        <li>\n          <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n          <label for=\"ff-option\">Pizza</label> \n          <div class=\"check\"></div>\n        </li>\n\n        <li>\n          <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n          <label for=\"ss-option\">Boyfriend</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n        \n        <li>\n          <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n          <label for=\"tt-option\">Cats</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n\n      </ul>\n    </div>\n  </ion-card>\n  -->\n\n\n"
+module.exports = "<div id=\"gameDiv\"></div>\n<ion-list padding>\n    \n\n  <ion-list-header lines=\"inset\">\n    <ion-label><h2><br>You unlocked the following animals in this level <br>so far</h2><br></ion-label>\n  </ion-list-header>\n  <!--\n  {{debugText}}\n  -->\n  <ion-item *ngFor=\"let item of fishFunFactListViewItems\">\n    <ion-thumbnail item-left>\n      <img [src]=\"item.image\"/>\n    </ion-thumbnail>\n    <ion-label text-wrap style=\"padding-left: 10px;\">\n      <h3>{{item.fishName}}</h3>\n      <p>{{item.funFact}}</p>\n    </ion-label>\n  </ion-item>\n\n  \n</ion-list> \n\n  <!--\n  <p  style=\"padding-top:10px;padding-bottom:0px;padding-left:10px;\"><b>Username</b>: {{username}}</p> \n\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"startTundraLevel()\">Tundra level</ion-button>\n\n  <app-loading-spinner></app-loading-spinner>\n\n  <ion-card> \n    <div class=\"quetiontextstyle\">\n        This is the question\n    </div>\n    <div class=\"radiovertical\">\n      <ul>\n        \n        <li>\n          <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n          <label for=\"ff-option\">Pizza</label> \n          <div class=\"check\"></div>\n        </li>\n\n        <li>\n          <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n          <label for=\"ss-option\">Boyfriend</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n        \n        <li>\n          <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n          <label for=\"tt-option\">Cats</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n\n      </ul>\n    </div>\n  </ion-card>\n  -->\n\n\n"
 
 /***/ }),
 
@@ -5078,6 +5078,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
 /* harmony import */ var _ngrx_effects__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @ngrx/effects */ "./node_modules/@ngrx/effects/fesm5/effects.js");
 /* harmony import */ var _error_handler_GlobalErrorHandler__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./error_handler/GlobalErrorHandler */ "./src/app/error_handler/GlobalErrorHandler.ts");
+/* harmony import */ var _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @ionic-native/mobile-accessibility/ngx */ "./node_modules/@ionic-native/mobile-accessibility/ngx/index.js");
+
 
 
 
@@ -5156,6 +5158,7 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_9__["OneSignal"],
                 _incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_23__["AwardDollarService"],
                 _ionic_native_app_version_ngx__WEBPACK_IMPORTED_MODULE_24__["AppVersion"],
+                _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_31__["MobileAccessibility"],
                 _ionic_native_sqlite_ngx__WEBPACK_IMPORTED_MODULE_11__["SQLite"],
                 _ionic_native_sqlite_porter_ngx__WEBPACK_IMPORTED_MODULE_10__["SQLitePorter"],
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicRouteStrategy"] },
@@ -5280,16 +5283,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
+/* harmony import */ var _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/mobile-accessibility/ngx */ "./node_modules/@ionic-native/mobile-accessibility/ngx/index.js");
+
 
 
 
 
 var ContactComponent = /** @class */ (function () {
-    function ContactComponent(menuCtrl, appUsageDb) {
+    function ContactComponent(menuCtrl, mobileAccessibility, appUsageDb) {
         this.menuCtrl = menuCtrl;
+        this.mobileAccessibility = mobileAccessibility;
         this.appUsageDb = appUsageDb;
     }
     ContactComponent.prototype.ngOnInit = function () {
+        //this.mobileAccessibility.usePreferredTextZoom(false);
         this.menuCtrl.close();
     };
     ContactComponent.prototype.ionViewDidEnter = function () {
@@ -5310,10 +5317,12 @@ var ContactComponent = /** @class */ (function () {
           }
         });
         */
+        //this.mobileAccessibility.usePreferredTextZoom(true);
         this.appUsageDb.saveAppUsageExit("study_contact_info_page");
     };
     ContactComponent.ctorParameters = function () { return [
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"] },
+        { type: _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_4__["MobileAccessibility"] },
         { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_3__["DatabaseService"] }
     ]; };
     ContactComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -5323,6 +5332,7 @@ var ContactComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./contact.component.css */ "./src/app/home/contact/contact.component.css")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"],
+            _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_4__["MobileAccessibility"],
             src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_3__["DatabaseService"]])
     ], ContactComponent);
     return ContactComponent;
@@ -6423,6 +6433,7 @@ var DemoAquariumComponent = /** @class */ (function () {
         });
         */
         this.survey_text = "Start Survey";
+        this.debugText = "";
         //this.username = "test";
     }
     Object.defineProperty(DemoAquariumComponent.prototype, "totalPoints", {
@@ -6641,12 +6652,17 @@ var DemoAquariumComponent = /** @class */ (function () {
                 GameApp.CANVAS_HEIGHT += 30;
                 GameApp.CANVAS_WIDTH = window.innerWidth;
             }
+            if (GameApp.CANVAS_HEIGHT > 800) { //iphone XR fix.
+                GameApp.CANVAS_HEIGHT -= 40;
+                GameApp.CANVAS_WIDTH = window.innerWidth;
+            }
             this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 45 * window.devicePixelRatio, Phaser.AUTO, 'gameDiv');
         }
         else if (this.platform.is('android'))
             this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 74, Phaser.AUTO, 'gameDiv');
         else
             this.game = new Phaser.Game(GameApp.CANVAS_WIDTH, GameApp.CANVAS_HEIGHT - 100, Phaser.AUTO, 'gameDiv');
+        this.debugText = "" + GameApp.CANVAS_HEIGHT + ", " + window.innerHeight + ", " + window.devicePixelRatio;
         //this.totalPoints = 2125;
         if (this.isPreview == "false") {
             if (this.totalPoints < 0) {
@@ -16510,6 +16526,8 @@ var AwardDollarService = /** @class */ (function () {
         var todaysDate = moment__WEBPACK_IMPORTED_MODULE_2__().format('YYYYMMDD');
         if (todaysDate == firstDateSurveyIsCompleted) {
             this.usersCurrentDollars = 2;
+            //save the dollar ammount in local storage
+            window.localStorage.setItem("AwardDollar", "" + this.usersCurrentDollars);
             return this.usersCurrentDollars;
         }
         else
@@ -16549,6 +16567,8 @@ var AwardDollarService = /** @class */ (function () {
         // then user has come back after 14 days.
         if (timestampDay14BeforeToday.isAfter(timestampMaxDateInOnDatesSurveyIsTurnedOn)) {
             this.usersCurrentDollars = this.usersCurrentDollars + 2;
+            //save the dollar ammount in local storage
+            window.localStorage.setItem("AwardDollar", "" + this.usersCurrentDollars);
             return this.usersCurrentDollars;
         }
         /*
@@ -19024,19 +19044,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
 /* harmony import */ var src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
+/* harmony import */ var _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/mobile-accessibility/ngx */ "./node_modules/@ionic-native/mobile-accessibility/ngx/index.js");
+
 
 
 
 
 var AyaSampleSurveyComponent = /** @class */ (function () {
-    function AyaSampleSurveyComponent(userProfileService, 
-    //private mobileAccessibility: MobileAccessibility,
-    appUsageDb) {
+    function AyaSampleSurveyComponent(userProfileService, mobileAccessibility, appUsageDb) {
         this.userProfileService = userProfileService;
+        this.mobileAccessibility = mobileAccessibility;
         this.appUsageDb = appUsageDb;
     }
     AyaSampleSurveyComponent.prototype.ngOnInit = function () {
-        //this.mobileAccessibility.usePreferredTextZoom(false);
+        this.mobileAccessibility.usePreferredTextZoom(false);
     };
     AyaSampleSurveyComponent.prototype.ionViewDidEnter = function () {
         /*
@@ -19052,16 +19073,17 @@ var AyaSampleSurveyComponent = /** @class */ (function () {
         /*
         console.log(this.pageTitle+": ionViewDidLeave");
         this.db.getDatabaseState().subscribe(rdy => {
-           if (rdy) {
-             this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
-           }
-         });
-         */
-        //this.mobileAccessibility.usePreferredTextZoom(true);
+          if (rdy) {
+            this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+          }
+        });
+        */
+        this.mobileAccessibility.usePreferredTextZoom(true);
         this.appUsageDb.saveAppUsageExit("aya_survey_page");
     };
     AyaSampleSurveyComponent.ctorParameters = function () { return [
         { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__["UserProfileService"] },
+        { type: _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_4__["MobileAccessibility"] },
         { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_2__["DatabaseService"] }
     ]; };
     AyaSampleSurveyComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -19071,6 +19093,7 @@ var AyaSampleSurveyComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./aya-sample-survey.component.scss */ "./src/app/survey/aya-sample-survey/aya-sample-survey.component.scss")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__["UserProfileService"],
+            _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_4__["MobileAccessibility"],
             src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_2__["DatabaseService"]])
     ], AyaSampleSurveyComponent);
     return AyaSampleSurveyComponent;
@@ -19814,21 +19837,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
 /* harmony import */ var src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
+/* harmony import */ var _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/mobile-accessibility/ngx */ "./node_modules/@ionic-native/mobile-accessibility/ngx/index.js");
 
 
 //import { PreLoad } from '../../PreLoad';
 
 
+
 var SampleSurveyComponent = /** @class */ (function () {
-    function SampleSurveyComponent(userProfileService, 
-    //private mobileAccessibility: MobileAccessibility,
-    appUsageDb) {
+    function SampleSurveyComponent(userProfileService, mobileAccessibility, appUsageDb) {
         this.userProfileService = userProfileService;
+        this.mobileAccessibility = mobileAccessibility;
         this.appUsageDb = appUsageDb;
         this.pageTitle = "Survey_caregiver";
     }
     SampleSurveyComponent.prototype.ngOnInit = function () {
-        //this.mobileAccessibility.usePreferredTextZoom(false);
+        this.mobileAccessibility.usePreferredTextZoom(false);
     };
     SampleSurveyComponent.prototype.ionViewDidEnter = function () {
         //
@@ -19836,10 +19860,12 @@ var SampleSurveyComponent = /** @class */ (function () {
     };
     SampleSurveyComponent.prototype.ionViewDidLeave = function () {
         //
+        this.mobileAccessibility.usePreferredTextZoom(true);
         this.appUsageDb.saveAppUsageExit("cg_survey_page");
     };
     SampleSurveyComponent.ctorParameters = function () { return [
         { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__["UserProfileService"] },
+        { type: _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_4__["MobileAccessibility"] },
         { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_2__["DatabaseService"] }
     ]; };
     SampleSurveyComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -19851,6 +19877,7 @@ var SampleSurveyComponent = /** @class */ (function () {
         //@PreLoad('life-insights')
         ,
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_3__["UserProfileService"],
+            _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_4__["MobileAccessibility"],
             src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_2__["DatabaseService"]])
     ], SampleSurveyComponent);
     return SampleSurveyComponent;
@@ -21163,10 +21190,11 @@ __webpack_require__.r(__webpack_exports__);
 var environment = {
     production: false,
     userServer: "http://adaptsdata.research.chop.edu:5000",
-    //oneSignalAppId: "f9c4370d-cbcb-4e6f-ab1f-25d1c41b8f3a",
-    oneSignalAppId: "de3580a2-4aae-42c4-87cf-2c319c2df0c3",
+    oneSignalAppId: "f9c4370d-cbcb-4e6f-ab1f-25d1c41b8f3a",
+    //oneSignalAppId: "de3580a2-4aae-42c4-87cf-2c319c2df0c3",
     encyptString: "+Xr?SwA?EJ7m+g$c",
-    flaskServerForIncentives: "http://adaptsdata.research.chop.edu:5000",
+    flaskServerForIncentives: "http://ec2-54-91-131-166.compute-1.amazonaws.com:56733",
+    //flaskServerForIncentives: "http://adaptsdata.research.chop.edu:5000",
     firebaseConfig: {
         apiKey: "AIzaSyBK_PwjnsC01Q-a-sV7LsA7qIeIhCx4ts0",
         authDomain: "sarav2-6a033.firebaseapp.com",
