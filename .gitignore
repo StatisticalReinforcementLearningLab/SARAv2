@@ -7,3 +7,4 @@ src/environments/environment.prod.ts
 www/
 platforms/
 copy_these_files/aws_scripts/aws_config.json
+copy_these_files/adapts_scripts/adapts_flask/config.ini
