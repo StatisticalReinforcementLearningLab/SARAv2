@@ -10,7 +10,7 @@ SARA version 2 is extending version 1 in a number of ways: (i) we are focusing o
 
 The current contributors of this project are Harvard University, University of Michigan, and Children Hospital of Philadelphia.
 
-For more details, please check out the paper linked below or contact mrabbi@fas.harvard.edu
+For more details, please check out the paper linked below or contact mashfiqui.r.s@gmail.com
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/StatisticalReinforcementLearningLab/SARA-Version1/master/app_code/9850-169539-1-SP.png" width="650"/>
