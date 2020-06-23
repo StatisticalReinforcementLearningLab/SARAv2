@@ -168,7 +168,7 @@ def send8PMNotification():
   
           # print([userId, readableTs, readableTsTZ, lastSelfReportReadableTsUTC, currentTimeReadableTsUTC])
           if (currentHourInUsersTimeZone.hour == 20) and (currentHourInUsersTimeZone.minute < 30): # between 8 and 8:30
-              if diffInHours < 3: 
+              if diffInHours < 2: 
                   # t.add_row([userId, readableTs, readableTsTZ, lastSelfReportReadableTsUTC, currentTimeReadableTsUTC, NOTIFICATION_NOT_SENT])
                   dataToStore = [userId, readableTs, readableTsTZ, lastSelfReportReadableTsUTC, currentTimeReadableTsUTC, NOTIFICATION_NOT_SENT] 
               else:
