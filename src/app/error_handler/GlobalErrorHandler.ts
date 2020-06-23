@@ -73,6 +73,8 @@ export class GlobalErrorHandler implements ErrorHandler {
         
         // Optionally show user dialog to provide details on what happened.
         //Sentry.showReportDialog({ eventId });
+        // IMPORTANT: Rethrow the error otherwise it gets swallowed
+        throw error;
     }
     
 
