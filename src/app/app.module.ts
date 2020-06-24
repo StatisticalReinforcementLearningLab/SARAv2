@@ -73,8 +73,9 @@ import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
     MobileAccessibility,
     SQLite,
     SQLitePorter,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
-    {provide: ErrorHandler, useClass: GlobalErrorHandler}
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
+    //,
+    //{provide: ErrorHandler, useClass: GlobalErrorHandler}
   ],
   bootstrap: [AppComponent]
 })
