@@ -5246,6 +5246,8 @@ var GlobalErrorHandler = /** @class */ (function () {
         //console.error(extractedError);
         // Optionally show user dialog to provide details on what happened.
         //Sentry.showReportDialog({ eventId });
+        // IMPORTANT: Rethrow the error otherwise it gets swallowed
+        throw error;
     };
     GlobalErrorHandler = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
@@ -16627,8 +16629,8 @@ var AwardDollarService = /** @class */ (function () {
                 else {
                     //the previous day is not in the array, means that we must have skipped the previous day,
                     //Save current date to AwardDollarDates to start a new streak.
-                    this.usersCurrentDollars['dates'] = [moment__WEBPACK_IMPORTED_MODULE_2__().format("DD-MM-YYYY")];
-                    window.localStorage.setItem("AwardDollarDates", JSON.stringify(this.usersCurrentDollars));
+                    this.users3DayStreakHistory['dates'] = [moment__WEBPACK_IMPORTED_MODULE_2__().format("DD-MM-YYYY")];
+                    window.localStorage.setItem("AwardDollarDates", JSON.stringify(this.users3DayStreakHistory));
                 }
             }
         }
