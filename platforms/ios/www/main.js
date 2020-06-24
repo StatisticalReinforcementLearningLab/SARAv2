@@ -5077,9 +5077,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ngrx_store_devtools__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @ngrx/store-devtools */ "./node_modules/@ngrx/store-devtools/fesm5/store-devtools.js");
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
 /* harmony import */ var _ngrx_effects__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @ngrx/effects */ "./node_modules/@ngrx/effects/fesm5/effects.js");
-/* harmony import */ var _error_handler_GlobalErrorHandler__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./error_handler/GlobalErrorHandler */ "./src/app/error_handler/GlobalErrorHandler.ts");
-/* harmony import */ var _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @ionic-native/mobile-accessibility/ngx */ "./node_modules/@ionic-native/mobile-accessibility/ngx/index.js");
-
+/* harmony import */ var _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! @ionic-native/mobile-accessibility/ngx */ "./node_modules/@ionic-native/mobile-accessibility/ngx/index.js");
 
 
 
@@ -5158,102 +5156,18 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_9__["OneSignal"],
                 _incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_23__["AwardDollarService"],
                 _ionic_native_app_version_ngx__WEBPACK_IMPORTED_MODULE_24__["AppVersion"],
-                _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_31__["MobileAccessibility"],
+                _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_30__["MobileAccessibility"],
                 _ionic_native_sqlite_ngx__WEBPACK_IMPORTED_MODULE_11__["SQLite"],
                 _ionic_native_sqlite_porter_ngx__WEBPACK_IMPORTED_MODULE_10__["SQLitePorter"],
-                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicRouteStrategy"] },
-                { provide: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ErrorHandler"], useClass: _error_handler_GlobalErrorHandler__WEBPACK_IMPORTED_MODULE_30__["GlobalErrorHandler"] }
+                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicRouteStrategy"] }
+                //,
+                //{provide: ErrorHandler, useClass: GlobalErrorHandler}
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_12__["AppComponent"]]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"]])
     ], AppModule);
     return AppModule;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/error_handler/GlobalErrorHandler.ts":
-/*!*****************************************************!*\
-  !*** ./src/app/error_handler/GlobalErrorHandler.ts ***!
-  \*****************************************************/
-/*! exports provided: GlobalErrorHandler */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GlobalErrorHandler", function() { return GlobalErrorHandler; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var sentry_cordova__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sentry-cordova */ "./node_modules/sentry-cordova/dist/js/sentry-cordova.js");
-/* harmony import */ var sentry_cordova__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sentry_cordova__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-
-
-
-
-sentry_cordova__WEBPACK_IMPORTED_MODULE_2__["init"]({
-    dsn: "https://b52fab19a7b54657aa485caf384beb23@o408765.ingest.sentry.io/5280045"
-    // TryCatch has to be configured to disable XMLHttpRequest wrapping, as we are going to handle
-    // http module exceptions manually in Angular's ErrorHandler and we don't want it to capture the same error twice.
-    // Please note that TryCatch configuration requires at least @sentry/browser v5.16.0.
-    // extra steps for ionic
-    // https://docs.sentry.io/platforms/javascript/ionic/
-});
-var GlobalErrorHandler = /** @class */ (function () {
-    function GlobalErrorHandler() {
-    }
-    GlobalErrorHandler.prototype.extractError = function (error) {
-        // Try to unwrap zone.js error.
-        // https://github.com/angular/angular/blob/master/packages/core/src/util/errors.ts
-        if (error && error.ngOriginalError) {
-            error = error.ngOriginalError;
-        }
-        // We can handle messages and Error objects directly.
-        if (typeof error === "string" || error instanceof Error) {
-            return error;
-        }
-        // If it's http module error, extract as much information from it as we can.
-        if (error instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpErrorResponse"]) {
-            // The `error` property of http exception can be either an `Error` object, which we can use directly...
-            if (error.error instanceof Error) {
-                return error.error;
-            }
-            // ... or an`ErrorEvent`, which can provide us with the message but no stack...
-            if (error.error instanceof ErrorEvent) {
-                return error.error.message;
-            }
-            // ...or the request body itself, which we can use as a message instead.
-            if (typeof error.error === "string") {
-                return "Server returned code " + error.status + " with body \"" + error.error + "\"";
-            }
-            // If we don't have any detailed information, fallback to the request message itself.
-            return error.message;
-        }
-        // Skip if there's no error, and let user decide what to do with it.
-        return null;
-    };
-    GlobalErrorHandler.prototype.handleError = function (error) {
-        var extractedError = this.extractError(error) || "Handled unknown error";
-        // Capture handled exception and send it to Sentry.
-        var eventId = sentry_cordova__WEBPACK_IMPORTED_MODULE_2__["captureException"](extractedError);
-        // When in development mode, log the error to console for immediate feedback.
-        //if (!environment.production) {
-        //    console.error(extractedError);
-        //}
-        //console.error(extractedError);
-        // Optionally show user dialog to provide details on what happened.
-        //Sentry.showReportDialog({ eventId });
-        // IMPORTANT: Rethrow the error otherwise it gets swallowed
-        throw error;
-    };
-    GlobalErrorHandler = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-    ], GlobalErrorHandler);
-    return GlobalErrorHandler;
 }());
 
 
