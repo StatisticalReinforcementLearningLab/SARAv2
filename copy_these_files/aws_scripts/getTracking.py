@@ -26,12 +26,15 @@ cvs_data = open('./tracks.csv', 'w', newline='')
 
 csvwriter = csv.writer(cvs_data)
 
-count = 0
-
 resp = client.list_objects_v2(Bucket='chop-sara',Prefix='Tracking/')
 
-for obj in resp['Contents']:
-    filename = obj['Key']
+# get_last_modified = lambda obj: int(obj['LastModified'].strftime('%s'))
+get_last_modified = lambda obj: obj['LastModified'].timetuple()
+objS3 = resp['Contents']
+sortedS3DataModified = [obj['Key'] for obj in sorted(objS3, key=get_last_modified, reverse=True)]
+
+isHeader = True
+for filename in sortedS3DataModified:
     print("Inside loop: %s" %filename)
     if("result" in filename) :
         json_obj = client.get_object(Bucket='chop-sara', Key=filename)  
@@ -46,15 +49,14 @@ for obj in resp['Contents']:
         if 'tracks' in each_json['data']['inserts']:
             tracks_json = each_json['data']['inserts']['tracks']
             for each_result in tracks_json:   
-                if count == 0:
+                if isHeader == True:
                     header = each_result.keys()
                     csvwriter.writerow(header)
-                    count += 1
+                    isHeader = False
                     key_order = list(header)
                     #print(key_order)
-                if count == 1:
-                    ordered = OrderedDict((key, each_result.get(key)) for key in key_order)
-                    csvwriter.writerow(ordered.values())
+                ordered = OrderedDict((key, each_result.get(key)) for key in key_order)
+                csvwriter.writerow(ordered.values())
                 
         
 cvs_data.close()
