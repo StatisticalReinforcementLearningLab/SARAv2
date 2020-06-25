@@ -25,15 +25,21 @@ cvs_data = open('./reinforcement_data.csv', 'w', newline='')
 
 csvwriter = csv.writer(cvs_data)
 
-header=["userName","appVersion","Prob","day_count","isRandomized",
-        "unix_ts","readable_ts","date","reward","reward_img_link","Like"]
+header=["userName","date","day_count","Prob","isRandomized","reward",
+        "reward_img_link","Like","unix_ts","readable_ts","appVersion"]
+
 csvwriter.writerow(header)
 
 
 resp = client.list_objects_v2(Bucket='chop-sara',Prefix='reinforcement_data/')
 
-for obj in resp['Contents']:
-    filename = obj['Key']
+# get_last_modified = lambda obj: int(obj['LastModified'].strftime('%s'))
+get_last_modified = lambda obj: obj['LastModified'].timetuple()
+objS3 = resp['Contents']
+sortedS3DataModified = [obj['Key'] for obj in sorted(objS3, key=get_last_modified, reverse=True)]
+
+
+for filename in sortedS3DataModified:
     print("Inside loop: %s" %filename)
     if("result" in filename) :
         json_obj = client.get_object(Bucket='chop-sara', Key=filename)   
@@ -42,8 +48,6 @@ for obj in resp['Contents']:
         each_json=json.loads(json_data)
         ordered = OrderedDict((key, each_json.get(key)) for key in header)
         csvwriter.writerow(ordered.values())
-
-
          
 cvs_data.close()
 

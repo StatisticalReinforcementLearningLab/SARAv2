@@ -26,20 +26,24 @@ cvs_data = open('./survey_caregiver.csv', 'w', newline='')
 
 csvwriter = csv.writer(cvs_data)
 
-header=["Q1","Q2","Q3","Q4",
-        "starttimeUTC","reponse_ts","endtimeUTC","userName","ts","devicInfo","appVersion"]
+header=["userName","Q1","Q2","Q3","Q4",
+        "starttimeUTC","reponse_ts","endtimeUTC","ts","devicInfo","appVersion"]
+
 csvwriter.writerow(header)
 
-key_order=["Q1p","Q7d","Q9d","Q10",
-           "starttimeUTC","reponse_ts","endtimeUTC","userName","ts","devicInfo","appVersion"]
-
+key_order=["userName","Q1p","Q7d","Q9d","Q10",
+           "starttimeUTC","reponse_ts","endtimeUTC","ts","devicInfo","appVersion"]
 
 #count = 0
 
 resp = client.list_objects_v2(Bucket='chop-sara',Prefix='alex_survey_caregiver/')
 
-for obj in resp['Contents']:
-    filename = obj['Key']
+# get_last_modified = lambda obj: int(obj['LastModified'].strftime('%s'))
+get_last_modified = lambda obj: obj['LastModified'].timetuple()
+objS3 = resp['Contents']
+sortedS3DataModified = [obj['Key'] for obj in sorted(objS3, key=get_last_modified, reverse=True)]
+
+for filename in sortedS3DataModified:
     print("Inside loop: %s" %filename)
     if("result" in filename) :
         json_obj = client.get_object(Bucket='chop-sara', Key=filename)   
@@ -58,6 +62,9 @@ for obj in resp['Contents']:
             decrypted_data = subprocess.check_output(["node", "decrypt.js", encrypted_data])
             decrypted_json = json.loads(decrypted_data)
             print(json.dumps(decrypted_json, indent=4, sort_keys=True))        
+            #modify the the deviceInfo
+            decrypted_json["devicInfo"] = decrypted_json["devicInfo"][0]
+
             #for each_result in cvs_data:   #loop this over each json file instead.
             if "Q1" in decrypted_json:
                 ordered = OrderedDict((key, decrypted_json.get(key)) for key in header)
