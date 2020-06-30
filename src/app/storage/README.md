@@ -36,11 +36,11 @@ If you have successfully completed the above steps, then you will be able to see
 
 #### Step 2:
 Open the terminal and navigate to the project folder and install below dependency to the project:
-> `npm install @types/node`
+> `npm install @types/node`<br>
 > `npm install aws-sdk`
 
 Open polyfills.ts, add below at the end:
-> `// aws-sdk requires global to exist`
+> `// aws-sdk requires global to exist`<br>
 > `(window as any).global = window;`
 
 Open tsconfig.app.json, add `nodes` to `types` in compilerOptions block:
