@@ -32,7 +32,7 @@ the application in the browser using the following commands.
 
 If you have successfully completed the above steps, then you will be able to see the following screen:
 
-
+![image](https://raw.githubusercontent.com/StatisticalReinforcementLearningLab/SARAv2/harvard/dev/src/app/storage/Picture1.png)
 
 #### Step 2:
 Open the terminal and navigate to the project folder and install below dependency to the project:
@@ -123,6 +123,9 @@ export class HomePage {
 
 ### Step 6:
 The code will automatically compile and the following page:
+
+![image](https://raw.githubusercontent.com/StatisticalReinforcementLearningLab/SARAv2/harvard/dev/src/app/storage/Picture2.png)
+
 
 Click buton `UPLOAD JSON TO S3`, a JSON file will be loaded in the `Survey` sub-folder in the AWS bucket specified in aws config.
 
