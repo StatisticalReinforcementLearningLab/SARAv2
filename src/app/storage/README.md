@@ -140,6 +140,7 @@ https://github.com/StatisticalReinforcementLearningLab/SARAv2/blob/ADAPTSBranch/
 
 
 
-
+### Step 7:
+See how to create a csv file from the uploaded folder in S3 [here](https://github.com/StatisticalReinforcementLearningLab/SARAv2/tree/harvard/dev/copy_these_files/aws_scripts)
 
 
