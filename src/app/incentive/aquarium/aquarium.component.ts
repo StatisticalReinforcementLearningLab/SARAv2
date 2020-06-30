@@ -152,6 +152,7 @@ export class AquariumComponent implements OnInit {
 
     //
     this.saveDbToAWS();
+    this.userProfileService.saveToServer();
 
   }
 
