@@ -17,10 +17,5 @@
         "choices": ["Rarely/Never", "Occasionally", "Often", "Almost Always/Always"],
         "orientation": "vertical"
       }
-    },
-    {
-      "name": "Q2d",
-      "text": "How are you feeling today? Please click on the spot that best represents your mood",
-      "type": "moodgrid2"
     }
 ]
