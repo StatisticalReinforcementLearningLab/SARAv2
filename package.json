@@ -34,6 +34,7 @@
     "@ngrx/schematics": "^9.1.0",
     "@ngrx/store": "^8.5.2",
     "@ngrx/store-devtools": "^8.5.2",
+    "@pscoped/ngx-pub-sub": "^3.0.0",
     "@types/crypto-js": "^3.1.43",
     "angular-azure-blob-service": "^1.1.0",
     "angularfire2": "^5.1.3",
