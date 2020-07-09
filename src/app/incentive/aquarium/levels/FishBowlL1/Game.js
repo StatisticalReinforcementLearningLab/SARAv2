@@ -137,6 +137,7 @@ export class FishBowlL1 extends Phaser.State {
         var streak_info = this.add.image(5, 5, 'streak_info');
         streak_info.scale.setTo(.30*SCALING_FACTOR, .30*SCALING_FACTOR);
 
+        /*
         var info_level_streak = this.add.sprite(2 + streak_info.width + 12, 20, 'info_sprite');
         info_level_streak.animations.add('swim');
         info_level_streak.animations.play('swim', 1, true);
@@ -144,7 +145,7 @@ export class FishBowlL1 extends Phaser.State {
         info_level_streak.anchor.setTo(.5,.5);
         info_level_streak.inputEnabled = true;
         info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
-
+        */
 
         var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
         for(var i=0; i < this.surveyHistory.length; i++){
@@ -182,7 +183,7 @@ export class FishBowlL1 extends Phaser.State {
         //progressBars.add(points_text);
 
         var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+4, 'star_point');
-        star_icon.scale.setTo(.52*SCALING_FACTOR, .52*SCALING_FACTOR);
+        star_icon.scale.setTo(SCALING_FACTOR, SCALING_FACTOR);
         star_icon.anchor.setTo(.5, .5);
         //progressBars.add(points_text);
 
@@ -378,7 +379,7 @@ export class FishBowlL1 extends Phaser.State {
             if(current_points >= data[i].points){
 
               //nemo
-              if(data[i].name.valueOf() === "The clown fish")
+              if(data[i].name.valueOf() === "Clown fish")
                   this.animateClownFish();
 
               //if(data[i].name.valueOf() === "Puffer fish")
