@@ -400,9 +400,15 @@ export class AquariumComponent implements OnInit {
     //get if money is awarded.
     if(awardedDollar > 0){
       if(this.isFirstDayInTheStudy())
-        reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'Thanks for being a participant in the study. You earned 2 dollar.'});
-      else
-        reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'You earned 1 dollar for completing surveys 3-days in a row'});
+        //reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'Thanks for being a participant in the study. You earned 2 dollar.'});
+        reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for completing your first survey! You earned 2 dollars.'});
+      else{
+        if(awardedDollar == 1) //hack, 1 dollar is only awarded after a three-day streak.
+          reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for surveys three days in a row! You earned 1 dollar.'});
+        
+        if(awardedDollar == 2) //hack, 2 dollar is only awarded after a break.
+          reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for coming back after a break! You earned 2 dollars.'});
+      }
     }
       
     //get if fish is alotted
@@ -419,7 +425,7 @@ export class AquariumComponent implements OnInit {
       for(var i = 0; i < fish_data.length; i++) {
           if ((fish_data[i].points > previousPoints) && (fish_data[i].points <= currentPoints)) {
             img = "assets/" + fish_data[i].img.substring(0, fish_data[i].img.length-4) + '_tn.jpg';
-            header =  "You unlocked " + fish_data[i].name;
+            header =  "You have now unlocked the " + fish_data[i].name;
             text = fish_data[i].trivia;
             reinforcements.push({'img': img, 'header': header, 'text': text});
           }
