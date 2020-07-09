@@ -25,10 +25,17 @@ export class AppComponent {
   isAYA: boolean;
 
   get username(){
-    if(this.userProfileService == undefined)
+    if(this.userProfileService == undefined){
+      //console.log("--userProfileService--: " + JSON.stringify(this.userProfileService));
       return "test";
+    }
+    else if(this.userProfileService == null){
+      //console.log("--userProfileService--: " + JSON.stringify(this.userProfileService));
+      return "test";
+    }
     else{
       //console.log("User profile -- username -- called from here");
+      //console.log("--userProfileService--: " + JSON.stringify(this.userProfileService));
       return this.userProfileService.username;
     }
   }
