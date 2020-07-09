@@ -4831,10 +4831,17 @@ var AppComponent = /** @class */ (function () {
     }
     Object.defineProperty(AppComponent.prototype, "username", {
         get: function () {
-            if (this.userProfileService == undefined)
+            if (this.userProfileService == undefined) {
+                //console.log("--userProfileService--: " + JSON.stringify(this.userProfileService));
                 return "test";
+            }
+            else if (this.userProfileService == null) {
+                //console.log("--userProfileService--: " + JSON.stringify(this.userProfileService));
+                return "test";
+            }
             else {
                 //console.log("User profile -- username -- called from here");
+                //console.log("--userProfileService--: " + JSON.stringify(this.userProfileService));
                 return this.userProfileService.username;
             }
         },
@@ -7012,7 +7019,7 @@ class FishBowlL1 extends Phaser.State {
         //progressBars.add(points_text);
 
         var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+4, 'star_point');
-        star_icon.scale.setTo(.52*SCALING_FACTOR, .52*SCALING_FACTOR);
+        star_icon.scale.setTo(SCALING_FACTOR, SCALING_FACTOR);
         star_icon.anchor.setTo(.5, .5);
         //progressBars.add(points_text);
 
@@ -7888,8 +7895,10 @@ class FishBowlL2 extends Phaser.State {
         //points bar
         var vertical_position_offset = 13;
         var points_progress = this.add.image(this.CANVAS_WIDTH, 2, 'points_progress_2');
+        //points_progress.scale.setTo(.36*SCALING_FACTOR, .30*SCALING_FACTOR);
         points_progress.scale.setTo(.36*SCALING_FACTOR, .30*SCALING_FACTOR);
         points_progress.anchor.setTo(1,0);
+        
         //progressBars.add(points_progress);
 
         //point text
@@ -7899,8 +7908,10 @@ class FishBowlL2 extends Phaser.State {
         //progressBars.add(points_text);
 
         var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+4, 'star_point');
-        star_icon.scale.setTo(.52*SCALING_FACTOR, .52*SCALING_FACTOR);
+        star_icon.scale.setTo(SCALING_FACTOR, SCALING_FACTOR);
         star_icon.anchor.setTo(.5, .5);
+        //star_icon.smoothed = false;
+        //star_icon.antialiasing = false;
         //progressBars.add(points_text);
 
         //progressBars.scale.setTo(.8, .8);
@@ -7938,7 +7949,7 @@ class FishBowlL2 extends Phaser.State {
         progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
 
         var fish_progress_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+8, 'next_fish_icon');
-        fish_progress_icon.scale.setTo(.2*0.8*SCALING_FACTOR, .2*0.8*SCALING_FACTOR);
+        fish_progress_icon.scale.setTo(.12*0.9*SCALING_FACTOR, .12*0.9**SCALING_FACTOR);
         fish_progress_icon.anchor.setTo(.5, .5);
         
 
@@ -9039,7 +9050,7 @@ class GameRainforestL6 extends Phaser.State {
         //progressBars.add(points_text);
 
         var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+4, 'star_point');
-        star_icon.scale.setTo(.52*SCALING_FACTOR, .52*SCALING_FACTOR);
+        star_icon.scale.setTo(SCALING_FACTOR, SCALING_FACTOR);
         star_icon.anchor.setTo(.5, .5);
         //progressBars.add(points_text);
 
@@ -10186,7 +10197,7 @@ class SeaLevelL3 extends Phaser.State {
         //progressBars.add(points_text);
 
         var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+4, 'star_point');
-        star_icon.scale.setTo(.52*SCALING_FACTOR, .52*SCALING_FACTOR);
+        star_icon.scale.setTo(SCALING_FACTOR, SCALING_FACTOR);
         star_icon.anchor.setTo(.5, .5);
         //progressBars.add(points_text);
 
@@ -11616,7 +11627,7 @@ class SeaLevelL4 extends Phaser.State {
         //progressBars.add(points_text);
 
         var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+4, 'star_point');
-        star_icon.scale.setTo(.52*SCALING_FACTOR, .52*SCALING_FACTOR);
+        star_icon.scale.setTo(SCALING_FACTOR, SCALING_FACTOR);
         star_icon.anchor.setTo(.5, .5);
         //progressBars.add(points_text);
 
@@ -12921,7 +12932,7 @@ class GameTundraL5 extends Phaser.State {
         //progressBars.add(points_text);
 
         var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+4, 'star_point');
-        star_icon.scale.setTo(.52*SCALING_FACTOR, .52*SCALING_FACTOR);
+        star_icon.scale.setTo(SCALING_FACTOR, SCALING_FACTOR);
         star_icon.anchor.setTo(.5, .5);
         //progressBars.add(points_text);
 
@@ -14243,7 +14254,7 @@ class GameTundraL51 extends Phaser.State {
         //progressBars.add(points_text);
 
         var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+4, 'star_point');
-        star_icon.scale.setTo(.52*SCALING_FACTOR, .52*SCALING_FACTOR);
+        star_icon.scale.setTo(SCALING_FACTOR, SCALING_FACTOR);
         star_icon.anchor.setTo(.5, .5);
         //progressBars.add(points_text);
 
@@ -21109,8 +21120,8 @@ var environment = {
     oneSignalAppId: "f9c4370d-cbcb-4e6f-ab1f-25d1c41b8f3a",
     //oneSignalAppId: "de3580a2-4aae-42c4-87cf-2c319c2df0c3",
     encyptString: "+Xr?SwA?EJ7m+g$c",
-    flaskServerForIncentives: "http://ec2-54-91-131-166.compute-1.amazonaws.com:56733",
-    //flaskServerForIncentives: "http://adaptsdata.research.chop.edu:5000",
+    //flaskServerForIncentives: "http://ec2-54-91-131-166.compute-1.amazonaws.com:56733",
+    flaskServerForIncentives: "http://adaptsdata.research.chop.edu:5000",
     firebaseConfig: {
         apiKey: "AIzaSyBK_PwjnsC01Q-a-sV7LsA7qIeIhCx4ts0",
         authDomain: "sarav2-6a033.firebaseapp.com",
