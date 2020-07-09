@@ -9,6 +9,7 @@ from collections import OrderedDict
 import sys
 from prettytable import PrettyTable
 import mysql.connector as mysql
+import datetime
 
 # Look at getConfig.py to create config Json file.
 from getConfig import ACCESS_KEY, SECRET_KEY
@@ -159,7 +160,7 @@ class StudyDataCheck:
         TOTAL_NUMBER_OF_RECORDS_TO_DISPLAY = 50
 
         print('\n\n\n\n==========================================================================')
-        print("Survey data for CG")
+        print("Survey data for Caregivers")
         print("Number of file processing: " +
               str(TOTAL_NUMBER_OF_RECORDS_TO_DISPLAY))
         print('==========================================================================')
@@ -378,7 +379,7 @@ class StudyDataCheck:
         print('\n\n\n\n')
 
         print('\n\n\n\n==========================================================================')
-        print("4PM notification receipt")
+        print("4PM notification receipts")
         print(
             '==========================================================================\n')
 
@@ -411,39 +412,7 @@ class StudyDataCheck:
         print(notification4PMPrettyTable)
         print('\n\n\n\n')
 
-        print('\n\n\n\n==========================================================================')
-        print("Survey completed record for 8PM tracking")
-        print(
-            '==========================================================================\n')
-
-        db = mysql.connect(
-            host=HOST,
-            port=PORT,
-            user=USERNAME,
-            passwd=PASSWORD,
-            database=DATABASE
-        )
-
-        cursor = db.cursor()
-        cursor.execute("SELECT PARTICIAPANT_ID, DATE, whenReceivedReadableTs, whenActedonReadableTs, typeOfAction, device_type FROM SARA_Notifications where typeOfNotification = '4:00PM' order by whenReceivedTs DESC limit 50;")
-        result = cursor.fetchall()
-
-        header = ["userName", "date", "whenReceivedReadableTs",
-            "whenActedonReadableTs", "typeOfAction", "device_type"]
-
-        notification4PMPrettyTable = PrettyTable()
-        notification4PMPrettyTable.field_names = header
-
-        for notification4PMRecord in result:
-            x = [notification4PMRecord[0], notification4PMRecord[1], notification4PMRecord[2],
-                notification4PMRecord[3], notification4PMRecord[4], notification4PMRecord[5]]
-            # print(x)
-            notification4PMPrettyTable.add_row(
-                [str(data_point).strip().encode('ascii', 'ignore') for data_point in x])
-
-        print('\n')
-        print(notification4PMPrettyTable)
-        print('\n\n\n\n')
+        
 
 
     def lastSurveyCompleted(self):
@@ -523,7 +492,7 @@ class StudyDataCheck:
 
     def notification8PMRecord(self):
         print('\n\n\n\n==========================================================================')
-        print("Last app access record for 8PM tracking")
+        print("8PM sent record")
         print('==========================================================================\n')
 
         db = mysql.connect(
@@ -535,16 +504,16 @@ class StudyDataCheck:
         )
 
         cursor = db.cursor()
-        cursor.execute("SELECT * FROM 8PMNotificationTable order by currentTimeTsUserTZ desc;")
+        cursor.execute("SELECT * FROM 8PMNotificationTable order by currentTimeTsUTC desc;")
         result = cursor.fetchall()
 
-        header = ["id","user_id", "lastSurveyCompleted","when8AMIsSentInUsersTimeZone"]
+        header = ["id","user_id", "lastSurveyCompleted","when8AMIsSentInUsersTimeZone", "when8AMIsSentInGMT"]
 
         notification8PMPrettyTable = PrettyTable()
         notification8PMPrettyTable.field_names = header
 
         for notification8PMRecord in result:
-            x = [notification8PMRecord[0], notification8PMRecord[1], notification8PMRecord[2], notification8PMRecord[3]]
+            x = [notification8PMRecord[0], notification8PMRecord[1], notification8PMRecord[2], notification8PMRecord[3], notification8PMRecord[5]]
             # print(x)
             notification8PMPrettyTable.add_row(
                     [str(data_point).strip().encode('ascii', 'ignore') for data_point in x])
@@ -555,6 +524,10 @@ class StudyDataCheck:
 
 if __name__ == "__main__":
     studyDataCheck = StudyDataCheck()
+    
+    
+    current_time = datetime.datetime.strftime(datetime.datetime.now(), "%Y-%m-%d %I:%M:%S%p %Z")
+    print("Generated on:  " + current_time + "\n\n\n\n")
 
     # survey data check
     # studyDataCheck.surveyDataCheck('chop-sara', 'alex_survey_aya/')
