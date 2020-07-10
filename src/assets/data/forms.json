@@ -1,0 +1,201 @@
+[
+  {
+    "name":"Q1d",
+    "text":"Are you starting your first drink?",
+    "type":"radiobutton",
+    "extra":{
+      "choices":["Yes", "No"],
+      "orientation": "vertical"
+    }
+  },
+
+  {
+    "name":"Q2d",
+    "text": "When did you start your first drink?",
+    "type": "timepicker",
+    "inputType": "time",
+    "extra":{
+      "dependency":{
+        "question": "Q1d",
+        "show": "No",
+        "hide": "Yes"
+      }
+    }
+  },
+  
+  {
+    "name": "Q3d",
+    "text": "In the last 30 minutes, how many standard drinks have you finished? ",
+    "type": "radiobutton",
+    "extra":{
+      "choices":["0","0.5","1","1.5","2","3","4","5","6","More than 6"],
+      "orientation": "vertical",
+      "dependency":{
+        "question": "Q1d",
+        "show": "No",
+        "hide": "Yes"
+      }
+    }
+  },
+  {
+    "name":"Q4d",
+    "text":"Are you finished drinking for now?",
+    "type":"radiobutton",
+    "extra":{
+      "choices":["Yes","Not Sure","No"],
+      "orientation": "vertical",
+      "dependency":{
+        "question": "Q3d",
+        "show": ["0","0.5"]
+      }
+    }
+  },
+
+  {
+    "name":"Q5d",
+    "text":"How \"buzzed\" do you feel right now?",
+    "type":"range",
+    "extra":{
+      "choices":["not<br>at all", "extreme<br>ly",0,4,1]
+    }
+  },
+
+  {
+    "name":"Q6d",
+    "text":"How drunk do you feel right now?",
+    "type":"range",
+    "extra":{
+      "choices":["not<br>at all", "extreme<br>ly",0,4,1]
+    }
+  },
+
+  {
+    "name": "Q7d",
+    "text": "Where are you right now?",
+    "type": "radiobutton",
+    "extra":{
+      "choices":["Home (apartment, dorm, house)","A friend’s place","Boyfriend’s/Girlfriend’s/Partner’s place",
+        "Party (House party, Greek party)","Bar/Club","Restaurant","Walking somewhere",
+        "Major entertainment event (sports, tailgate, concert)","Other"],
+      "orientation": "vertical"
+    }
+  },
+
+  {
+    "name":"Q8d",
+    "text": "Please indicate where you are right now:",
+    "type": "textbox",
+    "inputType": "text",
+    "extra":{
+      "dependency":{
+        "question": "Q7d",
+        "show": "Other"
+      }
+    }
+  },
+
+  {
+    "name":"Q9",
+    "text":"Are you alone or with someone?",
+    "type":"radiobutton",
+    "extra":{
+      "choices":["Alone", "With someone"],
+      "orientation": "vertical"
+    }
+  },
+
+  {
+    "name": "Q10",
+    "text": "Who are you with?",
+    "type": "radiobutton",
+    "extra":{
+      "choices":["Friend(s)","Boyfriend/girlfriend/partner",
+        "Parent(s)","Sibling(s)","Large group",
+        "Other"],
+      "orientation": "vertical",
+      "dependency":{
+        "question": "Q9",
+        "show": "With someone",
+        "hide": "Alone"
+      }
+    }
+  },
+
+  {
+    "name":"Q11",
+    "text": "Please indicate the other people who are with you:",
+    "type": "textbox",
+    "inputType": "text",
+    "extra":{    
+      "dependency":{
+        "question": "Q10",
+        "show": "Other"
+      }
+    }
+  },
+
+  {
+    "name":"Q12",
+    "text":"Are any of the people with you drinking?",
+    "type":"radiobutton",
+    "extra":{
+      "choices":["Yes", "No"],
+      "orientation": "vertical",
+      "dependency":{
+        "question": "Q9",
+        "show": "With someone",
+        "hide": "Alone"
+      }
+    }
+  },
+
+  {
+    "name":"Q13",
+    "text":"How happy do you feel right now?",
+    "type":"range",
+    "extra":{
+      "choices":["not<br>at all", "extreme<br>ly",0,6,1]
+    }
+  },
+
+  {
+    "name":"Q14",
+    "text":"How sad do you feel right now?",
+    "type":"range",
+    "extra":{
+      "choices":["not<br>at all", "extreme<br>ly",0,6,1]
+    }
+  },
+
+  {
+    "name":"Q15",
+    "text":"How anxious do you feel right now?",
+    "type":"range",
+    "extra":{
+      "choices":["not<br>at all", "extreme<br>ly",0,6,1]
+    }
+  },
+
+  {
+    "name":"Q16",
+    "text":"How angry do you feel right now?",
+    "type":"range",
+    "extra":{
+      "choices":["not<br>at all", "extreme<br>ly",0,6,1]
+    }
+  },
+
+  {
+    "name": "Q17",
+    "text": "In the last 30 minutes, have you had….?",
+    "type": "checkbox",
+    "extra":{
+      "choices":["a meal","a snack ",
+                "neither a meal nor a snack"],
+      "orientation": "vertical"
+    }
+  }
+
+
+]
+
