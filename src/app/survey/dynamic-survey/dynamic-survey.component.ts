@@ -17,6 +17,8 @@ import { Router, NavigationExtras} from '@angular/router';
 import * as moment from 'moment';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 
+import { NgxPubSubService } from '@pscoped/ngx-pub-sub';
+
 //import * as lifeInsightProfile from "../../../assets/data/life_insight.json";
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import { AwardDollarService } from 'src/app/incentive/award-money/award-dollar.service';
@@ -27,6 +29,8 @@ import { surveyCompleted } from '../survey.actions';
 import { SurveyTimeline } from '../model/surveyTimeline';
 import { UnlockedIncentives } from '../../incentive/model/unlocked-incentives';
 import { surveyCompletedRegisterUnlocked } from 'src/app/incentive/incentive.actions';
+
+import { SurveyPubSubBrokerService } from '../survey-pub-sub-broker.service';
 
 @Component({
   selector: 'app-dynamic-survey',
@@ -65,7 +69,9 @@ export class DynamicSurveyComponent implements OnInit {
     public plt: Platform,
     private userProfileService: UserProfileService,
     private store: Store<AppState>,
-    private awardDollarService:AwardDollarService) {
+    private awardDollarService:AwardDollarService,
+    private pubSub: NgxPubSubService,
+    private broker: SurveyPubSubBrokerService) {
       this.appVersion.getVersionNumber().then(value => {
         this.versionNumber = value;
         console.log("VersionNumber: "+this.versionNumber);
@@ -122,8 +128,7 @@ export class DynamicSurveyComponent implements OnInit {
       alertCtrl;
       store: Store<AppState>;
 
-
-      constructor() {
+      constructor(private pubSub: NgxPubSubService, private broker: SurveyPubSubBrokerService) {
       }
 
       ngOnInit() {
@@ -282,6 +287,8 @@ export class DynamicSurveyComponent implements OnInit {
         //Store app version number
         this.survey2['appVersion'] = this.versionNumber;
         this.userProfileService.versionNumber = this.versionNumber;
+
+        this.pubSub.publishEvent(this.broker.EventTypes.surveyCompleted, this.survey2);
 
         var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.survey2), environment.encyptString);
         //var encrypted = this.EncrDecr.encrypt("holla", "Z&wz=BGw;%q49/<)");
@@ -455,7 +462,7 @@ export class DynamicSurveyComponent implements OnInit {
       var payload: Object = {user_id: this.userProfileService.username, 
                      last_date: moment().format('YYYYMMDD'),
                      unlocked_points: 60, 
-                     unlocked_money: dollars-pastDollars, 
+                     unlocked_money: dollars-pastDollars,
                      current_point: this.userProfileService.points, 
                      date: moment().format('YYYYMMDD'),
                      isUnlockedViewShown: false};
