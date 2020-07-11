@@ -12,6 +12,7 @@ import { Injector } from '@angular/core';
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 import { SQLite } from '@ionic-native/sqlite/ngx';
 
+import { NgxPubSubModule } from '@pscoped/ngx-pub-sub';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -60,7 +61,8 @@ import {EffectsModule} from '@ngrx/effects';
     }),
     //dev tool maxAge 25 versions of the data
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
+    NgxPubSubModule
   ],
   providers: [
     StatusBar,
