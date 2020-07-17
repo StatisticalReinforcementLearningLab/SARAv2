@@ -21,8 +21,18 @@
             <img [src]="item.image"/>
           </ion-thumbnail>
           <ion-label class="ion-text-wrap" style="padding-left: 10px;">
-            <h3>{{item.author}}</h3>
-            <p>{{item.quote_text}}</p>
+            
+
+            <h3 style="text-align:left;">
+              {{item.author}}
+              
+            </h3>
+            <!--
+              <span style="color: #ccc; font-size: 10px; float:right;"><i>{{item.date}}</i></span>
+            -->
+            <p>
+              {{item.quote_text}}
+            </p>
           </ion-label>
         </ion-item>
     </ion-list> 
