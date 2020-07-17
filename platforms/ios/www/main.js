@@ -875,7 +875,7 @@ module.exports = "<ion-header>\n    <ion-toolbar>\n      <!--\n      <ion-button
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">How the app works?</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n\n  <ion-list>\n\n\n    <ion-item style=\"border: 1px solid #263238;border-left: 3px solid #263238;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/survey.png\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Complete survey and get rewarded</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">Every day complete a survey between <b>6PM</b> and <b>midnight</b>, and receive a variety of different rewards described below.</h3> \n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n\n    <ion-item style=\"border: 1px solid #263238;border-left: 3px solid #263238;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/money.gif\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Money</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">Earn <b>one dollar</b> for completing a 3-day streak of your daily survey and <b>two dollars</b> for completing the 1st survey of every new month.</h3> \n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n    <ion-item style=\"border: 1px solid #263238;border-left: 3px solid #263238;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/60points.png\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Point</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">Each survey you complete = <b>60 points!</b></h3>\n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n    <ion-item style=\"border: 1px solid #4E342E; border-left: 3px solid #4E342E;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/clownfish_tn.jpg\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Animals</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">More <b>points</b> = more <b>animals</b> in your environment!</h3>\n        <h3 style=\"padding-top: 5px; color: #555;\">You can unlock <b>62</b> different animals and fish!!</h3>\n      </ion-label>\n    </ion-item>\n\n  </ion-list>\n  \n  <div class=\"list\">\n\n\n    <!--\n    <div class=\"card\" style=\"border-left: 3px solid #263238;border-top: 1px solid #263238;\"> \n        <img src=\"img/18_Rev.jpg\" style=\"float:left;width:100px;padding:10px;padding-right:20px;padding-top:15px;margin-bottom:0px;\" />\n        <p style=\"padding:15px;font-size:15px;color:#5a2d0c\">Longer <b>streaks</b> give higher<br>financial incentives<br></b></p>\n        <ul style=\"padding-left:100px;margin-top:1px;\">\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 3-day streak gives 25 cents</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 6-day streak gives 50 cents</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 12-day streak gives 1 dollars</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 18-day streak gives 1.5 dollars</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 30-day streak gives 2.5 dollars</li>\n            <li style=\"height:15px;\"></li>\n        </ul>\n        <br><p style=\"padding:10px;font-size: 12px;line-height:15px;color:#5a2d0c;\">Streaks for surveys and active tasks are separate. So, if you complete 3-day streaks on both survey and active tasks then you will get 50 cents.<p>\n    </div>\n    -->\n\n    <div class=\"card\"  style=\"border-left: 2px solid #263238;border-top: 1px solid #263238;\"> \n        <p style=\"padding:15px;font-size:15px;\">You will sometimes get <b>thank you messages</b> or <b>memes</b> for completing the surveys.</p>\n        <div class=\"item item-image\" style=\"border: 0px solid #4E342E;\">\n            <img src=\"assets/memes/4.jpg\" style=\"padding:20px;padding-top:5px;\">\n        </div>\n    </div>\n\n\n</div>\n\n\n\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">How the app works?</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n\n  <ion-list>\n\n\n    <ion-item style=\"border: 1px solid #263238;border-left: 3px solid #263238;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/survey.png\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Complete survey and get rewarded</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">Every day complete a survey between <b>6PM</b> and <b>midnight</b>, and receive a variety of different rewards described below.</h3> \n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n\n    <ion-item style=\"border: 1px solid #263238;border-left: 3px solid #263238;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/money.gif\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Money</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">Earn <b>one dollar</b> for completing a 3-day streak of your daily survey and <b>two dollars</b> for completing the 1st survey of every new month.</h3> \n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n    <ion-item style=\"border: 1px solid #263238;border-left: 3px solid #263238;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/60points.png\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Point</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">Each survey you complete = <b>60 points!</b></h3>\n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n    <ion-item style=\"border: 1px solid #4E342E; border-left: 3px solid #4E342E;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/clownfish_tn.jpg\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Animals</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">More <b>points</b> = more <b>animals</b> in your environment!</h3>\n        <h3 style=\"padding-top: 5px; color: #555;\">You can unlock <b>62</b> different animals and fish!!</h3>\n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n    <ion-item style=\"border: 1px solid #4E342E; border-left: 3px solid #4E342E;\">  \n      <ion-thumbnail slot=\"start\" style=\"width: 100px; height: 100px;\">\n        <img src=\"assets/img/left_top.png\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Survey completion bar</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">Shows the number of surveys you have completed in the past week (shown as <b>green</b>) and the ones you missed (shown as <b>gray</b>).</h3>\n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n    <ion-item style=\"border: 1px solid #4E342E; border-left: 3px solid #4E342E;\">  \n      <ion-label text-wrap>\n        <h2>Progress bars</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\"><b>Next Animal (top):</b> Shows how far you are to unlock the next animal.</h3>\n        <h3 style=\"padding-top: 5px; color: #555;\"><b>Level up (bottom):</b> Shows how far until you “level up” until the next environment</h3>\n      </ion-label>\n      <ion-thumbnail slot=\"end\"  style=\"width: 100px; height: 100px;\">\n        <img src=\"assets/img/status_bar.png\">\n      </ion-thumbnail>\n    </ion-item>\n\n  </ion-list>\n  \n  <div class=\"list\">\n\n\n    <!--\n    <div class=\"card\" style=\"border-left: 3px solid #263238;border-top: 1px solid #263238;\"> \n        <img src=\"img/18_Rev.jpg\" style=\"float:left;width:100px;padding:10px;padding-right:20px;padding-top:15px;margin-bottom:0px;\" />\n        <p style=\"padding:15px;font-size:15px;color:#5a2d0c\">Longer <b>streaks</b> give higher<br>financial incentives<br></b></p>\n        <ul style=\"padding-left:100px;margin-top:1px;\">\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 3-day streak gives 25 cents</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 6-day streak gives 50 cents</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 12-day streak gives 1 dollars</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 18-day streak gives 1.5 dollars</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 30-day streak gives 2.5 dollars</li>\n            <li style=\"height:15px;\"></li>\n        </ul>\n        <br><p style=\"padding:10px;font-size: 12px;line-height:15px;color:#5a2d0c;\">Streaks for surveys and active tasks are separate. So, if you complete 3-day streaks on both survey and active tasks then you will get 50 cents.<p>\n    </div>\n    -->\n\n    <div class=\"card\"  style=\"border-left: 2px solid #263238;border-top: 1px solid #263238;\"> \n        <p style=\"padding:15px;font-size:15px;\">You will sometimes get <b>thank you messages</b> or <b>memes</b> for completing the surveys.</p>\n        <div class=\"item item-image\" style=\"border: 0px solid #4E342E;\">\n            <img src=\"assets/memes/4.jpg\" style=\"padding:20px;padding-top:5px;\">\n        </div>\n    </div>\n\n\n</div>\n\n\n\n</ion-content>"
 
 /***/ }),
 
@@ -4857,6 +4857,17 @@ var AppComponent = /** @class */ (function () {
     };
     AppComponent.prototype.initializeApp = function () {
         var _this = this;
+        //disable back button
+        this.platform.ready().then(function () {
+            _this.platform.backButton.subscribeWithPriority(9999, function () {
+                document.addEventListener('backbutton', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    console.log('hello');
+                }, false);
+            });
+            _this.statusBar.styleDefault();
+        });
         if (this.authService.isLoggedIn()) {
             this.userProfileService.loadProfileFromDevice();
             // this.isLoading = false;
@@ -5785,6 +5796,7 @@ var AquariumComponent = /** @class */ (function () {
         this.appUsageDb.saveAppUsageEnter("aquarium_tab");
         //
         this.saveDbToAWS();
+        this.userProfileService.saveToServer();
     };
     //Upload SQLite database to AWS in ionViewWillEnter which happens
     //before "ionViewDidEnter" in demo-aquarium, thus the table will 
@@ -6026,9 +6038,14 @@ var AquariumComponent = /** @class */ (function () {
         //get if money is awarded.
         if (awardedDollar > 0) {
             if (this.isFirstDayInTheStudy())
-                reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'Thanks for being a participant in the study. You earned 2 dollar.' });
-            else
-                reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'You earned 1 dollar for completing surveys 3-days in a row' });
+                //reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'Thanks for being a participant in the study. You earned 2 dollar.'});
+                reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for completing your first survey! You earned 2 dollars.' });
+            else {
+                if (awardedDollar == 1) //hack, 1 dollar is only awarded after a three-day streak.
+                    reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for surveys three days in a row! You earned 1 dollar.' });
+                if (awardedDollar == 2) //hack, 2 dollar is only awarded after a break.
+                    reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for coming back after a break! You earned 2 dollars.' });
+            }
         }
         //get if fish is alotted
         previousPoints = currentPoints - 60;
@@ -6043,7 +6060,7 @@ var AquariumComponent = /** @class */ (function () {
                         for (i = 0; i < fish_data.length; i++) {
                             if ((fish_data[i].points > previousPoints) && (fish_data[i].points <= currentPoints)) {
                                 img = "assets/" + fish_data[i].img.substring(0, fish_data[i].img.length - 4) + '_tn.jpg';
-                                header = "You unlocked " + fish_data[i].name;
+                                header = "You have now unlocked the " + fish_data[i].name;
                                 text = fish_data[i].trivia;
                                 reinforcements.push({ 'img': img, 'header': header, 'text': text });
                             }
@@ -6974,6 +6991,7 @@ class FishBowlL1 extends Phaser.State {
         var streak_info = this.add.image(5, 5, 'streak_info');
         streak_info.scale.setTo(.30*SCALING_FACTOR, .30*SCALING_FACTOR);
 
+        /*
         var info_level_streak = this.add.sprite(2 + streak_info.width + 12, 20, 'info_sprite');
         info_level_streak.animations.add('swim');
         info_level_streak.animations.play('swim', 1, true);
@@ -6981,7 +6999,7 @@ class FishBowlL1 extends Phaser.State {
         info_level_streak.anchor.setTo(.5,.5);
         info_level_streak.inputEnabled = true;
         info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
-
+        */
 
         var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
         for(var i=0; i < this.surveyHistory.length; i++){
@@ -7215,7 +7233,7 @@ class FishBowlL1 extends Phaser.State {
             if(current_points >= data[i].points){
 
               //nemo
-              if(data[i].name.valueOf() === "The clown fish")
+              if(data[i].name.valueOf() === "Clown fish")
                   this.animateClownFish();
 
               //if(data[i].name.valueOf() === "Puffer fish")
@@ -7861,6 +7879,7 @@ class FishBowlL2 extends Phaser.State {
         var streak_info = this.add.image(5, 5, 'streak_info');
         streak_info.scale.setTo(.30*SCALING_FACTOR, .30*SCALING_FACTOR);
 
+        /*
         var info_level_streak = this.add.sprite(2 + streak_info.width + 12, 20, 'info_sprite');
         info_level_streak.animations.add('swim');
         info_level_streak.animations.play('swim', 1, true);
@@ -7868,7 +7887,7 @@ class FishBowlL2 extends Phaser.State {
         info_level_streak.anchor.setTo(.5,.5);
         info_level_streak.inputEnabled = true;
         info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
-
+        */
 
         var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
         for(var i=0; i < this.surveyHistory.length; i++){
@@ -8139,7 +8158,7 @@ class FishBowlL2 extends Phaser.State {
               if(current_points >= data[i].points){
 
                 //nemo
-                if(data[i].name.valueOf() === "The clown fish")
+                if(data[i].name.valueOf() === "Clown fish")
                     this.animateClownFish();
 
                 //if(data[i].name.valueOf() === "Puffer fish")
@@ -9005,6 +9024,7 @@ class GameRainforestL6 extends Phaser.State {
         var streak_info = this.add.image(5, 5, 'streak_info');
         streak_info.scale.setTo(.30*SCALING_FACTOR, .30*SCALING_FACTOR);
 
+        /*
         var info_level_streak = this.add.sprite(2 + streak_info.width + 12, 20, 'info_sprite');
         info_level_streak.animations.add('swim');
         info_level_streak.animations.play('swim', 1, true);
@@ -9012,7 +9032,7 @@ class GameRainforestL6 extends Phaser.State {
         info_level_streak.anchor.setTo(.5,.5);
         info_level_streak.inputEnabled = true;
         info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
-
+        */
 
         var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
         for(var i=0; i < this.surveyHistory.length; i++){
@@ -10152,6 +10172,7 @@ class SeaLevelL3 extends Phaser.State {
         var streak_info = this.add.image(5, 5, 'streak_info');
         streak_info.scale.setTo(.30*SCALING_FACTOR, .30*SCALING_FACTOR);
 
+        /*
         var info_level_streak = this.add.sprite(2 + streak_info.width + 12, 20, 'info_sprite');
         info_level_streak.animations.add('swim');
         info_level_streak.animations.play('swim', 1, true);
@@ -10159,7 +10180,7 @@ class SeaLevelL3 extends Phaser.State {
         info_level_streak.anchor.setTo(.5,.5);
         info_level_streak.inputEnabled = true;
         info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
-
+        */
 
         var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
         for(var i=0; i < this.surveyHistory.length; i++){
@@ -11582,6 +11603,7 @@ class SeaLevelL4 extends Phaser.State {
         var streak_info = this.add.image(5, 5, 'streak_info');
         streak_info.scale.setTo(.30*SCALING_FACTOR, .30*SCALING_FACTOR);
 
+        /*
         var info_level_streak = this.add.sprite(2 + streak_info.width + 12, 20, 'info_sprite');
         info_level_streak.animations.add('swim');
         info_level_streak.animations.play('swim', 1, true);
@@ -11589,7 +11611,7 @@ class SeaLevelL4 extends Phaser.State {
         info_level_streak.anchor.setTo(.5,.5);
         info_level_streak.inputEnabled = true;
         info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
-
+        */
 
         var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
         for(var i=0; i < this.surveyHistory.length; i++){
@@ -12887,6 +12909,7 @@ class GameTundraL5 extends Phaser.State {
         var streak_info = this.add.image(5, 5, 'streak_info');
         streak_info.scale.setTo(.30*SCALING_FACTOR, .30*SCALING_FACTOR);
 
+        /*
         var info_level_streak = this.add.sprite(2 + streak_info.width + 12, 20, 'info_sprite');
         info_level_streak.animations.add('swim');
         info_level_streak.animations.play('swim', 1, true);
@@ -12894,7 +12917,7 @@ class GameTundraL5 extends Phaser.State {
         info_level_streak.anchor.setTo(.5,.5);
         info_level_streak.inputEnabled = true;
         info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
-
+        */
 
         var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
         for(var i=0; i < this.surveyHistory.length; i++){
@@ -14209,6 +14232,7 @@ class GameTundraL51 extends Phaser.State {
         var streak_info = this.add.image(5, 5, 'streak_info');
         streak_info.scale.setTo(.30*SCALING_FACTOR, .30*SCALING_FACTOR);
 
+        /*
         var info_level_streak = this.add.sprite(2 + streak_info.width + 12, 20, 'info_sprite');
         info_level_streak.animations.add('swim');
         info_level_streak.animations.play('swim', 1, true);
@@ -14216,7 +14240,7 @@ class GameTundraL51 extends Phaser.State {
         info_level_streak.anchor.setTo(.5,.5);
         info_level_streak.inputEnabled = true;
         info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
-
+        */
 
         var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
         for(var i=0; i < this.surveyHistory.length; i++){
