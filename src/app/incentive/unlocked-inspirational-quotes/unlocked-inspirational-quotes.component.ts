@@ -79,10 +79,14 @@ export class UnlockedInspirationalQuotesComponent implements OnInit {
             if(json_data[i].date == tomorrowsDate)
               continue;
 
+            var date = json_data[i].date;
+            date = date.substring(4, 6) + "/" + date.substring(6, 8) + "/" + date.substring(0, 4);
+
             this.unlockedInspirationalQuotes.push({
               "image": "https://aws-website-sara-ubicomp-h28yp.s3.amazonaws.com/sarapp/engagement_images/"  + json_data[i].image,
               "author": json_data[i].author,
-              "quote_text": json_data[i].quote_text
+              "quote_text": json_data[i].quote_text,
+              "date": date
             });
           }
           window.localStorage.setItem('saved_quotes', JSON.stringify(this.unlockedInspirationalQuotes));
