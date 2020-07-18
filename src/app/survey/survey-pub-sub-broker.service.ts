@@ -17,7 +17,7 @@ export class SurveyPubSubBrokerService {
   subscribers: SurveySubscriber[];
 
   constructor(private pubSub: NgxPubSubService, private store: Store<AppState>, private ads: AwardDollarService) { 
-    this.subscribers = [ new AwardDollarSubscriber(this.ads) ];
+    this.subscribers = [ new AwardDollarSubscriber(this.pubSub, this.ads) ];
     const _store = this.store;
     for (var i = 0; i < this.subscribers.length; i++){
       const subscriber = this.subscribers[i];
