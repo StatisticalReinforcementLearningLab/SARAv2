@@ -31,6 +31,11 @@ import { UnlockedIncentives } from '../../incentive/model/unlocked-incentives';
 import { surveyCompletedRegisterUnlocked } from 'src/app/incentive/incentive.actions';
 
 import { SurveyPubSubBrokerService } from '../survey-pub-sub-broker.service';
+import { bindCallback } from 'rxjs';
+import { forkJoin } from 'rxjs';
+import { first } from 'rxjs/operators';
+
+import { AwardDollarSubscriber } from '../../incentive/award-money/award-dollar.subscriber';
 
 @Component({
   selector: 'app-dynamic-survey',
@@ -288,8 +293,6 @@ export class DynamicSurveyComponent implements OnInit {
         this.survey2['appVersion'] = this.versionNumber;
         this.userProfileService.versionNumber = this.versionNumber;
 
-        this.pubSub.publishEvent(this.broker.EventTypes.surveyCompleted, this.survey2);
-
         var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.survey2), environment.encyptString);
         //var encrypted = this.EncrDecr.encrypt("holla", "Z&wz=BGw;%q49/<)");
         var decrypted = this.EncrDecr.decrypt(encrypted, environment.encyptString);
@@ -309,14 +312,16 @@ export class DynamicSurveyComponent implements OnInit {
         this.totalPoints = this.totalPoints + 60;
         window.localStorage.setItem("TotalPoints", ""+this.totalPoints);
 
-        //get "awardDollars"
-        var pastDollars = this.awardDollarService.getDollars();
-        var dollars = this.awardDollarService.giveDollars();
-        //console.log("Dollars: " + dollars);
+        this.userProfileService.surveyCompleted();
 
-        this.userProfileService.surveyCompleted(); 
+        const getSubscribeCallback = bindCallback(this.pubSub.subscribe);
 
+        forkJoin({ dollars: getSubscribeCallback(AwardDollarSubscriber.EventTypes.dollarsAwarded) }).pipe(first()).subscribe(data => this.storeWithCombinedEvents(endTime, readable_time, survey3, data));
 
+        this.pubSub.publishEvent(this.broker.EventTypes.surveyCompleted, this.survey2);
+      }
+      
+      storeWithCombinedEvents(endTime, readable_time, survey3, eventData){
          //Save 7-day date and value for each question in localStorage to generate lifeInsight chart
          var lifeInsightProfile = {
             "questions":["Q3d","Q4d","Q5d","Q8d"],
@@ -423,7 +428,7 @@ export class DynamicSurveyComponent implements OnInit {
       modalObjectNavigationExtras["LastSurveyCompletionDate"] = moment().format('YYYYMMDD');
       modalObjectNavigationExtras["CurrentPoints"] = this.userProfileService.points;
       modalObjectNavigationExtras["PreviousPoints"] = this.userProfileService.points-60;
-      modalObjectNavigationExtras["AwardedDollar"] = dollars-pastDollars;
+      modalObjectNavigationExtras["AwardedDollar"] = eventData.dollars; 
       modalObjectNavigationExtras["IsModalShownYet"] = false;
       
       
@@ -462,7 +467,7 @@ export class DynamicSurveyComponent implements OnInit {
       var payload: Object = {user_id: this.userProfileService.username, 
                      last_date: moment().format('YYYYMMDD'),
                      unlocked_points: 60, 
-                     unlocked_money: dollars-pastDollars,
+                     unlocked_money: eventData.dollars,
                      current_point: this.userProfileService.points, 
                      date: moment().format('YYYYMMDD'),
                      isUnlockedViewShown: false};

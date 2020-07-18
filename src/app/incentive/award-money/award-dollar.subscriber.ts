@@ -1,11 +1,18 @@
+import { NgxPubSubService } from '@pscoped/ngx-pub-sub';
+
 import { SurveySubscriber } from '../../survey/survey-subscriber';
 
 import { AwardDollarService } from './award-dollar.service';
 
 export class AwardDollarSubscriber implements SurveySubscriber {
 
-  constructor(private ads: AwardDollarService){}
+  static readonly EventTypes = { dollarsAwarded: 'dollarsAwarded' };
 
-  surveyCompleted(data, store) { console.log("Called!");
-this.ads.giveDollars(); }
+  constructor(private pubSub: NgxPubSubService, private ads: AwardDollarService){}
+
+  surveyCompleted(data, store) {
+    var pastDollars = this.ads.getDollars();
+    var dollars = this.ads.giveDollars();
+    this.pubSub.publishEvent(AwardDollarSubscriber.EventTypes.dollarsAwarded, dollars - pastDollars);
+  }
 }
