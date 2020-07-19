@@ -105,19 +105,19 @@ export class UnlockedAltuisticMessagesComponent implements OnInit {
               lastUpdatedSeverSide = json_data["last_updated"];
               lastUpdatedReadableTsSeverSide = json_data["last_updated_readable_ts"];
               unlockedAltMsgsServerSide = json_data["unlocked_alt_msgs"];
-              console.log("--unlockedAltMsgsServerSide--- " + JSON.stringify(unlockedAltMsgsServerSide));
+              //console.log("--unlockedAltMsgsServerSide--- " + JSON.stringify(unlockedAltMsgsServerSide));
           }else{
               lastUpdatedSeverSide = -1;
               lastUpdatedReadableTsSeverSide = -1;
               unlockedAltMsgsServerSide = [];
-              console.log("--unlockedAltMsgsServerSide--- " + JSON.stringify(unlockedAltMsgsServerSide));
+              //console.log("--unlockedAltMsgsServerSide--- " + JSON.stringify(unlockedAltMsgsServerSide));
           }
 
           var localAltMsgsRecord = JSON.parse(window.localStorage["already_shown_alt_msg4"]);
           var lastUpdatedLocalStorage = localAltMsgsRecord["last_updated"];
           var lastUpdatedReadableTsLocalStorage = localAltMsgsRecord["last_updated_readable_ts"];
           var unlockedAltMsgLocalStorage = localAltMsgsRecord["unlocked_alt_msgs"];
-          console.log("--unlockedAltMsgLocalStorage--- " + JSON.stringify(unlockedAltMsgLocalStorage));
+          //console.log("--unlockedAltMsgLocalStorage--- " + JSON.stringify(unlockedAltMsgLocalStorage));
 
 
           //Following code creats a union of unlockedMemesServerSide and unlockedMemesLocalStorage
@@ -132,11 +132,13 @@ export class UnlockedAltuisticMessagesComponent implements OnInit {
           //
           var unlockedAltMessagesOrderedByDate = {};
           for(var key in unionOfLocalAndServer)
-            unlockedAltMessagesOrderedByDate[unionOfLocalAndServer[key]["unlock_date"]] = unionOfLocalAndServer[key];
+              unlockedAltMessagesOrderedByDate[unionOfLocalAndServer[key]["unlock_date"]] = unionOfLocalAndServer[key];
           
-          var res = []
-          for (var k in unlockedAltMessagesOrderedByDate) {
-              res.push(unlockedAltMessagesOrderedByDate[k]);
+          //console.log("--unlockedAltMessagesOrderedByDate--- " + JSON.stringify(unlockedAltMessagesOrderedByDate));
+          var res = [];
+          var sortedDates = Object.keys(unlockedAltMessagesOrderedByDate).sort();
+          for (var k=0; k < sortedDates.length; k++){
+              res.push(unlockedAltMessagesOrderedByDate[sortedDates[k]]);
           }
           this.list_of_alt_msg_to_display = res.reverse();
           this.unlockedAltMessagesCount = res.length;
