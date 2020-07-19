@@ -147,14 +147,15 @@ export class UnlockedMemesComponent implements OnInit {
           
 
 
-          console.log("--unionOfLocalAndServer--- " + JSON.stringify(unlockedMemesOrderedByDate));
+          //console.log("--unlockedMemesOrderedByDate--- " + JSON.stringify(unlockedMemesOrderedByDate));
           var res = []
-          for (var k in unlockedMemesOrderedByDate) {
-              res.push(unlockedMemesOrderedByDate[k]);
+          var sortedDates = Object.keys(unlockedMemesOrderedByDate).sort();
+          for (var k=0; k < sortedDates.length; k++){
+              res.push(unlockedMemesOrderedByDate[sortedDates[k]]);
           }
+          //console.log("--sortedDates--- " + JSON.stringify(sortedDates));
           this.list_of_meme_to_display = res.reverse();
           this.unlockedMemeCount = res.length;
-          console.log(JSON.stringify(res.reverse()));
 
 
           localMemeRecord["unlocked_memes"] = this.list_of_meme_to_display;
