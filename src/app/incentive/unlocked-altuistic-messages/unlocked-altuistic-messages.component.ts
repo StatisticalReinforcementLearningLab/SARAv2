@@ -54,8 +54,7 @@ export class UnlockedAltuisticMessagesComponent implements OnInit {
 
     this.unlockedAltMessagesCount = this.already_shown_altruism_msgs.unlocked_alt_msgs.length;
     this.list_of_alt_msg_to_display = this.already_shown_altruism_msgs["unlocked_alt_msgs"];
-
-    this.list_of_alt_msg_to_display.reverse();
+    //this.list_of_alt_msg_to_display.reverse();
     console.log("already_shown_altruism_msgs " + this.already_shown_altruism_msgs);
 
     this.downloadAndUpdateUnlockedAltsMsgsList();
@@ -128,10 +127,16 @@ export class UnlockedAltuisticMessagesComponent implements OnInit {
           for(var i=0; i < unlockedAltMsgLocalStorage.length; i++)
               unionOfLocalAndServer[unlockedAltMsgLocalStorage[i]["filename"]] = unlockedAltMsgLocalStorage[i];
 
-          console.log("--unionOfLocalAndServer--- " + JSON.stringify(unionOfLocalAndServer));
+          //console.log("--unionOfLocalAndServer--- " + JSON.stringify(unionOfLocalAndServer));
+
+          //
+          var unlockedAltMessagesOrderedByDate = {};
+          for(var key in unionOfLocalAndServer)
+            unlockedAltMessagesOrderedByDate[unionOfLocalAndServer[key]["unlock_date"]] = unionOfLocalAndServer[key];
+          
           var res = []
-          for (var k in unionOfLocalAndServer) {
-              res.push(unionOfLocalAndServer[k]);
+          for (var k in unlockedAltMessagesOrderedByDate) {
+              res.push(unlockedAltMessagesOrderedByDate[k]);
           }
           this.list_of_alt_msg_to_display = res.reverse();
           this.unlockedAltMessagesCount = res.length;
@@ -142,7 +147,7 @@ export class UnlockedAltuisticMessagesComponent implements OnInit {
           localAltMsgsRecord["last_updated_readable_ts"] = moment().format("MMMM Do YYYY, h:mm:ss a Z");
           window.localStorage["already_shown_alt_msg4"] = JSON.stringify(localAltMsgsRecord);
 
-          console.log("--localAltMsgsRecord--- " + JSON.stringify(localAltMsgsRecord));
+          //console.log("--localAltMsgsRecord--- " + JSON.stringify(localAltMsgsRecord));
           //
           this.uploadCurrentlyUnlockedAltMsgsList(localAltMsgsRecord);
         },
