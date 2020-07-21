@@ -54,8 +54,7 @@ export class UnlockedAltuisticMessagesComponent implements OnInit {
 
     this.unlockedAltMessagesCount = this.already_shown_altruism_msgs.unlocked_alt_msgs.length;
     this.list_of_alt_msg_to_display = this.already_shown_altruism_msgs["unlocked_alt_msgs"];
-
-    this.list_of_alt_msg_to_display.reverse();
+    //this.list_of_alt_msg_to_display.reverse();
     console.log("already_shown_altruism_msgs " + this.already_shown_altruism_msgs);
 
     this.downloadAndUpdateUnlockedAltsMsgsList();
@@ -106,19 +105,19 @@ export class UnlockedAltuisticMessagesComponent implements OnInit {
               lastUpdatedSeverSide = json_data["last_updated"];
               lastUpdatedReadableTsSeverSide = json_data["last_updated_readable_ts"];
               unlockedAltMsgsServerSide = json_data["unlocked_alt_msgs"];
-              console.log("--unlockedAltMsgsServerSide--- " + JSON.stringify(unlockedAltMsgsServerSide));
+              //console.log("--unlockedAltMsgsServerSide--- " + JSON.stringify(unlockedAltMsgsServerSide));
           }else{
               lastUpdatedSeverSide = -1;
               lastUpdatedReadableTsSeverSide = -1;
               unlockedAltMsgsServerSide = [];
-              console.log("--unlockedAltMsgsServerSide--- " + JSON.stringify(unlockedAltMsgsServerSide));
+              //console.log("--unlockedAltMsgsServerSide--- " + JSON.stringify(unlockedAltMsgsServerSide));
           }
 
           var localAltMsgsRecord = JSON.parse(window.localStorage["already_shown_alt_msg4"]);
           var lastUpdatedLocalStorage = localAltMsgsRecord["last_updated"];
           var lastUpdatedReadableTsLocalStorage = localAltMsgsRecord["last_updated_readable_ts"];
           var unlockedAltMsgLocalStorage = localAltMsgsRecord["unlocked_alt_msgs"];
-          console.log("--unlockedAltMsgLocalStorage--- " + JSON.stringify(unlockedAltMsgLocalStorage));
+          //console.log("--unlockedAltMsgLocalStorage--- " + JSON.stringify(unlockedAltMsgLocalStorage));
 
 
           //Following code creats a union of unlockedMemesServerSide and unlockedMemesLocalStorage
@@ -128,10 +127,18 @@ export class UnlockedAltuisticMessagesComponent implements OnInit {
           for(var i=0; i < unlockedAltMsgLocalStorage.length; i++)
               unionOfLocalAndServer[unlockedAltMsgLocalStorage[i]["filename"]] = unlockedAltMsgLocalStorage[i];
 
-          console.log("--unionOfLocalAndServer--- " + JSON.stringify(unionOfLocalAndServer));
-          var res = []
-          for (var k in unionOfLocalAndServer) {
-              res.push(unionOfLocalAndServer[k]);
+          //console.log("--unionOfLocalAndServer--- " + JSON.stringify(unionOfLocalAndServer));
+
+          //
+          var unlockedAltMessagesOrderedByDate = {};
+          for(var key in unionOfLocalAndServer)
+              unlockedAltMessagesOrderedByDate[unionOfLocalAndServer[key]["unlock_date"]] = unionOfLocalAndServer[key];
+          
+          //console.log("--unlockedAltMessagesOrderedByDate--- " + JSON.stringify(unlockedAltMessagesOrderedByDate));
+          var res = [];
+          var sortedDates = Object.keys(unlockedAltMessagesOrderedByDate).sort();
+          for (var k=0; k < sortedDates.length; k++){
+              res.push(unlockedAltMessagesOrderedByDate[sortedDates[k]]);
           }
           this.list_of_alt_msg_to_display = res.reverse();
           this.unlockedAltMessagesCount = res.length;
@@ -142,7 +149,7 @@ export class UnlockedAltuisticMessagesComponent implements OnInit {
           localAltMsgsRecord["last_updated_readable_ts"] = moment().format("MMMM Do YYYY, h:mm:ss a Z");
           window.localStorage["already_shown_alt_msg4"] = JSON.stringify(localAltMsgsRecord);
 
-          console.log("--localAltMsgsRecord--- " + JSON.stringify(localAltMsgsRecord));
+          //console.log("--localAltMsgsRecord--- " + JSON.stringify(localAltMsgsRecord));
           //
           this.uploadCurrentlyUnlockedAltMsgsList(localAltMsgsRecord);
         },
