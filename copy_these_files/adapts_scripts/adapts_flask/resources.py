@@ -454,7 +454,7 @@ class GetUnlockedIncentives(Resource):
     
         cursor = db.cursor()
     
-        cursor.execute("SELECT user_id, incentiveString FROM UnlockedIncentive where user_id='" + user_id +"' and 3 = '" + incentive_type +"' order by whenInserted DESC limit 1")
+        cursor.execute("SELECT user_id, incentiveString FROM UnlockedIncentive where user_id='" + user_id +"' and incentiveType = '" + incentive_type +"' order by whenInserted DESC limit 1")
         # cursor.execute("SELECT author_image, author_name, quote_text, date FROM UnlockedIncentive where user_id='" + user_id +"' order by whenSentTs DESC")
         
         result = cursor.fetchall()
