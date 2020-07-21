@@ -17,6 +17,7 @@ import { StoreModule } from '@ngrx/store';
 import {surveyReducer} from './reducers';
 import {EffectsModule} from '@ngrx/effects';
 import { SurveyEffects } from './survey.effects';
+import { HarvardSurveyComponent } from './harvard-survey/harvard-survey.component';
 
 const routes: Routes = [
     { path: 'samplesurvey', component: SampleSurveyComponent }
@@ -31,7 +32,8 @@ const routes: Routes = [
     DynamicSurveyComponent,
     AyaSampleSurveyComponent,
     //ActiveTask2Component,
-    SampleSurveyComponent],
+    SampleSurveyComponent,
+    HarvardSurveyComponent],
   imports: [
     CommonModule,
     IonicModule.forRoot(),
@@ -50,7 +52,8 @@ const routes: Routes = [
     //ActiveTask2Component,
     DynamicSurveyComponent,
     SampleSurveyComponent,
-    AyaSampleSurveyComponent
+    AyaSampleSurveyComponent,
+    HarvardSurveyComponent
   ]
 })
 export class SurveyModule { }

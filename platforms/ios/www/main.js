@@ -875,7 +875,7 @@ module.exports = "<ion-header>\n    <ion-toolbar>\n      <!--\n      <ion-button
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">How the app works?</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n\n  <ion-list>\n\n\n    <ion-item style=\"border: 1px solid #263238;border-left: 3px solid #263238;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/survey.png\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Complete survey and get rewarded</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">Every day complete a survey between <b>6PM</b> and <b>midnight</b>, and receive a variety of different rewards described below.</h3> \n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n\n    <ion-item style=\"border: 1px solid #263238;border-left: 3px solid #263238;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/money.gif\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Money</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">Earn <b>one dollar</b> for completing a 3-day streak of your daily survey and <b>two dollars</b> for completing the 1st survey of every new month.</h3> \n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n    <ion-item style=\"border: 1px solid #263238;border-left: 3px solid #263238;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/60points.png\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Point</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">Each survey you complete = <b>60 points!</b></h3>\n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n    <ion-item style=\"border: 1px solid #4E342E; border-left: 3px solid #4E342E;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/clownfish_tn.jpg\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Animals</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">More <b>points</b> = more <b>animals</b> in your environment!</h3>\n        <h3 style=\"padding-top: 5px; color: #555;\">You can unlock <b>62</b> different animals and fish!!</h3>\n      </ion-label>\n    </ion-item>\n\n  </ion-list>\n  \n  <div class=\"list\">\n\n\n    <!--\n    <div class=\"card\" style=\"border-left: 3px solid #263238;border-top: 1px solid #263238;\"> \n        <img src=\"img/18_Rev.jpg\" style=\"float:left;width:100px;padding:10px;padding-right:20px;padding-top:15px;margin-bottom:0px;\" />\n        <p style=\"padding:15px;font-size:15px;color:#5a2d0c\">Longer <b>streaks</b> give higher<br>financial incentives<br></b></p>\n        <ul style=\"padding-left:100px;margin-top:1px;\">\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 3-day streak gives 25 cents</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 6-day streak gives 50 cents</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 12-day streak gives 1 dollars</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 18-day streak gives 1.5 dollars</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 30-day streak gives 2.5 dollars</li>\n            <li style=\"height:15px;\"></li>\n        </ul>\n        <br><p style=\"padding:10px;font-size: 12px;line-height:15px;color:#5a2d0c;\">Streaks for surveys and active tasks are separate. So, if you complete 3-day streaks on both survey and active tasks then you will get 50 cents.<p>\n    </div>\n    -->\n\n    <div class=\"card\"  style=\"border-left: 2px solid #263238;border-top: 1px solid #263238;\"> \n        <p style=\"padding:15px;font-size:15px;\">You will sometimes get <b>thank you messages</b> or <b>memes</b> for completing the surveys.</p>\n        <div class=\"item item-image\" style=\"border: 0px solid #4E342E;\">\n            <img src=\"assets/memes/4.jpg\" style=\"padding:20px;padding-top:5px;\">\n        </div>\n    </div>\n\n\n</div>\n\n\n\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">How the app works?</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content class=\"ion-padding\">\n\n  <ion-list>\n\n\n    <ion-item style=\"border: 1px solid #263238;border-left: 3px solid #263238;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/survey.png\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Complete survey and get rewarded</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">Every day complete a survey between <b>6PM</b> and <b>midnight</b>, and receive a variety of different rewards described below.</h3> \n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n\n    <ion-item style=\"border: 1px solid #263238;border-left: 3px solid #263238;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/money.gif\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Money</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">Earn <b>one dollar</b> for completing a 3-day streak of your daily survey and <b>two dollars</b> for completing the 1st survey of every new month.</h3> \n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n    <ion-item style=\"border: 1px solid #263238;border-left: 3px solid #263238;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/60points.png\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Point</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">Each survey you complete = <b>60 points!</b></h3>\n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n    <ion-item style=\"border: 1px solid #4E342E; border-left: 3px solid #4E342E;\">  \n      <ion-thumbnail slot=\"start\">\n        <img src=\"assets/img/clownfish_tn.jpg\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Animals</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">More <b>points</b> = more <b>animals</b> in your environment!</h3>\n        <h3 style=\"padding-top: 5px; color: #555;\">You can unlock <b>62</b> different animals and fish!!</h3>\n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n    <ion-item style=\"border: 1px solid #4E342E; border-left: 3px solid #4E342E;\">  \n      <ion-thumbnail slot=\"start\" style=\"width: 100px; height: 100px;\">\n        <img src=\"assets/img/left_top.png\">\n      </ion-thumbnail>\n      <ion-label text-wrap>\n        <h2>Survey completion bar</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\">Shows the number of surveys you have completed in the past week (shown as <b>green</b>) and the ones you missed (shown as <b>gray</b>).</h3>\n      </ion-label>\n    </ion-item>\n\n    <br/>\n\n    <ion-item style=\"border: 1px solid #4E342E; border-left: 3px solid #4E342E;\">  \n      <ion-label text-wrap>\n        <h2>Progress bars</h2>\n        <h3 style=\"padding-top: 5px; color: #555;\"><b>Next Animal (top):</b> Shows how far you are to unlock the next animal.</h3>\n        <h3 style=\"padding-top: 5px; color: #555;\"><b>Level up (bottom):</b> Shows how far until you “level up” until the next environment</h3>\n      </ion-label>\n      <ion-thumbnail slot=\"end\"  style=\"width: 100px; height: 100px;\">\n        <img src=\"assets/img/status_bar.png\">\n      </ion-thumbnail>\n    </ion-item>\n\n  </ion-list>\n  \n  <div class=\"list\">\n\n\n    <!--\n    <div class=\"card\" style=\"border-left: 3px solid #263238;border-top: 1px solid #263238;\"> \n        <img src=\"img/18_Rev.jpg\" style=\"float:left;width:100px;padding:10px;padding-right:20px;padding-top:15px;margin-bottom:0px;\" />\n        <p style=\"padding:15px;font-size:15px;color:#5a2d0c\">Longer <b>streaks</b> give higher<br>financial incentives<br></b></p>\n        <ul style=\"padding-left:100px;margin-top:1px;\">\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 3-day streak gives 25 cents</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 6-day streak gives 50 cents</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 12-day streak gives 1 dollars</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 18-day streak gives 1.5 dollars</li>\n            <li style=\"height:20px;color:#5a2d0c;\">&bull; 30-day streak gives 2.5 dollars</li>\n            <li style=\"height:15px;\"></li>\n        </ul>\n        <br><p style=\"padding:10px;font-size: 12px;line-height:15px;color:#5a2d0c;\">Streaks for surveys and active tasks are separate. So, if you complete 3-day streaks on both survey and active tasks then you will get 50 cents.<p>\n    </div>\n    -->\n\n    <div class=\"card\"  style=\"border-left: 2px solid #263238;border-top: 1px solid #263238;\"> \n        <p style=\"padding:15px;font-size:15px;\">You will sometimes get <b>thank you messages</b> or <b>memes</b> for completing the surveys.</p>\n        <div class=\"item item-image\" style=\"border: 0px solid #4E342E;\">\n            <img src=\"assets/memes/4.jpg\" style=\"padding:20px;padding-top:5px;\">\n        </div>\n    </div>\n\n\n</div>\n\n\n\n</ion-content>"
 
 /***/ }),
 
@@ -4831,10 +4831,17 @@ var AppComponent = /** @class */ (function () {
     }
     Object.defineProperty(AppComponent.prototype, "username", {
         get: function () {
-            if (this.userProfileService == undefined)
+            if (this.userProfileService == undefined) {
+                //console.log("--userProfileService--: " + JSON.stringify(this.userProfileService));
                 return "test";
+            }
+            else if (this.userProfileService == null) {
+                //console.log("--userProfileService--: " + JSON.stringify(this.userProfileService));
+                return "test";
+            }
             else {
                 //console.log("User profile -- username -- called from here");
+                //console.log("--userProfileService--: " + JSON.stringify(this.userProfileService));
                 return this.userProfileService.username;
             }
         },
@@ -4850,6 +4857,17 @@ var AppComponent = /** @class */ (function () {
     };
     AppComponent.prototype.initializeApp = function () {
         var _this = this;
+        //disable back button
+        this.platform.ready().then(function () {
+            _this.platform.backButton.subscribeWithPriority(9999, function () {
+                document.addEventListener('backbutton', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    console.log('hello');
+                }, false);
+            });
+            _this.statusBar.styleDefault();
+        });
         if (this.authService.isLoggedIn()) {
             this.userProfileService.loadProfileFromDevice();
             // this.isLoading = false;
@@ -5077,9 +5095,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ngrx_store_devtools__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @ngrx/store-devtools */ "./node_modules/@ngrx/store-devtools/fesm5/store-devtools.js");
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
 /* harmony import */ var _ngrx_effects__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @ngrx/effects */ "./node_modules/@ngrx/effects/fesm5/effects.js");
-/* harmony import */ var _error_handler_GlobalErrorHandler__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./error_handler/GlobalErrorHandler */ "./src/app/error_handler/GlobalErrorHandler.ts");
-/* harmony import */ var _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @ionic-native/mobile-accessibility/ngx */ "./node_modules/@ionic-native/mobile-accessibility/ngx/index.js");
-
+/* harmony import */ var _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! @ionic-native/mobile-accessibility/ngx */ "./node_modules/@ionic-native/mobile-accessibility/ngx/index.js");
 
 
 
@@ -5158,100 +5174,18 @@ var AppModule = /** @class */ (function () {
                 _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_9__["OneSignal"],
                 _incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_23__["AwardDollarService"],
                 _ionic_native_app_version_ngx__WEBPACK_IMPORTED_MODULE_24__["AppVersion"],
-                _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_31__["MobileAccessibility"],
+                _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_30__["MobileAccessibility"],
                 _ionic_native_sqlite_ngx__WEBPACK_IMPORTED_MODULE_11__["SQLite"],
                 _ionic_native_sqlite_porter_ngx__WEBPACK_IMPORTED_MODULE_10__["SQLitePorter"],
-                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicRouteStrategy"] },
-                { provide: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ErrorHandler"], useClass: _error_handler_GlobalErrorHandler__WEBPACK_IMPORTED_MODULE_30__["GlobalErrorHandler"] }
+                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicRouteStrategy"] }
+                //,
+                //{provide: ErrorHandler, useClass: GlobalErrorHandler}
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_12__["AppComponent"]]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"]])
     ], AppModule);
     return AppModule;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/error_handler/GlobalErrorHandler.ts":
-/*!*****************************************************!*\
-  !*** ./src/app/error_handler/GlobalErrorHandler.ts ***!
-  \*****************************************************/
-/*! exports provided: GlobalErrorHandler */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GlobalErrorHandler", function() { return GlobalErrorHandler; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var sentry_cordova__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sentry-cordova */ "./node_modules/sentry-cordova/dist/js/sentry-cordova.js");
-/* harmony import */ var sentry_cordova__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sentry_cordova__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-
-
-
-
-sentry_cordova__WEBPACK_IMPORTED_MODULE_2__["init"]({
-    dsn: "https://b52fab19a7b54657aa485caf384beb23@o408765.ingest.sentry.io/5280045"
-    // TryCatch has to be configured to disable XMLHttpRequest wrapping, as we are going to handle
-    // http module exceptions manually in Angular's ErrorHandler and we don't want it to capture the same error twice.
-    // Please note that TryCatch configuration requires at least @sentry/browser v5.16.0.
-    // extra steps for ionic
-    // https://docs.sentry.io/platforms/javascript/ionic/
-});
-var GlobalErrorHandler = /** @class */ (function () {
-    function GlobalErrorHandler() {
-    }
-    GlobalErrorHandler.prototype.extractError = function (error) {
-        // Try to unwrap zone.js error.
-        // https://github.com/angular/angular/blob/master/packages/core/src/util/errors.ts
-        if (error && error.ngOriginalError) {
-            error = error.ngOriginalError;
-        }
-        // We can handle messages and Error objects directly.
-        if (typeof error === "string" || error instanceof Error) {
-            return error;
-        }
-        // If it's http module error, extract as much information from it as we can.
-        if (error instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpErrorResponse"]) {
-            // The `error` property of http exception can be either an `Error` object, which we can use directly...
-            if (error.error instanceof Error) {
-                return error.error;
-            }
-            // ... or an`ErrorEvent`, which can provide us with the message but no stack...
-            if (error.error instanceof ErrorEvent) {
-                return error.error.message;
-            }
-            // ...or the request body itself, which we can use as a message instead.
-            if (typeof error.error === "string") {
-                return "Server returned code " + error.status + " with body \"" + error.error + "\"";
-            }
-            // If we don't have any detailed information, fallback to the request message itself.
-            return error.message;
-        }
-        // Skip if there's no error, and let user decide what to do with it.
-        return null;
-    };
-    GlobalErrorHandler.prototype.handleError = function (error) {
-        var extractedError = this.extractError(error) || "Handled unknown error";
-        // Capture handled exception and send it to Sentry.
-        var eventId = sentry_cordova__WEBPACK_IMPORTED_MODULE_2__["captureException"](extractedError);
-        // When in development mode, log the error to console for immediate feedback.
-        //if (!environment.production) {
-        //    console.error(extractedError);
-        //}
-        //console.error(extractedError);
-        // Optionally show user dialog to provide details on what happened.
-        //Sentry.showReportDialog({ eventId });
-    };
-    GlobalErrorHandler = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-    ], GlobalErrorHandler);
-    return GlobalErrorHandler;
 }());
 
 
@@ -5862,6 +5796,7 @@ var AquariumComponent = /** @class */ (function () {
         this.appUsageDb.saveAppUsageEnter("aquarium_tab");
         //
         this.saveDbToAWS();
+        this.userProfileService.saveToServer();
     };
     //Upload SQLite database to AWS in ionViewWillEnter which happens
     //before "ionViewDidEnter" in demo-aquarium, thus the table will 
@@ -6103,9 +6038,14 @@ var AquariumComponent = /** @class */ (function () {
         //get if money is awarded.
         if (awardedDollar > 0) {
             if (this.isFirstDayInTheStudy())
-                reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'Thanks for being a participant in the study. You earned 2 dollar.' });
-            else
-                reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'You earned 1 dollar for completing surveys 3-days in a row' });
+                //reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'Thanks for being a participant in the study. You earned 2 dollar.'});
+                reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for completing your first survey! You earned 2 dollars.' });
+            else {
+                if (awardedDollar == 1) //hack, 1 dollar is only awarded after a three-day streak.
+                    reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for surveys three days in a row! You earned 1 dollar.' });
+                if (awardedDollar == 2) //hack, 2 dollar is only awarded after a break.
+                    reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for coming back after a break! You earned 2 dollars.' });
+            }
         }
         //get if fish is alotted
         previousPoints = currentPoints - 60;
@@ -6120,7 +6060,7 @@ var AquariumComponent = /** @class */ (function () {
                         for (i = 0; i < fish_data.length; i++) {
                             if ((fish_data[i].points > previousPoints) && (fish_data[i].points <= currentPoints)) {
                                 img = "assets/" + fish_data[i].img.substring(0, fish_data[i].img.length - 4) + '_tn.jpg';
-                                header = "You unlocked " + fish_data[i].name;
+                                header = "You have now unlocked the " + fish_data[i].name;
                                 text = fish_data[i].trivia;
                                 reinforcements.push({ 'img': img, 'header': header, 'text': text });
                             }
@@ -7051,6 +6991,7 @@ class FishBowlL1 extends Phaser.State {
         var streak_info = this.add.image(5, 5, 'streak_info');
         streak_info.scale.setTo(.30*SCALING_FACTOR, .30*SCALING_FACTOR);
 
+        /*
         var info_level_streak = this.add.sprite(2 + streak_info.width + 12, 20, 'info_sprite');
         info_level_streak.animations.add('swim');
         info_level_streak.animations.play('swim', 1, true);
@@ -7058,7 +6999,7 @@ class FishBowlL1 extends Phaser.State {
         info_level_streak.anchor.setTo(.5,.5);
         info_level_streak.inputEnabled = true;
         info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
-
+        */
 
         var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
         for(var i=0; i < this.surveyHistory.length; i++){
@@ -7096,7 +7037,7 @@ class FishBowlL1 extends Phaser.State {
         //progressBars.add(points_text);
 
         var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+4, 'star_point');
-        star_icon.scale.setTo(.52*SCALING_FACTOR, .52*SCALING_FACTOR);
+        star_icon.scale.setTo(SCALING_FACTOR, SCALING_FACTOR);
         star_icon.anchor.setTo(.5, .5);
         //progressBars.add(points_text);
 
@@ -7292,7 +7233,7 @@ class FishBowlL1 extends Phaser.State {
             if(current_points >= data[i].points){
 
               //nemo
-              if(data[i].name.valueOf() === "The clown fish")
+              if(data[i].name.valueOf() === "Clown fish")
                   this.animateClownFish();
 
               //if(data[i].name.valueOf() === "Puffer fish")
@@ -7938,6 +7879,7 @@ class FishBowlL2 extends Phaser.State {
         var streak_info = this.add.image(5, 5, 'streak_info');
         streak_info.scale.setTo(.30*SCALING_FACTOR, .30*SCALING_FACTOR);
 
+        /*
         var info_level_streak = this.add.sprite(2 + streak_info.width + 12, 20, 'info_sprite');
         info_level_streak.animations.add('swim');
         info_level_streak.animations.play('swim', 1, true);
@@ -7945,7 +7887,7 @@ class FishBowlL2 extends Phaser.State {
         info_level_streak.anchor.setTo(.5,.5);
         info_level_streak.inputEnabled = true;
         info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
-
+        */
 
         var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
         for(var i=0; i < this.surveyHistory.length; i++){
@@ -7972,8 +7914,10 @@ class FishBowlL2 extends Phaser.State {
         //points bar
         var vertical_position_offset = 13;
         var points_progress = this.add.image(this.CANVAS_WIDTH, 2, 'points_progress_2');
+        //points_progress.scale.setTo(.36*SCALING_FACTOR, .30*SCALING_FACTOR);
         points_progress.scale.setTo(.36*SCALING_FACTOR, .30*SCALING_FACTOR);
         points_progress.anchor.setTo(1,0);
+        
         //progressBars.add(points_progress);
 
         //point text
@@ -7983,8 +7927,10 @@ class FishBowlL2 extends Phaser.State {
         //progressBars.add(points_text);
 
         var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+4, 'star_point');
-        star_icon.scale.setTo(.52*SCALING_FACTOR, .52*SCALING_FACTOR);
+        star_icon.scale.setTo(SCALING_FACTOR, SCALING_FACTOR);
         star_icon.anchor.setTo(.5, .5);
+        //star_icon.smoothed = false;
+        //star_icon.antialiasing = false;
         //progressBars.add(points_text);
 
         //progressBars.scale.setTo(.8, .8);
@@ -8022,7 +7968,7 @@ class FishBowlL2 extends Phaser.State {
         progress_sprite.scale.setTo(0.8*SCALING_FACTOR,0.5*SCALING_FACTOR);
 
         var fish_progress_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+8, 'next_fish_icon');
-        fish_progress_icon.scale.setTo(.2*0.8*SCALING_FACTOR, .2*0.8*SCALING_FACTOR);
+        fish_progress_icon.scale.setTo(.12*0.9*SCALING_FACTOR, .12*0.9**SCALING_FACTOR);
         fish_progress_icon.anchor.setTo(.5, .5);
         
 
@@ -8212,7 +8158,7 @@ class FishBowlL2 extends Phaser.State {
               if(current_points >= data[i].points){
 
                 //nemo
-                if(data[i].name.valueOf() === "The clown fish")
+                if(data[i].name.valueOf() === "Clown fish")
                     this.animateClownFish();
 
                 //if(data[i].name.valueOf() === "Puffer fish")
@@ -9078,6 +9024,7 @@ class GameRainforestL6 extends Phaser.State {
         var streak_info = this.add.image(5, 5, 'streak_info');
         streak_info.scale.setTo(.30*SCALING_FACTOR, .30*SCALING_FACTOR);
 
+        /*
         var info_level_streak = this.add.sprite(2 + streak_info.width + 12, 20, 'info_sprite');
         info_level_streak.animations.add('swim');
         info_level_streak.animations.play('swim', 1, true);
@@ -9085,7 +9032,7 @@ class GameRainforestL6 extends Phaser.State {
         info_level_streak.anchor.setTo(.5,.5);
         info_level_streak.inputEnabled = true;
         info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
-
+        */
 
         var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
         for(var i=0; i < this.surveyHistory.length; i++){
@@ -9123,7 +9070,7 @@ class GameRainforestL6 extends Phaser.State {
         //progressBars.add(points_text);
 
         var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+4, 'star_point');
-        star_icon.scale.setTo(.52*SCALING_FACTOR, .52*SCALING_FACTOR);
+        star_icon.scale.setTo(SCALING_FACTOR, SCALING_FACTOR);
         star_icon.anchor.setTo(.5, .5);
         //progressBars.add(points_text);
 
@@ -10225,6 +10172,7 @@ class SeaLevelL3 extends Phaser.State {
         var streak_info = this.add.image(5, 5, 'streak_info');
         streak_info.scale.setTo(.30*SCALING_FACTOR, .30*SCALING_FACTOR);
 
+        /*
         var info_level_streak = this.add.sprite(2 + streak_info.width + 12, 20, 'info_sprite');
         info_level_streak.animations.add('swim');
         info_level_streak.animations.play('swim', 1, true);
@@ -10232,7 +10180,7 @@ class SeaLevelL3 extends Phaser.State {
         info_level_streak.anchor.setTo(.5,.5);
         info_level_streak.inputEnabled = true;
         info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
-
+        */
 
         var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
         for(var i=0; i < this.surveyHistory.length; i++){
@@ -10270,7 +10218,7 @@ class SeaLevelL3 extends Phaser.State {
         //progressBars.add(points_text);
 
         var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+4, 'star_point');
-        star_icon.scale.setTo(.52*SCALING_FACTOR, .52*SCALING_FACTOR);
+        star_icon.scale.setTo(SCALING_FACTOR, SCALING_FACTOR);
         star_icon.anchor.setTo(.5, .5);
         //progressBars.add(points_text);
 
@@ -11655,6 +11603,7 @@ class SeaLevelL4 extends Phaser.State {
         var streak_info = this.add.image(5, 5, 'streak_info');
         streak_info.scale.setTo(.30*SCALING_FACTOR, .30*SCALING_FACTOR);
 
+        /*
         var info_level_streak = this.add.sprite(2 + streak_info.width + 12, 20, 'info_sprite');
         info_level_streak.animations.add('swim');
         info_level_streak.animations.play('swim', 1, true);
@@ -11662,7 +11611,7 @@ class SeaLevelL4 extends Phaser.State {
         info_level_streak.anchor.setTo(.5,.5);
         info_level_streak.inputEnabled = true;
         info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
-
+        */
 
         var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
         for(var i=0; i < this.surveyHistory.length; i++){
@@ -11700,7 +11649,7 @@ class SeaLevelL4 extends Phaser.State {
         //progressBars.add(points_text);
 
         var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+4, 'star_point');
-        star_icon.scale.setTo(.52*SCALING_FACTOR, .52*SCALING_FACTOR);
+        star_icon.scale.setTo(SCALING_FACTOR, SCALING_FACTOR);
         star_icon.anchor.setTo(.5, .5);
         //progressBars.add(points_text);
 
@@ -12960,6 +12909,7 @@ class GameTundraL5 extends Phaser.State {
         var streak_info = this.add.image(5, 5, 'streak_info');
         streak_info.scale.setTo(.30*SCALING_FACTOR, .30*SCALING_FACTOR);
 
+        /*
         var info_level_streak = this.add.sprite(2 + streak_info.width + 12, 20, 'info_sprite');
         info_level_streak.animations.add('swim');
         info_level_streak.animations.play('swim', 1, true);
@@ -12967,7 +12917,7 @@ class GameTundraL5 extends Phaser.State {
         info_level_streak.anchor.setTo(.5,.5);
         info_level_streak.inputEnabled = true;
         info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
-
+        */
 
         var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
         for(var i=0; i < this.surveyHistory.length; i++){
@@ -13005,7 +12955,7 @@ class GameTundraL5 extends Phaser.State {
         //progressBars.add(points_text);
 
         var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+4, 'star_point');
-        star_icon.scale.setTo(.52*SCALING_FACTOR, .52*SCALING_FACTOR);
+        star_icon.scale.setTo(SCALING_FACTOR, SCALING_FACTOR);
         star_icon.anchor.setTo(.5, .5);
         //progressBars.add(points_text);
 
@@ -14282,6 +14232,7 @@ class GameTundraL51 extends Phaser.State {
         var streak_info = this.add.image(5, 5, 'streak_info');
         streak_info.scale.setTo(.30*SCALING_FACTOR, .30*SCALING_FACTOR);
 
+        /*
         var info_level_streak = this.add.sprite(2 + streak_info.width + 12, 20, 'info_sprite');
         info_level_streak.animations.add('swim');
         info_level_streak.animations.play('swim', 1, true);
@@ -14289,7 +14240,7 @@ class GameTundraL51 extends Phaser.State {
         info_level_streak.anchor.setTo(.5,.5);
         info_level_streak.inputEnabled = true;
         info_level_streak.events.onInputDown.add(function(){this.showInforBox("Streak progress bar clicked")}, this); 
-
+        */
 
         var colors = []; //['grey','grey','grey','grey','grey','grey','grey'];
         for(var i=0; i < this.surveyHistory.length; i++){
@@ -14327,7 +14278,7 @@ class GameTundraL51 extends Phaser.State {
         //progressBars.add(points_text);
 
         var star_icon = this.add.image(this.CANVAS_WIDTH-16, vertical_position_offset+4, 'star_point');
-        star_icon.scale.setTo(.52*SCALING_FACTOR, .52*SCALING_FACTOR);
+        star_icon.scale.setTo(SCALING_FACTOR, SCALING_FACTOR);
         star_icon.anchor.setTo(.5, .5);
         //progressBars.add(points_text);
 
@@ -16627,8 +16578,8 @@ var AwardDollarService = /** @class */ (function () {
                 else {
                     //the previous day is not in the array, means that we must have skipped the previous day,
                     //Save current date to AwardDollarDates to start a new streak.
-                    this.usersCurrentDollars['dates'] = [moment__WEBPACK_IMPORTED_MODULE_2__().format("DD-MM-YYYY")];
-                    window.localStorage.setItem("AwardDollarDates", JSON.stringify(this.usersCurrentDollars));
+                    this.users3DayStreakHistory['dates'] = [moment__WEBPACK_IMPORTED_MODULE_2__().format("DD-MM-YYYY")];
+                    window.localStorage.setItem("AwardDollarDates", JSON.stringify(this.users3DayStreakHistory));
                 }
             }
         }
@@ -21193,8 +21144,8 @@ var environment = {
     oneSignalAppId: "f9c4370d-cbcb-4e6f-ab1f-25d1c41b8f3a",
     //oneSignalAppId: "de3580a2-4aae-42c4-87cf-2c319c2df0c3",
     encyptString: "+Xr?SwA?EJ7m+g$c",
-    flaskServerForIncentives: "http://ec2-54-91-131-166.compute-1.amazonaws.com:56733",
-    //flaskServerForIncentives: "http://adaptsdata.research.chop.edu:5000",
+    //flaskServerForIncentives: "http://ec2-54-91-131-166.compute-1.amazonaws.com:56733",
+    flaskServerForIncentives: "http://adaptsdata.research.chop.edu:5000",
     firebaseConfig: {
         apiKey: "AIzaSyBK_PwjnsC01Q-a-sV7LsA7qIeIhCx4ts0",
         authDomain: "sarav2-6a033.firebaseapp.com",
