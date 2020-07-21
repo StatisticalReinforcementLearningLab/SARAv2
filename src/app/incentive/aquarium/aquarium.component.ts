@@ -315,6 +315,14 @@ export class AquariumComponent implements OnInit {
     this.router.navigate(['incentive/award-altruism']);
   }
 
+  showHarvardSurvey(){
+    this.router.navigate(['survey/harvardsurvey']);
+  }
+
+  showHarvardArcApps(){
+    this.router.navigate(['intervention/arcappsfrontpage']);
+  }
+
   showModalDemo(){
     var reinforcements =  [];
     reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
