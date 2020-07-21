@@ -26,6 +26,8 @@ import { FishbowlComponent } from './incentive/aquarium/previews/fishbowl/fishbo
 import { SeaComponent } from './incentive/aquarium/previews/sea/sea.component';
 import { TundraComponent } from './incentive/aquarium/previews/tundra/tundra.component';
 import { RainforestComponent } from './incentive/aquarium/previews/rainforest/rainforest.component';
+import { HarvardSurveyComponent } from './survey/harvard-survey/harvard-survey.component';
+import { FrontPageComponent } from './intervention/harvard-arc-apps/front-page/front-page.component';
 
 
 const routes: Routes = [
@@ -54,6 +56,8 @@ const routes: Routes = [
   { path: 'incentive/cheatpoints', component: CheatpageComponent, canActivate: [AuthGuard]},
   { path: 'survey/samplesurvey', component: SampleSurveyComponent, canActivate: [AuthGuard]}, 
   { path: 'survey/samplesurvey2', component: AyaSampleSurveyComponent, canActivate: [AuthGuard]}, 
+  { path: 'survey/harvardsurvey', component: HarvardSurveyComponent, canActivate: [AuthGuard]}, 
+  { path: 'intervention/arcappsfrontpage', component: FrontPageComponent, canActivate: [AuthGuard]}, 
   { path: 'incentive/aquariumone', component: DemoAquariumComponent, canActivate: [AuthGuard]},
   { path: 'incentive/award-memes', component: AwardMemesComponent, canActivate: [AuthGuard]},
   { path: 'incentive/award-altruism', component: AwardAltruismComponent, canActivate: [AuthGuard]},

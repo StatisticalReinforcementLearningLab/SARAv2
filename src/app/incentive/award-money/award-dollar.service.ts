@@ -196,8 +196,8 @@ export class AwardDollarService {
                 } else {
                     //the previous day is not in the array, means that we must have skipped the previous day,
                     //Save current date to AwardDollarDates to start a new streak.
-                    this.usersCurrentDollars['dates'] = [moment().format("DD-MM-YYYY")];          
-                    window.localStorage.setItem("AwardDollarDates", JSON.stringify(this.usersCurrentDollars));
+                    this.users3DayStreakHistory['dates'] = [moment().format("DD-MM-YYYY")];          
+                    window.localStorage.setItem("AwardDollarDates", JSON.stringify(this.users3DayStreakHistory));
                 }
                 
             }
