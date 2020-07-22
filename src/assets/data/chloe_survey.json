@@ -1,0 +1,30 @@
+[
+    {
+      "name": "Q1d",
+      "text": "How stressed are you today?",
+      "type": "radiobutton",
+      "extra": {
+        "choices": ["Not<br>at all", "A<br>lot"],
+        "orientation": "horizontal",
+        "levels": 5
+      }
+    },
+    {
+      "name": "Q3",
+      "text": "This past week, did you concentrate easily?",
+      "type": "radiobutton",
+      "extra": {
+        "choices": ["Rarely/Never", "Occasionally", "Often", "Almost Always/Always"],
+        "orientation": "vertical"
+      }
+    },
+    {
+      "name": "Q4",
+      "text": "How long did you sleep last night?",
+      "type": "radiobutton",
+      "extra": {
+        "choices": ["Less than 4 hours", "5 hours", "6 hours", "7 hours", "8 hours", ">= 9 hours"],
+        "orientation": "vertical"
+      }
+    }
+]
