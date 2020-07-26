@@ -5,7 +5,7 @@
     "text" : "Fishbowl",
     "points" : 0,
     "img" : "img/nemo.png",
-    "trivia": "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"
+    "trivia": "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fish’ expressions?"
   },
   {
     "name" : "Butterfly fish",
@@ -21,7 +21,7 @@
     "text" : "Fishbowl",
     "points" : 90,
     "img" : "img/goldfish.png",
-    "trivia": "Do you know gold fishes can recognize faces?"
+    "trivia": "Do you know gold fish can recognize faces?"
   },
   {
     "name" : "Tiger barb",
@@ -69,7 +69,7 @@
     "text" : "Fishbowl",
     "points" : 590, 
     "img" : "img/starfish.png",
-    "trivia": "Do you know starfishes have 2 stomachs and can regenerate their arms."
+    "trivia": "Do you know starfish have 2 stomachs and can regenerate their arms."
   },
   {
     "name" : "Carp fish",
@@ -84,7 +84,7 @@
     "level" : 1,
     "text" : "Fishbowl",
     "points" : 770,
-    "trivia" : "Electric fishes have large brain-to-body size ratios and can use their electric discharge to communicate social status",
+    "trivia" : "Electric fish have large brain-to-body size ratios and can use their electric discharge to communicate social status",
     "img" : "img/electricfish.png"
   },
   {
@@ -116,7 +116,7 @@
     "level" : 2,
     "text" : "Sea",
     "points" : 1060,
-    "trivia" : "Sea is a new level. You can unlock new fishes for the sea.",
+    "trivia" : "Sea is a new level. You can unlock new fish for the sea.",
     "img" : "img/sea.png"
   },
   {
@@ -179,14 +179,14 @@
     "level" : 2,
     "text" : "Sea",
     "points" : 1650,
-    "trivia" : "Deepsea fishes live below 1000 meter of the sea level where no sunlight can reach. They can generate light biologically",
+    "trivia" : "Deepsea fish live below 1000 meter of the sea level where no sunlight can reach. They can generate light biologically",
     "img" : "img/angryfish.png"
   },{
     "name" : "Sword fish",
     "level" : 2,
     "text" : "Sea",
     "points" : 1710,
-    "trivia" : "Do you sword fishes can swim up to 60 miles per hour",
+    "trivia" : "Do you sword fish can swim up to 60 miles per hour",
     "img" : "img/swordfish.png"
   },{
     "name" : "Shark",
