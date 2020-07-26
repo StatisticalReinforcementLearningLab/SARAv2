@@ -28,6 +28,7 @@ import { TundraComponent } from './incentive/aquarium/previews/tundra/tundra.com
 import { RainforestComponent } from './incentive/aquarium/previews/rainforest/rainforest.component';
 import { HarvardSurveyComponent } from './survey/harvard-survey/harvard-survey.component';
 import { FrontPageComponent } from './intervention/harvard-arc-apps/front-page/front-page.component';
+import { VideoInfoPageComponent } from './incentive/video-info-page/video-info-page.component';
 
 
 const routes: Routes = [
@@ -63,6 +64,7 @@ const routes: Routes = [
   { path: 'incentive/award-altruism', component: AwardAltruismComponent, canActivate: [AuthGuard]},
   { path: 'contact-study-staff', component: ContactComponent, canActivate: [AuthGuard]},
   { path: 'incentive/infopage', component: InfoPageComponent, canActivate: [AuthGuard]},
+  { path: 'incentive/videoinfopage', component: VideoInfoPageComponent, canActivate: [AuthGuard]},
   { path: 'preview/fishbowl', component: FishbowlComponent, canActivate: [AuthGuard]},
   { path: 'preview/sea', component: SeaComponent, canActivate: [AuthGuard]},
   { path: 'preview/tundra', component: TundraComponent, canActivate: [AuthGuard]},
