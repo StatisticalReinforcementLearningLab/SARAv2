@@ -1,15 +1,63 @@
 <ion-header>
     <ion-toolbar class="new-background-color">
-      <ion-buttons slot="start">
-         <ion-button (click)="goHome()" >
-            <ion-icon name="arrow-back" style="color : #fff;"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-      
-      <ion-title style="color:#fff;">Arc  apps</ion-title>
+        <ion-buttons slot="start">
+            <ion-button (click)="goHome()">
+                <ion-icon name="arrow-back" style="color : #fff;"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+
+        <ion-title style="color:#fff;">Arc apps</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <p>Arc apps works!</p>
+
+    <ion-list>
+        <ion-list-header lines="inset">
+            <ion-label><b>Time Management Apps</b></ion-label>
+        </ion-list-header>
+
+        <ion-item-sliding *ngFor="let item of TM_apps_thumbs">
+            <ion-item>
+                <ion-thumbnail item-left>
+                    <img [src]="item.img" />
+                </ion-thumbnail>
+                <ion-label class="ion-text-wrap" style="padding-left: 10px;">
+                    <h3 style="text-align:left;">
+                        {{item.name}}
+                    </h3>
+                    <p>
+                        {{item.description}}
+                    </p>
+                </ion-label>
+                <ion-item-options side="end" color="">
+                    <ion-item-option (click)="visitTheURL(item.url)">
+                        Visit
+                    </ion-item-option>
+                </ion-item-options>
+            </ion-item>
+        </ion-item-sliding>
+    </ion-list>
+    
+
+    <ion-list>
+        <ion-item>
+            <ion-label><b>Time Management Apps</b></ion-label>
+        </ion-item>
+        <ion-item *ngFor="let app of TM_apps">
+            <a href={{app.url}}>{{app.name}}</a>
+        </ion-item>
+        <ion-item>
+            <ion-label><b>Internet Blocking Tools</b></ion-label>
+        </ion-item>
+        <ion-item *ngFor="let app of Internet_Blocking_Tools">
+            <a href={{app.url}}>{{app.name}}</a>
+        </ion-item>
+        <ion-item>
+            <ion-label><b>Managing Tasks and Priorities</b></ion-label>
+        </ion-item>
+        <ion-item *ngFor="let app of Task_Management">
+            <a href={{app.url}}>{{app.name}}</a>
+        </ion-item>
+    </ion-list>>
 </ion-content>

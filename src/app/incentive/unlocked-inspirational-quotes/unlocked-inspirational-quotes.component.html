@@ -1,42 +1,40 @@
 <ion-header>
-    <ion-toolbar class="new-background-color">
-      <ion-buttons slot="start">
-        <ion-back-button style="color:#fff;" defaultHref="home"></ion-back-button>
-      </ion-buttons>
-      <ion-title style="color:#fff;">Inspirational quotes</ion-title>
-    </ion-toolbar>
-  </ion-header>
-    
-<ion-content >
-    
-    <ion-card>
-        <ion-card-content>
-          <ion-card-title style="color:black;">You received the following inspirational quotes</ion-card-title>
-        </ion-card-content>
-    </ion-card>
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-back-button style="color:#fff;" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="color:#fff;">Inspirational quotes</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-    <ion-list padding>        
-        <ion-item *ngFor="let item of unlockedInspirationalQuotes">
-          <ion-thumbnail item-left>
-            <img [src]="item.image"/>
-          </ion-thumbnail>
-          <ion-label class="ion-text-wrap" style="padding-left: 10px;">
-            
+<ion-content>
 
-            <h3 style="text-align:left;">
-              {{item.author}}
-              
-            </h3>
-            <!--
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title style="color:black;">You received the following inspirational quotes</ion-card-title>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list padding>
+    <ion-item *ngFor="let item of unlockedInspirationalQuotes">
+      <ion-thumbnail item-left>
+        <img [src]="item.image" />
+      </ion-thumbnail>
+      <ion-label class="ion-text-wrap" style="padding-left: 10px;">
+
+
+        <h3 style="text-align:left;">
+          {{item.author}}
+
+        </h3>
+        <!--
               <span style="color: #ccc; font-size: 10px; float:right;"><i>{{item.date}}</i></span>
             -->
-            <p>
-              {{item.quote_text}}
-            </p>
-          </ion-label>
-        </ion-item>
-    </ion-list> 
-      
+        <p>
+          {{item.quote_text}}
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
-    
-  
