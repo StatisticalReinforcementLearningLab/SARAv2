@@ -11,5 +11,12 @@
 </ion-header>
 
 <ion-content>
-    <p>Arc apps works!</p>
+    <h3>ARC Resources for Harvard Students</h3>
+    
+  <ion-list *ngFor = "let header of products">
+    <ion-label><b> {{ header.cat }} </b></ion-label>
+    <ion-item *ngFor = "let app of header.apps">
+      <a href = {{app.url}}> {{ app.name }} </a>
+    </ion-item>
+  </ion-list>
 </ion-content>
