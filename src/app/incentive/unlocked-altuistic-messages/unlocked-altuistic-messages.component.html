@@ -1,53 +1,21 @@
 <ion-header>
-  <ion-toolbar class="new-background-color">
-    <ion-buttons slot="start">
-      <ion-back-button style="color:#fff;" defaultHref="home"></ion-back-button>
-    </ion-buttons>
-    <ion-title style="color:#fff;">Thank you messages</ion-title>
-  </ion-toolbar>
+    <ion-toolbar class="new-background-color">
+        <ion-buttons slot="start">
+            <ion-back-button style="color:#fff;" defaultHref="home"></ion-back-button>
+        </ion-buttons>
+        <ion-title style="color:#fff;">Thank you messages</ion-title>
+    </ion-toolbar>
 </ion-header>
-  
-  <ion-content [fullscreen]="true">
+
+<ion-content [fullscreen]="true">
 
     <ion-card>
         <ion-card-content>
-          <ion-card-title style="color:black;">{{unlockedAltMessagesCount}} out of 21 thank you messages unlocked</ion-card-title>
+            <ion-card-title style="color:black;">{{unlockedAltMessagesCount}} out of 21 thank you messages unlocked
+            </ion-card-title>
         </ion-card-content>
     </ion-card>
     <ion-card *ngFor="let x of list_of_alt_msg_to_display;">
         <img src="{{x.filename}}" />
-        <!--
-        <ion-card-content>
-            <b>Unlock date:</b> {{x.unlock_date}}    
-        </ion-card-content>
-        -->
     </ion-card>
-  
-    <!--
-    <ion-card>
-      <img src="./assets/cnn_billgates.png" />
-      <ion-card-header>
-        <ion-card-subtitle>বিল গেটস</ion-card-subtitle>
-        <ion-card-title>ডেভেলপিং দেশে করোনার ঝুঁকি আরো বেশি </ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        বিল গেটস সম্প্রতি CNN এর একটি ইন্টারভিউ তে বলছেন ডেভেলপিং দেশে করোনা বন্ধ করা বেশি কঠিন। Youtube-এর ইন্টারভিউ লিংক এখানে পাওয়া যাবে। https://youtu.be/A71lfXrQlxU
-  
-        <br><br><p style="color:green;">৯৪ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>
-      </ion-card-content>
-    </ion-card>
-    <ion-card>
-      <img src="./assets/anthony_faucci.jpg" />
-      <ion-card-header>
-        <ion-card-subtitle>এন্থনি ফাউচি</ion-card-subtitle>
-        <ion-card-title>ভ্যাকসিন এখনো পাওয়া যাইনি। ঘরে থাকুন</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        মার্কিন যুক্তরাষ্টের করোনা ভাইরাস বিষয়ক টাস্ক ফোর্সের প্রধান এবং সম্মানিত বিজ্ঞানী এন্থনি ফাউচি বলেছেন কোরোনার কোনো ভ্যাকসিন আবিষ্কার হয়নি। এ বিষয় অনেক গবেষণা চলছে। ভ্যাকসিন না বের হওয়া পর্যন্ত সবাইকে ড: ফাউচি ঘরে থাকতে বলেছেন।  
-  
-        <br><br><p style="color:green;">৫১ জন চিকিৎসক এই পোস্টটা appprove করেছেন</p>
-      </ion-card-content>
-    </ion-card>
-    -->
-  </ion-content>
-  
+</ion-content>
