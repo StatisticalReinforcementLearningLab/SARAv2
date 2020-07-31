@@ -56,9 +56,8 @@ export class UnlockedMemesComponent implements OnInit {
 
 
     this.unlockedMemeCount = this.already_shown_memes["unlocked_memes"].length;
+          
     this.list_of_meme_to_display = this.already_shown_memes["unlocked_memes"];
-
-    this.list_of_meme_to_display.reverse();
     console.log("already_shown_memes " + JSON.stringify(this.already_shown_memes));
 
     
@@ -69,13 +68,6 @@ export class UnlockedMemesComponent implements OnInit {
   }
 
   ionViewDidLeave(){
-    /*
-    this.db.getDatabaseState().subscribe(rdy => {
-      if (rdy) {     
-        this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
-      }
-    });
-    */ 
     this.appUsageDb.saveAppUsageExit("unlocked_meme_tab");     
   }
 
@@ -111,33 +103,44 @@ export class UnlockedMemesComponent implements OnInit {
               lastUpdatedSeverSide = json_data["last_updated"];
               lastUpdatedReadableTsSeverSide = json_data["last_updated_readable_ts"];
               unlockedMemesServerSide = json_data["unlocked_memes"];
-              console.log("--unlockedMemesServerSide--- " + JSON.stringify(unlockedMemesServerSide));
+              //console.log("--unlockedMemesServerSide--- " + JSON.stringify(unlockedMemesServerSide));
           }else{
               lastUpdatedSeverSide = -1;
               lastUpdatedReadableTsSeverSide = -1;
               unlockedMemesServerSide = [];
-              console.log("--unlockedMemesServerSide--- " + JSON.stringify(unlockedMemesServerSide));
+              //console.log("--unlockedMemesServerSide--- " + JSON.stringify(unlockedMemesServerSide));
           }
 
           var localMemeRecord = JSON.parse(window.localStorage["already_shown_memes4"]);
           var lastUpdatedLocalStorage = localMemeRecord["last_updated"];
           var lastUpdatedReadableTsLocalStorage = localMemeRecord["last_updated_readable_ts"];
           var unlockedMemesLocalStorage = localMemeRecord["unlocked_memes"];
-          console.log("--unlockedMemesLocalStorage--- " + JSON.stringify(unlockedMemesLocalStorage));
+          //console.log("--unlockedMemesLocalStorage--- " + JSON.stringify(unlockedMemesLocalStorage));
 
 
-          //Following code creats a union of unlockedMemesServerSide and unlockedMemesLocalStorage
+          //Following code creates a union of unlockedMemesServerSide and unlockedMemesLocalStorage
           var unionOfLocalAndServer = {};
+          
+          
           for(var i=0; i < unlockedMemesServerSide.length; i++)
               unionOfLocalAndServer[unlockedMemesServerSide[i]["filename"]] = unlockedMemesServerSide[i];
           for(var i=0; i < unlockedMemesLocalStorage.length; i++)
               unionOfLocalAndServer[unlockedMemesLocalStorage[i]["filename"]] = unlockedMemesLocalStorage[i];
 
-          console.log("--unionOfLocalAndServer--- " + JSON.stringify(unionOfLocalAndServer));
+          //
+          var unlockedMemesOrderedByDate = {};
+          for(var key in unionOfLocalAndServer)
+            unlockedMemesOrderedByDate[unionOfLocalAndServer[key]["unlock_date"]] = unionOfLocalAndServer[key];
+          
+
+
+          //console.log("--unlockedMemesOrderedByDate--- " + JSON.stringify(unlockedMemesOrderedByDate));
           var res = []
-          for (var k in unionOfLocalAndServer) {
-              res.push(unionOfLocalAndServer[k]);
+          var sortedDates = Object.keys(unlockedMemesOrderedByDate).sort();
+          for (var k=0; k < sortedDates.length; k++){
+              res.push(unlockedMemesOrderedByDate[sortedDates[k]]);
           }
+          //console.log("--sortedDates--- " + JSON.stringify(sortedDates));
           this.list_of_meme_to_display = res.reverse();
           this.unlockedMemeCount = res.length;
 
@@ -147,7 +150,7 @@ export class UnlockedMemesComponent implements OnInit {
           localMemeRecord["last_updated_readable_ts"] = moment().format("MMMM Do YYYY, h:mm:ss a Z");
           window.localStorage["already_shown_memes4"] = JSON.stringify(localMemeRecord);
 
-          console.log("--localMemeRecord--- " + JSON.stringify(localMemeRecord));
+          //console.log("--localMemeRecord--- " + JSON.stringify(localMemeRecord));
           //
           this.uploadCurrentlyUnlockedMemeList(localMemeRecord);
         },
