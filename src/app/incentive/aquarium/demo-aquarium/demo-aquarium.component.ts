@@ -236,10 +236,10 @@ export class DemoAquariumComponent implements OnInit {
     this.addFishFunFactsBelow();
 
     //get inspirational quotes
-    this.getInspirationalQuotes();
+    //this.getInspirationalQuotes();
   }
 
-
+  /*
   getInspirationalQuotes() {
     var flaskServerAPIEndpoint = environment.flaskServerForIncentives;
     this.httpClient.post(flaskServerAPIEndpoint + '/get-inspirational-quote', { "user_id": 'mash_aya' }).subscribe({
@@ -247,6 +247,7 @@ export class DemoAquariumComponent implements OnInit {
         error: error => console.error('There was an error!', error)
     });
   }
+  */
 
 
 
@@ -274,7 +275,6 @@ export class DemoAquariumComponent implements OnInit {
       //console.log("Fishes: " + data);
 
       var data = await res.json();
-      var current_points = 700;
       var fishFunFactListViewItem = {};
       for(var i = 0; i < data.length; i++) {
 
@@ -282,7 +282,7 @@ export class DemoAquariumComponent implements OnInit {
             continue;
 
           if(totalPoints < data[i].points)
-            break;
+            continue;
 
           fishFunFactListViewItem = {
               funFact: data[i].trivia,

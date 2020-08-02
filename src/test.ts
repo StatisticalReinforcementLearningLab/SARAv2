@@ -16,5 +16,15 @@ getTestBed().initTestEnvironment(
 );
 // Then we find all the tests.
 const context = require.context('./', true, /\.spec\.ts$/);
+// const context = require.context('./', true, /award-dollar.service.spec\.spec\.ts$/);
 // And load the modules.
-context.keys().map(context);
+// context.keys().map(context);
+
+// then we find all the tests.
+/*
+const filterRegExp = (tags) ? new RegExp(tags, 'g') : /\.spec\.ts$/,
+context = require.context('./', true, /\.spec\.ts$/),
+specFiles = context.keys().filter(path => filterRegExp.test(path));
+// and load the modules.
+specFiles.map(context);
+*/
