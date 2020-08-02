@@ -1,6 +1,12 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
+//https://medium.com/@marcozuccaroli/perform-single-tests-using-karma-and-angular-cli-when-tests-slow-down-the-development-of-large-8d6a8013f4fc
+
+// HACK to read additional params and test a single component
+const argv = require('minimist')(process.argv.slice(2));
+const components = (argv.components !== true) && argv.components;
+
 module.exports = function (config) {
   config.set({
     basePath: '',
@@ -13,6 +19,7 @@ module.exports = function (config) {
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
+      components: components,
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     coverageIstanbulReporter: {
