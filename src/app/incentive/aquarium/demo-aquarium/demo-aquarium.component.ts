@@ -236,10 +236,10 @@ export class DemoAquariumComponent implements OnInit {
     this.addFishFunFactsBelow();
 
     //get inspirational quotes
-    this.getInspirationalQuotes();
+    //this.getInspirationalQuotes();
   }
 
-
+  /*
   getInspirationalQuotes() {
     var flaskServerAPIEndpoint = environment.flaskServerForIncentives;
     this.httpClient.post(flaskServerAPIEndpoint + '/get-inspirational-quote', { "user_id": 'mash_aya' }).subscribe({
@@ -247,6 +247,7 @@ export class DemoAquariumComponent implements OnInit {
         error: error => console.error('There was an error!', error)
     });
   }
+  */
 
 
 
