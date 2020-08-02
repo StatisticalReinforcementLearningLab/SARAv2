@@ -275,7 +275,6 @@ export class DemoAquariumComponent implements OnInit {
       //console.log("Fishes: " + data);
 
       var data = await res.json();
-      var current_points = 700;
       var fishFunFactListViewItem = {};
       for(var i = 0; i < data.length; i++) {
 
@@ -283,7 +282,7 @@ export class DemoAquariumComponent implements OnInit {
             continue;
 
           if(totalPoints < data[i].points)
-            break;
+            continue;
 
           fishFunFactListViewItem = {
               funFact: data[i].trivia,
