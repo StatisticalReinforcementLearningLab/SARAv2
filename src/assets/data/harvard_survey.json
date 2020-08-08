@@ -34,7 +34,7 @@
       "type": "radiobutton",
       "extra": {
         "choices": ["yes", "no"],
-        "orientation": "horizontal"
+        "orientation": "vertical"
       }
     }
 ]
