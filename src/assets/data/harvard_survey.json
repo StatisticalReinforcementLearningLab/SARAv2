@@ -1,3 +1,4 @@
+
 [
     {
       "name": "Q1",
@@ -24,6 +25,15 @@
       "type": "radiobutton",
       "extra": {
         "choices": ["Less than 4 hours", "5 hours", "6 hours", "7 hours", "8 hours", ">= 9 hours"],
+        "orientation": "vertical"
+      }
+    },
+    {
+      "name": "Q4",
+      "text": "Do you think you'll have a good day tomorrow?",
+      "type": "radiobutton",
+      "extra": {
+        "choices": ["yes", "no"],
         "orientation": "vertical"
       }
     }
