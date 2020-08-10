@@ -6,9 +6,10 @@ import { Router } from '@angular/router';
   selector: 'app-front-page',
   templateUrl: './front-page.component.html',
   styleUrls: ['./front-page.component.css']
-
 })
+
 export class FrontPageComponent implements OnInit {
+
 
   jsonFileLinkForSurvey = "arc_apps";
 
@@ -16,9 +17,10 @@ export class FrontPageComponent implements OnInit {
     public navController: NavController,
     private menuCtrl:MenuController) { }
 
-  ngOnInit() {
-    this.menuCtrl.close();
-  }
+
+    ngOnInit() {
+        this.menuCtrl.close();
+    }
 
   ngAfterViewInit() {
     this.fetchARCApps(); 
@@ -42,4 +44,5 @@ export class FrontPageComponent implements OnInit {
     window.open(url, '_system', 'location=yes'); 
     return false;
   }
+
 }
