@@ -143,6 +143,8 @@ export class DynamicSurveyComponent implements OnInit {
                 this.initializeSurveyAnswersJSONObject();
             }
 
+            
+
             initializeSurveyAnswersJSONObject() {
 
                 //set start time when participants started the survey.
@@ -169,6 +171,139 @@ export class DynamicSurveyComponent implements OnInit {
 
                 delete this.isQuestionIncomplete[question]; //remove the key from isQuestionIncomplete
             }
+
+            inputchangedRangeTime(question, startTime){
+                
+                //--- console.log('holla: ' + question+" "+JSON.stringify($event.detail));
+
+                //
+                startTime = startTime.replace("<br>", " ");
+                var startTimeSplit = startTime.split(" ");
+                var startTimeHour = parseInt(startTimeSplit[0]);
+                var amPmPart =  startTimeSplit[1];
+                if(amPmPart == 'PM')
+                    startTimeHour = startTimeHour + 12;
+
+
+                //console.log("Clicked on question: " + question);
+                //console.log("Time: " + startTime + ", startTimeHour: " + startTimeHour);
+
+
+                var changedHourAfterInput;
+                var changedMinuteAfterInput;
+                var changedAMPMAfterInput;
+                if((this.surveyAnswersJSONObject[question]*10)%10 == 5){
+                    changedHourAfterInput = startTimeHour + this.surveyAnswersJSONObject[question] - 0.5;
+                    changedMinuteAfterInput = "30";
+                }else{
+                    changedHourAfterInput = startTimeHour + this.surveyAnswersJSONObject[question];
+                    changedMinuteAfterInput = "00";
+                }
+
+                changedHourAfterInput = changedHourAfterInput%24; //if goes above 24 then change to zero.
+
+                if(changedHourAfterInput == 0){
+                    changedHourAfterInput = 12;
+                    changedAMPMAfterInput = "AM";
+                }else if(changedHourAfterInput>0 && changedHourAfterInput<12)
+                    changedAMPMAfterInput = "AM";
+                else if(changedHourAfterInput == 12){
+                    changedAMPMAfterInput = "PM";
+                    changedHourAfterInput = 12;
+                }else{
+                    changedAMPMAfterInput = "PM";
+                    changedHourAfterInput = changedHourAfterInput - 12;
+                }
+                this.surveyAnswersJSONObject[question + "_modified"] = "" + changedHourAfterInput + ":" + changedMinuteAfterInput + " " + changedAMPMAfterInput;
+                
+                /*
+                //
+                //
+                if(this.surveyAnswersJSONObject[question] < 4){
+                    if((this.surveyAnswersJSONObject[question]*10)%10 == 5)
+                        this.surveyAnswersJSONObject[question + "_modified"] = "" + (8 + this.surveyAnswersJSONObject[question]  - 0.5) + ":30 PM";
+                    else
+                        this.surveyAnswersJSONObject[question + "_modified"] = "" + (8 + this.surveyAnswersJSONObject[question]) + ":00 PM";
+                }else if((this.surveyAnswersJSONObject[question]>=4) || (this.surveyAnswersJSONObject[question]<5)){
+                    if((this.surveyAnswersJSONObject[question]*10)%10 == 5)
+                        this.surveyAnswersJSONObject[question + "_modified"] = "12:30 AM";
+                    else
+                        this.surveyAnswersJSONObject[question + "_modified"] = "12:00 AM";
+                }else{
+                    if((this.surveyAnswersJSONObject[question]*10)%10 == 5)
+                        this.surveyAnswersJSONObject[question + "_modified"] = "" + (8 + this.surveyAnswersJSONObject[question]  - 0.5 - 12) + ":30 AM";
+                    else
+                        this.surveyAnswersJSONObject[question + "_modified"] = "" + (8 + this.surveyAnswersJSONObject[question] - 12) + ":00 AM";
+                }
+                //console.log(JSON.stringify(this.surveyAnswersJSONObject));
+                */
+                
+                this.inputchanged(question);
+            }
+
+            inputChangedForCheckBox(question, item, $event) {
+                //console.log('holla: ' + question+" "+JSON.stringify($event.detail));
+                this.surveyAnswersJSONObject[item] = $event.detail.checked;
+                //console.log(JSON.stringify(this.surveyAnswersJSONObject));
+
+                //this.processExtraCondition(question);
+            }
+
+            inputChangedWithEvent(question, $event) {
+                //console.log("Qs:" + questions + ", ts:" + Date.now() + ", readable_time:" + moment().format("MMMM Do YYYY, h:mm:ss a"));
+                console.log('holla: ' + question + " " + JSON.stringify($event.detail));
+                this.surveyAnswersJSONObject[question] = $event.detail.value;
+                console.log(JSON.stringify(this.surveyAnswersJSONObject));
+                //this.processExtraCondition(question);
+            }
+
+            /*
+            processExtraCondition(question) {
+
+                console.log("processDisplayCondition for " + question);
+                console.log(JSON.stringify(this.dependentQuestionsArray));
+                if (this.dependentQuestionsArray[question] != null) {
+                    for (var j = 0; j < this.dependentQuestionsArray[question].length; j++) {
+                        var dependentQuestion = this.dependentQuestionsArray[question][j];
+                        if (this.dependencyExpression != undefined && this.dependencyExpression[dependentQuestion + question] != undefined) {
+                            console.log(JSON.stringify(this.dependencyExpression));
+                            this.getDisplayFlagForDependentSurvey(this.dependencyExpression[dependentQuestion + question], dependentQuestion + question);
+                        }
+
+                        //handle the case when there is empty space in answer when clicked, for example, "With someone"
+                        if (this.showArrayForEachDependency != undefined && this.showArrayForEachDependency[dependentQuestion + question] != undefined) {
+                            console.log(JSON.stringify(this.showArrayForEachDependency));
+                            this.getDisplayFlagForDependentSurveyWithSpaceInShowEntry(this.showArrayForEachDependency[dependentQuestion + question], dependentQuestion + question, question);
+                        }
+                    }
+                }
+                //this.update.next("");
+            }
+
+            getDisplayFlagForDependentSurvey(conditionExpression, label) {
+                console.log(conditionExpression + " " + label);
+                this.display_flag[label + "Show"] = eval(conditionExpression);
+                console.log("getDisplayFlagForDependentSurvey " + label + "Show " + this.display_flag[label + "Show"]);
+            }
+
+            getDisplayFlagForDependentSurveyWithSpaceInShowEntry(conditionExpression, label, questions) {
+                //console.log("True " +  ($scope.survey.Q3d==undefined || $scope.survey.Q3d=='0' || $scope.survey.Q3d=='0.5'));
+                var sel = this.survey2[questions];
+                var dep = conditionExpression;
+                //console.log("compareSelectionWithDependency "+questions+" "+sel+" "+s);
+                if (sel != undefined && conditionExpression != undefined) {
+                    sel = sel.replace(/\s+/g, "");
+                    dep = conditionExpression.replace(/\s+/g, "");
+                }
+                this.display_flag[label + "Show"] = false;
+                if (sel === dep) {
+                    this.display_flag[label + "Show"] = true;
+                }
+
+                console.log("getDisplayFlagForDependentSurveyWithSpaceInShowEntry " + name + " for " + questions + " " + this.display_flag[label + "Show"]);
+
+            }
+            */
 
             submitSurvey() {
 
@@ -531,7 +666,8 @@ export class DynamicSurveyComponent implements OnInit {
                 const f = factories.componentFactories[0];
                 const cmpRef = this.vc.createComponent(f);
                 cmpRef.instance.awsS3Service = this.awsS3Service;
-                cmpRef.instance.survey2 = this.surveyQuestionsDict;
+                //cmpRef.instance.surveyAnswersJSONObject = this.surveyQuestionsDict;
+                cmpRef.instance.surveyAnswersJSONObject = this.surveyQuestionsDict;
                 cmpRef.instance.fileLink = this.jsonFileLinkForSurvey;
                 cmpRef.instance.versionNumber = this.versionNumber;
                 cmpRef.instance.surveyQuestionsInJSONDictFormat = this.surveyQuestionsInJSONDictFormat;
@@ -645,6 +781,10 @@ export class DynamicSurveyComponent implements OnInit {
                 //survey_string = this.process_survey_range(obj, survey_string, i);
             }
 
+            if (obj.type == "range_time") {
+                survey_string = this.process_survey_range_time(obj, survey_string, i);
+            }
+
             if (obj.type == "range2") {
                 //survey_string = this.process_survey_range2(obj, survey_string, i);
             }
@@ -659,6 +799,51 @@ export class DynamicSurveyComponent implements OnInit {
 
             survey_string = survey_string + '</div>';
         }
+        return survey_string;
+    }
+
+    process_survey_range_time(obj: any, survey_string: string, i: any): string {
+        //throw new Error("Method not implemented.");
+
+        //
+        var min = obj.extra.choices[2];
+        var max = obj.extra.choices[3];
+        var step = obj.extra.choices[4];
+        this.surveyQuestionsDict[i + "_modified"] = obj.extra.choices[5]; //"12:00 AM";
+        survey_string = [survey_string,
+                    '<div class = "row" style="margin-bottom=0px;">',
+                        /*
+                        '<div class = "col col-10"><p align="center" style="padding-top:2px;padding-bottom:2px;margin:0px;border-radius:25px;background:#4e5dca;color:white;">' + min + '</p></div>',
+                        */
+                        '<div class = "col col-33"></div>',
+                        '<div class = "col col-33 col-offset-8"><p align="center" style="padding-top:2px;padding-bottom:2px;margin:0px;border-radius:25px;background:#303F9F;color:white;"><b>{{surveyAnswersJSONObject.' + i + '_modified}}</b></p></div>',
+                        '<div class = "col col-33"></div>',
+                        /*
+                        '<div class = "col col-10 col-offset-20"><p align="center" style="padding-top:2px;padding-bottom:2px;margin:0px;border-radius:25px;background:#4e5dca;color:white;">' + max + '</p></div>',
+                        */
+                    '</div>',
+                    
+                    '<div class="item range range-balanced" style="padding:10px;padding-top:1px;border-width:0px;">',
+                        '<p style="text-align: center;color: black;">' + obj.extra.choices[0] + "</p>",
+                        '<input type="range" min="' + min + '" max="' + max + '" value="' + min + '" step="' + step + '" [(ngModel)]="surveyAnswersJSONObject.' + i + '" name="' + i + '" (ngModelChange)="inputchangedRangeTime(\'' + i + '\',\'' + obj.extra.choices[0] + '\')"' + '>',
+                        //'<input type="range" min="' + min + '" max="' + max + '" value="' + min + '" step="' + step + '" name="' + i + '" (change)="inputchangedRangeTime(\'' + i + '\')"' + '>',
+                        '<p style="text-align: center;color:black;">' + obj.extra.choices[1] + "</p>",
+                    '</div>', 
+
+            //'<ion-item><ion-range ngDefaultControl min="' + min + '" max="' + max + '" value="' + min + '" step="' + step + '" [(ngModel)]="survey2.' + i + '" name="' + i + '" (ionChange)="inputchanged(\'' + i + '\')"' + '>',
+            //'<ion-item><ion-range ngDefaultControl min="' + min + '" max="' + max + '" value="' + min + '" step="' + step + '" name="' + i + '" (ionChange)="inputChangedWithEvent(\'' + i + '\', $event)"' + '>',
+            
+            /*
+            '<ion-item><ion-range ngDefaultControl min="' + min + '" max="' + max + '" value="' + min + '" step="' + step + '" name="' + i + '" (change)="inputchanged(\'' + i + '\')"' + '>',
+            
+            '<ion-label slot="start">' + obj.extra.choices[0] + '</ion-label>',
+            '<ion-label slot="end">' + obj.extra.choices[1] + '</ion-label>',
+            '</ion-range>',
+            '</ion-item>',
+            */
+          
+        ].join(" ");
+
         return survey_string;
     }
 
