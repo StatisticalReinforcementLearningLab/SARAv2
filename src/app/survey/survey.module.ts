@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 //import { PromptedSurveyComponent } from './prompted-survey/prompted-survey.component';
 //import { MorningReportComponent } from './morning-report/morning-report.component';
@@ -54,6 +54,7 @@ const routes: Routes = [
     SampleSurveyComponent,
     AyaSampleSurveyComponent,
     HarvardSurveyComponent
-  ]
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class SurveyModule { }
