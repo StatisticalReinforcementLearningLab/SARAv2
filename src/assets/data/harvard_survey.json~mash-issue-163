@@ -1,0 +1,46 @@
+[
+    {
+      "name": "Q1",
+      "text": "How stressed are you today?",
+      "type": "radiobutton",
+      "extra": {
+        "choices": ["Not<br>at all", "A<br>lot"],
+        "orientation": "horizontal",
+        "levels": 5
+      }
+    },
+    {
+      "name": "Q2",
+      "text": "This past week, did you concentrate easily?",
+      "type": "radiobutton",
+      "extra": {
+        "choices": ["Rarely/Never", "Occasionally", "Often", "Almost Always/Always"],
+        "orientation": "vertical"
+      }
+    },
+    {
+      "name":"Q16",
+      "text":"When did you go to bed last night",
+      "type":"range_time",
+      "extra":{
+        "choices":["8:00<br>PM", "4:00<br>AM",0,8,0.5, "12:00 AM"]
+      }
+    },
+    {
+      "name":"Q17",
+      "text":"When did you wake up this morning?",
+      "type":"range_time",
+      "extra":{
+        "choices":["4:00<br>AM", "12:00<br>PM",0,8,0.5, "8:00 AM"]
+      }
+    },
+    {
+      "name": "Q4",
+      "text": "Do you think you'll have a good day tomorrow?",
+      "type": "radiobutton",
+      "extra": {
+        "choices": ["yes", "no"],
+        "orientation": "vertical"
+      }
+    }
+]
