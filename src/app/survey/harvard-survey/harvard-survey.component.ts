@@ -39,7 +39,7 @@ export class HarvardSurveyComponent implements OnInit {
       });
       */    
       this.mobileAccessibility.usePreferredTextZoom(true);
-      this.appUsageDb.saveAppUsageExit("harvard__survey_page");
+      this.appUsageDb.saveAppUsageExit("harvard_survey_page");
     
    }
 
