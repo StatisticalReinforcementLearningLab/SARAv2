@@ -282,7 +282,8 @@ export class DemoAquariumComponent implements OnInit {
             continue;
 
           if(totalPoints < data[i].points)
-            break;
+            continue;
+          // break;
 
           fishFunFactListViewItem = {
               funFact: data[i].trivia,
