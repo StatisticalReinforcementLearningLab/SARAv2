@@ -20,7 +20,7 @@
       }
     },
     {
-      "name":"Q16",
+      "name":"Q3",
       "text":"When did you go to bed last night",
       "type":"range_time",
       "extra":{
@@ -28,7 +28,7 @@
       }
     },
     {
-      "name":"Q17",
+      "name":"Q4",
       "text":"When did you wake up this morning?",
       "type":"range_time",
       "extra":{
@@ -36,7 +36,7 @@
       }
     },
     {
-      "name": "Q4",
+      "name": "Q5",
       "text": "Do you think you'll have a good day tomorrow?",
       "type": "radiobutton",
       "extra": {
