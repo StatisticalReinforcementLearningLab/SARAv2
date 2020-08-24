@@ -3,7 +3,7 @@ import mysql.connector as mysql
 from datetime import datetime
 import time
 import json
-from getConfig import DB_PASSWORD
+from getConfig_mysql import DB_PASSWORD
 
 # it would be a good idea to download mysql workbench
 

@@ -9,17 +9,12 @@
 # ---- https://documentation.onesignal.com/reference/create-notification
 #
 
-
 import requests
 import json
 import pandas as pd
-from getConfig import AUTHORIZATION_ID, ONE_SIGNAL_APP_ID
+from getConfig_oneSignal import AUTHORIZATION_ID, ONE_SIGNAL_APP_ID
 
 
-#data = pd.read_csv('test.csv')
-#
-# AUTHORIZATION_ID = "Basic ZjRkZDlmYjYtMTBmOC00MDRlLWExNzEtN2IzMjEzMThiMjYz"
-# ONE_SIGNAL_APP_ID = "f9c4370d-cbcb-4e6f-ab1f-25d1c41b8f3a"
 IMAGE_LOCATION = "https://aws-website-sara-ubicomp-h28yp.s3.amazonaws.com/sarapp/"
 
 
