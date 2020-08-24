@@ -21,7 +21,7 @@ from mysql_functions import (insert_data_into_mysql, select_data_from_mysql,
     select_questions_from_mysql, clear_all_sql, get_usernames)
 
 #Look at getConfig.py to create config Json file.
-from getConfig import ACCESS_KEY, SECRET_KEY
+from getConfig_aws import ACCESS_KEY, SECRET_KEY
 
 #Use Client to access s3 
 client = boto3.client("s3", region_name = "us-east-1",
