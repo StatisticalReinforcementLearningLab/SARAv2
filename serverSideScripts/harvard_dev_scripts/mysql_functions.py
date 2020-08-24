@@ -17,8 +17,6 @@ def insert_data_into_mysql(payload):
 
     print('Inserting data')
 
-    # my custom database password: sogwOSG247
-
     # connect to db
     db = mysql.connect(
         host = "ec2-54-91-131-166.compute-1.amazonaws.com",
@@ -28,7 +26,6 @@ def insert_data_into_mysql(payload):
         database = "HarvardDev"
     )
     cursor = db.cursor()
-
 
     # insert data
     # whenIntertedTs = time.time()
@@ -215,6 +212,7 @@ def get_player_id(username):
 #     db.commit()
 
 
+## Testing
 # #insert_data_into_mysql()
 # print("Showing what is in the database")
 # select_data_from_mysql()

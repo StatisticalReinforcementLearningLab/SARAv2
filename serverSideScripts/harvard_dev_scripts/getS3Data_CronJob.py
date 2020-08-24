@@ -34,9 +34,8 @@ s3_directory_location_with_surveys = 'harvard_survey/' #Change this for a differ
 # read a list of objects (i.e., filenames) from S3
 resp = client.list_objects_v2(Bucket=bucket_name,Prefix=s3_directory_location_with_surveys)
 
-# clear the sql database
-clear_all_sql() # figure out a more elegant way to do this
-#select_questions_from_mysql()
+# clear the sql database for testing purposes
+clear_all_sql() 
 
 for obj in resp['Contents']:
     filename = obj['Key']
@@ -59,6 +58,7 @@ for obj in resp['Contents']:
         if "Q4" in decrypted_json: #if decryption goes ok then we should get a JSON key 'Q4'
             
             clean_data = decrypted_json.copy()
+            # remove irrelevant keys
             _ = clean_data.pop("onclickTimeForDifferentQuestions")
             _ = clean_data.pop("devicInfo")
             _ = clean_data.pop("surveyStartTimeUTC")
