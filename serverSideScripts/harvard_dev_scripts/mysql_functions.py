@@ -37,16 +37,12 @@ def insert_data_into_mysql(payload):
 
     #json_data = json.loads(payload)
     userID = payload.pop('userName')
-    completionTime = payload.pop('endtimeUTC')
+    completionTime = str(payload.pop('endtimeUTC'))
 
+    # FIXME: make this a separate function; it only requires one-time use, right?
+    cursor.execute("ALTER TABLE harvardSurvey MODIFY COLUMN survey_completion_time VARCHAR (20);")
+    cursor.execute("ALTER TABLE harvardSurvey MODIFY COLUMN json_answer TEXT (100000);")
 
-    # insert_stmt = (
-    #   "INSERT INTO harvardSurvey (whenIntertedTs, whenInsertedReadableTs, data) "
-    #   "VALUES (%s, %s, %s)"
-    # )
-    # data = (whenIntertedTs, whenInsertedReadableTs, payload)
-
-    # FIXME: something is going wrong here!!
     insert_stmt = (
       "INSERT INTO harvardSurvey (user_id, survey_completion_time, json_answer) "
       "VALUES (%s, %s, %s)"

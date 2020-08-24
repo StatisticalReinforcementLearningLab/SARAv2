@@ -28,22 +28,6 @@ client = boto3.client("s3", region_name = "us-east-1",
                            aws_access_key_id=ACCESS_KEY,
                            aws_secret_access_key=SECRET_KEY)
 
-# open a file for writing
-#cvs_data = open('./survey_sample.csv', 'w', newline='')
-# create the csv writer object
-#csvwriter = csv.writer(cvs_data)
-
-# Write the header file. 'Q1', 'Q2' has to match the question names in the angular app.
-# header=["Q1","Q2","Q3","Q4",
-#         "starttimeUTC","reponse_ts","endtimeUTC","userName","ts","devicInfo","appVersion"]
-#header=["user_id", "survey_completion_time", "json_answer"]
-
-# If there are 4 questions
-#header=["Q1","Q2","Q3","Q4",
-#        "starttimeUTC","reponse_ts","endtimeUTC","userName","ts","devicInfo","appVersion"]
-#csvwriter.writerow(header)
-
-
 bucket_name = 'sara-dev-data-storage' #Change this for a different project
 s3_directory_location_with_surveys = 'harvard_survey/' #Change this for a different project
 
@@ -53,7 +37,6 @@ resp = client.list_objects_v2(Bucket=bucket_name,Prefix=s3_directory_location_wi
 # clear the sql database
 clear_all_sql() # figure out a more elegant way to do this
 #select_questions_from_mysql()
-
 
 for obj in resp['Contents']:
     filename = obj['Key']
