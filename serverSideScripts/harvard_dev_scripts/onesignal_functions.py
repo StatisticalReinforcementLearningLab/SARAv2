@@ -8,36 +8,34 @@
 # OneSignal REST api for sending push notifications
 # ---- https://documentation.onesignal.com/reference/create-notification
 #
-
 import requests
 import json
 import pandas as pd
-from getConfig_oneSignal import AUTHORIZATION_ID, ONE_SIGNAL_APP_ID
+from getConfig_oneSignal import AUTHORIZATION_ID, ONE_SIGNAL_APP_ID, IMAGE_LOCATION
+
+def createOneSignalMessage(response_time, response):
+    response = response.strip()
+    if response == "yes":
+        payload_text = "sample therapeutic notification for yes"
+
+    elif response == "no":
+        payload_text = "sample therapeutic notification for no"
 
 
-IMAGE_LOCATION = "https://aws-website-sara-ubicomp-h28yp.s3.amazonaws.com/sarapp/"
+    return payload_text
 
-
-def sendOneSignalNotifications(self, player_id, response_time, response):
-	time = "6:00 AM"
+def sendOneSignalNotifications(player_id, payload_text):
+    time = "6:00 AM"
     notification_type = "Harvard test"
     heading = "Harvard test title"
     notification_text = "Harvard notification text"
     notification_image = 'fishjournal.png'
 
-    if response == "yes":
-    	payload_text = "sample therapeutic notification for yes"
-
-    elif response == "no":
-    	payload_text = "sample therapeutic notification for no"
-    #Just change payload text
-    #If user response is yes, then send yes message
-
     header = {"Content-Type": "application/json; charset=utf-8",
         "Authorization": AUTHORIZATION_ID}
 
     payload = {"app_id": ONE_SIGNAL_APP_ID,
-    	"include_player_ids": player_id,
+        "include_player_ids": player_id,
         "headings": {"en": heading},
         "contents": {"en": payload_text}, 
         "large_icon": IMAGE_LOCATION + notification_image,
@@ -47,26 +45,27 @@ def sendOneSignalNotifications(self, player_id, response_time, response):
         "data": {"user": "test", "type": "4PM"},
         "ios_badgeCount": 1,
         "collapse_id": "", 
-        "delivery_time_of_day": time,
+        #"delivery_time_of_day": time,
         "ttl" : 259200,
         "priority": 10,
         "buttons": [{"id": "iLike", "text": "Like"}, {"id": "iNope", "text": "Nope"}]}
 
      #else:
      #If the date is not yesterday, then don't send message
-     	#Return "Response not given"
+        #Return "Response not given"
            
-
     # https://www.w3schools.com/python/ref_requests_response.asp, checkout all the fields
     req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))       
     print(req.status_code, req.reason, req.text)
     #If 200, then successful
     print(req)
 
-#Use api to get status
-#--- uncomment the following line to send notification to everyone. If you want to send notification
-# to a specific user, then slack Mash.
-player_id = 'mash_aya'
-response = 'yes'
-sendOneSignalNotifications(player_id, "", response)
-sendOneSignalNotifications()
+# Testing
+if __name__ == '__main__':
+    #Use api to get status
+    response = 'no'
+    player_id = ['a1a238ba-8304-44da-ae4e-76d68df60e4d']
+
+    payload_text = createOneSignalMessage('response_time', response)
+    sendOneSignalNotifications(player_id, payload_text)
+    #sendOneSignalNotifications()

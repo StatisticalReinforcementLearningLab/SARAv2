@@ -21,26 +21,23 @@ from mysql_functions import (insert_data_into_mysql, select_all_data,
     get_question_data, clear_all_sql, get_usernames, get_player_id)
 
 #Look at getConfig.py to create config Json file.
-from getConfig_aws import ACCESS_KEY, SECRET_KEY
+from getConfig_aws import AWS_ACCESS_KEY, AWS_SECRET_KEY, AWS_REGION_NAME
 
-def transfer_s3_data():
+def transfer_s3_data(directory, bucket_name):
     """
-    Transfers survey data from s3 database to sql table.
+    Transfers survey data from s3 survey collection bucket to sql table.
     Next stage: call this function every 15 minutes
     """
     #Use Client to access s3 
-    client = boto3.client("s3", region_name = "us-east-1",
+    client = boto3.client("s3", region_name = AWS_REGION_NAME,
                                aws_access_key_id=ACCESS_KEY,
                                aws_secret_access_key=SECRET_KEY)
 
-    bucket_name = 'sara-dev-data-storage' #Change this for a different project
-    s3_directory_location_with_surveys = 'harvard_survey/' #Change this for a different project
+    #bucket_name = 'sara-dev-data-storage' #Change this for a different project
+    #s3_directory_location_with_surveys = 'harvard_survey/' #Change this for a different project
 
     # read a list of objects (i.e., filenames) from S3
-    resp = client.list_objects_v2(Bucket=bucket_name,Prefix=s3_directory_location_with_surveys)
-
-    # clear the sql database for testing purposes
-    #clear_all_sql() 
+    resp = client.list_objects_v2(Bucket=bucket_name,Prefix=directory)
 
     for obj in resp['Contents']:
         filename = obj['Key']
@@ -77,9 +74,10 @@ def process_data():
     """
     pass
 
+# Testing
 if __name__ == '__main__':
     #clear_all_sql()
-    transfer_s3_data()
+    transfer_s3_data('harvard_survey/', 'sara-dev-data-storage')
     get_question_data("mash_aya")
     #one_signal()
 
@@ -87,13 +85,9 @@ if __name__ == '__main__':
 # read all existing usernames in mysql 
 
 
-
-
-
 # user = 'mash_aya'
 # recent_q4_answer = select_questions_from_mysql(user)
 # print("This is the most recent_answer from {}: {}".format(user, recent_q4_answer))
-
 
 # print(get_usernames())
 # for user in get_usernames():

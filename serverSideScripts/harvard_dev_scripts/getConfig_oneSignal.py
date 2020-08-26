@@ -11,5 +11,6 @@ with open('./onesignal_config.json', 'r') as datafile:
 	# Build json strong
 	AUTHORIZATION_ID = config['AUTHORIZATION_ID']
 	ONE_SIGNAL_APP_ID = config['ONE_SIGNAL_APP_ID']
+	IMAGE_LOCATION = config['IMAGE_LOCATION']
 
 
