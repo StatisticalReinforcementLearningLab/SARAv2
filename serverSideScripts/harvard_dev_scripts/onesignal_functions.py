@@ -10,10 +10,9 @@
 #
 import requests
 import json
-import pandas as pd
 from getConfig_oneSignal import AUTHORIZATION_ID, ONE_SIGNAL_APP_ID, IMAGE_LOCATION
 
-def createOneSignalMessage(response_time, response):
+def createOneSignalMessage(response):
     response = response.strip()
     if response == "yes":
         payload_text = "sample therapeutic notification for yes"
