@@ -131,8 +131,8 @@ if __name__ == '__main__':
     bucketName = 'sara-dev-data-storage'
     surveyDirectory = 'harvard_survey/'
     processedDirectory = 'harvard_survey_processed/'
-    transfer_s3_data(bucketName, surveyDirectory, processedDirectory)
-    get_question_data("mash_aya")
+    # transfer_s3_data(bucketName, surveyDirectory, processedDirectory)
+    # get_question_data("mash_aya")
     move_all_data(bucketName, processedDirectory, surveyDirectory)
     #one_signal()
 

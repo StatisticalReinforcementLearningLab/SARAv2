@@ -138,22 +138,27 @@ def clear_all_sql():
 def get_player_id(username):
     """
     Returns most recent player id based on username.
+    - username: string
     """
     # connect to db
     db = connect_to_database("SARAApp")
     cursor = db.cursor()
     cursor.execute("SELECT oneSignalPlayerId FROM SARAApp.user_ids WHERE user_id = {} ORDER BY currentTimeTs DESC LIMIT 1"\
         .format("'"+ username+"'"))
-    pid = cursor.fetchall()[0][0]
+    try:
+        pid = cursor.fetchall()[0][0]
+    except:
+        return None
 
     return pid
 
 ## Testing
 if __name__ == '__main__':
     #config_harvardSurvey_database()
-    #print(get_player_id("susan_aya"))
+    print(get_player_id("susan_aya"))
     #get_question_data("mash_aya")
-    get_usernames()
+    #get_usernames()
+
 
 
 
