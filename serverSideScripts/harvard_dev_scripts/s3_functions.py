@@ -116,6 +116,8 @@ def transfer_s3_data(bucket_name, directory, processed_directory):
                 # so that we can have backups from different timepoints
                 name = filename.split("/")[-1]
                 move_datapoint(bucket_name, directory, 'harvard_survey_processed/', name)
+        else:
+            print("Strangely named file was not moved.")
 
 
 # Testing
