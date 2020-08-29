@@ -16,7 +16,7 @@ from mysql_functions import (insert_data_into_mysql, select_all_data,
 #Look at getConfig.py to create config Json file.
 from getConfig_aws import AWS_ACCESS_KEY, AWS_SECRET_KEY, AWS_REGION_NAME
 
-def create_boto_client():
+def createBotoClient():
     """
     Returns a boto3 client created using the credentials above.
     """
@@ -24,7 +24,7 @@ def create_boto_client():
                                aws_access_key_id=AWS_ACCESS_KEY,
                                aws_secret_access_key=AWS_SECRET_KEY)
 
-def create_boto_resource():
+def createBotoResource():
     """
     Returns a boto3 resource created using the credentials above.
     """
@@ -32,7 +32,7 @@ def create_boto_resource():
                                aws_access_key_id=AWS_ACCESS_KEY,
                                aws_secret_access_key=AWS_SECRET_KEY)
 
-def move_datapoint(bucket_name, source_directory, dest_directory, filename):
+def moveDatapoint(bucket_name, source_directory, dest_directory, filename):
     """
     Move a datapoint from source_directory to dest_directory in AWS s3 bucket. Deletes
     the data in the original directory.
@@ -41,7 +41,7 @@ def move_datapoint(bucket_name, source_directory, dest_directory, filename):
     - dest_directory: string, folder name to which to transfer the survey data
     - filename: string, name of survey data entry
     """
-    s3 = create_boto_resource()
+    s3 = createBotoResource()
     print("Moving {} from {} to {}.".format(filename, source_directory, dest_directory))
     copy_source = {
         "Bucket": bucket_name,
@@ -76,7 +76,7 @@ def transfer_s3_data(bucket_name, directory, processed_directory):
     - processed_directory: string, name of folder in which to store processed survey data
     """
     #Use Client to access s3 
-    client = create_boto_client()
+    client = createBotoClient()
 
     # read a list of objects (i.e., filenames) from S3
     resp = client.list_objects_v2(Bucket=bucket_name,Prefix=directory)
