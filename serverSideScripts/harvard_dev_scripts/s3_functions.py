@@ -2,13 +2,6 @@
 # Created by Mash, Aug 1, 2020
 #
 
-# 
-# WHAT THIS FILE DO?
-# This code goes through a S3 directory that contains encrypted survey data.
-# Each S3 file is one survey. 
-# Then for each survey, it adds a line in an output CSV file for future analysis.
-# 
-
 # To use decrypt.js, need to install package in the same folder as
 # decrypt.js in Command Prompt: npm install crypto-js
 
@@ -136,22 +129,22 @@ if __name__ == '__main__':
     move_all_data(bucketName, processedDirectory, surveyDirectory)
     #one_signal()
 
-# make sure we've inserted everything properly into the sql database
-# read all existing usernames in mysql 
+    # make sure we've inserted everything properly into the sql database
+    # read all existing usernames in mysql 
 
 
-# user = 'mash_aya'
-# recent_q4_answer = select_questions_from_mysql(user)
-# print("This is the most recent_answer from {}: {}".format(user, recent_q4_answer))
+    # user = 'mash_aya'
+    # recent_q4_answer = select_questions_from_mysql(user)
+    # print("This is the most recent_answer from {}: {}".format(user, recent_q4_answer))
 
-# print(get_usernames())
-# for user in get_usernames():
-#     recent_q4_answer = select_questions_from_mysql(user)
-#     print("This is the most recent_answer from {}: {}".format(user, recent_q4_answer))
+    # print(get_usernames())
+    # for user in get_usernames():
+    #     recent_q4_answer = select_questions_from_mysql(user)
+    #     print("This is the most recent_answer from {}: {}".format(user, recent_q4_answer))
 
-# call Frank's function here with username, time, and q4 response
+    # call Frank's function here with username, time, and q4 response
 
-# break this up into different functions --> functions should not be more than 10 lines
+    # break this up into different functions --> functions should not be more than 10 lines
 
 
 
