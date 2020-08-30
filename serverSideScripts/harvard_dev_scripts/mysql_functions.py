@@ -7,7 +7,7 @@ from getConfig_mysql import DB_PASSWORD, DB_HOST, DB_PORT, DB_USER
 
 # it would be a good idea to download mysql workbench
 
-def connect_to_database(db_name):
+def connectToDatabase(db_name):
     """
     Connects to sql database. Returns a db object.
     """
@@ -19,11 +19,11 @@ def connect_to_database(db_name):
         database = db_name
     )
 
-def config_harvardSurvey_database():
+def configHarvardSurveyDatabase():
     """
     Ensures all columns of the harvardSurvey database are set to the appropriate type.
     """
-    db = connect_to_database("HarvardDev")
+    db = connectToDatabase("HarvardDev")
     cursor = db.cursor()
 
     cursor.execute("ALTER TABLE harvardSurvey MODIFY COLUMN survey_completion_time VARCHAR (20);")
@@ -33,7 +33,7 @@ def config_harvardSurvey_database():
 
     db.commit()
 
-def insert_data_into_mysql(payload):
+def insertDataIntoHarvardSurvey(payload):
     """
     Inserts user survey data into the mysql database.
     - payload: a dictionary with username, survey endtime, and the answers to survey questions
@@ -43,7 +43,7 @@ def insert_data_into_mysql(payload):
     print('Inserting data')
 
     # connect to db
-    db = connect_to_database("HarvardDev")
+    db = connectToDatabase("HarvardDev")
     cursor = db.cursor()
 
     # removing keys and inserting separately into table
@@ -52,15 +52,15 @@ def insert_data_into_mysql(payload):
     whenIntertedTs = time.time()
     whenInsertedReadableTs = datetime.utcfromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
 
-    insert_stmt = (
+    insertStmt = (
       "INSERT INTO harvardSurvey (user_id, survey_completion_time, json_answer, when_inserted) "
       "VALUES (%s, %s, %s, %s)"
     )
     data = (userID, completionTime, json.dumps(payload), whenInsertedReadableTs)
-    cursor.execute(insert_stmt, data)
+    cursor.execute(insertStmt, data)
     db.commit()
 
-def select_all_data():
+def selectAllDataFromHarvardSurvey():
     """
     Select all data points from the test database.
     """
@@ -68,32 +68,32 @@ def select_all_data():
     #print('Fetching data')
 
     # connect to db
-    db = connect_to_database("HarvardDev")
+    db = connectToDatabase("HarvardDev")
     cursor = db.cursor()
 
     # fetch data.
     cursor.execute("SELECT user_id, survey_completion_time, json_answer, when_inserted FROM harvardSurvey")
     return cursor.fetchall()
 
-def get_recent_time(n):
+def getRecentTime(n):
     """
     Get the time of the most recent survey_completion_time for a given user_id.
     - n: string, user_id
     """
-    db = connect_to_database("HarvardDev")
+    db = connectToDatabase("HarvardDev")
     cursor = db.cursor()
     cursor.execute("SELECT MAX(survey_completion_time) FROM harvardSurvey WHERE user_id = {}".format("'"+n+"'"))
     return cursor.fetchall()[0][0]
 
-def get_question_data(n):
+def getQuestionDataFromHarvardSurvey(n):
     """
     Select the most recent question data based on provided username. Returns that
     question data in json form.
     - n: string, username
     """
-    db = connect_to_database("HarvardDev")
+    db = connectToDatabase("HarvardDev")
     cursor = db.cursor()
-    recentTime = get_recent_time(n)
+    recentTime = getRecentTime(n)
     cursor.execute("SELECT json_answer FROM harvardSurvey WHERE user_id = {} AND survey_completion_time = {}"\
         .format("'"+n+"'", recentTime))
 
@@ -107,20 +107,20 @@ def get_question_data(n):
     else:
         pass
 
-def get_usernames():
+def getUsernamesFromHarvardSurvey():
     """
     Returns a list of unique usernames from the sql database.
     """
-    db = connect_to_database("HarvardDev")
+    db = connectToDatabase("HarvardDev")
     cursor = db.cursor()
     cursor.execute("SELECT DISTINCT user_id FROM harvardSurvey")
-    user_ids = cursor.fetchall()
-    id_lst = []
-    for name, in user_ids:
-        id_lst.append(name)
-    return id_lst
+    userIds = cursor.fetchall()
+    idLst = []
+    for name, in userIds:
+        idLst.append(name)
+    return idLst
 
-def clear_all_sql():
+def clearAllHarvardSurvey():
     """
     Delete all records in the sql database.
     NOTE: currently depends on magic number for maximum number of records in
@@ -129,19 +129,19 @@ def clear_all_sql():
     print('Clearing all records from harvardSurvey table.')
 
     # connect to db
-    db = connect_to_database("HarvardDev")
+    db = connectToDatabase("HarvardDev")
     cursor = db.cursor()
 
     cursor.execute("DELETE FROM harvardSurvey WHERE id BETWEEN 0 AND 10000")
     db.commit()
 
-def get_player_id(username):
+def getPlayerId(username):
     """
     Returns most recent player id based on username.
     - username: string
     """
     # connect to db
-    db = connect_to_database("SARAApp")
+    db = connectToDatabase("SARAApp")
     cursor = db.cursor()
     cursor.execute("SELECT oneSignalPlayerId FROM SARAApp.user_ids WHERE user_id = {} ORDER BY currentTimeTs DESC LIMIT 1"\
         .format("'"+ username+"'"))
@@ -154,10 +154,10 @@ def get_player_id(username):
 
 ## Testing
 if __name__ == '__main__':
-    #config_harvardSurvey_database()
-    print(get_player_id("susan_aya"))
-    #get_question_data("mash_aya")
-    #get_usernames()
+    #configHarvardSurveyDatabase()
+    print(getPlayerId("susan_aya"))
+    #getQuestionDataFromHarvardSurvey("mash_aya")
+    #getUsernames()
 
 
 

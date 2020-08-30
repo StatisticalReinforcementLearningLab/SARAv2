@@ -10,8 +10,9 @@ import csv
 import boto3
 import subprocess
 from collections import OrderedDict
-from mysql_functions import (insert_data_into_mysql, select_all_data,
-    get_question_data, clear_all_sql, get_usernames, get_player_id)
+from mysql_functions import (insertDataIntoHarvardSurvey,
+    getQuestionDataFromHarvardSurvey, clearAllHarvardSurvey , 
+    getUsernamesFromHarvardSurvey, getPlayerId)
 
 #Look at getConfig.py to create config Json file.
 from getConfig_aws import AWS_ACCESS_KEY, AWS_SECRET_KEY, AWS_REGION_NAME
@@ -32,54 +33,54 @@ def createBotoResource():
                                aws_access_key_id=AWS_ACCESS_KEY,
                                aws_secret_access_key=AWS_SECRET_KEY)
 
-def moveDatapoint(bucket_name, source_directory, dest_directory, filename):
+def moveDatapoint(bucketName, sourceDirectory, destDirectory, filename):
     """
-    Move a datapoint from source_directory to dest_directory in AWS s3 bucket. Deletes
+    Move a datapoint from sourceDirectory to destDirectory in AWS s3 bucket. Deletes
     the data in the original directory.
-    - bucket_name: string, name of AWS s3 bucket we are operating within
-    - source_directory: string, folder name where surveys are originally stored
-    - dest_directory: string, folder name to which to transfer the survey data
+    - bucketName: string, name of AWS s3 bucket we are operating within
+    - sourceDirectory: string, folder name where surveys are originally stored
+    - destDirectory: string, folder name to which to transfer the survey data
     - filename: string, name of survey data entry
     """
     s3 = createBotoResource()
-    print("Moving {} from {} to {}.".format(filename, source_directory, dest_directory))
-    copy_source = {
-        "Bucket": bucket_name,
-        'Key': source_directory + filename
+    print("Moving {} from {} to {}.".format(filename, sourceDirectory, destDirectory))
+    copySource = {
+        "Bucket": bucketName,
+        'Key': sourceDirectory + filename
     }
-    s3.Object(bucket_name, dest_directory + filename).copy_from(CopySource=copy_source)
-    s3.Object(bucket_name, source_directory + filename).delete()
+    s3.Object(bucketName, destDirectory + filename).copy_from(CopySource=copySource)
+    s3.Object(bucketName, sourceDirectory + filename).delete()
 
-def move_all_data(bucket_name, source_directory, dest_directory):
+def moveAllData(bucketName, sourceDirectory, destDirectory):
     """
-    Moves all of the data from source_directory into dest_directory.
+    Moves all of the data from sourceDirectory into destDirectory.
     within the AWS s3 bucket.
-    - bucket_name: string, name of AWS s3 bucket we are operating within
-    - source_directory: string, folder name where surveys are originally stored
-    - dest_directory: string, folder name to which to transfer the survey data
+    - bucketName: string, name of AWS s3 bucket we are operating within
+    - sourceDirectory: string, folder name where surveys are originally stored
+    - destDirectory: string, folder name to which to transfer the survey data
     """
-    print("Moving all contents of {} to {}.".format(source_directory, dest_directory))
-    client = create_boto_client()
+    print("Moving all contents of {} to {}.".format(sourceDirectory, destDirectory))
+    client = createBotoClient()
     # read a list of objects (i.e., filenames) from S3
-    resp = client.list_objects_v2(Bucket=bucket_name,Prefix=source_directory)
+    resp = client.list_objects_v2(Bucket=bucketName,Prefix=sourceDirectory)
 
     for obj in resp['Contents']:
         filename = obj['Key'].split("/")[-1]
-        move_datapoint(bucket_name, source_directory, dest_directory, filename)
+        moveDatapoint(bucketName, sourceDirectory, destDirectory, filename)
 
-def transfer_s3_data(bucket_name, directory, processed_directory):
+def transferS3Data(bucketName, directory, processedDirectory):
     """
     Transfers survey data from s3 survey collection bucket to sql table.
     Next stage: call this function every 15 minutes
     - directory: string, name of folder where survey data uploaded
-    - bucket_name: string, name of amazon s3 bucket
-    - processed_directory: string, name of folder in which to store processed survey data
+    - bucketName: string, name of amazon s3 bucket
+    - processedDirectory: string, name of folder in which to store processed survey data
     """
     #Use Client to access s3 
     client = createBotoClient()
 
     # read a list of objects (i.e., filenames) from S3
-    resp = client.list_objects_v2(Bucket=bucket_name,Prefix=directory)
+    resp = client.list_objects_v2(Bucket=bucketName,Prefix=directory)
 
     for obj in resp['Contents']:
         filename = obj['Key']
@@ -88,47 +89,47 @@ def transfer_s3_data(bucket_name, directory, processed_directory):
         if("result" in filename) :
 
             # read JSON from the S3 file.
-            json_obj = client.get_object(Bucket=bucket_name, Key=filename) 
-            json_data = json_obj['Body'].read().decode('utf-8')
-            encrypted_survey_json=json.loads(json_data)
+            jsonObj = client.get_object(Bucket=bucketName, Key=filename) 
+            jsonData = jsonObj['Body'].read().decode('utf-8')
+            encryptedSurveyJson=json.loads(jsonData)
 
             #get encrypted obj and try to decrypt it.
-            encrypted_data = encrypted_survey_json['encrypted']
-            decrypted_data = subprocess.check_output(["node", "decrypt.js", encrypted_data])
-            decrypted_json = json.loads(decrypted_data.decode('utf-8'))
+            encryptedData = encryptedSurveyJson['encrypted']
+            decryptedData = subprocess.check_output(["node", "decrypt.js", encryptedData])
+            decryptedJson = json.loads(decryptedData.decode('utf-8'))
             
-            #print(json.dumps(decrypted_json, indent=4, sort_keys=True)) #use this line to debug if good JSON file is coming out.
+            #print(json.dumps(decryptedJson, indent=4, sort_keys=True)) #use this line to debug if good JSON file is coming out.
 
-            if "Q4" in decrypted_json: #if decryption goes ok then we should get a JSON key 'Q4'
+            if "Q4" in decryptedJson: #if decryption goes ok then we should get a JSON key 'Q4'
                 
-                clean_data = decrypted_json.copy()
+                cleanData = decryptedJson.copy()
                 # remove irrelevant keys
-                _ = clean_data.pop("onclickTimeForDifferentQuestions")
-                _ = clean_data.pop("devicInfo")
-                _ = clean_data.pop("surveyStartTimeUTC")
-                _ = clean_data.pop("ts")
+                _ = cleanData.pop("onclickTimeForDifferentQuestions")
+                _ = cleanData.pop("devicInfo")
+                _ = cleanData.pop("surveyStartTimeUTC")
+                _ = cleanData.pop("ts")
 
-                insert_data_into_mysql(clean_data)
+                insertDataIntoHarvardSurvey(cleanData)
 
                 # move the object into the processed folder
                 # and delete from the survey folder
                 # later we may want to create subfolders in processed directory
                 # so that we can have backups from different timepoints
                 name = filename.split("/")[-1]
-                move_datapoint(bucket_name, directory, 'harvard_survey_processed/', name)
+                moveDatapoint(bucketName, directory, 'harvard_survey_processed/', name)
         else:
             print("Strangely named file was not moved.")
 
 
 # Testing
 if __name__ == '__main__':
-    #clear_all_sql()
+    #clearAllHarvardSurvey()
     bucketName = 'sara-dev-data-storage'
     surveyDirectory = 'harvard_survey/'
     processedDirectory = 'harvard_survey_processed/'
-    # transfer_s3_data(bucketName, surveyDirectory, processedDirectory)
-    # get_question_data("mash_aya")
-    move_all_data(bucketName, processedDirectory, surveyDirectory)
+    # transferS3Data(bucketName, surveyDirectory, processedDirectory)
+    # getQuestionDataFromHarvardSurvey("mash_aya")
+    moveAllData(bucketName, processedDirectory, surveyDirectory)
     #one_signal()
 
     # make sure we've inserted everything properly into the sql database
@@ -139,8 +140,8 @@ if __name__ == '__main__':
     # recent_q4_answer = select_questions_from_mysql(user)
     # print("This is the most recent_answer from {}: {}".format(user, recent_q4_answer))
 
-    # print(get_usernames())
-    # for user in get_usernames():
+    # print(getUsernamesFromHarvardSurvey())
+    # for user in getUsernamesFromHarvardSurvey():
     #     recent_q4_answer = select_questions_from_mysql(user)
     #     print("This is the most recent_answer from {}: {}".format(user, recent_q4_answer))
 
