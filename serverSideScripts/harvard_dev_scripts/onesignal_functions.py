@@ -17,13 +17,15 @@ class OneSignal():
     """
     Creates and sends OneSignal notifications.
     """
-    def __init__(self, playerID, questionResponse, timeToSend, msgHeading, notificationImage):
+    def __init__(self, playerID, questionResponse, timeToSend, msgHeading, notificationImage,
+        externalID):
         self.playerID = [playerID]
         self.payloadText = ""
         self.timeToSend = timeToSend
         self.msgHeading = msgHeading
         self.notificationImage = notificationImage 
         self.questionResponse = questionResponse
+        self.externalID = externalID
 
     def createOneSignalMessage(self):
         response = self.questionResponse.strip()
@@ -54,7 +56,8 @@ class OneSignal():
             #"delivery_time_of_day": time,
             "ttl" : 259200,
             "priority": 10,
-            "buttons": [{"id": "iLike", "text": "Like"}, {"id": "iNope", "text": "Nope"}]}
+            "buttons": [{"id": "iLike", "text": "Like"}, {"id": "iNope", "text": "Nope"}],
+            "external_id": self.externalID}
 
          #else:
          #If the date is not yesterday, then don't send message

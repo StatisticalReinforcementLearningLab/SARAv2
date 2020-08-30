@@ -4,6 +4,7 @@ from datetime import datetime
 import time
 import json
 from getConfig_mysql import DB_PASSWORD, DB_HOST, DB_PORT, DB_USER
+import uuid
 
 # it would be a good idea to download mysql workbench
 
@@ -28,8 +29,10 @@ def configHarvardSurveyDatabase():
 
     cursor.execute("ALTER TABLE harvardSurvey MODIFY COLUMN survey_completion_time VARCHAR (20);")
     cursor.execute("ALTER TABLE harvardSurvey MODIFY COLUMN json_answer TEXT (100000);")
-    cursor.execute("ALTER TABLE harvardSurvey ADD COLUMN when_inserted VARCHAR (50);")
-    # add a column to record time inserted
+    # FIXME
+    #cursor.execute("IF NOT EXISTS ALTER TABLE harvardSurvey ADD COLUMN when_inserted VARCHAR (50));")
+    #cursor.execute("IF COL_LENGTH ('HarvardDev.harvardSurvey'.'when_inserted') IS NULL BEGIN ALTER TABLE harvardSurvey ADD COLUMN when_inserted VARCHAR (50) END;")
+    cursor.execute("ALTER TABLE harvardSurvey ADD COLUMN response_id VARCHAR (50);")
 
     db.commit()
 
@@ -51,14 +54,35 @@ def insertDataIntoHarvardSurvey(payload):
     completionTime = str(payload.pop('endtimeUTC'))
     whenIntertedTs = time.time()
     whenInsertedReadableTs = datetime.utcfromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
+    # to ensure idempotency of onesignal
+    responseUUID = str(uuid.uuid4())
 
     insertStmt = (
-      "INSERT INTO harvardSurvey (user_id, survey_completion_time, json_answer, when_inserted) "
-      "VALUES (%s, %s, %s, %s)"
+      "INSERT INTO harvardSurvey (user_id, survey_completion_time, json_answer, when_inserted, response_id) "
+      "VALUES (%s, %s, %s, %s, %s)"
     )
-    data = (userID, completionTime, json.dumps(payload), whenInsertedReadableTs)
+    data = (userID, completionTime, json.dumps(payload), whenInsertedReadableTs, responseUUID)
     cursor.execute(insertStmt, data)
     db.commit()
+
+# # MAYBE UNNECESSARY
+# def insertDataIntoNotificationTracking(username, timeNotified):
+#     """
+#     Track the last time a given username was notified via OneSignal.
+#     - username: string
+#     - timeNotified: long? but treated as string when inserted? idk, UTC time
+#     """
+#     db = connectToDatabase("HarvardDev")
+#     cursor = db.cursor()
+
+#     # is this idempotent?
+#     insertStmt = (
+#         "INSERT INTO notificationTracking (username, time_of_last_notification) "
+#         "VALUES (%s, %s)"
+#     )
+#     data = (username, timeNotified)
+#     cursor.execute(insertStmt, data)
+#     db.commit()
 
 def selectAllDataFromHarvardSurvey():
     """
@@ -83,27 +107,32 @@ def getRecentTime(n):
     db = connectToDatabase("HarvardDev")
     cursor = db.cursor()
     cursor.execute("SELECT MAX(survey_completion_time) FROM harvardSurvey WHERE user_id = {}".format("'"+n+"'"))
-    return cursor.fetchall()[0][0]
+    try:
+        return cursor.fetchall()[0][0]
+    except:
+        print("Could not find most recent survey completion time for this user.")
 
 def getQuestionDataFromHarvardSurvey(n):
     """
     Select the most recent question data based on provided username. Returns that
-    question data in json form.
+    question data in json form, and the uuid associated with that resposne.
     - n: string, username
     """
     db = connectToDatabase("HarvardDev")
     cursor = db.cursor()
     recentTime = getRecentTime(n)
-    cursor.execute("SELECT json_answer FROM harvardSurvey WHERE user_id = {} AND survey_completion_time = {}"\
+    cursor.execute("SELECT json_answer, response_id FROM harvardSurvey WHERE user_id = {} AND survey_completion_time = {}"\
         .format("'"+n+"'", recentTime))
+    returnedData = cursor.fetchall()[0]
 
     try:
-        questionData = json.loads(cursor.fetchall()[0][0])
+        #questionData = json.loads(cursor.fetchall()[0][0])
+        questionData = json.loads(returnedData[0])
     except:
         raise Exception("Could not find most recent question data for specified user.")
 
     if "Q4" in questionData:
-        return questionData
+        return questionData, returnedData[1]
     else:
         pass
 
@@ -151,6 +180,7 @@ def getPlayerId(username):
         return None
 
     return pid
+
 
 ## Testing
 if __name__ == '__main__':
