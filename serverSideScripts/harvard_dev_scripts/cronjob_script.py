@@ -1,6 +1,7 @@
-from s3_functions import transfer_s3_data
+from s3_functions import transferS3Data
 from onesignal_functions import OneSignal
-from mysql_functions import get_question_data, get_usernames, get_player_id
+from mysql_functions import (getQuestionDataFromHarvardSurvey, getUsernamesFromHarvardSurvey, 
+	getPlayerId)
 
 
 def main():
@@ -13,15 +14,18 @@ def main():
 	bucketName = 'sara-dev-data-storage'
 	surveyDirectory = 'harvard_survey/'
 	processedDirectory = 'harvard_survey_processed/'
-	transfer_s3_data(bucketName, surveyDirectory, processedDirectory)
+	transferS3Data(bucketName, surveyDirectory, processedDirectory)
 
-	userNames = get_usernames()
+	userNames = getUsernamesFromHarvardSurvey()
 	for userName in userNames:
 
-		playerID = get_player_id(userName)
+		playerID = getPlayerId(userName)
 		if playerID is not None:
-			surveyResponses = get_question_data(userName)
+
+			surveyResponses = getQuestionDataFromHarvardSurvey(userName)
 			
+			# need idempotence --> unique id for notification? so only send once
+			# keep record of last time user was alerted, one extra long per user
 			msg = OneSignal(playerID, surveyResponses["Q4"], timeToSend="6:00 AM",\
 				msgHeading="Harvard test title", notificationImage='fishjournal.png')
 			msg.send()
