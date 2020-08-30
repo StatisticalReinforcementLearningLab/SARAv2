@@ -132,7 +132,7 @@ def clearAllHarvardSurvey():
     db = connectToDatabase("HarvardDev")
     cursor = db.cursor()
 
-    cursor.execute("DELETE FROM harvardSurvey WHERE id BETWEEN 0 AND 10000")
+    cursor.execute("DELETE FROM harvardSurvey")
     db.commit()
 
 def getPlayerId(username):
