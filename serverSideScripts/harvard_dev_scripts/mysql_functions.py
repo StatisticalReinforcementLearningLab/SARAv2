@@ -65,25 +65,6 @@ def insertDataIntoHarvardSurvey(payload):
     cursor.execute(insertStmt, data)
     db.commit()
 
-# # MAYBE UNNECESSARY
-# def insertDataIntoNotificationTracking(username, timeNotified):
-#     """
-#     Track the last time a given username was notified via OneSignal.
-#     - username: string
-#     - timeNotified: long? but treated as string when inserted? idk, UTC time
-#     """
-#     db = connectToDatabase("HarvardDev")
-#     cursor = db.cursor()
-
-#     # is this idempotent?
-#     insertStmt = (
-#         "INSERT INTO notificationTracking (username, time_of_last_notification) "
-#         "VALUES (%s, %s)"
-#     )
-#     data = (username, timeNotified)
-#     cursor.execute(insertStmt, data)
-#     db.commit()
-
 def selectAllDataFromHarvardSurvey():
     """
     Select all data points from the test database.
@@ -96,21 +77,8 @@ def selectAllDataFromHarvardSurvey():
     cursor = db.cursor()
 
     # fetch data.
-    cursor.execute("SELECT user_id, survey_completion_time, json_answer, when_inserted FROM harvardSurvey")
+    cursor.execute("SELECT user_id, survey_completion_time, json_answer, when_inserted, response_id FROM harvardSurvey")
     return cursor.fetchall()
-
-def getRecentTime(n):
-    """
-    Get the time of the most recent survey_completion_time for a given user_id.
-    - n: string, user_id
-    """
-    db = connectToDatabase("HarvardDev")
-    cursor = db.cursor()
-    cursor.execute("SELECT MAX(survey_completion_time) FROM harvardSurvey WHERE user_id = {}".format("'"+n+"'"))
-    try:
-        return cursor.fetchall()[0][0]
-    except:
-        print("Could not find most recent survey completion time for this user.")
 
 def getQuestionDataFromHarvardSurvey(n):
     """
@@ -120,9 +88,11 @@ def getQuestionDataFromHarvardSurvey(n):
     """
     db = connectToDatabase("HarvardDev")
     cursor = db.cursor()
-    recentTime = getRecentTime(n)
-    cursor.execute("SELECT json_answer, response_id FROM harvardSurvey WHERE user_id = {} AND survey_completion_time = {}"\
-        .format("'"+n+"'", recentTime))
+    #recentTime = getRecentTime(n)
+    cursor.execute("""SELECT json_answer, response_id FROM harvardSurvey WHERE user_id = {} 
+        AND survey_completion_time = (SELECT MAX(survey_completion_time) FROM harvardSurvey)
+        AND when_inserted = (SELECT MAX(when_inserted) FROM harvardSurvey)"""\
+        .format("'"+n+"'"))
     returnedData = cursor.fetchall()[0]
 
     try:
@@ -185,9 +155,18 @@ def getPlayerId(username):
 ## Testing
 if __name__ == '__main__':
     #configHarvardSurveyDatabase()
-    print(getPlayerId("susan_aya"))
+    #print(getPlayerId("susan_aya"))
     #getQuestionDataFromHarvardSurvey("mash_aya")
     #getUsernames()
+
+    getQuestionDataFromHarvardSurvey("mash_aya")
+
+    # db = connectToDatabase("HarvardDev")
+    # cursor = db.cursor()
+
+    # # fetch data.
+    # cursor.execute("SELECT when_inserted FROM harvardSurvey")
+    # print(cursor.fetchall())
 
 
 

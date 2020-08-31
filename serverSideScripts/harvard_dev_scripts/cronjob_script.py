@@ -1,14 +1,13 @@
 from s3_functions import transferS3Data
 from onesignal_functions import OneSignal
 from mysql_functions import (getQuestionDataFromHarvardSurvey, getUsernamesFromHarvardSurvey, 
-	getPlayerId, getRecentTime)
+	getPlayerId)
 
 
 def main():
 	"""
 	The official script that cronjob runs every 15 minutes.
 	"""
-	# TODO: figure out how the timing stuff works
 	print("Starting the cronjob script....")
 
 	bucketName = 'sara-dev-data-storage'
@@ -20,13 +19,12 @@ def main():
 	for userName in userNames:
 
 		playerID = getPlayerId(userName)
-		lastSurveyTime = getRecentTime(userName)
+		
 		if playerID is not None:
 
 			surveyResponses, responseUUID = getQuestionDataFromHarvardSurvey(userName)
 			
-			# need idempotence --> unique id for notification? so only send once
-			# keep record of last time user was alerted, one extra long per user
+			# passing external_id ensures idempotence
 			msg = OneSignal(playerID, surveyResponses["Q4"], timeToSend="6:00 AM",\
 				msgHeading="Harvard test title", notificationImage='fishjournal.png',\
 				externalID=responseUUID)
