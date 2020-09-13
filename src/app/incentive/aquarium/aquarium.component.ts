@@ -17,428 +17,483 @@ import { DatabaseService } from 'src/app/monitor/database.service';
 import { AwsS3Service } from '../../storage/aws-s3.service';
 
 @Component({
-  selector: 'app-aquarium',
-  templateUrl: './aquarium.component.html',
-  styleUrls: ['./aquarium.component.css']
+    selector: 'app-aquarium',
+    templateUrl: './aquarium.component.html',
+    styleUrls: ['./aquarium.component.css']
 })
 export class AquariumComponent implements OnInit {
 
-  private sub1$:any;
-  private sub2$:any;
-  money = 0;
-  modalObjectNavigationExtras = {};
-  pageTitle = "Aquarium";
+    private sub1$: any;
+    private sub2$: any;
+    money = 0;
+    modalObjectNavigationExtras = {};
+    pageTitle = "Aquarium";
 
-  @ViewChild(DemoAquariumComponent, {static: true}) child;
+    @ViewChild(DemoAquariumComponent, { static: true }) child;
 
-  unlockedItems$: Observable<any>;
-  modalDataSubscription$: any;
-  title = "";
-  isIOS = false;
-  navigate : any;
-
-
-  get isActive(){
-    //return false;
-    if(this.userProfileService == undefined)
-      return true;
-    else
-      return this.userProfileService.isActive;
-  }
-
-  startCheatPage(){
-    //this.router.navigate(['incentive/tundra']);
-    this.navController.navigateRoot(['incentive/cheatpoints']);
-  }
-
-  startInfoPage(){
-    this.navController.navigateRoot(['incentive/infopage']);
-  }
-
-  constructor(private platform: Platform, private alertCtrl: AlertController, 
-    private router: Router, 
-    private route: ActivatedRoute, 
-    private modalController: ModalController,
-    private store: Store<AppState>,
-    public navController: NavController,
-    private menu: MenuController,
-    private appUsageDb: DatabaseService,
-    private awsS3Service: AwsS3Service,
-    private userProfileService: UserProfileService) { 
-    console.log("Constructor called");
-    this.sub1$=this.platform.pause.subscribe(() => {        
-      console.log('****UserdashboardPage PAUSED****');
-      this.child.pauseGameRendering();
-    });  
-    this.sub2$=this.platform.resume.subscribe(() => {      
-      console.log('****UserdashboardPage RESUMED****');
-      this.child.resumeGameRendering();
-    });
+    unlockedItems$: Observable<any>;
+    modalDataSubscription$: any;
+    title = "";
+    isIOS = false;
+    isSurveyAvailableNow = false;
+    navigate: any;
 
 
-    if(window.localStorage['AwardDollar'] == undefined)
-        this.money = 0;
-    else{
-        try{
-          this.money = parseInt(window.localStorage['AwardDollar']);
-        }catch(error){
-          window.localStorage.setItem("AwardDollar", ""+0); 
-          this.money = 0;
+    get isActive() {
+        //return false;
+        if (this.userProfileService == undefined)
+            return true;
+        else
+            return this.userProfileService.isActive;
+    }
+
+    startCheatPage() {
+        //this.router.navigate(['incentive/tundra']);
+        this.navController.navigateRoot(['incentive/cheatpoints']);
+    }
+
+    startInfoPage() {
+        this.navController.navigateRoot(['incentive/infopage']);
+    }
+
+    constructor(private platform: Platform, private alertCtrl: AlertController,
+        private router: Router,
+        private route: ActivatedRoute,
+        private modalController: ModalController,
+        private store: Store<AppState>,
+        public navController: NavController,
+        private menu: MenuController,
+        private appUsageDb: DatabaseService,
+        private awsS3Service: AwsS3Service,
+        private userProfileService: UserProfileService) {
+        console.log("Constructor called");
+        this.sub1$ = this.platform.pause.subscribe(() => {
+            console.log('****UserdashboardPage PAUSED****');
+            this.child.pauseGameRendering();
+        });
+        this.sub2$ = this.platform.resume.subscribe(() => {
+            console.log('****UserdashboardPage RESUMED****');
+            this.child.resumeGameRendering();
+
+            //update the survey status.
+            //
+            this.grabLatestSurveyTurnOnOffInfo();
+
+            //
+            this.changeColorOfSurveyIcon();
+
+        });
+
+
+        if (window.localStorage['AwardDollar'] == undefined)
+            this.money = 0;
+        else {
+            try {
+                this.money = parseInt(window.localStorage['AwardDollar']);
+            } catch (error) {
+                window.localStorage.setItem("AwardDollar", "" + 0);
+                this.money = 0;
+            }
         }
-    }
 
-    if(this.platform.is('ios')){
-      this.isIOS=true;
-    }
-
-    this.sideMenu();
-
-  }
-
-  sideMenu()
-  {
-    this.navigate =
-    [
-      {
-        title : "Home",
-        url   : "/home",
-        icon  : "home"
-      },
-      {
-        title : "Chat",
-        url   : "/chat",
-        icon  : "chatboxes"
-      },
-      {
-        title : "Contacts",
-        url   : "/contacts",
-        icon  : "contacts"
-      },
-    ]
-  }
-
-  //show side menu
-  showSideMenu() {
-    console.log("side menu called");
-    this.menu.enable(true, 'first');
-    this.menu.open('first');
-  }
-
-  ionViewDidLeaveFunction(){
-    this.child.ionViewDidLeaveFunction();
-
-    //unsubscribe from model view.
-    this.modalDataSubscription$.unsubscribe();
-  }
-
-  ionViewDidLeave() {
-    console.log("aqarium.ts --- ionDidLeave");
-    this.ionViewDidLeaveFunction();
-
-    //If "Leave Aquarium" is already tracked in demo-aquarium, duplication?
-    this.appUsageDb.saveAppUsageExit("aquarium_tab");
-  }
-
-  ionViewDidEnter() {
-
-    console.log("aqarium.ts --- ionViewDidEnter");
-    this.child.loadFunction();
-      
-    //decide if we want to show the modal view with unlockables.
-    this.subscribeForModalView();
-
-    //If "Enter Aquarium" is already tracked in demo-aquarium, duplication?
-    this.appUsageDb.saveAppUsageEnter("aquarium_tab");
-
-    //
-    this.saveDbToAWS();
-    this.userProfileService.saveToServer();
-
-  }
-
-   //Upload SQLite database to AWS in ionViewWillEnter which happens
-   //before "ionViewDidEnter" in demo-aquarium, thus the table will 
-   //be empty first visit aquarium, will not be empty if user 
-   //"come back" to aquarium after visit other pages and will 
-   // be exported to AWS.
-   //
-   // --- Moving to ionViewDidEnter()
-   //
-  saveDbToAWS() {
-    this.appUsageDb.isTableEmpty().then(tableEmpty => {
-      console.log("tableEmpty: "+tableEmpty);
-      if(!tableEmpty) {
-        this.exportDatabase();
-      } 
-      }).catch(e => {
-        console.log("In ionViewWillEnter at Aqarium:"+e);
-     });
-  } 
-
-  exportDatabase(){
-    console.log("exportTable at Aquarium Page!");
-    this.appUsageDb.exportDatabaseToJson().then((res) => {
-      console.log("upload to AWS at Aquarium Page: "+JSON.stringify(res));
-      this.awsS3Service.upload("Tracking",res);
-      
-      //Empty table to prepare another round of tracking
-      this.appUsageDb.emptyTable(); 
-
-    });   
-  }  
-
-  ionViewWillUnload() {
-    
-  }
-
-  ngOnInit(): void {
-
-    /*
-    this.route.queryParams.subscribe(params => {
-      if (this.router.getCurrentNavigation().extras.state) {
-        //throw new Error("Method not implemented.");
-        //show modal on awards
-        this.modalObjectNavigationExtras = this.router.getCurrentNavigation().extras.state.modalObjectNavigationExtras;
-        console.log("home.page.ts --- modalObjectNavigationExtras: " + JSON.stringify(this.modalObjectNavigationExtras));
-        if(this.modalObjectNavigationExtras['IsModalShownYet'] == false)
-          this.showModal();
+        if (this.platform.is('ios')) {
+            this.isIOS = true;
+        }
 
         
-        //this.date = this.router.getCurrentNavigation().extras.state.date;
-        //this.reinforcementObj['prob'] = this.router.getCurrentNavigation().extras.state.prob;
-        //this.reinforcement_data = this.router.getCurrentNavigation().extras.state.reinforcement_data;         
-        //console.log("Inside AwardAltruism, date is: " +this.date+" prob is: "+this.reinforcementObj['prob']);
-      }
-    }); 
-    */
+
+        this.sideMenu();
+
+        //
+        this.grabLatestSurveyTurnOnOffInfo();
+        //
+        this.changeColorOfSurveyIcon();
+
+    }
+
+    sideMenu() {
+        this.navigate =
+            [
+                {
+                    title: "Home",
+                    url: "/home",
+                    icon: "home"
+                },
+                {
+                    title: "Chat",
+                    url: "/chat",
+                    icon: "chatboxes"
+                },
+                {
+                    title: "Contacts",
+                    url: "/contacts",
+                    icon: "contacts"
+                },
+            ]
+    }
+
+    //show side menu
+    showSideMenu() {
+        console.log("side menu called");
+        this.menu.enable(true, 'first');
+        this.menu.open('first');
+    }
+
+    ionViewDidLeaveFunction() {
+        this.child.ionViewDidLeaveFunction();
+
+        //unsubscribe from model view.
+        this.modalDataSubscription$.unsubscribe();
+    }
+
+    ionViewDidLeave() {
+        console.log("aqarium.ts --- ionDidLeave");
+        this.ionViewDidLeaveFunction();
+
+        //If "Leave Aquarium" is already tracked in demo-aquarium, duplication?
+        this.appUsageDb.saveAppUsageExit("aquarium_tab");
+    }
+
+    ionViewDidEnter() {
+
+        console.log("aqarium.ts --- ionViewDidEnter");
+        this.child.loadFunction();
+
+        //decide if we want to show the modal view with unlockables.
+        this.subscribeForModalView();
+
+        //If "Enter Aquarium" is already tracked in demo-aquarium, duplication?
+        this.appUsageDb.saveAppUsageEnter("aquarium_tab");
+
+        //
+        this.saveDbToAWS();
+        this.userProfileService.saveToServer();
+
+    }
+
+    //
+    changeColorOfSurveyIcon() {
+        //
+        var currentTime = moment();
+        var startTime = moment({ hour: 18 });  // 6pm
+        var endTime = moment({ hour: 23, minute: 59 });  // 11:59pm
+        var firstLogin = this.userProfileService.userProfile.firstlogin;
+        if (firstLogin == undefined) firstLogin = true;
+        this.userProfileService.userProfile.firstlogin = false;
+        this.userProfileService.saveProfileToDevice();
+        this.userProfileService.saveToServer();
 
 
-    this.title = "ADAPTS";
-    console.log("aquarium.component.ts --- start");
-    //this.menu.enable(true);
+        if (!currentTime.isBetween(startTime, endTime) && !firstLogin) 
+            this.isSurveyAvailableNow = false;
+        else if (this.userProfileService.surveyTakenForCurrentDay())
+            this.isSurveyAvailableNow = false;
+        else 
+            this.isSurveyAvailableNow = true;
+        
 
-  }
+    }
 
-  ngOnDestroy(){
-    this.sub1$.unsubscribe();
-    this.sub2$.unsubscribe();
 
-    this.ionViewDidLeaveFunction();
-    console.log("aquarium.component.ts --- destroy");
-  }
+    grabLatestSurveyTurnOnOffInfo() {
 
-  subscribeForModalView(){
-    //this.unlockedItems$ = 
-    this.modalDataSubscription$ = this.store.pipe(select(isIncentivesUnlockedForTheDay))
-              .subscribe(params => {
-                  if(params == undefined)
-                    console.log("---params: undefined---"+ JSON.stringify(params))
-                  else{
-                    console.log("---params: ---"+ JSON.stringify(params))
+        // get up to date userProfileFixed - to see if isActive has changed
+        this.userProfileService.fetchUserProfileFixed().subscribe(response => {
+            if (response.changed) {
+                // there was a change to isActive
+                // accessible via
+                // this.userProfileService.isActive
+
+                //--- isActive, should update automatically
+
+            }
+        });
+
+    }
+
+    //Upload SQLite database to AWS in ionViewWillEnter which happens
+    //before "ionViewDidEnter" in demo-aquarium, thus the table will 
+    //be empty first visit aquarium, will not be empty if user 
+    //"come back" to aquarium after visit other pages and will 
+    // be exported to AWS.
+    //
+    // --- Moving to ionViewDidEnter()
+    //
+    saveDbToAWS() {
+        this.appUsageDb.isTableEmpty().then(tableEmpty => {
+            console.log("tableEmpty: " + tableEmpty);
+            if (!tableEmpty) {
+                this.exportDatabase();
+            }
+        }).catch(e => {
+            console.log("In ionViewWillEnter at Aqarium:" + e);
+        });
+    }
+
+    exportDatabase() {
+        console.log("exportTable at Aquarium Page!");
+        this.appUsageDb.exportDatabaseToJson().then((res) => {
+            console.log("upload to AWS at Aquarium Page: " + JSON.stringify(res));
+            this.awsS3Service.upload("Tracking", res);
+
+            //Empty table to prepare another round of tracking
+            this.appUsageDb.emptyTable();
+
+        });
+    }
+
+    ionViewWillUnload() {
+
+    }
+
+    ngOnInit(): void {
+
+        /*
+        this.route.queryParams.subscribe(params => {
+          if (this.router.getCurrentNavigation().extras.state) {
+            //throw new Error("Method not implemented.");
+            //show modal on awards
+            this.modalObjectNavigationExtras = this.router.getCurrentNavigation().extras.state.modalObjectNavigationExtras;
+            console.log("home.page.ts --- modalObjectNavigationExtras: " + JSON.stringify(this.modalObjectNavigationExtras));
+            if(this.modalObjectNavigationExtras['IsModalShownYet'] == false)
+              this.showModal();
+    
+            
+            //this.date = this.router.getCurrentNavigation().extras.state.date;
+            //this.reinforcementObj['prob'] = this.router.getCurrentNavigation().extras.state.prob;
+            //this.reinforcement_data = this.router.getCurrentNavigation().extras.state.reinforcement_data;         
+            //console.log("Inside AwardAltruism, date is: " +this.date+" prob is: "+this.reinforcementObj['prob']);
+          }
+        }); 
+        */
+
+
+        this.title = "ADAPTS";
+        console.log("aquarium.component.ts --- start");
+        //this.menu.enable(true);
+
+    }
+
+    ngOnDestroy() {
+        this.sub1$.unsubscribe();
+        this.sub2$.unsubscribe();
+
+        this.ionViewDidLeaveFunction();
+        console.log("aquarium.component.ts --- destroy");
+    }
+
+    subscribeForModalView() {
+        //this.unlockedItems$ = 
+        this.modalDataSubscription$ = this.store.pipe(select(isIncentivesUnlockedForTheDay))
+            .subscribe(params => {
+                if (params == undefined)
+                    console.log("---params: undefined---" + JSON.stringify(params))
+                else {
+                    console.log("---params: ---" + JSON.stringify(params))
                     var unlockedIncentive: UnlockedIncentive = params;
                     //computeUnlockedReinforcements(currentPoints, previousPoints, awardedDollar)
 
-                    if(unlockedIncentive["isUnlockedViewShown"] == false) 
-                        this.computeUnlockedReinforcements(unlockedIncentive["current_point"], 
-                                                          unlockedIncentive["current_point"] - unlockedIncentive["unlocked_points"],
-                                                          unlockedIncentive["unlocked_money"]);                 
-                  }
+                    if (unlockedIncentive["isUnlockedViewShown"] == false)
+                        this.computeUnlockedReinforcements(unlockedIncentive["current_point"],
+                            unlockedIncentive["current_point"] - unlockedIncentive["unlocked_points"],
+                            unlockedIncentive["unlocked_money"]);
                 }
-              );
-  }
+            }
+            );
+    }
 
 
-  startSurvey(){
-    console.log('start survey');
-    var currentTime = moment(); 
-    var startTime = moment({hour: 18});  // 6pm
-    var endTime = moment({hour: 23, minute: 59});  // 11:59pm
-    var firstLogin = this.userProfileService.userProfile.firstlogin;
-    if(firstLogin == undefined)  firstLogin = true;
-    this.userProfileService.userProfile.firstlogin = false;
-    this.userProfileService.saveProfileToDevice();
-    this.userProfileService.saveToServer();
-    if(!currentTime.isBetween(startTime, endTime) && !firstLogin) {
-      this.presentAlert('Please come back between 6 PM and midnight');
-    } else if(this.userProfileService.surveyTakenForCurrentDay()) {
-      this.presentAlert('You have already completed the survey for the day.');
-    } else {
-      if (this.userProfileService.isParent){
-        this.navController.navigateRoot(['survey/samplesurvey']);  //caregiversurvey
-      } else{
-        this.navController.navigateRoot(['survey/samplesurvey2']);  //aya
-      }
+    startSurvey() {
+        console.log('start survey');
+        var currentTime = moment();
+        var startTime = moment({ hour: 18 });  // 6pm
+        var endTime = moment({ hour: 23, minute: 59 });  // 11:59pm
+        var firstLogin = this.userProfileService.userProfile.firstlogin;
+        if (firstLogin == undefined) firstLogin = true;
+        this.userProfileService.userProfile.firstlogin = false;
+        this.userProfileService.saveProfileToDevice();
+        this.userProfileService.saveToServer();
+        if (!currentTime.isBetween(startTime, endTime) && !firstLogin) {
+            this.presentAlert('Please come back between 6 PM and midnight');
+        } else if (this.userProfileService.surveyTakenForCurrentDay()) {
+            this.presentAlert('You have already completed the survey for the day.');
+        } else {
+            if (this.userProfileService.isParent) {
+                this.navController.navigateRoot(['survey/samplesurvey']);  //caregiversurvey
+            } else {
+                this.navController.navigateRoot(['survey/samplesurvey2']);  //aya
+            }
 
-    } 
-
-  }
-
-  async openSurvey(location){
-    this.navController.navigateRoot([location]);
-  }
-
-  async presentAlert(alertMessage) {
-    
-    const alert = await this.alertCtrl.create({
-      //<div style="font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center">Thank you for completing the survey. You have unlocked a meme.</div>
-      //header: '<div style="line-height: 25px;padding-bottom:10px;text-align:center">Daily survey unavilable</div>',
-      header: 'Daily survey unavailable',
-      //subHeader: "Survey is not avaibable!",
-      message: alertMessage,
-      //defined in theme/variables.scss
-      //buttons: [{text: 'OK', cssClass: 'secondary'}]
-      buttons: [{text: 'OK'}]
-    });
-    
-    /*
-      let alert = this.alertCtrl.create({
-        title: 'Low battery',
-        subTitle: '10% of battery remaining',
-        buttons: ['Dismiss']
-      });
-    */
-
-    //----
-    await alert.present();
-  }
-
-  dispalySurveyPausedMsg(){
-    this.presentAlert('This account has been temporarily paused by the research administrators.');    
-  }
-
-
-  showMemeDemo(){
-    this.router.navigate(['incentive/award-memes']);
-  }
-
-  showAltruisticDemo(){
-    this.router.navigate(['incentive/award-altruism']);
-  }
-
-  showModalDemo(){
-    var reinforcements =  [];
-    reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
-    reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
-    reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
-    //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
-    //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
-    //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
-    //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
-    //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
-    this.presentModal(reinforcements);
-  }
-
-
-  //show unlocked pages, using a modal
-  async presentModal(reinforcements) {
-    const modal = await this.modalController.create({
-      component: ModalUnlockedPageComponent,
-      componentProps: {
-        'reinforcements': reinforcements
-      },
-      enterAnimation: myEnterAnimation,
-      leaveAnimation: myLeaveAnimation,
-      //,
-      cssClass: 'my-default-2'
-    });
-    return await modal.present();
-  }
-
-
-  showModal(){
-    //if(window.localStorage['IsModalShown'] == undefined)
-    //  return;
-
-    //if(window.localStorage['IsModalShown'] == "false"){
-
-    //
-    var todaysDate = moment().format('YYYYMMDD');
-    var storedDate = this.modalObjectNavigationExtras["LastSurveyCompletionDate"];
-
-    //
-    if(todaysDate == storedDate){
-      //this.computeUnlockedReinforcements();
-    } 
-
-    //
-    //window.localStorage.setItem("IsModalShown", "true");
-    //}
-  }
-
-  
-
-  isFirstDayInTheStudy(){
-
-    var daily_survey = this.userProfileService.userProfile.survey_data.daily_survey;
-    var first_date = moment().format('YYYYMMDD');
-    var first_date_moment_js = moment(first_date,"YYYYMMDD");
-    var key_moment_js;
-    for (var key in daily_survey) {
-        key_moment_js = moment(key,"YYYYMMDD");
-        //takes the first day only. But it may not be the first date.
-        if (key_moment_js < first_date_moment_js) {
-            first_date = key;
-            first_date_moment_js = moment(first_date,"YYYYMMDD");
         }
+
     }
 
-    var todays_date = moment().format('YYYYMMDD');
-    if(todays_date == first_date)
-      return true;
-    else
-      return false;
-  }
-
-  computeUnlockedReinforcements(currentPoints, previousPoints, awardedDollar){
-
-    //var currentPoints = this.modalObjectNavigationExtras["CurrentPoints"];
-    //var previousPoints = this.modalObjectNavigationExtras["PreviousPoints"];
-    //var awardedDollar = this.modalObjectNavigationExtras["AwardedDollar"];
-    var reinforcements = [];
-    console.log("computeUnlockedReinforcements: called")
-
-    //get if money is awarded.
-    if(awardedDollar > 0){
-      if(this.isFirstDayInTheStudy())
-        //reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'Thanks for being a participant in the study. You earned 2 dollar.'});
-        reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for completing your first survey! You earned 2 dollars.'});
-      else{
-        if(awardedDollar == 1) //hack, 1 dollar is only awarded after a three-day streak.
-          reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for surveys three days in a row! You earned 1 dollar.'});
-        
-        if(awardedDollar == 2) //hack, 2 dollar is only awarded after a break.
-          reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for coming back after a break! You earned 2 dollars.'});
-      }
+    async openSurvey(location) {
+        this.navController.navigateRoot([location]);
     }
-      
-    //get if fish is alotted
-    previousPoints = currentPoints - 60;
-    console.log(currentPoints + ", " + previousPoints);
 
-    fetch('../../../assets/game/fishpoints.json').then(async res => {
-      //console.log("Fishes: " + data);
+    async presentAlert(alertMessage) {
 
-      var fish_data = await res.json();
-      var img; 
-      var header;
-      var text;
-      for(var i = 0; i < fish_data.length; i++) {
-          if ((fish_data[i].points > previousPoints) && (fish_data[i].points <= currentPoints)) {
-            img = "assets/" + fish_data[i].img.substring(0, fish_data[i].img.length-4) + '_tn.jpg';
-            header =  "You have now unlocked the " + fish_data[i].name;
-            text = fish_data[i].trivia;
-            reinforcements.push({'img': img, 'header': header, 'text': text});
-          }
-      }
-      console.log("reinforcements: " + JSON.stringify(reinforcements));
-      if(reinforcements.length > 0)//means some rainforcement was provided.
+        const alert = await this.alertCtrl.create({
+            //<div style="font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center">Thank you for completing the survey. You have unlocked a meme.</div>
+            //header: '<div style="line-height: 25px;padding-bottom:10px;text-align:center">Daily survey unavilable</div>',
+            header: 'Daily survey unavailable',
+            //subHeader: "Survey is not avaibable!",
+            message: alertMessage,
+            //defined in theme/variables.scss
+            //buttons: [{text: 'OK', cssClass: 'secondary'}]
+            buttons: [{ text: 'OK' }]
+        });
+
+        /*
+          let alert = this.alertCtrl.create({
+            title: 'Low battery',
+            subTitle: '10% of battery remaining',
+            buttons: ['Dismiss']
+          });
+        */
+
+        //----
+        await alert.present();
+    }
+
+    dispalySurveyPausedMsg() {
+        this.presentAlert('This account has been temporarily paused by the research administrators.');
+    }
+
+
+    showMemeDemo() {
+        this.router.navigate(['incentive/award-memes']);
+    }
+
+    showAltruisticDemo() {
+        this.router.navigate(['incentive/award-altruism']);
+    }
+
+    showModalDemo() {
+        var reinforcements = [];
+        reinforcements.push({ 'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?" });
+        reinforcements.push({ 'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?" });
+        reinforcements.push({ 'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?" });
+        //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+        //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+        //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+        //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+        //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
         this.presentModal(reinforcements);
-    });
-
-    //update the state reinforcement
-    this.store.dispatch(unlockedScreenShownAlready({isUnlockedScreenShown: true}));
-  }
+    }
 
 
-  
+    //show unlocked pages, using a modal
+    async presentModal(reinforcements) {
+        const modal = await this.modalController.create({
+            component: ModalUnlockedPageComponent,
+            componentProps: {
+                'reinforcements': reinforcements
+            },
+            enterAnimation: myEnterAnimation,
+            leaveAnimation: myLeaveAnimation,
+            //,
+            cssClass: 'my-default-2'
+        });
+        return await modal.present();
+    }
+
+
+    showModal() {
+        //if(window.localStorage['IsModalShown'] == undefined)
+        //  return;
+
+        //if(window.localStorage['IsModalShown'] == "false"){
+
+        //
+        var todaysDate = moment().format('YYYYMMDD');
+        var storedDate = this.modalObjectNavigationExtras["LastSurveyCompletionDate"];
+
+        //
+        if (todaysDate == storedDate) {
+            //this.computeUnlockedReinforcements();
+        }
+
+        //
+        //window.localStorage.setItem("IsModalShown", "true");
+        //}
+    }
+
+
+
+    isFirstDayInTheStudy() {
+
+        var daily_survey = this.userProfileService.userProfile.survey_data.daily_survey;
+        var first_date = moment().format('YYYYMMDD');
+        var first_date_moment_js = moment(first_date, "YYYYMMDD");
+        var key_moment_js;
+        for (var key in daily_survey) {
+            key_moment_js = moment(key, "YYYYMMDD");
+            //takes the first day only. But it may not be the first date.
+            if (key_moment_js < first_date_moment_js) {
+                first_date = key;
+                first_date_moment_js = moment(first_date, "YYYYMMDD");
+            }
+        }
+
+        var todays_date = moment().format('YYYYMMDD');
+        if (todays_date == first_date)
+            return true;
+        else
+            return false;
+    }
+
+    computeUnlockedReinforcements(currentPoints, previousPoints, awardedDollar) {
+
+        //var currentPoints = this.modalObjectNavigationExtras["CurrentPoints"];
+        //var previousPoints = this.modalObjectNavigationExtras["PreviousPoints"];
+        //var awardedDollar = this.modalObjectNavigationExtras["AwardedDollar"];
+        var reinforcements = [];
+        console.log("computeUnlockedReinforcements: called")
+
+        //get if money is awarded.
+        if (awardedDollar > 0) {
+            if (this.isFirstDayInTheStudy())
+                //reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'Thanks for being a participant in the study. You earned 2 dollar.'});
+                reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for completing your first survey! You earned 2 dollars.' });
+            else {
+                if (awardedDollar == 1) //hack, 1 dollar is only awarded after a three-day streak.
+                    reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for surveys three days in a row! You earned 1 dollar.' });
+
+                if (awardedDollar == 2) //hack, 2 dollar is only awarded after a break.
+                    reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for coming back after a break! You earned 2 dollars.' });
+            }
+        }
+
+        //get if fish is alotted
+        previousPoints = currentPoints - 60;
+        console.log(currentPoints + ", " + previousPoints);
+
+        fetch('../../../assets/game/fishpoints.json').then(async res => {
+            //console.log("Fishes: " + data);
+
+            var fish_data = await res.json();
+            var img;
+            var header;
+            var text;
+            for (var i = 0; i < fish_data.length; i++) {
+                if ((fish_data[i].points > previousPoints) && (fish_data[i].points <= currentPoints)) {
+                    img = "assets/" + fish_data[i].img.substring(0, fish_data[i].img.length - 4) + '_tn.jpg';
+                    header = "You have now unlocked the " + fish_data[i].name;
+                    text = fish_data[i].trivia;
+                    reinforcements.push({ 'img': img, 'header': header, 'text': text });
+                }
+            }
+            console.log("reinforcements: " + JSON.stringify(reinforcements));
+            if (reinforcements.length > 0)//means some rainforcement was provided.
+                this.presentModal(reinforcements);
+        });
+
+        //update the state reinforcement
+        this.store.dispatch(unlockedScreenShownAlready({ isUnlockedScreenShown: true }));
+    }
+
+
+
 }
