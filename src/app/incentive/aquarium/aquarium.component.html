@@ -53,13 +53,15 @@
           
   
           <ion-button (click)="startSurvey()"   *ngIf="isActive">
-              <ion-icon name="ios-create" style="color : white;"></ion-icon>
+              <ion-icon name="ios-create" style="color : white;" *ngIf="isSurveyAvailableNow"></ion-icon>
+              <ion-icon name="ios-create" style="color : #F1C40F;" *ngIf="!isSurveyAvailableNow"></ion-icon>
           </ion-button>
   
   
           <ion-button *ngIf="!isActive" (click)="dispalySurveyPausedMsg()" >
               <ion-icon name="ios-create" style="color : #e74c3c;"></ion-icon>
           </ion-button>
+
           <!--
           <ion-button href="{{surveyPath}}" *ngIf="isActive">Start Survey</ion-button> 
           <ion-button style="color:#fff;" (click)="startSurvey()">
@@ -69,6 +71,7 @@
             <ion-icon name="journal"></ion-icon>
           </ion-button> 
           -->
+
       </ion-buttons>
       <ion-title style="color:#fff;">{{title}}</ion-title>
     </ion-toolbar>
