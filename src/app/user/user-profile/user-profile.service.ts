@@ -338,7 +338,7 @@ export class UserProfileService {
   }
 
   get stringCurrenDate(){
-    console.log("user-profile.service.ts - stringCurrenDate getter - begin");
+    //console.log("user-profile.service.ts - stringCurrenDate getter - begin");
     
     //shift hours back by 2, so that 2am, will register as 12am
     const hoursShift: number = 2;
@@ -375,7 +375,7 @@ export class UserProfileService {
 
   // boolean function, checks if survey has been taken for the current date.
   surveyTakenForCurrentDay(){
-    console.log("user-profile.service.ts - surveyTakenForCurrentDay method - begin");
+    //console.log("user-profile.service.ts - surveyTakenForCurrentDay method - begin");
 
     this.loadProfileFromDevice();
     //check if date already exists in dict of dates, otherwise add the date to dict    
