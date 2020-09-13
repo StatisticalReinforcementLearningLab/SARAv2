@@ -16,6 +16,9 @@ import { unlockedScreenShownAlready } from '../incentive.actions';
 import { DatabaseService } from 'src/app/monitor/database.service';
 import { AwsS3Service } from '../../storage/aws-s3.service';
 
+import { Subscription, timer } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+
 @Component({
     selector: 'app-aquarium',
     templateUrl: './aquarium.component.html',
@@ -37,6 +40,9 @@ export class AquariumComponent implements OnInit {
     isIOS = false;
     isSurveyAvailableNow = false;
     navigate: any;
+
+    subscription: Subscription;
+    statusText: string;
 
 
     get isActive() {
@@ -73,6 +79,8 @@ export class AquariumComponent implements OnInit {
         });
         this.sub2$ = this.platform.resume.subscribe(() => {
             console.log('****UserdashboardPage RESUMED****');
+
+            //
             this.child.resumeGameRendering();
 
             //update the survey status.
@@ -180,8 +188,8 @@ export class AquariumComponent implements OnInit {
         var firstLogin = this.userProfileService.userProfile.firstlogin;
         if (firstLogin == undefined) firstLogin = true;
         this.userProfileService.userProfile.firstlogin = false;
-        this.userProfileService.saveProfileToDevice();
-        this.userProfileService.saveToServer();
+        //this.userProfileService.saveProfileToDevice();
+        //this.userProfileService.saveToServer();
 
 
         if (!currentTime.isBetween(startTime, endTime) && !firstLogin) 
@@ -272,6 +280,14 @@ export class AquariumComponent implements OnInit {
         console.log("aquarium.component.ts --- start");
         //this.menu.enable(true);
 
+        this.subscription = timer(0, 1000).subscribe(
+            result => {
+                //
+                //console.log("timer running");
+                this.changeColorOfSurveyIcon();
+            }
+        );
+
     }
 
     ngOnDestroy() {
@@ -280,6 +296,8 @@ export class AquariumComponent implements OnInit {
 
         this.ionViewDidLeaveFunction();
         console.log("aquarium.component.ts --- destroy");
+
+        this.subscription.unsubscribe();
     }
 
     subscribeForModalView() {
