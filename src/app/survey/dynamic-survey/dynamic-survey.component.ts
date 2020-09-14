@@ -60,6 +60,7 @@ export class DynamicSurveyComponent implements OnInit {
         private alertCtrl: AlertController,
         public plt: Platform,
         private userProfileService: UserProfileService,
+        private lifeInsightsProfileService: LifeInsightsProfileService,
         private store: Store<AppState>,
         private awardDollarService: AwardDollarService) {
 
@@ -70,6 +71,9 @@ export class DynamicSurveyComponent implements OnInit {
     ngAfterViewInit() {
         this.fetchSurveyQuestionsAndGenerateSurvey();
         this.getAppVersionNumber(); // to track which users has the latest version of the app.
+
+        //initiate the life-insight object
+        this.lifeInsightsProfileService.importLifeInsightProfile(this.jsonFileLinkForSurvey);
     }
 
 
