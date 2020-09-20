@@ -71,6 +71,8 @@ Direct links to readme files for each of the modules are below:
 
 Our code heavily uses modules, components and service architecture from Angular 2 or above. If you are new to this architecture, we found [this Udemy course](https://www.udemy.com/course/the-complete-angular-master-class/) to be very helpful.  
 
+# RL Algorithm Documentation
+The documentation for the RL algorithm deployed on SARA version 2 can be found [here](https://hackmd.io/@NmVUyGhZTtGsYYlVWJx9uQ/BJangREBv).
 
 
 
