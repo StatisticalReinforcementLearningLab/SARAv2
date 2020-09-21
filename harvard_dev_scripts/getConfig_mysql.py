@@ -10,5 +10,7 @@ with open('./mysql_config.json', 'r') as datafile:
 
 	# Build json strong
 	DB_PASSWORD = config['DB_PASSWORD']
-
+	DB_HOST = config["DB_HOST"]
+	DB_PORT = config["DB_PORT"]
+	DB_USER = config["DB_USER"]
 
