@@ -21,6 +21,7 @@ import { SeaComponent } from './aquarium/previews/sea/sea.component';
 import { TundraComponent } from './aquarium/previews/tundra/tundra.component';
 import { UnlockedInspirationalQuotesComponent } from './unlocked-inspirational-quotes/unlocked-inspirational-quotes.component';
 import { VideoInfoPageComponent } from './video-info-page/video-info-page.component';
+import { LifeInsightsModule } from './life-insights/life-insights.module';
 
 const routes: Routes = [
 //  { path: 'award', component: AwardComponent },
@@ -29,9 +30,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AwardMemesComponent, AwardAltruismComponent, TreasurechestComponent, ModalUnlockedPageComponent,InfoPageComponent, UnlockedMemesComponent, UnlockedAltuisticMessagesComponent, FishbowlComponent, SeaComponent, TundraComponent, UnlockedInspirationalQuotesComponent, VideoInfoPageComponent],
+  declarations: [AwardMemesComponent, AwardAltruismComponent, TreasurechestComponent, 
+    ModalUnlockedPageComponent,InfoPageComponent, UnlockedMemesComponent, UnlockedAltuisticMessagesComponent, 
+    FishbowlComponent, SeaComponent, TundraComponent, UnlockedInspirationalQuotesComponent, VideoInfoPageComponent],
   imports: [
     CommonModule,
+    LifeInsightsModule,
     IonicModule.forRoot(),
     RouterModule.forChild(routes),
     StoreModule.forFeature('incentive', incentiveReducer)

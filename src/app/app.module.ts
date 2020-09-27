@@ -45,7 +45,6 @@ import { InterventionModule } from './intervention/intervention.module';
     AppRoutingModule,
     SurveyModule,
     IncentiveModule,
-    LifeInsightsModule,
     NotificationModule,
     HttpClientModule,
     AquariumModule,

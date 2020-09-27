@@ -8,6 +8,7 @@ import { UnlockedAltuisticMessagesComponent } from '../incentive/unlocked-altuis
 import { AuthGuard } from '../user/auth/auth.guard';
 import { ContactComponent } from './contact/contact.component';
 import { UnlockedInspirationalQuotesComponent } from '../incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component';
+import { SampleLifeInsightsComponent } from '../incentive/life-insights/sample-life-insights/sample-life-insights.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,9 @@ const routes: Routes = [
       },
       {
         path: 'thankyous', component: UnlockedAltuisticMessagesComponent, canActivate: [AuthGuard]
+      },
+      {
+        path: 'lifeinsight', component: SampleLifeInsightsComponent, canActivate: [AuthGuard]
       },
       {
         path: 'contact', component: ContactComponent, canActivate: [AuthGuard]

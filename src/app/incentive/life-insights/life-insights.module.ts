@@ -17,7 +17,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [Q1MotivatedComponent,SampleLifeInsightsComponent],
+  declarations: [Q1MotivatedComponent, SampleLifeInsightsComponent],
   imports: [
     CommonModule,
     FormsModule,

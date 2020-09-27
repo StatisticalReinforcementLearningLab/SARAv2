@@ -27,6 +27,7 @@ import { SurveyTimeline } from '../model/surveyTimeline';
 import { UnlockedIncentives } from '../../incentive/model/unlocked-incentives';
 import { surveyCompletedRegisterUnlocked } from 'src/app/incentive/incentive.actions';
 import { JSONOutput } from 'aws-sdk/clients/s3';
+import { LifeInsightsProfileService } from 'src/app/incentive/life-insights/life-insights-profile.service';
 
 @Component({
     selector: 'app-dynamic-survey',
@@ -139,6 +140,8 @@ export class DynamicSurveyComponent implements OnInit {
             surveyQuestionsInJSONDictFormat = [];
             alertCtrl;
             store: Store<AppState>;
+
+            lifeInsightsProfileService: LifeInsightsProfileService;
 
             constructor() {
             }
@@ -400,7 +403,9 @@ export class DynamicSurveyComponent implements OnInit {
 
 
                 //TODO: needs to add fix from Liying.
-                this.lifeInsightCodesUnfinished();
+                //this.lifeInsightCodesUnfinished();
+
+                this.lifeInsightsProfileService.saveLifeInsightInfo(this.surveyAnswersJSONObject);
 
 
 
@@ -672,6 +677,7 @@ export class DynamicSurveyComponent implements OnInit {
                 cmpRef.instance.awsS3Service = this.awsS3Service;
                 //cmpRef.instance.surveyAnswersJSONObject = this.surveyQuestionsDict;
                 cmpRef.instance.surveyAnswersJSONObject = this.surveyQuestionsDict;
+                cmpRef.instance.lifeInsightsProfileService = this.lifeInsightsProfileService;
                 cmpRef.instance.fileLink = this.jsonFileLinkForSurvey;
                 cmpRef.instance.versionNumber = this.versionNumber;
                 cmpRef.instance.surveyQuestionsInJSONDictFormat = this.surveyQuestionsInJSONDictFormat;
