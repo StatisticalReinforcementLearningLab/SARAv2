@@ -1,4 +1,3 @@
-
 import mysql.connector as mysql
 from datetime import datetime
 import time
@@ -89,12 +88,15 @@ def getQuestionDataFromHarvardSurvey(n):
     db = connectToDatabase("HarvardDev")
     cursor = db.cursor()
     #recentTime = getRecentTime(n)
-    cursor.execute("""SELECT json_answer, response_id, survey_completion_time FROM harvardSurvey WHERE user_id = {} 
-        AND survey_completion_time = (SELECT MAX(survey_completion_time) FROM harvardSurvey)
-        AND when_inserted = (SELECT MAX(when_inserted) FROM harvardSurvey)"""\
-        .format("'"+n+"'"))
+    '''
+    you're selecting the question response for a corresponding user id based on the most recent survey 
+    completion time and most recent insertion time
+    '''
+    cursor.execute("""SELECT json_answer, response_id FROM harvardSurvey WHERE user_id = '{}' 
+        AND survey_completion_time = (SELECT MAX(survey_completion_time) FROM harvardSurvey WHERE user_id = '{}')
+        AND when_inserted = (SELECT MAX(when_inserted) FROM harvardSurvey WHERE user_id = '{}')"""\
+        .format(n,n,n))
     returnedData = cursor.fetchall()[0]
-
     try:
         #questionData = json.loads(cursor.fetchall()[0][0])
         questionData = json.loads(returnedData[0])
@@ -102,7 +104,7 @@ def getQuestionDataFromHarvardSurvey(n):
         raise Exception("Could not find most recent question data for specified user.")
 
     if "Q4" in questionData:
-        return questionData, returnedData[1], returnedData[2]
+        return questionData, returnedData[1]
     else:
         pass
 

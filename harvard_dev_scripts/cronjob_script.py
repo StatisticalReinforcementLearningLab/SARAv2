@@ -22,12 +22,12 @@ def main():
 		
 		if playerID is not None:
 
-			surveyResponses, responseUUID, surveyCompletionTime = getQuestionDataFromHarvardSurvey(userName)
+			surveyResponses, responseUUID = getQuestionDataFromHarvardSurvey(userName)
 			
 			# passing external_id ensures idempotence
-			msg = OneSignal(playerID, userName, surveyResponses["Q4"], timeToSend="6:00 AM",\
+			msg = OneSignal(playerID, surveyResponses["Q4"], timeToSend="6:00 AM",\
 				msgHeading="Harvard test title", notificationImage='fishjournal.png',\
-				externalID=responseUUID, surveyCompletionTime = surveyCompletionTime)
+				externalID=responseUUID)
 			msg.send()
 
 	print("Finished sending notifications to all users who completed surveys.")

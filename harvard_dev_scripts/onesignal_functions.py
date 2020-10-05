@@ -17,26 +17,23 @@ class OneSignal():
     """
     Creates and sends OneSignal notifications.
     """
-    def __init__(self, playerID, userName, questionResponse, timeToSend, msgHeading, notificationImage,
-        externalID, surveyCompletionTime):
+    def __init__(self, playerID, questionResponse, timeToSend, msgHeading, notificationImage,
+        externalID):
         self.playerID = [playerID]
-        self.userName = userName
         self.payloadText = ""
         self.timeToSend = timeToSend
         self.msgHeading = msgHeading
         self.notificationImage = notificationImage 
         self.questionResponse = questionResponse
         self.externalID = externalID
-        self.surveyCompletionTime = surveyCompletionTime
 
     def createOneSignalMessage(self):
         response = self.questionResponse.strip()
         if response == "yes":
-            return "sample therapeutic notification for " + self.userName + " for yes at time " + str(self.surveyCompletionTime)
+            return "sample therapeutic notification for yes"
 
         elif response == "no":
-            return "sample therapeutic notification for " + self.userName + " for no at time " + str(self.surveyCompletionTime)
-
+            return "sample therapeutic notification for no"
 
     def send(self):
 
@@ -56,7 +53,7 @@ class OneSignal():
             "data": {"user": "test", "type": "4PM"},
             "ios_badgeCount": 1,
             "collapse_id": "", 
-            #"delivery_time_of_day": time,
+            "delivery_time_of_day": self.timeToSend,
             "ttl" : 259200,
             "priority": 10,
             "buttons": [{"id": "iLike", "text": "Like"}, {"id": "iNope", "text": "Nope"}],
