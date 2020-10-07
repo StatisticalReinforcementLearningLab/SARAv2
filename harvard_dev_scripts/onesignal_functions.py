@@ -24,7 +24,7 @@ class OneSignal():
         self.timeToSend = timeToSend
         self.msgHeading = msgHeading
         self.notificationImage = notificationImage 
-        self.questionResponse = questionResponse
+        self.questionResponse = str(questionResponse)
         self.externalID = externalID
 
     def createOneSignalMessage(self):

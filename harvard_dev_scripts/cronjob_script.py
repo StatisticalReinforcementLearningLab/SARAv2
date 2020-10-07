@@ -6,7 +6,7 @@ from mysql_functions import (getQuestionDataFromHarvardSurvey, getUsernamesFromH
 
 def main():
 	"""
-	The official script that cronjob runs every 15 minutes.
+	The official script that cronjob runs every 60 minutes.
 	"""
 	print("Starting the cronjob script....")
 
@@ -31,6 +31,7 @@ def main():
 			msg.send()
 
 	print("Finished sending notifications to all users who completed surveys.")
+
 
 
 if __name__ == '__main__':
