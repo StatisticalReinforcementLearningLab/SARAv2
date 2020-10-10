@@ -1,21 +1,29 @@
 {
-    "questions":["Q1","Q2","Q4"],
-    "qimgs": ["assets/img/stress.png","assets/img/freetime.png","assets/img/dance2.png","assets/img/social.png"],
+    "questions":["Q1","Q2","Q3","Q4","Q5"],
+    "qimgs": ["assets/img/stress.png","assets/img/freetime.png","assets/img/dance2.png","assets/img/dance2.png","assets/img/social.png"],
     "lifeInsightsTitle": [
-        "How <b>positive</b> were you feeling (for example, happy or joyful) just before you received this survey?",
-        "How <b>negative</b> were you feeling (for example, stressed, mad/angry, nervous/anxious, or sad) just before you received this survey?",
-        "In the past 24 hours, how <b>easy</b> was it to talk to your parent about your thoughts and feelings?"],
-    "qYaxis": ["Positive level","Negative level","Communication level"],
+        "How <b>stressed</b> are you today?",
+        "This past week, did you concentrate easily?",
+        "When did you go to bed last night?",
+        "When did you wake up this morning?",
+        "Do you think you'll have a good day tomorrow?"],
+    
+    "questionType": ["horizontal_radiobutton", "vertical_radiobutton", "hour_time", "hour_time", "vertical_radiobutton"],
+    "qYaxis": ["Stress level","Concentration values","Hour", "Hour", "yes/no"],
     "qSubText": ["0 = less positive, 4 = highly positive", 
             "0 = less negative, 4 = highly negative",
              "0 = less easy, 4 = highly easy"],
     "lifeInsightsHighStress": [
-        "Positive <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>",
-        "Negative <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>",
-        "Easy to talk <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>"],
+        "High stress <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>",
+        "High <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>",
+        "High <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>",
+        "High <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>",
+        "High <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>"],
     "lifeInsightsLowStress": [
-        "Positive <i class='em em-sunglasses'></i><i class='em em-boat'></i>", 
-        "Negative <i class='em em-sunglasses'></i><i class='em em-boat'></i>", 
-        "Easy to talk <i class='em em-sunglasses'></i><i class='em em-boat'></i>"]          
+        "Low stress <i class='em em-sunglasses'></i><i class='em em-boat'></i>", 
+        "Low <i class='em em-sunglasses'></i><i class='em em-boat'></i>", 
+        "Low <i class='em em-sunglasses'></i><i class='em em-boat'></i>", 
+        "Low <i class='em em-sunglasses'></i><i class='em em-boat'></i>", 
+        "Low <i class='em em-sunglasses'></i><i class='em em-boat'></i>"]          
 
 }

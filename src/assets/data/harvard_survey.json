@@ -2,8 +2,9 @@
 [
     {
       "name": "Q1",
-      "text": "How stressed are you today?",
+      "text": "1. How stressed are you today?",
       "type": "radiobutton",
+      "tag": "1",
       "extra": {
         "choices": ["Not<br>at all", "A<br>lot"],
         "orientation": "horizontal",
@@ -12,8 +13,9 @@
     },
     {
       "name": "Q2",
-      "text": "This past week, did you concentrate easily?",
+      "text": "2. This past week, did you concentrate easily?",
       "type": "radiobutton",
+      "tag": "2",
       "extra": {
         "choices": ["Rarely/Never", "Occasionally", "Often", "Almost Always/Always"],
         "orientation": "vertical"
@@ -21,27 +23,36 @@
     },
     {
       "name":"Q3",
-      "text":"When did you go to bed last night",
+      "text":"3. When did you go to bed last night",
       "type":"range_time",
+      "tag": "3",
       "extra":{
         "choices":["8:00<br>PM", "4:00<br>AM",0,8,0.5, "12:00 AM"]
       }
     },
     {
       "name":"Q4",
-      "text":"When did you wake up this morning?",
+      "text":"4. When did you wake up this morning?",
       "type":"range_time",
+      "tag": "4",
       "extra":{
         "choices":["4:00<br>AM", "12:00<br>PM",0,8,0.5, "8:00 AM"]
       }
     },
     {
       "name": "Q5",
-      "text": "Do you think you'll have a good day tomorrow?",
+      "text": "5. Do you think you'll have a good day tomorrow?",
       "type": "radiobutton",
+      "tag": "5",
       "extra": {
         "choices": ["yes", "no"],
         "orientation": "vertical"
       }
+    },
+    {
+      "name": "QMood",
+      "text": "6. Rate your mood for today",
+      "type": "moodgrid2",
+      "tag": "6"
     }
 ]

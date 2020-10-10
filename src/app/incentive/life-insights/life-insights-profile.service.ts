@@ -42,7 +42,7 @@ export class LifeInsightsProfileService {
     }
 
     //Save 7-day date and value for each question in localStorage to generate lifeInsight chart
-    saveLifeInsightInfo(survey) {
+    saveLifeInsightInfo(survey, typeOfSurvey) {
         /*
         
         var lifeInsightProfile = {
@@ -72,38 +72,61 @@ export class LifeInsightsProfileService {
        */
         var lifeInsightObj = {};
         console.log(JSON.stringify(this.lifeInsightProfile));
-        var questionsArray = this.lifeInsightProfile.questions;  //["Q3d","Q4d","Q5d","Q8d"]
+
+        //all the questions in life insight profile. 
+        var questionsArray = this.lifeInsightProfile.questions; //["Q3d","Q4d","Q5d","Q8d"]
          
         if (window.localStorage['lifeInsight'] == undefined) {
 
             for (let question of questionsArray) {
                 lifeInsightObj[question] = {};
                 lifeInsightObj[question]['dates'] = [moment().format("DD-MM-YYYY")];
+
+                //checks if the question is available in the survey. If it then add it the data
                 if (survey.hasOwnProperty(question)) {
-                    lifeInsightObj[question]['data'] = [parseInt(survey[question])];
+
+                    //ToDO: problem here is it is converting to an int.
+                    // Add question type here.
+                    lifeInsightObj[question]['data'] = [survey[question]]; //[parseInt(survey[question])];
+                    lifeInsightObj[question]['data_type'] = "data_type";
                 }
                 else {
                     lifeInsightObj[question]['data'] = [null];
+                    lifeInsightObj[question]['data_type'] = "not available";
                 }
             }
 
         } else {
+
+            //
             lifeInsightObj = JSON.parse(window.localStorage["lifeInsight"]);
 
+            //
             for (let question of questionsArray) {
+
+                //
+                console.log("lifeInsightObj: " + JSON.stringify(lifeInsightObj) + ", question: " 
+                        + question + ", survey: "+  JSON.stringify(survey));
                 var dateslength = lifeInsightObj[question]['dates'].length;
+
+                //-- trims before last 7-days
                 if (dateslength == 7) {
                     lifeInsightObj[question]['dates'].shift();
                     lifeInsightObj[question]['data'].shift();
                 }
+
+                //-- 
                 var currentdate = moment().format("DD-MM-YYYY");
                 var dates = lifeInsightObj[question]["dates"];
                 var dateIndex = dates.indexOf(currentdate);
-                console.log("Current date exist? " + dateIndex);
+                //console.log("Current date exist? " + dateIndex);
+
+                //-- 
                 if (dateIndex > -1) {
                     lifeInsightObj[question]['dates'][dateIndex] = currentdate;
                     if (survey.hasOwnProperty(question)) {
-                        lifeInsightObj[question]['data'][dateIndex] = (parseInt(survey[question]));
+                        //console.log(lifeInsightObj[question]['data'][dateIndex] + ", " + survey[question]);
+                        lifeInsightObj[question]['data'][dateIndex] = survey[question]; //(parseInt(survey[question]));
                     }
                     else {
                         lifeInsightObj[question][dateIndex] = null;
@@ -111,7 +134,8 @@ export class LifeInsightsProfileService {
                 } else {
                     lifeInsightObj[question]['dates'].push(currentdate);
                     if (survey.hasOwnProperty(question)) {
-                        lifeInsightObj[question]['data'].push(parseInt(survey[question]));
+                        //lifeInsightObj[question]['data'].push(parseInt(survey[question]));
+                        lifeInsightObj[question]['data'].push(survey[question]);
                     }
                     else {
                         lifeInsightObj[question]['data'].push(null);

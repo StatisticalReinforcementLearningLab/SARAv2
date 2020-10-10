@@ -140,6 +140,7 @@ export class DynamicSurveyComponent implements OnInit {
             surveyQuestionsInJSONDictFormat = [];
             alertCtrl;
             store: Store<AppState>;
+            
 
             lifeInsightsProfileService: LifeInsightsProfileService;
 
@@ -356,6 +357,9 @@ export class DynamicSurveyComponent implements OnInit {
                 //-- store survey completed into ngrx to send to server and any other listener.
                 this.storeToNgrxAndUpdateState();
 
+                //Save the life-insight data.
+                this.lifeInsightsProfileService.saveLifeInsightInfo(this.surveyAnswersJSONObject, this.fileLink);
+
                 //start giving all the incentives from here
                 this.provideIncentives();
             }
@@ -400,12 +404,6 @@ export class DynamicSurveyComponent implements OnInit {
 
                 // ToDo: change this. Dan is saving user profile here to save the money to server.
                 this.userProfileService.surveyCompleted();
-
-
-                //TODO: needs to add fix from Liying.
-                //this.lifeInsightCodesUnfinished();
-
-                this.lifeInsightsProfileService.saveLifeInsightInfo(this.surveyAnswersJSONObject);
 
 
 
@@ -471,6 +469,7 @@ export class DynamicSurveyComponent implements OnInit {
                 //This ngrx store state is used to show unlocked incentives at
                 //the start of aquarium reload
                 this.updataUnlockedIncentiveInNgrxStore(awardedTotalDollarAfterCurrentSurvey - pastTotalDollars);
+                
             }
 
             awardANdUpdatePoints() {
@@ -632,9 +631,9 @@ export class DynamicSurveyComponent implements OnInit {
                     if ((lastPos.x >= top_x) && (lastPos.y >= top_y) && (lastPos.x <= bottom_x) && (lastPos.y <= bottom_y)) {
                         x = 10 * (lastPos.x - top_x) / (bottom_x - top_x) - 5;
                         y = 5 - 10 * (lastPos.y - top_y) / (bottom_y - top_y) - 5;
-                        console.log("x:" + x + ", y:" + y);
-                        self2.survey2['QMood'] = "" + x + ":" + y;
-
+                        //console.log("x:" + x + ", y:" + y);
+                        self2.surveyAnswersJSONObject['QMood'] = "" + x + ":" + y;
+                        //console.log(JSON.stringify(self2.surveyAnswersJSONObject));
                         //
                         self2.inputchanged("QMood");
                     } else {
@@ -763,7 +762,7 @@ export class DynamicSurveyComponent implements OnInit {
             }
 
             if (obj.type == "moodgrid2") {
-                //survey_string = this.process_survey_moodgrid2(survey_string);
+                survey_string = this.process_survey_moodgrid2(survey_string);
             }
 
 
@@ -810,6 +809,17 @@ export class DynamicSurveyComponent implements OnInit {
             survey_string = survey_string + '</div>';
         }
         return survey_string;
+    }
+
+
+    process_survey_moodgrid2(survey_string: string): string {
+        survey_string = [survey_string,
+            '<canvas id="myCanvas" width="310" height="310" style="border:0px solid #000000;padding:10px;">',
+                'Your browser does not support the HTML5 canvas tag.',
+            '</canvas>'
+          ].join(" ");
+
+          return survey_string;
     }
 
     process_survey_range_time(obj: any, survey_string: string, i: any): string {

@@ -10,6 +10,7 @@ import { Q1MotivatedComponent } from './q1-motivated/q1-motivated.component';
 import { SampleLifeInsightsComponent } from './sample-life-insights/sample-life-insights.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ShowAllLifeInsightsComponent } from './show-all-life-insights/show-all-life-insights.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [Q1MotivatedComponent, SampleLifeInsightsComponent],
+  declarations: [Q1MotivatedComponent, SampleLifeInsightsComponent, ShowAllLifeInsightsComponent, ShowAllLifeInsightsComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -25,6 +26,6 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  exports:[Q1MotivatedComponent,SampleLifeInsightsComponent]
+  exports:[Q1MotivatedComponent,SampleLifeInsightsComponent, ShowAllLifeInsightsComponent]
 })
 export class LifeInsightsModule { }

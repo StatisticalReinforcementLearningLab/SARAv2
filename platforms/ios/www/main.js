@@ -710,7 +710,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-app> \n  <app-terms-of-service *ngIf=\"!agreeToTerms\"></app-terms-of-service>\n\n\n  <ion-menu content-id=\"menu\" side=\"start\" menuId=\"first\" type=\"overlay\" swipeEnabled=\"false\" *ngIf=\"agreeToTerms\">\n    <!--\n    <ion-header>\n      <ion-toolbar>\n        <ion-icon name=\"contact\"></ion-icon>\n        <ion-title>mash_aya</ion-title>\n      </ion-toolbar>\n    </ion-header>\n    -->\n    <ion-content>\n      \n      <ion-header>\n        <ion-toolbar>\n          <br>\n          <ion-avatar style=\"margin: auto;\">\n            <img src=\"https://raw.githubusercontent.com/ionic-team/ionic-docs/master/src/demos/api/avatar/avatar.svg\">\n          </ion-avatar>\n          <h2 style=\"text-align: center;\">{{username}}</h2>\n        </ion-toolbar>\n      </ion-header>\n\n      \n\n      <ion-list>\n        <ion-item [routerLink]=\"['/incentive/infopage']\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n          &nbsp; How this app works\n        </ion-item>\n\n        <ion-item [routerLink]=\"['/contact-study-staff']\" *ngIf=\"isAYA\">\n          <ion-icon name=\"call\"></ion-icon>\n          &nbsp; Contact study staff\n        </ion-item>\n\n\n        <ion-item><br><br><h3 style=\"font-size: 16px;padding-top: 24px;\">Preview/review levels</h3></ion-item>\n        <!--\n          [routerLink]=\"['/preview/fishbowl']\"\n        -->\n        <ion-item (click)=\"showPreviewOfFishBowl()\"> \n          <ion-label text-wrap>\n            Level 1: Fishbowl\n          </ion-label>\n        </ion-item>\n        <ion-item (click)=\"showPreviewOfSea()\">\n          <ion-label text-wrap>\n            Level 2: Sea\n            <p>Unlocks at 1060 points</p>\n          </ion-label>\n        </ion-item>\n        \n        <ion-item  (click)=\"showPreviewOfTundra()\">\n          <ion-label text-wrap>\n            Level 3: Tundra\n            <p>Unlocks at 2120 points</p>\n          </ion-label>\n        </ion-item>\n        <ion-item (click)=\"showPreviewOfRainforest()\">\n          <ion-label text-wrap>\n            Level 4: Rainforest\n            <p>Unlocks at 3020 points</p>\n          </ion-label>\n        </ion-item>\n        \n      </ion-list>\n    </ion-content>\n  </ion-menu>\n  <ion-router-outlet *ngIf=\"agreeToTerms && !isLoading\" id=\"menu\"></ion-router-outlet>\n\n  <!--\n  <ion-router-outlet id=\"menu\"></ion-router-outlet>\n  \n  \n  -->\n</ion-app>\n\n"
+module.exports = "<ion-app> \n  <app-terms-of-service *ngIf=\"!agreeToTerms\"></app-terms-of-service>\n\n\n  <ion-menu content-id=\"menu\" side=\"start\" menuId=\"first\" type=\"overlay\" swipeEnabled=\"false\" *ngIf=\"agreeToTerms\">\n    <!--\n    <ion-header>\n      <ion-toolbar>\n        <ion-icon name=\"contact\"></ion-icon>\n        <ion-title>mash_aya</ion-title>\n      </ion-toolbar>\n    </ion-header>\n    -->\n    <ion-content>\n      \n      <ion-header>\n        <ion-toolbar>\n          <br>\n          <ion-avatar style=\"margin: auto;\">\n            <img src=\"https://raw.githubusercontent.com/ionic-team/ionic-docs/master/src/demos/api/avatar/avatar.svg\">\n          </ion-avatar>\n          <h2 style=\"text-align: center;\">{{username}}</h2>\n        </ion-toolbar>\n      </ion-header>\n\n      \n\n      <ion-list>\n        <ion-item [routerLink]=\"['/incentive/infopage']\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n          &nbsp; How this app works\n        </ion-item>\n\n        <ion-item [routerLink]=\"['/intervention/arcappsfrontpage']\">\n          <ion-icon name=\"apps\"></ion-icon>\n          &nbsp; Arc Apps\n        </ion-item>\n\n        <!--\n        <ion-item [routerLink]=\"['/incentive/videoinfopage']\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n          &nbsp; Video tutorials\n        </ion-item>\n\n        \n        <ion-item [routerLink]=\"['/contact-study-staff']\" *ngIf=\"isAYA\">\n          <ion-icon name=\"call\"></ion-icon>\n          &nbsp; Contact study staff\n        </ion-item>\n        -->\n\n        <ion-item><br><br><h3 style=\"font-size: 16px;padding-top: 24px;\">Preview/review levels</h3></ion-item>\n        <!--\n          [routerLink]=\"['/preview/fishbowl']\"\n        -->\n        <ion-item (click)=\"showPreviewOfFishBowl()\"> \n          <ion-label text-wrap>\n            Level 1: Fishbowl\n          </ion-label>\n        </ion-item>\n        <ion-item (click)=\"showPreviewOfSea()\">\n          <ion-label text-wrap>\n            Level 2: Sea\n            <p>Unlocks at 1060 points</p>\n          </ion-label>\n        </ion-item>\n        \n        <ion-item  (click)=\"showPreviewOfTundra()\">\n          <ion-label text-wrap>\n            Level 3: Tundra\n            <p>Unlocks at 2120 points</p>\n          </ion-label>\n        </ion-item>\n        <ion-item (click)=\"showPreviewOfRainforest()\">\n          <ion-label text-wrap>\n            Level 4: Rainforest\n            <p>Unlocks at 3020 points</p>\n          </ion-label>\n        </ion-item>\n        \n      </ion-list>\n    </ion-content>\n  </ion-menu>\n  <ion-router-outlet *ngIf=\"agreeToTerms && !isLoading\" id=\"menu\"></ion-router-outlet>\n\n  <!--\n  <ion-router-outlet id=\"menu\"></ion-router-outlet>\n  \n  \n  -->\n</ion-app>\n\n"
 
 /***/ }),
 
@@ -743,7 +743,7 @@ module.exports = "<!-- \n<div class=\"container\">\n    <div class=\"row\">\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--\n  <app-aquarium></app-aquarium>\n-->\n\n<ion-tabs>\n\n  <ion-tab-bar slot=\"bottom\" style=\"background: #005486;\">\n    \n    <ion-tab-button tab=\"incentive\" style=\"background: #005486;\"  class=“ion-no-padding”>\n      <ion-icon src=\"/assets/img/fish_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Home</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"quotes\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"isAYA\">\n      <ion-icon src=\"/assets/img/brain.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Quotes</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"memes\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"isAYA\">\n      <ion-icon src=\"/assets/img/happy_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Memes</ion-label>\n    </ion-tab-button>\n\n\n    <ion-tab-button tab=\"thankyous\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"isAYA\">\n      <ion-icon src=\"/assets/img/help_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Thank yous</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"contact\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"!isAYA\">\n      <ion-icon name=\"call\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Contact</ion-label>\n    </ion-tab-button>\n\n\n\n    <!--\n\n    <ion-tab-button tab=\"contact\" style=\"background: #005486;\"  class=“ion-no-padding”>\n      <ion-icon name=\"call\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Contact</ion-label>\n    </ion-tab-button>\n\n\n    <ion-tab-button tab=\"tab2\">\n      <ion-icon name=\"create\"></ion-icon>\n      <ion-label>Memes</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"tab3\">\n      <ion-icon name=\"locate\"></ion-icon>\n      <ion-label>Thank yous</ion-label>\n    </ion-tab-button>\n    -->\n  </ion-tab-bar>\n\n</ion-tabs>"
+module.exports = "<!--\n  <app-aquarium></app-aquarium>\n-->\n\n<ion-tabs>\n\n  <ion-tab-bar slot=\"bottom\" style=\"background: #005486;\">\n    \n    <ion-tab-button tab=\"incentive\" style=\"background: #005486;\"  class=“ion-no-padding”>\n      <ion-icon src=\"/assets/img/fish_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Home</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"quotes\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"isAYA\">\n      <ion-icon src=\"/assets/img/brain.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Quotes</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"memes\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"isAYA\">\n      <ion-icon src=\"/assets/img/happy_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Memes</ion-label>\n    </ion-tab-button>\n\n\n    <ion-tab-button tab=\"thankyous\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"isAYA\">\n      <ion-icon src=\"/assets/img/help_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Thank yous</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"lifeinsight\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"isAYA\">\n      <ion-icon name=\"pulse\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Insight</ion-label>\n    </ion-tab-button>\n\n\n    <ion-tab-button tab=\"contact\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"!isAYA\">\n      <ion-icon name=\"call\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Contact</ion-label>\n    </ion-tab-button>\n\n\n\n    <!--\n\n    <ion-tab-button tab=\"contact\" style=\"background: #005486;\"  class=“ion-no-padding”>\n      <ion-icon name=\"call\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Contact</ion-label>\n    </ion-tab-button>\n\n\n    <ion-tab-button tab=\"tab2\">\n      <ion-icon name=\"create\"></ion-icon>\n      <ion-label>Memes</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"tab3\">\n      <ion-icon name=\"locate\"></ion-icon>\n      <ion-label>Thank yous</ion-label>\n    </ion-tab-button>\n    -->\n  </ion-tab-bar>\n\n</ion-tabs>"
 
 /***/ }),
 
@@ -765,7 +765,7 @@ module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n\n      <ion-buttons slot=\"start\">\n        <ion-menu-button style=\"color:#fff;\" menuId=\"first\"></ion-menu-button>\n\n        <!--\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n        -->\n      </ion-buttons>\n\n      <!--\n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n        <ion-menu-button autoHide=\"false\" style=\"color:#fff;\" menuId=\"first\" (click)=\"showSideMenu()\"></ion-menu-button>\n        <ion-button style=\"color:#fff;\" (click)=\"showSideMenu()\">\n          <ion-icon name=\"menu\"></ion-icon>\n        </ion-button>\n        \n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"!isIOS\">\n            <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n      -->\n\n\n      <ion-buttons slot=\"end\">\n          <font color=\"white\">${{money}}</font>\n\n          <!--\n          <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\"  *ngIf=\"!isIOS\">\n            <ion-icon name=\"alert\"></ion-icon>\n          </ion-button>\n          -->\n  \n          <!-- Mash codes:\n          <ion-text  *ngIf=\"!isActive\" style=\"color:#fff;\"><strong>Account is Paused</strong> </ion-text>\n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button>\n          -->\n  \n          \n  \n          <ion-button (click)=\"startSurvey()\"   *ngIf=\"isActive\">\n              <ion-icon name=\"ios-create\" style=\"color : white;\"></ion-icon>\n          </ion-button>\n  \n  \n          <ion-button *ngIf=\"!isActive\" (click)=\"dispalySurveyPausedMsg()\" >\n              <ion-icon name=\"ios-create\" style=\"color : #e74c3c;\"></ion-icon>\n          </ion-button>\n          <!--\n          <ion-button href=\"{{surveyPath}}\" *ngIf=\"isActive\">Start Survey</ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurveyAYA()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          -->\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">{{title}}</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  \n  \n  <ion-content>\n    <!--div class=\"ion-padding\">\n      <ion-button href=\"/survey/samplesurvey\">Sample survey (demo)</ion-button> <br>\n      <ion-button href=\"/incentive/aquariumone\">Incentive: Aquarium 1</ion-button> <br>\n      <ion-button href=\"/incentive/award-memes\" >Incentive: meme</ion-button> <br>\n      <ion-button href=\"/incentive/visualization\">Incentive: Life-inisight</ion-button> <br>\n    </div-->\n  \n    <app-demo-aquarium isPreview=\"false\"></app-demo-aquarium>\n\n    <!--\n    <ion-button color=\"primary\" (click)=\"showModalDemo()\">Unlockables</ion-button>\n    <ion-button color=\"primary\" (click)=\"showMemeDemo()\">Meme</ion-button>\n    <ion-button color=\"primary\" (click)=\"showAltruisticDemo()\">Altruistic msg</ion-button>\n    -->\n  </ion-content>\n  \n  "
+module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n\n      <ion-buttons slot=\"start\">\n        <ion-menu-button style=\"color:#fff;\" menuId=\"first\"></ion-menu-button>\n\n        <!--\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n        -->\n      </ion-buttons>\n\n      <!--\n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n        <ion-menu-button autoHide=\"false\" style=\"color:#fff;\" menuId=\"first\" (click)=\"showSideMenu()\"></ion-menu-button>\n        <ion-button style=\"color:#fff;\" (click)=\"showSideMenu()\">\n          <ion-icon name=\"menu\"></ion-icon>\n        </ion-button>\n        \n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"!isIOS\">\n            <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n      -->\n\n\n      <ion-buttons slot=\"end\">\n          <font color=\"white\">${{money}}</font>\n\n          \n          <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\"  *ngIf=\"!isIOS\">\n            <ion-icon name=\"alert\"></ion-icon>\n          </ion-button>\n          \n  \n          <!-- Mash codes:\n          <ion-text  *ngIf=\"!isActive\" style=\"color:#fff;\"><strong>Account is Paused</strong> </ion-text>\n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button>\n          -->\n  \n          \n  \n          <ion-button (click)=\"showHarvardSurvey()\"   *ngIf=\"isActive\">\n              <ion-icon name=\"ios-create\" style=\"color : white;\"></ion-icon>\n          </ion-button>\n  \n  \n          <ion-button *ngIf=\"!isActive\" (click)=\"dispalySurveyPausedMsg()\" >\n              <ion-icon name=\"ios-create\" style=\"color : #e74c3c;\"></ion-icon>\n          </ion-button>\n          <!--\n          <ion-button href=\"{{surveyPath}}\" *ngIf=\"isActive\">Start Survey</ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurveyAYA()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          -->\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">{{title}}</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  \n  \n  <ion-content>\n    <!--div class=\"ion-padding\">\n      <ion-button href=\"/survey/samplesurvey\">Sample survey (demo)</ion-button> <br>\n      <ion-button href=\"/incentive/aquariumone\">Incentive: Aquarium 1</ion-button> <br>\n      <ion-button href=\"/incentive/award-memes\" >Incentive: meme</ion-button> <br>\n      <ion-button href=\"/incentive/visualization\">Incentive: Life-inisight</ion-button> <br>\n    </div-->\n  \n    <app-demo-aquarium isPreview=\"false\"></app-demo-aquarium>\n\n    <!--\n    <ion-button color=\"primary\" (click)=\"showModalDemo()\">Unlockables</ion-button>\n    <ion-button color=\"primary\" (click)=\"showMemeDemo()\">Meme</ion-button>\n    <ion-button color=\"primary\" (click)=\"showAltruisticDemo()\">Altruistic msg</ion-button>\n\n    <ion-button color=\"primary\" (click)=\"showHarvardArcApps()\">Arc apps</ion-button>\n    -->\n\n    <!--\n    <ion-button color=\"primary\" (click)=\"showHarvardSurvey()\">Harvard survey</ion-button>\n    -->\n    \n    \n  </ion-content>\n  \n  "
 
 /***/ }),
 
@@ -787,7 +787,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"gameDiv\"></div>\n<ion-list padding>\n    \n\n  <ion-list-header lines=\"inset\">\n    <ion-label><h2><br>You unlocked the following animals in this level <br>so far</h2><br></ion-label>\n  </ion-list-header>\n  <!--\n  {{debugText}}\n  -->\n  <ion-item *ngFor=\"let item of fishFunFactListViewItems\">\n    <ion-thumbnail item-left>\n      <img [src]=\"item.image\"/>\n    </ion-thumbnail>\n    <ion-label text-wrap style=\"padding-left: 10px;\">\n      <h3>{{item.fishName}}</h3>\n      <p>{{item.funFact}}</p>\n    </ion-label>\n  </ion-item>\n\n  \n</ion-list> \n\n  <!--\n  <p  style=\"padding-top:10px;padding-bottom:0px;padding-left:10px;\"><b>Username</b>: {{username}}</p> \n\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"startTundraLevel()\">Tundra level</ion-button>\n\n  <app-loading-spinner></app-loading-spinner>\n\n  <ion-card> \n    <div class=\"quetiontextstyle\">\n        This is the question\n    </div>\n    <div class=\"radiovertical\">\n      <ul>\n        \n        <li>\n          <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n          <label for=\"ff-option\">Pizza</label> \n          <div class=\"check\"></div>\n        </li>\n\n        <li>\n          <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n          <label for=\"ss-option\">Boyfriend</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n        \n        <li>\n          <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n          <label for=\"tt-option\">Cats</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n\n      </ul>\n    </div>\n  </ion-card>\n  -->\n\n\n"
+module.exports = "<div id=\"gameDiv\"></div>\n<ion-list padding>\n    \n\n  <ion-list-header lines=\"inset\">\n    <ion-label><h2><br>You unlocked the following animals in this level so far</h2><br></ion-label>\n  </ion-list-header>\n  <!--\n  {{debugText}}\n  -->\n  <ion-item *ngFor=\"let item of fishFunFactListViewItems\">\n    <ion-thumbnail item-left>\n      <img [src]=\"item.image\"/>\n    </ion-thumbnail>\n    <ion-label text-wrap style=\"padding-left: 10px;\">\n      <h3>{{item.fishName}}</h3>\n      <p>{{item.funFact}}</p>\n    </ion-label>\n  </ion-item>\n\n  \n</ion-list> \n\n  <!--\n  <p  style=\"padding-top:10px;padding-bottom:0px;padding-left:10px;\"><b>Username</b>: {{username}}</p> \n\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"presentModal()\">Show modal</ion-button>\n  <ion-button color=\"primary\" (click)=\"startTundraLevel()\">Tundra level</ion-button>\n\n  <app-loading-spinner></app-loading-spinner>\n\n  <ion-card> \n    <div class=\"quetiontextstyle\">\n        This is the question\n    </div>\n    <div class=\"radiovertical\">\n      <ul>\n        \n        <li>\n          <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n          <label for=\"ff-option\">Pizza</label> \n          <div class=\"check\"></div>\n        </li>\n\n        <li>\n          <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n          <label for=\"ss-option\">Boyfriend</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n        \n        <li>\n          <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n          <label for=\"tt-option\">Cats</label>\n          <div class=\"check\"><div class=\"inside\"></div></div>\n        </li>\n\n      </ul>\n    </div>\n  </ion-card>\n  -->\n\n\n"
 
 /***/ }),
 
@@ -897,7 +897,18 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<!--ion-content>\n    <app-q1-motivated inputStr={{inputString}}></app-q1-motivated>\n    <app-q1-motivated [jsonObj]=\"inputJson\"></app-q1-motivated>\n</ion-content-->\n\n<ion-header>\n        <ion-toolbar>\n          <ion-buttons slot=\"start\">\n            <ion-back-button defaultHref=\"home\"></ion-back-button>\n          </ion-buttons>\n          <ion-title>Aquarium</ion-title>\n        </ion-toolbar>\n      </ion-header>\n      \n      <ion-content>\n          <br>\n          <div style=\"text-align: center; font-size: 24px;line-height: 25px;padding-bottom:10px;\">Congratulations!!</div>\n          <div style=\"text-align: center; font-size: 20px;line-height: 25px;padding-bottom:10px;\">You unlocked a life-insight</div>\n          <br>\n          <!--div layout-align=\"left\">\n              <p></p>\n              <select [(ngModel)]=\"selectedValue\" (change)=\"onChangeCategorySelect()\">\n                  <option *ngFor=\"let selectedTitle of qYaxisArray\" [value]=\"selectedTitle\">{{selectedTitle}}</option>\n              </select>     \n      \n          </div-->  \n          <br>\n      \n          <div class=\"card\">\n              <div style=\"position: absolute;top:4px; left:4px; z-index: 20;\" >\n                  <img src={{imgloc}} style=\"width:75px;height:auto;\">\n              </div>\n              <div class=\"item item-avatar\" style=\"background: #c9e8e6;border-left: 2px solid #004D40; padding-left: 90px;\">\n                <span [innerHtml]=\"title\"></span>\n                <p ng-hide=\"lifeinsight.showTopBottom\">{{subtext}}</p> \n              </div>\n      \n              <div style=\"margin-left:0px; margin-right:0px;margin-top:0px; background:#eef7f7; padding:5px; padding-left:15px; border-left: 0px solid #004D40; color:black; text-align:center; font-size: 14px;\">\n                  <span [innerHtml]=\"topSubtext\"></span>\n              </div> \n              \n      \n              <div id=\"{{labels}}\" class=\"chart-container\" style=\"position: relative; height:30vh; width:95vw\">\n                  <!--\n                  <div>\n                    <nvd3 [options]=\"options\" [data]=\"data\"></nvd3>\n                  </div>\n                  -->       \n                  <canvas style=\"height:750;\" #lineCanvas></canvas>\n              </div>\n              \n              <div style=\"margin-left:0px; margin-right:0px;margin-top:5px; background:#eef7f7; padding-left:15px; border-left: 0px solid #004D40; color:black; text-align:center; font-size: 14px;\">\n                  <span [innerHtml]=\"bottomSubtext\"></span>\n              </div>     \n      \n          </div>\n      </ion-content>\n\n      <ion-footer align=\"right\" no-border>\n            <ion-toolbar style=\"background:#fff;border: 0px solid #fff;height:120px;\">\n                <button style=\"height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:20px;font-size:24px;color:#fff;background:#D32F2F;\" \n                (click)=\"ratingChanged(0)\">\n                    <ion-icon name=\"ios-thumbs-down\" style=\"height: 50px;width: 50px;\"></ion-icon>\n                </button>\n                <button style=\"height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:10px;font-size:24px;color:#fff;background:#33691E;\" \n                (click)=\"ratingChanged(1)\">\n                    <ion-icon name=\"ios-thumbs-up\" style=\"height: 50px;width: 50px;\"></ion-icon>\n                </button>\n            </ion-toolbar>\n        </ion-footer>\n      \n    "
+module.exports = "<!--ion-content>\n    <app-q1-motivated inputStr={{inputString}}></app-q1-motivated>\n    <app-q1-motivated [jsonObj]=\"inputJson\"></app-q1-motivated>\n</ion-content-->\n\n<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n        <ion-buttons slot=\"start\">\n            <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n        </ion-buttons>\n        <ion-title style=\"color:#fff;\">Life insights</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n    \n    <!--\n        <br>\n        <div style=\"text-align: center; font-size: 24px;line-height: 25px;padding-bottom:10px;\">Congratulations!!</div>\n        <div style=\"text-align: center; font-size: 20px;line-height: 25px;padding-bottom:10px;\">You unlocked a life-insight\n        </div>\n        <br>\n\n        <div layout-align=\"left\">\n                <p></p>\n                <select [(ngModel)]=\"selectedValue\" (change)=\"onChangeCategorySelect()\">\n                    <option *ngFor=\"let selectedTitle of qYaxisArray\" [value]=\"selectedTitle\">{{selectedTitle}}</option>\n                </select>\n        </div>\n    -->\n\n    <div class=\"card\">\n        <div style=\"position: absolute;top:4px; left:4px; z-index: 20;\">\n            <img src={{imgloc}} style=\"width:75px;height:auto;\">\n        </div>\n        <div class=\"item item-avatar\" style=\"background: #c9e8e6;border-left: 2px solid #004D40; padding-left: 90px;\">\n            <span [innerHtml]=\"title\"></span>\n            <p ng-hide=\"lifeinsight.showTopBottom\">{{subtext}}</p>\n        </div>\n\n        <div\n            style=\"margin-left:0px; margin-right:0px;margin-top:0px; background:#eef7f7; \n            padding:5px; padding-left:15px; border-left: 0px solid #004D40; color:black; text-align:center; font-size: 14px;\">\n            <span [innerHtml]=\"topSubtext\"></span>\n        </div>\n\n\n        <div id=\"{{labels}}\" class=\"chart-container\" style=\"position: relative; height:30vh; width:95vw\">\n            <!--\n                  <div>\n                        <nvd3 [options]=\"options\" [data]=\"data\"></nvd3>\n                  </div>\n            -->\n            <canvas style=\"height:750;\" #lineCanvas></canvas>\n        </div>\n\n\n        <div\n            style=\"margin-left:0px; margin-right:0px;margin-top:0px; background:#eef7f7; \n            padding:5px; padding-left:15px; border-left: 0px solid #004D40; color:black; text-align:center; font-size: 14px;\">\n            <span [innerHtml]=\"bottomSubtext\"></span>\n        </div>\n    </div>\n\n</ion-content>\n\n\n<!--\n<ion-footer align=\"right\" no-border>\n    <ion-toolbar style=\"background:#fff;border: 0px solid #fff;height:120px;\">\n        <button\n            style=\"height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:20px;font-size:24px;color:#fff;background:#D32F2F;\"\n            (click)=\"ratingChanged(0)\">\n            <ion-icon name=\"ios-thumbs-down\" style=\"height: 50px;width: 50px;\"></ion-icon>\n        </button>\n        <button\n            style=\"height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:10px;font-size:24px;color:#fff;background:#33691E;\"\n            (click)=\"ratingChanged(1)\">\n            <ion-icon name=\"ios-thumbs-up\" style=\"height: 50px;width: 50px;\"></ion-icon>\n        </button>\n    </ion-toolbar>\n</ion-footer>\n-->"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/incentive/life-insights/show-all-life-insights/show-all-life-insights.component.html":
+/*!********************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/incentive/life-insights/show-all-life-insights/show-all-life-insights.component.html ***!
+  \********************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!--ion-content>\n    <app-q1-motivated inputStr={{inputString}}></app-q1-motivated>\n    <app-q1-motivated [jsonObj]=\"inputJson\"></app-q1-motivated>\n</ion-content-->\n\n<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n        <ion-buttons slot=\"start\">\n            <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n        </ion-buttons>\n        <ion-title style=\"color:#fff;\">Life insights</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n    \n    <!--\n        <br>\n        <div style=\"text-align: center; font-size: 24px;line-height: 25px;padding-bottom:10px;\">Congratulations!!</div>\n        <div style=\"text-align: center; font-size: 20px;line-height: 25px;padding-bottom:10px;\">You unlocked a life-insight\n        </div>\n        <br>\n\n        <div layout-align=\"left\">\n                <p></p>\n                <select [(ngModel)]=\"selectedValue\" (change)=\"onChangeCategorySelect()\">\n                    <option *ngFor=\"let selectedTitle of qYaxisArray\" [value]=\"selectedTitle\">{{selectedTitle}}</option>\n                </select>\n        </div>\n    -->\n\n    <div class=\"card\">\n        <div style=\"position: absolute;top:4px; left:4px; z-index: 20;\">\n            <img src={{imgloc}} style=\"width:75px;height:auto;\">\n        </div>\n        <div class=\"item item-avatar\" style=\"background: #c9e8e6;border-left: 2px solid #004D40; padding-left: 90px;\">\n            <span [innerHtml]=\"title\"></span>\n            <p ng-hide=\"lifeinsight.showTopBottom\">{{subtext}}</p>\n        </div>\n\n        <div\n            style=\"margin-left:0px; margin-right:0px;margin-top:0px; background:#eef7f7; padding:5px; padding-left:15px; border-left: 0px solid #004D40; color:black; text-align:center; font-size: 14px;\">\n            <span [innerHtml]=\"topSubtext\"></span>\n        </div>\n\n\n        <div id=\"{{labels}}\" class=\"chart-container\" style=\"position: relative; height:40vh; width:95vw\">\n            <!--\n                  <div>\n                        <nvd3 [options]=\"options\" [data]=\"data\"></nvd3>\n                  </div>\n            -->\n            <canvas style=\"height:750;\" #lineCanvas></canvas>\n        </div>\n\n        <div\n            style=\"margin-left:0px; margin-right:0px;margin-top:5px; background:#eef7f7; padding-left:15px; border-left: 0px solid #004D40; color:black; text-align:center; font-size: 14px;\">\n            <span [innerHtml]=\"bottomSubtext\"></span>\n        </div>\n    </div>\n\n\n    <div class=\"card\">\n        <div style=\"position: absolute;top:4px; left:4px; z-index: 20;\">\n            <img src={{imgloc2}} style=\"width:75px;height:auto;\">\n        </div>\n        <div class=\"item item-avatar\" style=\"background: #c9e8e6;border-left: 2px solid #004D40; padding-left: 90px;\">\n            <span [innerHtml]=\"title2\"></span>\n            <p ng-hide=\"lifeinsight.showTopBottom\">{{subtext2}}</p>\n        </div>\n\n        <div\n            style=\"margin-left:0px; margin-right:0px;margin-top:0px; background:#eef7f7; padding:5px; padding-left:15px; border-left: 0px solid #004D40; color:black; text-align:center; font-size: 14px;\">\n            <span [innerHtml]=\"topSubtext2\"></span>\n        </div>\n\n\n        <div id=\"{{labels}}\" class=\"chart-container\" style=\"position: relative; height:40vh; width:95vw\">\n            <!--\n                  <div>\n                        <nvd3 [options]=\"options\" [data]=\"data\"></nvd3>\n                  </div>\n            -->\n            <canvas style=\"height:750;\" #lineCanvas2></canvas>\n        </div>\n\n        <div\n            style=\"margin-left:0px; margin-right:0px;margin-top:5px; background:#eef7f7; padding-left:15px; border-left: 0px solid #004D40; color:black; text-align:center; font-size: 14px;\">\n            <span [innerHtml]=\"bottomSubtext2\"></span>\n        </div>\n\n    </div>\n\n</ion-content>\n\n\n<!--\n<ion-footer align=\"right\" no-border>\n    <ion-toolbar style=\"background:#fff;border: 0px solid #fff;height:120px;\">\n        <button\n            style=\"height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:20px;font-size:24px;color:#fff;background:#D32F2F;\"\n            (click)=\"ratingChanged(0)\">\n            <ion-icon name=\"ios-thumbs-down\" style=\"height: 50px;width: 50px;\"></ion-icon>\n        </button>\n        <button\n            style=\"height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:10px;font-size:24px;color:#fff;background:#33691E;\"\n            (click)=\"ratingChanged(1)\">\n            <ion-icon name=\"ios-thumbs-up\" style=\"height: 50px;width: 50px;\"></ion-icon>\n        </button>\n    </ion-toolbar>\n</ion-footer>\n-->"
 
 /***/ }),
 
@@ -930,7 +941,7 @@ module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Inspirational quotes</ion-title>\n    </ion-toolbar>\n  </ion-header>\n    \n<ion-content >\n    \n    <ion-card>\n        <ion-card-content>\n          <ion-card-title style=\"color:black;\">You received the following inspirational quotes</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n\n    <ion-list padding>        \n        <ion-item *ngFor=\"let item of unlockedInspirationalQuotes\">\n          <ion-thumbnail item-left>\n            <img [src]=\"item.image\"/>\n          </ion-thumbnail>\n          <ion-label class=\"ion-text-wrap\" style=\"padding-left: 10px;\">\n            <h3>{{item.author}}</h3>\n            <p>{{item.quote_text}}</p>\n          </ion-label>\n        </ion-item>\n    </ion-list> \n      \n</ion-content>\n    \n  \n"
+module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">Inspirational quotes</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-card>\n    <ion-card-content>\n      <ion-card-title style=\"color:black;\">You received the following inspirational quotes</ion-card-title>\n    </ion-card-content>\n  </ion-card>\n\n  <ion-list padding>\n    <ion-item *ngFor=\"let item of unlockedInspirationalQuotes\">\n      <ion-thumbnail item-left>\n        <img [src]=\"item.image\" />\n      </ion-thumbnail>\n      <ion-label class=\"ion-text-wrap\" style=\"padding-left: 10px;\">\n\n\n        <h3 style=\"text-align:left;\">\n          {{item.author}}\n\n        </h3>\n        <!--\n              <span style=\"color: #ccc; font-size: 10px; float:right;\"><i>{{item.date}}</i></span>\n            -->\n        <p>\n          {{item.quote_text}}\n        </p>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n\n</ion-content>"
 
 /***/ }),
 
@@ -945,6 +956,28 @@ module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/incentive/video-info-page/video-info-page.component.html":
+/*!****************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/incentive/video-info-page/video-info-page.component.html ***!
+  \****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Video tutorials</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n<ion-content class=\"ion-padding\">\n    \n\n    <ion-card>\n        \n        <ion-card-header>\n          <ion-card-title>4PM and 6PM notifications</ion-card-title>\n        </ion-card-header>\n        <div class=\"video-responsive\">\n            <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/951nWfONMAQ\" frameborder=\"0\"></iframe>\n        </div>\n\n      </ion-card>\n</ion-content>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/intervention/harvard-arc-apps/front-page/front-page.component.html":
+/*!**************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/intervention/harvard-arc-apps/front-page/front-page.component.html ***!
+  \**************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n        <ion-buttons slot=\"start\">\n            <ion-button (click)=\"goHome()\">\n                <ion-icon name=\"arrow-back\" style=\"color : #fff;\"></ion-icon>\n            </ion-button>\n        </ion-buttons>\n\n        <ion-title style=\"color:#fff;\">Arc apps</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n    <ion-list>\n        <ion-list-header lines=\"inset\">\n            <ion-label><b>Time Management Apps</b></ion-label>\n        </ion-list-header>\n\n        <ion-item-sliding *ngFor=\"let item of TM_apps_thumbs\">\n            <ion-item>\n                <ion-thumbnail item-left>\n                    <img [src]=\"item.img\" />\n                </ion-thumbnail>\n                <ion-label class=\"ion-text-wrap\" style=\"padding-left: 10px;\">\n                    <h3 style=\"text-align:left;\">\n                        {{item.name}}\n                    </h3>\n                    <p>\n                        {{item.description}}\n                    </p>\n                </ion-label>\n                <ion-item-options side=\"end\" color=\"\">\n                    <ion-item-option (click)=\"visitTheURL(item.url)\">\n                        Visit\n                    </ion-item-option>\n                </ion-item-options>\n            </ion-item>\n        </ion-item-sliding>\n    </ion-list>\n    \n\n    <ion-list>\n        <ion-item>\n            <ion-label><b>Time Management Apps</b></ion-label>\n        </ion-item>\n        <ion-item *ngFor=\"let app of TM_apps\">\n            <a href={{app.url}}>{{app.name}}</a>\n        </ion-item>\n        <ion-item>\n            <ion-label><b>Internet Blocking Tools</b></ion-label>\n        </ion-item>\n        <ion-item *ngFor=\"let app of Internet_Blocking_Tools\">\n            <a href={{app.url}}>{{app.name}}</a>\n        </ion-item>\n        <ion-item>\n            <ion-label><b>Managing Tasks and Priorities</b></ion-label>\n        </ion-item>\n        <ion-item *ngFor=\"let app of Task_Management\">\n            <a href={{app.url}}>{{app.name}}</a>\n        </ion-item>\n    </ion-list>>\n</ion-content>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/survey/aya-sample-survey/aya-sample-survey.component.html":
 /*!*****************************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/survey/aya-sample-survey/aya-sample-survey.component.html ***!
@@ -952,7 +985,7 @@ module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\" style=\"color:#fff;\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">Survey</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n    <!-- <app-dynamic-survey fileLink=\"alex_survey\"></app-dynamic-survey> -->\n    <app-dynamic-survey fileLink=\"alex_survey_aya\"></app-dynamic-survey>\n  <!--\n  <app-dynamic-survey fileLink=\"temp_survey\"></app-dynamic-survey>\n  -->\n</ion-content>\n\n\n"
+module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\" style=\"color:#fff;\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">Survey</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n    <!-- <app-dynamic-survey fileLink=\"alex_survey\"></app-dynamic-survey> -->\n    <app-dynamic-survey jsonFileLinkForSurvey=\"alex_survey_aya\"></app-dynamic-survey>\n  <!--\n  <app-dynamic-survey fileLink=\"temp_survey\"></app-dynamic-survey>\n  -->\n</ion-content>\n\n\n"
 
 /***/ }),
 
@@ -967,6 +1000,17 @@ module.exports = "<div *ngIf=\"isLoading\">\n    <p>Loading survey...</p>\n</div
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/survey/harvard-survey/harvard-survey.component.html":
+/*!***********************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/survey/harvard-survey/harvard-survey.component.html ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n        <ion-buttons slot=\"start\">\n            <ion-back-button defaultHref=\"home\" style=\"color:#fff;\"></ion-back-button>\n        </ion-buttons>\n        <ion-title style=\"color:#fff;\">Survey</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n    <app-dynamic-survey jsonFileLinkForSurvey=\"harvard_survey\"></app-dynamic-survey>\n</ion-content>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/survey/sample-survey/sample-survey.component.html":
 /*!*********************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/survey/sample-survey/sample-survey.component.html ***!
@@ -974,7 +1018,7 @@ module.exports = "<div *ngIf=\"isLoading\">\n    <p>Loading survey...</p>\n</div
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\" style=\"color:#fff;\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">Survey</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  \n    <!--\n    <ion-card> \n        <div class=\"quetiontextstyle\">\n            This is the question\n        </div>\n        <div class=\"radiovertical\">\n        <ul>\n            <li>\n            <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n            <label for=\"ff-option\">Pizza</label> \n            <div class=\"check\"></div>\n            </li>\n            \n            <li>\n            <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n            <label for=\"ss-option\">Boyfriend</label>\n            <div class=\"check\"><div class=\"inside\"></div></div>\n            </li>\n            \n            <li>\n            <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n            <label for=\"tt-option\">Cats</label>\n            <div class=\"check\"><div class=\"inside\"></div></div>\n            </li>\n        </ul>\n        </div>\n    </ion-card>\n    -->\n\n    <!-- <app-dynamic-survey fileLink=\"alex_survey\"></app-dynamic-survey> -->\n    <app-dynamic-survey fileLink=\"alex_survey_caregiver\"></app-dynamic-survey>\n  <!--\n  <app-dynamic-survey fileLink=\"temp_survey\"></app-dynamic-survey>\n  -->\n</ion-content>\n\n"
+module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"home\" style=\"color:#fff;\"></ion-back-button>\n    </ion-buttons>\n    <ion-title style=\"color:#fff;\">Survey</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  \n    <!--\n    <ion-card> \n        <div class=\"quetiontextstyle\">\n            This is the question\n        </div>\n        <div class=\"radiovertical\">\n        <ul>\n            <li>\n            <input type=\"radio\" id=\"ff-option\" name=\"selector\" (click)=\"modelChanged(2)\">\n            <label for=\"ff-option\">Pizza</label> \n            <div class=\"check\"></div>\n            </li>\n            \n            <li>\n            <input type=\"radio\" id=\"ss-option\" name=\"selector\" (click)=\"modelChanged(3)\">\n            <label for=\"ss-option\">Boyfriend</label>\n            <div class=\"check\"><div class=\"inside\"></div></div>\n            </li>\n            \n            <li>\n            <input type=\"radio\" id=\"tt-option\" name=\"selector\" (click)=\"modelChanged(4)\">\n            <label for=\"tt-option\">Cats</label>\n            <div class=\"check\"><div class=\"inside\"></div></div>\n            </li>\n        </ul>\n        </div>\n    </ion-card>\n    -->\n\n    <!-- <app-dynamic-survey fileLink=\"alex_survey\"></app-dynamic-survey> -->\n    <app-dynamic-survey jsonFileLinkForSurvey=\"harvard_survey\"></app-dynamic-survey>\n  <!--\n  <app-dynamic-survey fileLink=\"temp_survey\"></app-dynamic-survey>\n  -->\n</ion-content>\n\n"
 
 /***/ }),
 
@@ -4600,6 +4644,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _incentive_aquarium_previews_sea_sea_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./incentive/aquarium/previews/sea/sea.component */ "./src/app/incentive/aquarium/previews/sea/sea.component.ts");
 /* harmony import */ var _incentive_aquarium_previews_tundra_tundra_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./incentive/aquarium/previews/tundra/tundra.component */ "./src/app/incentive/aquarium/previews/tundra/tundra.component.ts");
 /* harmony import */ var _incentive_aquarium_previews_rainforest_rainforest_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./incentive/aquarium/previews/rainforest/rainforest.component */ "./src/app/incentive/aquarium/previews/rainforest/rainforest.component.ts");
+/* harmony import */ var _survey_harvard_survey_harvard_survey_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./survey/harvard-survey/harvard-survey.component */ "./src/app/survey/harvard-survey/harvard-survey.component.ts");
+/* harmony import */ var _intervention_harvard_arc_apps_front_page_front_page_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./intervention/harvard-arc-apps/front-page/front-page.component */ "./src/app/intervention/harvard-arc-apps/front-page/front-page.component.ts");
+/* harmony import */ var _incentive_video_info_page_video_info_page_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./incentive/video-info-page/video-info-page.component */ "./src/app/incentive/video-info-page/video-info-page.component.ts");
 
 
 
@@ -4614,6 +4661,9 @@ __webpack_require__.r(__webpack_exports__);
 //import { DynamicSurveyComponent } from './survey/dynamic-survey/dynamic-survey.component';
 //import { Q1MotivatedComponent } from './incentive/life-insights/q1-motivated/q1-motivated.component';
 //import { SampleSurveyComponent } from './survey/sample-survey/sample-survey.component';
+
+
+
 
 
 
@@ -4652,11 +4702,14 @@ var routes = [
     { path: 'incentive/cheatpoints', component: _incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_9__["CheatpageComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'survey/samplesurvey', component: _survey_sample_survey_sample_survey_component__WEBPACK_IMPORTED_MODULE_7__["SampleSurveyComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'survey/samplesurvey2', component: _survey_aya_sample_survey_aya_sample_survey_component__WEBPACK_IMPORTED_MODULE_10__["AyaSampleSurveyComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
+    { path: 'survey/harvardsurvey', component: _survey_harvard_survey_harvard_survey_component__WEBPACK_IMPORTED_MODULE_19__["HarvardSurveyComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
+    { path: 'intervention/arcappsfrontpage', component: _intervention_harvard_arc_apps_front_page_front_page_component__WEBPACK_IMPORTED_MODULE_20__["FrontPageComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'incentive/aquariumone', component: _incentive_aquarium_demo_aquarium_demo_aquarium_component__WEBPACK_IMPORTED_MODULE_4__["DemoAquariumComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'incentive/award-memes', component: _incentive_award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_3__["AwardMemesComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'incentive/award-altruism', component: _incentive_award_altruism_award_altruism_component__WEBPACK_IMPORTED_MODULE_8__["AwardAltruismComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'contact-study-staff', component: _home_contact_contact_component__WEBPACK_IMPORTED_MODULE_14__["ContactComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'incentive/infopage', component: _incentive_info_page_info_page_component__WEBPACK_IMPORTED_MODULE_13__["InfoPageComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
+    { path: 'incentive/videoinfopage', component: _incentive_video_info_page_video_info_page_component__WEBPACK_IMPORTED_MODULE_21__["VideoInfoPageComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'preview/fishbowl', component: _incentive_aquarium_previews_fishbowl_fishbowl_component__WEBPACK_IMPORTED_MODULE_15__["FishbowlComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'preview/sea', component: _incentive_aquarium_previews_sea_sea_component__WEBPACK_IMPORTED_MODULE_16__["SeaComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'preview/tundra', component: _incentive_aquarium_previews_tundra_tundra_component__WEBPACK_IMPORTED_MODULE_17__["TundraComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
@@ -5081,21 +5134,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _notification_notification_module__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./notification/notification.module */ "./src/app/notification/notification.module.ts");
 /* harmony import */ var _incentive_incentive_module__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./incentive/incentive.module */ "./src/app/incentive/incentive.module.ts");
-/* harmony import */ var _incentive_life_insights_life_insights_module__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./incentive/life-insights/life-insights.module */ "./src/app/incentive/life-insights/life-insights.module.ts");
-/* harmony import */ var _survey_survey_module__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./survey/survey.module */ "./src/app/survey/survey.module.ts");
-/* harmony import */ var _incentive_aquarium_aquarium_module__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./incentive/aquarium/aquarium.module */ "./src/app/incentive/aquarium/aquarium.module.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./incentive/aquarium/cheatpage/cheatpage.component */ "./src/app/incentive/aquarium/cheatpage/cheatpage.component.ts");
-/* harmony import */ var _user_user_module__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./user/user.module */ "./src/app/user/user.module.ts");
-/* harmony import */ var _home_home_module__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./home/home.module */ "./src/app/home/home.module.ts");
-/* harmony import */ var _incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./incentive/award-money/award-dollar.service */ "./src/app/incentive/award-money/award-dollar.service.ts");
-/* harmony import */ var _ionic_native_app_version_ngx__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @ionic-native/app-version/ngx */ "./node_modules/@ionic-native/app-version/ngx/index.js");
-/* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
-/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./reducers */ "./src/app/reducers/index.ts");
-/* harmony import */ var _ngrx_store_devtools__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @ngrx/store-devtools */ "./node_modules/@ngrx/store-devtools/fesm5/store-devtools.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var _ngrx_effects__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @ngrx/effects */ "./node_modules/@ngrx/effects/fesm5/effects.js");
-/* harmony import */ var _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! @ionic-native/mobile-accessibility/ngx */ "./node_modules/@ionic-native/mobile-accessibility/ngx/index.js");
+/* harmony import */ var _survey_survey_module__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./survey/survey.module */ "./src/app/survey/survey.module.ts");
+/* harmony import */ var _incentive_aquarium_aquarium_module__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./incentive/aquarium/aquarium.module */ "./src/app/incentive/aquarium/aquarium.module.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./incentive/aquarium/cheatpage/cheatpage.component */ "./src/app/incentive/aquarium/cheatpage/cheatpage.component.ts");
+/* harmony import */ var _user_user_module__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./user/user.module */ "./src/app/user/user.module.ts");
+/* harmony import */ var _home_home_module__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./home/home.module */ "./src/app/home/home.module.ts");
+/* harmony import */ var _incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./incentive/award-money/award-dollar.service */ "./src/app/incentive/award-money/award-dollar.service.ts");
+/* harmony import */ var _ionic_native_app_version_ngx__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @ionic-native/app-version/ngx */ "./node_modules/@ionic-native/app-version/ngx/index.js");
+/* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
+/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./reducers */ "./src/app/reducers/index.ts");
+/* harmony import */ var _ngrx_store_devtools__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @ngrx/store-devtools */ "./node_modules/@ngrx/store-devtools/fesm5/store-devtools.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _ngrx_effects__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @ngrx/effects */ "./node_modules/@ngrx/effects/fesm5/effects.js");
+/* harmony import */ var _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @ionic-native/mobile-accessibility/ngx */ "./node_modules/@ionic-native/mobile-accessibility/ngx/index.js");
+/* harmony import */ var _intervention_intervention_module__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./intervention/intervention.module */ "./src/app/intervention/intervention.module.ts");
 
 
 
@@ -5140,41 +5193,41 @@ var AppModule = /** @class */ (function () {
     ]; };
     AppModule = AppModule_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_12__["AppComponent"], _incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_20__["CheatpageComponent"]],
-            entryComponents: [_incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_20__["CheatpageComponent"]],
+            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_12__["AppComponent"], _incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_19__["CheatpageComponent"]],
+            entryComponents: [_incentive_aquarium_cheatpage_cheatpage_component__WEBPACK_IMPORTED_MODULE_19__["CheatpageComponent"]],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicModule"].forRoot(),
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_13__["AppRoutingModule"],
-                _survey_survey_module__WEBPACK_IMPORTED_MODULE_17__["SurveyModule"],
+                _survey_survey_module__WEBPACK_IMPORTED_MODULE_16__["SurveyModule"],
                 _incentive_incentive_module__WEBPACK_IMPORTED_MODULE_15__["IncentiveModule"],
-                _incentive_life_insights_life_insights_module__WEBPACK_IMPORTED_MODULE_16__["LifeInsightsModule"],
                 _notification_notification_module__WEBPACK_IMPORTED_MODULE_14__["NotificationModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
-                _incentive_aquarium_aquarium_module__WEBPACK_IMPORTED_MODULE_18__["AquariumModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_19__["FormsModule"],
-                _user_user_module__WEBPACK_IMPORTED_MODULE_21__["UserModule"],
-                _home_home_module__WEBPACK_IMPORTED_MODULE_22__["HomePageModule"],
+                _incentive_aquarium_aquarium_module__WEBPACK_IMPORTED_MODULE_17__["AquariumModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_18__["FormsModule"],
+                _user_user_module__WEBPACK_IMPORTED_MODULE_20__["UserModule"],
+                _home_home_module__WEBPACK_IMPORTED_MODULE_21__["HomePageModule"],
+                _intervention_intervention_module__WEBPACK_IMPORTED_MODULE_30__["InterventionModule"],
                 angular_azure_blob_service__WEBPACK_IMPORTED_MODULE_5__["BlobModule"].forRoot(),
                 //this ngrx import
-                _ngrx_store__WEBPACK_IMPORTED_MODULE_25__["StoreModule"].forRoot(_reducers__WEBPACK_IMPORTED_MODULE_26__["reducers"], {
-                    metaReducers: _reducers__WEBPACK_IMPORTED_MODULE_26__["metaReducers"],
+                _ngrx_store__WEBPACK_IMPORTED_MODULE_24__["StoreModule"].forRoot(_reducers__WEBPACK_IMPORTED_MODULE_25__["reducers"], {
+                    metaReducers: _reducers__WEBPACK_IMPORTED_MODULE_25__["metaReducers"],
                     runtimeChecks: {
                         strictStateImmutability: true,
                         strictActionImmutability: true
                     }
                 }),
                 //dev tool maxAge 25 versions of the data
-                _ngrx_store_devtools__WEBPACK_IMPORTED_MODULE_27__["StoreDevtoolsModule"].instrument({ maxAge: 25, logOnly: _environments_environment__WEBPACK_IMPORTED_MODULE_28__["environment"].production }),
-                _ngrx_effects__WEBPACK_IMPORTED_MODULE_29__["EffectsModule"].forRoot([])
+                _ngrx_store_devtools__WEBPACK_IMPORTED_MODULE_26__["StoreDevtoolsModule"].instrument({ maxAge: 25, logOnly: _environments_environment__WEBPACK_IMPORTED_MODULE_27__["environment"].production }),
+                _ngrx_effects__WEBPACK_IMPORTED_MODULE_28__["EffectsModule"].forRoot([])
             ],
             providers: [
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_8__["StatusBar"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_7__["SplashScreen"],
                 _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_9__["OneSignal"],
-                _incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_23__["AwardDollarService"],
-                _ionic_native_app_version_ngx__WEBPACK_IMPORTED_MODULE_24__["AppVersion"],
-                _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_30__["MobileAccessibility"],
+                _incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_22__["AwardDollarService"],
+                _ionic_native_app_version_ngx__WEBPACK_IMPORTED_MODULE_23__["AppVersion"],
+                _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_29__["MobileAccessibility"],
                 _ionic_native_sqlite_ngx__WEBPACK_IMPORTED_MODULE_11__["SQLite"],
                 _ionic_native_sqlite_porter_ngx__WEBPACK_IMPORTED_MODULE_10__["SQLitePorter"],
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicRouteStrategy"] }
@@ -5378,15 +5431,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../user/auth/auth.guard */ "./src/app/user/auth/auth.guard.ts");
 /* harmony import */ var _contact_contact_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./contact/contact.component */ "./src/app/home/contact/contact.component.ts");
 /* harmony import */ var _incentive_unlocked_inspirational_quotes_unlocked_inspirational_quotes_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component */ "./src/app/incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component.ts");
+/* harmony import */ var _incentive_life_insights_show_all_life_insights_show_all_life_insights_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../incentive/life-insights/show-all-life-insights/show-all-life-insights.component */ "./src/app/incentive/life-insights/show-all-life-insights/show-all-life-insights.component.ts");
 
 
 
 
 
+//import { TreasurechestComponent } from '../incentive/treasurechest/treasurechest.component';
 
 
 
 
+
+//import { SampleLifeInsightsComponent } from '../incentive/life-insights/sample-life-insights/sample-life-insights.component';
 
 var routes = [
     {
@@ -5404,6 +5461,9 @@ var routes = [
             },
             {
                 path: 'thankyous', component: _incentive_unlocked_altuistic_messages_unlocked_altuistic_messages_component__WEBPACK_IMPORTED_MODULE_6__["UnlockedAltuisticMessagesComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]]
+            },
+            {
+                path: 'lifeinsight', component: _incentive_life_insights_show_all_life_insights_show_all_life_insights_component__WEBPACK_IMPORTED_MODULE_10__["ShowAllLifeInsightsComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]]
             },
             {
                 path: 'contact', component: _contact_contact_component__WEBPACK_IMPORTED_MODULE_8__["ContactComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]]
@@ -5848,7 +5908,8 @@ var AquariumComponent = /** @class */ (function () {
           }
         });
         */
-        this.title = "ADAPTS";
+        //this.title = "ADAPTS";
+        this.title = "SARA";
         console.log("aquarium.component.ts --- start");
         //this.menu.enable(true);
     };
@@ -5957,6 +6018,13 @@ var AquariumComponent = /** @class */ (function () {
     };
     AquariumComponent.prototype.showAltruisticDemo = function () {
         this.router.navigate(['incentive/award-altruism']);
+    };
+    AquariumComponent.prototype.showHarvardSurvey = function () {
+        this.navController.navigateRoot(['survey/harvardsurvey']);
+        //this.router.navigate(['survey/harvardsurvey']);
+    };
+    AquariumComponent.prototype.showHarvardArcApps = function () {
+        this.router.navigate(['intervention/arcappsfrontpage']);
     };
     AquariumComponent.prototype.showModalDemo = function () {
         var reinforcements = [];
@@ -6515,7 +6583,8 @@ var DemoAquariumComponent = /** @class */ (function () {
                             if (data[i].points < startPoint)
                                 continue;
                             if (totalPoints < data[i].points)
-                                break;
+                                continue;
+                            // break;
                             fishFunFactListViewItem = {
                                 funFact: data[i].trivia,
                                 image: "assets/" + data[i].img.substring(0, data[i].img.length - 4) + '_tn.jpg',
@@ -16650,6 +16719,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _aquarium_previews_sea_sea_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./aquarium/previews/sea/sea.component */ "./src/app/incentive/aquarium/previews/sea/sea.component.ts");
 /* harmony import */ var _aquarium_previews_tundra_tundra_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./aquarium/previews/tundra/tundra.component */ "./src/app/incentive/aquarium/previews/tundra/tundra.component.ts");
 /* harmony import */ var _unlocked_inspirational_quotes_unlocked_inspirational_quotes_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./unlocked-inspirational-quotes/unlocked-inspirational-quotes.component */ "./src/app/incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component.ts");
+/* harmony import */ var _video_info_page_video_info_page_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./video-info-page/video-info-page.component */ "./src/app/incentive/video-info-page/video-info-page.component.ts");
+/* harmony import */ var _life_insights_life_insights_module__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./life-insights/life-insights.module */ "./src/app/incentive/life-insights/life-insights.module.ts");
 
 
 
@@ -16672,6 +16743,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var routes = [
     //  { path: 'award', component: AwardComponent },
     { path: 'award-memes', component: _award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__["AwardMemesComponent"] },
@@ -16681,9 +16754,12 @@ var IncentiveModule = /** @class */ (function () {
     }
     IncentiveModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__["AwardMemesComponent"], _award_altruism_award_altruism_component__WEBPACK_IMPORTED_MODULE_7__["AwardAltruismComponent"], _treasurechest_treasurechest_component__WEBPACK_IMPORTED_MODULE_6__["TreasurechestComponent"], _aquarium_modal_unlocked_page_modal_unlocked_page_component__WEBPACK_IMPORTED_MODULE_8__["ModalUnlockedPageComponent"], _info_page_info_page_component__WEBPACK_IMPORTED_MODULE_9__["InfoPageComponent"], _unlocked_memes_unlocked_memes_component__WEBPACK_IMPORTED_MODULE_12__["UnlockedMemesComponent"], _unlocked_altuistic_messages_unlocked_altuistic_messages_component__WEBPACK_IMPORTED_MODULE_13__["UnlockedAltuisticMessagesComponent"], _aquarium_previews_fishbowl_fishbowl_component__WEBPACK_IMPORTED_MODULE_14__["FishbowlComponent"], _aquarium_previews_sea_sea_component__WEBPACK_IMPORTED_MODULE_15__["SeaComponent"], _aquarium_previews_tundra_tundra_component__WEBPACK_IMPORTED_MODULE_16__["TundraComponent"], _unlocked_inspirational_quotes_unlocked_inspirational_quotes_component__WEBPACK_IMPORTED_MODULE_17__["UnlockedInspirationalQuotesComponent"]],
+            declarations: [_award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__["AwardMemesComponent"], _award_altruism_award_altruism_component__WEBPACK_IMPORTED_MODULE_7__["AwardAltruismComponent"], _treasurechest_treasurechest_component__WEBPACK_IMPORTED_MODULE_6__["TreasurechestComponent"],
+                _aquarium_modal_unlocked_page_modal_unlocked_page_component__WEBPACK_IMPORTED_MODULE_8__["ModalUnlockedPageComponent"], _info_page_info_page_component__WEBPACK_IMPORTED_MODULE_9__["InfoPageComponent"], _unlocked_memes_unlocked_memes_component__WEBPACK_IMPORTED_MODULE_12__["UnlockedMemesComponent"], _unlocked_altuistic_messages_unlocked_altuistic_messages_component__WEBPACK_IMPORTED_MODULE_13__["UnlockedAltuisticMessagesComponent"],
+                _aquarium_previews_fishbowl_fishbowl_component__WEBPACK_IMPORTED_MODULE_14__["FishbowlComponent"], _aquarium_previews_sea_sea_component__WEBPACK_IMPORTED_MODULE_15__["SeaComponent"], _aquarium_previews_tundra_tundra_component__WEBPACK_IMPORTED_MODULE_16__["TundraComponent"], _unlocked_inspirational_quotes_unlocked_inspirational_quotes_component__WEBPACK_IMPORTED_MODULE_17__["UnlockedInspirationalQuotesComponent"], _video_info_page_video_info_page_component__WEBPACK_IMPORTED_MODULE_18__["VideoInfoPageComponent"]],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+                _life_insights_life_insights_module__WEBPACK_IMPORTED_MODULE_19__["LifeInsightsModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["IonicModule"].forRoot(),
                 _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"].forChild(routes),
                 _ngrx_store__WEBPACK_IMPORTED_MODULE_10__["StoreModule"].forFeature('incentive', _reducers__WEBPACK_IMPORTED_MODULE_11__["incentiveReducer"])
@@ -16812,6 +16888,188 @@ var InfoPageComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/incentive/life-insights/life-insights-profile.service.ts":
+/*!**************************************************************************!*\
+  !*** ./src/app/incentive/life-insights/life-insights-profile.service.ts ***!
+  \**************************************************************************/
+/*! exports provided: LifeInsightsProfileService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LifeInsightsProfileService", function() { return LifeInsightsProfileService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+
+
+
+
+var LifeInsightsProfileService = /** @class */ (function () {
+    function LifeInsightsProfileService() {
+    }
+    //import life insight questions for aya or caregiver
+    LifeInsightsProfileService.prototype.importLifeInsightProfile = function (fileLink) {
+        var _this = this;
+        //fileLink = "aya";
+        fetch('../../../assets/data/life_insight_' + fileLink + '.json').then(function (res) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+            var _a;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this;
+                        return [4 /*yield*/, res.json()];
+                    case 1:
+                        _a.lifeInsightProfile = _b.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+    };
+    //observable version of lifeinsight load
+    LifeInsightsProfileService.prototype.importLifeInsightProfileUsingObservable = function (fileLink) {
+        var _this = this;
+        fileLink = "harvard_survey";
+        var url = '../../../assets/data/life_insight_' + fileLink + '.json';
+        return rxjs__WEBPACK_IMPORTED_MODULE_3__["Observable"].create(function (observer) {
+            //Make use of Fetch API to get data from URL                              
+            fetch(url)
+                .then(function (res) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+                var _a;
+                return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            /*The response.json() doesn't return json, it returns a "readable stream" which is a promise which needs to be resolved to get the actual data.*/
+                            _a = this;
+                            return [4 /*yield*/, res.json()];
+                        case 1:
+                            /*The response.json() doesn't return json, it returns a "readable stream" which is a promise which needs to be resolved to get the actual data.*/
+                            _a.lifeInsightProfile = _b.sent();
+                            return [2 /*return*/, this.lifeInsightProfile];
+                    }
+                });
+            }); })
+                .then(function (body) {
+                observer.next(body);
+                /*Complete the Observable as it won't produce any more event */
+                observer.complete();
+            })
+                //Handle error
+                .catch(function (err) { return observer.error(err); });
+        });
+    };
+    //Save 7-day date and value for each question in localStorage to generate lifeInsight chart
+    LifeInsightsProfileService.prototype.saveLifeInsightInfo = function (survey, typeOfSurvey) {
+        /*
+        
+        var lifeInsightProfile = {
+         "questions":["Q3d","Q4d","Q5d","Q8d"],
+         "qimgs": ["assets/img/stress.png","assets/img/freetime.png","assets/img/dance2.png","assets/img/social.png"],
+         "lifeInsightsTitle": ["How much <b>pain</b> are you currently experiencing?",
+             "How much <b>fatigue</b> are you currently experiencing?",
+             "How much <b>nausea</b> are you currently experiencing?",
+             "How <b>motivated</b> are you to take 6MP today?"],
+         "qYaxis": ["Pain level","Fatigue level","Nausea level","Degree of motivation"],
+         "qSubText": ["0 = low pain, 4 = severe pain",
+                 "0 = low fatigue, 4 = severe fatigue",
+                 "0 = low nausea, 4 = severe nausea",
+                 "0 = less motivated, 4 = highly motivated"],
+         "lifeInsightsHighStress": [
+             "Stressed <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>",
+             "Fatigued <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>",
+             "Nausea <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>",
+             "Motivated <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>"],
+         "lifeInsightsLowStress": [
+             "Relaxed <i class='em em-sunglasses'></i><i class='em em-boat'></i>",
+             "Fatigued <i class='em em-sunglasses'></i><i class='em em-boat'></i>",
+             "Nausea <i class='em em-sunglasses'></i><i class='em em-boat'></i>",
+             "Motivated <i class='em em-sunglasses'></i><i class='em em-boat'></i>"]
+       };
+
+       */
+        var lifeInsightObj = {};
+        console.log(JSON.stringify(this.lifeInsightProfile));
+        //all the questions in life insight profile. 
+        var questionsArray = this.lifeInsightProfile.questions; //["Q3d","Q4d","Q5d","Q8d"]
+        if (window.localStorage['lifeInsight'] == undefined) {
+            for (var _i = 0, questionsArray_1 = questionsArray; _i < questionsArray_1.length; _i++) {
+                var question = questionsArray_1[_i];
+                lifeInsightObj[question] = {};
+                lifeInsightObj[question]['dates'] = [moment__WEBPACK_IMPORTED_MODULE_2__().format("DD-MM-YYYY")];
+                //checks if the question is available in the survey. If it then add it the data
+                if (survey.hasOwnProperty(question)) {
+                    //ToDO: problem here is it is converting to an int.
+                    // Add question type here.
+                    lifeInsightObj[question]['data'] = [survey[question]]; //[parseInt(survey[question])];
+                    lifeInsightObj[question]['data_type'] = "data_type";
+                }
+                else {
+                    lifeInsightObj[question]['data'] = [null];
+                    lifeInsightObj[question]['data_type'] = "not available";
+                }
+            }
+        }
+        else {
+            //
+            lifeInsightObj = JSON.parse(window.localStorage["lifeInsight"]);
+            //
+            for (var _a = 0, questionsArray_2 = questionsArray; _a < questionsArray_2.length; _a++) {
+                var question = questionsArray_2[_a];
+                //
+                console.log("lifeInsightObj: " + JSON.stringify(lifeInsightObj) + ", question: "
+                    + question + ", survey: " + JSON.stringify(survey));
+                var dateslength = lifeInsightObj[question]['dates'].length;
+                //-- trims before last 7-days
+                if (dateslength == 7) {
+                    lifeInsightObj[question]['dates'].shift();
+                    lifeInsightObj[question]['data'].shift();
+                }
+                //-- 
+                var currentdate = moment__WEBPACK_IMPORTED_MODULE_2__().format("DD-MM-YYYY");
+                var dates = lifeInsightObj[question]["dates"];
+                var dateIndex = dates.indexOf(currentdate);
+                //console.log("Current date exist? " + dateIndex);
+                //-- 
+                if (dateIndex > -1) {
+                    lifeInsightObj[question]['dates'][dateIndex] = currentdate;
+                    if (survey.hasOwnProperty(question)) {
+                        //console.log(lifeInsightObj[question]['data'][dateIndex] + ", " + survey[question]);
+                        lifeInsightObj[question]['data'][dateIndex] = survey[question]; //(parseInt(survey[question]));
+                    }
+                    else {
+                        lifeInsightObj[question][dateIndex] = null;
+                    }
+                }
+                else {
+                    lifeInsightObj[question]['dates'].push(currentdate);
+                    if (survey.hasOwnProperty(question)) {
+                        //lifeInsightObj[question]['data'].push(parseInt(survey[question]));
+                        lifeInsightObj[question]['data'].push(survey[question]);
+                    }
+                    else {
+                        lifeInsightObj[question]['data'].push(null);
+                    }
+                }
+            }
+        }
+        //console.log("lifeInsightObj: "+JSON.stringify(this.lifeInsightObj));
+        window.localStorage.setItem("lifeInsight", JSON.stringify(lifeInsightObj));
+    };
+    LifeInsightsProfileService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], LifeInsightsProfileService);
+    return LifeInsightsProfileService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/incentive/life-insights/life-insights.module.ts":
 /*!*****************************************************************!*\
   !*** ./src/app/incentive/life-insights/life-insights.module.ts ***!
@@ -16830,9 +17088,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sample_life_insights_sample_life_insights_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./sample-life-insights/sample-life-insights.component */ "./src/app/incentive/life-insights/sample-life-insights/sample-life-insights.component.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _show_all_life_insights_show_all_life_insights_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./show-all-life-insights/show-all-life-insights.component */ "./src/app/incentive/life-insights/show-all-life-insights/show-all-life-insights.component.ts");
 /*
     The profile for questions is stored in /assets/data/life_insight.json
 */
+
 
 
 
@@ -16849,7 +17109,7 @@ var LifeInsightsModule = /** @class */ (function () {
     }
     LifeInsightsModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_q1_motivated_q1_motivated_component__WEBPACK_IMPORTED_MODULE_4__["Q1MotivatedComponent"], _sample_life_insights_sample_life_insights_component__WEBPACK_IMPORTED_MODULE_5__["SampleLifeInsightsComponent"]],
+            declarations: [_q1_motivated_q1_motivated_component__WEBPACK_IMPORTED_MODULE_4__["Q1MotivatedComponent"], _sample_life_insights_sample_life_insights_component__WEBPACK_IMPORTED_MODULE_5__["SampleLifeInsightsComponent"], _show_all_life_insights_show_all_life_insights_component__WEBPACK_IMPORTED_MODULE_8__["ShowAllLifeInsightsComponent"], _show_all_life_insights_show_all_life_insights_component__WEBPACK_IMPORTED_MODULE_8__["ShowAllLifeInsightsComponent"]],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"],
@@ -16857,7 +17117,7 @@ var LifeInsightsModule = /** @class */ (function () {
                 _angular_router__WEBPACK_IMPORTED_MODULE_6__["RouterModule"].forChild(routes)
             ],
             schemas: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["CUSTOM_ELEMENTS_SCHEMA"]],
-            exports: [_q1_motivated_q1_motivated_component__WEBPACK_IMPORTED_MODULE_4__["Q1MotivatedComponent"], _sample_life_insights_sample_life_insights_component__WEBPACK_IMPORTED_MODULE_5__["SampleLifeInsightsComponent"]]
+            exports: [_q1_motivated_q1_motivated_component__WEBPACK_IMPORTED_MODULE_4__["Q1MotivatedComponent"], _sample_life_insights_sample_life_insights_component__WEBPACK_IMPORTED_MODULE_5__["SampleLifeInsightsComponent"], _show_all_life_insights_show_all_life_insights_component__WEBPACK_IMPORTED_MODULE_8__["ShowAllLifeInsightsComponent"]]
         })
     ], LifeInsightsModule);
     return LifeInsightsModule;
@@ -17024,7 +17284,7 @@ var Q1MotivatedComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2luY2VudGl2ZS9saWZlLWluc2lnaHRzL3NhbXBsZS1saWZlLWluc2lnaHRzL3NhbXBsZS1saWZlLWluc2lnaHRzLmNvbXBvbmVudC5zY3NzIn0= */"
+module.exports = ".new-background-color {\n  --background: #005486;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYXNoMi9Ecm9wYm94IChQQUMgTEFCKS9jb2Rlcy9pb25pY19wcm9qZWN0cy9TQVJBVjMvU0FSQV9tb2R1bGFyL3NyYy9hcHAvaW5jZW50aXZlL2xpZmUtaW5zaWdodHMvc2FtcGxlLWxpZmUtaW5zaWdodHMvc2FtcGxlLWxpZmUtaW5zaWdodHMuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2luY2VudGl2ZS9saWZlLWluc2lnaHRzL3NhbXBsZS1saWZlLWluc2lnaHRzL3NhbXBsZS1saWZlLWluc2lnaHRzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0kscUJBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL2luY2VudGl2ZS9saWZlLWluc2lnaHRzL3NhbXBsZS1saWZlLWluc2lnaHRzL3NhbXBsZS1saWZlLWluc2lnaHRzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5ldy1iYWNrZ3JvdW5kLWNvbG9ye1xuICAgIC0tYmFja2dyb3VuZDogIzAwNTQ4Njtcbn0iLCIubmV3LWJhY2tncm91bmQtY29sb3Ige1xuICAtLWJhY2tncm91bmQ6ICMwMDU0ODY7XG59Il19 */"
 
 /***/ }),
 
@@ -17044,6 +17304,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(chart_js__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _life_insights_profile_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../life-insights-profile.service */ "./src/app/incentive/life-insights/life-insights-profile.service.ts");
+
 
 
 
@@ -17051,10 +17313,14 @@ __webpack_require__.r(__webpack_exports__);
 //import * as lifeInsightProfile from "../../../../assets/data/life_insight.json";
 //import { PreLoad } from '../../../PreLoad';
 var SampleLifeInsightsComponent = /** @class */ (function () {
-    function SampleLifeInsightsComponent() {
+    function SampleLifeInsightsComponent(lifeInsightsProfileService) {
+        //--- 
+        this.lifeInsightsProfileService = lifeInsightsProfileService;
         this.index = 0;
     }
-    /*   get jsonObj(): any {
+    /*
+      
+      get jsonObj(): any {
         // transform value for display
         return this._jsonObj;
       }
@@ -17064,48 +17330,66 @@ var SampleLifeInsightsComponent = /** @class */ (function () {
         console.log('prev _jsonObj: ', this._jsonObj);
         console.log('got jsonObj: ', jsonObj);
         this._jsonObj = jsonObj;
-      } */
+      }
+  
+    */
     SampleLifeInsightsComponent.prototype.ngOnInit = function () {
-        this.init(this.index);
+        //
+        var _this = this;
+        /*getObservableFromFetch returns a Observable*/
+        var observable = this.lifeInsightsProfileService.
+            importLifeInsightProfileUsingObservable('/assets/data/json.json');
+        /*Subscribe to trigger the fetch call*/
+        observable.subscribe(function (v) {
+            //console.log(v);
+            _this.init(_this.index);
+        });
     };
     SampleLifeInsightsComponent.prototype.init = function (index) {
-        //console.log(this.inputStr);
-        //this.jsonObj = JSON.parse(this.inputStr);
-        var lifeInsightProfile = {
-            "questions": ["Q3d", "Q4d", "Q5d", "Q8d"],
-            "qimgs": ["assets/img/stress.png", "assets/img/freetime.png", "assets/img/dance2.png", "assets/img/social.png"],
-            "lifeInsightsTitle": ["How much <b>pain</b> are you currently experiencing?",
-                "How much <b>fatigue</b> are you currently experiencing?",
-                "How much <b>nausea</b> are you currently experiencing?",
-                "How <b>motivated</b> are you to take 6MP today?"],
-            "qYaxis": ["Pain level", "Fatigue level", "Nausea level", "Degree of motivation"],
-            "qSubText": ["0 = low pain, 4 = severe pain",
-                "0 = low fatigue, 4 = severe fatigue",
-                "0 = low nausea, 4 = severe nausea",
-                "0 = less motivated, 4 = highly motivated"],
-            "lifeInsightsHighStress": [
-                "Stressed <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>",
-                "Fatigued <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>",
-                "Nausea <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>",
-                "Motivated <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>"
-            ],
-            "lifeInsightsLowStress": [
-                "Relaxed <i class='em em-sunglasses'></i><i class='em em-boat'></i>",
-                "Fatigued <i class='em em-sunglasses'></i><i class='em em-boat'></i>",
-                "Nausea <i class='em em-sunglasses'></i><i class='em em-boat'></i>",
-                "Motivated <i class='em em-sunglasses'></i><i class='em em-boat'></i>"
-            ]
-        };
-        this.index = Math.floor(Math.random() * lifeInsightProfile.questions.length);
-        this.question = lifeInsightProfile.questions[this.index];
-        this.imgloc = lifeInsightProfile.qimgs[this.index];
-        this.title = lifeInsightProfile.lifeInsightsTitle[this.index];
-        this.qYaxis = lifeInsightProfile.qYaxis[this.index];
-        this.subtext = lifeInsightProfile.qSubText[this.index];
-        this.topSubtext = lifeInsightProfile.lifeInsightsHighStress[this.index];
-        this.bottomSubtext = lifeInsightProfile.lifeInsightsLowStress[this.index];
-        this.qYaxisArray = lifeInsightProfile.qYaxis;
-        this.selectedValue = lifeInsightProfile.qYaxis[this.index];
+        /*
+         *
+         * Example life-insight.
+         *
+         *
+
+            var lifeInsightProfile = {
+                "questions":["Q3d","Q4d","Q5d","Q8d"],
+                "qimgs": ["assets/img/stress.png","assets/img/freetime.png","assets/img/dance2.png","assets/img/social.png"],
+                "lifeInsightsTitle": ["How much <b>pain</b> are you currently experiencing?",
+                    "How much <b>fatigue</b> are you currently experiencing?",
+                    "How much <b>nausea</b> are you currently experiencing?",
+                    "How <b>motivated</b> are you to take 6MP today?"],
+                "qYaxis": ["Pain level","Fatigue level","Nausea level","Degree of motivation"],
+                "qSubText": ["0 = low pain, 4 = severe pain",
+                        "0 = low fatigue, 4 = severe fatigue",
+                        "0 = low nausea, 4 = severe nausea",
+                        "0 = less motivated, 4 = highly motivated"],
+                "lifeInsightsHighStress": [
+                    "Stressed <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>",
+                    "Fatigued <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>",
+                    "Nausea <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>",
+                    "Motivated <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>"],
+                "lifeInsightsLowStress": [
+                    "Relaxed <i class='em em-sunglasses'></i><i class='em em-boat'></i>",
+                    "Fatigued <i class='em em-sunglasses'></i><i class='em em-boat'></i>",
+                    "Nausea <i class='em em-sunglasses'></i><i class='em em-boat'></i>",
+                    "Motivated <i class='em em-sunglasses'></i><i class='em em-boat'></i>"]
+            };
+
+        */
+        //reading all the values from life-insight.
+        this.index = Math.floor(Math.random() * this.lifeInsightsProfileService.lifeInsightProfile.questions.length);
+        this.question = this.lifeInsightsProfileService.lifeInsightProfile.questions[this.index];
+        this.imgloc = this.lifeInsightsProfileService.lifeInsightProfile.qimgs[this.index];
+        this.title = this.lifeInsightsProfileService.lifeInsightProfile.lifeInsightsTitle[this.index];
+        this.qYaxis = this.lifeInsightsProfileService.lifeInsightProfile.qYaxis[this.index];
+        this.subtext = this.lifeInsightsProfileService.lifeInsightProfile.qSubText[this.index];
+        this.topSubtext = this.lifeInsightsProfileService.lifeInsightProfile.lifeInsightsHighStress[this.index];
+        this.bottomSubtext = this.lifeInsightsProfileService.lifeInsightProfile.lifeInsightsLowStress[this.index];
+        //labels for y-axis
+        this.qYaxisArray = this.lifeInsightsProfileService.lifeInsightProfile.qYaxis;
+        //
+        this.selectedValue = this.lifeInsightsProfileService.lifeInsightProfile.qYaxis[this.index];
         //read data from localStorage 
         if (window.localStorage.getItem("lifeInsight") == undefined) {
             console.log("Undefined!");
@@ -17113,8 +17397,10 @@ var SampleLifeInsightsComponent = /** @class */ (function () {
             //this.inputString = JSON.stringify(this.inputJson);
         }
         else {
+            //
             var lifeInsightObj = JSON.parse(window.localStorage.getItem("lifeInsight"));
             console.log(JSON.stringify(lifeInsightObj));
+            //
             this.data = [];
             this.labels = [];
             for (var i = 6; i >= 0; i--) {
@@ -17139,6 +17425,7 @@ var SampleLifeInsightsComponent = /** @class */ (function () {
             //this.data = [null, null, null, null, null, null, 1];
             console.log("Data, " + this.data);
         }
+        //this.data = [0, 1, 3, 4, null, 3, 1];
         this.lineChart = new chart_js__WEBPACK_IMPORTED_MODULE_2__["Chart"](this.lineCanvas.nativeElement, {
             type: "line",
             data: {
@@ -17217,6 +17504,9 @@ var SampleLifeInsightsComponent = /** @class */ (function () {
         //this.router.navigate(['/home']);
         window.location.href = '/home';
     };
+    SampleLifeInsightsComponent.ctorParameters = function () { return [
+        { type: _life_insights_profile_service__WEBPACK_IMPORTED_MODULE_4__["LifeInsightsProfileService"] }
+    ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('lineCanvas', { static: true }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"])
@@ -17229,9 +17519,278 @@ var SampleLifeInsightsComponent = /** @class */ (function () {
         })
         //@PreLoad('q1lifeinsight')
         ,
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_life_insights_profile_service__WEBPACK_IMPORTED_MODULE_4__["LifeInsightsProfileService"]])
     ], SampleLifeInsightsComponent);
     return SampleLifeInsightsComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/incentive/life-insights/show-all-life-insights/show-all-life-insights.component.css":
+/*!*****************************************************************************************************!*\
+  !*** ./src/app/incentive/life-insights/show-all-life-insights/show-all-life-insights.component.css ***!
+  \*****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".new-background-color{\n    --background: #005486;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaW5jZW50aXZlL2xpZmUtaW5zaWdodHMvc2hvdy1hbGwtbGlmZS1pbnNpZ2h0cy9zaG93LWFsbC1saWZlLWluc2lnaHRzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxxQkFBcUI7QUFDekIiLCJmaWxlIjoic3JjL2FwcC9pbmNlbnRpdmUvbGlmZS1pbnNpZ2h0cy9zaG93LWFsbC1saWZlLWluc2lnaHRzL3Nob3ctYWxsLWxpZmUtaW5zaWdodHMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5uZXctYmFja2dyb3VuZC1jb2xvcntcbiAgICAtLWJhY2tncm91bmQ6ICMwMDU0ODY7XG59Il19 */"
+
+/***/ }),
+
+/***/ "./src/app/incentive/life-insights/show-all-life-insights/show-all-life-insights.component.ts":
+/*!****************************************************************************************************!*\
+  !*** ./src/app/incentive/life-insights/show-all-life-insights/show-all-life-insights.component.ts ***!
+  \****************************************************************************************************/
+/*! exports provided: ShowAllLifeInsightsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShowAllLifeInsightsComponent", function() { return ShowAllLifeInsightsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
+/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(chart_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _life_insights_profile_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../life-insights-profile.service */ "./src/app/incentive/life-insights/life-insights-profile.service.ts");
+
+
+
+
+
+var ShowAllLifeInsightsComponent = /** @class */ (function () {
+    function ShowAllLifeInsightsComponent(lifeInsightsProfileService) {
+        //--- 
+        this.lifeInsightsProfileService = lifeInsightsProfileService;
+        this.index = 0;
+    }
+    /*
+      
+      get jsonObj(): any {
+        // transform value for display
+        return this._jsonObj;
+      }
+      
+      @Input()
+      set jsonObj(jsonObj: any) {
+        console.log('prev _jsonObj: ', this._jsonObj);
+        console.log('got jsonObj: ', jsonObj);
+        this._jsonObj = jsonObj;
+      }
+  
+    */
+    ShowAllLifeInsightsComponent.prototype.ngOnInit = function () {
+        //
+        var _this = this;
+        /*getObservableFromFetch returns a Observable*/
+        var observable = this.lifeInsightsProfileService.
+            importLifeInsightProfileUsingObservable('/assets/data/json.json');
+        /*Subscribe to trigger the fetch call*/
+        observable.subscribe(function (v) {
+            //console.log(v);
+            _this.drawLifeInsight(0, _this.lineCanvas);
+            //
+            _this.drawLifeInsight(1, _this.lineCanvas2);
+        });
+    };
+    ShowAllLifeInsightsComponent.prototype.drawLifeInsight = function (index, lineCanvas) {
+        /*
+         *
+         * Example life-insight.
+         *
+         *
+
+            var lifeInsightProfile = {
+                "questions":["Q3d","Q4d","Q5d","Q8d"],
+                "qimgs": ["assets/img/stress.png","assets/img/freetime.png","assets/img/dance2.png","assets/img/social.png"],
+                "lifeInsightsTitle": ["How much <b>pain</b> are you currently experiencing?",
+                    "How much <b>fatigue</b> are you currently experiencing?",
+                    "How much <b>nausea</b> are you currently experiencing?",
+                    "How <b>motivated</b> are you to take 6MP today?"],
+                "qYaxis": ["Pain level","Fatigue level","Nausea level","Degree of motivation"],
+                "qSubText": ["0 = low pain, 4 = severe pain",
+                        "0 = low fatigue, 4 = severe fatigue",
+                        "0 = low nausea, 4 = severe nausea",
+                        "0 = less motivated, 4 = highly motivated"],
+                "lifeInsightsHighStress": [
+                    "Stressed <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>",
+                    "Fatigued <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>",
+                    "Nausea <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>",
+                    "Motivated <i class='em em-name_badge'></i><i class='em em-sweat_drops'></i>"],
+                "lifeInsightsLowStress": [
+                    "Relaxed <i class='em em-sunglasses'></i><i class='em em-boat'></i>",
+                    "Fatigued <i class='em em-sunglasses'></i><i class='em em-boat'></i>",
+                    "Nausea <i class='em em-sunglasses'></i><i class='em em-boat'></i>",
+                    "Motivated <i class='em em-sunglasses'></i><i class='em em-boat'></i>"]
+            };
+
+        */
+        //reading all the values from life-insight.
+        this.index = index; //Math.floor(Math.random() * this.lifeInsightsProfileService.lifeInsightProfile.questions.length);
+        var questionType;
+        if (index == 0) {
+            this.question = this.lifeInsightsProfileService.lifeInsightProfile.questions[this.index];
+            this.imgloc = this.lifeInsightsProfileService.lifeInsightProfile.qimgs[this.index];
+            this.title = this.lifeInsightsProfileService.lifeInsightProfile.lifeInsightsTitle[this.index];
+            this.qYaxis = this.lifeInsightsProfileService.lifeInsightProfile.qYaxis[this.index];
+            this.subtext = this.lifeInsightsProfileService.lifeInsightProfile.qSubText[this.index];
+            this.topSubtext = this.lifeInsightsProfileService.lifeInsightProfile.lifeInsightsHighStress[this.index];
+            this.bottomSubtext = this.lifeInsightsProfileService.lifeInsightProfile.lifeInsightsLowStress[this.index];
+            this.selectedValue = this.lifeInsightsProfileService.lifeInsightProfile.qYaxis[this.index];
+            questionType = this.lifeInsightsProfileService.lifeInsightProfile.questionType[this.index];
+        }
+        var questionType2;
+        if (index == 1) {
+            this.question = this.lifeInsightsProfileService.lifeInsightProfile.questions[this.index];
+            this.imgloc2 = this.lifeInsightsProfileService.lifeInsightProfile.qimgs[this.index];
+            this.title2 = this.lifeInsightsProfileService.lifeInsightProfile.lifeInsightsTitle[this.index];
+            this.qYaxis = this.lifeInsightsProfileService.lifeInsightProfile.qYaxis[this.index];
+            this.subtext2 = this.lifeInsightsProfileService.lifeInsightProfile.qSubText[this.index];
+            this.topSubtext2 = this.lifeInsightsProfileService.lifeInsightProfile.lifeInsightsHighStress[this.index];
+            this.bottomSubtext2 = this.lifeInsightsProfileService.lifeInsightProfile.lifeInsightsLowStress[this.index];
+            this.selectedValue2 = this.lifeInsightsProfileService.lifeInsightProfile.qYaxis[this.index];
+            questionType2 = this.lifeInsightsProfileService.lifeInsightProfile.questionType[this.index];
+        }
+        //read data from localStorage 
+        if (window.localStorage.getItem("lifeInsight") == undefined) {
+            console.log("Undefined!");
+            this.data = [0, 1, 3, 4, null, 3, 1];
+            //this.inputString = JSON.stringify(this.inputJson);
+        }
+        else {
+            //
+            var lifeInsightObj = JSON.parse(window.localStorage.getItem("lifeInsight"));
+            //console.log(JSON.stringify(lifeInsightObj));
+            //
+            this.data = [];
+            this.labels = [];
+            for (var i = 6; i >= 0; i--) {
+                var currentdate = moment__WEBPACK_IMPORTED_MODULE_3__().subtract(i, "days").format("DD-MM-YYYY");
+                //console.log("Inside loop: currentdate: "+currentdate);
+                if (i == 0) {
+                    this.labels.push("Today");
+                }
+                else {
+                    this.labels.push(moment__WEBPACK_IMPORTED_MODULE_3__().subtract(i, "days").format("MM/DD"));
+                }
+                //console.log("Local Storage save: "+question+" "+JSON.stringify(lifeInsightObj[question]));
+                var dates = lifeInsightObj[this.question]["dates"];
+                var dateIndex = dates.lastIndexOf(currentdate);
+                if (dateIndex > -1) {
+                    //
+                    if (questionType == "horizontal_radiobutton")
+                        this.data.push(parseInt(lifeInsightObj[this.question]['data'][dateIndex]));
+                    this.data.push(lifeInsightObj[this.question]['data'][dateIndex]);
+                }
+                else {
+                    this.data.push(null);
+                }
+            }
+            //this.data = [null, null, null, null, null, null, 1];
+            //console.log("Data, " + this.data);
+        }
+        //this.data = [0, 1, 3, 4, null, 3, 1];
+        if (index == 1)
+            this.data = [0, 1, 3, 4, null, 3, 1];
+        if (index == 0)
+            this.data = [3, 3, 4, 3, 3, 3, 2];
+        var numberOfLevels = 5;
+        this.drawLineChartRadioButton(this.data, numberOfLevels, lineCanvas, this.qYaxis);
+        //
+    };
+    ShowAllLifeInsightsComponent.prototype.drawLineChartRadioButton = function (data, numberOfLevels, lineCanvas, qYaxis) {
+        this.lineChart = new chart_js__WEBPACK_IMPORTED_MODULE_2__["Chart"](lineCanvas.nativeElement, {
+            type: "line",
+            data: {
+                labels: this.labels,
+                datasets: [
+                    {
+                        label: "My First dataset",
+                        fill: false,
+                        lineTension: 0.1,
+                        backgroundColor: "rgba(75,192,192,0.4)",
+                        borderColor: "rgba(75,192,192,1)",
+                        borderCapStyle: "butt",
+                        borderDash: [],
+                        borderDashOffset: 0.0,
+                        borderJoinStyle: "miter",
+                        pointBorderColor: "rgba(75,192,192,1)",
+                        pointBackgroundColor: "rgba(75,192,192,1)",
+                        pointBorderWidth: 1,
+                        pointHoverRadius: 5,
+                        pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                        pointHoverBorderColor: "rgba(220,220,220,1)",
+                        pointHoverBorderWidth: 2,
+                        pointRadius: 4,
+                        pointHitRadius: 10,
+                        data: data,
+                        spanGaps: false
+                    }
+                ]
+            },
+            options: {
+                tooltips: { enabled: false },
+                hover: { mode: null },
+                legend: {
+                    display: false
+                },
+                maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        left: 5,
+                        right: 5,
+                        top: 15,
+                        bottom: 5
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: qYaxis,
+                                fontColor: "#000"
+                            },
+                            ticks: {
+                                max: numberOfLevels - 1,
+                                min: 0,
+                                stepSize: 1,
+                                display: true
+                            }
+                        }],
+                    xAxes: [{
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Day',
+                                fontColor: "#000"
+                            }
+                        }],
+                }
+            }
+        });
+    };
+    ShowAllLifeInsightsComponent.ctorParameters = function () { return [
+        { type: _life_insights_profile_service__WEBPACK_IMPORTED_MODULE_4__["LifeInsightsProfileService"] }
+    ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('lineCanvas', { static: true }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"])
+    ], ShowAllLifeInsightsComponent.prototype, "lineCanvas", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('lineCanvas2', { static: true }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"])
+    ], ShowAllLifeInsightsComponent.prototype, "lineCanvas2", void 0);
+    ShowAllLifeInsightsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-show-all-life-insights',
+            template: __webpack_require__(/*! raw-loader!./show-all-life-insights.component.html */ "./node_modules/raw-loader/index.js!./src/app/incentive/life-insights/show-all-life-insights/show-all-life-insights.component.html"),
+            styles: [__webpack_require__(/*! ./show-all-life-insights.component.css */ "./src/app/incentive/life-insights/show-all-life-insights/show-all-life-insights.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_life_insights_profile_service__WEBPACK_IMPORTED_MODULE_4__["LifeInsightsProfileService"]])
+    ], ShowAllLifeInsightsComponent);
+    return ShowAllLifeInsightsComponent;
 }());
 
 
@@ -17531,7 +18090,7 @@ var UnlockedAltuisticMessagesComponent = /** @class */ (function () {
         }
         this.unlockedAltMessagesCount = this.already_shown_altruism_msgs.unlocked_alt_msgs.length;
         this.list_of_alt_msg_to_display = this.already_shown_altruism_msgs["unlocked_alt_msgs"];
-        this.list_of_alt_msg_to_display.reverse();
+        //this.list_of_alt_msg_to_display.reverse();
         console.log("already_shown_altruism_msgs " + this.already_shown_altruism_msgs);
         this.downloadAndUpdateUnlockedAltsMsgsList();
         //
@@ -17578,29 +18137,35 @@ var UnlockedAltuisticMessagesComponent = /** @class */ (function () {
                             lastUpdatedSeverSide = json_data["last_updated"];
                             lastUpdatedReadableTsSeverSide = json_data["last_updated_readable_ts"];
                             unlockedAltMsgsServerSide = json_data["unlocked_alt_msgs"];
-                            console.log("--unlockedAltMsgsServerSide--- " + JSON.stringify(unlockedAltMsgsServerSide));
+                            //console.log("--unlockedAltMsgsServerSide--- " + JSON.stringify(unlockedAltMsgsServerSide));
                         }
                         else {
                             lastUpdatedSeverSide = -1;
                             lastUpdatedReadableTsSeverSide = -1;
                             unlockedAltMsgsServerSide = [];
-                            console.log("--unlockedAltMsgsServerSide--- " + JSON.stringify(unlockedAltMsgsServerSide));
+                            //console.log("--unlockedAltMsgsServerSide--- " + JSON.stringify(unlockedAltMsgsServerSide));
                         }
                         var localAltMsgsRecord = JSON.parse(window.localStorage["already_shown_alt_msg4"]);
                         var lastUpdatedLocalStorage = localAltMsgsRecord["last_updated"];
                         var lastUpdatedReadableTsLocalStorage = localAltMsgsRecord["last_updated_readable_ts"];
                         var unlockedAltMsgLocalStorage = localAltMsgsRecord["unlocked_alt_msgs"];
-                        console.log("--unlockedAltMsgLocalStorage--- " + JSON.stringify(unlockedAltMsgLocalStorage));
+                        //console.log("--unlockedAltMsgLocalStorage--- " + JSON.stringify(unlockedAltMsgLocalStorage));
                         //Following code creats a union of unlockedMemesServerSide and unlockedMemesLocalStorage
                         var unionOfLocalAndServer = {};
                         for (var i = 0; i < unlockedAltMsgsServerSide.length; i++)
                             unionOfLocalAndServer[unlockedAltMsgsServerSide[i]["filename"]] = unlockedAltMsgsServerSide[i];
                         for (var i = 0; i < unlockedAltMsgLocalStorage.length; i++)
                             unionOfLocalAndServer[unlockedAltMsgLocalStorage[i]["filename"]] = unlockedAltMsgLocalStorage[i];
-                        console.log("--unionOfLocalAndServer--- " + JSON.stringify(unionOfLocalAndServer));
+                        //console.log("--unionOfLocalAndServer--- " + JSON.stringify(unionOfLocalAndServer));
+                        //
+                        var unlockedAltMessagesOrderedByDate = {};
+                        for (var key in unionOfLocalAndServer)
+                            unlockedAltMessagesOrderedByDate[unionOfLocalAndServer[key]["unlock_date"]] = unionOfLocalAndServer[key];
+                        //console.log("--unlockedAltMessagesOrderedByDate--- " + JSON.stringify(unlockedAltMessagesOrderedByDate));
                         var res = [];
-                        for (var k in unionOfLocalAndServer) {
-                            res.push(unionOfLocalAndServer[k]);
+                        var sortedDates = Object.keys(unlockedAltMessagesOrderedByDate).sort();
+                        for (var k = 0; k < sortedDates.length; k++) {
+                            res.push(unlockedAltMessagesOrderedByDate[sortedDates[k]]);
                         }
                         _this.list_of_alt_msg_to_display = res.reverse();
                         _this.unlockedAltMessagesCount = res.length;
@@ -17608,7 +18173,7 @@ var UnlockedAltuisticMessagesComponent = /** @class */ (function () {
                         localAltMsgsRecord["last_updated"] = Date.now();
                         localAltMsgsRecord["last_updated_readable_ts"] = moment__WEBPACK_IMPORTED_MODULE_2__().format("MMMM Do YYYY, h:mm:ss a Z");
                         window.localStorage["already_shown_alt_msg4"] = JSON.stringify(localAltMsgsRecord);
-                        console.log("--localAltMsgsRecord--- " + JSON.stringify(localAltMsgsRecord));
+                        //console.log("--localAltMsgsRecord--- " + JSON.stringify(localAltMsgsRecord));
                         //
                         _this.uploadCurrentlyUnlockedAltMsgsList(localAltMsgsRecord);
                     },
@@ -17763,10 +18328,13 @@ var UnlockedInspirationalQuotesComponent = /** @class */ (function () {
                     var tomorrowsDate = moment__WEBPACK_IMPORTED_MODULE_5__().add(1, "days").format('YYYYMMDD');
                     if (json_data[i].date == tomorrowsDate)
                         continue;
+                    var date = json_data[i].date;
+                    date = date.substring(4, 6) + "/" + date.substring(6, 8) + "/" + date.substring(0, 4);
                     _this.unlockedInspirationalQuotes.push({
                         "image": "https://aws-website-sara-ubicomp-h28yp.s3.amazonaws.com/sarapp/engagement_images/" + json_data[i].image,
                         "author": json_data[i].author,
-                        "quote_text": json_data[i].quote_text
+                        "quote_text": json_data[i].quote_text,
+                        "date": date
                     });
                 }
                 window.localStorage.setItem('saved_quotes', JSON.stringify(_this.unlockedInspirationalQuotes));
@@ -17872,8 +18440,12 @@ var UnlockedMemesComponent = /** @class */ (function () {
             window.localStorage["already_shown_memes4"] = JSON.stringify(this.already_shown_memes);
         }
         this.unlockedMemeCount = this.already_shown_memes["unlocked_memes"].length;
+        //var unlockedMemeUnorderDateList = this.already_shown_memes["unlocked_memes"];
+        //for(var key in unlockedMemeUnorderDateList)
+        //  unlockedMemesOrderedByDate[unionOfLocalAndServer[key]["unlock_date"]] = unionOfLocalAndServer[key];
+        //console.log("unlockedMemeUnorderDateList " + JSON.stringify(unlockedMemeUnorderDateList.reverse()));
         this.list_of_meme_to_display = this.already_shown_memes["unlocked_memes"];
-        this.list_of_meme_to_display.reverse();
+        //this.list_of_meme_to_display.reverse();
         console.log("already_shown_memes " + JSON.stringify(this.already_shown_memes));
         this.downloadAndUpdateUnlockedMemeList();
         //
@@ -17920,37 +18492,43 @@ var UnlockedMemesComponent = /** @class */ (function () {
                             lastUpdatedSeverSide = json_data["last_updated"];
                             lastUpdatedReadableTsSeverSide = json_data["last_updated_readable_ts"];
                             unlockedMemesServerSide = json_data["unlocked_memes"];
-                            console.log("--unlockedMemesServerSide--- " + JSON.stringify(unlockedMemesServerSide));
+                            //console.log("--unlockedMemesServerSide--- " + JSON.stringify(unlockedMemesServerSide));
                         }
                         else {
                             lastUpdatedSeverSide = -1;
                             lastUpdatedReadableTsSeverSide = -1;
                             unlockedMemesServerSide = [];
-                            console.log("--unlockedMemesServerSide--- " + JSON.stringify(unlockedMemesServerSide));
+                            //console.log("--unlockedMemesServerSide--- " + JSON.stringify(unlockedMemesServerSide));
                         }
                         var localMemeRecord = JSON.parse(window.localStorage["already_shown_memes4"]);
                         var lastUpdatedLocalStorage = localMemeRecord["last_updated"];
                         var lastUpdatedReadableTsLocalStorage = localMemeRecord["last_updated_readable_ts"];
                         var unlockedMemesLocalStorage = localMemeRecord["unlocked_memes"];
-                        console.log("--unlockedMemesLocalStorage--- " + JSON.stringify(unlockedMemesLocalStorage));
-                        //Following code creats a union of unlockedMemesServerSide and unlockedMemesLocalStorage
+                        //console.log("--unlockedMemesLocalStorage--- " + JSON.stringify(unlockedMemesLocalStorage));
+                        //Following code creates a union of unlockedMemesServerSide and unlockedMemesLocalStorage
                         var unionOfLocalAndServer = {};
                         for (var i = 0; i < unlockedMemesServerSide.length; i++)
                             unionOfLocalAndServer[unlockedMemesServerSide[i]["filename"]] = unlockedMemesServerSide[i];
                         for (var i = 0; i < unlockedMemesLocalStorage.length; i++)
                             unionOfLocalAndServer[unlockedMemesLocalStorage[i]["filename"]] = unlockedMemesLocalStorage[i];
-                        console.log("--unionOfLocalAndServer--- " + JSON.stringify(unionOfLocalAndServer));
+                        //
+                        var unlockedMemesOrderedByDate = {};
+                        for (var key in unionOfLocalAndServer)
+                            unlockedMemesOrderedByDate[unionOfLocalAndServer[key]["unlock_date"]] = unionOfLocalAndServer[key];
+                        //console.log("--unlockedMemesOrderedByDate--- " + JSON.stringify(unlockedMemesOrderedByDate));
                         var res = [];
-                        for (var k in unionOfLocalAndServer) {
-                            res.push(unionOfLocalAndServer[k]);
+                        var sortedDates = Object.keys(unlockedMemesOrderedByDate).sort();
+                        for (var k = 0; k < sortedDates.length; k++) {
+                            res.push(unlockedMemesOrderedByDate[sortedDates[k]]);
                         }
+                        //console.log("--sortedDates--- " + JSON.stringify(sortedDates));
                         _this.list_of_meme_to_display = res.reverse();
                         _this.unlockedMemeCount = res.length;
                         localMemeRecord["unlocked_memes"] = _this.list_of_meme_to_display;
                         localMemeRecord["last_updated"] = Date.now();
                         localMemeRecord["last_updated_readable_ts"] = moment__WEBPACK_IMPORTED_MODULE_2__().format("MMMM Do YYYY, h:mm:ss a Z");
                         window.localStorage["already_shown_memes4"] = JSON.stringify(localMemeRecord);
-                        console.log("--localMemeRecord--- " + JSON.stringify(localMemeRecord));
+                        //console.log("--localMemeRecord--- " + JSON.stringify(localMemeRecord));
                         //
                         _this.uploadCurrentlyUnlockedMemeList(localMemeRecord);
                     },
@@ -18004,6 +18582,304 @@ var UnlockedMemesComponent = /** @class */ (function () {
             src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_6__["DatabaseService"]])
     ], UnlockedMemesComponent);
     return UnlockedMemesComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/incentive/video-info-page/video-info-page.component.css":
+/*!*************************************************************************!*\
+  !*** ./src/app/incentive/video-info-page/video-info-page.component.css ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".new-background-color{\n    --background: #005486;\n}\n\n.video-responsive{\n    overflow:hidden;\n    padding-bottom:56.25%;\n    position:relative;\n    height:650px;\n}\n\n.video-responsive iframe{\n    left:0;\n    top:0;\n    height:100%;\n    width:100%;\n    position:absolute;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaW5jZW50aXZlL3ZpZGVvLWluZm8tcGFnZS92aWRlby1pbmZvLXBhZ2UuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHFCQUFxQjtBQUN6Qjs7QUFFQTtJQUNJLGVBQWU7SUFDZixxQkFBcUI7SUFDckIsaUJBQWlCO0lBQ2pCLFlBQVk7QUFDaEI7O0FBQ0E7SUFDSSxNQUFNO0lBQ04sS0FBSztJQUNMLFdBQVc7SUFDWCxVQUFVO0lBQ1YsaUJBQWlCO0FBQ3JCIiwiZmlsZSI6InNyYy9hcHAvaW5jZW50aXZlL3ZpZGVvLWluZm8tcGFnZS92aWRlby1pbmZvLXBhZ2UuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5uZXctYmFja2dyb3VuZC1jb2xvcntcbiAgICAtLWJhY2tncm91bmQ6ICMwMDU0ODY7XG59XG5cbi52aWRlby1yZXNwb25zaXZle1xuICAgIG92ZXJmbG93OmhpZGRlbjtcbiAgICBwYWRkaW5nLWJvdHRvbTo1Ni4yNSU7XG4gICAgcG9zaXRpb246cmVsYXRpdmU7XG4gICAgaGVpZ2h0OjY1MHB4O1xufVxuLnZpZGVvLXJlc3BvbnNpdmUgaWZyYW1le1xuICAgIGxlZnQ6MDtcbiAgICB0b3A6MDtcbiAgICBoZWlnaHQ6MTAwJTtcbiAgICB3aWR0aDoxMDAlO1xuICAgIHBvc2l0aW9uOmFic29sdXRlO1xufSJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/incentive/video-info-page/video-info-page.component.ts":
+/*!************************************************************************!*\
+  !*** ./src/app/incentive/video-info-page/video-info-page.component.ts ***!
+  \************************************************************************/
+/*! exports provided: VideoInfoPageComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VideoInfoPageComponent", function() { return VideoInfoPageComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
+
+
+
+
+var VideoInfoPageComponent = /** @class */ (function () {
+    function VideoInfoPageComponent(menuCtrl, appUsageDb) {
+        this.menuCtrl = menuCtrl;
+        this.appUsageDb = appUsageDb;
+    }
+    VideoInfoPageComponent.prototype.ngOnInit = function () {
+        this.menuCtrl.close();
+    };
+    VideoInfoPageComponent.prototype.ionViewDidEnter = function () {
+        /*
+        this.db.getDatabaseState().subscribe(rdy => {
+         if (rdy) {
+           this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+         }
+        });
+        */
+        this.appUsageDb.saveAppUsageEnter("reward_video_info_page");
+    };
+    VideoInfoPageComponent.prototype.ionViewDidLeave = function () {
+        /*
+        this.db.getDatabaseState().subscribe(rdy => {
+          if (rdy) {
+            this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+          }
+        });
+        */
+        this.appUsageDb.saveAppUsageExit("reward_video_info_page");
+    };
+    VideoInfoPageComponent.ctorParameters = function () { return [
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"] },
+        { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_3__["DatabaseService"] }
+    ]; };
+    VideoInfoPageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-video-info-page',
+            template: __webpack_require__(/*! raw-loader!./video-info-page.component.html */ "./node_modules/raw-loader/index.js!./src/app/incentive/video-info-page/video-info-page.component.html"),
+            styles: [__webpack_require__(/*! ./video-info-page.component.css */ "./src/app/incentive/video-info-page/video-info-page.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"],
+            src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_3__["DatabaseService"]])
+    ], VideoInfoPageComponent);
+    return VideoInfoPageComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/intervention/harvard-arc-apps/front-page/front-page.component.css":
+/*!***********************************************************************************!*\
+  !*** ./src/app/intervention/harvard-arc-apps/front-page/front-page.component.css ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".new-background-color{\n    --background: #005486;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaW50ZXJ2ZW50aW9uL2hhcnZhcmQtYXJjLWFwcHMvZnJvbnQtcGFnZS9mcm9udC1wYWdlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxxQkFBcUI7QUFDekIiLCJmaWxlIjoic3JjL2FwcC9pbnRlcnZlbnRpb24vaGFydmFyZC1hcmMtYXBwcy9mcm9udC1wYWdlL2Zyb250LXBhZ2UuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5uZXctYmFja2dyb3VuZC1jb2xvcntcbiAgICAtLWJhY2tncm91bmQ6ICMwMDU0ODY7XG59Il19 */"
+
+/***/ }),
+
+/***/ "./src/app/intervention/harvard-arc-apps/front-page/front-page.component.ts":
+/*!**********************************************************************************!*\
+  !*** ./src/app/intervention/harvard-arc-apps/front-page/front-page.component.ts ***!
+  \**********************************************************************************/
+/*! exports provided: FrontPageComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FrontPageComponent", function() { return FrontPageComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
+
+
+var FrontPageComponent = /** @class */ (function () {
+    function FrontPageComponent(router, navController, menuCtrl) {
+        this.router = router;
+        this.navController = navController;
+        this.menuCtrl = menuCtrl;
+        this.TM_apps_thumbs = [
+            {
+                name: "Tomato Timer",
+                url: "https://tomato-timer.com/",
+                img: "./assets/img/arcapps/tomatoapp.png",
+                description: "Tomato timer chunks larger-works into a set of intervals separated by short breaks."
+            },
+            {
+                name: "Forest",
+                url: "https://www.forestapp.cc/",
+                img: "./assets/img/arcapps/forestapp.png",
+                description: "Forest is an app that helps you stay focused on the important things in life."
+            },
+            {
+                name: "Focus",
+                url: "https://heyfocus.com/",
+                img: "./assets/img/arcapps/focusapp.png",
+                description: "Focus is a distraction blocker that helps you improve your productivity."
+            },
+            {
+                name: "MyStudyLife",
+                url: "https://www.mystudylife.com/",
+                img: "./assets/img/arcapps/mystudylifeapp.png",
+                description: "MyStudyLife is a cross-platform planner that stores classes, homework, and exams in the cloud."
+            },
+            {
+                name: "Week Plan",
+                url: "https://weekplan.net/",
+                img: "./assets/img/arcapps/weekplanapp.png",
+                description: "Week Plan is a priority planner for highly effective people."
+            },
+            {
+                name: "SelfControl",
+                url: "https://selfcontrolapp.com/",
+                img: "./assets/img/arcapps/selfcontrolapp.png",
+                description: "SelfControl is a free Mac application to help you avoid distracting websites."
+            },
+            {
+                name: "Freedom",
+                url: "https://freedom.to/",
+                img: "./assets/img/arcapps/freedomapp.jpg",
+                description: "Freedom is an app and website blocker used by over 1,000,000 people to reclaim focus and productivity."
+            },
+            {
+                name: "StayFocusd",
+                url: "https://chrome.google.com/webstore/detail/stayfocusd/laankejkbhbdhmipfmgcngdelahlfoji?hl=en",
+                img: "./assets/img/arcapps/stayfocusdapp.png",
+                description: "StayFocusd is a productivity extension for Google Chrome that restricts the amount of time you can spend on time-wasting websites."
+            },
+            {
+                name: "Cold Turkey",
+                url: "https://getcoldturkey.com/",
+                img: "./assets/img/arcapps/coldturkeyapp.png",
+                description: "Cold Turkey is a free website blocker designed for studying or focusing on work."
+            },
+        ];
+        this.TM_apps = [
+            { name: "Tomato Timer", url: "https://tomato-timer.com/" },
+            { name: "Forest", url: "https://www.forestapp.cc/" },
+            { name: "Focus", url: "https://heyfocus.com/" },
+            { name: "mystudylife", url: "https://tomato-timer.com/" },
+            { name: "weekplan", url: "https://tomato-timer.com/" },
+        ];
+        this.Internet_Blocking_Tools = [
+            { name: "SelfControlapp", url: "https://selfcontrolapp.com/" },
+            { name: "Freedom", url: "https://tomato-timer.com/" },
+            { name: "Stayfocusd", url: "https://tomato-timer.com/" },
+            { name: "getcoldturckey", url: "https://tomato-timer.com/" },
+        ];
+        this.Task_Management = [
+            { name: "Asana: Organize Tasks and Work", url: "https://selfcontrolapp.com/" },
+            { name: "Trello", url: "https://tomato-timer.com/" },
+            { name: "Wunderlist", url: "https://tomato-timer.com/" },
+            { name: "Google Calendar", url: "https://tomato-timer.com/" },
+            { name: "Toodledo", url: "https://tomato-timer.com/" },
+        ];
+    }
+    FrontPageComponent.prototype.ngOnInit = function () {
+        this.menuCtrl.close();
+    };
+    FrontPageComponent.prototype.goHome = function () {
+        this.navController.navigateRoot(['home']);
+    };
+    //"window.open('http://example.com/login/{{user._id}}', '_system', 'location=yes'); return false;"
+    FrontPageComponent.prototype.visitTheURL = function (url) {
+        console.log("visitTheURL");
+        window.open(url, '_system', 'location=yes');
+        return false;
+    };
+    FrontPageComponent.ctorParameters = function () { return [
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"] }
+    ]; };
+    FrontPageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-front-page',
+            template: __webpack_require__(/*! raw-loader!./front-page.component.html */ "./node_modules/raw-loader/index.js!./src/app/intervention/harvard-arc-apps/front-page/front-page.component.html"),
+            styles: [__webpack_require__(/*! ./front-page.component.css */ "./src/app/intervention/harvard-arc-apps/front-page/front-page.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"]])
+    ], FrontPageComponent);
+    return FrontPageComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/intervention/harvard-arc-apps/harvard-arc-apps.module.ts":
+/*!**************************************************************************!*\
+  !*** ./src/app/intervention/harvard-arc-apps/harvard-arc-apps.module.ts ***!
+  \**************************************************************************/
+/*! exports provided: HarvardArcAppsModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HarvardArcAppsModule", function() { return HarvardArcAppsModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _front_page_front_page_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./front-page/front-page.component */ "./src/app/intervention/harvard-arc-apps/front-page/front-page.component.ts");
+
+
+
+
+var HarvardArcAppsModule = /** @class */ (function () {
+    function HarvardArcAppsModule() {
+    }
+    HarvardArcAppsModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            declarations: [_front_page_front_page_component__WEBPACK_IMPORTED_MODULE_3__["FrontPageComponent"]],
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]
+            ],
+            exports: [_front_page_front_page_component__WEBPACK_IMPORTED_MODULE_3__["FrontPageComponent"]],
+            schemas: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["CUSTOM_ELEMENTS_SCHEMA"]]
+        })
+    ], HarvardArcAppsModule);
+    return HarvardArcAppsModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/intervention/intervention.module.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/intervention/intervention.module.ts ***!
+  \*****************************************************/
+/*! exports provided: InterventionModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InterventionModule", function() { return InterventionModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _harvard_arc_apps_harvard_arc_apps_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./harvard-arc-apps/harvard-arc-apps.module */ "./src/app/intervention/harvard-arc-apps/harvard-arc-apps.module.ts");
+
+
+
+
+var InterventionModule = /** @class */ (function () {
+    function InterventionModule() {
+    }
+    InterventionModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            declarations: [],
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+                _harvard_arc_apps_harvard_arc_apps_module__WEBPACK_IMPORTED_MODULE_3__["HarvardArcAppsModule"]
+            ],
+            schemas: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["CUSTOM_ELEMENTS_SCHEMA"]]
+        })
+    ], InterventionModule);
+    return InterventionModule;
 }());
 
 
@@ -19091,14 +19967,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
 /* harmony import */ var _survey_actions__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../survey.actions */ "./src/app/survey/survey.actions.ts");
 /* harmony import */ var src_app_incentive_incentive_actions__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! src/app/incentive/incentive.actions */ "./src/app/incentive/incentive.actions.ts");
+/* harmony import */ var src_app_incentive_life_insights_life_insights_profile_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! src/app/incentive/life-insights/life-insights-profile.service */ "./src/app/incentive/life-insights/life-insights-profile.service.ts");
 //
 //--- The goal of this file is to dynamically generate a survey from a JSON file. 
 //--- Example JSON files are located in assets/survey folder. 
-//
+//--- For more details on how to create a survey please see: https://github.com/StatisticalReinforcementLearningLab/SARAv2/tree/master/src/app/survey
 //--- At a high level, this file does the following:
 //      (i) reads a JSON file in the "ngAfterViewInit" 
 //      (ii) calls the "generateSurvey" function to create html codes for the survey
 //      (iii) creates a component dynamically and attached it to the "vc" component.
+//
 
 
 
@@ -19108,7 +19986,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-//import * as lifeInsightProfile from "../../../assets/data/life_insight.json";
+
 
 
 
@@ -19116,10 +19994,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var DynamicSurveyComponent = /** @class */ (function () {
-    function DynamicSurveyComponent(_compiler, _injector, _m, awsS3Service, 
-    //private storeToFirebaseService: StoreToFirebaseService,
-    EncrDecr, router, changeDetector, appVersion, alertCtrl, plt, userProfileService, store, awardDollarService) {
-        var _this = this;
+    function DynamicSurveyComponent(_compiler, _injector, _m, awsS3Service, EncrDecr, router, changeDetector, appVersion, alertCtrl, plt, userProfileService, lifeInsightsProfileService, store, awardDollarService) {
         this._compiler = _compiler;
         this._injector = _injector;
         this._m = _m;
@@ -19131,191 +20006,241 @@ var DynamicSurveyComponent = /** @class */ (function () {
         this.alertCtrl = alertCtrl;
         this.plt = plt;
         this.userProfileService = userProfileService;
+        this.lifeInsightsProfileService = lifeInsightsProfileService;
         this.store = store;
         this.awardDollarService = awardDollarService;
-        this.title = "mash is here";
         this.isLoading = true;
         this.loadingComplete = false;
-        this.survey_string = "";
-        this.survey = {};
-        this.appVersion.getVersionNumber().then(function (value) {
-            _this.versionNumber = value;
-            console.log("VersionNumber: " + _this.versionNumber);
-        }).catch(function (err) {
-            console.log(err);
-        });
+        //surveyQuestionsInHTMLString = "";
+        this.surveyQuestionsDict = {};
     }
     DynamicSurveyComponent.prototype.ngOnInit = function () { };
     DynamicSurveyComponent.prototype.ngAfterViewInit = function () {
+        this.fetchSurveyQuestionsAndGenerateSurvey();
+        this.getAppVersionNumber(); // to track which users has the latest version of the app.
+        //initiate the life-insight object
+        this.lifeInsightsProfileService.importLifeInsightProfile(this.jsonFileLinkForSurvey);
+    };
+    DynamicSurveyComponent.prototype.fetchSurveyQuestionsAndGenerateSurvey = function () {
         var _this = this;
-        console.log('Reading local json files: ' + this.fileLink);
-        //fetch JSON file and once the file is fetched called "generateSurvey" to create the survey.
-        fetch('../../../assets/data/' + this.fileLink + '.json').then(function (res) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
-            var _a;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        _a = this;
-                        return [4 /*yield*/, res.json()];
+        fetch('../../../assets/data/' + this.jsonFileLinkForSurvey + '.json').then(function (res) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
+            var surveyQuestionsInJSONDictFormat, surveyQuestionsInHTMLString;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, res.json()];
                     case 1:
-                        _a.survey_data = _b.sent();
-                        this.generateSurvey();
+                        surveyQuestionsInJSONDictFormat = _a.sent();
+                        surveyQuestionsInHTMLString = this.generateHTMLCodeForSurveyFromJSON(surveyQuestionsInJSONDictFormat);
+                        this.surveyQuestionsInJSONDictFormat = surveyQuestionsInJSONDictFormat;
+                        this.generateDynamicSurveyComponentFromHTML(surveyQuestionsInHTMLString);
                         return [2 /*return*/];
                 }
             });
         }); });
     };
-    DynamicSurveyComponent.prototype.generateSurvey = function () {
-        var _this = this;
-        //go through the questions
-        this.survey = {};
-        for (var i = 0; i < this.survey_data.length; i++) {
-            var obj = this.survey_data[i];
-            //console.log("Done " + obj.text);
-            this.survey[obj.name] = "";
-            this.survey_string = this.process_survey(obj, this.survey_string, obj.name);
+    DynamicSurveyComponent.prototype.generateHTMLCodeForSurveyFromJSON = function (surveyQuestionsInJSONDictFormat) {
+        // This function takes the JSON object with questions
+        // and generate HTML codes for the survey. 
+        // The HTML code is later used in a dynamically generated component to 
+        // show it to the user.
+        this.surveyQuestionsDict = {};
+        var surveyQuestionsInHTMLString;
+        //questions JSON format are a list. This loop goes through each questions and adds it to the HTML string
+        for (var i = 0; i < surveyQuestionsInJSONDictFormat.length; i++) {
+            var singleSurveyQuestionObj = surveyQuestionsInJSONDictFormat[i];
+            this.surveyQuestionsDict[singleSurveyQuestionObj.name] = "";
+            //the following line crates a html string for the survey.
+            surveyQuestionsInHTMLString = this.process_survey(singleSurveyQuestionObj, surveyQuestionsInHTMLString, singleSurveyQuestionObj.name);
         }
-        this.survey_string = this.survey_string + '<div class="ion-padding"><button class="buttonold button-positive" (click)="submitSurvey()">Submit</button></div>';
+        // the final step to create HTML from JSON file. It adds a submit button right at the end.
+        surveyQuestionsInHTMLString = surveyQuestionsInHTMLString + '<div class="ion-padding"><button class="buttonold button-positive" (click)="submitSurvey()">Submit</button></div>';
+        return surveyQuestionsInHTMLString;
+    };
+    DynamicSurveyComponent.prototype.generateDynamicSurveyComponentFromHTML = function (surveyQuestionsInHTMLString) {
+        var _this = this;
         //---
-        //--- Generate a survey component dynamically from the "survey_string."
-        //--- The "survey_string" contains all the HTML for the template for dynamic component
+        //--- Generate a survey component dynamically from the "surveyQuestionsInHTMLString."
+        //--- The "surveyQuestionsInHTMLString" contains all the HTML for the template for dynamic component
         //--- 
-        var surveyComponent = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({ template: this.survey_string })(/** @class */ (function () {
+        var surveyComponent = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({ template: surveyQuestionsInHTMLString })(/** @class */ (function () {
             function class_1() {
-                this.survey2 = {};
+                //IMPORTANT: contains all the questions in the 
+                this.surveyAnswersJSONObject = {};
                 this.isQuestionIncomplete = {};
                 this.lifeInsightObj = {};
                 this.totalPoints = 0;
-                this.survey_data = [];
+                this.surveyQuestionsInJSONDictFormat = [];
             }
             class_1.prototype.ngOnInit = function () {
-                this.survey2['starttimeUTC'] = new Date().getTime();
-                this.survey2['reponse_ts'] = {};
-                for (var i = 0; i < this.survey_data.length; i++) {
-                    var obj = this.survey_data[i];
-                    this.isQuestionIncomplete[obj.name] = { "tag": obj.tag };
+                this.initializeSurveyAnswersJSONObject();
+            };
+            class_1.prototype.initializeSurveyAnswersJSONObject = function () {
+                //set start time when participants started the survey.
+                this.surveyAnswersJSONObject['surveyStartTimeUTC'] = new Date().getTime();
+                //isQuestionIncomplete list tracks if questions are answered or not.
+                for (var i = 0; i < this.surveyQuestionsInJSONDictFormat.length; i++)
+                    this.isQuestionIncomplete[this.surveyQuestionsInJSONDictFormat[i].name] = { "tag": this.surveyQuestionsInJSONDictFormat[i].tag };
+                //initialize when different survey questions are clicked
+                this.surveyAnswersJSONObject['onclickTimeForDifferentQuestions'] = {};
+            };
+            class_1.prototype.inputchanged = function (question) {
+                //This function tracks if users clicked on a survey question and reacts.   
+                console.log("Clicked on question: " + question);
+                //store in the answer object when `question` has been clicked.
+                this.surveyAnswersJSONObject['onclickTimeForDifferentQuestions'][question] = {};
+                this.surveyAnswersJSONObject['onclickTimeForDifferentQuestions'][question].ts = Date.now();
+                this.surveyAnswersJSONObject['onclickTimeForDifferentQuestions'][question].readable_ts = moment__WEBPACK_IMPORTED_MODULE_7__().format("MMMM Do YYYY, h:mm:ss a Z");
+                delete this.isQuestionIncomplete[question]; //remove the key from isQuestionIncomplete
+            };
+            class_1.prototype.inputchangedRangeTime = function (question, startTime) {
+                //--- console.log('holla: ' + question+" "+JSON.stringify($event.detail));
+                //
+                startTime = startTime.replace("<br>", " ");
+                var startTimeSplit = startTime.split(" ");
+                var startTimeHour = parseInt(startTimeSplit[0]);
+                var amPmPart = startTimeSplit[1];
+                if (amPmPart == 'PM')
+                    startTimeHour = startTimeHour + 12;
+                //console.log("Clicked on question: " + question);
+                //console.log("Time: " + startTime + ", startTimeHour: " + startTimeHour);
+                var changedHourAfterInput;
+                var changedMinuteAfterInput;
+                var changedAMPMAfterInput;
+                if ((this.surveyAnswersJSONObject[question] * 10) % 10 == 5) {
+                    changedHourAfterInput = startTimeHour + this.surveyAnswersJSONObject[question] - 0.5;
+                    changedMinuteAfterInput = "30";
                 }
-            };
-            class_1.prototype.ngAfterViewInit = function () {
-                var _this = this;
-                setTimeout(function (e) { return _this.drawMoodGrid(_this); }, 200);
-            };
-            class_1.prototype.drawMoodGrid = function (self2) {
-                var c = document.getElementById("myCanvas");
-                if (c == null) {
-                    console.log("is null");
-                    return;
-                }
-                c.style.width = '100%';
-                c.width = c.offsetWidth;
-                c.height = c.width;
-                var ctx = c.getContext("2d");
-                var imageObj = new Image();
-                imageObj.src = 'assets/pics/affect_grid.png';
-                imageObj.onload = function () {
-                    ctx.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height, // source rectangle
-                    0, 0, c.width, c.height); // destination rectangle
-                };
-                //corner points
-                var top_x = (42.0 / 354.0) * c.width;
-                var top_y = (32.0 / 354.0) * c.height;
-                var bottom_x = (320.0 / 354.0) * c.width;
-                var bottom_y = (320.0 / 354.0) * c.height;
-                c.addEventListener("click", function (e) {
-                    //drawing = true;
-                    var rect = c.getBoundingClientRect();
-                    var lastPos = {
-                        x: e.clientX - rect.left,
-                        y: e.clientY - rect.top
-                    };
-                    //console.log("x:" + lastPos.x + ", y:" + lastPos.y + ":::: " + c.width + "," + c.height);
-                    var x = -1;
-                    var y = -1;
-                    if ((lastPos.x >= top_x) && (lastPos.y >= top_y) && (lastPos.x <= bottom_x) && (lastPos.y <= bottom_y)) {
-                        x = 10 * (lastPos.x - top_x) / (bottom_x - top_x) - 5;
-                        y = 5 - 10 * (lastPos.y - top_y) / (bottom_y - top_y) - 5;
-                        console.log("x:" + x + ", y:" + y);
-                        self2.survey2['QMood'] = "" + x + ":" + y;
-                        //
-                        self2.inputchanged("QMood");
-                    }
-                    else {
-                        return;
-                    }
-                    var rect = c.getBoundingClientRect();
-                    ctx.beginPath();
-                    ctx.clearRect(0, 0, rect.right - rect.left, rect.bottom - rect.top);
-                    ctx.closePath();
-                    //
-                    ctx.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height, // source rectangle
-                    0, 0, c.width, c.height); // destination rectangle
-                    //ctx.drawImage(imageObj, 0, 0);
-                    ctx.beginPath();
-                    ctx.arc(lastPos.x, lastPos.y, 10, 0, 2 * Math.PI);
-                    ctx.fillStyle = 'red';
-                    ctx.fill();
-                    ctx.lineWidth = 1;
-                    ctx.strokeStyle = 'red';
-                    ctx.stroke();
-                }, false);
-            };
-            //This function tracks if users clicked on a survey question
-            class_1.prototype.modelChanged = function (newObj) {
-                console.log('holla' + newObj);
-            };
-            //This function tracks if users clicked on a survey question and reacts.       
-            class_1.prototype.inputchanged = function (questions) {
-                //console.log('holla: ' + questions);
-                this.survey2['reponse_ts'][questions] = {};
-                this.survey2['reponse_ts'][questions].ts = Date.now();
-                this.survey2['reponse_ts'][questions].readable_ts = moment__WEBPACK_IMPORTED_MODULE_7__().format("MMMM Do YYYY, h:mm:ss a Z");
-                delete this.isQuestionIncomplete[questions]; //remove the key from isQuestionIncomplete
-                //console.log(JSON.stringify(this.survey2));
-            };
-            class_1.prototype.submitSurvey = function () {
-                if (this.isEmpty(this.isQuestionIncomplete)) //means all questions have been removed
-                    this.storeData();
                 else {
-                    var incompleteQuestions = "";
-                    for (var prop in this.isQuestionIncomplete) {
-                        incompleteQuestions = incompleteQuestions + " " + this.isQuestionIncomplete[prop]["tag"] + ",";
+                    changedHourAfterInput = startTimeHour + this.surveyAnswersJSONObject[question];
+                    changedMinuteAfterInput = "00";
+                }
+                changedHourAfterInput = changedHourAfterInput % 24; //if goes above 24 then change to zero.
+                if (changedHourAfterInput == 0) {
+                    changedHourAfterInput = 12;
+                    changedAMPMAfterInput = "AM";
+                }
+                else if (changedHourAfterInput > 0 && changedHourAfterInput < 12)
+                    changedAMPMAfterInput = "AM";
+                else if (changedHourAfterInput == 12) {
+                    changedAMPMAfterInput = "PM";
+                    changedHourAfterInput = 12;
+                }
+                else {
+                    changedAMPMAfterInput = "PM";
+                    changedHourAfterInput = changedHourAfterInput - 12;
+                }
+                this.surveyAnswersJSONObject[question + "_modified"] = "" + changedHourAfterInput + ":" + changedMinuteAfterInput + " " + changedAMPMAfterInput;
+                /*
+                //
+                //
+                if(this.surveyAnswersJSONObject[question] < 4){
+                    if((this.surveyAnswersJSONObject[question]*10)%10 == 5)
+                        this.surveyAnswersJSONObject[question + "_modified"] = "" + (8 + this.surveyAnswersJSONObject[question]  - 0.5) + ":30 PM";
+                    else
+                        this.surveyAnswersJSONObject[question + "_modified"] = "" + (8 + this.surveyAnswersJSONObject[question]) + ":00 PM";
+                }else if((this.surveyAnswersJSONObject[question]>=4) || (this.surveyAnswersJSONObject[question]<5)){
+                    if((this.surveyAnswersJSONObject[question]*10)%10 == 5)
+                        this.surveyAnswersJSONObject[question + "_modified"] = "12:30 AM";
+                    else
+                        this.surveyAnswersJSONObject[question + "_modified"] = "12:00 AM";
+                }else{
+                    if((this.surveyAnswersJSONObject[question]*10)%10 == 5)
+                        this.surveyAnswersJSONObject[question + "_modified"] = "" + (8 + this.surveyAnswersJSONObject[question]  - 0.5 - 12) + ":30 AM";
+                    else
+                        this.surveyAnswersJSONObject[question + "_modified"] = "" + (8 + this.surveyAnswersJSONObject[question] - 12) + ":00 AM";
+                }
+                //console.log(JSON.stringify(this.surveyAnswersJSONObject));
+                */
+                this.inputchanged(question);
+            };
+            class_1.prototype.inputChangedForCheckBox = function (question, item, $event) {
+                //console.log('holla: ' + question+" "+JSON.stringify($event.detail));
+                this.surveyAnswersJSONObject[item] = $event.detail.checked;
+                //console.log(JSON.stringify(this.surveyAnswersJSONObject));
+                //this.processExtraCondition(question);
+            };
+            class_1.prototype.inputChangedWithEvent = function (question, $event) {
+                //console.log("Qs:" + questions + ", ts:" + Date.now() + ", readable_time:" + moment().format("MMMM Do YYYY, h:mm:ss a"));
+                console.log('holla: ' + question + " " + JSON.stringify($event.detail));
+                this.surveyAnswersJSONObject[question] = $event.detail.value;
+                console.log(JSON.stringify(this.surveyAnswersJSONObject));
+                //this.processExtraCondition(question);
+            };
+            /*
+            processExtraCondition(question) {
+
+                console.log("processDisplayCondition for " + question);
+                console.log(JSON.stringify(this.dependentQuestionsArray));
+                if (this.dependentQuestionsArray[question] != null) {
+                    for (var j = 0; j < this.dependentQuestionsArray[question].length; j++) {
+                        var dependentQuestion = this.dependentQuestionsArray[question][j];
+                        if (this.dependencyExpression != undefined && this.dependencyExpression[dependentQuestion + question] != undefined) {
+                            console.log(JSON.stringify(this.dependencyExpression));
+                            this.getDisplayFlagForDependentSurvey(this.dependencyExpression[dependentQuestion + question], dependentQuestion + question);
+                        }
+
+                        //handle the case when there is empty space in answer when clicked, for example, "With someone"
+                        if (this.showArrayForEachDependency != undefined && this.showArrayForEachDependency[dependentQuestion + question] != undefined) {
+                            console.log(JSON.stringify(this.showArrayForEachDependency));
+                            this.getDisplayFlagForDependentSurveyWithSpaceInShowEntry(this.showArrayForEachDependency[dependentQuestion + question], dependentQuestion + question, question);
+                        }
                     }
+                }
+                //this.update.next("");
+            }
+
+            getDisplayFlagForDependentSurvey(conditionExpression, label) {
+                console.log(conditionExpression + " " + label);
+                this.display_flag[label + "Show"] = eval(conditionExpression);
+                console.log("getDisplayFlagForDependentSurvey " + label + "Show " + this.display_flag[label + "Show"]);
+            }
+
+            getDisplayFlagForDependentSurveyWithSpaceInShowEntry(conditionExpression, label, questions) {
+                //console.log("True " +  ($scope.survey.Q3d==undefined || $scope.survey.Q3d=='0' || $scope.survey.Q3d=='0.5'));
+                var sel = this.survey2[questions];
+                var dep = conditionExpression;
+                //console.log("compareSelectionWithDependency "+questions+" "+sel+" "+s);
+                if (sel != undefined && conditionExpression != undefined) {
+                    sel = sel.replace(/\s+/g, "");
+                    dep = conditionExpression.replace(/\s+/g, "");
+                }
+                this.display_flag[label + "Show"] = false;
+                if (sel === dep) {
+                    this.display_flag[label + "Show"] = true;
+                }
+
+                console.log("getDisplayFlagForDependentSurveyWithSpaceInShowEntry " + name + " for " + questions + " " + this.display_flag[label + "Show"]);
+
+            }
+            */
+            class_1.prototype.submitSurvey = function () {
+                // This function is called when user presses the "Submit button"
+                // We first check if participant completed all the questions. If they do submit the survey.
+                // If participant did not complete all the survey then show a prompt which questions they forgot to complete.
+                if (this.isEmpty(this.isQuestionIncomplete)) //--- means all questions has been completed
+                    this.storeData();
+                else { //--- means all questions has been completed
+                    var incompleteQuestions = "";
+                    for (var incompleteQuestion in this.isQuestionIncomplete)
+                        incompleteQuestions = incompleteQuestions + " " + this.isQuestionIncomplete[incompleteQuestion]["tag"] + ",";
                     incompleteQuestions = incompleteQuestions.substring(0, incompleteQuestions.length - 1);
-                    this.presentAlert("You haven't completed questions:" + incompleteQuestions);
+                    this.presentAlertForIncompleteQuestions("You haven't completed questions:" + incompleteQuestions);
                 }
             };
-            class_1.prototype.presentAlert = function (alertMessage) {
+            class_1.prototype.presentAlertForIncompleteQuestions = function (alertMessage) {
                 return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
                     var alert;
                     return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                         switch (_a.label) {
                             case 0: return [4 /*yield*/, this.alertCtrl.create({
-                                    //<div style="font-size: 20px;line-height: 25px;padding-bottom:10px;text-align:center">Thank you for completing the survey. You have unlocked a meme.</div>
-                                    //header: '<div style="line-height: 25px;padding-bottom:10px;text-align:center">Daily survey unavilable</div>',
-                                    header: 'Oops! You missed a question',
-                                    //subHeader: "Survey is not avaibable!",
+                                    header: 'Oops! You missed some questions',
                                     message: alertMessage,
-                                    //defined in theme/variables.scss
                                     buttons: [{ text: 'OK', cssClass: 'secondary' }]
                                 })];
                             case 1:
                                 alert = _a.sent();
-                                /*
-                                let alert = this.alertCtrl.create({
-                                  title: 'Low battery',
-                                  subTitle: '10% of battery remaining',
-                                  buttons: ['Dismiss']
-                                });
-                                */
                                 return [4 /*yield*/, alert.present()];
                             case 2:
-                                /*
-                                let alert = this.alertCtrl.create({
-                                  title: 'Low battery',
-                                  subTitle: '10% of battery remaining',
-                                  buttons: ['Dismiss']
-                                });
-                                */
                                 _a.sent();
                                 return [2 /*return*/];
                         }
@@ -19326,37 +20251,138 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 return JSON.stringify(obj) === JSON.stringify({});
             };
             class_1.prototype.storeData = function () {
-                //console.log("Inside storeData");
-                //console.log(JSON.stringify(this.survey2));
-                var endTime = new Date().getTime();
-                var readable_time = moment__WEBPACK_IMPORTED_MODULE_7__().format('MMMM Do YYYY, h:mm:ss a Z');
-                this.survey2['endtimeUTC'] = endTime;
-                this.survey2['userName'] = this.userProfileService.username;
-                this.survey2['ts'] = readable_time;
-                this.survey2['devicInfo'] = this.plt.platforms();
-                //Store app version number
-                this.survey2['appVersion'] = this.versionNumber;
-                this.userProfileService.versionNumber = this.versionNumber;
-                var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.survey2), _environments_environment__WEBPACK_IMPORTED_MODULE_11__["environment"].encyptString);
-                //var encrypted = this.EncrDecr.encrypt("holla", "Z&wz=BGw;%q49/<)");
-                var decrypted = this.EncrDecr.decrypt(encrypted, _environments_environment__WEBPACK_IMPORTED_MODULE_11__["environment"].encyptString);
-                var survey3 = {};
-                survey3['encrypted'] = encrypted;
-                //console.log('Encrypted :' + encrypted);
-                //console.log('Decrypted :' + decrypted);
-                this.survey2['encrypted'] = encrypted;
-                //compute and store "TotalPoints" to localStorage
+                //--- add meta information to the survey, which could be interesting for data science
+                this.addMetaTagsToSurvey();
+                //--- encrypt the survey and upload it to S3.
+                this.enycryptSurveyDataAndUploadToS3();
+                //-- store survey completed into ngrx to send to server and any other listener.
+                this.storeToNgrxAndUpdateState();
+                //Save the life-insight data.
+                this.lifeInsightsProfileService.saveLifeInsightInfo(this.surveyAnswersJSONObject, this.fileLink);
+                //start giving all the incentives from here
+                this.provideIncentives();
+            };
+            class_1.prototype.addMetaTagsToSurvey = function () {
+                var surveyEndTime = new Date().getTime();
+                this.surveyAnswersJSONObject['endtimeUTC'] = surveyEndTime;
+                var readableSurveyEndTime = moment__WEBPACK_IMPORTED_MODULE_7__().format('MMMM Do YYYY, h:mm:ss a Z');
+                this.surveyAnswersJSONObject['ts'] = readableSurveyEndTime;
+                this.surveyAnswersJSONObject['userName'] = this.userProfileService.username;
+                this.surveyAnswersJSONObject['devicInfo'] = this.plt.platforms(); //Type of device; iOS or Android
+                this.surveyAnswersJSONObject['appVersion'] = this.versionNumber;
+            };
+            class_1.prototype.enycryptSurveyDataAndUploadToS3 = function () {
+                var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.surveyAnswersJSONObject), _environments_environment__WEBPACK_IMPORTED_MODULE_11__["environment"].encyptString);
+                var surveyEncrypted = {};
+                surveyEncrypted['encrypted'] = encrypted;
+                this.surveyAnswersJSONObject['encrypted'] = encrypted;
+                this.awsS3Service.upload(this.fileLink, surveyEncrypted);
+            };
+            class_1.prototype.storeToNgrxAndUpdateState = function () {
+                //update survey timeline in ngrx store.
+                var surveyTimeline = {
+                    user_id: this.userProfileService.username,
+                    timeline: [{ dateOfCompletion: moment__WEBPACK_IMPORTED_MODULE_7__().format('YYYYMMDD'), timestamp: new Date().getTime(), readableTimestamp: moment__WEBPACK_IMPORTED_MODULE_7__().format('MMMM Do YYYY, h:mm:ss a Z') }]
+                };
+                this.store.dispatch(Object(_survey_actions__WEBPACK_IMPORTED_MODULE_13__["surveyCompleted"])({ surveyTimeline: surveyTimeline }));
+            };
+            class_1.prototype.provideIncentives = function () {
+                // incremenet point. Points automatically update the aquarium.
+                this.awardANdUpdatePoints();
+                //compute new money and store it in local storage.
+                var _a = this.awardAndUpdateMoney(), pastTotalDollars = _a.pastTotalDollars, awardedTotalDollarAfterCurrentSurvey = _a.awardedTotalDollarAfterCurrentSurvey;
+                // ToDo: change this. Dan is saving user profile here to save the money to server.
+                this.userProfileService.surveyCompleted();
+                //navigate to award-memes/award-altruism with equal probability after submit survey
+                var currentProb = Math.random();
+                window.localStorage.setItem("Prob", "" + currentProb);
+                var currentDate = moment__WEBPACK_IMPORTED_MODULE_7__().format('YYYYMMDD');
+                var navigationExtras = {
+                    state: {
+                        date: currentDate,
+                        prob: currentProb
+                    }
+                };
+                //prepare reinforcement data to upload to AWS S3
+                var reinforcement_data = {};
+                reinforcement_data['userName'] = this.userProfileService.username;
+                reinforcement_data['appVersion'] = this.versionNumber;
+                reinforcement_data['Prob'] = currentProb;
+                reinforcement_data['day_count'] = Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;
+                reinforcement_data['isRandomized'] = 1; //what is this one??
+                reinforcement_data['unix_ts'] = new Date().getTime();
+                reinforcement_data['readable_ts'] = moment__WEBPACK_IMPORTED_MODULE_7__().format('MMMM Do YYYY, h:mm:ss a Z');
+                reinforcement_data['date'] = currentDate;
+                //add for the  modal object
+                var modalObjectNavigationExtras = {};
+                modalObjectNavigationExtras["LastSurveyCompletionDate"] = moment__WEBPACK_IMPORTED_MODULE_7__().format('YYYYMMDD');
+                modalObjectNavigationExtras["CurrentPoints"] = this.userProfileService.points;
+                modalObjectNavigationExtras["PreviousPoints"] = this.userProfileService.points - 60;
+                modalObjectNavigationExtras["AwardedDollar"] = awardedTotalDollarAfterCurrentSurvey - pastTotalDollars;
+                modalObjectNavigationExtras["IsModalShownYet"] = false;
+                //currentProb = 0.8;
+                if (this.fileLink.includes('caregiver') || currentProb <= 0.4) {
+                    var reinforcementObj = {};
+                    reinforcementObj['ds'] = 1;
+                    reinforcementObj['reward'] = 0;
+                    reinforcementObj['prob'] = currentProb;
+                    reinforcement_data['reward'] = "No push";
+                    reinforcement_data['reward_img_link'] = "";
+                    reinforcement_data['Like'] = "";
+                    this.awsS3Service.upload('reinforcement_data', reinforcement_data);
+                    this.userProfileService.addReinforcementData(currentDate, reinforcementObj);
+                    navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
+                    this.router.navigate(['home'], navigationExtras);
+                }
+                else if ((currentProb > 0.4) && (currentProb <= 0.7)) {
+                    reinforcement_data['reward'] = "Meme";
+                    navigationExtras['state']['reinforcement_data'] = reinforcement_data;
+                    navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
+                    this.router.navigate(['incentive/award-memes'], navigationExtras);
+                }
+                else if (currentProb > 0.7) {
+                    reinforcement_data['reward'] = "Altruistic message";
+                    navigationExtras['state']['reinforcement_data'] = reinforcement_data;
+                    navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
+                    this.router.navigate(['incentive/award-altruism'], navigationExtras);
+                }
+                //update unlocked incentive data in ngrx store.
+                //This ngrx store state is used to show unlocked incentives at
+                //the start of aquarium reload
+                this.updataUnlockedIncentiveInNgrxStore(awardedTotalDollarAfterCurrentSurvey - pastTotalDollars);
+            };
+            class_1.prototype.awardANdUpdatePoints = function () {
+                //get current points from local storage, update, and store it back.
+                //TODO: rather than storage use the Ngrx store to store points and update.
                 if (window.localStorage['TotalPoints'] == undefined)
                     this.totalPoints = 0;
                 else
                     this.totalPoints = parseInt(window.localStorage['TotalPoints']);
-                this.totalPoints = this.totalPoints + 60;
+                this.totalPoints = this.totalPoints + 60; //
                 window.localStorage.setItem("TotalPoints", "" + this.totalPoints);
-                //get "awardDollars"
-                var pastDollars = this.awardDollarService.getCurrentlyEarnedDollars();
-                var dollars = this.awardDollarService.giveDollars();
-                //console.log("Dollars: " + dollars);
-                this.userProfileService.surveyCompleted();
+            };
+            class_1.prototype.awardAndUpdateMoney = function () {
+                //get current dollars, 
+                var pastTotalDollars = this.awardDollarService.getCurrentlyEarnedDollars();
+                var awardedTotalDollarAfterCurrentSurvey = this.awardDollarService.giveDollars();
+                return {
+                    pastTotalDollars: pastTotalDollars,
+                    awardedTotalDollarAfterCurrentSurvey: awardedTotalDollarAfterCurrentSurvey
+                };
+            };
+            class_1.prototype.updataUnlockedIncentiveInNgrxStore = function (unlockedMoney) {
+                var payload = {
+                    user_id: this.userProfileService.username,
+                    last_date: moment__WEBPACK_IMPORTED_MODULE_7__().format('YYYYMMDD'),
+                    unlocked_points: 60,
+                    unlocked_money: unlockedMoney,
+                    current_point: this.userProfileService.points,
+                    date: moment__WEBPACK_IMPORTED_MODULE_7__().format('YYYYMMDD'),
+                    isUnlockedViewShown: false
+                };
+                this.store.dispatch(Object(src_app_incentive_incentive_actions__WEBPACK_IMPORTED_MODULE_14__["surveyCompletedRegisterUnlocked"])({ payload: payload }));
+            };
+            class_1.prototype.lifeInsightCodesUnfinished = function () {
                 //Save 7-day date and value for each question in localStorage to generate lifeInsight chart
                 var lifeInsightProfile = {
                     "questions": ["Q3d", "Q4d", "Q5d", "Q8d"],
@@ -19389,8 +20415,8 @@ var DynamicSurveyComponent = /** @class */ (function () {
                         var question = questionsArray_1[_i];
                         this.lifeInsightObj[question] = {};
                         this.lifeInsightObj[question]['dates'] = [moment__WEBPACK_IMPORTED_MODULE_7__().format("DD-MM-YYYY")];
-                        if (this.survey2.hasOwnProperty(question)) {
-                            this.lifeInsightObj[question]['data'] = [parseInt(this.survey2[question])];
+                        if (this.surveyAnswersJSONObject.hasOwnProperty(question)) {
+                            this.lifeInsightObj[question]['data'] = [parseInt(this.surveyAnswersJSONObject[question])];
                         }
                         else {
                             this.lifeInsightObj[question]['data'] = [null];
@@ -19412,8 +20438,8 @@ var DynamicSurveyComponent = /** @class */ (function () {
                         console.log("Current date exist? " + dateIndex);
                         if (dateIndex > -1) {
                             this.lifeInsightObj[question]['dates'][dateIndex] = currentdate;
-                            if (this.survey2.hasOwnProperty(question)) {
-                                this.lifeInsightObj[question]['data'][dateIndex] = (parseInt(this.survey2[question]));
+                            if (this.surveyAnswersJSONObject.hasOwnProperty(question)) {
+                                this.lifeInsightObj[question]['data'][dateIndex] = (parseInt(this.surveyAnswersJSONObject[question]));
                             }
                             else {
                                 this.lifeInsightObj[question][dateIndex] = null;
@@ -19421,8 +20447,8 @@ var DynamicSurveyComponent = /** @class */ (function () {
                         }
                         else {
                             this.lifeInsightObj[question]['dates'].push(currentdate);
-                            if (this.survey2.hasOwnProperty(question)) {
-                                this.lifeInsightObj[question]['data'].push(parseInt(this.survey2[question]));
+                            if (this.surveyAnswersJSONObject.hasOwnProperty(question)) {
+                                this.lifeInsightObj[question]['data'].push(parseInt(this.surveyAnswersJSONObject[question]));
                             }
                             else {
                                 this.lifeInsightObj[question]['data'].push(null);
@@ -19432,74 +20458,70 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 }
                 //console.log("lifeInsightObj: "+JSON.stringify(this.lifeInsightObj));
                 window.localStorage.setItem("lifeInsight", JSON.stringify(this.lifeInsightObj));
-                //save to Amazon AWS S3
-                this.awsS3Service.upload(this.fileLink, survey3);
-                //console.log("End of storeData");
-                //navigate to award-memes/award-altruism with equal probability after submit survey
-                var currentProb = Math.random();
-                window.localStorage.setItem("Prob", "" + currentProb);
-                var currentDate = moment__WEBPACK_IMPORTED_MODULE_7__().format('YYYYMMDD');
-                var navigationExtras = {
-                    state: {
-                        date: currentDate,
-                        prob: currentProb
-                    }
+            };
+            class_1.prototype.ngAfterViewInit = function () {
+                var _this = this;
+                setTimeout(function (e) { return _this.drawMoodGrid(_this); }, 200);
+            };
+            class_1.prototype.drawMoodGrid = function (self2) {
+                var c = document.getElementById("myCanvas");
+                if (c == null) {
+                    //console.log("is null");
+                    return;
+                }
+                c.style.width = '100%';
+                c.width = c.offsetWidth;
+                c.height = c.width;
+                var ctx = c.getContext("2d");
+                var imageObj = new Image();
+                imageObj.src = 'assets/pics/affect_grid.png';
+                imageObj.onload = function () {
+                    ctx.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height, // source rectangle
+                    0, 0, c.width, c.height); // destination rectangle
                 };
-                //prepare reinforcement data to upload to AWS S3
-                var reinforcement_data = {};
-                reinforcement_data['userName'] = this.userProfileService.username;
-                reinforcement_data['appVersion'] = this.versionNumber;
-                reinforcement_data['Prob'] = currentProb;
-                reinforcement_data['day_count'] = Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;
-                reinforcement_data['isRandomized'] = 1; //what is this one??
-                reinforcement_data['unix_ts'] = endTime;
-                reinforcement_data['readable_ts'] = readable_time;
-                reinforcement_data['date'] = currentDate;
-                //save to Amazon AWS S3
-                //add for the  modal object
-                var modalObjectNavigationExtras = {};
-                modalObjectNavigationExtras["LastSurveyCompletionDate"] = moment__WEBPACK_IMPORTED_MODULE_7__().format('YYYYMMDD');
-                modalObjectNavigationExtras["CurrentPoints"] = this.userProfileService.points;
-                modalObjectNavigationExtras["PreviousPoints"] = this.userProfileService.points - 60;
-                modalObjectNavigationExtras["AwardedDollar"] = dollars - pastDollars;
-                modalObjectNavigationExtras["IsModalShownYet"] = false;
-                //currentProb = 0.8;
-                if (this.fileLink.includes('caregiver') || currentProb <= 0.4) {
-                    var reinforcementObj = {};
-                    reinforcementObj['ds'] = 1;
-                    reinforcementObj['reward'] = 0;
-                    reinforcementObj['prob'] = currentProb;
-                    reinforcement_data['reward'] = "No push";
-                    reinforcement_data['reward_img_link'] = "";
-                    reinforcement_data['Like'] = "";
-                    this.awsS3Service.upload('reinforcement_data', reinforcement_data);
-                    this.userProfileService.addReinforcementData(currentDate, reinforcementObj);
-                    navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
-                    this.router.navigate(['home'], navigationExtras);
-                }
-                else if ((currentProb > 0.4) && (currentProb <= 0.7)) {
-                    reinforcement_data['reward'] = "Meme";
-                    navigationExtras['state']['reinforcement_data'] = reinforcement_data;
-                    navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
-                    this.router.navigate(['incentive/award-memes'], navigationExtras);
-                }
-                else if (currentProb > 0.7) {
-                    reinforcement_data['reward'] = "Altruistic message";
-                    navigationExtras['state']['reinforcement_data'] = reinforcement_data;
-                    navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
-                    this.router.navigate(['incentive/award-altruism'], navigationExtras);
-                }
-                var surveyTimeline = { user_id: this.userProfileService.username,
-                    timeline: [{ dateOfCompletion: currentDate, timestamp: endTime, readableTimestamp: readable_time }] };
-                this.store.dispatch(Object(_survey_actions__WEBPACK_IMPORTED_MODULE_13__["surveyCompleted"])({ surveyTimeline: surveyTimeline }));
-                var payload = { user_id: this.userProfileService.username,
-                    last_date: moment__WEBPACK_IMPORTED_MODULE_7__().format('YYYYMMDD'),
-                    unlocked_points: 60,
-                    unlocked_money: dollars - pastDollars,
-                    current_point: this.userProfileService.points,
-                    date: moment__WEBPACK_IMPORTED_MODULE_7__().format('YYYYMMDD'),
-                    isUnlockedViewShown: false };
-                this.store.dispatch(Object(src_app_incentive_incentive_actions__WEBPACK_IMPORTED_MODULE_14__["surveyCompletedRegisterUnlocked"])({ payload: payload }));
+                //corner points
+                var top_x = (42.0 / 354.0) * c.width;
+                var top_y = (32.0 / 354.0) * c.height;
+                var bottom_x = (320.0 / 354.0) * c.width;
+                var bottom_y = (320.0 / 354.0) * c.height;
+                c.addEventListener("click", function (e) {
+                    //drawing = true;
+                    var rect = c.getBoundingClientRect();
+                    var lastPos = {
+                        x: e.clientX - rect.left,
+                        y: e.clientY - rect.top
+                    };
+                    //console.log("x:" + lastPos.x + ", y:" + lastPos.y + ":::: " + c.width + "," + c.height);
+                    var x = -1;
+                    var y = -1;
+                    if ((lastPos.x >= top_x) && (lastPos.y >= top_y) && (lastPos.x <= bottom_x) && (lastPos.y <= bottom_y)) {
+                        x = 10 * (lastPos.x - top_x) / (bottom_x - top_x) - 5;
+                        y = 5 - 10 * (lastPos.y - top_y) / (bottom_y - top_y) - 5;
+                        //console.log("x:" + x + ", y:" + y);
+                        self2.surveyAnswersJSONObject['QMood'] = "" + x + ":" + y;
+                        //console.log(JSON.stringify(self2.surveyAnswersJSONObject));
+                        //
+                        self2.inputchanged("QMood");
+                    }
+                    else {
+                        return;
+                    }
+                    var rect = c.getBoundingClientRect();
+                    ctx.beginPath();
+                    ctx.clearRect(0, 0, rect.right - rect.left, rect.bottom - rect.top);
+                    ctx.closePath();
+                    //
+                    ctx.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height, // source rectangle
+                    0, 0, c.width, c.height); // destination rectangle
+                    //ctx.drawImage(imageObj, 0, 0);
+                    ctx.beginPath();
+                    ctx.arc(lastPos.x, lastPos.y, 10, 0, 2 * Math.PI);
+                    ctx.fillStyle = 'red';
+                    ctx.fill();
+                    ctx.lineWidth = 1;
+                    ctx.strokeStyle = 'red';
+                    ctx.stroke();
+                }, false);
             };
             return class_1;
         }()));
@@ -19517,11 +20539,12 @@ var DynamicSurveyComponent = /** @class */ (function () {
             var f = factories.componentFactories[0];
             var cmpRef = _this.vc.createComponent(f);
             cmpRef.instance.awsS3Service = _this.awsS3Service;
-            cmpRef.instance.survey2 = _this.survey;
-            cmpRef.instance.fileLink = _this.fileLink;
+            //cmpRef.instance.surveyAnswersJSONObject = this.surveyQuestionsDict;
+            cmpRef.instance.surveyAnswersJSONObject = _this.surveyQuestionsDict;
+            cmpRef.instance.lifeInsightsProfileService = _this.lifeInsightsProfileService;
+            cmpRef.instance.fileLink = _this.jsonFileLinkForSurvey;
             cmpRef.instance.versionNumber = _this.versionNumber;
-            cmpRef.instance.survey_data = _this.survey_data;
-            //cmpRef.instance.storeToFirebaseService = this.storeToFirebaseService;
+            cmpRef.instance.surveyQuestionsInJSONDictFormat = _this.surveyQuestionsInJSONDictFormat;
             cmpRef.instance.alertCtrl = _this.alertCtrl;
             cmpRef.instance.userProfileService = _this.userProfileService;
             cmpRef.instance.awardDollarService = _this.awardDollarService;
@@ -19530,52 +20553,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
             cmpRef.instance.router = _this.router; // Router,
             cmpRef.instance.store = _this.store;
             cmpRef.instance.name = 'dynamic';
-            //console.log('called');
         });
-    };
-    DynamicSurveyComponent.prototype.getTitle = function () {
-        return this.title;
-    };
-    // process survey if obj type is radiobutton
-    DynamicSurveyComponent.prototype.process_survey_radiobutton = function (obj, survey_string, i) {
-        //------------------------------------------------------ 
-        //radio button, vertical     
-        //------------------------------------------------------   
-        if (obj.extra.orientation == "vertical") {
-            survey_string = survey_string + '<div class="radiovertical"><ul>';
-            for (var j = 0; j < obj.extra.choices.length; j++) {
-                survey_string = [survey_string,
-                    '<li><input type="radio" id="option' + i + "I" + j + '" name="' + i + '" [(ngModel)]="survey2.' + i + '" value=" ' + obj.extra.choices[j] + '" (change)="inputchanged(\'' + i + '\')">',
-                    '<label for="option' + i + "I" + j + '">' + obj.extra.choices[j] + '</label>',
-                    '<div class="check"></div></li>'
-                ].join(" ");
-            }
-            //if(this.choices == undefined) this.choices = {};
-            //this.choices[obj.name]= obj.extra.choices;
-            survey_string = survey_string + '</ul></div>';
-        }
-        //------------------------------------------------------ 
-        //radio button, horizontal     
-        //------------------------------------------------------
-        //console.log("Here: " + JSON.stringify(obj.extra.orientation) + ", " + obj.extra.choices.length);
-        if (obj.extra.orientation == "horizontal") {
-            survey_string = survey_string + '<div class="radiohorizontal"><ul>';
-            //starting text
-            survey_string = survey_string + '<li><p>' + obj.extra.choices[0] + '</p></li>';
-            //middle text
-            for (var j = 0; j < obj.extra.levels; j++) {
-                survey_string = [survey_string,
-                    '<li><input type="radio" id="option' + i + "I" + j + '" name="' + i + '" [(ngModel)]="survey2.' + i + '" value="' + j + '" (change)="inputchanged(\'' + i + '\')">',
-                    '<label for="option' + i + "I" + j + '"></label>',
-                    '<div class="check"></div></li>'
-                ].join(" ");
-                //console.log("" + j + ", " + obj.extra.choices.length);
-            }
-            //ending text
-            survey_string = survey_string + '<li><p>' + obj.extra.choices[obj.extra.choices.length - 1] + '</p></li>';
-            survey_string = survey_string + '</ul></div>';
-        }
-        return survey_string;
     };
     //
     // process survey for all types of objects
@@ -19632,7 +20610,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 //survey_string = this.process_survey_moodgrid(survey_string, i);
             }
             if (obj.type == "moodgrid2") {
-                //survey_string = this.process_survey_moodgrid2(survey_string);
+                survey_string = this.process_survey_moodgrid2(survey_string);
             }
             //------------------------------------------------------                  
             // Autocomplete 
@@ -19653,6 +20631,9 @@ var DynamicSurveyComponent = /** @class */ (function () {
             if (obj.type == "range") {
                 //survey_string = this.process_survey_range(obj, survey_string, i);
             }
+            if (obj.type == "range_time") {
+                survey_string = this.process_survey_range_time(obj, survey_string, i);
+            }
             if (obj.type == "range2") {
                 //survey_string = this.process_survey_range2(obj, survey_string, i);
             }
@@ -19666,6 +20647,97 @@ var DynamicSurveyComponent = /** @class */ (function () {
         }
         return survey_string;
     };
+    DynamicSurveyComponent.prototype.process_survey_moodgrid2 = function (survey_string) {
+        survey_string = [survey_string,
+            '<canvas id="myCanvas" width="310" height="310" style="border:0px solid #000000;padding:10px;">',
+            'Your browser does not support the HTML5 canvas tag.',
+            '</canvas>'
+        ].join(" ");
+        return survey_string;
+    };
+    DynamicSurveyComponent.prototype.process_survey_range_time = function (obj, survey_string, i) {
+        //throw new Error("Method not implemented.");
+        //
+        var min = obj.extra.choices[2];
+        var max = obj.extra.choices[3];
+        var step = obj.extra.choices[4];
+        this.surveyQuestionsDict[i + "_modified"] = obj.extra.choices[5]; //"12:00 AM";
+        survey_string = [survey_string,
+            '<div class = "row" style="margin-bottom=0px;">',
+            /*
+            '<div class = "col col-10"><p align="center" style="padding-top:2px;padding-bottom:2px;margin:0px;border-radius:25px;background:#4e5dca;color:white;">' + min + '</p></div>',
+            */
+            '<div class = "col col-33"></div>',
+            '<div class = "col col-33 col-offset-8"><p align="center" style="padding-top:2px;padding-bottom:2px;margin:0px;border-radius:25px;background:#303F9F;color:white;"><b>{{surveyAnswersJSONObject.' + i + '_modified}}</b></p></div>',
+            '<div class = "col col-33"></div>',
+            /*
+            '<div class = "col col-10 col-offset-20"><p align="center" style="padding-top:2px;padding-bottom:2px;margin:0px;border-radius:25px;background:#4e5dca;color:white;">' + max + '</p></div>',
+            */
+            '</div>',
+            '<div class="item range range-balanced" style="padding:10px;padding-top:1px;border-width:0px;">',
+            '<p style="text-align: center;color: black;">' + obj.extra.choices[0] + "</p>",
+            '<input type="range" min="' + min + '" max="' + max + '" value="' + min + '" step="' + step + '" [(ngModel)]="surveyAnswersJSONObject.' + i + '" name="' + i + '" (ngModelChange)="inputchangedRangeTime(\'' + i + '\',\'' + obj.extra.choices[0] + '\')"' + '>',
+            //'<input type="range" min="' + min + '" max="' + max + '" value="' + min + '" step="' + step + '" name="' + i + '" (change)="inputchangedRangeTime(\'' + i + '\')"' + '>',
+            '<p style="text-align: center;color:black;">' + obj.extra.choices[1] + "</p>",
+            '</div>',
+        ].join(" ");
+        return survey_string;
+    };
+    // process survey if obj type is radiobutton
+    DynamicSurveyComponent.prototype.process_survey_radiobutton = function (obj, survey_string, i) {
+        //------------------------------------------------------ 
+        //radio button, vertical     
+        //------------------------------------------------------   
+        if (obj.extra.orientation == "vertical") {
+            survey_string = survey_string + '<div class="radiovertical"><ul>';
+            for (var j = 0; j < obj.extra.choices.length; j++) {
+                survey_string = [survey_string,
+                    '<li><input type="radio" id="option' + i + "I" + j + '" name="' + i + '" [(ngModel)]="surveyAnswersJSONObject.' + i + '" value=" ' + obj.extra.choices[j] + '" (change)="inputchanged(\'' + i + '\')">',
+                    '<label for="option' + i + "I" + j + '">' + obj.extra.choices[j] + '</label>',
+                    '<div class="check"></div></li>'
+                ].join(" ");
+            }
+            //if(this.choices == undefined) this.choices = {};
+            //this.choices[obj.name]= obj.extra.choices;
+            survey_string = survey_string + '</ul></div>';
+        }
+        //------------------------------------------------------ 
+        //radio button, horizontal     
+        //------------------------------------------------------
+        //console.log("Here: " + JSON.stringify(obj.extra.orientation) + ", " + obj.extra.choices.length);
+        if (obj.extra.orientation == "horizontal") {
+            survey_string = survey_string + '<div class="radiohorizontal"><ul>';
+            //starting text
+            survey_string = survey_string + '<li><p>' + obj.extra.choices[0] + '</p></li>';
+            //middle text
+            for (var j = 0; j < obj.extra.levels; j++) {
+                survey_string = [survey_string,
+                    '<li><input type="radio" id="option' + i + "I" + j + '" name="' + i + '" [(ngModel)]="surveyAnswersJSONObject.' + i + '" value="' + j + '" (change)="inputchanged(\'' + i + '\')">',
+                    '<label for="option' + i + "I" + j + '"></label>',
+                    '<div class="check"></div></li>'
+                ].join(" ");
+                //console.log("" + j + ", " + obj.extra.choices.length);
+            }
+            //ending text
+            survey_string = survey_string + '<li><p>' + obj.extra.choices[obj.extra.choices.length - 1] + '</p></li>';
+            survey_string = survey_string + '</ul></div>';
+        }
+        return survey_string;
+    };
+    DynamicSurveyComponent.prototype.getAppVersionNumber = function () {
+        var _this = this;
+        //Get the app version to put inside the survey data. 
+        //The goal of this app version number is to track in the backend that 
+        //participants has the latest version of the app.
+        this.appVersion.getVersionNumber().then(function (value) {
+            _this.versionNumber = value;
+            console.log("VersionNumber: " + _this.versionNumber);
+            //store the version number to the userProfile
+            _this.userProfileService.versionNumber = _this.versionNumber;
+        }).catch(function (err) {
+            console.log(err);
+        });
+    };
     DynamicSurveyComponent.ctorParameters = function () { return [
         { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Compiler"] },
         { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"] },
@@ -19678,13 +20750,14 @@ var DynamicSurveyComponent = /** @class */ (function () {
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["AlertController"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Platform"] },
         { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_9__["UserProfileService"] },
+        { type: src_app_incentive_life_insights_life_insights_profile_service__WEBPACK_IMPORTED_MODULE_15__["LifeInsightsProfileService"] },
         { type: _ngrx_store__WEBPACK_IMPORTED_MODULE_12__["Store"] },
         { type: src_app_incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_10__["AwardDollarService"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
-    ], DynamicSurveyComponent.prototype, "fileLink", void 0);
+    ], DynamicSurveyComponent.prototype, "jsonFileLinkForSurvey", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('vc', { read: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"], static: false }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"])
@@ -19694,9 +20767,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
             selector: 'app-dynamic-survey',
             template: __webpack_require__(/*! raw-loader!./dynamic-survey.component.html */ "./node_modules/raw-loader/index.js!./src/app/survey/dynamic-survey/dynamic-survey.component.html"),
             styles: [__webpack_require__(/*! ./dynamic-survey.component.scss */ "./src/app/survey/dynamic-survey/dynamic-survey.component.scss")]
-        })
-        //@PreLoad('life-insights')
-        ,
+        }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Compiler"],
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"],
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModuleRef"],
@@ -19708,10 +20779,95 @@ var DynamicSurveyComponent = /** @class */ (function () {
             _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["AlertController"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Platform"],
             src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_9__["UserProfileService"],
+            src_app_incentive_life_insights_life_insights_profile_service__WEBPACK_IMPORTED_MODULE_15__["LifeInsightsProfileService"],
             _ngrx_store__WEBPACK_IMPORTED_MODULE_12__["Store"],
             src_app_incentive_award_money_award_dollar_service__WEBPACK_IMPORTED_MODULE_10__["AwardDollarService"]])
     ], DynamicSurveyComponent);
     return DynamicSurveyComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/survey/harvard-survey/harvard-survey.component.css":
+/*!********************************************************************!*\
+  !*** ./src/app/survey/harvard-survey/harvard-survey.component.css ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".new-background-color{\n    --background: #005486;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc3VydmV5L2hhcnZhcmQtc3VydmV5L2hhcnZhcmQtc3VydmV5LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxxQkFBcUI7QUFDekIiLCJmaWxlIjoic3JjL2FwcC9zdXJ2ZXkvaGFydmFyZC1zdXJ2ZXkvaGFydmFyZC1zdXJ2ZXkuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5uZXctYmFja2dyb3VuZC1jb2xvcntcbiAgICAtLWJhY2tncm91bmQ6ICMwMDU0ODY7XG59Il19 */"
+
+/***/ }),
+
+/***/ "./src/app/survey/harvard-survey/harvard-survey.component.ts":
+/*!*******************************************************************!*\
+  !*** ./src/app/survey/harvard-survey/harvard-survey.component.ts ***!
+  \*******************************************************************/
+/*! exports provided: HarvardSurveyComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HarvardSurveyComponent", function() { return HarvardSurveyComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
+/* harmony import */ var _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/mobile-accessibility/ngx */ "./node_modules/@ionic-native/mobile-accessibility/ngx/index.js");
+/* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
+
+
+
+
+
+var HarvardSurveyComponent = /** @class */ (function () {
+    function HarvardSurveyComponent(userProfileService, mobileAccessibility, appUsageDb) {
+        this.userProfileService = userProfileService;
+        this.mobileAccessibility = mobileAccessibility;
+        this.appUsageDb = appUsageDb;
+    }
+    HarvardSurveyComponent.prototype.ngOnInit = function () {
+        this.mobileAccessibility.usePreferredTextZoom(false);
+    };
+    HarvardSurveyComponent.prototype.ionViewDidEnter = function () {
+        /*
+        this.db.getDatabaseState().subscribe(rdy => {
+         if (rdy) {
+           this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+         }
+        });
+        */
+        this.appUsageDb.saveAppUsageEnter("harvard_survey_page");
+    };
+    HarvardSurveyComponent.prototype.ionViewDidLeave = function () {
+        /*
+        console.log(this.pageTitle+": ionViewDidLeave");
+        this.db.getDatabaseState().subscribe(rdy => {
+          if (rdy) {
+            this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+          }
+        });
+        */
+        this.mobileAccessibility.usePreferredTextZoom(true);
+        this.appUsageDb.saveAppUsageExit("harvard_survey_page");
+    };
+    HarvardSurveyComponent.ctorParameters = function () { return [
+        { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_2__["UserProfileService"] },
+        { type: _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_3__["MobileAccessibility"] },
+        { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_4__["DatabaseService"] }
+    ]; };
+    HarvardSurveyComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-harvard-survey',
+            template: __webpack_require__(/*! raw-loader!./harvard-survey.component.html */ "./node_modules/raw-loader/index.js!./src/app/survey/harvard-survey/harvard-survey.component.html"),
+            styles: [__webpack_require__(/*! ./harvard-survey.component.css */ "./src/app/survey/harvard-survey/harvard-survey.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_2__["UserProfileService"],
+            _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_3__["MobileAccessibility"],
+            src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_4__["DatabaseService"]])
+    ], HarvardSurveyComponent);
+    return HarvardSurveyComponent;
 }());
 
 
@@ -19964,6 +21120,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./reducers */ "./src/app/survey/reducers/index.ts");
 /* harmony import */ var _ngrx_effects__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ngrx/effects */ "./node_modules/@ngrx/effects/fesm5/effects.js");
 /* harmony import */ var _survey_effects__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./survey.effects */ "./src/app/survey/survey.effects.ts");
+/* harmony import */ var _harvard_survey_harvard_survey_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./harvard-survey/harvard-survey.component */ "./src/app/survey/harvard-survey/harvard-survey.component.ts");
 
 
 
@@ -19975,6 +21132,7 @@ __webpack_require__.r(__webpack_exports__);
 
 //import { ActivetaskComponent } from './activetask/activetask.component';
 //import { ActiveTask2Component } from './active-task2/active-task2.component';
+
 
 
 
@@ -20000,7 +21158,8 @@ var SurveyModule = /** @class */ (function () {
                 _dynamic_survey_dynamic_survey_component__WEBPACK_IMPORTED_MODULE_6__["DynamicSurveyComponent"],
                 _aya_sample_survey_aya_sample_survey_component__WEBPACK_IMPORTED_MODULE_10__["AyaSampleSurveyComponent"],
                 //ActiveTask2Component,
-                _sample_survey_sample_survey_component__WEBPACK_IMPORTED_MODULE_7__["SampleSurveyComponent"]
+                _sample_survey_sample_survey_component__WEBPACK_IMPORTED_MODULE_7__["SampleSurveyComponent"],
+                _harvard_survey_harvard_survey_component__WEBPACK_IMPORTED_MODULE_15__["HarvardSurveyComponent"]
             ],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
@@ -20020,8 +21179,10 @@ var SurveyModule = /** @class */ (function () {
                 //ActiveTask2Component,
                 _dynamic_survey_dynamic_survey_component__WEBPACK_IMPORTED_MODULE_6__["DynamicSurveyComponent"],
                 _sample_survey_sample_survey_component__WEBPACK_IMPORTED_MODULE_7__["SampleSurveyComponent"],
-                _aya_sample_survey_aya_sample_survey_component__WEBPACK_IMPORTED_MODULE_10__["AyaSampleSurveyComponent"]
-            ]
+                _aya_sample_survey_aya_sample_survey_component__WEBPACK_IMPORTED_MODULE_10__["AyaSampleSurveyComponent"],
+                _harvard_survey_harvard_survey_component__WEBPACK_IMPORTED_MODULE_15__["HarvardSurveyComponent"]
+            ],
+            schemas: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["CUSTOM_ELEMENTS_SCHEMA"]]
         })
     ], SurveyModule);
     return SurveyModule;
@@ -21144,8 +22305,8 @@ var environment = {
     oneSignalAppId: "f9c4370d-cbcb-4e6f-ab1f-25d1c41b8f3a",
     //oneSignalAppId: "de3580a2-4aae-42c4-87cf-2c319c2df0c3",
     encyptString: "+Xr?SwA?EJ7m+g$c",
-    //flaskServerForIncentives: "http://ec2-54-91-131-166.compute-1.amazonaws.com:56733",
-    flaskServerForIncentives: "http://adaptsdata.research.chop.edu:5000",
+    flaskServerForIncentives: "http://ec2-54-91-131-166.compute-1.amazonaws.com:56733",
+    //flaskServerForIncentives: "http://adaptsdata.research.chop.edu:5000",
     firebaseConfig: {
         apiKey: "AIzaSyBK_PwjnsC01Q-a-sV7LsA7qIeIhCx4ts0",
         authDomain: "sarav2-6a033.firebaseapp.com",
@@ -21161,10 +22322,16 @@ var environment = {
         containerName: 'mycontainer'
     },
     awsConfig: {
+        /*
         // CHOP
         bucketName: 'chop-sara',
         bucketRegion: 'us-east-1',
         IdentityPoolId: 'us-east-1:667b1ad5-ccdc-4d90-b94f-300732b55448'
+        */
+        //Harvard
+        bucketName: 'sara-dev-data-storage',
+        bucketRegion: 'us-east-2',
+        IdentityPoolId: 'us-east-2:bce8a68d-d3f3-4ac1-a16c-eab1d92597a4'
     },
     googleAnalytic: {
         id: 'UA-152399644-1'
