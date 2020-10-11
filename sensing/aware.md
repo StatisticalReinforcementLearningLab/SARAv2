@@ -37,7 +37,7 @@ Steps to join this study is the following:
 - Open the aware app. Right at the top you'll see a QR code icon.
 - Scan the following **QR** code. The app will automatically ask you to join the study called `aware-sara-harvard`.
 <br>
-> <img src="https://temp-files-for-mash.s3.amazonaws.com/aware-harvard-qr-code.png" alt="drawing" width="300"/>
+<img src="https://temp-files-for-mash.s3.amazonaws.com/aware-harvard-qr-code.png" alt="drawing" width="300"/>
 <br>
 
 - Once the study is configured, the icon at the top will change. 
