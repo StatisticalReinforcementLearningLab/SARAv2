@@ -40,9 +40,33 @@ We have already configured a study specific to the Harvard component of SARA. Th
 Steps to join this study is the following:
 - Open the aware app. Right at the top you'll see a QR code icon.
 - Scan the following **QR** code. The app will automatically ask you to join the study called `aware-sara-harvard`.
+    <br>
+    <br>
+    ![Qr code](https://temp-files-for-mash.s3.amazonaws.com/aware-harvard-qr-code.png)
+    <br>
+    <br>
 - Once the study is configured, the icon at the top will change. 
-- **Important**: At the top of the app, you will see a `Device ID` which ideanties the data is from you. Please send us the first 8 digits of the device id.
+- **Important**: At the top of the app, you will see a `Device ID` as follows. The device ID ideanties in the backend that the data is from you. Please send us the first 8 digits of the device id.
 
+
+## How do I check that I joined the right study?
+
+### iOS 
+Go to the `settings` tab in the AWARE app. You will see the study URL right at the top. (See screenshot below)
+<br>
+<br>
+> <img src="https://temp-files-for-mash.s3.amazonaws.com/aware-study-ios-successful-study.jpg" alt="drawing" width="400"/>
+<br>
+<br>
+
+### Android 
+On the main page of the app, scroll down until you see the 'AWARE study' tab (Screen shot #1). Click on it. You will be in a new page and you will see the study URL (Screen shot #2). 
+<br>
+<br>
+> <img src="https://temp-files-for-mash.s3.amazonaws.com/aware-study-android-successful-study-1.png" alt="drawing" width="300"/>
+> <img src="https://temp-files-for-mash.s3.amazonaws.com/aware-study-android-successful-study-2.png" alt="drawing" width="300"/>
+<br>
+<br>
 
 You are all set for the MVP!!! Thank you for helping.
 
