@@ -3,6 +3,8 @@
 The first version of sleep of MVP will involve installing the Aware app on the phone. And, then inside you can join the study by scanning QR code described below.
 
 
+<br>
+
 
 
 ## Installing AWARE
@@ -41,6 +43,8 @@ Steps to join this study is the following:
 - Once the study is configured, the icon at the top will change. 
 - **Important**: At the top of the app, you will see a `Device ID` as follows. The device ID ideanties in the backend that the data is from you. Please send us the first 8 digits of the device id.
 
+
+<br>
 
 ## How do I check that I joined the right study?
 
