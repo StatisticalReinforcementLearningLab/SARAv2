@@ -3,18 +3,16 @@
 The first version of sleep of MVP will involve installing the Aware app on the phone. And, then inside you can join the study by scanning QR code described below.
 
 
-<br>
+
 
 ## Installing AWARE
 
 The installation instructions are different for the Android and iOS version of AWARE. 
 
-<br>
 
 ### iOS
 Open the 'App Store' app on your phone and search "Aware." The correct version of the app is "AWARE Client V2". Install the app.  
 
-<br>
 
 ### Android
 Android version of AWARE isn't available in the android play store. The app is available on the aware framework's website as an apk (apk's are android's executatble file fomrat). You will need to download the apk and directly install it. The exact steps are below:
@@ -30,8 +28,6 @@ Android version of AWARE isn't available in the android play store. The app is a
     > *You won’t find AWARE on the Google Play Store. Being an application to conduct user-studies, we use many permissions that current developer guidelines do not allow AWARE Client to be published. We are now hosting the client. This allows us to provide you with the tool you are used to without restrictions and allows us to better support the platform going forward.*
 
 
-
-<br>
 <br>
 
 ## Subscribing to sleep data collection study
@@ -40,11 +36,10 @@ We have already configured a study specific to the Harvard component of SARA. Th
 Steps to join this study is the following:
 - Open the aware app. Right at the top you'll see a QR code icon.
 - Scan the following **QR** code. The app will automatically ask you to join the study called `aware-sara-harvard`.
-    <br>
-    <br>
-    ![Qr code](https://temp-files-for-mash.s3.amazonaws.com/aware-harvard-qr-code.png)
-    <br>
-    <br>
+<br>
+> <img src="https://temp-files-for-mash.s3.amazonaws.com/aware-harvard-qr-code.png" alt="drawing" width="300"/>
+<br>
+
 - Once the study is configured, the icon at the top will change. 
 - **Important**: At the top of the app, you will see a `Device ID` as follows. The device ID ideanties in the backend that the data is from you. Please send us the first 8 digits of the device id.
 
@@ -54,18 +49,14 @@ Steps to join this study is the following:
 ### iOS 
 Go to the `settings` tab in the AWARE app. You will see the study URL right at the top. (See screenshot below)
 <br>
-<br>
 > <img src="https://temp-files-for-mash.s3.amazonaws.com/aware-study-ios-successful-study.jpg" alt="drawing" width="400"/>
-<br>
 <br>
 
 ### Android 
 On the main page of the app, scroll down until you see the 'AWARE study' tab (Screen shot #1). Click on it. You will be in a new page and you will see the study URL (Screen shot #2). 
 <br>
-<br>
 > <img src="https://temp-files-for-mash.s3.amazonaws.com/aware-study-android-successful-study-1.png" alt="drawing" width="300"/>
 > <img src="https://temp-files-for-mash.s3.amazonaws.com/aware-study-android-successful-study-2.png" alt="drawing" width="300"/>
-<br>
 <br>
 
 You are all set for the MVP!!! Thank you for helping.
