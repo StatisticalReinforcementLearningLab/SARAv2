@@ -14,7 +14,7 @@ AWARE is a popular sensor data collection platform that is widely used. The inst
 
 ### iOS
 Open the 'App Store' app on your phone and search "Aware." The correct version of the app is "AWARE Client V2". Install the app.  
-> **iOS quirks 1**: Contributed by Sarah Rathnam. AWARE asks to enable location when you start the app. Please don't press "skip." Press "next." Once it asks to enable location, select "Always when using the app." Then go to "Setting app > Aware v2 > Location." Select always (now AWARE will do background sensing of location).
+> ***iOS quirks 1**: Contributed by Sarah Rathnam. AWARE asks to enable location when you start the app. Please don't press "skip." Press "next." Once it asks to enable location, select "Always when using the app." Then go to "Setting app > Aware v2 > Location." Select always (now AWARE will do background sensing of location).*
 
 
 ### Android
