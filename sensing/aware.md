@@ -14,6 +14,7 @@ AWARE is a popular sensor data collection platform that is widely used. The inst
 
 ### iOS
 Open the 'App Store' app on your phone and search "Aware." The correct version of the app is "AWARE Client V2". Install the app.  
+> **iOS quirks 1**: Contributed by Sarah Rathnam. AWARE asks to enable location when you start the app. Please don't press "skip." Press "next." Once it asks to enable location, select "Always when using the app." Then go to "Setting app > Aware v2 > Location." Select always (now AWARE will do background sensing of location).
 
 
 ### Android
@@ -42,6 +43,7 @@ Steps to join this study is the following:
 <img src="https://temp-files-for-mash.s3.amazonaws.com/aware-harvard-qr-code.png" alt="drawing" width="300"/>
 
 - Once the study is configured, the icon at the top of the app will change. 
+     > **iOS quirks 2**: When you subscribe to our study, it will ask you enable Health Kit data. Select "Turn on all categories".    
 - At the top of the app, you will see a `Device ID`. The device ID is required to separte one user's data from another. Please send us the first 8 digits of the device id (highlighed in green in the following image).
 
 
