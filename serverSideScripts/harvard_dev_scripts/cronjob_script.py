@@ -13,11 +13,16 @@ def main():
 	bucketName = 'sara-dev-data-storage'
 	surveyDirectory = 'harvard_survey/'
 	processedDirectory = 'harvard_survey_processed/'
+	# write a commend talking about what this thing is doing
+	# fix the function name to reflect mysql
 	transferS3Data(bucketName, surveyDirectory, processedDirectory)
 
 	userNames = getUsernamesFromHarvardSurvey()
 	for userName in userNames:
 
+		# explain what player ID is:
+		# username given by someone in charge of sara app, player id given to
+		# each instance of installed app on phone, this is given by onesignal
 		playerID = getPlayerId(userName)
 		
 		if playerID is not None:

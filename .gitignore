@@ -8,3 +8,7 @@ www/
 platforms/
 copy_these_files/aws_scripts/aws_config.json
 copy_these_files/adapts_scripts/adapts_flask/config.ini
+serverSideScripts/harvard_dev_scripts/aws_config.json
+serverSideScripts/harvard_dev_scripts/onesignal_config.json
+serverSideScripts/harvard_dev_scripts/mysql_config.json
+

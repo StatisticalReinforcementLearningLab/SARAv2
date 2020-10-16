@@ -37,37 +37,41 @@ class OneSignal():
 
     def send(self):
 
-        self.payloadText = self.createOneSignalMessage()
+        # only send a message if there is substance to the survey response
+        if self.questionResponse != []:
+            self.payloadText = self.createOneSignalMessage()
 
-        header = {"Content-Type": "application/json; charset=utf-8",
-            "Authorization": AUTHORIZATION_ID}
+            header = {"Content-Type": "application/json; charset=utf-8",
+                "Authorization": AUTHORIZATION_ID}
 
-        payload = {"app_id": ONE_SIGNAL_APP_ID,
-            "include_player_ids": self.playerID,
-            "headings": {"en": self.msgHeading},
-            "contents": {"en": self.payloadText}, 
-            "large_icon": IMAGE_LOCATION + self.notificationImage,
-            "ios_attachments": {"id": IMAGE_LOCATION + self.notificationImage},
-            "android_visibility": 0,
-            "android_accent_color": "FF0000FF",
-            "data": {"user": "test", "type": "4PM"},
-            "ios_badgeCount": 1,
-            "collapse_id": "", 
-            #"delivery_time_of_day": time,
-            "ttl" : 259200,
-            "priority": 10,
-            "buttons": [{"id": "iLike", "text": "Like"}, {"id": "iNope", "text": "Nope"}],
-            "external_id": self.externalID}
+            payload = {"app_id": ONE_SIGNAL_APP_ID,
+                "include_player_ids": self.playerID,
+                "headings": {"en": self.msgHeading},
+                "contents": {"en": self.payloadText}, 
+                "large_icon": IMAGE_LOCATION + self.notificationImage,
+                "ios_attachments": {"id": IMAGE_LOCATION + self.notificationImage},
+                "android_visibility": 0,
+                "android_accent_color": "FF0000FF",
+                "data": {"user": "test", "type": "4PM"},
+                "ios_badgeCount": 1,
+                "collapse_id": "", 
+                #"delivery_time_of_day": time,
+                "ttl" : 259200,
+                "priority": 10,
+                "buttons": [{"id": "iLike", "text": "Like"}, {"id": "iNope", "text": "Nope"}],
+                "external_id": self.externalID}
 
-         #else:
-         #If the date is not yesterday, then don't send message
-            #Return "Response not given"
-           
-        # https://www.w3schools.com/python/ref_requests_response.asp, checkout all the fields
-        req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))       
-        print(req.status_code, req.reason, req.text)
-        #If 200, then successful
-        print(req)
+             #else:
+             #If the date is not yesterday, then don't send message
+                #Return "Response not given"
+               
+            # https://www.w3schools.com/python/ref_requests_response.asp, checkout all the fields
+            req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))       
+            print(req.status_code, req.reason, req.text)
+            #If 200, then successful
+            print(req)
+        else:
+            print("No survey response provided so no notification sent.")
 
 # Testing
 if __name__ == '__main__':

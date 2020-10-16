@@ -69,9 +69,6 @@ def selectAllDataFromHarvardSurvey():
     """
     Select all data points from the test database.
     """
-
-    #print('Fetching data')
-
     # connect to db
     db = connectToDatabase("HarvardDev")
     cursor = db.cursor()
