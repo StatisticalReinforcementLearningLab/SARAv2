@@ -1,25 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { DatabaseService } from 'src/app/monitor/database.service';
-import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 
 @Component({
-  selector: 'app-info-page',
-  templateUrl: './info-page.component.html',
-  styleUrls: ['./info-page.component.scss'],
+  selector: 'app-video-info-page',
+  templateUrl: './video-info-page.component.html',
+  styleUrls: ['./video-info-page.component.css']
 })
-export class InfoPageComponent implements OnInit {
-
-  isAYA: boolean;
+export class VideoInfoPageComponent implements OnInit {
 
   constructor(private menuCtrl:MenuController,
-    private appUsageDb: DatabaseService,
-    private userProfileService: UserProfileService) { }
+    private appUsageDb: DatabaseService) { }
 
-    
   ngOnInit() {
-
-    this.isAYA = true;
     this.menuCtrl.close();
   }
 
@@ -31,12 +24,7 @@ export class InfoPageComponent implements OnInit {
      }
     });
     */
-
-    //
-    if((this.userProfileService != undefined)  && (this.userProfileService.isParent == true))
-      this.isAYA = false;
-    
-    this.appUsageDb.saveAppUsageEnter("reward_info_page");  
+    this.appUsageDb.saveAppUsageEnter("reward_video_info_page");  
   }  
 
   ionViewDidLeave(){
@@ -47,7 +35,7 @@ export class InfoPageComponent implements OnInit {
       }
     });
     */ 
-    this.appUsageDb.saveAppUsageExit("reward_info_page");     
+    this.appUsageDb.saveAppUsageExit("reward_video_info_page");     
   }
 
 }
