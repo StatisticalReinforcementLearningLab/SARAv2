@@ -104,4 +104,7 @@
     <preference name="AndroidExtraFilesystems" value="files,cache, sdcard, cache-external, files-external" />
     <preference name="android-targetSdkVersion" value="29" />
     <preference name="CordovaWebViewEngine" value="CDVUIWebViewEngine" />
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
 </widget>
