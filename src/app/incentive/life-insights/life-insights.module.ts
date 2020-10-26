@@ -10,6 +10,7 @@ import { Q1MotivatedComponent } from './q1-motivated/q1-motivated.component';
 import { SampleLifeInsightsComponent } from './sample-life-insights/sample-life-insights.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { SamplePythonViewComponent } from './sample-python-view/sample-python-view.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [Q1MotivatedComponent,SampleLifeInsightsComponent],
+  declarations: [Q1MotivatedComponent,SampleLifeInsightsComponent, SamplePythonViewComponent],
   imports: [
     CommonModule,
     FormsModule,
