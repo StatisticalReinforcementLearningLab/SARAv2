@@ -30,6 +30,7 @@
     <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="AndroidExtraFilesystems" value="files,cache, sdcard, cache-external, files-external" />
     <preference name="android-targetSdkVersion" value="29" />
+    <allow-navigation href="*://*.cnn.com/*" />
     <allow-navigation href="http://localhost:8080/*" />
     <preference name="CordovaWebViewEngine" value="CDVUIWebViewEngine" />
     <platform name="android">
@@ -62,6 +63,8 @@
             <param name="ios-package" value="CDVWKWebViewEngine" />
         </feature>
         <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
+        <preference name="InAppBrowserStatusBarStyle" value="lightcontent" />
+        <preference name="PreferredContentMode" value="mobile" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
         <icon height="57" src="resources/ios/icon/icon.png" width="57" />
