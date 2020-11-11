@@ -4,7 +4,7 @@
 
 # To use decrypt.js, need to install package in the same folder as
 # decrypt.js in Command Prompt: npm install crypto-js
-
+import os
 import json
 import csv
 import boto3
@@ -68,6 +68,14 @@ def moveAllData(bucketName, sourceDirectory, destDirectory):
         filename = obj['Key'].split("/")[-1]
         moveDatapoint(bucketName, sourceDirectory, destDirectory, filename)
 
+
+def adjustPathForServerVsLocal(fileName):
+    if os.path.exists(fileName): #if true then we are running locally.
+        return './'+fileName
+    else: #server side crontab, so we are appending full directory path.
+        return os.path.join('/home/ec2-user/HarvardDevEC2/MySARAv2-harvard-chloe-issue-163' \
+				'/serverSideScripts/harvard_dev_scripts/' + fileName)
+
 def transferS3Data(bucketName, directory, processedDirectory):
     """
     Transfers survey data from s3 survey collection bucket to sql table.
@@ -95,7 +103,7 @@ def transferS3Data(bucketName, directory, processedDirectory):
 
             #get encrypted obj and try to decrypt it.
             encryptedData = encryptedSurveyJson['encrypted']
-            decryptedData = subprocess.check_output(["node", "decrypt.js", encryptedData])
+            decryptedData = subprocess.check_output(["node", adjustPathForServerVsLocal('decrypt.js'), encryptedData])
             decryptedJson = json.loads(decryptedData.decode('utf-8'))
             
             #print(json.dumps(decryptedJson, indent=4, sort_keys=True)) #use this line to debug if good JSON file is coming out.

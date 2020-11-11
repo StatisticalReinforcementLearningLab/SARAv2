@@ -40,7 +40,6 @@ def insertDataIntoHarvardSurvey(payload):
     Inserts user survey data into the mysql database.
     - payload: a dictionary with username, survey endtime, and the answers to survey questions
     to all of the questions
-
     """
     print('Inserting data')
 
@@ -68,9 +67,6 @@ def selectAllDataFromHarvardSurvey():
     """
     Select all data points from the test database.
     """
-
-    #print('Fetching data')
-
     # connect to db
     db = connectToDatabase("HarvardDev")
     cursor = db.cursor()
@@ -88,15 +84,13 @@ def getQuestionDataFromHarvardSurvey(n):
     db = connectToDatabase("HarvardDev")
     cursor = db.cursor()
     #recentTime = getRecentTime(n)
-    '''
-    you're selecting the question response for a corresponding user id based on the most recent survey 
-    completion time and most recent insertion time
-    '''
-    cursor.execute("""SELECT json_answer, response_id FROM harvardSurvey WHERE user_id = '{}' 
-        AND survey_completion_time = (SELECT MAX(survey_completion_time) FROM harvardSurvey WHERE user_id = '{}')
-        AND when_inserted = (SELECT MAX(when_inserted) FROM harvardSurvey WHERE user_id = '{}')"""\
-        .format(n,n,n))
+    cursor.execute("""SELECT json_answer, response_id FROM harvardSurvey WHERE user_id = {}
+        AND survey_completion_time = (SELECT MAX(survey_completion_time) FROM harvardSurvey)
+        AND when_inserted = (SELECT MAX(when_inserted) FROM harvardSurvey)"""\
+        .format("'"+n+"'"))
+    #print(cursor.fetchall())
     returnedData = cursor.fetchall()[0]
+
     try:
         #questionData = json.loads(cursor.fetchall()[0][0])
         questionData = json.loads(returnedData[0])
@@ -169,7 +163,3 @@ if __name__ == '__main__':
     # # fetch data.
     # cursor.execute("SELECT when_inserted FROM harvardSurvey")
     # print(cursor.fetchall())
-
-
-
-
