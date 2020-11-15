@@ -321,6 +321,11 @@ export class AquariumComponent implements OnInit {
     //this.router.navigate(['survey/harvardsurvey']);
   }
 
+  showSleepSurvey(){
+    this.navController.navigateRoot(['survey/sleepsurvey']);
+  }
+
+
   showHarvardArcApps(){
     this.router.navigate(['intervention/arcappsfrontpage']);
   }
