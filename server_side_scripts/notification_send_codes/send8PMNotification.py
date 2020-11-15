@@ -19,6 +19,11 @@ def getActiveUsers():
     )
 
     cursor = db.cursor()
+
+    # selects user ids 
+    # user ids gets refreshed everytime participant goes to the front page of the app.
+    # we get the latest from the user_ids table (right side of join)
+    # From survey completed, we get the latest time for survey completed (left side of join)
     cursor.execute("SELECT user_id, oneSignalPlayerId, whenCompletedTs as whenSurveyCompletedTs, \
         whenCompletedReadableTs  as whenSurveyCompletedRedableTs, currentTimeTs as lastAppOpenedTs, \
         currentTimeReadableTs  as lastAppOpenedReadableTs \
@@ -89,6 +94,17 @@ def storeInDatabase(store_data):
     cursor.execute(insert_stmt, store_data)
     db.commit()
 
+def day_light_saving_adjustment(timezone, ts):
+
+    lowest_day_light_saving = datetime.strptime("2020-10-31 11:59:59 pm -0400", "%Y-%m-%d %I:%M:%S %p %z")
+    # print("ts in string: " + datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S'))
+
+    # so, user's time is below lowest_day_light_saving. So, we go with -4 instead of -5
+    # print("lowest_day_light_saving " + str(lowest_day_light_saving.timestamp()))
+    ts = ts/1000
+    if ts < lowest_day_light_saving.timestamp():
+        timezone = timezone - 1
+    return timezone
 
 
 def send8PMNotification():
@@ -105,7 +121,7 @@ def send8PMNotification():
         userId = row[0]
         player_id = row[1]
 
-        #get timezone info
+        # get timezone info, using "October 31st 2020, 9:36:42 pm -04:00"
         readableTs = row[3]
         readableTsSplited = readableTs.split(" ")
 
@@ -113,17 +129,25 @@ def send8PMNotification():
         if len(readableTsSplited) < 6:
             continue
 
-        #
+        # 
+        # gets the -04 from "October 31st 2020, 9:36:42 pm -04:00"  
+        # 
         timezone = int(readableTsSplited[-1].split(":")[0])
         #print(readableTs + ", " + str(timezone))
 
-        #
+        # when self-report was completed in unix time. Python returns time in GMT.
+        # note the unixtime in the phone is milliseconds from 1970 01 01 in users timezone (not GMT)
+        # Here, when we ask for ts to date string, python thinks it is ts and GMT.
+        # So, if we do the math, then python will think survey is completed GMT time 6:31pm if it is completed in 6:30pm pst.
         ts = float(row[2])/1000
         lastSelfReportReadableTsUTC = datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S') 
+
+        # current time in UTC
         currentTimeReadableTsUTC = datetime.utcfromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
 
 
-        #
+        # get current time in user's timezone
+        timezone = day_light_saving_adjustment(timezone, ts) #readableTs contains data from user's time.
         currentTimeUnixTsUTC = time.time()
         diffInHours = (currentTimeUnixTsUTC - ts)/3600
         readableTsTZ = datetime.utcfromtimestamp(currentTimeUnixTsUTC + timezone*3600).strftime('%Y-%m-%d %H:%M:%S')
@@ -142,14 +166,15 @@ def send8PMNotification():
             else:
                 # t.add_row([userId, readableTs, readableTsTZ, lastSelfReportReadableTsUTC, currentTimeReadableTsUTC, NOTIFICATION_SENT])
                 dataToStore = [userId, readableTs, readableTsTZ, lastSelfReportReadableTsUTC, currentTimeReadableTsUTC, NOTIFICATION_SENT] 
-                sendNotificationNow(player_id)
+                # sendNotificationNow(player_id)
             print(dataToStore)
             storeInDatabase(dataToStore)
             writeLineInSend8PMNotification(str(dataToStore).replace("[","").replace("]",""))
 
 
         
-
+# print(day_light_saving_adjustment(-4, 2*3600 + 1604194600639/1000)) # October 31st 2020, 9:36:40 pm -04:00
+# print(day_light_saving_adjustment(-5, 1604448857061/1000))
 
 
 send8PMNotification()
