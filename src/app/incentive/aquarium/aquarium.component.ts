@@ -213,7 +213,8 @@ export class AquariumComponent implements OnInit {
     */
 
 
-    this.title = "ADAPTS";
+    //this.title = "ADAPTS";
+    this.title = "SARA";
     console.log("aquarium.component.ts --- start");
     //this.menu.enable(true);
 
