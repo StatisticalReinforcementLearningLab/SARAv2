@@ -18,6 +18,7 @@ import {surveyReducer} from './reducers';
 import {EffectsModule} from '@ngrx/effects';
 import { SurveyEffects } from './survey.effects';
 import { HarvardSurveyComponent } from './harvard-survey/harvard-survey.component';
+import { SleepSurveyComponent } from './sleep-survey/sleep-survey.component';
 
 const routes: Routes = [
     { path: 'samplesurvey', component: SampleSurveyComponent }
@@ -25,15 +26,11 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    //InitiatedDrinkComponent,
-    //MorningReportComponent,
-    //PromptedSurveyComponent,
-    //ActivetaskComponent,
     DynamicSurveyComponent,
     AyaSampleSurveyComponent,
-    //ActiveTask2Component,
     SampleSurveyComponent,
-    HarvardSurveyComponent],
+    HarvardSurveyComponent,
+    SleepSurveyComponent],
   imports: [
     CommonModule,
     IonicModule.forRoot(),
@@ -45,15 +42,11 @@ const routes: Routes = [
     EffectsModule.forFeature([SurveyEffects])
   ],
   exports:[
-    //InitiatedDrinkComponent,
-    //MorningReportComponent,
-    //PromptedSurveyComponent,
-    //ActivetaskComponent,
-    //ActiveTask2Component,
     DynamicSurveyComponent,
     SampleSurveyComponent,
     AyaSampleSurveyComponent,
-    HarvardSurveyComponent
+    HarvardSurveyComponent,
+    SleepSurveyComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
