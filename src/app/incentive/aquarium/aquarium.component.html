@@ -37,11 +37,11 @@
       <ion-buttons slot="end">
           <font color="white">${{money}}</font>
 
-          <!--
+          
           <ion-button style="color:#fff;" (click)="startCheatPage()"  *ngIf="!isIOS">
             <ion-icon name="alert"></ion-icon>
           </ion-button>
-          -->
+          
   
           <!-- Mash codes:
           <ion-text  *ngIf="!isActive" style="color:#fff;"><strong>Account is Paused</strong> </ion-text>
@@ -52,7 +52,7 @@
   
           
   
-          <ion-button (click)="startSurvey()"   *ngIf="isActive">
+          <ion-button (click)="showHarvardSurvey()"   *ngIf="isActive">
               <ion-icon name="ios-create" style="color : white;"></ion-icon>
           </ion-button>
   
@@ -90,9 +90,14 @@
     <ion-button color="primary" (click)="showModalDemo()">Unlockables</ion-button>
     <ion-button color="primary" (click)="showMemeDemo()">Meme</ion-button>
     <ion-button color="primary" (click)="showAltruisticDemo()">Altruistic msg</ion-button>
-    -->
-    <ion-button color="primary" (click)="showHarvardSurvey()">Harvard survey</ion-button>
+
     <ion-button color="primary" (click)="showHarvardArcApps()">Arc apps</ion-button>
+    -->
+
+    <!--
+    <ion-button color="primary" (click)="showHarvardSurvey()">Harvard survey</ion-button>
+    -->
+    
     
   </ion-content>
   
