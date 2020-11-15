@@ -10,13 +10,24 @@ import matplotlib.pyplot as plt
 import json
 import time
 import matplotlib.dates as mdates
+import matplotlib
 
+#from flask_cors import CORS
+from flask import jsonify
+from flask import send_file
 from flask import Flask
+
+from io import StringIO, BytesIO
+
+#from app import app
+# CORS(app)
 app = Flask(__name__)
 
+#===========================================================================================
+
 @app.route('/')
-def hello_world():
-    return 'Hello, World!'
+def home():
+   return "hello world!"
 
 
 @app.route('/showplot')
@@ -103,12 +114,64 @@ def getScreenUsageDataFrame(user_id, start_unix_time, end_unix_time):
 
 
 
+@app.route('/plot.svg')
+def plot_svg():
+    # matplotlib.use("Agg")
+    
+
+    """
+    plt.plot([1,2,3,4], [1,2,3,4])
+    img = StringIO()
+    plt.savefig(img)
+    img.seek(0)
+    return send_file(img, mimetype='image/png')
+    """
+
+    #f = open("./static/chart.svg", "rb")
+    return send_file("./chart.svg", mimetype='image/svg+xml')
+   
+    # return file('svgFile+'.svg').read()
+
+    """
+    img = StringIO()
+    fig.savefig(img)
+    img.seek(0)
+    return send_file(img, mimetype='image/png')
+
+    # output = io.BytesIO()
+    #FigureCanvas(fig).print_png(output)
+    # return Response(output.getvalue(), mimetype='image/png')
+    """
+
+
 @app.route('/plot.png')
 def plot_png():
+    # matplotlib.use("Agg")
+    
+
+    """
+    plt.plot([1,2,3,4], [1,2,3,4])
+    img = StringIO()
+    plt.savefig(img)
+    img.seek(0)
+    return send_file(img, mimetype='image/png')
+    """
+    
     fig = create_figure()
     output = io.BytesIO()
     FigureCanvas(fig).print_png(output)
     return Response(output.getvalue(), mimetype='image/png')
+
+    """
+    img = StringIO()
+    fig.savefig(img)
+    img.seek(0)
+    return send_file(img, mimetype='image/png')
+
+    # output = io.BytesIO()
+    #FigureCanvas(fig).print_png(output)
+    # return Response(output.getvalue(), mimetype='image/png')
+    """
 
 def create_figure():
 
@@ -123,9 +186,16 @@ def create_figure():
     appUsageDataFrame = getScreenUsageDataFrame(user_id, start_unix_time, end_unix_time)
 
     fig = Figure(figsize=(6, 4), dpi=80)
+    #fig = plt.figure(figsize=(6, 4), dpi=80)
+    # fig = plt.plot([1,2,3,4], [1,2,3,4])
     ax = fig.add_subplot(111)
     myFmt = mdates.DateFormatter('%-I%p')
     ax.plot(appUsageDataFrame['date'], appUsageDataFrame['screenTime'], '*')
     ax.xaxis.set_major_formatter(myFmt)
-    ax.set_xlabel(s)
     return fig
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
+    
+    
