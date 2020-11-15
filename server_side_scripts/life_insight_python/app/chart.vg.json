@@ -1,0 +1,185 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "background": "white",
+  "padding": 5,
+  "width": 400,
+  "height": 300,
+  "style": "cell",
+  "data": [
+    {
+      "name": "data-cc6c0ab3bfbaa30e7ef424f1f5ceb79f",
+      "values": [
+        {
+          "date": "2020-11-02T00:22:46",
+          "screenTime": 3
+        },
+        {
+          "date": "2020-11-02T00:40:54",
+          "screenTime": 2
+        },
+        {
+          "date": "2020-11-02T05:30:18",
+          "screenTime": 3
+        },
+        {
+          "date": "2020-11-02T05:30:32",
+          "screenTime": 2
+        }
+      ]
+    },
+    {
+      "name": "data_0",
+      "source": "data-cc6c0ab3bfbaa30e7ef424f1f5ceb79f",
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "toDate(datum[\"date\"])",
+          "as": "date"
+        },
+        {
+          "type": "filter",
+          "expr": "(isDate(datum[\"date\"]) || (isValid(datum[\"date\"]) && isFinite(+datum[\"date\"]))) && isValid(datum[\"screenTime\"]) && isFinite(+datum[\"screenTime\"])"
+        }
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "name": "marks",
+      "type": "symbol",
+      "style": [
+        "circle"
+      ],
+      "from": {
+        "data": "data_0"
+      },
+      "encode": {
+        "update": {
+          "opacity": {
+            "value": 0.7
+          },
+          "size": {
+            "value": 60
+          },
+          "fill": {
+            "value": "#4c78a8"
+          },
+          "ariaRoleDescription": {
+            "value": "circle"
+          },
+          "description": {
+            "signal": "\"date: \" + (timeFormat(datum[\"date\"], '%b %d, %Y')) + \"; screenTime: \" + (format(datum[\"screenTime\"], \"\"))"
+          },
+          "x": {
+            "scale": "x",
+            "field": "date"
+          },
+          "y": [
+            {
+              "test": "!isValid(datum[\"screenTime\"]) || !isFinite(+datum[\"screenTime\"])",
+              "field": {
+                "group": "height"
+              }
+            },
+            {
+              "scale": "y",
+              "field": "screenTime"
+            }
+          ],
+          "shape": {
+            "value": "circle"
+          }
+        }
+      }
+    }
+  ],
+  "scales": [
+    {
+      "name": "x",
+      "type": "time",
+      "domain": {
+        "data": "data_0",
+        "field": "date"
+      },
+      "range": [
+        0,
+        {
+          "signal": "width"
+        }
+      ]
+    },
+    {
+      "name": "y",
+      "type": "linear",
+      "domain": [
+        1.5,
+        3.5
+      ],
+      "range": [
+        {
+          "signal": "height"
+        },
+        0
+      ],
+      "nice": true,
+      "zero": false
+    }
+  ],
+  "axes": [
+    {
+      "scale": "x",
+      "orient": "bottom",
+      "gridScale": "y",
+      "grid": true,
+      "tickCount": {
+        "signal": "ceil(width/40)"
+      },
+      "domain": false,
+      "labels": false,
+      "aria": false,
+      "maxExtent": 0,
+      "minExtent": 0,
+      "ticks": false,
+      "zindex": 0
+    },
+    {
+      "scale": "y",
+      "orient": "left",
+      "gridScale": "x",
+      "grid": true,
+      "tickCount": {
+        "signal": "ceil(height/40)"
+      },
+      "domain": false,
+      "labels": false,
+      "aria": false,
+      "maxExtent": 0,
+      "minExtent": 0,
+      "ticks": false,
+      "zindex": 0
+    },
+    {
+      "scale": "x",
+      "orient": "bottom",
+      "grid": false,
+      "title": "date",
+      "labelFlush": true,
+      "labelOverlap": true,
+      "tickCount": {
+        "signal": "ceil(width/40)"
+      },
+      "zindex": 0
+    },
+    {
+      "scale": "y",
+      "orient": "left",
+      "grid": false,
+      "title": "screenTime",
+      "labelOverlap": true,
+      "tickCount": {
+        "signal": "ceil(height/40)"
+      },
+      "zindex": 0
+    }
+  ]
+}
