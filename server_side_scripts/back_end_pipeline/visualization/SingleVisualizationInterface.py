@@ -16,11 +16,17 @@ class SingleVisualizationInterface:
         pass
 
     def generate_time_series_for_plot(self, arguments):
+        """
+        return an pandas time series data frame that will be used for plotting.
+        """
         pass
 
-    def store_visualization_to_s3(self):
+    def store_visualization_to_s3(self, arguments):
         pass
 
-    def store_time_series_to_s3(self):
+    def store_time_series_to_s3(self, arguments):
+        """
+        return an pandas time series data frame that will be used for plotting.
+        """
         pass
 
