@@ -45,6 +45,9 @@
     },
     "phonegap-plugin-mobile-accessibility": {
       "PACKAGE_NAME": "edu.harvard.srl.SARA"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "edu.harvard.srl.SARA"
     }
   },
   "dependent_plugins": {
