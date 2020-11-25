@@ -29,6 +29,8 @@ import { RainforestComponent } from './incentive/aquarium/previews/rainforest/ra
 import { HarvardSurveyComponent } from './survey/harvard-survey/harvard-survey.component';
 import { FrontPageComponent } from './intervention/harvard-arc-apps/front-page/front-page.component';
 import { VideoInfoPageComponent } from './incentive/video-info-page/video-info-page.component';
+import { SamplePythonViewComponent } from './incentive/life-insights/sample-python-view/sample-python-view.component';
+import { SleepSurveyComponent } from './survey/sleep-survey/sleep-survey.component';
 
 
 const routes: Routes = [
@@ -58,10 +60,12 @@ const routes: Routes = [
   { path: 'survey/samplesurvey', component: SampleSurveyComponent, canActivate: [AuthGuard]}, 
   { path: 'survey/samplesurvey2', component: AyaSampleSurveyComponent, canActivate: [AuthGuard]}, 
   { path: 'survey/harvardsurvey', component: HarvardSurveyComponent, canActivate: [AuthGuard]}, 
+  { path: 'survey/sleepsurvey', component: SleepSurveyComponent, canActivate: [AuthGuard]},
   { path: 'intervention/arcappsfrontpage', component: FrontPageComponent, canActivate: [AuthGuard]}, 
   { path: 'incentive/aquariumone', component: DemoAquariumComponent, canActivate: [AuthGuard]},
   { path: 'incentive/award-memes', component: AwardMemesComponent, canActivate: [AuthGuard]},
   { path: 'incentive/award-altruism', component: AwardAltruismComponent, canActivate: [AuthGuard]},
+  { path: 'incentive/pythonlifeinsightsammple', component: SamplePythonViewComponent, canActivate: [AuthGuard]},
   { path: 'contact-study-staff', component: ContactComponent, canActivate: [AuthGuard]},
   { path: 'incentive/infopage', component: InfoPageComponent, canActivate: [AuthGuard]},
   { path: 'incentive/videoinfopage', component: VideoInfoPageComponent, canActivate: [AuthGuard]},
