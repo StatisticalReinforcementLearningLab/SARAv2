@@ -628,7 +628,10 @@ export class DynamicSurveyComponent implements OnInit {
                         x = 10 * (lastPos.x - top_x) / (bottom_x - top_x) - 5;
                         y = 5 - 10 * (lastPos.y - top_y) / (bottom_y - top_y) - 5;
                         console.log("x:" + x + ", y:" + y);
-                        self2.survey2['QMood'] = "" + x + ":" + y;
+
+                        //self2.survey2['QMood'] = "" + x + ":" + y;
+                        self2.surveyAnswersJSONObject['QMood'] = "" + x + ":" + y;
+
 
                         //
                         self2.inputchanged("QMood");
@@ -757,7 +760,7 @@ export class DynamicSurveyComponent implements OnInit {
             }
 
             if (obj.type == "moodgrid2") {
-                //survey_string = this.process_survey_moodgrid2(survey_string);
+                survey_string = this.process_survey_moodgrid2(survey_string);
             }
 
 
@@ -905,6 +908,18 @@ export class DynamicSurveyComponent implements OnInit {
 
         return survey_string;
     }
+
+    process_survey_moodgrid2(survey_string: string): string {
+        survey_string = [survey_string,
+            '<canvas id="myCanvas" width="310" height="310" style="border:0px solid #000000;padding:10px;">',
+                'Your browser does not support the HTML5 canvas tag.',
+            '</canvas>'
+          ].join(" ");
+
+          return survey_string;
+    }
+
+
 
     getAppVersionNumber() {
         //Get the app version to put inside the survey data. 
