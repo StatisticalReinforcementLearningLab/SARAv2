@@ -158,4 +158,8 @@
     <preference name="android-targetSdkVersion" value="28" />
     <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
     <preference name="WKWebViewOnly" value="true" />
+    <feature name="InAppBrowser">
+        <param name="ios-package" value="CDVWKInAppBrowser" />
+        <param name="onload" value="true" />
+    </feature>
 </widget>
