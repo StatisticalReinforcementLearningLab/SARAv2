@@ -77,6 +77,17 @@ def selectAllDataFromHarvardSurvey():
     cursor.execute("SELECT user_id, survey_completion_time, json_answer, when_inserted, response_id FROM harvardSurvey")
     return cursor.fetchall()
 
+def getWeeklyDataFromHarvardSurvey(name):
+    """
+    Select the past week's worth of survey data for the given username.
+        - name: string, username of interest
+    """
+    db = connectToDatabase("HarvardDev")
+    cursor = db.cursor()
+
+    #cursor.execute("SELECT json_answer FROM harvardSurvey WHERE (user_id = {} AND survey_completion_time)")
+    pass
+
 def getQuestionDataFromHarvardSurvey(n):
     """
     Select the most recent question data based on provided username. Returns that
