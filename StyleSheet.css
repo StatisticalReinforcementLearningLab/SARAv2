@@ -1,0 +1,109 @@
+#NavBarInner {
+    height: 10%;
+    width: 100%;
+    background: #DE8582;
+    overflow:hidden;
+    padding:5px
+}
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    padding-right: 7vh;
+}
+#NavBarOuter {
+    position:fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 999;
+    overflow: hidden
+}
+.menu a {
+    overflow: auto;
+    color: #FFEBCC;
+    text-decoration: none;
+    padding-right: 16px;
+    padding-left:16px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+}
+/* .menu p {
+    padding-right: 16px;
+    padding-left: 16px;
+    overflow: auto;
+    color: rgb(150, 128, 247)
+} */
+body {
+    padding: 50px;
+    overflow: auto;
+    background-color:#FFEBCC
+}
+.twoFatCols {
+    display: flex;
+    align-items: center;
+    /* padding: 16px; */
+    width: 100%;
+    height: 100%;
+}
+.twoFatCols div{
+    width:50%;
+    height: 100%;
+    margin-top: 3vh;
+    /* padding: 5vh; */
+}
+#saraTitle {
+
+    /* text-align: center; */
+    /* margin-top: 15vh;
+    padding: 10vh; */
+    padding-left: 33%;
+    color: #DE8582;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 56px;
+
+}
+#saraBlurb {
+    padding-left: 33%;
+    color:#DE8582;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.bottomLeft {
+    display: block;
+    margin-left: 0;
+    margin-bottom: 33%;
+}
+.pageTitle {
+    padding: 5vh;
+    text-align: center;
+    color: #DE8582;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 56px;
+}
+.spacer {
+    height: 10vh;
+    width: 100vw; 
+}
+#Timeline {
+    background-color: #DE8582;
+    height: 166vh;
+    overflow: hidden
+}
