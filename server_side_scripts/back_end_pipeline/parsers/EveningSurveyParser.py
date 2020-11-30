@@ -11,13 +11,13 @@ import mysql.connector as mysql
 from datetime import datetime
 import uuid
 
-from SurveyParserInterface import SurveyParserInterface
+from GenericParserInterface import GenericParserInterface
 
 # To use decrypt.js, need to install package in the same folder as
 # decrypt.js in Command Prompt: npm install crypto-js
 
 
-class EveningSurveyParser(SurveyParserInterface):
+class EveningSurveyParser(GenericParserInterface):
     def __init__(self):
         pass
 
@@ -37,21 +37,23 @@ class EveningSurveyParser(SurveyParserInterface):
         raw_survey_data_list = []
          
         resp = client.list_objects_v2(Bucket=bucket_name,Prefix=directory)
+        # print(json.dumps(resp, indent=4, sort_keys=True))
 
-        processed_file_count = 1
-        for obj in resp['Contents']:
-            filename = obj['Key']
-            print("   Fetching file, {} of {}: {}".format(processed_file_count, len(resp['Contents']), filename))
-            processed_file_count = processed_file_count + 1
+        if 'Contents' in resp: # if there is no survey to parse then 'Contents' is absent in resp.
+            processed_file_count = 1
+            for obj in resp['Contents']:
+                filename = obj['Key']
+                print("   Fetching file, {} of {}: {}".format(processed_file_count, len(resp['Contents']), filename))
+                processed_file_count = processed_file_count + 1
 
-            if("result" in filename) :
-                # read JSON from the S3 file.
-                s3_data_object = client.get_object(Bucket=bucket_name, Key=filename) 
-                encrypted_survey_data_string = s3_data_object['Body'].read().decode('utf-8')
+                if("result" in filename) :
+                    # read JSON from the S3 file.
+                    s3_data_object = client.get_object(Bucket=bucket_name, Key=filename) 
+                    encrypted_survey_data_string = s3_data_object['Body'].read().decode('utf-8')
 
-                raw_survey_data_list.append(encrypted_survey_data_string)
-            else:
-                print("Strangely named file %s was not moved." %filename)
+                    raw_survey_data_list.append(encrypted_survey_data_string)
+                else:
+                    print("Strangely named file %s was not moved." %filename)
 
         return raw_survey_data_list
 
@@ -221,9 +223,10 @@ class EveningSurveyParser(SurveyParserInterface):
         # read a list of objects (i.e., filenames) from S3
         resp = client.list_objects_v2(Bucket=bucketName,Prefix=sourceDirectory)
 
-        for obj in resp['Contents']:
-            filename = obj['Key'].split("/")[-1]
-            self.move_data_point(bucketName, sourceDirectory, destDirectory, filename)
+        if 'Contents' in resp: # if there is no survey to parse then 'Contents' is absent in resp.
+            for obj in resp['Contents']:
+                filename = obj['Key'].split("/")[-1]
+                self.move_data_point(bucketName, sourceDirectory, destDirectory, filename)
 
 
 if __name__ == '__main__':
