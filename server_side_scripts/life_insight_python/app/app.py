@@ -1,13 +1,16 @@
 import io
 import random
 from flask import Response
-#from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-#from matplotlib.figure import Figure
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
 import mysql.connector as mysql
 from datetime import datetime
 import pandas as pd
+import matplotlib.pyplot as plt
 import json
 import time
+import matplotlib.dates as mdates
+import matplotlib
 
 #from flask_cors import CORS
 from flask import jsonify
@@ -15,9 +18,6 @@ from flask import send_file
 from flask import Flask
 
 from io import StringIO, BytesIO
-
-import altair as alt
-from altair_saver import save
 
 #from app import app
 # CORS(app)
@@ -27,7 +27,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-   return "hello world! 2"
+   return "hello world!"
 
 
 @app.route('/showplot')
@@ -48,6 +48,7 @@ def getSqlConfigFromJSON(configFileName):
             "passwd": "passworkd",
             "database": "database_or_schema_name"
         }
+        
     """
     
     with open(configFileName) as f:
@@ -111,34 +112,90 @@ def getScreenUsageDataFrame(user_id, start_unix_time, end_unix_time):
     
     return appUsageDataFrame
 
-def generateSvgFileForCurrentStream(appUsageDataFrame):
-    chart = alt.Chart(appUsageDataFrame).mark_circle(size=60).encode(
-        x='date:T',
-        y={"field": 'screenTime', "type": "quantitative", "scale": {"domain": [1.5,3.5]}}
-    )
-    
-    for fmt in ['json', 'vg.json', 'html', 'svg']:
-        save(chart, f'chart.{fmt}')
-
 
 
 @app.route('/plot.svg')
 def plot_svg():
+    # matplotlib.use("Agg")
+    
+
+    """
+    plt.plot([1,2,3,4], [1,2,3,4])
+    img = StringIO()
+    plt.savefig(img)
+    img.seek(0)
+    return send_file(img, mimetype='image/png')
+    """
+
+    #f = open("./static/chart.svg", "rb")
+    return send_file("./chart.svg", mimetype='image/svg+xml')
+   
+    # return file('svgFile+'.svg').read()
+
+    """
+    img = StringIO()
+    fig.savefig(img)
+    img.seek(0)
+    return send_file(img, mimetype='image/png')
+
+    # output = io.BytesIO()
+    #FigureCanvas(fig).print_png(output)
+    # return Response(output.getvalue(), mimetype='image/png')
+    """
+
+
+@app.route('/plot.png')
+def plot_png():
+    # matplotlib.use("Agg")
+    
+
+    """
+    plt.plot([1,2,3,4], [1,2,3,4])
+    img = StringIO()
+    plt.savefig(img)
+    img.seek(0)
+    return send_file(img, mimetype='image/png')
+    """
+    
+    fig = create_figure()
+    output = io.BytesIO()
+    FigureCanvas(fig).print_png(output)
+    return Response(output.getvalue(), mimetype='image/png')
+
+    """
+    img = StringIO()
+    fig.savefig(img)
+    img.seek(0)
+    return send_file(img, mimetype='image/png')
+
+    # output = io.BytesIO()
+    #FigureCanvas(fig).print_png(output)
+    # return Response(output.getvalue(), mimetype='image/png')
+    """
+
+def create_figure():
 
     today = datetime.today()
     s = today.strftime("%m/%d/%Y")
+    #print("d1 =", s)
     end_unix_time = 1000*time.mktime(datetime.strptime(s + " 02:00 PM", "%m/%d/%Y %I:%M %p").timetuple())
     start_unix_time = end_unix_time - 18*3600*1000
+
+
     user_id = '88315702-a3e6-4296-8437-0a56b4c4f03b'
     appUsageDataFrame = getScreenUsageDataFrame(user_id, start_unix_time, end_unix_time)
 
-    generateSvgFileForCurrentStream(appUsageDataFrame)
-
-    return send_file("./chart.svg", mimetype='image/svg+xml')
-
-
-
+    fig = Figure(figsize=(6, 4), dpi=80)
+    #fig = plt.figure(figsize=(6, 4), dpi=80)
+    # fig = plt.plot([1,2,3,4], [1,2,3,4])
+    ax = fig.add_subplot(111)
+    myFmt = mdates.DateFormatter('%-I%p')
+    ax.plot(appUsageDataFrame['date'], appUsageDataFrame['screenTime'], '*')
+    ax.xaxis.set_major_formatter(myFmt)
+    return fig
 
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
+    
+    
