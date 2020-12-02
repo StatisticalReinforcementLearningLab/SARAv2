@@ -2,10 +2,9 @@
 # Created by Mash, Nov 16, 2020
 #
 
-
 class SingleVisualizationInterface:
 
-    def __init__(self, name, description):
+    def __init__(self):
         self.name = name # give a name to this visualization
         self.description = description # give a description to this visualization
     
@@ -15,7 +14,7 @@ class SingleVisualizationInterface:
         """
         pass
 
-    def generate_time_series_for_plot(self, arguments):
+    def generate_time_series_for_plot(self, *args):
         """
         return an pandas time series data frame that will be used for plotting.
         """
