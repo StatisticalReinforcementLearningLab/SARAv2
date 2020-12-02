@@ -1,0 +1,19 @@
+[
+    {
+      "name":"Q1",
+      "text":"1. When did you go to bed last night",
+      "type":"range_time",
+      "extra":{
+        "choices":["8:00<br>PM", "4:00<br>AM",0,8,0.5, "12:00 AM"]
+      }
+    },
+    {
+      "name":"Q2",
+      "text":"2. When did you wake up this morning?",
+      "type":"range_time",
+      "extra":{
+        "choices":["4:00<br>AM", "12:00<br>PM",0,8,0.5, "8:00 AM"]
+      }
+    }
+
+]
