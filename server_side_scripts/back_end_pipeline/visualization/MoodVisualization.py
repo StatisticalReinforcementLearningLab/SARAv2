@@ -11,7 +11,7 @@ import boto3
 import os
 import altair as alt
 
-from SingleVisualizationInterface import SingleVisualizationInterface
+from .SingleVisualizationInterface import SingleVisualizationInterface
 
 def main():
     # initialize visualization
@@ -145,12 +145,13 @@ class MoodVisualization(SingleVisualizationInterface):
         todays_date = datetime.now().strftime("%m%d%Y")
         s3_connect_object = self.get_S3_config_from_json(arguments["s3_config_file_name"])
         client = boto3.client("s3", region_name = s3_connect_object['AWS_REGION_NAME'], aws_access_key_id=s3_connect_object['AWS_ACCESS_KEY'], aws_secret_access_key=s3_connect_object['AWS_SECRET_KEY']) 
+        key = "saraaltair_plots/" + todays_date + "/" + arguments["userid"] + "_" + todays_date + "_mood.html"
         client.upload_file("plot.html", 'sara-dev-data-storage',  "saraaltair_plots/" + todays_date + "/" + arguments["userid"] + "_" + todays_date + "_mood.html")
 
         # more here
         # https://stackoverflow.com/questions/55991996/altair-rotate-text-by-value-specified-in-feature
 
-        return final_chart
+        return key, final_chart
 
 
     def store_time_series_to_s3(self, arguments = {}):
@@ -167,10 +168,13 @@ class MoodVisualization(SingleVisualizationInterface):
 
         todays_date = datetime.now().strftime("%m%d%Y")
         s3_connect_object = self.get_S3_config_from_json(arguments["s3_config_file_name"])
-        client = boto3.client("s3", region_name = s3_connect_object['AWS_REGION_NAME'], aws_access_key_id=s3_connect_object['AWS_ACCESS_KEY'], aws_secret_access_key=s3_connect_object['AWS_SECRET_KEY']) 
-        client.upload_file("./mood_data.pkl", 'sara-dev-data-storage',  "sara_timeseries_for_plots/" + todays_date + "/" + arguments["userid"] + "_" + todays_date + "_mood.pkl") 
+        client = boto3.client("s3", region_name = s3_connect_object['AWS_REGION_NAME'], aws_access_key_id=s3_connect_object['AWS_ACCESS_KEY'], aws_secret_access_key=s3_connect_object['AWS_SECRET_KEY'])
+        key = "sara_timeseries_for_plots/" + todays_date + "/" + arguments["userid"] + "_" + todays_date + "_mood.pkl"
+        client.upload_file("./mood_data.pkl", 'sara-dev-data-storage',  key) 
 
         os.remove("./mood_data.pkl")
+
+        return key
 
 
 

@@ -1,5 +1,7 @@
-from MoodVisualization import MoodVisualization
-from SleepVisualization import SleepVisualization
+import pkg_resources
+
+from .MoodVisualization import MoodVisualization
+from .SleepVisualization import SleepVisualization
 
 class VisualizationFactory:
     def __init__(self):
@@ -39,21 +41,25 @@ class VisualizationFactory:
     # Helper functions
     #
     #--------------------------------------------------
-    def generate_mood_visualization(self):
+    def generate_mood_visualization(self, userid):
         mood_visualization = MoodVisualization()
-            
+    
+        sql_config = pkg_resources.resource_filename('visualization', 'data/config/mysql_config.json')
         mood_time_series_df = mood_visualization.generate_time_series_for_plot(
-            { "config_file_name": "./config/mysql_config.json", 
+            { "config_file_name": sql_config, 
                 "database_name" : "HarvardDev",
-                "userid" : "mash_aya" }
-        )
-        mood_chart = mood_visualization.store_visualization_to_s3(
-            { "s3_config_file_name": "./config/aws_config.json", 
-                "mood_time_series_df" : mood_time_series_df,
-                "userid" : "mash_aya" }
+                "userid" : userid }
         )
 
-        return mood_chart
+        
+        s3_config = pkg_resources.resource_filename('visualization', 'data/config/aws_config.json')
+        s3_key, graph = mood_visualization.store_visualization_to_s3(
+            { "s3_config_file_name": s3_config, 
+                "mood_time_series_df" : mood_time_series_df,
+                "userid" : userid }
+        )
+
+        return s3_key
 
     def generate_sleep_app_usage_visualization(self):
         sleep_app_usage_visualization = SleepVisualization()
