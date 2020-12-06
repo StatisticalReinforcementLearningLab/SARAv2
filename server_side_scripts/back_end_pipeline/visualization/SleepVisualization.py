@@ -12,7 +12,7 @@ import os
 import altair as alt
 from datetime import date
 
-from SingleVisualizationInterface import SingleVisualizationInterface
+from .SingleVisualizationInterface import SingleVisualizationInterface
 
 def main():
     # initialize visualization
@@ -20,7 +20,6 @@ def main():
 
     #fetch mood data
     sleep_app_usage_ts_df = sleep_visualization.generate_time_series_for_plot("./config/saraSqlConfig.json", "88315702-a3e6-4296-8437-0a56b4c4f03b")
-    # print(sleep_app_usage_ts_df)
 
     if sleep_app_usage_ts_df is not None:
         sleep_visualization.store_visualization_to_s3("./config/aws_config.json", sleep_app_usage_ts_df, "mash_aya")
