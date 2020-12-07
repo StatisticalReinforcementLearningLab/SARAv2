@@ -12,6 +12,35 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello, World!'
 
+@app.route('/get_aware_id', methods = ['POST'])
+def get_aware_id():
+    # get form elements
+    try: # username 
+        userid = request.form["username"]
+    except KeyError:
+        return("please include username")
+    
+    # search database for aware id
+    mysql_connect_object = get_sql_config_from_json('config/saraSqlConfig.json')
+    db = mysql.connect(
+        host = mysql_connect_object["host"],
+        port = mysql_connect_object["port"],
+        user = mysql_connect_object["user"],
+        passwd = mysql_connect_object["passwd"],
+        database = mysql_connect_object["database"]
+    )
+    cursor = db.cursor()
+    cursor.execute("select aware_id from users where username = %s", (userid,))
+    awareid = cursor.fetchall()
+
+    if(len(awareid) == 0): # no results
+        return("there is no username with this name in our database")
+    else: 
+        return(awareid[0][0])
+
+
+
+
 # POST form: 
 # * username
 # * date (optional)
