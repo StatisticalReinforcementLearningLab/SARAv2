@@ -1,0 +1,5 @@
+Flask==1.0.2
+versioneer
+boto3
+altair
+mysql-connector-python
