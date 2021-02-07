@@ -365,6 +365,7 @@ export class DynamicSurveyComponent implements OnInit {
                 this.surveyAnswersJSONObject['userName'] = this.userProfileService.username;
                 this.surveyAnswersJSONObject['devicInfo'] = this.plt.platforms(); //Type of device; iOS or Android
                 this.surveyAnswersJSONObject['appVersion'] = this.versionNumber;
+                this.surveyAnswersJSONObject['surveyName'] = this.fileLink;
             }
 
             enycryptSurveyDataAndUploadToS3() {

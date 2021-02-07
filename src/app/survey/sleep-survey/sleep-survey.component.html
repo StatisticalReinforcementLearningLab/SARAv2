@@ -4,14 +4,28 @@
             <ion-back-button defaultHref="home" style="color:#fff;"></ion-back-button>
         </ion-buttons>
         <ion-title style="color:#fff;">Sleep survey</ion-title>
+        <ion-buttons slot="end">
+            <ion-button  (click)="reloadPage()">
+              <ion-icon name="refresh" style="color: #fff;"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-    <div>
+    <ion-card>
+        
+        <ion-card-header>
+          <ion-card-subtitle>Phone lock/ublock history</ion-card-subtitle>
+        </ion-card-header>
         <img [src]="whichImage" style="height: auto;width: 100%;padding-top:0px; border: 0px solid #fff;"/>
-    </div>
+        <ion-card-content>
+          The graph shows a dot when you locked or unlocked your phone last night and this morning. You most likely slept between the last time you 
+          locked the phone last night to the first time you unlocked the phone this morning.
+        </ion-card-content>
+      </ion-card>
     
     <app-dynamic-survey jsonFileLinkForSurvey="sleep_survey"></app-dynamic-survey>
     

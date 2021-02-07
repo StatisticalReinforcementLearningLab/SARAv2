@@ -10,6 +10,7 @@ import time
 import mysql.connector as mysql
 from datetime import datetime
 import uuid
+import os.path
 
 from GenericParserInterface import GenericParserInterface
 
@@ -20,6 +21,16 @@ from GenericParserInterface import GenericParserInterface
 class EveningSurveyParser(GenericParserInterface):
     def __init__(self):
         pass
+
+    def get_config_file_path(self, config_file):
+
+        if os.path.isfile(config_file):
+            return config_file
+        else: 
+            return "/home/ec2-user/SARA-H/parsers/" + config_file[1:]
+
+        pass
+
 
     def fetch_raw_data(self, data_location):
         """Function to fetch raw data. Decrypts the encrypted data. Returns an array of latest survey data as a JSON array. 
@@ -93,7 +104,7 @@ class EveningSurveyParser(GenericParserInterface):
         stored_survey_count = 1
 
         for processed_survey_json in processed_survey_array:
-            self.insert_data_into_harvard_survey(processed_survey_json, "./config/mysql_config.json")
+            self.insert_data_into_harvard_survey(processed_survey_json, self.get_config_file_path("./config/mysql_config.json"))
             
             print("   Storing surveys, {} of {}".format(stored_survey_count, len(processed_survey_array)))
             stored_survey_count = stored_survey_count + 1
@@ -118,7 +129,7 @@ class EveningSurveyParser(GenericParserInterface):
         """
         Returns a boto3 client created using the credentials above.
         """
-        s3_connect_object = self.get_S3_config_from_json("./config/aws_config.json")
+        s3_connect_object = self.get_S3_config_from_json(self.get_config_file_path("./config/aws_config.json"))
         return boto3.client("s3", region_name = s3_connect_object["AWS_REGION_NAME"],
                                 aws_access_key_id= s3_connect_object["AWS_ACCESS_KEY"],
                                 aws_secret_access_key= s3_connect_object["AWS_SECRET_KEY"])
@@ -187,7 +198,7 @@ class EveningSurveyParser(GenericParserInterface):
         """
         Returns a boto3 resource created using the credentials above.
         """
-        s3_connect_object = self.get_S3_config_from_json("./config/aws_config.json")
+        s3_connect_object = self.get_S3_config_from_json(self.get_config_file_path("./config/aws_config.json"))
         return boto3.resource("s3", region_name = s3_connect_object["AWS_REGION_NAME"],
                                 aws_access_key_id= s3_connect_object["AWS_ACCESS_KEY"],
                                 aws_secret_access_key= s3_connect_object["AWS_SECRET_KEY"])

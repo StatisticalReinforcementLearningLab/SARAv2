@@ -15,6 +15,8 @@ import { UnlockedIncentive } from '../../incentive/model/unlocked-incentives';
 import { unlockedScreenShownAlready } from '../incentive.actions';
 import { DatabaseService } from 'src/app/monitor/database.service';
 import { AwsS3Service } from '../../storage/aws-s3.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-aquarium',
@@ -28,6 +30,7 @@ export class AquariumComponent implements OnInit {
   money = 0;
   modalObjectNavigationExtras = {};
   pageTitle = "Aquarium";
+  aware_id = "Not found";
 
   @ViewChild(DemoAquariumComponent, {static: true}) child;
 
@@ -64,7 +67,8 @@ export class AquariumComponent implements OnInit {
     private menu: MenuController,
     private appUsageDb: DatabaseService,
     private awsS3Service: AwsS3Service,
-    private userProfileService: UserProfileService) { 
+    private userProfileService: UserProfileService,
+    private httpClient: HttpClient) { 
     console.log("Constructor called");
     this.sub1$=this.platform.pause.subscribe(() => {        
       console.log('****UserdashboardPage PAUSED****');
@@ -218,6 +222,8 @@ export class AquariumComponent implements OnInit {
     console.log("aquarium.component.ts --- start");
     //this.menu.enable(true);
 
+    this.getAwareId();
+
   }
 
   ngOnDestroy(){
@@ -226,6 +232,17 @@ export class AquariumComponent implements OnInit {
 
     this.ionViewDidLeaveFunction();
     console.log("aquarium.component.ts --- destroy");
+  }
+
+  getAwareId(){
+    var flaskServerAPIEndpoint = environment.flaskServerForIncentives;
+    var res = flaskServerAPIEndpoint.split(":");
+    flaskServerAPIEndpoint = res[0] + ":" + res[1] + ":56735";
+    this.httpClient.post(flaskServerAPIEndpoint + "/get_aware_id", {"username" : this.userProfileService.username})
+      .subscribe({
+        next: data => this.aware_id = data["aware_id"], //console.log("--aquarium-- " + JSON.stringify(data)),
+        error: error => console.error('There was an error!', error)
+    });
   }
 
   subscribeForModalView(){
@@ -417,6 +434,7 @@ export class AquariumComponent implements OnInit {
     console.log("computeUnlockedReinforcements: called")
 
     //get if money is awarded.
+    /*
     if(awardedDollar > 0){
       if(this.isFirstDayInTheStudy())
         //reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'Thanks for being a participant in the study. You earned 2 dollar.'});
@@ -429,6 +447,7 @@ export class AquariumComponent implements OnInit {
           reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for coming back after a break! You earned 2 dollars.'});
       }
     }
+    */
       
     //get if fish is alotted
     previousPoints = currentPoints - 60;
