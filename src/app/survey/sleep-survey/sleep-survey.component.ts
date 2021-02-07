@@ -19,8 +19,7 @@ export class SleepSurveyComponent implements OnInit {
 
     ngOnInit() {
       this.mobileAccessibility.usePreferredTextZoom(false);
-      this.whichImage = "http://127.0.0.1:5000/plot.png";
-    }
+          }
   
     ionViewDidEnter(){
 
@@ -31,10 +30,15 @@ export class SleepSurveyComponent implements OnInit {
        }
       });
       */
-      
-      this.appUsageDb.saveAppUsageEnter("sleep_survey_page");
+     this.whichImage = "http://ec2-52-201-144-36.compute-1.amazonaws.com:56734/get_daily_plot?username=" + this.userProfileService.username + "&cachebreaker=" + new Date().getTime();
+     //this.whichImage = "http://ec2-52-201-144-36.compute-1.amazonaws.com:56735/get_daily_plot?username=" + this.userProfileService.username + "&plot_type=edu.harvard.srl.SleepAppUsageVisualization&cachebreaker=" + new Date().getTime();
+     this.appUsageDb.saveAppUsageEnter("sleep_survey_page");
 
    }  
+
+   reloadPage() {
+        window.location.reload();
+   }
   
    ionViewDidLeave(){
       /*

@@ -3,6 +3,7 @@ import { MenuController } from '@ionic/angular';
 import { DatabaseService } from 'src/app/monitor/database.service';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { DomSanitizer } from '@angular/platform-browser';
+import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 
 @Component({
   selector: 'app-sample-python-view',
@@ -11,9 +12,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class SamplePythonViewComponent implements OnInit {
   helpUrl: any;
-  whichImage;
+  moodInsightImage;
+  concentrationInsightImage;
+  stressInsightImage;
 
-  constructor(private menuCtrl:MenuController,
+  constructor(private userProfileService: UserProfileService,
+    private menuCtrl:MenuController,
     private appUsageDb: DatabaseService,
     private sanitizer: DomSanitizer) { 
 
@@ -37,11 +41,7 @@ export class SamplePythonViewComponent implements OnInit {
     */
 
     ////'http://54.146.43.246:5000/'
-    this.helpUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-      'http://127.0.0.1:5000/showplot'
-    );
 
-    this.whichImage = "http://127.0.0.1:5000/plot.png";
   }
 
   ionViewDidEnter(){
@@ -52,6 +52,10 @@ export class SamplePythonViewComponent implements OnInit {
      }
     });
     */
+    this.moodInsightImage = "http://ec2-52-201-144-36.compute-1.amazonaws.com:56735/get_daily_plot?username=" + this.userProfileService.username + "&plot_type=edu.harvard.srl.MoodVisualization&cachebreaker=" + new Date().getTime();
+    this.concentrationInsightImage = "http://ec2-52-201-144-36.compute-1.amazonaws.com:56735/get_daily_plot?username=" + this.userProfileService.username + "&plot_type=edu.harvard.srl.ConcentrationVisualization&cachebreaker=" + new Date().getTime();
+    this.stressInsightImage = "http://ec2-52-201-144-36.compute-1.amazonaws.com:56735/get_daily_plot?username=" + this.userProfileService.username + "&plot_type=edu.harvard.srl.GoodDayVisualization&cachebreaker=" + new Date().getTime();
+
     this.appUsageDb.saveAppUsageEnter("python_life_insight_page_sample");  
   }  
 

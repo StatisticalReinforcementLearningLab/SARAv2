@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePage } from './home.page';
 import { AquariumComponent } from '../incentive/aquarium/aquarium.component';
-import { TreasurechestComponent } from '../incentive/treasurechest/treasurechest.component';
 import { UnlockedMemesComponent } from '../incentive/unlocked-memes/unlocked-memes.component';
 import { UnlockedAltuisticMessagesComponent } from '../incentive/unlocked-altuistic-messages/unlocked-altuistic-messages.component';
 import { AuthGuard } from '../user/auth/auth.guard';
 import { ContactComponent } from './contact/contact.component';
 import { UnlockedInspirationalQuotesComponent } from '../incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component';
+import { SamplePythonViewComponent } from '../incentive/life-insights/sample-python-view/sample-python-view.component';
 
 const routes: Routes = [
   {
@@ -25,6 +25,9 @@ const routes: Routes = [
       },
       {
         path: 'thankyous', component: UnlockedAltuisticMessagesComponent, canActivate: [AuthGuard]
+      },
+      {
+        path: 'lifeinsight', component: SamplePythonViewComponent, canActivate: [AuthGuard]
       },
       {
         path: 'contact', component: ContactComponent, canActivate: [AuthGuard]

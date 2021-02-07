@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="edu.harvard.srl.SARA" version="0.0.63" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="edu.harvard.srl.SARA" version="0.0.67" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage" />
     </feature>
@@ -24,9 +24,6 @@
     </feature>
     <feature name="Device">
         <param name="ios-package" value="CDVDevice" />
-    </feature>
-    <feature name="UniversalAnalytics">
-        <param name="ios-package" value="UniversalAnalyticsPlugin" />
     </feature>
     <feature name="CDVIonicKeyboard">
         <param name="ios-package" onload="true" value="CDVIonicKeyboard" />
@@ -75,6 +72,7 @@
     <allow-navigation href="https://*/*" />
     <allow-navigation href="file://*/*" />
     <allow-intent href="*" />
+    <allow-navigation href="*://*.cnn.com/*" />
     <allow-navigation href="http://localhost:8080/*" />
     <allow-navigation href="http://localhost:8100" sessionid="27e85f6c" />
     <allow-intent href="itms:*" />
@@ -155,11 +153,9 @@
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="AndroidExtraFilesystems" value="files,cache, sdcard, cache-external, files-external" />
-    <preference name="android-targetSdkVersion" value="28" />
+    <preference name="android-targetSdkVersion" value="29" />
     <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
     <preference name="WKWebViewOnly" value="true" />
-    <feature name="InAppBrowser">
-        <param name="ios-package" value="CDVWKInAppBrowser" />
-        <param name="onload" value="true" />
-    </feature>
+    <preference name="InAppBrowserStatusBarStyle" value="lightcontent" />
+    <preference name="PreferredContentMode" value="mobile" />
 </widget>

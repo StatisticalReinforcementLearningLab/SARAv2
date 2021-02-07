@@ -23,16 +23,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-google-analytics": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-google-analytics@^1.8.6"
-    },
-    "is_top_level": true,
-    "variables": {
-      "GMS_VERSION": "11.0.1"
-    }
-  },
   "cordova-plugin-ionic-keyboard": {
     "source": {
       "type": "registry",
@@ -103,14 +93,6 @@
       "id": "https://github.com/apache/cordova-plugin-network-information.git"
     },
     "is_top_level": false,
-    "variables": {}
-  },
-  "cordova-plugin-inappbrowser": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-inappbrowser@4.0.0"
-    },
-    "is_top_level": true,
     "variables": {}
   }
 }
