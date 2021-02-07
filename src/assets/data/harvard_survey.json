@@ -19,22 +19,6 @@
       }
     },
     {
-      "name":"Q3",
-      "text":"3. When did you go to bed last night",
-      "type":"range_time",
-      "extra":{
-        "choices":["8:00<br>PM", "4:00<br>AM",0,8,0.5, "12:00 AM"]
-      }
-    },
-    {
-      "name":"Q4",
-      "text":"4. When did you wake up this morning?",
-      "type":"range_time",
-      "extra":{
-        "choices":["4:00<br>AM", "12:00<br>PM",0,8,0.5, "8:00 AM"]
-      }
-    },
-    {
       "name": "Q5",
       "text": "5. Do you think you'll have a good day tomorrow?",
       "type": "radiobutton",
@@ -49,5 +33,4 @@
       "type": "moodgrid2",
       "tag": "6"
     }
-
 ]
