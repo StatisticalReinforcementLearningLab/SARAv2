@@ -10,6 +10,7 @@ import pandas as pd
 import boto3
 import os
 import altair as alt
+from altair_saver import save
 
 from SingleVisualizationInterface import SingleVisualizationInterface
 
@@ -38,6 +39,57 @@ def main():
           "userid" : "mash_aya" }
     )
 
+
+def generate_plot_for_everyone():
+    mysql_config_file = "./config/saraSqlConfig.json"
+    with open(mysql_config_file) as f:
+        mysql_connect_object = json.load(f)
+
+    db = mysql.connect(
+        host = mysql_connect_object["host"],
+        port = mysql_connect_object["port"],
+        user = mysql_connect_object["user"],
+        passwd = mysql_connect_object["passwd"],
+        database = mysql_connect_object["database"]
+    )
+
+
+    # removing keys and inserting separately into table
+    cursor = db.cursor()
+    sql_command = "SELECT DISTINCT username from users;" 
+
+    cursor.execute(sql_command)
+    unique_ids_data = cursor.fetchall()
+    for x in unique_ids_data:
+        username = str(x[0])
+
+        print("Generating plot for " + username)
+
+        mood_visualization = MoodVisualization()
+
+        #fetch mood data
+        mood_time_series_df = mood_visualization.generate_time_series_for_plot(
+            { "config_file_name": "./config/mysql_config.json", 
+            "database_name" : "HarvardDev",
+            "userid" : username }
+        )
+
+        #
+        mood_visualization.store_time_series_to_s3(
+            { "s3_config_file_name": "./config/aws_config.json", 
+            "mood_time_series_data" : mood_time_series_df,
+            "userid" : username }
+        )
+
+        #
+        mood_visualization.store_visualization_to_s3(
+            { "s3_config_file_name": "./config/aws_config.json", 
+            "mood_time_series_df" : mood_time_series_df,
+            "userid" : username }
+        )
+        
+    db.close()
+    pass
 
 
 
@@ -147,6 +199,16 @@ class MoodVisualization(SingleVisualizationInterface):
         client = boto3.client("s3", region_name = s3_connect_object['AWS_REGION_NAME'], aws_access_key_id=s3_connect_object['AWS_ACCESS_KEY'], aws_secret_access_key=s3_connect_object['AWS_SECRET_KEY']) 
         client.upload_file("plot.html", 'sara-dev-data-storage',  "saraaltair_plots/" + todays_date + "/" + arguments["userid"] + "_" + todays_date + "_mood.html")
 
+        final_chart.save("plot.json")
+        client.upload_file("plot.json", 'sara-dev-data-storage',  "saraaltair_plots/" + todays_date + "/" + arguments["userid"] + "_" + todays_date + "_mood.json")
+
+        # save as svg
+        # pip install altair_saver
+        save(final_chart, "plot.png") 
+        client.upload_file("plot.png", 'sara-dev-data-storage',  "saraaltair_plots/" + todays_date + "/" + arguments["userid"] + "_" + todays_date + "_mood.png")
+        client.upload_file("plot.png", 'sara-dev-data-storage',  "saraaltair_plots/" + "latest" + "/" + arguments["userid"] + "_mood.png")
+
+
         # more here
         # https://stackoverflow.com/questions/55991996/altair-rotate-text-by-value-specified-in-feature
 
@@ -254,4 +316,5 @@ class MoodVisualization(SingleVisualizationInterface):
 
 
 if __name__ == '__main__':
-    main()
+    # main()
+    generate_plot_for_everyone()

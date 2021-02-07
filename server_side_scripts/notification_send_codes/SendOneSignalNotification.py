@@ -8,8 +8,14 @@ import zlib
 class SendOneSignalNotification:
 
     #
-    AUTHORIZATION_ID = "Basic ZjRkZDlmYjYtMTBmOC00MDRlLWExNzEtN2IzMjEzMThiMjYz"
-    ONE_SIGNAL_APP_ID = "f9c4370d-cbcb-4e6f-ab1f-25d1c41b8f3a"
+    # Dev
+    # AUTHORIZATION_ID = "Basic ZjRkZDlmYjYtMTBmOC00MDRlLWExNzEtN2IzMjEzMThiMjYz"
+    # ONE_SIGNAL_APP_ID = "f9c4370d-cbcb-4e6f-ab1f-25d1c41b8f3a"        
+
+    # Chop production
+    AUTHORIZATION_ID = "Basic MjBjMGQ0MzgtMDU5MS00OTJkLTgyMTItM2EwMjZlYTdjNzM4"
+    ONE_SIGNAL_APP_ID = "de3580a2-4aae-42c4-87cf-2c319c2df0c3"
+
     IMAGE_LOCATION = "https://aws-website-sara-ubicomp-h28yp.s3.amazonaws.com/sarapp/"
 
     def __init__(self, notification_text, heading, player_id, notification_type, notification_image):

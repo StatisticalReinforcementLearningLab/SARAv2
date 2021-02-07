@@ -1,13 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="edu.harvard.srl.SARA" version="0.0.64" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="edu.harvard.srl.SARA" version="0.0.67" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="AppVersion">
         <param name="android-package" value="uk.co.whiteoctober.cordova.AppVersion" />
     </feature>
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
-    </feature>
-    <feature name="UniversalAnalytics">
-        <param name="android-package" value="com.danielcwilson.plugins.analytics.UniversalAnalyticsPlugin" />
     </feature>
     <feature name="SplashScreen">
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
@@ -64,6 +61,7 @@
     <allow-navigation href="https://*/*" />
     <allow-navigation href="file://*/*" />
     <allow-intent href="*" />
+    <allow-navigation href="*://*.cnn.com/*" />
     <allow-navigation href="http://localhost:8080/*" />
     <allow-navigation href="http://localhost:8100" sessionid="27e85f6c" />
     <allow-intent href="market:*" />
@@ -104,7 +102,4 @@
     <preference name="AndroidExtraFilesystems" value="files,cache, sdcard, cache-external, files-external" />
     <preference name="android-targetSdkVersion" value="29" />
     <preference name="CordovaWebViewEngine" value="CDVUIWebViewEngine" />
-    <feature name="InAppBrowser">
-        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
-    </feature>
 </widget>
