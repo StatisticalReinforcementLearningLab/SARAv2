@@ -743,7 +743,7 @@ module.exports = "<!-- \n<div class=\"container\">\n    <div class=\"row\">\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--\n  <app-aquarium></app-aquarium>\n-->\n\n<ion-tabs>\n\n  <ion-tab-bar slot=\"bottom\" style=\"background: #005486;\">\n    \n    <ion-tab-button tab=\"incentive\" style=\"background: #005486;\"  class=“ion-no-padding”>\n      <ion-icon src=\"/assets/img/fish_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Home</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"quotes\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"isAYA\">\n      <ion-icon src=\"/assets/img/brain.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Quotes</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"memes\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"isAYA\">\n      <ion-icon src=\"/assets/img/happy_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Memes</ion-label>\n    </ion-tab-button>\n\n\n    <ion-tab-button tab=\"thankyous\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"isAYA\">\n      <ion-icon src=\"/assets/img/help_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Thank yous</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"contact\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"!isAYA\">\n      <ion-icon name=\"call\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Contact</ion-label>\n    </ion-tab-button>\n\n\n\n    <!--\n\n    <ion-tab-button tab=\"contact\" style=\"background: #005486;\"  class=“ion-no-padding”>\n      <ion-icon name=\"call\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Contact</ion-label>\n    </ion-tab-button>\n\n\n    <ion-tab-button tab=\"tab2\">\n      <ion-icon name=\"create\"></ion-icon>\n      <ion-label>Memes</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"tab3\">\n      <ion-icon name=\"locate\"></ion-icon>\n      <ion-label>Thank yous</ion-label>\n    </ion-tab-button>\n    -->\n  </ion-tab-bar>\n\n</ion-tabs>"
+module.exports = "<!--\n  <app-aquarium></app-aquarium>\n-->\n\n<ion-tabs>\n\n  <ion-tab-bar slot=\"bottom\" style=\"background: #005486;\">\n    \n    <ion-tab-button tab=\"incentive\" style=\"background: #005486;\"  class=“ion-no-padding”>\n      <ion-icon src=\"/assets/img/fish_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Home</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"quotes\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"isAYA\">\n      <ion-icon src=\"/assets/img/brain.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Quotes</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"memes\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"isAYA\">\n      <ion-icon src=\"/assets/img/happy_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Memes</ion-label>\n    </ion-tab-button>\n\n\n    <ion-tab-button tab=\"thankyous\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"isAYA\">\n      <ion-icon src=\"/assets/img/help_tab.svg\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Thank yous</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"lifeinsight\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"isAYA\">\n      <ion-icon name=\"pulse\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Insights</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"contact\" style=\"background: #005486;\"  class=“ion-no-padding” *ngIf=\"!isAYA\">\n      <ion-icon name=\"call\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Contact</ion-label>\n    </ion-tab-button>\n\n\n\n    <!--\n\n    <ion-tab-button tab=\"contact\" style=\"background: #005486;\"  class=“ion-no-padding”>\n      <ion-icon name=\"call\" style=\"color: #fff;\"></ion-icon>\n      <ion-label style=\"color: #fff;\">Contact</ion-label>\n    </ion-tab-button>\n\n\n    <ion-tab-button tab=\"tab2\">\n      <ion-icon name=\"create\"></ion-icon>\n      <ion-label>Memes</ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"tab3\">\n      <ion-icon name=\"locate\"></ion-icon>\n      <ion-label>Thank yous</ion-label>\n    </ion-tab-button>\n    -->\n  </ion-tab-bar>\n\n</ion-tabs>"
 
 /***/ }),
 
@@ -765,7 +765,7 @@ module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n\n      <ion-buttons slot=\"start\">\n        <ion-menu-button style=\"color:#fff;\" menuId=\"first\"></ion-menu-button>\n\n        <!--\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n        -->\n      </ion-buttons>\n\n      <!--\n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n        <ion-menu-button autoHide=\"false\" style=\"color:#fff;\" menuId=\"first\" (click)=\"showSideMenu()\"></ion-menu-button>\n        <ion-button style=\"color:#fff;\" (click)=\"showSideMenu()\">\n          <ion-icon name=\"menu\"></ion-icon>\n        </ion-button>\n        \n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"!isIOS\">\n            <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n      -->\n\n\n      <ion-buttons slot=\"end\">\n          <font color=\"white\">${{money}}</font>\n\n          \n          <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\"  *ngIf=\"!isIOS\">\n            <ion-icon name=\"alert\"></ion-icon>\n          </ion-button>\n          \n  \n          <!-- Mash codes:\n          <ion-text  *ngIf=\"!isActive\" style=\"color:#fff;\"><strong>Account is Paused</strong> </ion-text>\n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button>\n          -->\n  \n          \n  \n          <ion-button (click)=\"showHarvardSurvey()\"   *ngIf=\"isActive\">\n              <ion-icon name=\"ios-create\" style=\"color : white;\"></ion-icon>\n          </ion-button>\n  \n  \n          <ion-button *ngIf=\"!isActive\" (click)=\"dispalySurveyPausedMsg()\" >\n              <ion-icon name=\"ios-create\" style=\"color : #e74c3c;\"></ion-icon>\n          </ion-button>\n          <!--\n          <ion-button href=\"{{surveyPath}}\" *ngIf=\"isActive\">Start Survey</ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurveyAYA()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          -->\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">{{title}}</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  \n  \n  <ion-content>\n    <!--div class=\"ion-padding\">\n      <ion-button href=\"/survey/samplesurvey\">Sample survey (demo)</ion-button> <br>\n      <ion-button href=\"/incentive/aquariumone\">Incentive: Aquarium 1</ion-button> <br>\n      <ion-button href=\"/incentive/award-memes\" >Incentive: meme</ion-button> <br>\n      <ion-button href=\"/incentive/visualization\">Incentive: Life-inisight</ion-button> <br>\n    </div-->\n  \n    <app-demo-aquarium isPreview=\"false\"></app-demo-aquarium>\n\n    <!--\n    <ion-button color=\"primary\" (click)=\"showModalDemo()\">Unlockables</ion-button>\n    <ion-button color=\"primary\" (click)=\"showMemeDemo()\">Meme</ion-button>\n    <ion-button color=\"primary\" (click)=\"showAltruisticDemo()\">Altruistic msg</ion-button>\n\n    <ion-button color=\"primary\" (click)=\"showHarvardArcApps()\">Arc apps</ion-button>\n    -->\n\n    <!--\n    <ion-button color=\"primary\" (click)=\"showHarvardSurvey()\">Harvard survey</ion-button>\n    -->\n    \n    \n  </ion-content>\n  \n  "
+module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n\n      <ion-buttons slot=\"start\">\n        <ion-menu-button style=\"color:#fff;\" menuId=\"first\"></ion-menu-button>\n\n        <!--\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n        -->\n      </ion-buttons>\n\n      <!--\n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n        <ion-menu-button autoHide=\"false\" style=\"color:#fff;\" menuId=\"first\" (click)=\"showSideMenu()\"></ion-menu-button>\n        <ion-button style=\"color:#fff;\" (click)=\"showSideMenu()\">\n          <ion-icon name=\"menu\"></ion-icon>\n        </ion-button>\n        \n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\" *ngIf=\"isIOS\">\n          <ion-icon name=\"alert\"></ion-icon>\n        </ion-button>\n\n        <ion-button style=\"color:#fff;\" (click)=\"startInfoPage()\" *ngIf=\"!isIOS\">\n            <ion-icon name=\"ios-help-circle\"></ion-icon>\n        </ion-button>\n      -->\n\n\n      <ion-buttons slot=\"end\">\n          <font color=\"white\">${{money}}</font>\n\n          \n          <ion-button style=\"color:#fff;\" (click)=\"startCheatPage()\"  *ngIf=\"!isIOS\">\n            <ion-icon name=\"alert\"></ion-icon>\n          </ion-button>\n          \n  \n          <!-- Mash codes:\n          <ion-text  *ngIf=\"!isActive\" style=\"color:#fff;\"><strong>Account is Paused</strong> </ion-text>\n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button>\n          -->\n  \n          <ion-button (click)=\"showSleepSurvey()\"   *ngIf=\"isActive\">\n            <ion-icon name=\"ios-create\" style=\"color : white;\"></ion-icon>\n        </ion-button>\n  \n          <ion-button (click)=\"showHarvardSurvey()\"   *ngIf=\"isActive\">\n              <ion-icon name=\"ios-create\" style=\"color : white;\"></ion-icon>\n          </ion-button>\n  \n  \n          <ion-button *ngIf=\"!isActive\" (click)=\"dispalySurveyPausedMsg()\" >\n              <ion-icon name=\"ios-create\" style=\"color : #e74c3c;\"></ion-icon>\n          </ion-button>\n          <!--\n          <ion-button href=\"{{surveyPath}}\" *ngIf=\"isActive\">Start Survey</ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurvey()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          <ion-button style=\"color:#fff;\" (click)=\"startSurveyAYA()\">\n            <ion-icon name=\"journal\"></ion-icon>\n          </ion-button> \n          -->\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">{{title}}</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  \n  \n  <ion-content>\n    <!--div class=\"ion-padding\">\n      <ion-button href=\"/survey/samplesurvey\">Sample survey (demo)</ion-button> <br>\n      <ion-button href=\"/incentive/aquariumone\">Incentive: Aquarium 1</ion-button> <br>\n      <ion-button href=\"/incentive/award-memes\" >Incentive: meme</ion-button> <br>\n      <ion-button href=\"/incentive/visualization\">Incentive: Life-inisight</ion-button> <br>\n    </div-->\n  \n    <app-demo-aquarium isPreview=\"false\"></app-demo-aquarium>\n\n    <!--\n    <ion-button color=\"primary\" (click)=\"showModalDemo()\">Unlockables</ion-button>\n    <ion-button color=\"primary\" (click)=\"showMemeDemo()\">Meme</ion-button>\n    <ion-button color=\"primary\" (click)=\"showAltruisticDemo()\">Altruistic msg</ion-button>\n\n    <ion-button color=\"primary\" (click)=\"showHarvardArcApps()\">Arc apps</ion-button>\n    -->\n\n    <!--\n    <ion-button color=\"primary\" (click)=\"showHarvardSurvey()\">Harvard survey</ion-button>\n    -->\n\n    <b style=\"padding: 10px; padding-right: 1px;\">Aware id: </b>{{aware_id}}\n    <br>\n\n    <!--\n    <ion-button color=\"primary\" (click)=\"showPythonLifeInsight()\">Python life-insight</ion-button>\n    -->\n    \n  </ion-content>\n  \n  "
 
 /***/ }),
 
@@ -901,6 +901,17 @@ module.exports = "\n\n<!--ion-content>\n    <app-q1-motivated inputStr={{inputSt
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/incentive/life-insights/sample-python-view/sample-python-view.component.html":
+/*!************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/incentive/life-insights/sample-python-view/sample-python-view.component.html ***!
+  \************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n      <ion-buttons slot=\"start\">\n        <ion-back-button style=\"color:#fff;\" defaultHref=\"home\"></ion-back-button>\n      </ion-buttons>\n      <ion-title style=\"color:#fff;\">Python sample life insight</ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n    <!--\n    <iframe\n        width=\"300px\"\n        height=\"100%\"\n        [src]=\"helpUrl\"\n        frameborder=\"0\"\n        allowfullscreen\n    ></iframe>\n    -->\n\n    <h3 style=\"padding:5px; padding-left:10px;\">Mood</h3>\n    <div>\n        <img [src]=\"moodInsightImage\" style=\"height: auto;width: 100%;padding-top:0px; border: 0px solid #fff;\"/>\n    </div>\n    \n\n    <h3 style=\"padding:5px; padding-left:10px; padding-top:10px;\">Concentration level</h3>\n    <div>\n      <img [src]=\"concentrationInsightImage\" style=\"height: auto;width: 100%;padding-top:0px; border: 0px solid #fff;\"/>\n    </div>\n\n    <h3 style=\"padding:5px; padding-left:10px; padding-top:10px;\">Good day tomorrow</h3>\n    <div>\n      <img [src]=\"stressInsightImage\" style=\"height: auto;width: 100%;padding-top:0px; border: 0px solid #fff;\"/>\n    </div>\n\n\n\n\n\n</ion-content>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/incentive/treasurechest/treasurechest.component.html":
 /*!************************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/incentive/treasurechest/treasurechest.component.html ***!
@@ -1011,6 +1022,17 @@ module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/survey/sleep-survey/sleep-survey.component.html":
+/*!*******************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/survey/sleep-survey/sleep-survey.component.html ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n    <ion-toolbar class=\"new-background-color\">\n        <ion-buttons slot=\"start\">\n            <ion-back-button defaultHref=\"home\" style=\"color:#fff;\"></ion-back-button>\n        </ion-buttons>\n        <ion-title style=\"color:#fff;\">Sleep survey</ion-title>\n        <ion-buttons slot=\"end\">\n            <ion-button  (click)=\"reloadPage()\">\n              <ion-icon name=\"refresh\" style=\"color: #fff;\"></ion-icon>\n            </ion-button>\n        </ion-buttons>\n\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n    <ion-card>\n        \n        <ion-card-header>\n          <ion-card-subtitle>Phone lock/ublock history</ion-card-subtitle>\n        </ion-card-header>\n        <img [src]=\"whichImage\" style=\"height: auto;width: 100%;padding-top:0px; border: 0px solid #fff;\"/>\n        <ion-card-content>\n          The graph shows a dot when you locked or unlocked your phone last night and this morning. You most likely slept between the last time you \n          locked the phone last night to the first time you unlocked the phone this morning.\n        </ion-card-content>\n      </ion-card>\n    \n    <app-dynamic-survey jsonFileLinkForSurvey=\"sleep_survey\"></app-dynamic-survey>\n    \n\n</ion-content>\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/user/auth/auth.component.html":
 /*!*************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/user/auth/auth.component.html ***!
@@ -1018,7 +1040,7 @@ module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-title style=\"color:#fff;\">SARA</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n  <ion-grid>\n    <ion-row>\n      <ion-col size=\"10\" offset=\"1\" style=\"padding:20px;\">\n        <ion-img src=\"../../../assets/img/harvard-university-vector-logo.svg\"></ion-img>        \n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col size=\"10\" offset=\"1\">\n            <div class=\"alert alert-danger\" *ngIf=\"error\">\n                <p>{{error}} </p>\n              </div>\n\n              \n              <div *ngIf=\"isLoading\" style=\"text-align: center;\">\n                <ion-spinner  name=\"crescent\"></ion-spinner>\n                <!-- <app-loading-spinner></app-loading-spinner> -->\n              </div> \n\n              <form #authForm=\"ngForm\" (ngSubmit)=\"onSubmit(authForm)\" *ngIf=\"!isLoading\">\n                  <ion-item>\n                      <ion-label position=\"floating\"  >Username</ion-label>\n                      <ion-input type=\"userName\" id=\"userName\"  ngModel name=\"userName\" required ></ion-input>    \n                  </ion-item>\n                  <ion-item>\n                      <ion-label position=\"floating\"   >Password</ion-label>\n                      <ion-input type=\"password\" id=\"password\"  ngModel name=\"password\" required  minlength=\"4\" ></ion-input>\n                  </ion-item>\n                  <div style=\"padding-top:20px;\">\n                    <ion-button  type=\"submit\" [disabled]=\"!authForm.valid\">{{isLoginMode ? 'Login' : 'Sign Up'}}</ion-button> \n                    <!--|\n                    <ion-button  type=\"button\" (click)=\"onSwitchMode()\">\n                    Switch to {{isLoginMode ? 'Sign Up' : 'Login'}}</ion-button>\n                    -->\n                  </div>\n              </form>      \n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar class=\"new-background-color\">\n    <ion-title style=\"color:#fff;\">SARA</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content>\n  <ion-grid>\n    <ion-row>\n      <ion-col size=\"10\" offset=\"1\" style=\"padding:20px;\">\n        <ion-img src=\"../../../assets/img/harvard-university-vector-logo.svg\"></ion-img>        \n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col size=\"10\" offset=\"1\">\n            <div class=\"alert alert-danger\" *ngIf=\"error\">\n                <p>{{error}} </p>\n              </div>\n\n              \n              <div *ngIf=\"isLoading\" style=\"text-align: center;\">\n                <ion-spinner  name=\"crescent\"></ion-spinner>\n                <!-- <app-loading-spinner></app-loading-spinner> -->\n              </div> \n\n              <form #authForm=\"ngForm\" (ngSubmit)=\"onSubmit(authForm)\" *ngIf=\"!isLoading\">\n                  <ion-item>\n                      <ion-label position=\"floating\"  >Username</ion-label>\n                      <ion-input type=\"userName\" id=\"userName\"  ngModel name=\"userName\" required ></ion-input>    \n                  </ion-item>\n                  <ion-item>\n                      <ion-label position=\"floating\"   >Password</ion-label>\n                      <ion-input type=\"password\" id=\"password\"  ngModel name=\"password\" required  minlength=\"4\" ></ion-input>\n                  </ion-item>\n                  <div style=\"padding-top:20px;\">\n                    <ion-button  type=\"submit\" [disabled]=\"!authForm.valid\">{{isLoginMode ? 'Login' : 'Sign Up'}}</ion-button> \n                    <!--|\n                    <ion-button  type=\"button\" (click)=\"onSwitchMode()\">\n                    Switch to {{isLoginMode ? 'Sign Up' : 'Login'}}</ion-button>\n                    -->\n                  </div>\n              </form>      \n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n"
 
 /***/ }),
 
@@ -4636,6 +4658,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _survey_harvard_survey_harvard_survey_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./survey/harvard-survey/harvard-survey.component */ "./src/app/survey/harvard-survey/harvard-survey.component.ts");
 /* harmony import */ var _intervention_harvard_arc_apps_front_page_front_page_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./intervention/harvard-arc-apps/front-page/front-page.component */ "./src/app/intervention/harvard-arc-apps/front-page/front-page.component.ts");
 /* harmony import */ var _incentive_video_info_page_video_info_page_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./incentive/video-info-page/video-info-page.component */ "./src/app/incentive/video-info-page/video-info-page.component.ts");
+/* harmony import */ var _incentive_life_insights_sample_python_view_sample_python_view_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./incentive/life-insights/sample-python-view/sample-python-view.component */ "./src/app/incentive/life-insights/sample-python-view/sample-python-view.component.ts");
+/* harmony import */ var _survey_sleep_survey_sleep_survey_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./survey/sleep-survey/sleep-survey.component */ "./src/app/survey/sleep-survey/sleep-survey.component.ts");
 
 
 
@@ -4650,6 +4674,8 @@ __webpack_require__.r(__webpack_exports__);
 //import { DynamicSurveyComponent } from './survey/dynamic-survey/dynamic-survey.component';
 //import { Q1MotivatedComponent } from './incentive/life-insights/q1-motivated/q1-motivated.component';
 //import { SampleSurveyComponent } from './survey/sample-survey/sample-survey.component';
+
+
 
 
 
@@ -4692,10 +4718,12 @@ var routes = [
     { path: 'survey/samplesurvey', component: _survey_sample_survey_sample_survey_component__WEBPACK_IMPORTED_MODULE_7__["SampleSurveyComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'survey/samplesurvey2', component: _survey_aya_sample_survey_aya_sample_survey_component__WEBPACK_IMPORTED_MODULE_10__["AyaSampleSurveyComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'survey/harvardsurvey', component: _survey_harvard_survey_harvard_survey_component__WEBPACK_IMPORTED_MODULE_19__["HarvardSurveyComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
+    { path: 'survey/sleepsurvey', component: _survey_sleep_survey_sleep_survey_component__WEBPACK_IMPORTED_MODULE_23__["SleepSurveyComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'intervention/arcappsfrontpage', component: _intervention_harvard_arc_apps_front_page_front_page_component__WEBPACK_IMPORTED_MODULE_20__["FrontPageComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'incentive/aquariumone', component: _incentive_aquarium_demo_aquarium_demo_aquarium_component__WEBPACK_IMPORTED_MODULE_4__["DemoAquariumComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'incentive/award-memes', component: _incentive_award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_3__["AwardMemesComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'incentive/award-altruism', component: _incentive_award_altruism_award_altruism_component__WEBPACK_IMPORTED_MODULE_8__["AwardAltruismComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
+    { path: 'incentive/pythonlifeinsightsammple', component: _incentive_life_insights_sample_python_view_sample_python_view_component__WEBPACK_IMPORTED_MODULE_22__["SamplePythonViewComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'contact-study-staff', component: _home_contact_contact_component__WEBPACK_IMPORTED_MODULE_14__["ContactComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'incentive/infopage', component: _incentive_info_page_info_page_component__WEBPACK_IMPORTED_MODULE_13__["InfoPageComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'incentive/videoinfopage', component: _incentive_video_info_page_video_info_page_component__WEBPACK_IMPORTED_MODULE_21__["VideoInfoPageComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
@@ -5191,8 +5219,8 @@ var AppModule = /** @class */ (function () {
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicModule"].forRoot(),
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_13__["AppRoutingModule"],
                 _survey_survey_module__WEBPACK_IMPORTED_MODULE_17__["SurveyModule"],
-                _incentive_incentive_module__WEBPACK_IMPORTED_MODULE_15__["IncentiveModule"],
                 _incentive_life_insights_life_insights_module__WEBPACK_IMPORTED_MODULE_16__["LifeInsightsModule"],
+                _incentive_incentive_module__WEBPACK_IMPORTED_MODULE_15__["IncentiveModule"],
                 _notification_notification_module__WEBPACK_IMPORTED_MODULE_14__["NotificationModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
                 _incentive_aquarium_aquarium_module__WEBPACK_IMPORTED_MODULE_18__["AquariumModule"],
@@ -5423,6 +5451,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../user/auth/auth.guard */ "./src/app/user/auth/auth.guard.ts");
 /* harmony import */ var _contact_contact_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./contact/contact.component */ "./src/app/home/contact/contact.component.ts");
 /* harmony import */ var _incentive_unlocked_inspirational_quotes_unlocked_inspirational_quotes_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component */ "./src/app/incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component.ts");
+/* harmony import */ var _incentive_life_insights_sample_python_view_sample_python_view_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../incentive/life-insights/sample-python-view/sample-python-view.component */ "./src/app/incentive/life-insights/sample-python-view/sample-python-view.component.ts");
+
 
 
 
@@ -5449,6 +5479,9 @@ var routes = [
             },
             {
                 path: 'thankyous', component: _incentive_unlocked_altuistic_messages_unlocked_altuistic_messages_component__WEBPACK_IMPORTED_MODULE_6__["UnlockedAltuisticMessagesComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]]
+            },
+            {
+                path: 'lifeinsight', component: _incentive_life_insights_sample_python_view_sample_python_view_component__WEBPACK_IMPORTED_MODULE_10__["SamplePythonViewComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]]
             },
             {
                 path: 'contact', component: _contact_contact_component__WEBPACK_IMPORTED_MODULE_8__["ContactComponent"], canActivate: [_user_auth_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]]
@@ -5718,6 +5751,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _incentive_actions__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../incentive.actions */ "./src/app/incentive/incentive.actions.ts");
 /* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
 /* harmony import */ var _storage_aws_s3_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../storage/aws-s3.service */ "./src/app/storage/aws-s3.service.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../environments/environment */ "./src/environments/environment.ts");
+
+
 
 
 
@@ -5734,7 +5771,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var AquariumComponent = /** @class */ (function () {
-    function AquariumComponent(platform, alertCtrl, router, route, modalController, store, navController, menu, appUsageDb, awsS3Service, userProfileService) {
+    function AquariumComponent(platform, alertCtrl, router, route, modalController, store, navController, menu, appUsageDb, awsS3Service, userProfileService, httpClient) {
         var _this = this;
         this.platform = platform;
         this.alertCtrl = alertCtrl;
@@ -5747,9 +5784,11 @@ var AquariumComponent = /** @class */ (function () {
         this.appUsageDb = appUsageDb;
         this.awsS3Service = awsS3Service;
         this.userProfileService = userProfileService;
+        this.httpClient = httpClient;
         this.money = 0;
         this.modalObjectNavigationExtras = {};
         this.pageTitle = "Aquarium";
+        this.aware_id = "Not found";
         this.title = "";
         this.isIOS = false;
         console.log("Constructor called");
@@ -5897,12 +5936,24 @@ var AquariumComponent = /** @class */ (function () {
         this.title = "SARA";
         console.log("aquarium.component.ts --- start");
         //this.menu.enable(true);
+        this.getAwareId();
     };
     AquariumComponent.prototype.ngOnDestroy = function () {
         this.sub1$.unsubscribe();
         this.sub2$.unsubscribe();
         this.ionViewDidLeaveFunction();
         console.log("aquarium.component.ts --- destroy");
+    };
+    AquariumComponent.prototype.getAwareId = function () {
+        var _this = this;
+        var flaskServerAPIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_16__["environment"].flaskServerForIncentives;
+        var res = flaskServerAPIEndpoint.split(":");
+        flaskServerAPIEndpoint = res[0] + ":" + res[1] + ":56735";
+        this.httpClient.post(flaskServerAPIEndpoint + "/get_aware_id", { "username": this.userProfileService.username })
+            .subscribe({
+            next: function (data) { return _this.aware_id = data["aware_id"]; },
+            error: function (error) { return console.error('There was an error!', error); }
+        });
     };
     AquariumComponent.prototype.subscribeForModalView = function () {
         var _this = this;
@@ -6008,8 +6059,14 @@ var AquariumComponent = /** @class */ (function () {
         this.navController.navigateRoot(['survey/harvardsurvey']);
         //this.router.navigate(['survey/harvardsurvey']);
     };
+    AquariumComponent.prototype.showSleepSurvey = function () {
+        this.navController.navigateRoot(['survey/sleepsurvey']);
+    };
     AquariumComponent.prototype.showHarvardArcApps = function () {
         this.router.navigate(['intervention/arcappsfrontpage']);
+    };
+    AquariumComponent.prototype.showPythonLifeInsight = function () {
+        this.router.navigate(['incentive/pythonlifeinsightsammple']);
     };
     AquariumComponent.prototype.showModalDemo = function () {
         var reinforcements = [];
@@ -6139,7 +6196,8 @@ var AquariumComponent = /** @class */ (function () {
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["MenuController"] },
         { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_13__["DatabaseService"] },
         { type: _storage_aws_s3_service__WEBPACK_IMPORTED_MODULE_14__["AwsS3Service"] },
-        { type: _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_6__["UserProfileService"] }
+        { type: _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_6__["UserProfileService"] },
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_15__["HttpClient"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_incentive_aquarium_demo_aquarium_demo_aquarium_component__WEBPACK_IMPORTED_MODULE_2__["DemoAquariumComponent"], { static: true }),
@@ -6160,7 +6218,8 @@ var AquariumComponent = /** @class */ (function () {
             _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["MenuController"],
             src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_13__["DatabaseService"],
             _storage_aws_s3_service__WEBPACK_IMPORTED_MODULE_14__["AwsS3Service"],
-            _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_6__["UserProfileService"]])
+            _user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_6__["UserProfileService"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_15__["HttpClient"]])
     ], AquariumComponent);
     return AquariumComponent;
 }());
@@ -6537,7 +6596,8 @@ var DemoAquariumComponent = /** @class */ (function () {
     };
     DemoAquariumComponent.prototype.getInspirationalQuotes = function () {
         var flaskServerAPIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_31__["environment"].flaskServerForIncentives;
-        this.httpClient.post(flaskServerAPIEndpoint + '/get-inspirational-quote', { "user_id": 'mash_aya' }).subscribe({
+        var username = this.userProfileService.username;
+        this.httpClient.post(flaskServerAPIEndpoint + '/get-inspirational-quote', { "user_id": username }).subscribe({
             next: function (data) { return console.log("Inspirational quote: " + JSON.stringify(data)); },
             error: function (error) { return console.error('There was an error!', error); }
         });
@@ -6592,6 +6652,7 @@ var DemoAquariumComponent = /** @class */ (function () {
                 oneSignalPlayerId = window.localStorage['oneSignalPlayerId'];
                 if (oneSignalPlayerId == "null" || oneSignalPlayerId == null || oneSignalPlayerId == undefined) {
                     console.log("oneSignalId is null, " + oneSignalPlayerId);
+                    oneSignalPlayerId = "test_one_signal_id";
                     return [2 /*return*/];
                 }
                 username = this.userProfileService.username;
@@ -6599,6 +6660,13 @@ var DemoAquariumComponent = /** @class */ (function () {
                 currentTimeReadableTs = moment__WEBPACK_IMPORTED_MODULE_29__().format("MMMM Do YYYY, h:mm:ss a Z");
                 headers = { "Content-Type": "application/json;charset=UTF-8" };
                 body = { "user_id": username, "oneSignalPlayerId": oneSignalPlayerId, "currentTimeTs": currentTimeTs, "currentTimeReadableTs": currentTimeReadableTs };
+                /*
+                this.httpClient.post<any>("http://ec2-54-91-131-166.compute-1.amazonaws.com:56733/store-onesignal-id", body, { headers }).subscribe({
+                  next: data => console.log(data),
+                  error: error => console.error('There was an error!', error)
+                });
+                */
+                console.log("oneSignalPlayerId---: " + oneSignalPlayerId);
                 flaskServerAPIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_31__["environment"].flaskServerForIncentives;
                 this.httpClient.post(flaskServerAPIEndpoint + "/store-onesignal-id", body)
                     .subscribe({
@@ -16705,6 +16773,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _aquarium_previews_tundra_tundra_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./aquarium/previews/tundra/tundra.component */ "./src/app/incentive/aquarium/previews/tundra/tundra.component.ts");
 /* harmony import */ var _unlocked_inspirational_quotes_unlocked_inspirational_quotes_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./unlocked-inspirational-quotes/unlocked-inspirational-quotes.component */ "./src/app/incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component.ts");
 /* harmony import */ var _video_info_page_video_info_page_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./video-info-page/video-info-page.component */ "./src/app/incentive/video-info-page/video-info-page.component.ts");
+/* harmony import */ var _life_insights_sample_python_view_sample_python_view_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./life-insights/sample-python-view/sample-python-view.component */ "./src/app/incentive/life-insights/sample-python-view/sample-python-view.component.ts");
 
 
 
@@ -16728,6 +16797,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var routes = [
     //  { path: 'award', component: AwardComponent },
     { path: 'award-memes', component: _award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__["AwardMemesComponent"] },
@@ -16737,7 +16807,11 @@ var IncentiveModule = /** @class */ (function () {
     }
     IncentiveModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__["AwardMemesComponent"], _award_altruism_award_altruism_component__WEBPACK_IMPORTED_MODULE_7__["AwardAltruismComponent"], _treasurechest_treasurechest_component__WEBPACK_IMPORTED_MODULE_6__["TreasurechestComponent"], _aquarium_modal_unlocked_page_modal_unlocked_page_component__WEBPACK_IMPORTED_MODULE_8__["ModalUnlockedPageComponent"], _info_page_info_page_component__WEBPACK_IMPORTED_MODULE_9__["InfoPageComponent"], _unlocked_memes_unlocked_memes_component__WEBPACK_IMPORTED_MODULE_12__["UnlockedMemesComponent"], _unlocked_altuistic_messages_unlocked_altuistic_messages_component__WEBPACK_IMPORTED_MODULE_13__["UnlockedAltuisticMessagesComponent"], _aquarium_previews_fishbowl_fishbowl_component__WEBPACK_IMPORTED_MODULE_14__["FishbowlComponent"], _aquarium_previews_sea_sea_component__WEBPACK_IMPORTED_MODULE_15__["SeaComponent"], _aquarium_previews_tundra_tundra_component__WEBPACK_IMPORTED_MODULE_16__["TundraComponent"], _unlocked_inspirational_quotes_unlocked_inspirational_quotes_component__WEBPACK_IMPORTED_MODULE_17__["UnlockedInspirationalQuotesComponent"], _video_info_page_video_info_page_component__WEBPACK_IMPORTED_MODULE_18__["VideoInfoPageComponent"]],
+            declarations: [_award_memes_award_memes_component__WEBPACK_IMPORTED_MODULE_4__["AwardMemesComponent"], _award_altruism_award_altruism_component__WEBPACK_IMPORTED_MODULE_7__["AwardAltruismComponent"], _treasurechest_treasurechest_component__WEBPACK_IMPORTED_MODULE_6__["TreasurechestComponent"],
+                _aquarium_modal_unlocked_page_modal_unlocked_page_component__WEBPACK_IMPORTED_MODULE_8__["ModalUnlockedPageComponent"], _info_page_info_page_component__WEBPACK_IMPORTED_MODULE_9__["InfoPageComponent"], _unlocked_memes_unlocked_memes_component__WEBPACK_IMPORTED_MODULE_12__["UnlockedMemesComponent"], _unlocked_altuistic_messages_unlocked_altuistic_messages_component__WEBPACK_IMPORTED_MODULE_13__["UnlockedAltuisticMessagesComponent"],
+                _aquarium_previews_fishbowl_fishbowl_component__WEBPACK_IMPORTED_MODULE_14__["FishbowlComponent"], _aquarium_previews_sea_sea_component__WEBPACK_IMPORTED_MODULE_15__["SeaComponent"], _aquarium_previews_tundra_tundra_component__WEBPACK_IMPORTED_MODULE_16__["TundraComponent"], _unlocked_inspirational_quotes_unlocked_inspirational_quotes_component__WEBPACK_IMPORTED_MODULE_17__["UnlockedInspirationalQuotesComponent"], _video_info_page_video_info_page_component__WEBPACK_IMPORTED_MODULE_18__["VideoInfoPageComponent"],
+                _life_insights_sample_python_view_sample_python_view_component__WEBPACK_IMPORTED_MODULE_19__["SamplePythonViewComponent"]
+            ],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
                 _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["IonicModule"].forRoot(),
@@ -17288,6 +17362,109 @@ var SampleLifeInsightsComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], SampleLifeInsightsComponent);
     return SampleLifeInsightsComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/incentive/life-insights/sample-python-view/sample-python-view.component.css":
+/*!*********************************************************************************************!*\
+  !*** ./src/app/incentive/life-insights/sample-python-view/sample-python-view.component.css ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".new-background-color{\n    --background: #005486;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaW5jZW50aXZlL2xpZmUtaW5zaWdodHMvc2FtcGxlLXB5dGhvbi12aWV3L3NhbXBsZS1weXRob24tdmlldy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0kscUJBQXFCO0FBQ3pCIiwiZmlsZSI6InNyYy9hcHAvaW5jZW50aXZlL2xpZmUtaW5zaWdodHMvc2FtcGxlLXB5dGhvbi12aWV3L3NhbXBsZS1weXRob24tdmlldy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5ldy1iYWNrZ3JvdW5kLWNvbG9ye1xuICAgIC0tYmFja2dyb3VuZDogIzAwNTQ4Njtcbn0iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/incentive/life-insights/sample-python-view/sample-python-view.component.ts":
+/*!********************************************************************************************!*\
+  !*** ./src/app/incentive/life-insights/sample-python-view/sample-python-view.component.ts ***!
+  \********************************************************************************************/
+/*! exports provided: SamplePythonViewComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SamplePythonViewComponent", function() { return SamplePythonViewComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
+
+
+
+
+
+
+var SamplePythonViewComponent = /** @class */ (function () {
+    function SamplePythonViewComponent(userProfileService, menuCtrl, appUsageDb, sanitizer) {
+        this.userProfileService = userProfileService;
+        this.menuCtrl = menuCtrl;
+        this.appUsageDb = appUsageDb;
+        this.sanitizer = sanitizer;
+    }
+    SamplePythonViewComponent.prototype.ngOnInit = function () {
+        this.menuCtrl.close();
+        /*
+        const browser = this.iab.create('https://cnn.com/');
+    
+        //browser.executeScript(...);
+    
+        //browser.insertCSS(...);
+        browser.on('loadstop').subscribe(event => {
+          browser.insertCSS({ code: "body{color: red;" });
+        });
+    
+        browser.close();
+        */
+        ////'http://54.146.43.246:5000/'
+    };
+    SamplePythonViewComponent.prototype.ionViewDidEnter = function () {
+        /*
+        this.db.getDatabaseState().subscribe(rdy => {
+         if (rdy) {
+           this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+         }
+        });
+        */
+        this.moodInsightImage = "http://ec2-52-201-144-36.compute-1.amazonaws.com:56735/get_daily_plot?username=" + this.userProfileService.username + "&plot_type=edu.harvard.srl.MoodVisualization&cachebreaker=" + new Date().getTime();
+        this.concentrationInsightImage = "http://ec2-52-201-144-36.compute-1.amazonaws.com:56735/get_daily_plot?username=" + this.userProfileService.username + "&plot_type=edu.harvard.srl.ConcentrationVisualization&cachebreaker=" + new Date().getTime();
+        this.stressInsightImage = "http://ec2-52-201-144-36.compute-1.amazonaws.com:56735/get_daily_plot?username=" + this.userProfileService.username + "&plot_type=edu.harvard.srl.GoodDayVisualization&cachebreaker=" + new Date().getTime();
+        this.appUsageDb.saveAppUsageEnter("python_life_insight_page_sample");
+    };
+    SamplePythonViewComponent.prototype.ionViewDidLeave = function () {
+        /*
+        this.db.getDatabaseState().subscribe(rdy => {
+          if (rdy) {
+            this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+          }
+        });
+        */
+        this.appUsageDb.saveAppUsageExit("python_life_insight_page_sample");
+    };
+    SamplePythonViewComponent.ctorParameters = function () { return [
+        { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_5__["UserProfileService"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"] },
+        { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_3__["DatabaseService"] },
+        { type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["DomSanitizer"] }
+    ]; };
+    SamplePythonViewComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-sample-python-view',
+            template: __webpack_require__(/*! raw-loader!./sample-python-view.component.html */ "./node_modules/raw-loader/index.js!./src/app/incentive/life-insights/sample-python-view/sample-python-view.component.html"),
+            styles: [__webpack_require__(/*! ./sample-python-view.component.css */ "./src/app/incentive/life-insights/sample-python-view/sample-python-view.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_5__["UserProfileService"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["MenuController"],
+            src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_3__["DatabaseService"],
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__["DomSanitizer"]])
+    ], SamplePythonViewComponent);
+    return SamplePythonViewComponent;
 }());
 
 
@@ -19764,6 +19941,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 this.surveyAnswersJSONObject['userName'] = this.userProfileService.username;
                 this.surveyAnswersJSONObject['devicInfo'] = this.plt.platforms(); //Type of device; iOS or Android
                 this.surveyAnswersJSONObject['appVersion'] = this.versionNumber;
+                this.surveyAnswersJSONObject['surveyName'] = this.fileLink;
             };
             class_1.prototype.enycryptSurveyDataAndUploadToS3 = function () {
                 var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.surveyAnswersJSONObject), _environments_environment__WEBPACK_IMPORTED_MODULE_11__["environment"].encyptString);
@@ -19994,7 +20172,8 @@ var DynamicSurveyComponent = /** @class */ (function () {
                         x = 10 * (lastPos.x - top_x) / (bottom_x - top_x) - 5;
                         y = 5 - 10 * (lastPos.y - top_y) / (bottom_y - top_y) - 5;
                         console.log("x:" + x + ", y:" + y);
-                        self2.survey2['QMood'] = "" + x + ":" + y;
+                        //self2.survey2['QMood'] = "" + x + ":" + y;
+                        self2.surveyAnswersJSONObject['QMood'] = "" + x + ":" + y;
                         //
                         self2.inputchanged("QMood");
                     }
@@ -20104,7 +20283,7 @@ var DynamicSurveyComponent = /** @class */ (function () {
                 //survey_string = this.process_survey_moodgrid(survey_string, i);
             }
             if (obj.type == "moodgrid2") {
-                //survey_string = this.process_survey_moodgrid2(survey_string);
+                survey_string = this.process_survey_moodgrid2(survey_string);
             }
             //------------------------------------------------------                  
             // Autocomplete 
@@ -20208,6 +20387,14 @@ var DynamicSurveyComponent = /** @class */ (function () {
             survey_string = survey_string + '<li><p>' + obj.extra.choices[obj.extra.choices.length - 1] + '</p></li>';
             survey_string = survey_string + '</ul></div>';
         }
+        return survey_string;
+    };
+    DynamicSurveyComponent.prototype.process_survey_moodgrid2 = function (survey_string) {
+        survey_string = [survey_string,
+            '<canvas id="myCanvas" width="310" height="310" style="border:0px solid #000000;padding:10px;">',
+            'Your browser does not support the HTML5 canvas tag.',
+            '</canvas>'
+        ].join(" ");
         return survey_string;
     };
     DynamicSurveyComponent.prototype.getAppVersionNumber = function () {
@@ -20478,6 +20665,94 @@ var SampleSurveyComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/survey/sleep-survey/sleep-survey.component.css":
+/*!****************************************************************!*\
+  !*** ./src/app/survey/sleep-survey/sleep-survey.component.css ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".new-background-color{\n    --background: #005486;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc3VydmV5L3NsZWVwLXN1cnZleS9zbGVlcC1zdXJ2ZXkuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLHFCQUFxQjtBQUN6QiIsImZpbGUiOiJzcmMvYXBwL3N1cnZleS9zbGVlcC1zdXJ2ZXkvc2xlZXAtc3VydmV5LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubmV3LWJhY2tncm91bmQtY29sb3J7XG4gICAgLS1iYWNrZ3JvdW5kOiAjMDA1NDg2O1xufSJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/survey/sleep-survey/sleep-survey.component.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/survey/sleep-survey/sleep-survey.component.ts ***!
+  \***************************************************************/
+/*! exports provided: SleepSurveyComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SleepSurveyComponent", function() { return SleepSurveyComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/user/user-profile/user-profile.service */ "./src/app/user/user-profile/user-profile.service.ts");
+/* harmony import */ var _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/mobile-accessibility/ngx */ "./node_modules/@ionic-native/mobile-accessibility/ngx/index.js");
+/* harmony import */ var src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/monitor/database.service */ "./src/app/monitor/database.service.ts");
+
+
+
+
+
+var SleepSurveyComponent = /** @class */ (function () {
+    function SleepSurveyComponent(userProfileService, mobileAccessibility, appUsageDb) {
+        this.userProfileService = userProfileService;
+        this.mobileAccessibility = mobileAccessibility;
+        this.appUsageDb = appUsageDb;
+    }
+    SleepSurveyComponent.prototype.ngOnInit = function () {
+        this.mobileAccessibility.usePreferredTextZoom(false);
+    };
+    SleepSurveyComponent.prototype.ionViewDidEnter = function () {
+        /*
+        this.db.getDatabaseState().subscribe(rdy => {
+         if (rdy) {
+           this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+         }
+        });
+        */
+        this.whichImage = "http://ec2-52-201-144-36.compute-1.amazonaws.com:56735/get_daily_plot?username=" + this.userProfileService.username + "&plot_type=edu.harvard.srl.SleepAppUsageVisualization&cachebreaker=" + new Date().getTime();
+        this.appUsageDb.saveAppUsageEnter("sleep_survey_page");
+    };
+    SleepSurveyComponent.prototype.reloadPage = function () {
+        window.location.reload();
+    };
+    SleepSurveyComponent.prototype.ionViewDidLeave = function () {
+        /*
+        console.log(this.pageTitle+": ionViewDidLeave");
+        this.db.getDatabaseState().subscribe(rdy => {
+          if (rdy) {
+            this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
+          }
+        });
+        */
+        this.mobileAccessibility.usePreferredTextZoom(true);
+        this.appUsageDb.saveAppUsageExit("sleep_survey_page");
+    };
+    SleepSurveyComponent.ctorParameters = function () { return [
+        { type: src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_2__["UserProfileService"] },
+        { type: _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_3__["MobileAccessibility"] },
+        { type: src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_4__["DatabaseService"] }
+    ]; };
+    SleepSurveyComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-sleep-survey',
+            template: __webpack_require__(/*! raw-loader!./sleep-survey.component.html */ "./node_modules/raw-loader/index.js!./src/app/survey/sleep-survey/sleep-survey.component.html"),
+            styles: [__webpack_require__(/*! ./sleep-survey.component.css */ "./src/app/survey/sleep-survey/sleep-survey.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_user_user_profile_user_profile_service__WEBPACK_IMPORTED_MODULE_2__["UserProfileService"],
+            _ionic_native_mobile_accessibility_ngx__WEBPACK_IMPORTED_MODULE_3__["MobileAccessibility"],
+            src_app_monitor_database_service__WEBPACK_IMPORTED_MODULE_4__["DatabaseService"]])
+    ], SleepSurveyComponent);
+    return SleepSurveyComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/survey/survey.actions.ts":
 /*!******************************************!*\
   !*** ./src/app/survey/survey.actions.ts ***!
@@ -20605,6 +20880,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ngrx_effects__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ngrx/effects */ "./node_modules/@ngrx/effects/fesm5/effects.js");
 /* harmony import */ var _survey_effects__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./survey.effects */ "./src/app/survey/survey.effects.ts");
 /* harmony import */ var _harvard_survey_harvard_survey_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./harvard-survey/harvard-survey.component */ "./src/app/survey/harvard-survey/harvard-survey.component.ts");
+/* harmony import */ var _sleep_survey_sleep_survey_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./sleep-survey/sleep-survey.component */ "./src/app/survey/sleep-survey/sleep-survey.component.ts");
 
 
 
@@ -20626,6 +20902,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var routes = [
     { path: 'samplesurvey', component: _sample_survey_sample_survey_component__WEBPACK_IMPORTED_MODULE_7__["SampleSurveyComponent"] }
 ];
@@ -20635,15 +20912,11 @@ var SurveyModule = /** @class */ (function () {
     SurveyModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                //InitiatedDrinkComponent,
-                //MorningReportComponent,
-                //PromptedSurveyComponent,
-                //ActivetaskComponent,
                 _dynamic_survey_dynamic_survey_component__WEBPACK_IMPORTED_MODULE_6__["DynamicSurveyComponent"],
                 _aya_sample_survey_aya_sample_survey_component__WEBPACK_IMPORTED_MODULE_10__["AyaSampleSurveyComponent"],
-                //ActiveTask2Component,
                 _sample_survey_sample_survey_component__WEBPACK_IMPORTED_MODULE_7__["SampleSurveyComponent"],
-                _harvard_survey_harvard_survey_component__WEBPACK_IMPORTED_MODULE_15__["HarvardSurveyComponent"]
+                _harvard_survey_harvard_survey_component__WEBPACK_IMPORTED_MODULE_15__["HarvardSurveyComponent"],
+                _sleep_survey_sleep_survey_component__WEBPACK_IMPORTED_MODULE_16__["SleepSurveyComponent"]
             ],
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
@@ -20656,15 +20929,11 @@ var SurveyModule = /** @class */ (function () {
                 _ngrx_effects__WEBPACK_IMPORTED_MODULE_13__["EffectsModule"].forFeature([_survey_effects__WEBPACK_IMPORTED_MODULE_14__["SurveyEffects"]])
             ],
             exports: [
-                //InitiatedDrinkComponent,
-                //MorningReportComponent,
-                //PromptedSurveyComponent,
-                //ActivetaskComponent,
-                //ActiveTask2Component,
                 _dynamic_survey_dynamic_survey_component__WEBPACK_IMPORTED_MODULE_6__["DynamicSurveyComponent"],
                 _sample_survey_sample_survey_component__WEBPACK_IMPORTED_MODULE_7__["SampleSurveyComponent"],
                 _aya_sample_survey_aya_sample_survey_component__WEBPACK_IMPORTED_MODULE_10__["AyaSampleSurveyComponent"],
-                _harvard_survey_harvard_survey_component__WEBPACK_IMPORTED_MODULE_15__["HarvardSurveyComponent"]
+                _harvard_survey_harvard_survey_component__WEBPACK_IMPORTED_MODULE_15__["HarvardSurveyComponent"],
+                _sleep_survey_sleep_survey_component__WEBPACK_IMPORTED_MODULE_16__["SleepSurveyComponent"]
             ],
             schemas: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["CUSTOM_ELEMENTS_SCHEMA"]]
         })
@@ -21786,11 +22055,11 @@ __webpack_require__.r(__webpack_exports__);
 var environment = {
     production: false,
     //userServer:"http://adaptsdata.research.chop.edu:5000",
-    userServer: "http://54.146.43.246:5000",
+    userServer: "http://52.201.144.36:5000",
     oneSignalAppId: "f9c4370d-cbcb-4e6f-ab1f-25d1c41b8f3a",
     //oneSignalAppId: "de3580a2-4aae-42c4-87cf-2c319c2df0c3",
     encyptString: "+Xr?SwA?EJ7m+g$c",
-    flaskServerForIncentives: "http://ec2-54-91-131-166.compute-1.amazonaws.com:56733",
+    flaskServerForIncentives: "http://ec2-52-201-144-36.compute-1.amazonaws.com:56733",
     //flaskServerForIncentives: "http://adaptsdata.research.chop.edu:5000",
     firebaseConfig: {
         apiKey: "AIzaSyBK_PwjnsC01Q-a-sV7LsA7qIeIhCx4ts0",

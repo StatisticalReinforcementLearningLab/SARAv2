@@ -12,30 +12,43 @@ export class AwardDollarService {
     users3DayStreakHistory;
     
     constructor(private userProfileService: UserProfileService) { 
+
+        /*
+        *  
+        *  load current dollar amount user earned from local storage, 
+        *  and if "undefined" (i.e.,user likely didn't earn anything) then assign value to zero.
+        * 
+        */
+
+        if(window.localStorage['AwardDollar'] == undefined)
+            this.usersCurrentDollars = 0;
+        else
+            this.usersCurrentDollars = parseInt(window.localStorage['AwardDollar']);
     }
     
     
     getCurrentlyEarnedDollars(){
         /*
-        *  
-        *  load current dollar amount user earned from local storage, 
-        *  and if "undefined" (i.e.,user likely didn't earn anything) then assign value to zero.
         * 
         *  This function is called from dynamic-survey to update the current dollar amount.
         * 
         */
         
         
-        if(window.localStorage['AwardDollar'] == undefined)
-            this.usersCurrentDollars = 0;
-        else
-            this.usersCurrentDollars = parseInt(window.localStorage['AwardDollar']);
+       
         
         
         return this.usersCurrentDollars;
     }
     
     giveDollars(){
+        var dailySurveyHistory = this.userProfileService.userProfile.survey_data.daily_survey;
+        var onDatesSurveyIsTurnedOn = this.userProfileService.userProfileFixed.onDates;
+        return this.giveDollarsWithoutDependency(dailySurveyHistory, onDatesSurveyIsTurnedOn);
+    }
+
+
+    giveDollarsWithoutDependency(pDailySurveyHistory, pOnDatesSurveyIsTurnedOn){
         
         /*
         *  
@@ -47,7 +60,7 @@ export class AwardDollarService {
         */
         
         
-        var dailySurveyHistory = this.userProfileService.userProfile.survey_data.daily_survey;
+        var dailySurveyHistory = pDailySurveyHistory;
         
         /*
         *
@@ -60,17 +73,7 @@ export class AwardDollarService {
         */
 
         //get the first date, by iterating through all dates and find the smallest one.
-        var firstDateSurveyIsCompleted = moment().format('YYYYMMDD');
-        var timestampeForFirstDataSurveyIsCompleted = moment(firstDateSurveyIsCompleted, "YYYYMMDD");
-        var timestampDateForASurveyCompleted;
-        for (var dateForASurveyCompleted in dailySurveyHistory) {
-            timestampDateForASurveyCompleted = moment(dateForASurveyCompleted,"YYYYMMDD");
-            if (timestampDateForASurveyCompleted < timestampeForFirstDataSurveyIsCompleted) {
-                firstDateSurveyIsCompleted = dateForASurveyCompleted;
-                timestampeForFirstDataSurveyIsCompleted = moment(firstDateSurveyIsCompleted,"YYYYMMDD");
-            }
-        }
-        
+        var firstDateSurveyIsCompleted = this.getFirstDaySurveyIsCompleted(dailySurveyHistory);
         // If today is the first day then award 2 dollars for survey completion; 
         //  else load the last day, current amout user earned
         var todaysDate = moment().format('YYYYMMDD');
@@ -99,30 +102,10 @@ export class AwardDollarService {
         // Get the dates when survey  is turned on. This only contains days
         // that the survey on button was physically clicked.
         //  
-        var onDatesSurveyIsTurnedOn = this.userProfileService.userProfileFixed.onDates;
-        //
-        // set the last date to today, if 'onDatesSurveyPauseStarted' are not empty, will set it 
-        // to be the last date in 'onDatesSurveyPauseStarted'.
-        // 
-        var maxDateInOnDatesSurveyIsTurnedOn = moment().format('YYYY-MM-DD');;
+        var onDatesSurveyIsTurnedOn = pOnDatesSurveyIsTurnedOn;
         
-        var timestampForLastDate = moment("1970-01-01", "YYYY-MM-DD");
-        var timestampDateFor_date;
-        for (var _date in onDatesSurveyIsTurnedOn) {
-            timestampDateFor_date = moment(_date,"YYYY-MM-DD");
-            if (timestampDateFor_date > timestampForLastDate) {
-                maxDateInOnDatesSurveyIsTurnedOn = _date;
-                timestampForLastDate = moment(maxDateInOnDatesSurveyIsTurnedOn, "YYYY-MM-DD");
-            }
-        }
-        
-        var day14BeforeToday = moment().subtract(14,"days").format("YYYY-MM-DD");
-        var timestampDay14BeforeToday = moment(day14BeforeToday,"YYYY-MM-DD");
-        var timestampMaxDateInOnDatesSurveyIsTurnedOn = moment(maxDateInOnDatesSurveyIsTurnedOn,"YYYY-MM-DD");
 
-        // if 14-day before today is more than (i.e., after) timestampMaxDateInOnDatesSurveyIsTurnedOn
-        // then user has come back after 14 days.
-        if(timestampDay14BeforeToday.isAfter(timestampMaxDateInOnDatesSurveyIsTurnedOn)){
+        if(this.isLastTurnOnDateWas14DayAgo(onDatesSurveyIsTurnedOn)){
             this.usersCurrentDollars = this.usersCurrentDollars + 2; 
             //save the dollar ammount in local storage
             window.localStorage.setItem("AwardDollar", ""+this.usersCurrentDollars); 
@@ -208,5 +191,58 @@ export class AwardDollarService {
         window.localStorage.setItem("AwardDollar", ""+this.usersCurrentDollars);    
         
         return this.usersCurrentDollars;
+    }
+    
+
+    getFirstDaySurveyIsCompleted(dailySurveyHistory: {}) {
+        //get first day of survey completed.
+
+        //start first day from today, which is the lowest. Then find the older date values.
+        var firstDateSurveyIsCompleted = moment().format('YYYYMMDD');
+        var unixTimestampeForFirstDataSurveyIsCompleted = moment(firstDateSurveyIsCompleted, "YYYYMMDD"); //unix time for 
+
+        var unixTimestampDateForASurveyCompleted;
+        for (var dateForASurveyIsCompleted in dailySurveyHistory) {
+            unixTimestampDateForASurveyCompleted = moment(dateForASurveyIsCompleted,"YYYYMMDD");
+
+            //an existing survey completed before current first date. Set that date for current date.
+            if (unixTimestampDateForASurveyCompleted < unixTimestampeForFirstDataSurveyIsCompleted) {
+                firstDateSurveyIsCompleted = dateForASurveyIsCompleted;
+                unixTimestampeForFirstDataSurveyIsCompleted = moment(firstDateSurveyIsCompleted,"YYYYMMDD");
+            }
+            
+        }
+        return firstDateSurveyIsCompleted;
+    }
+
+
+    isLastTurnOnDateWas14DayAgo(onDatesSurveyIsTurnedOn: {}) {
+        //
+        // set the last date to today, if 'onDatesSurveyPauseStarted' are not empty, will set it 
+        // to be the last date in 'onDatesSurveyPauseStarted'.
+        // 
+        var maxDateInOnDatesSurveyIsTurnedOn = moment().format('YYYY-MM-DD');;
+        
+        var unixTimestampForLastOnDate = moment("1970-01-01", "YYYY-MM-DD");
+
+        var unixtTimeOfADaySurveyIsTurnedOn;
+        for (var dateOfADaySurveyIsTurnedOn in onDatesSurveyIsTurnedOn) {
+            unixtTimeOfADaySurveyIsTurnedOn = moment(dateOfADaySurveyIsTurnedOn,"YYYY-MM-DD");
+            if (unixtTimeOfADaySurveyIsTurnedOn > unixTimestampForLastOnDate) {
+                maxDateInOnDatesSurveyIsTurnedOn = dateOfADaySurveyIsTurnedOn;
+                unixTimestampForLastOnDate = moment(maxDateInOnDatesSurveyIsTurnedOn, "YYYY-MM-DD");
+            }
+        }
+        
+        var day14BeforeToday = moment().subtract(14,"days").format("YYYY-MM-DD");
+        var unixTimestampDay14BeforeToday = moment(day14BeforeToday,"YYYY-MM-DD");
+        var unixTimestampMaxDateInOnDatesSurveyIsTurnedOn = moment(maxDateInOnDatesSurveyIsTurnedOn,"YYYY-MM-DD");
+
+        // if 14-day before today is more than (i.e., after) timestampMaxDateInOnDatesSurveyIsTurnedOn
+        // then user has come back after 14 days.
+        if(unixTimestampDay14BeforeToday.isAfter(unixTimestampMaxDateInOnDatesSurveyIsTurnedOn))
+            return true;
+        else
+            return false;
     }
 }

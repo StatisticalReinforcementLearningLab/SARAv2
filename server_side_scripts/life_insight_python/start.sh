@@ -1,6 +1,4 @@
 #!/bin/bash
-app="sara.life.insight"
+app="sara_sleep_rt_viz"
 docker build -t ${app} .
-docker run -d -p 56734:80 \
-  --name=${app} \
-  -v $PWD:/app ${app}
+docker run -d -p56734:80 --name=${app} ${app}
