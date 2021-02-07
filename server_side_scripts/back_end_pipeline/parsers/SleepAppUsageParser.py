@@ -21,10 +21,17 @@ def main():
     s = today.strftime("%m/%d/%Y")
     end_unix_time = 1000*time.mktime(datetime.strptime(s + " 02:00 PM", "%m/%d/%Y %I:%M %p").timetuple())
     start_unix_time = end_unix_time - 18*3600*1000
-    user_id = '88315702-a3e6-4296-8437-0a56b4c4f03b'
+    user_id = "36c38a8d-c6d7-48a7-88a5-5f9796b540b6"
+    timezone_offset = -8
 
     #fetch evening survey data
-    date_string_for_app_usage_list, screen_time_value_list = sleep_app_usage_parser.fetch_raw_data('./config/awareSqlConfig.json', user_id, start_unix_time, end_unix_time)
+    date_string_for_app_usage_list, screen_time_value_list = sleep_app_usage_parser.fetch_raw_data(
+        './config/awareSqlConfig.json', 
+        user_id, 
+        start_unix_time, 
+        end_unix_time,
+        timezone_offset
+    )
     
     #
     app_usage_data_frame = sleep_app_usage_parser.process_raw_data(date_string_for_app_usage_list, screen_time_value_list)
@@ -33,8 +40,72 @@ def main():
     sleep_app_usage_parser.store_processed_data(app_usage_data_frame, user_id)
 
 
+def parse_all_users_data():
+
+
+    aware_ids_and_user_ids = get_existing_user_id_and_aware_id()
+
+    for aware_id in aware_ids_and_user_ids:
+        # initialize parser
+        
+        sleep_app_usage_parser = SleepAppUsageParser()
+
+        today = datetime.today()
+        s = today.strftime("%m/%d/%Y")
+        end_unix_time = 1000*time.mktime(datetime.strptime(s + " 02:00 PM", "%m/%d/%Y %I:%M %p").timetuple())
+        start_unix_time = end_unix_time - 18*3600*1000
+        # user_id = "36c38a8d-c6d7-48a7-88a5-5f9796b540b6"
+        
+        user_id = aware_ids_and_user_ids[aware_id]
+        print("Processing: "+ user_id + ", " + aware_id)
+
+
+        timezone_offset = sleep_app_usage_parser.get_timezone_for_user_id(user_id)
+
+        #fetch sleep data
+        date_string_for_app_usage_list, screen_time_value_list = sleep_app_usage_parser.fetch_raw_data(
+            './config/awareSqlConfig.json', 
+            aware_id, 
+            start_unix_time, 
+            end_unix_time,
+            timezone_offset
+        )
+        
+        #
+        app_usage_data_frame = sleep_app_usage_parser.process_raw_data(date_string_for_app_usage_list, screen_time_value_list)
+
+        #
+        sleep_app_usage_parser.store_processed_data(app_usage_data_frame, aware_id)
+
+        
 
     
+def get_existing_user_id_and_aware_id():
+    mysql_config_file = "./config/saraSqlConfig.json"
+    
+    with open(mysql_config_file) as f:
+        mysql_connect_object = json.load(f)
+    
+    db = mysql.connect(
+        host = mysql_connect_object["host"],
+        port = mysql_connect_object["port"],
+        user = mysql_connect_object["user"],
+        passwd = mysql_connect_object["passwd"],
+        database = mysql_connect_object["database"]
+    )
+    
+    cursor = db.cursor()
+    select_statement = "select username, aware_id from users where aware_id IS NOT NULL;"
+    cursor.execute(select_statement)
+    aware_id_user_ids = cursor.fetchall()
+
+    aware_ids_and_user_ids = {}
+    for x in aware_id_user_ids:
+        #print(str(x[1]) + "," + str(x[0]))
+        aware_ids_and_user_ids[str(x[1])] = str(x[0])
+    
+    db.close()
+    return aware_ids_and_user_ids
 
 
 class SleepAppUsageParser(GenericParserInterface):
@@ -43,13 +114,13 @@ class SleepAppUsageParser(GenericParserInterface):
         pass
     
     # "./config/awareSqlConfig.json"
-    def fetch_raw_data(self, db_config_location, user_id, start_unix_time, end_unix_time):
+    def fetch_raw_data(self, db_config_location, aware_id, start_unix_time, end_unix_time, timezone_offset):
         """Function to fetch raw data. Returns an array of latest data."""
         aware_db = self.connect_to_database(db_config_location)
         cursor = aware_db.cursor()
 
         #-- fetch screen usage data
-        where_clause = "device_id='" + user_id + "'"
+        where_clause = "device_id='" + aware_id + "'"
         where_clause = where_clause + " AND timestamp > " + str(start_unix_time) 
         where_clause = where_clause + " AND timestamp < " + str(end_unix_time) 
         where_clause = "(" + where_clause +  ")"
@@ -64,7 +135,9 @@ class SleepAppUsageParser(GenericParserInterface):
 
         
         for row in records_in_screen_usage_table:
-            ts = row[1]/1000 - 7*60*60 #convert to pacific timezone. ToDo: change fixed value.
+
+            ts = row[1]/1000 + timezone_offset*60*60 #convert to pacific timezone. ToDo: change fixed value.
+
             timestamp_for_app_usage_list.append(ts)
             
             datetime_ts = datetime.utcfromtimestamp(ts) 
@@ -94,6 +167,38 @@ class SleepAppUsageParser(GenericParserInterface):
 
         print("Storing sleeping data")
         self.insert_data_into_harvard_sleep_db(app_usage_data_frame, "./config/saraSqlConfig.json", user_id)
+
+    def get_timezone_for_user_id(self, user_id):
+        mysql_config_file = "./config/saraSqlConfig.json"
+        
+        with open(mysql_config_file) as f:
+            mysql_connect_object = json.load(f)
+        
+        db = mysql.connect(
+            host = mysql_connect_object["host"],
+            port = mysql_connect_object["port"],
+            user = mysql_connect_object["user"],
+            passwd = mysql_connect_object["passwd"],
+            database = mysql_connect_object["database"]
+        )
+        
+        cursor = db.cursor()
+        
+        select_statement = "SELECT * FROM SARAApp.user_ids WHERE (user_id,currentTimeTs) IN  \
+                                ( SELECT user_id, MAX(currentTimeTs) \
+                                FROM SARAApp.user_ids \
+                                GROUP BY user_id \
+                                )  AND user_id = " + '"' + user_id + '"'
+        
+        cursor.execute(select_statement)
+        aware_id_user_ids = cursor.fetchone()
+        x = aware_id_user_ids
+        readable_ts = x[3]
+        splitted_parts = readable_ts.split(" ")
+        print(str(x[1]) + "," + str(x[3]) + ", " + splitted_parts[-1].split(":")[0])
+        
+        db.close()
+        return int(splitted_parts[-1].split(":")[0])
 
 
     def post_parsing_cleanup(self, arg):
@@ -129,6 +234,7 @@ class SleepAppUsageParser(GenericParserInterface):
 
         #
         os.remove("./app_usage.pkl")
+        db.close()
 
 
     def read_file(self, filename):
@@ -156,5 +262,6 @@ class SleepAppUsageParser(GenericParserInterface):
 
 
 if __name__ == '__main__':
-    main()
+    # main()
+    parse_all_users_data()
     

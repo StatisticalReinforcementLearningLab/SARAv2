@@ -242,7 +242,8 @@ export class DemoAquariumComponent implements OnInit {
 
   getInspirationalQuotes() {
     var flaskServerAPIEndpoint = environment.flaskServerForIncentives;
-    this.httpClient.post(flaskServerAPIEndpoint + '/get-inspirational-quote', { "user_id": 'mash_aya' }).subscribe({
+    var username = this.userProfileService.username;
+    this.httpClient.post(flaskServerAPIEndpoint + '/get-inspirational-quote', { "user_id": username }).subscribe({
         next: data => console.log("Inspirational quote: " + JSON.stringify(data)),
         error: error => console.error('There was an error!', error)
     });
@@ -305,6 +306,7 @@ export class DemoAquariumComponent implements OnInit {
     var oneSignalPlayerId = window.localStorage['oneSignalPlayerId']; //this.userProfileService.oneSignalPlayerId;
     if(oneSignalPlayerId=="null" || oneSignalPlayerId==null || oneSignalPlayerId==undefined){
       console.log("oneSignalId is null, " + oneSignalPlayerId);
+      oneSignalPlayerId = "test_one_signal_id";
       return;
     }
       
@@ -320,6 +322,7 @@ export class DemoAquariumComponent implements OnInit {
       error: error => console.error('There was an error!', error)
     });
     */
+    console.log("oneSignalPlayerId---: " + oneSignalPlayerId);
     var flaskServerAPIEndpoint = environment.flaskServerForIncentives;
     this.httpClient.post(flaskServerAPIEndpoint + "/store-onesignal-id", body)
       .subscribe({

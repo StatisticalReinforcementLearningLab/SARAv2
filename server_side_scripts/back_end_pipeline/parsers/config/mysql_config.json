@@ -1,6 +1,6 @@
 {
     "DB_PASSWORD":"helloworld",
-    "DB_HOST":"ec2-54-91-131-166.compute-1.amazonaws.com",
+    "DB_HOST":"ec2-52-201-144-36.compute-1.amazonaws.com",
     "DB_PORT":3308,
     "DB_USER":"root"
 }
