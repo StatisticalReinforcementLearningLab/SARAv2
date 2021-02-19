@@ -127,7 +127,7 @@ class GoodVisualization(SingleVisualizationInterface):
         """
         datetime_ts_string = ['null'] * len(ts_array)
         for i in range(len(ts_array)):
-            ts =  ts_array[i]["ts"]/1000 - 7*60*60 # TODO:https://harvard.zoom.us/j/6628628546  correct 7 for day light saving   #this didn't work for me
+            ts =  ts_array[i]["ts"]/1000 - 7*60*60 # TODO: https://harvard.zoom.us/j/6628628546  correct 7 for day light saving   #this didn't work for me
             datetime_ts = datetime.utcfromtimestamp(ts) 
             datetime_ts_string[i] = datetime_ts.strftime('%Y-%m-%d %I:%M:%S %p')
         """
@@ -303,6 +303,6 @@ class GoodVisualization(SingleVisualizationInterface):
 
 
 if __name__ == '__main__':
-    # main()
-    generate_plot_for_everyone()
+    main()
+    # generate_plot_for_everyone()
     
