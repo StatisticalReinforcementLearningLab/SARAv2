@@ -423,6 +423,19 @@ describe('Money service: ', () => {
 
     });
 
+    it('14DayOnCheck: check if lastOnDate="2021-02-24", then 14-day ago check is returning true', () => {
+
+        var onDatesSurveyIsTurnedOn: any = {
+            "2020-02-04": 1,
+            "2020-02-05": 1,
+            "2021-02-24": 1
+        };
+        var isSurveyTurnedOnAfter14Days = awardMoneyService.isLastTurnOnDateWas14DayAgo(onDatesSurveyIsTurnedOn);
+        expect(isSurveyTurnedOnAfter14Days).toBeTruthy();
+
+
+    });
+
 
     it('14DayOnCheck: check if lastOnDate is (today-12), then 14-day ago check is returning false', () => {
 

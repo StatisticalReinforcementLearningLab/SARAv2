@@ -44,6 +44,11 @@ export class AwardDollarService {
     giveDollars(){
         var dailySurveyHistory = this.userProfileService.userProfile.survey_data.daily_survey;
         var onDatesSurveyIsTurnedOn = this.userProfileService.userProfileFixed.onDates;
+
+        // Debug: heck if file is not downloaded
+        // onDatesSurveyIsTurnedOn = {}; //Returns false. "isLastTurnOnDateWas14DayAgo" returns false.
+        // onDatesSurveyIsTurnedOn = undefined; Returns false. "isLastTurnOnDateWas14DayAgo" returns false.  
+
         return this.giveDollarsWithoutDependency(dailySurveyHistory, onDatesSurveyIsTurnedOn);
     }
 
