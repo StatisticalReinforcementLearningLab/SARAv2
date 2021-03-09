@@ -133,6 +133,8 @@ export class DynamicSurveyComponent implements OnInit {
           var obj = this.survey_data[i];
           this.isQuestionIncomplete[obj.name] = {"tag": obj.tag};
         }
+        // get up to date userProfileFixed - to see if isActive has changed
+        this.userProfileService.fetchUserProfileFixed().subscribe(response=>{});
       }
 
       ngAfterViewInit() {
