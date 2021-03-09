@@ -110,11 +110,13 @@ export class UserProfileService {
           let changed = false;
           console.log("fetchUserProfileFixed response: "+  JSON.stringify(response));
           let receivedUserFixedProfile:UserProfileFixed = response;
-          if(receivedUserFixedProfile.isActive !== this.userProfileFixed.isActive){
-            this.userProfileFixed = response;
-            this.saveProfileToDevice();
-            changed = true;
-          }
+
+          //if(receivedUserFixedProfile.isActive !== this.userProfileFixed.isActive){
+          this.userProfileFixed = response;
+          this.saveProfileToDevice();
+          changed = true;
+          //}
+
           return { "changed": changed}
         }
       ));
