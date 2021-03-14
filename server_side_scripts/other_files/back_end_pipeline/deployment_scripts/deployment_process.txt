@@ -1,0 +1,54 @@
+Login
+
+chmod 400 ./HarvardDevSARA2020.pem
+ssh -i ./HarvardDevSARA2020.pem ec2-user@ec2-54-146-43-246.compute-1.amazonaws.com
+
+=========================
+
+Crontab
+*/30 * * * *  bash ~/SARA-H/parsers/run_parsers.sh
+*/30 * * * *  bash ~/SARA-H/visualizations/run_visualization_generator.sh
+
+
+
+=========================
+
+Parsers
+
+sudo yum install python3 -y
+
+python3 -m venv parsers_env
+
+source ./parsers_env/bin/activate
+
+=========================
+
+Install node
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+. ~/.nvm/nvm.sh
+nvm install node
+node -e "console.log('Running Node.js ' + process.version)"
+
+npm install crypto-js
+
+=========================
+
+Visualizations
+
+python3 -m venv viz_env
+
+source ./viz_env/bin/activate
+
+//need to install Vega cli
+npm install -g vega-lite vega-cli canvas 
+
+
+//set timezone to pst
+rm -f /etc/localtime
+ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
+
+
+
+
+

@@ -12,6 +12,7 @@ import { DatabaseService } from 'src/app/monitor/database.service';
 export class SleepSurveyComponent implements OnInit {
 
   whichImage;
+  showScreenUsage;
 
   constructor(private userProfileService: UserProfileService,
     private mobileAccessibility: MobileAccessibility,
@@ -19,7 +20,8 @@ export class SleepSurveyComponent implements OnInit {
 
     ngOnInit() {
       this.mobileAccessibility.usePreferredTextZoom(false);
-          }
+      this.showScreenUsage = false;
+    }
   
     ionViewDidEnter(){
 
