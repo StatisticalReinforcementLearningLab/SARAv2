@@ -1,4 +1,0 @@
-*/5 * * * *  python /home/ec2-user/SARA_modular/appendLineEndOfFile.py
-*/15 * * * *  python /home/ec2-user/SARA_modular/SendOneSignalNotification4PM.py
-*/15 * * * *  python /home/ec2-user/SARA_modular/SendOneSignalNotification6PM.py
-*/30 * * * *  python /home/ec2-user/SARA_modular/send8PMNotification.py
