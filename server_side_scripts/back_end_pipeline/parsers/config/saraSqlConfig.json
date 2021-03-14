@@ -1,7 +1,0 @@
-{
-    "passwd":"helloworld",
-    "host":"ec2-52-201-144-36.compute-1.amazonaws.com",
-    "port":3308,
-    "user":"root",
-    "database": "HarvardDev"
-}
