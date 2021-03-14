@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.8.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}, "axis": {"labelAngle": 45, "titleColor": "#004B99", "titleFontSize": 15}, "background": "aliceblue", "title": {"color": "#004B99", "fontSize": 25}}, "data": {"name": "data-d751713988987e9331980363e24189ce"}, "mark": "rect", "encoding": {"color": {"type": "quantitative", "field": "good_day", "legend": null, "scale": {"domain": ["Yes", "No"], "range": ["green", "#99004B"]}}, "x": {"type": "nominal", "field": "timestamp", "title": "Date"}, "y": {"type": "nominal", "field": "good_day", "impute": {"keyvals": ["01-09-2021", "01-10-2021", "01-11-2021", "01-12-2021", "01-13-2021", "01-14-2021", "01-15-2021", "01-16-2021", "01-17-2021", "01-18-2021", "01-19-2021", "01-20-2021", "01-21-2021", "01-22-2021", "01-23-2021", "01-24-2021", "01-25-2021", "01-26-2021", "01-27-2021", "01-28-2021", "01-29-2021", "01-30-2021", "01-31-2021", "02-01-2021", "02-02-2021", "02-03-2021", "02-04-2021", "02-05-2021", "02-06-2021", "02-07-2021", "02-08-2021"], "value": null}, "sort": {"field": "good_day", "order": "descending"}, "title": "Good Day Tomorrow"}}, "height": 200, "title": "Response to \"Will I Have a Good Day Tomorrow?\"", "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-d751713988987e9331980363e24189ce": []}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
