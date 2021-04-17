@@ -1,7 +1,8 @@
 {
   "name": "SARAv2",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }
