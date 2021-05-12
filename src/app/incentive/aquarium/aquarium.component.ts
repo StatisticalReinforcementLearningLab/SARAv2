@@ -320,8 +320,12 @@ export class AquariumComponent implements OnInit {
   //  this.navController.navigateRoot(['survey/harvardsurvey']);
   //}
 
-  showSleepSurvey(){
-    this.navController.navigateRoot(['survey/sleepsurvey']);
+  //showSleepSurvey(){
+  //  this.navController.navigateRoot(['survey/sleepsurvey']);
+  //}
+
+  showDogsSurvey(){
+      this.navController.navigateRoot(['survey/dogssurvey']);
   }
 
 
