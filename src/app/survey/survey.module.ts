@@ -19,6 +19,7 @@ import {EffectsModule} from '@ngrx/effects';
 import { SurveyEffects } from './survey.effects';
 //import { HarvardSurveyComponent } from './harvard-survey/harvard-survey.component';
 import { SleepSurveyComponent } from './sleep-survey/sleep-survey.component';
+import { DogsSurveyComponent } from './dogs-survey/dogs-survey.component';
 
 const routes: Routes = [
     { path: 'samplesurvey', component: SampleSurveyComponent }
@@ -30,7 +31,8 @@ const routes: Routes = [
     AyaSampleSurveyComponent,
     SampleSurveyComponent,
     //HarvardSurveyComponent,
-    SleepSurveyComponent],
+    SleepSurveyComponent,
+    DogsSurveyComponent],
   imports: [
     CommonModule,
     IonicModule.forRoot(),
@@ -46,7 +48,8 @@ const routes: Routes = [
     SampleSurveyComponent,
     AyaSampleSurveyComponent,
     //HarvardSurveyComponent,
-    SleepSurveyComponent
+    SleepSurveyComponent,
+    DogsSurveyComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
