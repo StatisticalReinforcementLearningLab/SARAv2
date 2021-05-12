@@ -19,7 +19,7 @@ export class SleepSurveyComponent implements OnInit {
 
     ngOnInit() {
       this.mobileAccessibility.usePreferredTextZoom(false);
-      this.whichImage = "http://127.0.0.1:5000/plot.png";
+      this.whichImage = "https://sara-template-data-storage.s3.amazonaws.com/notification_images/gracie_guilty.jpg";
     }
   
     ionViewDidEnter(){
