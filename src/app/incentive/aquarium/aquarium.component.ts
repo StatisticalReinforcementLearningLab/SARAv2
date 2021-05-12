@@ -316,10 +316,9 @@ export class AquariumComponent implements OnInit {
     this.router.navigate(['incentive/award-altruism']);
   }
 
-  showHarvardSurvey(){
-    this.navController.navigateRoot(['survey/harvardsurvey']);
-    //this.router.navigate(['survey/harvardsurvey']);
-  }
+  //showHarvardSurvey(){
+  //  this.navController.navigateRoot(['survey/harvardsurvey']);
+  //}
 
   showSleepSurvey(){
     this.navController.navigateRoot(['survey/sleepsurvey']);

@@ -17,7 +17,7 @@ import { StoreModule } from '@ngrx/store';
 import {surveyReducer} from './reducers';
 import {EffectsModule} from '@ngrx/effects';
 import { SurveyEffects } from './survey.effects';
-import { HarvardSurveyComponent } from './harvard-survey/harvard-survey.component';
+//import { HarvardSurveyComponent } from './harvard-survey/harvard-survey.component';
 import { SleepSurveyComponent } from './sleep-survey/sleep-survey.component';
 
 const routes: Routes = [
@@ -29,7 +29,7 @@ const routes: Routes = [
     DynamicSurveyComponent,
     AyaSampleSurveyComponent,
     SampleSurveyComponent,
-    HarvardSurveyComponent,
+    //HarvardSurveyComponent,
     SleepSurveyComponent],
   imports: [
     CommonModule,
@@ -45,7 +45,7 @@ const routes: Routes = [
     DynamicSurveyComponent,
     SampleSurveyComponent,
     AyaSampleSurveyComponent,
-    HarvardSurveyComponent,
+    //HarvardSurveyComponent,
     SleepSurveyComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
