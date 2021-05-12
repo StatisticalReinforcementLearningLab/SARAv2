@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-toolbar class="new-background-color">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="home" style="color:#fff;"></ion-back-button>
+        </ion-buttons>
+        <ion-title style="color:#fff;">Dogs survey</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div>
+        <img [src]="whichImage" style="height: auto;width: 100%;padding-top:0px; border: 0px solid #fff;"/>
+    </div>
+    
+    <app-dynamic-survey jsonFileLinkForSurvey="dogs_survey"></app-dynamic-survey>
+    
+
+</ion-content>
