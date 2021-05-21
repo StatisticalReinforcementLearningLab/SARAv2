@@ -20,7 +20,7 @@ export class SleepSurveyComponent implements OnInit {
 
     ngOnInit() {
       this.mobileAccessibility.usePreferredTextZoom(false);
-      this.showScreenUsage = false;
+      this.showScreenUsage = true;
     }
   
     ionViewDidEnter(){

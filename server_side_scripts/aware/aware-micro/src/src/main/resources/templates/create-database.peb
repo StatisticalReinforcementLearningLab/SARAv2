@@ -1,0 +1,41 @@
+{% extends './common/base.peb' %}
+
+{% block content %}
+<div class="mdl-card mdl-shadow--2dp" style="width:512px; margin:auto; margin:50px auto 50px auto">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Database</h2>
+  </div>
+  <div class="mdl-card__supporting-text">
+    Almost there {{user}}! We will now configure the database service you want to store your participants' data.
+  </div>
+  <div class="mdl-card__actions mdl-card--border">
+    <form action="/create-database" method="post" id="create-server">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="domain" name="domain">
+        <label class="mdl-textfield__label" for="domain">Domain</label>
+        <span>If you are using the same server as this server, type: localhost</span>
+      </div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="port" name="port" required pattern="-?[0-9]*(\.[0-9]+)?">
+        <label class="mdl-textfield__label" for="port">Port</label>
+        <span class="mdl-textfield__error">You need a number here, usually 3306 :)</span>
+      </div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="dbUser" name="dbUser">
+        <label class="mdl-textfield__label" for="dbUser">User</label>
+      </div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="password" id="dbPassword" name="dbPassword">
+        <label class="mdl-textfield__label" for="dbPassword">Password</label>
+      </div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="dbName" name="dbName">
+        <label class="mdl-textfield__label" for="dbName">Database name</label>
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="float:right" type="submit">Next</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock content %}
