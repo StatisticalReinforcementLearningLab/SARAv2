@@ -252,24 +252,19 @@ export class AquariumComponent implements OnInit {
   startSurvey(){
     console.log('start survey');
     var currentTime = moment(); 
-    var startTime = moment({hour: 18});  // 6pm
-    var endTime = moment({hour: 23, minute: 59});  // 11:59pm
+    var startTime = moment({hour: 9});  // 9am
+    var endTime = moment({hour: 20, minute: 59});  // 8:59pm
     var firstLogin = this.userProfileService.userProfile.firstlogin;
     if(firstLogin == undefined)  firstLogin = true;
     this.userProfileService.userProfile.firstlogin = false;
     this.userProfileService.saveProfileToDevice();
     this.userProfileService.saveToServer();
     if(!currentTime.isBetween(startTime, endTime) && !firstLogin) {
-      this.presentAlert('Please come back between 6 PM and midnight');
+      this.presentAlert('Please come back between 9 AM and 9PM');
     } else if(this.userProfileService.surveyTakenForCurrentDay()) {
       this.presentAlert('You have already completed the survey for the day.');
     } else {
-      if (this.userProfileService.isParent){
-        this.navController.navigateRoot(['survey/samplesurvey']);  //caregiversurvey
-      } else{
-        this.navController.navigateRoot(['survey/samplesurvey2']);  //aya
-      }
-
+      this.navController.navigateRoot(['survey/dogssurvey']);
     } 
 
   }

@@ -35,22 +35,15 @@
 
 
       <ion-buttons slot="end">
-          <font color="white">${{money}}</font>
+          <!-- <font color="white">${{money}}</font> -->
 
-          
+          <!-- 
           <ion-button style="color:#fff;" (click)="startCheatPage()"  *ngIf="!isIOS">
             <ion-icon name="alert"></ion-icon>
           </ion-button>
-          
-  
-          <!-- Mash codes:
-          <ion-text  *ngIf="!isActive" style="color:#fff;"><strong>Account is Paused</strong> </ion-text>
-          <ion-button style="color:#fff;" (click)="startSurvey()">
-            <ion-icon name="journal"></ion-icon>
-          </ion-button>
           -->
-  
-          <ion-button (click)="showDogsSurvey()"   *ngIf="isActive">
+          
+        <ion-button (click)="startSurvey()"   *ngIf="isActive">
             <ion-icon name="ios-create" style="color : white;"></ion-icon>
         </ion-button>
  
@@ -101,7 +94,7 @@
     <ion-button color="primary" (click)="showHarvardSurvey()">Harvard survey</ion-button>
     -->
 
-    <ion-button color="primary" (click)="showPythonLifeInsight()">Python life-insight</ion-button>
+    <!-- <ion-button color="primary" (click)="showPythonLifeInsight()">Python life-insight</ion-button> -->
     
     
   </ion-content>
