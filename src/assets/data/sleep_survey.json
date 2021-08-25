@@ -1,21 +1,26 @@
 [
-    {
-      "name":"Q1",
-      "text":"1. How much do you like dogs?",
-      "type":"radiobutton",
-      "extra":{
-        "choices":["Obsessed","Love them","They're ok","I'm evil"],
-        "orientation":"vertical"
+  {
+    "name":"Q1",
+    "text":"1. What time did you get into bed? (This may not be the time that you began “trying” to fall asleep.)",
+    "type":"range_time",
+    "extra":{
+      "choices":["8:00<br>PM", "4:00<br>AM",0,8,0.5, "12:00 AM"]
       }
     },
     {
       "name":"Q2",
-      "text":"2. Do you prefer dogs or cats?",
-      "type":"radiobutton",
+      "text":"2. What time did you try to go to sleep? (Record the time that you began “trying” to fall asleep)",
+      "type":"range_time",
       "extra":{
-        "choices":["Strongly prefer dogs","Strongly prefer cats"],
-	"orientation":"horizontal",
-	"levels":5
+        "choices":["8:00<br>PM", "4:00<br>AM",0,8,0.5, "12:00 AM"]
+      }
+    },
+    {
+      "name":"Q3",
+      "text":"3. What time did you wake up this morning?",
+      "type":"range_time",
+      "extra":{
+        "choices":["4:00<br>AM", "12:00<br>PM",0,8,0.5, "8:00 AM"]
       }
     }
 
