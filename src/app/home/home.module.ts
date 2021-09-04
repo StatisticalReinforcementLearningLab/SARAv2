@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { ContactComponent } from './contact/contact.component';
+import { InterventionModule } from '../intervention/intervention.module';
 
 @NgModule({
   imports: [
@@ -18,6 +19,9 @@ import { ContactComponent } from './contact/contact.component';
     IonicModule,
     AquariumModule,
     HomeRoutingModule,
+    InterventionModule, 
+    //Note for mash:
+    //has to imported since SleepMonitoringComponent is another module. 
     RouterModule.forChild([
       {
         path: '',
