@@ -51,8 +51,8 @@ import { InterventionModule } from './intervention/intervention.module';
     AquariumModule,
     FormsModule,
     UserModule,
-    HomePageModule,
     InterventionModule,
+    HomePageModule,
     BlobModule.forRoot(),
     //this ngrx import
     StoreModule.forRoot(reducers, {

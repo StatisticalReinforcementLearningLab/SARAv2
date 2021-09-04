@@ -32,6 +32,7 @@ import { VideoInfoPageComponent } from './incentive/video-info-page/video-info-p
 import { SamplePythonViewComponent } from './incentive/life-insights/sample-python-view/sample-python-view.component';
 import { SleepSurveyComponent } from './survey/sleep-survey/sleep-survey.component';
 import { DogsSurveyComponent } from './survey/dogs-survey/dogs-survey.component';
+import { SleepMonitoringComponent } from './intervention/sleep-monitoring/sleep-monitoring.component';
 
 
 const routes: Routes = [
@@ -74,6 +75,7 @@ const routes: Routes = [
   { path: 'preview/fishbowl', component: FishbowlComponent, canActivate: [AuthGuard]},
   { path: 'preview/sea', component: SeaComponent, canActivate: [AuthGuard]},
   { path: 'preview/tundra', component: TundraComponent, canActivate: [AuthGuard]},
+  { path: 'intervention/sleep-monitoring', component: SleepMonitoringComponent, canActivate: [AuthGuard]},
   { path: 'preview/rainforest', component: RainforestComponent, canActivate: [AuthGuard]}
 
   //{ path: 'incentive/award-memes', component: AwardMemesComponent },
