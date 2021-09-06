@@ -64,11 +64,13 @@ export class SleepMonitoringComponent implements OnInit {
     // RSA examples in Forge:
     //    https://medium.com/@DannyAziz97/rsa-encryption-with-js-python-7e031cbb66bb
     //    https://github.com/digitalbazaar/forge/blob/master/README.md#rsa
-    let requestDataJson = {"user_id": this.userProfileService.username, "sleep_data": {"report_date": "20210901", "start": "1:30", "end": "08:00"}}
+
+    // {"user_id": this.userProfileService.username, "sleep_data": {"report_date": "20210901", "start": "1:30", "end": "08:00"}}
+    let requestDataJson = {"user_id": this.userProfileService.username}
     let requestData2 = this.encryptWithPublicKey(JSON.stringify(requestDataJson));
-    // console.log("Encrypted: " + requestData2)
-    // console.log("Encrypted (encoded): " + encodeURIComponent(requestData2))
-    
+    console.log("Encrypted: " + requestData2)
+    console.log("Encrypted (encoded): " + encodeURIComponent(requestData2))
+
     const headers = new HttpHeaders().set('Content-Type', "text/plain");
     let params = new HttpParams().set("raw", encodeURIComponent(requestData2)).set("time", Date.now().toString());
 
