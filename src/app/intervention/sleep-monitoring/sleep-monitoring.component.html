@@ -23,5 +23,23 @@
             *ngIf="!isImageLoading">
       <img src="assets/img/sleeping_cat.gif" alt="Fallbackimage"  *ngIf="isImageLoading">
 
+      <ion-list  *ngIf="!isImageLoading" padding>
+        <ion-item>
+            <p style="font-size: 12px;">
+                <b>State</b><br>
+                2 out of surveys completed in 3 days (recently high).<br>
+                5 out of surveys completed in 14 days (overall low).<br>
+                8 hours of sleep in 1 out of 3 days (recent low).<br>
+                8 hours of sleep in 2 out of 14 days (overall low).
+            </p>
+        </ion-item>
+        <ion-item>
+            <p style="font-size: 12px;">
+                <br><b>Messages</b><br>
+                ['Default state message #1', 'Default state message #2', 'Sample message #1 from catch all pool', 'Sample message #2 from catch all pool']
+            </p>
+        </ion-item>
+
+    </ion-list>
 
 </ion-content>

@@ -124,7 +124,7 @@ export class DynamicSurveyComponent implements OnInit {
 
 
             isQuestionIncomplete = {};
-            fileLink: string | string[];
+            fileLink: string;
             versionNumber: string;
             lifeInsightObj = {};
             //storeToFirebaseService: StoreToFirebaseService;
@@ -350,11 +350,29 @@ export class DynamicSurveyComponent implements OnInit {
                 //--- encrypt the survey and upload it to S3.
                 this.enycryptSurveyDataAndUploadToS3();
 
+                //--- save an encrypted copy of the survey
+                this.saveEncryptedSurveyLocally();
+
                 //-- store survey completed into ngrx to send to server and any other listener.
                 this.storeToNgrxAndUpdateState();
 
                 //start giving all the incentives from here
                 this.provideIncentives();
+            }
+
+            saveEncryptedSurveyLocally() {
+                /*
+                Keeps a local copy of the survey in encrypted form.
+                The name of the file same as this.fileLink
+                */
+                var locallyStoredSurvey = {};
+                if (window.localStorage['localSurvey'] != undefined)
+                    locallyStoredSurvey = JSON.parse(window.localStorage.getItem('localSurvey'));
+
+                locallyStoredSurvey[this.fileLink] = {}
+                locallyStoredSurvey[this.fileLink]["encrypted"] = this.surveyAnswersJSONObject['encrypted'];
+                locallyStoredSurvey[this.fileLink]["date"] = moment().format('YYYYMMDD');
+                window.localStorage.setItem('localSurvey', JSON.stringify(locallyStoredSurvey));
             }
 
             addMetaTagsToSurvey() {
