@@ -21,6 +21,8 @@ export class SleepMonitoringComponent implements OnInit {
   whichImage;
   whichImage2
   isImageLoading;
+  stateDescription: string;
+  supportMessages: string;
 
   publicKey: string;
 
@@ -39,7 +41,28 @@ export class SleepMonitoringComponent implements OnInit {
     this.publicKey = environment.publicKey;
     this.whichImage = "http://ec2-3-223-25-230.compute-1.amazonaws.com:56734/sleep_graph.png";
     this.isImageLoading = false;
+    this.stateDescription = "Loading....";
+    this.supportMessages = "Loading....";
     this.getImageFromService();
+    this.getSupportMessageFromService();
+  }
+
+  getSupportMessageFromService() {
+
+    var requestDataJson = {"user_id": this.userProfileService.username};
+    requestDataJson = this.addTodaysSleepDataIfAvailable(requestDataJson);
+
+    var flaskServerAPIEndpoint = environment.flaskServerForIncentives;
+    flaskServerAPIEndpoint = "http://ec2-3-223-25-230.compute-1.amazonaws.com:56733"
+    this.httpClient.post(flaskServerAPIEndpoint + '/sleep_messages', requestDataJson).subscribe({
+        next: data => {
+          // console.log(JSON.stringify(data));
+          this.stateDescription = data["state_description"];
+          this.supportMessages = JSON.stringify(data["support_messages"]);
+        },
+        error: error => console.error('There was an error!', error)
+    });
+    
   }
 
   encryptWithPublicKey(valueToEncrypt: string): string {
