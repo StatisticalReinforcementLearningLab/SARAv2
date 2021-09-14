@@ -48,6 +48,16 @@ export class SleepMonitoringComponent implements OnInit {
   }
 
   getSupportMessageFromService() {
+    /*
+       getSupportMessageFromService function get support message based on user's sleep
+       and survey adherence patterns for the last 14 days. 
+
+       This accomplishes this with a micro-service running on the ec2 server. 
+       The micro-service is located in "SARATemplate/apis/sleep_monitoring_messages"
+
+       The post request to the microservice inputs the username, and optionally  
+       sleep data for the current if it available.
+    */
 
     var requestDataJson = {"user_id": this.userProfileService.username};
     requestDataJson = this.addTodaysSleepDataIfAvailable(requestDataJson);
@@ -84,6 +94,22 @@ export class SleepMonitoringComponent implements OnInit {
   }
 
   getImage(imageUrl: string): Observable<Blob> {
+
+    /*
+       getImage function get sleep monitoring graph message based on user's sleep
+       and survey adherence patterns for the last 14 days. 
+
+       This accomplishes this with a micro-service running on the ec2 server. 
+       The micro-service is located in "SARATemplate/apis/sleep_self_monitoring"
+
+       The post request to the microservice inputs the username, and optionally  
+       sleep data for the current if it available. These inputs are supplied as
+       a RSA 2048 encrypted string. The public key for the encryption is in 
+       the environment file. The private key will be stored in the serve
+       micro-service. 
+    */
+
+
     // reference
     // Http client
     //    https://www.tektutorialshub.com/angular/angular-http-get-example-using-httpclient/
