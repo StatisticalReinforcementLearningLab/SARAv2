@@ -39,7 +39,7 @@ export class SleepMonitoringComponent implements OnInit {
   ngOnInit() {
     this.menuCtrl.close();
     this.publicKey = environment.publicKey;
-    this.whichImage = "http://ec2-3-223-25-230.compute-1.amazonaws.com:56734/sleep_graph.png";
+    this.whichImage = environment.flaskServerForSleepSelfMonitoringGraphs + "/sleep_graph.png";
     this.isImageLoading = false;
     this.stateDescription = "Loading....";
     this.supportMessages = "Loading....";
@@ -62,8 +62,7 @@ export class SleepMonitoringComponent implements OnInit {
     var requestDataJson = {"user_id": this.userProfileService.username};
     requestDataJson = this.addTodaysSleepDataIfAvailable(requestDataJson);
 
-    var flaskServerAPIEndpoint = environment.flaskServerForIncentives;
-    flaskServerAPIEndpoint = "http://ec2-3-223-25-230.compute-1.amazonaws.com:56733"
+    var flaskServerAPIEndpoint = environment.flaskServerForSleepSelfMonitoringMessage;
     this.httpClient.post(flaskServerAPIEndpoint + '/sleep_messages', requestDataJson).subscribe({
         next: data => {
           // console.log(JSON.stringify(data));
