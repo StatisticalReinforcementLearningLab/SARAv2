@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-toolbar class="new-background-color">
+      <ion-buttons slot="start">
+        <ion-back-button style="color:#fff;" defaultHref="home"></ion-back-button>
+      </ion-buttons>
+      <ion-title style="color:#fff;">Sleep monitoring</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <!--
+    <iframe
+        width="300px"
+        height="100%"
+        [src]="helpUrl"
+        frameborder="0"
+        allowfullscreen
+    ></iframe>
+    -->
+
+      <img [src]="imageToShow"
+            alt="Place image title"
+            *ngIf="!isImageLoading">
+      <img src="assets/img/sleeping_cat.gif" alt="Fallbackimage"  *ngIf="isImageLoading">
+
+      <ion-list  *ngIf="!isImageLoading" padding>
+        <ion-item>
+            <p style="font-size: 12px;">
+                <b>State</b><br>
+                {{stateDescription}}
+            </p>
+        </ion-item>
+        <ion-item>
+            <p style="font-size: 12px;">
+                <br><b>Messages</b><br>
+                {{supportMessages}}
+            </p>
+        </ion-item>
+
+    </ion-list>
+
+</ion-content>
