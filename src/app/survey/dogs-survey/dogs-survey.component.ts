@@ -12,6 +12,7 @@ import { DatabaseService } from 'src/app/monitor/database.service';
 export class DogsSurveyComponent implements OnInit {
 
   whichImage;
+  
 
   constructor(private userProfileService: UserProfileService,
     private mobileAccessibility: MobileAccessibility,
