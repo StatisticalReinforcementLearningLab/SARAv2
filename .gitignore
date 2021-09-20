@@ -11,3 +11,7 @@ copy_these_files/adapts_scripts/adapts_flask/config.ini
 aws_config.json
 mysql_config.json
 saraSqlConfig.json
+*.pem
+*.csv
+aware-config.json
+
