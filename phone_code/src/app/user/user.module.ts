@@ -6,8 +6,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicModule } from '@ionic/angular';
 import { AuthService } from './auth/auth.service';
 import { environment } from 'src/environments/environment';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth';
 import { UserProfileService } from './user-profile/user-profile.service';
 import { UserProfile } from './user-profile/user-profile.model';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -19,10 +17,7 @@ import { LoadingSpinnerComponent } from './auth/loading-spinner/loading-spinner.
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule.forRoot(),
-    // AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
-    
+    IonicModule.forRoot()
   ],
   exports: [AuthComponent],
   providers: [
@@ -31,7 +26,6 @@ import { LoadingSpinnerComponent } from './auth/loading-spinner/loading-spinner.
       useClass: TokenInterceptor,
       multi: true
     }
-    // , UserProfile
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
