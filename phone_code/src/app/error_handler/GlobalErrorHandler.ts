@@ -1,21 +1,8 @@
 import { ErrorHandler, Injectable, Injector } from '@angular/core';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import * as StackTrace from 'stacktrace-js';
-
-import * as Sentry from 'sentry-cordova';
 import { HttpErrorResponse } from '@angular/common/http';
 
-Sentry.init({
-  dsn: "https://b52fab19a7b54657aa485caf384beb23@o408765.ingest.sentry.io/5280045"
-  // TryCatch has to be configured to disable XMLHttpRequest wrapping, as we are going to handle
-  // http module exceptions manually in Angular's ErrorHandler and we don't want it to capture the same error twice.
-  // Please note that TryCatch configuration requires at least @sentry/browser v5.16.0.
-
-  // extra steps for ionic
-  // https://docs.sentry.io/platforms/javascript/ionic/
-
-  
-});
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
@@ -63,7 +50,7 @@ export class GlobalErrorHandler implements ErrorHandler {
         let extractedError = this.extractError(error) || "Handled unknown error";
 
         // Capture handled exception and send it to Sentry.
-        const eventId = Sentry.captureException(extractedError);
+        // const eventId = Sentry.captureException(extractedError);
         
         // When in development mode, log the error to console for immediate feedback.
         //if (!environment.production) {

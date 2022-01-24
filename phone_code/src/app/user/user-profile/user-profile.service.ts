@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserProfile, UserProfileFixed } from './user-profile.model';
 import { HttpClient } from '@angular/common/http';
-import * as firebase from 'firebase';
+//import * as firebase from 'firebase';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject, forkJoin, Subscription } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
