@@ -2,8 +2,6 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-
-import { BlobModule } from 'angular-azure-blob-service';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -53,8 +51,6 @@ import { InterventionModule } from './intervention/intervention.module';
     UserModule,
     InterventionModule,
     HomePageModule,
-    BlobModule.forRoot(),
-    //this ngrx import
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
