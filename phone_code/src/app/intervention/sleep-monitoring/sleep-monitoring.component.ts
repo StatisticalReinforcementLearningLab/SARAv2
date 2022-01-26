@@ -31,7 +31,7 @@ export class SleepMonitoringComponent implements OnInit {
     private userProfileService: UserProfileService,
     private EncrDecr: EncrDecrService,
     private httpClient: HttpClient) { 
-
+      
   }
 
   
