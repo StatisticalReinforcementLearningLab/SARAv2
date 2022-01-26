@@ -20,8 +20,6 @@
     "@angular/platform-browser": "~8.1.2",
     "@angular/platform-browser-dynamic": "~8.1.2",
     "@angular/router": "~8.1.2",
-    "@capacitor/android": "^2.4.7",
-    "@capacitor/core": "2.4.7",
     "@ionic-native/app-version": "^5.21.5",
     "@ionic-native/core": "^5.0.0",
     "@ionic-native/in-app-browser": "^5.32.0",
@@ -37,15 +35,12 @@
     "@ngrx/schematics": "^9.1.0",
     "@ngrx/store": "^8.5.2",
     "@ngrx/store-devtools": "^8.5.2",
-    "@sentry/browser": "^5.17.0",
-    "@sentry/wizard": "^1.1.4",
     "@types/crypto-js": "^3.1.43",
     "@types/node-forge": "^0.10.3",
     "aws-sdk": "^2.608.0",
     "canvas": "^2.6.1",
     "canvas-confetti": "^1.1.2",
     "chart.js": "^2.9.3",
-    "cordova-android": "^8.1.0",
     "cordova-ios": "^5.1.1",
     "cordova-plugin-app-version": "^0.1.9",
     "cordova-plugin-device": "^2.0.2",
@@ -82,13 +77,16 @@
     "@angular/compiler": "~8.1.2",
     "@angular/compiler-cli": "~8.1.2",
     "@angular/language-service": "~8.1.2",
-    "@capacitor/cli": "2.4.7",
     "@ionic/angular-toolkit": "^2.1.1",
     "@ionic/lab": "2.0.15",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^8.9.5",
     "codelyzer": "~4.5.0",
+    "cordova-android": "^10.1.1",
+    "fuzzy": "^0.1.3",
+    "inquirer": "^6.2.2",
+    "inquirer-autocomplete-prompt": "^1.0.1",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
@@ -99,10 +97,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.4.3",
-    "fuzzy": "^0.1.3",
-    "inquirer": "^6.2.2",
-    "inquirer-autocomplete-prompt": "^1.0.1"
+    "typescript": "~3.4.3"
   },
   "description": "An Ionic project",
   "config": {
@@ -125,9 +120,6 @@
       "cordova-plugin-network-information": {},
       "cordova-plugin-ionic-webview": {
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
-      },
-      "sentry-cordova": {
-        "SENTRY_ANDROID_SDK_VERSION": "1+"
       },
       "phonegap-plugin-mobile-accessibility": {},
       "cordova-plugin-inappbrowser": {}
