@@ -4,9 +4,9 @@ import { Platform, AlertController, ModalController, NavController, MenuControll
 import * as moment from 'moment';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserProfileService } from '../../user/user-profile/user-profile.service';
-import { myEnterAnimation } from '../../animations/modal_enter';
+//import { myEnterAnimation } from '../../animations/modal_enter';
 import { ModalUnlockedPageComponent } from '../../incentive/aquarium/modal-unlocked-page/modal-unlocked-page.component';
-import { myLeaveAnimation } from '../../animations/modal_leave';
+//import { myLeaveAnimation } from '../../animations/modal_leave';
 import { AppState } from '../../reducers';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -342,11 +342,12 @@ export class AquariumComponent implements OnInit {
     //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
     //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
     //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
-    this.presentModal(reinforcements);
+    //this.presentModal(reinforcements);
   }
 
 
   //show unlocked pages, using a modal
+  /*
   async presentModal(reinforcements) {
     const modal = await this.modalController.create({
       component: ModalUnlockedPageComponent,
@@ -360,6 +361,7 @@ export class AquariumComponent implements OnInit {
     });
     return await modal.present();
   }
+  */
 
 
   showModal(){
@@ -448,8 +450,8 @@ export class AquariumComponent implements OnInit {
           }
       }
       console.log("reinforcements: " + JSON.stringify(reinforcements));
-      if(reinforcements.length > 0)//means some rainforcement was provided.
-        this.presentModal(reinforcements);
+      //if(reinforcements.length > 0)//means some rainforcement was provided.
+        //this.presentModal(reinforcements);
     });
 
     //update the state reinforcement
