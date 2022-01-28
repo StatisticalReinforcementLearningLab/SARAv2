@@ -54,7 +54,7 @@ const routes: Routes = [
   
   { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [AuthGuard]},
   {path: 'auth', component: AuthComponent}, 
-  { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate: [AuthGuard]},
+  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule), canActivate: [AuthGuard]},
   //{ path: 'home', component: DemoAquariumComponent, canActivate: [AuthGuard]},
   { path: 'incentive/sample-life-insight', component: SampleLifeInsightsComponent, canActivate: [AuthGuard]},
   { path: 'incentive/treasurechest', component: TreasurechestComponent, canActivate: [AuthGuard]},

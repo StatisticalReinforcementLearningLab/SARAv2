@@ -47,7 +47,7 @@ export class DynamicSurveyComponent implements OnInit {
     surveyQuestionsInJSONDictFormat: any;
     versionNumber;
 
-    @ViewChild('vc', { read: ViewContainerRef, static: false }) vc: ViewContainerRef;
+    @ViewChild('vc', { read: ViewContainerRef }) vc: ViewContainerRef;
 
     constructor(private _compiler: Compiler,
         private _injector: Injector,
