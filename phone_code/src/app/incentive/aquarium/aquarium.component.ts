@@ -342,7 +342,7 @@ export class AquariumComponent implements OnInit {
     //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
     //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
     //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
-    //this.presentModal(reinforcements);
+    this.presentModal(reinforcements);
   }
 
 
@@ -362,6 +362,17 @@ export class AquariumComponent implements OnInit {
     return await modal.present();
   }
   */
+  async presentModal(reinforcements) {
+    const modal = await this.modalController.create({
+      component: ModalUnlockedPageComponent,
+      componentProps: {
+        'reinforcements': reinforcements
+      },
+      //,
+      cssClass: 'my-default-2'
+    });
+    return await modal.present();
+  }
 
 
   showModal(){
@@ -450,8 +461,8 @@ export class AquariumComponent implements OnInit {
           }
       }
       console.log("reinforcements: " + JSON.stringify(reinforcements));
-      //if(reinforcements.length > 0)//means some rainforcement was provided.
-        //this.presentModal(reinforcements);
+      if(reinforcements.length > 0)//means some rainforcement was provided.
+        this.presentModal(reinforcements);
     });
 
     //update the state reinforcement
