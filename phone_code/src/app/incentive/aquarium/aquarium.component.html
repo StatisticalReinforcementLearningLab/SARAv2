@@ -44,7 +44,7 @@
           -->
           
         <ion-button (click)="startSurvey()"   *ngIf="isActive">
-            <ion-icon name="ios-create" style="color : white;"></ion-icon>
+          <ion-icon name="create" style="color : white;"></ion-icon>
         </ion-button>
 
     <!--
@@ -60,7 +60,7 @@
           --> 
              
           <ion-button *ngIf="!isActive" (click)="dispalySurveyPausedMsg()" >
-              <ion-icon name="ios-create" style="color : #e74c3c;"></ion-icon>
+              <ion-icon name="create" style="color : #e74c3c;"></ion-icon>
           </ion-button>
           <!--
           <ion-button href="{{surveyPath}}" *ngIf="isActive">Start Survey</ion-button> 
@@ -87,7 +87,6 @@
     </div-->
   
     <app-demo-aquarium isPreview="false"></app-demo-aquarium>
-
     <!--
     <ion-button color="primary" (click)="showModalDemo()">Unlockables</ion-button>
     <ion-button color="primary" (click)="showMemeDemo()">Meme</ion-button>
