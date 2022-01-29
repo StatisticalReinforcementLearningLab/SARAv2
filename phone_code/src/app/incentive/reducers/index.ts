@@ -7,13 +7,15 @@ export interface UnlockecIncentiveState{
     unlockedIncentives : UnlockedIncentives
 }
 
-
 export const initialUnlockedIncentiveState: UnlockecIncentiveState = {
     unlockedIncentives: undefined 
 }
 
+export function incentiveReducer(state, action) {
+    return _incentiveReducer(state, action)
+}
 
-export const incentiveReducer = createReducer(
+export const _incentiveReducer = createReducer(
 
     initialUnlockedIncentiveState,
     on(IncentiveActions.surveyCompletedRegisterUnlocked, (state, payload) => {
