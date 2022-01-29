@@ -11,9 +11,11 @@ export interface SurveyState{
 export const initialSurveyState: SurveyState = {
     surveyTimeLine: undefined 
 }
-
-
-export const surveyReducer = createReducer(
+    
+export function surveyReducer(state, action) {
+    return _surveyReducer(state, action)
+}
+export const _surveyReducer = createReducer(
 
     initialSurveyState,
     on(SurveyActions.surveyCompleted, (state, action) => {
