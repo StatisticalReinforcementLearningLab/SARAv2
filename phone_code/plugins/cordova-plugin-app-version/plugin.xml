@@ -2,7 +2,7 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova-plugin-app-version"
-    version="0.1.9">
+    version="0.1.12">
 
     <name>AppVersion</name>
     <description>
@@ -75,5 +75,12 @@
         </config-file>
 
         <source-file src="src/wp8/AppVersion.cs" />
+    </platform>
+
+    <!-- browser -->
+    <platform name="browser">
+        <js-module src="src/browser/AppVersionProxy.js" name="AppVersionProxy">
+            <runs />
+        </js-module>
     </platform>
 </plugin>

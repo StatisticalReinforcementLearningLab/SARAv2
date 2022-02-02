@@ -2,6 +2,8 @@
 
 Reads the version of your app from the target build settings.
 
+We're [looking for maintainers](https://github.com/sampart/cordova-plugin-app-version/issues/100)!
+
 ## Installation
 
 ### With cordova-cli
@@ -16,7 +18,7 @@ with:
 With a plain [plugman](https://github.com/apache/cordova-plugman), you should be
 able to install with something like:
 
-    plugman --platform <ios|android> --project <directory> --plugin https://github.com/whiteoctober/cordova-plugin-app-version.git
+    plugman --platform <ios|android> --project <directory> --plugin https://github.com/sampart/cordova-plugin-app-version.git
 
 ### Manually in iOS
 
@@ -58,7 +60,7 @@ Returns the build identifier of the app
 
 Returns the version number of the app
 
-## Credits
+## Credits
 
 Written by [Robert (Jamie) Munro](http://twitter.com/rjmunro) at
 [White October](http://whiteoctober.co.uk/)
