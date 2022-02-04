@@ -14,4 +14,4 @@ saraSqlConfig.json
 *.pem
 *.csv
 aware-config.json
-
+.phone_code/.angular/cache
