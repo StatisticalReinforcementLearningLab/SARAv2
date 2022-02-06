@@ -1,0 +1,7 @@
+{
+    "tables": ["filled"],
+        "filled": ["dogs_survey"], 
+            "dogs_survey":["Q2"], 
+                "Q2": "> 2",
+    "csv":"cat_notifications.csv"
+}
