@@ -1,0 +1,5 @@
+Flask
+mysql-connector-python
+flask-cors
+python-dateutil
+pytz
