@@ -1,0 +1,1715 @@
+23/07/2021 20:00:04
+create a list of active users and oneSignalID
+Executing logic 0
+eurashin: > 2 --- 4 RES True
+finale: > 2 --- 2 RES False
+mash: > 2 --- 2 RES False
+susan: > 2 --- 1 RES False
+sarah: > 2 --- 0 RES False
+nathan: > 2 --- 0 RES False
+['eurashin']
+Sending notification 0 for eurashin
+{'user_id': 'eurashin', 'player_id': '34b8d11d-ff86-4feb-bbe7-ff5fe11c964f', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_cuddle.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+eurashin: <= 2 --- 4 RES False
+finale: <= 2 --- 2 RES True
+mash: <= 2 --- 2 RES True
+susan: <= 2 --- 1 RES True
+sarah: <= 2 --- 0 RES True
+nathan: <= 2 --- 0 RES True
+['finale', 'mash', 'susan', 'sarah', 'nathan']
+Sending notification 1 for finale
+{'user_id': 'finale', 'player_id': '5fb79d47-59c7-4ab2-90e7-17a8aacb20a2', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_strawberry.jpg'}
+received status 200 value Message Sent
+
+
+Sending notification 1 for mash
+{'user_id': 'mash', 'player_id': '8513e444-93fd-4d7b-8d84-772d644e11b1', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_boots.jpg'}
+received status 200 value Message Sent
+
+
+Sending notification 1 for susan
+{'user_id': 'susan', 'player_id': '55a70f11-f96f-48d9-9c80-ec5570338748', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_baby.jpg'}
+received status 200 value Message Sent
+
+
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_strawberry.jpg'}
+received status 200 value Message Sent
+
+
+Sending notification 1 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_piggy.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+23/07/2021 20:13:01
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 0 RES False
+nathan: > 2 --- 0 RES False
+[]
+
+
+
+Executing logic 1
+sarah: <= 2 --- 0 RES True
+nathan: <= 2 --- 0 RES True
+['sarah', 'nathan']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_boots.jpg'}
+received status 200 value Message Sent
+
+
+Sending notification 1 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_piggy.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+24/07/2021 20:13:01
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 0 RES False
+nathan: > 2 --- 0 RES False
+[]
+
+
+
+Executing logic 1
+sarah: <= 2 --- 0 RES True
+nathan: <= 2 --- 0 RES True
+['sarah', 'nathan']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_strawberry.jpg'}
+received status 200 value Message Sent
+
+
+Sending notification 1 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_strawberry.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+25/07/2021 20:13:01
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 2 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_donut.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 2 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_boots.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+26/07/2021 20:13:01
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 2 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_cuddle.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 2 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_wild.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+27/07/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 2 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_cuddle.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 2 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_wild.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+28/07/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 3 RES True
+nathan: > 2 --- 4 RES True
+['sarah', 'nathan']
+Sending notification 0 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_shirt.png'}
+received status 200 value Message Sent
+
+
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_bags.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 3 RES False
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+29/07/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 3 RES True
+nathan: > 2 --- 4 RES True
+['sarah', 'nathan']
+Sending notification 0 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_stretch.png'}
+received status 200 value Message Sent
+
+
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_shirt.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 3 RES False
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+30/07/2021 20:13:01
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 1 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_bags.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 1 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_boots.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+31/07/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 1 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_donut.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 1 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_guilty.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+01/08/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 1 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_stretch.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 1 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_baby.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+02/08/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 1 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_portrait.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 1 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_sweater.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+04/08/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 1 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_shirt.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 1 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_smile.jpg'}
+received status 500 value <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>500 Internal Server Error</title>
+<h1>Internal Server Error</h1>
+<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>
+
+
+
+
+
+
+03/08/2021 20:13:03
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 1 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_cuddle.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 1 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_piggy.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+05/08/2021 20:13:01
+create a list of active users and oneSignalID
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 232, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Host '172.31.86.68' is not allowed to connect to this MySQL server
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 156, in <module>
+    onesignal_ids = getListOfUsersAndOnesignalID()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 70, in getListOfUsersAndOnesignalID
+    activeUsersAndLatestDailySurvey = getActiveUsers()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 52, in getActiveUsers
+    db = load_database_config("study")
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 33, in load_database_config
+    database = dbname
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/__init__.py", line 272, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 85, in __init__
+    self.connect(**kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/abstracts.py", line 1003, in connect
+    self._open_connection()
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 235, in _open_connection
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.DatabaseError: 1130 (HY000): Host '172.31.86.68' is not allowed to connect to this MySQL server
+06/08/2021 20:13:03
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 1 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_outside.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 1 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_baby.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+07/08/2021 20:13:01
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 1 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_donut.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 1 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_guilty.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+08/08/2021 20:13:01
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 1 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_stretch.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 1 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_boots.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+09/08/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 2 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_shirt.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 2 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_boots.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+10/08/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 0 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_outside.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 0 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_boots.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+11/08/2021 20:13:01
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 0 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_donut.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 0 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_baby.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+12/08/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 4 RES True
+nathan: > 2 --- 4 RES True
+['sarah', 'nathan']
+Sending notification 0 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_cuddle.png'}
+received status 200 value Message Sent
+
+
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_cuddle.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 4 RES False
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+13/08/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 4 RES True
+nathan: > 2 --- 4 RES True
+['sarah', 'nathan']
+Sending notification 0 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_portrait.png'}
+received status 200 value Message Sent
+
+
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_stretch.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 4 RES False
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+14/08/2021 20:13:01
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 4 RES True
+nathan: > 2 --- 4 RES True
+['sarah', 'nathan']
+Sending notification 0 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_donut.png'}
+received status 200 value Message Sent
+
+
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_bags.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 4 RES False
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+15/08/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 4 RES True
+nathan: > 2 --- 4 RES True
+['sarah', 'nathan']
+Sending notification 0 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_outside.png'}
+received status 200 value Message Sent
+
+
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_bags.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 4 RES False
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+16/08/2021 20:13:03
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 1 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_donut.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 1 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_strawberry.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+17/08/2021 20:13:03
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 0 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_portrait.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 0 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_boots.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+18/08/2021 20:13:01
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 0 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_stretch.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 0 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_strawberry.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+19/08/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 0 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_bags.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 0 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_strawberry.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+20/08/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 0 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_stretch.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 0 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_piggy.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+21/08/2021 20:13:01
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 0 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_shirt.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 0 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_piggy.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+22/08/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 0 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_bags.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 0 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_piggy.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+23/08/2021 20:13:03
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 0 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_portrait.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 0 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_baby.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+24/08/2021 20:13:03
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 0 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_portrait.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 0 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_sweater.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+25/08/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+sarah: > 2 --- 0 RES False
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_donut.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+sarah: <= 2 --- 0 RES True
+nathan: <= 2 --- 4 RES False
+['sarah']
+Sending notification 1 for sarah
+{'user_id': 'sarah', 'player_id': 'dc4d06b2-8990-4a0a-958c-487f109f6163', 'heading': 'Stress Dog here', 'body': 'You can TAIL me about all your problems', 'db_update': 'y', 'image': 'gracie_wild.jpg'}
+received status 200 value Message Sent
+
+
+
+
+
+26/08/2021 20:13:01
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_donut.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+27/08/2021 20:13:03
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_stretch.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+28/08/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_shirt.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+29/08/2021 20:13:01
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_stretch.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+30/08/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_outside.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+31/08/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_outside.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+01/09/2021 20:13:03
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_outside.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+02/09/2021 20:13:01
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_portrait.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+03/09/2021 20:13:04
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_shirt.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+04/09/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_portrait.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+05/09/2021 20:13:03
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_shirt.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+06/09/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_shirt.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+07/09/2021 20:13:03
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_outside.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+08/09/2021 20:13:03
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_cuddle.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+09/09/2021 20:13:03
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_shirt.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+10/09/2021 20:13:05
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_donut.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+11/09/2021 20:13:03
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_stretch.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+12/09/2021 20:13:01
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_outside.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+13/09/2021 20:13:04
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_shirt.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+14/09/2021 20:13:03
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_outside.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+15/09/2021 20:13:03
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_bags.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+16/09/2021 20:13:04
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_bags.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+17/09/2021 20:13:03
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_bags.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+18/09/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_stretch.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+19/09/2021 20:13:02
+create a list of active users and oneSignalID
+Executing logic 0
+nathan: > 2 --- 4 RES True
+['nathan']
+Sending notification 0 for nathan
+{'user_id': 'nathan', 'player_id': '0848817e-a7fd-48cf-bc5d-e864772b6d94', 'heading': 'Stress Cat here', 'body': 'Tell MEOW about your problems', 'db_update': 'y ', 'image': 'cat_donut.png'}
+received status 200 value Message Sent
+
+
+
+
+
+Executing logic 1
+nathan: <= 2 --- 4 RES False
+[]
+
+
+
+20/09/2021 20:13:02
+create a list of active users and oneSignalID
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 232, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'ec2-18-205-212-4.compute-1.amazonaws.com:3308' (111)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 156, in <module>
+    onesignal_ids = getListOfUsersAndOnesignalID()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 70, in getListOfUsersAndOnesignalID
+    activeUsersAndLatestDailySurvey = getActiveUsers()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 52, in getActiveUsers
+    db = load_database_config("study")
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 33, in load_database_config
+    database = dbname
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/__init__.py", line 272, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 85, in __init__
+    self.connect(**kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/abstracts.py", line 1003, in connect
+    self._open_connection()
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 235, in _open_connection
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'ec2-18-205-212-4.compute-1.amazonaws.com:3308' (111)
+21/09/2021 20:13:10
+create a list of active users and oneSignalID
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 232, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'ec2-54-91-251-128.compute-1.amazonaws.com:3308' (110)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 156, in <module>
+    onesignal_ids = getListOfUsersAndOnesignalID()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 70, in getListOfUsersAndOnesignalID
+    activeUsersAndLatestDailySurvey = getActiveUsers()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 52, in getActiveUsers
+    db = load_database_config("study")
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 33, in load_database_config
+    database = dbname
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/__init__.py", line 272, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 85, in __init__
+    self.connect(**kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/abstracts.py", line 1003, in connect
+    self._open_connection()
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 235, in _open_connection
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'ec2-54-91-251-128.compute-1.amazonaws.com:3308' (110)
+22/09/2021 20:13:02
+create a list of active users and oneSignalID
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 232, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'ec2-54-91-251-128.compute-1.amazonaws.com:3308' (110)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 156, in <module>
+    onesignal_ids = getListOfUsersAndOnesignalID()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 70, in getListOfUsersAndOnesignalID
+    activeUsersAndLatestDailySurvey = getActiveUsers()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 52, in getActiveUsers
+    db = load_database_config("study")
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 33, in load_database_config
+    database = dbname
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/__init__.py", line 272, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 85, in __init__
+    self.connect(**kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/abstracts.py", line 1003, in connect
+    self._open_connection()
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 235, in _open_connection
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'ec2-54-91-251-128.compute-1.amazonaws.com:3308' (110)
+23/09/2021 20:13:02
+create a list of active users and oneSignalID
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 232, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'ec2-54-91-251-128.compute-1.amazonaws.com:3308' (110)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 156, in <module>
+    onesignal_ids = getListOfUsersAndOnesignalID()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 70, in getListOfUsersAndOnesignalID
+    activeUsersAndLatestDailySurvey = getActiveUsers()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 52, in getActiveUsers
+    db = load_database_config("study")
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 33, in load_database_config
+    database = dbname
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/__init__.py", line 272, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 85, in __init__
+    self.connect(**kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/abstracts.py", line 1003, in connect
+    self._open_connection()
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 235, in _open_connection
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'ec2-54-91-251-128.compute-1.amazonaws.com:3308' (110)
+24/09/2021 20:13:02
+create a list of active users and oneSignalID
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 232, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'ec2-54-91-251-128.compute-1.amazonaws.com:3308' (110)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 156, in <module>
+    onesignal_ids = getListOfUsersAndOnesignalID()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 70, in getListOfUsersAndOnesignalID
+    activeUsersAndLatestDailySurvey = getActiveUsers()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 52, in getActiveUsers
+    db = load_database_config("study")
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 33, in load_database_config
+    database = dbname
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/__init__.py", line 272, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 85, in __init__
+    self.connect(**kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/abstracts.py", line 1003, in connect
+    self._open_connection()
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 235, in _open_connection
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'ec2-54-91-251-128.compute-1.amazonaws.com:3308' (110)
+25/09/2021 20:13:02
+create a list of active users and oneSignalID
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 232, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'ec2-54-91-251-128.compute-1.amazonaws.com:3308' (110)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 156, in <module>
+    onesignal_ids = getListOfUsersAndOnesignalID()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 70, in getListOfUsersAndOnesignalID
+    activeUsersAndLatestDailySurvey = getActiveUsers()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 52, in getActiveUsers
+    db = load_database_config("study")
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 33, in load_database_config
+    database = dbname
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/__init__.py", line 272, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 85, in __init__
+    self.connect(**kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/abstracts.py", line 1003, in connect
+    self._open_connection()
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 235, in _open_connection
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'ec2-54-91-251-128.compute-1.amazonaws.com:3308' (110)
+26/09/2021 20:13:02
+create a list of active users and oneSignalID
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 232, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'ec2-54-91-251-128.compute-1.amazonaws.com:3308' (110)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 156, in <module>
+    onesignal_ids = getListOfUsersAndOnesignalID()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 70, in getListOfUsersAndOnesignalID
+    activeUsersAndLatestDailySurvey = getActiveUsers()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 52, in getActiveUsers
+    db = load_database_config("study")
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 33, in load_database_config
+    database = dbname
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/__init__.py", line 272, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 85, in __init__
+    self.connect(**kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/abstracts.py", line 1003, in connect
+    self._open_connection()
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 235, in _open_connection
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'ec2-54-91-251-128.compute-1.amazonaws.com:3308' (110)
+27/09/2021 20:13:02
+create a list of active users and oneSignalID
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 232, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'ec2-54-91-251-128.compute-1.amazonaws.com:3308' (110)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 156, in <module>
+    onesignal_ids = getListOfUsersAndOnesignalID()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 70, in getListOfUsersAndOnesignalID
+    activeUsersAndLatestDailySurvey = getActiveUsers()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 52, in getActiveUsers
+    db = load_database_config("study")
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 33, in load_database_config
+    database = dbname
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/__init__.py", line 272, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 85, in __init__
+    self.connect(**kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/abstracts.py", line 1003, in connect
+    self._open_connection()
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 235, in _open_connection
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'ec2-54-91-251-128.compute-1.amazonaws.com:3308' (110)
+28/09/2021 20:13:02
+create a list of active users and oneSignalID
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 232, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'ec2-54-91-251-128.compute-1.amazonaws.com:3308' (110)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 156, in <module>
+    onesignal_ids = getListOfUsersAndOnesignalID()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 70, in getListOfUsersAndOnesignalID
+    activeUsersAndLatestDailySurvey = getActiveUsers()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 52, in getActiveUsers
+    db = load_database_config("study")
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 33, in load_database_config
+    database = dbname
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/__init__.py", line 272, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 85, in __init__
+    self.connect(**kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/abstracts.py", line 1003, in connect
+    self._open_connection()
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 235, in _open_connection
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'ec2-54-91-251-128.compute-1.amazonaws.com:3308' (110)
+29/09/2021 20:13:02
+create a list of active users and oneSignalID
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 232, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'ec2-54-91-251-128.compute-1.amazonaws.com:3308' (110)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 156, in <module>
+    onesignal_ids = getListOfUsersAndOnesignalID()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 70, in getListOfUsersAndOnesignalID
+    activeUsersAndLatestDailySurvey = getActiveUsers()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 52, in getActiveUsers
+    db = load_database_config("study")
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 33, in load_database_config
+    database = dbname
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/__init__.py", line 272, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 85, in __init__
+    self.connect(**kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/abstracts.py", line 1003, in connect
+    self._open_connection()
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 235, in _open_connection
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'ec2-54-91-251-128.compute-1.amazonaws.com:3308' (110)
+30/09/2021 20:13:02
+create a list of active users and oneSignalID
+Traceback (most recent call last):
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 232, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on 'ec2-54-91-251-128.compute-1.amazonaws.com:3308' (110)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 156, in <module>
+    onesignal_ids = getListOfUsersAndOnesignalID()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 70, in getListOfUsersAndOnesignalID
+    activeUsersAndLatestDailySurvey = getActiveUsers()
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 52, in getActiveUsers
+    db = load_database_config("study")
+  File "/home/ec2-user/SARATemplate/apis/learning/randomized_notifications/LogicFromSurveys_SarahTest.py", line 33, in load_database_config
+    database = dbname
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/__init__.py", line 272, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 85, in __init__
+    self.connect(**kwargs)
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/abstracts.py", line 1003, in connect
+    self._open_connection()
+  File "/home/ec2-user/.local/lib/python3.7/site-packages/mysql/connector/connection_cext.py", line 235, in _open_connection
+    sqlstate=exc.sqlstate)
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on 'ec2-54-91-251-128.compute-1.amazonaws.com:3308' (110)

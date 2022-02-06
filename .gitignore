@@ -1,3 +1,4 @@
+# phone code
 node_modules/
 platforms/
 www/
@@ -8,10 +9,18 @@ www/
 platforms/
 copy_these_files/aws_scripts/aws_config.json
 copy_these_files/adapts_scripts/adapts_flask/config.ini
-aws_config.json
-mysql_config.json
-saraSqlConfig.json
 *.pem
 *.csv
 aware-config.json
 phone_code/.angular/cache
+
+
+# server side code
+aws_config.json
+mysql_config.json
+saraSqlConfig.json
+*.pyc
+*package.json
+*package-lock.json
+*.pem
+
