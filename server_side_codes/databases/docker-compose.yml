@@ -1,0 +1,10 @@
+version: '3'
+services:
+  mysql-development:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: helloworld
+      MYSQL_DATABASE: study
+    ports:
+      - "3308:3306"
