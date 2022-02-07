@@ -8,6 +8,8 @@ COPY ./notification_reqs.txt /var/www/notification_reqs.txt
 COPY ./SendOneSignalNotification.py /var/www/SendOneSignalNotification.py
 #copy mysql config from sara-python-package/sara/config/ into current folder if updated
 COPY ./mysql_config.json /var/www/mysql_config.json
+#copy config.ini from main directory into current folder if updated
+COPY ./config.ini /var/www/config.ini
 WORKDIR /var/www
 RUN pip install -r notification_reqs.txt
 CMD ["python","notification_flask.py"]
