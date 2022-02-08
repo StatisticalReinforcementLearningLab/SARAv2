@@ -317,6 +317,9 @@ class SendOneSignalNotification:
         return req.status_code, response
 
     def test_onesignal_connection(self):
+        """
+        Sends notification to all users to test APPID and authorization ID
+        """
         status_code, response = self.sendOneSignalNotificationsWithoutID()
         assert status_code == 200, str(response)
 
@@ -339,5 +342,5 @@ if __name__ == "__main__":
         "demo",
         "engagement_images/greta_thunberg.png",
     )
-    p1.test_onesignal_connection()
+    # p1.test_onesignal_connection() # uncommment to test onesignal config.
     pass
