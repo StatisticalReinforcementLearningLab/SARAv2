@@ -24,3 +24,6 @@ saraSqlConfig.json
 *package-lock.json
 *.pem
 config.ini
+
+.vscode
+./server_side_code
