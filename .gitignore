@@ -1,4 +1,5 @@
 # phone code
+phone_code/dist/
 node_modules/
 platforms/
 www/
@@ -13,7 +14,8 @@ copy_these_files/adapts_scripts/adapts_flask/config.ini
 *.csv
 aware-config.json
 phone_code/.angular/cache
-
+environment*.js
+environment*.ts
 
 # server side code
 aws_config.json
