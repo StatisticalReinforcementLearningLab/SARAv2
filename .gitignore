@@ -16,6 +16,8 @@ aware-config.json
 phone_code/.angular/cache
 environment*.js
 environment*.ts
+*.aab
+*.apk
 
 # server side code
 aws_config.json
