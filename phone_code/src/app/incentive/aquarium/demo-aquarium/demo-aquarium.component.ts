@@ -80,8 +80,15 @@ export class DemoAquariumComponent implements OnInit {
     if(this.userProfileService == undefined)
       return "test";
     else{
-
       return this.userProfileService.username;
+    }
+  }
+
+  get oneSignalId(){
+    if(this.userProfileService == undefined)
+      return "oneSignalId: null";
+    else{
+      return "oneSignalId: " + this.userProfileService.oneSignalPlayerId;
     }
   }
   

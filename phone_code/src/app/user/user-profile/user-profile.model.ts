@@ -16,6 +16,10 @@ export class UserProfile {
 
     public lastupdate: number;
     public readable_ts: string;
+
+    public lastuploadprofiletime: number;
+    public lastuploadprofiletime_ts: string;
+
     public survey_data = {
         'daily_survey':{}, 
         'points': 0,
@@ -43,6 +47,8 @@ export class UserProfile {
         this.badgeCount = badgeCount;
         this.lastupdate = lastupdate;
         this.readable_ts = readable_ts;
+        this.lastuploadprofiletime = lastupdate;
+        this.lastuploadprofiletime_ts = readable_ts;
     }
 }
     

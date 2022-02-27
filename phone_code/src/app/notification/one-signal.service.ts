@@ -72,11 +72,10 @@ export class OneSignalService {
       this.oneSignal.getPermissionSubscriptionState().then(status=>{
         console.log("--Onesignal-- " + JSON.stringify(status));
         window.localStorage.setItem("oneSignalPlayerId", ""+status.subscriptionStatus.userId);  
-        /*
         this.userProfileService.userProfile.oneSignalPlayerId  = status.subscriptionStatus.userId;
         this.userProfileService.saveProfileToDevice();
         this.userProfileService.saveToServer();
-        */
+        
       });  
   }
 
