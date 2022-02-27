@@ -151,8 +151,10 @@ export class AquariumComponent implements OnInit {
     this.appUsageDb.saveAppUsageEnter("aquarium_tab");
 
     //
-    this.saveDbToAWS();
     this.userProfileService.saveToServer();
+    this.userProfileService.saveProfileToDevice();
+    this.saveDbToAWS();
+    
 
   }
 

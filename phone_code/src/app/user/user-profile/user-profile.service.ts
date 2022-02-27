@@ -237,11 +237,17 @@ export class UserProfileService {
     if(this.networkSvc.getCurrentNetworkStatus() == ConnectionStatus.Online){
 
       this.loadProfileFromDevice(); 
+      const currenttime:Date = new Date();
+      const dateString: string = moment(currenttime).format('MMMM Do YYYY, h:mm:ss a Z');
+      this.userProfile.lastuploadprofiletime = currenttime.getTime();
+      this.userProfile.lastuploadprofiletime_ts = dateString;
+      
       const userProfile: UserProfile = this.userProfile;
 
       this.http
         .post(environment.userServer+'/setuserinfo',userProfile)
         .subscribe(response =>{
+          console.log("---userprofile: setuserinfo----");
           console.log(response);
           this.saveToServerRequestInQueue = false;
         });
@@ -250,11 +256,17 @@ export class UserProfileService {
        this.saveToServerSub = this.networkSvc.onNetworkChange().subscribe(()=>{
           if(this.networkSvc.getCurrentNetworkStatus() == ConnectionStatus.Online){
             this.loadProfileFromDevice(); 
+            const currenttime:Date = new Date();
+            const dateString: string = moment(currenttime).format('MMMM Do YYYY, h:mm:ss a Z');
+            this.userProfile.lastuploadprofiletime = currenttime.getTime();
+            this.userProfile.lastuploadprofiletime_ts = dateString;
+
             const userProfile: UserProfile = this.userProfile;
       
             this.http
               .post(environment.userServer+'/setuserinfo',userProfile)
               .subscribe(response =>{
+                console.log("---userprofile: setuserinfo----");
                 console.log(response);
                 this.saveToServerRequestInQueue = false;
                 this.saveToServerSub.unsubscribe();
@@ -322,8 +334,14 @@ export class UserProfileService {
       this.addSurveyPoints();
       //this.calcDollars();
       this.userProfile.lastupdate =this.numericCurrenDateTime;
-      const dateString: string = moment(this.userProfile.lastupdate).format('MMMM Do YYYY, h:mm:ss a Z');
+      //Date: Feb 27, 22: mash is changing the readable date to an understandable format.
+      //Dan for some reason changes the date to 12AM.
+      const currenttime:Date = new Date();
+      const dateString: string = moment(currenttime).format('MMMM Do YYYY, h:mm:ss a Z');
+      // const dateString: string = moment(this.userProfile.lastupdate).format('MMMM Do YYYY, h:mm:ss a Z');
       this.userProfile.readable_ts = dateString;
+      this.userProfile.lastuploadprofiletime = this.userProfile.lastupdate;
+      this.userProfile.lastuploadprofiletime_ts = dateString;
       // console.log("in SurveyCompleted, AwardDollarDates: "+ localStorage.getItem("AwardDollarDates"));
       this.userProfile.AwardDollarDates = JSON.parse(localStorage.getItem("AwardDollarDates"));  //fetch AwardDollarDates from local storage and add it to the UserProfile
       try{
