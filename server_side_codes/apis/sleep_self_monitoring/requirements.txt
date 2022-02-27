@@ -20,7 +20,7 @@ selenium==3.141.0
 six==1.15.0
 toolz==0.11.1
 tornado==6.1
-urllib3==1.26.2
+urllib3==1.26.5
 vega-datasets==0.9.0
 Werkzeug==1.0.1
 Flask-Cors==3.0.10
