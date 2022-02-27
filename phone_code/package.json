@@ -84,6 +84,7 @@
     "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
     "cordova-android": "^10.1.1",
+    "cordova-ios": "^6.2.0",
     "fuzzy": "^0.1.3",
     "inquirer": "^6.2.2",
     "inquirer-autocomplete-prompt": "^1.0.1",
@@ -110,9 +111,6 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-google-analytics": {
-        "GMS_VERSION": "11.0.1"
-      },
       "cordova-sqlite-storage": {},
       "uk.co.workingedge.cordova.plugin.sqliteporter": {},
       "cordova-plugin-network-information": {},
