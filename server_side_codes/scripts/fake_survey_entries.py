@@ -71,7 +71,7 @@ db =  mysql.connector.connect(
     host = "ec2-54-165-102-180.compute-1.amazonaws.com",
     port = "3308",
     user = "root",
-    passwd = "password",
+    passwd = "helloworld",
     database = "study"
 )
 cursor = db.cursor()

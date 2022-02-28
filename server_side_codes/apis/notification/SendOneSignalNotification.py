@@ -11,8 +11,8 @@ class SendOneSignalNotification:
 
     AUTHORIZATION_ID = ""
     ONE_SIGNAL_APP_ID = ""
-    IMAGE_LOCATION = "https://s3.amazonaws.com/sara-public/notification_images/"
-
+    IMAGE_LOCATION = "" # "https://s3.amazonaws.com/sara-public/notification_images/"
+    
     def __init__(
         self,
         notification_text,
@@ -36,6 +36,9 @@ class SendOneSignalNotification:
         )
         self.ONE_SIGNAL_APP_ID = self.get_key(
             config_file_path, "ONE_SIGNAL_CONFIG", "ONE_SIGNAL_APP_ID"
+        )
+        self.IMAGE_LOCATION = self.get_key(
+            config_file_path, "ONE_SIGNAL_CONFIG", "NOTIFICATION_IMAGE_LOCATION"
         )
 
     def get_key(self, config_file_path, section_id, key_id):
@@ -316,12 +319,77 @@ class SendOneSignalNotification:
         # print(req.status_code, req.reason, req.text)
         return req.status_code, response
 
+    # This is for production.
+    # A timezone correction is made.
+    # Sends to everyone subscribed.
+    # In the final version, for specific player ids, there will be a different randomization.
+    def sendOneSignalNotificationsWithID(self):
+        # print "demo notification"
+        header = {
+            "Content-Type": "application/json; charset=utf-8",
+            "Authorization": self.AUTHORIZATION_ID,
+        }
+
+        payload = {
+            "app_id": self.ONE_SIGNAL_APP_ID,
+            "include_player_ids": [self.player_id],
+            "headings": {"en": self.heading},
+            "contents": {"en": self.notification_text},
+            "large_icon": self.IMAGE_LOCATION + self.notification_image,
+            "android_visibility": 0,
+            "android_accent_color": "FF0000FF",
+            "data": {"user": "test"},
+            "ttl": 259200,
+            "priority": 10,
+            "buttons": [
+                {"id": "iLike", "text": "Like"},
+                {"id": "iNope", "text": "Nope"},
+            ],
+        }
+
+        """
+        payload = {
+            "app_id": self.ONE_SIGNAL_APP_ID,
+            "include_player_ids": [self.player_id],
+            "headings": {"en": self.heading},
+            "contents": {
+                "en": "We showed that we are united and that we young people are unstoppable."
+            },
+            "included_segments": ["Active Users", "Inactive Users"],
+            "data": {"user": "test"},
+            "ttl": 259200,
+            "priority": 10,
+            "buttons": [
+                {"id": "iLike", "text": "Like"},
+                {"id": "iNope", "text": "Nope"},
+            ],
+        }
+        """
+
+        # https://www.w3schools.com/python/ref_requests_response.asp, checkout all the fields
+        req = requests.post(
+            "https://onesignal.com/api/v1/notifications",
+            headers=header,
+            data=json.dumps(payload),
+        )
+        response = json.loads(req.text)
+        # print(req.status_code, req.reason, req.text)
+        return req.status_code, response
+
     def test_onesignal_connection(self):
         """
         Sends notification to all users to test APPID and authorization ID
         """
         status_code, response = self.sendOneSignalNotificationsWithoutID()
         assert status_code == 200, str(response)
+
+    def test_onesignal_connection_for_one_user(self):
+        """
+        Sends notification to all users to test APPID and authorization ID
+        """
+        status_code, response = self.sendOneSignalNotificationsWithID()
+        assert status_code == 200, str(response)
+
 
 """
 quote_text = "We showed that we are united and that we young people are unstoppable."
@@ -343,4 +411,12 @@ if __name__ == "__main__":
         "engagement_images/greta_thunberg.png",
     )
     # p1.test_onesignal_connection() # uncommment to test onesignal config.
+    p2 = SendOneSignalNotification(
+        "We showed that we are united and that we young people are unstoppable.",
+        "Quote from Greata Thunberg ",
+        "6b25ce5c-8c60-11ec-85e2-62272b788c4b",
+        "demo",
+        "engagement_images/greta_thunberg.png",
+    )
+    p2.test_onesignal_connection_for_one_user()
     pass

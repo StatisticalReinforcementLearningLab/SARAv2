@@ -74,7 +74,7 @@ api.add_resource(resources.StoreUnlockedIncentives,'/store-unlocked-incentive')
 # Enable HTTPS
 import ssl
 ctx = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
-ctx.load_cert_chain('/app/cert.pem', keyfile = '/app/key.pem', password="password")
+ctx.load_cert_chain('/app/cert.pem', keyfile = '/app/key.pem', password="helloworld")
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', ssl_context=ctx)
