@@ -18,6 +18,8 @@ environment*.js
 environment*.ts
 *.aab
 *.apk
+phone_code/plugins/
+
 
 # server side code
 aws_config.json

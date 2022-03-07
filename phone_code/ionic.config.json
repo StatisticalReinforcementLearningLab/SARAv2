@@ -2,7 +2,9 @@
   "name": "SARAv2",
   "integrations": {
     "cordova": {},
-    "capacitor": {}
+    "capacitor": {
+      "enabled": false
+    }
   },
   "type": "angular"
 }

@@ -1,68 +1,4 @@
 {
-  "cordova-plugin-statusbar": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-statusbar@^2.4.2"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-plugin-device": {
-    "source": {
-      "type": "registry",
-      "id": "https://github.com/apache/cordova-plugin-device.git"
-    },
-    "is_top_level": false,
-    "variables": {}
-  },
-  "cordova-plugin-splashscreen": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-splashscreen@^5.0.2"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-plugin-ionic-keyboard": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-ionic-keyboard@^2.2.0"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-plugin-whitelist": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-whitelist@^1.3.4"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "uk.co.workingedge.cordova.plugin.sqliteporter": {
-    "source": {
-      "type": "registry",
-      "id": "uk.co.workingedge.cordova.plugin.sqliteporter@^1.1.1"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-sqlite-storage": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-sqlite-storage@^4.0.0"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-plugin-ionic-webview": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-ionic-webview@4.2.1"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "sentry-cordova": {
     "source": {
       "type": "registry",
@@ -71,26 +7,90 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-network-information": {
+  "cordova-plugin-app-version": {
     "source": {
       "type": "registry",
-      "id": "https://github.com/apache/cordova-plugin-network-information.git"
+      "id": "cordova-plugin-app-version"
     },
-    "is_top_level": false,
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-device": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-device"
+    },
+    "is_top_level": true,
     "variables": {}
   },
   "cordova-plugin-inappbrowser": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-inappbrowser@^4.0.0"
+      "id": "cordova-plugin-inappbrowser@5.0.0"
     },
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-app-version": {
+  "cordova-plugin-ionic-keyboard": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-app-version@^0.1.9"
+      "id": "cordova-plugin-ionic-keyboard"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-ionic-webview": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-ionic-webview@5.0.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-network-information": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-network-information@3.0.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-splashscreen": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-splashscreen@6.0.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-statusbar": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-statusbar@3.0.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-whitelist": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-whitelist@1.3.5"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-sqlite-storage": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-sqlite-storage"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "onesignal-cordova-plugin": {
+    "source": {
+      "type": "registry",
+      "id": "onesignal-cordova-plugin"
     },
     "is_top_level": true,
     "variables": {}
@@ -103,10 +103,10 @@
     "is_top_level": true,
     "variables": {}
   },
-  "onesignal-cordova-plugin": {
+  "uk.co.workingedge.cordova.plugin.sqliteporter": {
     "source": {
       "type": "registry",
-      "id": "onesignal-cordova-plugin@^2.8.2"
+      "id": "uk.co.workingedge.cordova.plugin.sqliteporter"
     },
     "is_top_level": true,
     "variables": {}

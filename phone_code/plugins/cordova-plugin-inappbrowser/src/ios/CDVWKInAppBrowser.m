@@ -19,8 +19,10 @@
 
 #import "CDVWKInAppBrowser.h"
 
-#if __has_include("CDVWKProcessPoolFactory.h")
-#import "CDVWKProcessPoolFactory.h"
+#if __has_include(<Cordova/CDVWebViewProcessPoolFactory.h>) // Cordova-iOS >=6
+  #import <Cordova/CDVWebViewProcessPoolFactory.h>
+#elif __has_include("CDVWKProcessPoolFactory.h") // Cordova-iOS <6 with WKWebView plugin
+  #import "CDVWKProcessPoolFactory.h"
 #endif
 
 #import <Cordova/CDVPluginResult.h>
@@ -290,6 +292,7 @@ static CDVWKInAppBrowser* instance = nil;
     nav.orientationDelegate = self.inAppBrowserViewController;
     nav.navigationBarHidden = YES;
     nav.modalPresentationStyle = self.inAppBrowserViewController.modalPresentationStyle;
+    nav.presentationController.delegate = self.inAppBrowserViewController;
     
     __weak CDVWKInAppBrowser* weakSelf = self;
     
@@ -306,7 +309,6 @@ static CDVWKInAppBrowser* instance = nil;
                 strongSelf->tmpWindow = [[UIWindow alloc] initWithFrame:frame];
             }
             UIViewController *tmpController = [[UIViewController alloc] init];
-
             [strongSelf->tmpWindow setRootViewController:tmpController];
             [strongSelf->tmpWindow setWindowLevel:UIWindowLevelNormal];
 
@@ -739,7 +741,9 @@ BOOL isExiting = FALSE;
     }
     configuration.applicationNameForUserAgent = userAgent;
     configuration.userContentController = userContentController;
-#if __has_include("CDVWKProcessPoolFactory.h")
+#if __has_include(<Cordova/CDVWebViewProcessPoolFactory.h>)
+    configuration.processPool = [[CDVWebViewProcessPoolFactory sharedFactory] sharedProcessPool];
+#elif __has_include("CDVWKProcessPoolFactory.h")
     configuration.processPool = [[CDVWKProcessPoolFactory sharedFactory] sharedProcessPool];
 #endif
     [configuration.userContentController addScriptMessageHandler:self name:IAB_BRIDGE_NAME];
@@ -757,6 +761,15 @@ BOOL isExiting = FALSE;
         configuration.mediaPlaybackRequiresUserAction = _browserOptions.mediaplaybackrequiresuseraction;
     }
     
+    if (@available(iOS 13.0, *)) {
+        NSString *contentMode = [self settingForKey:@"PreferredContentMode"];
+        if ([contentMode isEqual: @"mobile"]) {
+            configuration.defaultWebpagePreferences.preferredContentMode = WKContentModeMobile;
+        } else if ([contentMode  isEqual: @"desktop"]) {
+            configuration.defaultWebpagePreferences.preferredContentMode = WKContentModeDesktop;
+        }
+        
+    }
     
 
     self.webView = [[WKWebView alloc] initWithFrame:webViewBounds configuration:configuration];
@@ -1055,7 +1068,18 @@ BOOL isExiting = FALSE;
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-    return UIStatusBarStyleDefault;
+    NSString* statusBarStylePreference = [self settingForKey:@"InAppBrowserStatusBarStyle"];
+    if (statusBarStylePreference && [statusBarStylePreference isEqualToString:@"lightcontent"]) {
+        return UIStatusBarStyleLightContent;
+    } else if (statusBarStylePreference && [statusBarStylePreference isEqualToString:@"darkcontent"]) {
+        if (@available(iOS 13.0, *)) {
+            return UIStatusBarStyleDarkContent;
+        } else {
+            return UIStatusBarStyleDefault;
+        }
+    } else {
+        return UIStatusBarStyleDefault;
+    }
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -1071,6 +1095,7 @@ BOOL isExiting = FALSE;
     // Run later to avoid the "took a long time" log message.
     dispatch_async(dispatch_get_main_queue(), ^{
         isExiting = TRUE;
+        lastReducedStatusBarHeight = 0.0;
         if ([weakSelf respondsToSelector:@selector(presentingViewController)]) {
             [[weakSelf presentingViewController] dismissViewControllerAnimated:YES completion:nil];
         } else {
@@ -1257,5 +1282,10 @@ BOOL isExiting = FALSE;
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 }
 
+#pragma mark UIAdaptivePresentationControllerDelegate
+
+- (void)presentationControllerWillDismiss:(UIPresentationController *)presentationController {
+    isExiting = TRUE;
+}
 
 @end //CDVWKInAppBrowserViewController
