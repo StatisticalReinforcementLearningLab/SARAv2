@@ -10,7 +10,8 @@ def read_ini(file_path):
             print((key, config[section][key]))
 
 def get_key(config_file_path, section_id, key_id):
-    config = configparser.ConfigParser()
+    config = configparser.RawConfigParser()
+    config.optionxform = str
     config.read(config_file_path)
     
     if section_id not in config:
@@ -21,7 +22,8 @@ def get_key(config_file_path, section_id, key_id):
         return config[section_id][key_id]
 
 def get_section(config_file_path, section_id):
-    config = configparser.ConfigParser()
+    config = configparser.RawConfigParser()
+    config.optionxform = str
     config.read(config_file_path)
 
     if section_id not in config:
@@ -51,8 +53,11 @@ f.close()
 
 # instantiate
 config = configparser.RawConfigParser()
+config.optionxform = str
 config.read("./config.ini")
-config_mysql_user_reg = configparser.ConfigParser()
+config_mysql_user_reg = configparser.RawConfigParser()
+config_mysql_user_reg.optionxform = str
+
 
 # add a new section and some values
 config_mysql_user_reg.add_section('DATABASE')
