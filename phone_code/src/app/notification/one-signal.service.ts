@@ -63,6 +63,11 @@ export class OneSignalService {
         //this.showAlert('Notification opened',  "notification is opened at: "+this.time+" formatted: "+this.formattedTime);
       });
 
+      // iOS - Prompts the user for notification permissions.
+      //    * Since this shows a generic native prompt, we recommend instead using an In-App Message to prompt for notification permission (See step 6) to better communicate to your users what notifications they will get.
+      // https://ionicframework.com/docs/v3/native/onesignal/
+      // https://stackoverflow.com/questions/69276816/is-ionic-3-incompatible-w-onesignal
+      this.oneSignal.promptForPushNotificationsWithUserResponse();
 
       //--- clearOneSignalNotifications
       //--- https://documentation.onesignal.com/docs/cordova-sdk
@@ -75,7 +80,6 @@ export class OneSignalService {
         this.userProfileService.userProfile.oneSignalPlayerId  = status.subscriptionStatus.userId;
         this.userProfileService.saveProfileToDevice();
         this.userProfileService.saveToServer();
-        
       });  
   }
 
