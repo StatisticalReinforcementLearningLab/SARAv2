@@ -9,9 +9,9 @@ Follow reference: https://devdactic.com/ionic-4-sqlite-queries/
 
 import { Platform } from '@ionic/angular';
 import { Injectable } from '@angular/core';
-import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
+import { SQLitePorter } from '@awesome-cordova-plugins/sqlite-porter/ngx';
 import { HttpClient } from '@angular/common/http';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
+import { SQLite, SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
 import { BehaviorSubject, Observable } from 'rxjs';
 import * as moment from 'moment';
 import { UserProfileService } from '../user/user-profile/user-profile.service';

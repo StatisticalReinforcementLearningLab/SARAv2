@@ -88,8 +88,19 @@ export class DemoAquariumComponent implements OnInit {
     if(this.userProfileService == undefined)
       return "oneSignalId: null";
     else{
+      // if onesignal id is null
+      // but userprofile is not undefined, then we have a problem
+      // get the ids at this stage?
+      var oneSignalPlayerId = this.userProfileService.oneSignalPlayerId;
+      if(oneSignalPlayerId=="null" || oneSignalPlayerId==null || oneSignalPlayerId==undefined){
+        this.userProfileService.addOneSignalPlayerId();
+        return "oneSignalId: retriving id";
+      }
+      
       return "oneSignalId: " + this.userProfileService.oneSignalPlayerId;
     }
+
+    
   }
   
   //Get total submitted survey

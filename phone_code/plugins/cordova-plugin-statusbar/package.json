@@ -1,8 +1,35 @@
 {
-  "name": "cordova-plugin-statusbar",
-  "version": "3.0.0",
-  "description": "Cordova StatusBar Plugin",
-  "types": "./types/index.d.ts",
+  "_from": "cordova-plugin-statusbar@3.0.0",
+  "_id": "cordova-plugin-statusbar@3.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-nzkeWeyLA6+1FryzO0aeB6NS8MZ45gnBYeq2VZqfdNbddZEgtpI4XPYdBVxvm9NhcVoJ3tdA1OBnQD9JryoV0Q==",
+  "_location": "/cordova-plugin-statusbar",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "cordova-plugin-statusbar@3.0.0",
+    "name": "cordova-plugin-statusbar",
+    "escapedName": "cordova-plugin-statusbar",
+    "rawSpec": "3.0.0",
+    "saveSpec": null,
+    "fetchSpec": "3.0.0"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-statusbar/-/cordova-plugin-statusbar-3.0.0.tgz",
+  "_shasum": "371b54cef2594550118ef51c1d677c8adb3bc668",
+  "_spec": "cordova-plugin-statusbar@3.0.0",
+  "_where": "/Users/mash/Dropbox/codes/ionic_projects/SARAV3/SARA_modular/phone_code",
+  "author": {
+    "name": "Apache Software Foundation"
+  },
+  "bugs": {
+    "url": "https://github.com/apache/cordova-plugin-statusbar/issues"
+  },
+  "bundleDependencies": false,
   "cordova": {
     "id": "cordova-plugin-statusbar",
     "platforms": [
@@ -11,19 +38,10 @@
       "windows"
     ]
   },
-  "repository": "github:apache/cordova-plugin-statusbar",
-  "bugs": "https://github.com/apache/cordova-plugin-statusbar/issues",
-  "keywords": [
-    "cordova",
-    "statusbar",
-    "ecosystem:cordova",
-    "cordova-android",
-    "cordova-ios",
-    "cordova-windows"
-  ],
-  "scripts": {
-    "test": "npm run lint",
-    "lint": "eslint ."
+  "deprecated": false,
+  "description": "Cordova StatusBar Plugin",
+  "devDependencies": {
+    "@cordova/eslint-config": "^4.0.0"
   },
   "engines": {
     "cordovaDependencies": {
@@ -35,9 +53,25 @@
       }
     }
   },
-  "author": "Apache Software Foundation",
+  "homepage": "https://github.com/apache/cordova-plugin-statusbar#readme",
+  "keywords": [
+    "cordova",
+    "statusbar",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-windows"
+  ],
   "license": "Apache-2.0",
-  "devDependencies": {
-    "@cordova/eslint-config": "^4.0.0"
-  }
+  "name": "cordova-plugin-statusbar",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apache/cordova-plugin-statusbar.git"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "npm run lint"
+  },
+  "types": "./types/index.d.ts",
+  "version": "3.0.0"
 }

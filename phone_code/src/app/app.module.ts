@@ -3,12 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { SplashScreen } from '@awesome-cordova-plugins/splash-screen/ngx';
+import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { Injector } from '@angular/core';
-import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
-import { SQLite } from '@ionic-native/sqlite/ngx';
+import { SQLitePorter } from '@awesome-cordova-plugins/sqlite-porter/ngx';
+import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';
 
 
 import { AppComponent } from './app.component';
@@ -23,7 +23,7 @@ import { CheatpageComponent } from './incentive/aquarium/cheatpage/cheatpage.com
 import { UserModule } from './user/user.module';
 import { HomePageModule } from './home/home.module';
 import { AwardDollarService } from './incentive/award-money/award-dollar.service';
-import { AppVersion } from '@ionic-native/app-version/ngx';
+import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 import { Platform, NavController } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { SplashScreen } from '@awesome-cordova-plugins/splash-screen/ngx';
+import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 import { OneSignalService } from './notification/one-signal.service';
 
 import { environment } from '../environments/environment';

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { environment } from '../../environments/environment';
 import { EncrDecrService } from './encrdecrservice.service';
 import { AwsS3Service } from './aws-s3.service';
-import { Network } from '@ionic-native/network/ngx';
+import { Network } from '@awesome-cordova-plugins/network/ngx';
 
 @NgModule({
   declarations: [],

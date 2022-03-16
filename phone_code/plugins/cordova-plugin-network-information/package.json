@@ -1,8 +1,35 @@
 {
-  "name": "cordova-plugin-network-information",
-  "version": "3.0.0",
-  "description": "Cordova Network Information Plugin",
-  "types": "./types/index.d.ts",
+  "_from": "cordova-plugin-network-information@3.0.0",
+  "_id": "cordova-plugin-network-information@3.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-bBtP3PxIX8vshsfR0+F6co2e2cFLgjt18yKIdigzMwk6ANudWQ72RB3g2qMPyT6fBDWmUyE1Qd+bKQB/fZtQwQ==",
+  "_location": "/cordova-plugin-network-information",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "cordova-plugin-network-information@3.0.0",
+    "name": "cordova-plugin-network-information",
+    "escapedName": "cordova-plugin-network-information",
+    "rawSpec": "3.0.0",
+    "saveSpec": null,
+    "fetchSpec": "3.0.0"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-network-information/-/cordova-plugin-network-information-3.0.0.tgz",
+  "_shasum": "8b5546b56b44e6d2c69be7cc920d5e134cbb2b7f",
+  "_spec": "cordova-plugin-network-information@3.0.0",
+  "_where": "/Users/mash/Dropbox/codes/ionic_projects/SARAV3/SARA_modular/phone_code",
+  "author": {
+    "name": "Apache Software Foundation"
+  },
+  "bugs": {
+    "url": "https://github.com/apache/cordova-plugin-network-information/issues"
+  },
+  "bundleDependencies": false,
   "cordova": {
     "id": "cordova-plugin-network-information",
     "platforms": [
@@ -12,24 +39,11 @@
       "browser"
     ]
   },
-  "repository": "github:apache/cordova-plugin-network-information",
-  "bugs": "https://github.com/apache/cordova-plugin-network-information/issues",
-  "keywords": [
-    "cordova",
-    "network",
-    "information",
-    "ecosystem:cordova",
-    "cordova-android",
-    "cordova-ios",
-    "cordova-windows",
-    "cordova-browser"
-  ],
-  "scripts": {
-    "test": "npm run lint",
-    "lint": "eslint ."
+  "deprecated": false,
+  "description": "Cordova Network Information Plugin",
+  "devDependencies": {
+    "@cordova/eslint-config": "^3.0.0"
   },
-  "author": "Apache Software Foundation",
-  "license": "Apache-2.0",
   "engines": {
     "cordovaDependencies": {
       "3.0.0": {
@@ -40,7 +54,27 @@
       }
     }
   },
-  "devDependencies": {
-    "@cordova/eslint-config": "^3.0.0"
-  }
+  "homepage": "https://github.com/apache/cordova-plugin-network-information#readme",
+  "keywords": [
+    "cordova",
+    "network",
+    "information",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-windows",
+    "cordova-browser"
+  ],
+  "license": "Apache-2.0",
+  "name": "cordova-plugin-network-information",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apache/cordova-plugin-network-information.git"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "npm run lint"
+  },
+  "types": "./types/index.d.ts",
+  "version": "3.0.0"
 }

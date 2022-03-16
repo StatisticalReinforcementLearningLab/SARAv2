@@ -1,32 +1,47 @@
 {
-  "version": "3.0.2",
-
-  "name": "onesignal-cordova-plugin",
+  "_from": "onesignal-cordova-plugin@2.11.3",
+  "_id": "onesignal-cordova-plugin@2.11.3",
+  "_inBundle": false,
+  "_integrity": "sha512-vWPmXR4qML06Fg785bg6SW3mOJImQteZKqEZqKBO5vC0cvtLQXofhTdUAOFAQRlBAUavZbEIXF7ZGFeQCA1ukA==",
+  "_location": "/onesignal-cordova-plugin",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "onesignal-cordova-plugin@2.11.3",
+    "name": "onesignal-cordova-plugin",
+    "escapedName": "onesignal-cordova-plugin",
+    "rawSpec": "2.11.3",
+    "saveSpec": null,
+    "fetchSpec": "2.11.3"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/onesignal-cordova-plugin/-/onesignal-cordova-plugin-2.11.3.tgz",
+  "_shasum": "3f105562f3b7dac9b40a05246df18ca52c51979b",
+  "_spec": "onesignal-cordova-plugin@2.11.3",
+  "_where": "/Users/mash/Dropbox/codes/ionic_projects/SARAV3/SARA_modular/phone_code",
+  "author": {
+    "name": "Josh Kasten, Brad Hesse, Rodrigo Gomez-Palacio"
+  },
+  "bugs": {
+    "url": "https://github.com/onesignal/OneSignal-Cordova-SDK/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "onesignal-cordova-plugin",
+    "platforms": [
+      "android",
+      "ios",
+      "windows",
+      "amazon-fireos"
+    ]
+  },
   "cordova_name": "OneSignal Push Notifications",
+  "deprecated": false,
   "description": "OneSignal is a high volume Push Notification service for mobile apps. In addition to basic notification delivery, OneSignal also provides tools to localize, target, schedule, and automate notifications that you send.",
-  "license": "MIT",
-  "main": "www/OneSignalPlugin.js",
-  "typings": "types/index.d.ts",
-  "keywords": [
-    "push",
-    "notification",
-    "push notification",
-    "push notifications",
-    "apns",
-    "gcm",
-    "adm",
-    "retention",
-    "messaging",
-    "ecosystem:cordova",
-    "cordova-android",
-    "cordova-ios",
-    "cordova-amazon-fireos"
-  ],
-  "platforms": [
-    "android",
-    "ios",
-    "amazon-fireos"
-  ],
   "engines": [
     {
       "name": "cordova-android",
@@ -49,21 +64,33 @@
       "version": ">=4.3.0"
     }
   ],
-  "cordova": {
-    "id": "onesignal-cordova-plugin",
-    "platforms": [
-      "android",
-      "ios",
-      "amazon-fireos"
-    ]
-  },
+  "homepage": "https://github.com/onesignal/OneSignal-Cordova-SDK#readme",
+  "keywords": [
+    "push",
+    "notification",
+    "push notification",
+    "push notifications",
+    "apns",
+    "gcm",
+    "adm",
+    "retention",
+    "messaging",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-amazon-fireos"
+  ],
+  "license": "MIT",
+  "name": "onesignal-cordova-plugin",
+  "platforms": [
+    "android",
+    "ios",
+    "windows",
+    "amazon-fireos"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/onesignal/OneSignal-Cordova-SDK.git"
   },
-  "author": "Josh Kasten, Brad Hesse, Rodrigo Gomez-Palacio",
-  "bugs": {
-    "url": "https://github.com/onesignal/OneSignal-Cordova-SDK/issues"
-  },
-  "homepage": "https://github.com/onesignal/OneSignal-Cordova-SDK#readme"
+  "version": "2.11.3"
 }

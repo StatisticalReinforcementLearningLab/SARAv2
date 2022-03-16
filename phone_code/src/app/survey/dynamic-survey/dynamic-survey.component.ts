@@ -16,7 +16,7 @@ import { EncrDecrService } from '../../storage/encrdecrservice.service';
 import { Platform, AlertController } from '@ionic/angular';
 import { Router, NavigationExtras } from '@angular/router';
 import * as moment from 'moment';
-import { AppVersion } from '@ionic-native/app-version/ngx';
+import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import { AwardDollarService } from 'src/app/incentive/award-money/award-dollar.service';
 import { environment } from '../../../environments/environment';

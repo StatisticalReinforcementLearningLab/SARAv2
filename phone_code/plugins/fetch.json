@@ -87,14 +87,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "onesignal-cordova-plugin": {
-    "source": {
-      "type": "registry",
-      "id": "onesignal-cordova-plugin"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "phonegap-plugin-mobile-accessibility": {
     "source": {
       "type": "registry",
@@ -107,6 +99,14 @@
     "source": {
       "type": "registry",
       "id": "uk.co.workingedge.cordova.plugin.sqliteporter"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "onesignal-cordova-plugin": {
+    "source": {
+      "type": "registry",
+      "id": "onesignal-cordova-plugin@2.11.3"
     },
     "is_top_level": true,
     "variables": {}

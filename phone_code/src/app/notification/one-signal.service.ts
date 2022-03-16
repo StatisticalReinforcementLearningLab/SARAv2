@@ -11,8 +11,8 @@ import { UserProfileService } from '../user/user-profile/user-profile.service';
   providedIn: 'root'
 })
 export class OneSignalService {
-  time;
-  formattedTime;
+  time: string | number;
+  formattedTime: string;
 
   constructor(
     private oneSignal: OneSignal,
@@ -63,16 +63,24 @@ export class OneSignalService {
         //this.showAlert('Notification opened',  "notification is opened at: "+this.time+" formatted: "+this.formattedTime);
       });
 
-      // iOS - Prompts the user for notification permissions.
-      //    * Since this shows a generic native prompt, we recommend instead using an In-App Message to prompt for notification permission (See step 6) to better communicate to your users what notifications they will get.
-      // https://ionicframework.com/docs/v3/native/onesignal/
-      // https://stackoverflow.com/questions/69276816/is-ionic-3-incompatible-w-onesignal
-      this.oneSignal.promptForPushNotificationsWithUserResponse();
+      
 
       //--- clearOneSignalNotifications
       //--- https://documentation.onesignal.com/docs/cordova-sdk
       
-      this.oneSignal.endInit();    
+      this.oneSignal.endInit();   
+      
+      // iOS - Prompts the user for notification permissions.
+      //    * Since this shows a generic native prompt, we recommend instead using an In-App Message to prompt for notification permission (See step 6) to better communicate to your users what notifications they will get.
+      // https://ionicframework.com/docs/v3/native/onesignal/
+      // https://stackoverflow.com/questions/69276816/is-ionic-3-incompatible-w-onesignal
+      /*
+      this.oneSignal.promptForPushNotificationsWithUserResponse().then(status => {
+        console.log("--Onesignal-- " + JSON.stringify(status));
+      }).catch(error => {
+        console.log('--Onesignal--rejected', error);
+      });
+      */
       
       this.oneSignal.getPermissionSubscriptionState().then(status=>{
         console.log("--Onesignal-- " + JSON.stringify(status));
@@ -80,10 +88,10 @@ export class OneSignalService {
         this.userProfileService.userProfile.oneSignalPlayerId  = status.subscriptionStatus.userId;
         this.userProfileService.saveProfileToDevice();
         this.userProfileService.saveToServer();
-      });  
+      });
   }
 
-  async showAlert(title, msg) {
+  async showAlert(title: any, msg: any) {
     const alert = await this.alertCtrl.create({
       header: title,
       subHeader: msg,

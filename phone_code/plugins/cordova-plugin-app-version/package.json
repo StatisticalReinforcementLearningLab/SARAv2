@@ -1,14 +1,38 @@
 {
-  "name": "cordova-plugin-app-version",
-  "version": "0.1.12",
+  "_from": "cordova-plugin-app-version",
+  "_id": "cordova-plugin-app-version@0.1.13",
+  "_inBundle": false,
+  "_integrity": "sha512-0tPaP6fjyXdgBvT79LHd0nJ9T3957qflpbOy2wtBjdrRIK3kEQkFgNPmM766nQ2xCJEM3ZlOBbq9xHUxJrSUCw==",
+  "_location": "/cordova-plugin-app-version",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-app-version",
+    "name": "cordova-plugin-app-version",
+    "escapedName": "cordova-plugin-app-version",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-app-version/-/cordova-plugin-app-version-0.1.13.tgz",
+  "_shasum": "6445ba26147aa6b3896fb70726855a8542dbd108",
+  "_spec": "cordova-plugin-app-version",
+  "_where": "/Users/mash/Dropbox/codes/ionic_projects/SARAV3/SARA_modular/phone_code",
+  "author": {
+    "name": "whiteoctober"
+  },
+  "bugs": {
+    "url": "https://github.com/sampart/cordova-plugin-app-version/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
   "description": "Cordova plugin to return the version number of the current app",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sampart/cordova-plugin-app-version.git"
-  },
+  "homepage": "https://github.com/sampart/cordova-plugin-app-version#readme",
   "keywords": [
     "cordova",
     "ecosystem:cordova",
@@ -17,10 +41,14 @@
     "appversion",
     "plugin"
   ],
-  "author": "whiteoctober",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/sampart/cordova-plugin-app-version/issues"
+  "name": "cordova-plugin-app-version",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sampart/cordova-plugin-app-version.git"
   },
-  "homepage": "https://github.com/sampart/cordova-plugin-app-version#readme"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.1.13"
 }

@@ -1,7 +1,35 @@
 {
-  "name": "cordova-sqlite-storage",
-  "version": "6.0.0",
-  "description": "Native interface to SQLite for PhoneGap / Cordova - cordova-sqlite-storage plugin version",
+  "_from": "cordova-sqlite-storage",
+  "_id": "cordova-sqlite-storage@6.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-njRloA3AICaUFztKHXoFfVcwlL7zbvyFxtdZIkK7P+MA3umILXtSKhYAQkSe2GtHr0LBNzJI5xUUqAlZl/Js0A==",
+  "_location": "/cordova-sqlite-storage",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-sqlite-storage",
+    "name": "cordova-sqlite-storage",
+    "escapedName": "cordova-sqlite-storage",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-sqlite-storage/-/cordova-sqlite-storage-6.0.0.tgz",
+  "_shasum": "25eba8eb4657d2b526c4b753747e6d1533fcb73b",
+  "_spec": "cordova-sqlite-storage",
+  "_where": "/Users/mash/Dropbox/codes/ionic_projects/SARAV3/SARA_modular/phone_code",
+  "author": {
+    "name": "various"
+  },
+  "bugs": {
+    "url": "https://github.com/xpbrew/cordova-sqlite-storage/issues"
+  },
+  "bundleDependencies": false,
   "cordova": {
     "id": "cordova-sqlite-storage",
     "platforms": [
@@ -12,10 +40,17 @@
       "windows"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/xpbrew/cordova-sqlite-storage.git"
+  "dependencies": {
+    "cordova-sqlite-storage-dependencies": "4.0.0"
   },
+  "deprecated": false,
+  "description": "Native interface to SQLite for PhoneGap / Cordova - cordova-sqlite-storage plugin version",
+  "devDependencies": {
+    "coffeescript": "1",
+    "cross-spawn": "^6.0.5",
+    "fs-extra": "^8.1.0"
+  },
+  "homepage": "https://github.com/xpbrew/cordova-sqlite-storage",
   "keywords": [
     "sqlite",
     "ecosystem:cordova",
@@ -25,23 +60,16 @@
     "cordova-osx",
     "cordova-windows"
   ],
-  "author": "various",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/xpbrew/cordova-sqlite-storage/issues"
-  },
-  "homepage": "https://github.com/xpbrew/cordova-sqlite-storage",
-  "dependencies": {
-    "cordova-sqlite-storage-dependencies": "4.0.0"
+  "name": "cordova-sqlite-storage",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xpbrew/cordova-sqlite-storage.git"
   },
   "scripts": {
     "clean-spec": "rm -rf spec/[mnp]* && git cl spec/config.xml spec/package.json && git status --ignored",
     "prepare-js": "coffee -p SQLitePlugin.coffee.md > www/SQLitePlugin.js",
     "prepare-spec": "node scripts/prepareSpec.js"
   },
-  "devDependencies": {
-    "coffeescript": "1",
-    "cross-spawn": "^6.0.5",
-    "fs-extra": "^8.1.0"
-  }
+  "version": "6.0.0"
 }
