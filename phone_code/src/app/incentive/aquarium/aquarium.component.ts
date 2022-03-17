@@ -39,11 +39,14 @@ export class AquariumComponent implements OnInit {
 
 
   get isActive(){
-    //return false;
+    return true;
+    /*
+    // Disabling the isActive for Harvard study.
     if(this.userProfileService == undefined)
       return true;
     else
       return this.userProfileService.isActive;
+    */
   }
 
   startCheatPage(){

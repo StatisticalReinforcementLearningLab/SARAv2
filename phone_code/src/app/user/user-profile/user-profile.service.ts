@@ -8,6 +8,7 @@ import { tap, map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { NetworkService, ConnectionStatus } from '../../storage/network.service';
+import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,7 @@ export class UserProfileService {
 
   constructor(private http: HttpClient,
               private networkSvc: NetworkService,
+              private appVersion: AppVersion,
               private oneSignal: OneSignal) { }
 
   //returns Observable that we can subscribed to so as to trigger an action after 
@@ -129,6 +131,16 @@ export class UserProfileService {
       this.saveToServer();
     });
   }
+
+  addAppVersion(){
+      this.appVersion.getVersionNumber().then(value => {
+        this.userProfile.versionNumber = value;
+        this.saveProfileToDevice();
+        //this.saveToServer();
+    }).catch(err => {
+        console.log(err);
+    });
+  }
   /* 
   addReinforcementData returns true if successful at adding the element (it doesn't already exist for the given date)
   date is a string of the format YYYYMMDD (e.g. "20170430")
@@ -225,6 +237,7 @@ export class UserProfileService {
   set versionNumber(versionNumber:string){
     this.userProfile.versionNumber = versionNumber;
     this.saveProfileToDevice();
+    this.saveToServer();
   }
   saveToServerSub :Subscription;
 
