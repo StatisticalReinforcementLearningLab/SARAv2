@@ -170,6 +170,7 @@ export class AppComponent {
       //this.statusBar.backgroundColorByHexString('#ffffff');
 
       if(this.platform.is('android')) {
+        this.statusBar.overlaysWebView(false);
         this.statusBar.styleLightContent();
         this.statusBar.backgroundColorByHexString("#004166");
       }
