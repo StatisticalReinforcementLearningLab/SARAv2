@@ -37,9 +37,11 @@ class SendOneSignalNotification:
         self.ONE_SIGNAL_APP_ID = self.get_key(
             config_file_path, "ONE_SIGNAL_CONFIG", "ONE_SIGNAL_APP_ID"
         )
+        """
         self.IMAGE_LOCATION = self.get_key(
             config_file_path, "ONE_SIGNAL_CONFIG", "NOTIFICATION_IMAGE_LOCATION"
         )
+        """
 
     def get_key(self, config_file_path, section_id, key_id):
         config = configparser.ConfigParser()
