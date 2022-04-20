@@ -47,8 +47,6 @@ https://github.com/StatisticalReinforcementLearningLab/SARA-Version1/tree/master
 
 
 
-
-
 # How to run this code 
 SARA version 2 uses Angular 8 and ionic 4. Ionic is a cross-platform language written in Javascript. The ionic [starter project guideline](https://ionicframework.com/getting-started) is excellent and it is great point start.  
 
@@ -73,9 +71,10 @@ Direct links to readme files for each of the modules are below:
 - [Incentive](https://github.com/StatisticalReinforcementLearningLab/SARAv2/tree/master/src/app/incentive)
 - [Storage](https://github.com/StatisticalReinforcementLearningLab/SARAv2/tree/master/src/app/storage)
 
-Our code heavily uses modules, components and service architecture from Angular 2 or above. If you are new to this architecture, we found [this Udemy course](https://www.udemy.com/course/the-complete-angular-master-class/) to be very helpful.  
+Our code heavily uses modules, components and service architecture from Angular 2 or above. If you are new to this architecture, we found [this Udemy course](https://www.udemy.com/course/the-complete-angular-master-class/) to be very helpful.
 
 
 # RL Algorithm Documentation
 The documentation for the RL algorithm deployed on SARA version 2 can be found [here](https://hackmd.io/@NmVUyGhZTtGsYYlVWJx9uQ/BJangREBv).
+
 
