@@ -302,7 +302,7 @@ class SendOneSignalNotification:
                 "en": "We showed that we are united and that we young people are unstoppable."
             },
             "included_segments": ["Active Users", "Inactive Users"],
-            "data": {"user": "test"},
+            "data": {"user": "test", "type": "test"},
             "ttl": 259200,
             "priority": 10,
             "buttons": [
@@ -340,7 +340,7 @@ class SendOneSignalNotification:
             "large_icon": self.IMAGE_LOCATION + self.notification_image,
             "android_visibility": 0,
             "android_accent_color": "FF0000FF",
-            "data": {"user": "test"},
+            "data": {"user": "test", "type": "test"},
             "ttl": 259200,
             "priority": 10,
             "buttons": [
@@ -405,6 +405,7 @@ p1.sendOneSignalNotifications()
 """
 
 if __name__ == "__main__":
+    """
     p1 = SendOneSignalNotification(
         "We showed that we are united and that we young people are unstoppable.",
         "Quote from test ",
@@ -412,11 +413,13 @@ if __name__ == "__main__":
         "demo",
         "engagement_images/greta_thunberg.png",
     )
+    """
     # p1.test_onesignal_connection() # uncommment to test onesignal config.
+    # "6b25ce5c-8c60-11ec-85e2-62272b788c4b",
     p2 = SendOneSignalNotification(
-        "We showed that we are united and that we young people are unstoppable.",
+        "We showed that we are united and that we young people are unstoppable 2.",
         "Quote from Greata Thunberg ",
-        "6b25ce5c-8c60-11ec-85e2-62272b788c4b",
+        "30c5c22d-3c97-457a-9646-d982c8183e35",
         "demo",
         "engagement_images/greta_thunberg.png",
     )

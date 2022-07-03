@@ -33,6 +33,7 @@ import { SamplePythonViewComponent } from './incentive/life-insights/sample-pyth
 import { SleepSurveyComponent } from './survey/sleep-survey/sleep-survey.component';
 import { DogsSurveyComponent } from './survey/dogs-survey/dogs-survey.component';
 import { SleepMonitoringComponent } from './intervention/sleep-monitoring/sleep-monitoring.component';
+import { SleepStudyEveningSurveyComponent } from './survey/sleep-study-evening-survey/sleep-study-evening-survey.component';
 
 
 const routes: Routes = [
@@ -63,6 +64,7 @@ const routes: Routes = [
   { path: 'survey/samplesurvey2', component: AyaSampleSurveyComponent, canActivate: [AuthGuard]}, 
   //{ path: 'survey/harvardsurvey', component: HarvardSurveyComponent, canActivate: [AuthGuard]}, 
   { path: 'survey/sleepsurvey', component: SleepSurveyComponent, canActivate: [AuthGuard]},
+  { path: 'survey/sleepeveningsurvey', component: SleepStudyEveningSurveyComponent, canActivate: [AuthGuard]},
   { path: 'survey/dogssurvey', component: DogsSurveyComponent, canActivate: [AuthGuard]},
   { path: 'intervention/arcappsfrontpage', component: FrontPageComponent, canActivate: [AuthGuard]}, 
   { path: 'incentive/aquariumone', component: DemoAquariumComponent, canActivate: [AuthGuard]},

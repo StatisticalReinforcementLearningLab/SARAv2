@@ -1,0 +1,58 @@
+[
+  {
+    "name":"Q1",
+    "text":"1. Today, how <b>stressed</b> did you feel?",
+      "type": "radiobutton",
+      "extra":{
+        "choices": ["Not<br>at all", "Very<br>much"],
+        "orientation": "horizontal",
+        "levels": 5
+      }
+  },
+  {
+    "name":"Q2",
+    "text":"2. Today, how was your <b>mood</b> overall? ",
+    "type": "moodgrid2"
+  },
+  {
+    "name":"Q3",
+    "text":"3. Today, how <b>overwhelmed</b> did you feel?",
+      "type": "radiobutton",
+      "extra":{
+        "choices": ["Not<br>at all", "Very<br>much"],
+        "orientation": "horizontal",
+        "levels": 5
+      }
+  },
+  {
+    "name":"Q4",
+    "text":"4. Today, how <b>tired</b> did you feel?",
+      "type": "radiobutton",
+      "extra":{
+        "choices": ["Not<br>at all", "Very<br>tired"],
+        "orientation": "horizontal",
+        "levels": 5
+      }
+  },
+  {
+    "name":"Q5",
+    "text":"5. Today, how much <b>willpower</b> do you feel you had?",
+      "type": "radiobutton",
+      "extra":{
+        "choices": ["Not<br>at all", "Very<br>much"],
+        "orientation": "horizontal",
+        "levels": 5
+      }
+  },
+  {
+    "name":"Q6",
+    "text":"6. Today, to what extent did you <b>achieve your goals</b> for the day?",
+      "type": "radiobutton",
+      "extra":{
+        "choices": ["Not<br>at all", "Achieved<br>goals"],
+        "orientation": "horizontal",
+        "levels": 5
+      }
+  }
+
+]

@@ -34,21 +34,21 @@ export class SleepSurveyComponent implements OnInit {
       
       this.appUsageDb.saveAppUsageEnter("sleep_survey_page");
 
-   }  
-  
-   ionViewDidLeave(){
-      /*
-      console.log(this.pageTitle+": ionViewDidLeave");
-      this.db.getDatabaseState().subscribe(rdy => {
-        if (rdy) {     
-          this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
-        }
-      });
-      */
-      
-      this.mobileAccessibility.usePreferredTextZoom(true);
-      this.appUsageDb.saveAppUsageExit("sleep_survey_page");
+    }  
     
-   }
+    ionViewDidLeave(){
+        /*
+        console.log(this.pageTitle+": ionViewDidLeave");
+        this.db.getDatabaseState().subscribe(rdy => {
+          if (rdy) {     
+            this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
+          }
+        });
+        */
+        
+        this.mobileAccessibility.usePreferredTextZoom(true);
+        this.appUsageDb.saveAppUsageExit("sleep_survey_page");
+      
+    }
 
 }

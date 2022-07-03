@@ -257,21 +257,40 @@ export class AquariumComponent implements OnInit {
   startSurvey(){
     console.log('start survey');
     var currentTime = moment(); 
-    var startTime = moment({hour: 8});  // 8am
-    var endTime = moment({hour: 13, minute: 59});  // 1:59pm
+    let startTimeSleep = moment({hour: 8});  // 8am
+    let endTimeSleep = moment({hour: 13, minute: 59});  // 1:59pm
+    let startTimeEveningReflection = moment({hour: 18});  // 6pm
+    let endTimeEveningReflection = moment({hour: 23, minute: 59});  // 11:59pm
+
     var firstLogin = this.userProfileService.userProfile.firstlogin;
     if(firstLogin == undefined)  firstLogin = true;
     this.userProfileService.userProfile.firstlogin = false;
     this.userProfileService.saveProfileToDevice();
     this.userProfileService.saveToServer();
-    if(!currentTime.isBetween(startTime, endTime) && !firstLogin) {
-      this.presentAlert('Please come back between 8 AM and 2PM');
-    } else if(this.userProfileService.surveyTakenForCurrentDay()) {
-      this.presentAlert('You have already completed the survey for the day.');
-    } else {
-      this.navController.navigateRoot(['survey/sleepsurvey']);
-    } 
 
+
+    if(!currentTime.isBetween(startTimeSleep, endTimeSleep) && 
+       !currentTime.isBetween(startTimeEveningReflection, endTimeEveningReflection) && 
+       !firstLogin) {
+      this.presentAlert('We are outside of a time-window to complete surveys. Sleep surveys are open between 8am and 2pm. Evening self-reflections are open between 6pm and midnight.');
+    // } 
+    // Disabling the following since we don't have any surveyTakenForCurrentDay for
+    // two surveys.
+    //else if(this.userProfileService.surveyTakenForCurrentDay()) {
+    //  this.presentAlert('You have already completed the survey for the day.');
+    } else {
+      if(currentTime.isBetween(startTimeSleep, endTimeSleep)){
+        this.navController.navigateRoot(['survey/sleepsurvey']);
+        //this.navController.navigateRoot(['survey/sleepeveningsurvey']);
+      } else if(currentTime.isBetween(startTimeEveningReflection, endTimeEveningReflection)){
+        this.navController.navigateRoot(['survey/sleepeveningsurvey']);
+      }else{
+        //means we are at first login and outside of the window
+        //ideally this can happen only between 2-6pm. 
+        //We show the sleep survey in this case.
+        this.navController.navigateRoot(['survey/sleepsurvey']);
+      }
+    } 
   }
 
   async openSurvey(location){
