@@ -10,7 +10,7 @@
       }
   },
   {
-    "name":"Q2",
+    "name":"QMood",
     "text":"2. Today, how was your <b>mood</b> overall? ",
     "type": "moodgrid2"
   },

@@ -19,7 +19,8 @@ environment*.ts
 *.aab
 *.apk
 phone_code/plugins/
-
+phone_code/app-release-signed.aab
+phone_code/app-release..aab
 
 # server side code
 aws_config.json
@@ -33,3 +34,7 @@ config.ini
 
 .vscode
 ./server_side_code
+
+
+
+
