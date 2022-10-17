@@ -49,7 +49,7 @@ https://github.com/StatisticalReinforcementLearningLab/SARA-Version1/tree/master
 
 
 # How to run this code 
-SARA version 2 uses Angular 8 and ionic 4. Ionic is a cross-platform language written in Javascript. The ionic [starter project guideline](https://ionicframework.com/getting-started) is excellent and it is great point start.  
+SARA version 2 uses Angular 9 and ionic 5. Ionic is a cross-platform language written in Javascript. The ionic [starter project guideline](https://ionicframework.com/getting-started) is excellent and it is great point start.  
 
 Once you get used the ionic starter project, you can clone our repo and all you need to do is type the following command. A new browser window will open up with SARA running.
 
