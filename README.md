@@ -2,9 +2,7 @@
 
 **Oct 17, 2022**: For code organization see this [wiki](https://github.com/StatisticalReinforcementLearningLab/SARAv2/wiki/SARA-version-2-code-organization-(10-16-2022))
 
-### Folders with documents related to SARA
-[Associated documents](https://www.dropbox.com/sh/pnxm4ajpkag743a/AAArpb5AH0I-6UECaYVLc8zla?dl=0) 
-Now moved to [google doc folder](https://drive.google.com/drive/folders/1P9y5-P4gLJZPHvsxDyvy7hDSVuf9W6I0?usp=sharing)
+
 
 
 # Project Description
@@ -63,19 +61,13 @@ ionic serve
 
 
 # Code Description 
-SARA version 2 code is designed to be modular and extendible. The following diagram shows the different modules in SARA. Each module is described in detail in their respective readme files. 
+For code organization see this [wiki](https://github.com/StatisticalReinforcementLearningLab/SARAv2/wiki/SARA-version-2-code-organization-(10-16-2022))
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/StatisticalReinforcementLearningLab/SARAv2/master/modular_sara.png" width="650"/>
-</p>
+Our code uses modules, components and service architecture from Angular 2 or above. For a tutorial of this type of architecture, we found [this Udemy course](https://www.udemy.com/course/the-complete-angular-master-class/) to be useful.  
 
-Direct links to readme files for each of the modules are below:
-- [Survey](https://github.com/StatisticalReinforcementLearningLab/SARAv2/tree/master/src/app/survey)
-- [Incentive](https://github.com/StatisticalReinforcementLearningLab/SARAv2/tree/master/src/app/incentive)
-- [Storage](https://github.com/StatisticalReinforcementLearningLab/SARAv2/tree/master/src/app/storage)
-
-Our code heavily uses modules, components and service architecture from Angular 2 or above. If you are new to this architecture, we found [this Udemy course](https://www.udemy.com/course/the-complete-angular-master-class/) to be very helpful.  
-
+### Folders with documents related to SARA
+[Associated documents](https://www.dropbox.com/sh/pnxm4ajpkag743a/AAArpb5AH0I-6UECaYVLc8zla?dl=0) 
+Now moved to [google doc folder](https://drive.google.com/drive/folders/1P9y5-P4gLJZPHvsxDyvy7hDSVuf9W6I0?usp=sharing)
 
 # RL Algorithm Documentation
 The documentation for the RL algorithm deployed on SARA version 2 can be found [here](https://hackmd.io/@NmVUyGhZTtGsYYlVWJx9uQ/BJangREBv).
