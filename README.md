@@ -1,5 +1,6 @@
 # SARAv2
-Substance Abuse Research Assistant V2  
+
+**Oct 17, 2022**: For code organization see this [wiki](https://github.com/StatisticalReinforcementLearningLab/SARAv2/wiki/SARA-version-2-code-organization-(10-16-2022))
 
 # Dropbox Folder
 Associated documents: https://www.dropbox.com/sh/pnxm4ajpkag743a/AAArpb5AH0I-6UECaYVLc8zla?dl=0 
