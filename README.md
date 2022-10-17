@@ -2,9 +2,9 @@
 
 **Oct 17, 2022**: For code organization see this [wiki](https://github.com/StatisticalReinforcementLearningLab/SARAv2/wiki/SARA-version-2-code-organization-(10-16-2022))
 
-# Dropbox Folder
-Associated documents: https://www.dropbox.com/sh/pnxm4ajpkag743a/AAArpb5AH0I-6UECaYVLc8zla?dl=0 
-Now moved to google doc folder: https://drive.google.com/drive/folders/1P9y5-P4gLJZPHvsxDyvy7hDSVuf9W6I0?usp=sharing
+### Folders with documents related to SARA
+[Associated documents](https://www.dropbox.com/sh/pnxm4ajpkag743a/AAArpb5AH0I-6UECaYVLc8zla?dl=0) 
+Now moved to [google doc folder](https://drive.google.com/drive/folders/1P9y5-P4gLJZPHvsxDyvy7hDSVuf9W6I0?usp=sharing)
 
 
 # Project Description
