@@ -21,6 +21,7 @@ import { SurveyEffects } from './survey.effects';
 import { SleepSurveyComponent } from './sleep-survey/sleep-survey.component';
 import { DogsSurveyComponent } from './dogs-survey/dogs-survey.component';
 import { SleepStudyEveningSurveyComponent } from './sleep-study-evening-survey/sleep-study-evening-survey.component';
+import { SleepSurveyWithPredictionComponent } from './sleep-survey-with-prediction/sleep-survey-with-prediction.component';
 
 const routes: Routes = [
     { path: 'samplesurvey', component: SampleSurveyComponent }
@@ -34,7 +35,8 @@ const routes: Routes = [
     //HarvardSurveyComponent,
     SleepSurveyComponent,
     DogsSurveyComponent,
-    SleepStudyEveningSurveyComponent],
+    SleepStudyEveningSurveyComponent,
+    SleepSurveyWithPredictionComponent],
   imports: [
     CommonModule,
     IonicModule.forRoot(),

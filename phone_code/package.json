@@ -103,7 +103,7 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
-    "onesignal-cordova-plugin": "^2.11.3",
+    "onesignal-cordova-plugin": "^3.0.4",
     "phonegap-plugin-mobile-accessibility": "^1.0.5",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
@@ -128,8 +128,7 @@
       "cordova-plugin-whitelist": {},
       "cordova-sqlite-storage": {},
       "phonegap-plugin-mobile-accessibility": {},
-      "uk.co.workingedge.cordova.plugin.sqliteporter": {},
-      "onesignal-cordova-plugin": {}
+      "uk.co.workingedge.cordova.plugin.sqliteporter": {}
     },
     "platforms": [
       "android",
