@@ -37,9 +37,6 @@
     "cordova-sqlite-storage": {
       "PACKAGE_NAME": "edu.harvard.srl.SARA.V2"
     },
-    "onesignal-cordova-plugin": {
-      "PACKAGE_NAME": "edu.harvard.srl.SARA.V2"
-    },
     "phonegap-plugin-mobile-accessibility": {
       "PACKAGE_NAME": "edu.harvard.srl.SARA.V2"
     },

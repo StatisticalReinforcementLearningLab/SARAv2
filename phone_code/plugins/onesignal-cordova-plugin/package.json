@@ -1,27 +1,27 @@
 {
-  "_from": "onesignal-cordova-plugin@2.11.3",
-  "_id": "onesignal-cordova-plugin@2.11.3",
+  "_from": "onesignal-cordova-plugin",
+  "_id": "onesignal-cordova-plugin@3.0.4",
   "_inBundle": false,
-  "_integrity": "sha512-vWPmXR4qML06Fg785bg6SW3mOJImQteZKqEZqKBO5vC0cvtLQXofhTdUAOFAQRlBAUavZbEIXF7ZGFeQCA1ukA==",
+  "_integrity": "sha512-ATcn3MsbHTP5i8eR8hbRAka+WCnd3ZmJ6wsNvhDaKIdzI/9XVBx/f+u/pKKZ7v5CBob3rdcyBNP/gQ3Mv/60rg==",
   "_location": "/onesignal-cordova-plugin",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "tag",
     "registry": true,
-    "raw": "onesignal-cordova-plugin@2.11.3",
+    "raw": "onesignal-cordova-plugin",
     "name": "onesignal-cordova-plugin",
     "escapedName": "onesignal-cordova-plugin",
-    "rawSpec": "2.11.3",
+    "rawSpec": "",
     "saveSpec": null,
-    "fetchSpec": "2.11.3"
+    "fetchSpec": "latest"
   },
   "_requiredBy": [
     "#DEV:/",
     "#USER"
   ],
-  "_resolved": "https://registry.npmjs.org/onesignal-cordova-plugin/-/onesignal-cordova-plugin-2.11.3.tgz",
-  "_shasum": "3f105562f3b7dac9b40a05246df18ca52c51979b",
-  "_spec": "onesignal-cordova-plugin@2.11.3",
+  "_resolved": "https://registry.npmjs.org/onesignal-cordova-plugin/-/onesignal-cordova-plugin-3.0.4.tgz",
+  "_shasum": "c48a9fdc96cda58b3553060c594991bb2a339698",
+  "_spec": "onesignal-cordova-plugin",
   "_where": "/Users/mash/Dropbox/codes/ionic_projects/SARAV3/SARA_modular/phone_code",
   "author": {
     "name": "Josh Kasten, Brad Hesse, Rodrigo Gomez-Palacio"
@@ -35,7 +35,6 @@
     "platforms": [
       "android",
       "ios",
-      "windows",
       "amazon-fireos"
     ]
   },
@@ -81,16 +80,17 @@
     "cordova-amazon-fireos"
   ],
   "license": "MIT",
+  "main": "www/OneSignalPlugin.js",
   "name": "onesignal-cordova-plugin",
   "platforms": [
     "android",
     "ios",
-    "windows",
     "amazon-fireos"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/onesignal/OneSignal-Cordova-SDK.git"
   },
-  "version": "2.11.3"
+  "typings": "types/index.d.ts",
+  "version": "3.0.4"
 }
