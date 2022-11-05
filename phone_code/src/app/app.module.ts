@@ -32,7 +32,6 @@ import {EffectsModule} from '@ngrx/effects';
 import { GlobalErrorHandler } from './error_handler/GlobalErrorHandler';
 import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 import { InterventionModule } from './intervention/intervention.module';
-import { InformationpagesModule } from './informationpages/informationpages.module';
 
 
 @NgModule({
@@ -52,7 +51,6 @@ import { InformationpagesModule } from './informationpages/informationpages.modu
     UserModule,
     InterventionModule,
     HomePageModule,
-    InformationpagesModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {

@@ -220,7 +220,11 @@ export class UserProfileService {
 
     if(this.userProfile==undefined)
       this.loadProfileFromDevice();
-    return this.userProfile.username;
+    
+    if(this.userProfile == null)
+      return "new user"
+    else
+      return this.userProfile.username;
   }
   set username(username:string){
     console.log("user-profile.service.ts - isActive setter - begin");

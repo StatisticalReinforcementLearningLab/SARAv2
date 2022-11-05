@@ -35,7 +35,6 @@ import { DogsSurveyComponent } from './survey/dogs-survey/dogs-survey.component'
 import { SleepMonitoringComponent } from './intervention/sleep-monitoring/sleep-monitoring.component';
 import { SleepStudyEveningSurveyComponent } from './survey/sleep-study-evening-survey/sleep-study-evening-survey.component';
 import { SleepSurveyWithPredictionComponent } from './survey/sleep-survey-with-prediction/sleep-survey-with-prediction.component';
-import { SlidingBaselineComponent } from './informationpages/sliding-baseline/sliding-baseline.component';
 
 
 const routes: Routes = [
@@ -81,7 +80,6 @@ const routes: Routes = [
   { path: 'preview/sea', component: SeaComponent, canActivate: [AuthGuard]},
   { path: 'preview/tundra', component: TundraComponent, canActivate: [AuthGuard]},
   { path: 'intervention/sleep-monitoring', component: SleepMonitoringComponent, canActivate: [AuthGuard]},
-  { path: 'baseline-sliding-info', component: SlidingBaselineComponent},
   { path: 'preview/rainforest', component: RainforestComponent, canActivate: [AuthGuard]}
 
   //{ path: 'incentive/award-memes', component: AwardMemesComponent },
