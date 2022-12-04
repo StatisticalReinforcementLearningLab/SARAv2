@@ -1,0 +1,40 @@
+<ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+        <ion-button (click)="close()">
+            <ion-icon name="close" slot="icon-only"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+    <ion-title>{{ viewTitle }}</ion-title>
+    <ion-buttons slot="end">
+        <ion-button (click)="save()">
+            <ion-icon name="checkmark" slot="icon-only"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+</ion-toolbar>
+
+<ion-content>
+    <ion-item>
+        <ion-label position="stacked">Title</ion-label>
+        <ion-input tpye="text" [(ngModel)]="event.title"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Description</ion-label>
+        <ion-input tpye="text" [(ngModel)]="event.desc"></ion-input>
+    </ion-item>
+
+    <calendar *ngIf="modalReady" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
+        (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)" 
+        [markDisabled]="markDisabled"
+        [showEventDetail]="false"
+        lockSwipes="true">
+    </calendar>
+
+    <ng-template #template let-view="view" let-row="row" let-col="col">
+        <div [class.with-event]="view.dates[row*7+col].events.length">
+          {{view.dates[row*7+col].label}}
+          <div class="indicator-container">
+            <div class="event-indicator" *ngFor="let e of view.dates[row*7+col].events"></div>
+          </div>
+        </div>
+    </ng-template>
+</ion-content>

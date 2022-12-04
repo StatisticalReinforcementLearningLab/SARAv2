@@ -29,7 +29,6 @@ import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import {EffectsModule} from '@ngrx/effects';
-import { GlobalErrorHandler } from './error_handler/GlobalErrorHandler';
 import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 import { InterventionModule } from './intervention/intervention.module';
 

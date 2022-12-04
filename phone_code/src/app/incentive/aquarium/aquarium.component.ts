@@ -281,8 +281,8 @@ export class AquariumComponent implements OnInit {
     } else {
       if(currentTime.isBetween(startTimeSleep, endTimeSleep)){
         //this.navController.navigateRoot(['survey/sleepsurvey']);
-        //this.navController.navigateRoot(['survey/sleepeveningsurvey']);
-        this.navController.navigateRoot(['survey/sleepsurveywithprediction']);
+        this.navController.navigateRoot(['survey/sleepeveningsurvey']);
+        //this.navController.navigateRoot(['survey/sleepsurveywithprediction']);
       } else if(currentTime.isBetween(startTimeEveningReflection, endTimeEveningReflection)){
         this.navController.navigateRoot(['survey/sleepeveningsurvey']);
       }else{

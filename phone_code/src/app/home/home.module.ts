@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
@@ -11,6 +11,12 @@ import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.com
 import { HomeRoutingModule } from './home-routing.module';
 import { ContactComponent } from './contact/contact.component';
 import { InterventionModule } from '../intervention/intervention.module';
+
+
+import { registerLocaleData } from '@angular/common';
+import localeEn from '@angular/common/locales/en';
+registerLocaleData(localeEn);
+
 
 @NgModule({
   imports: [
@@ -31,6 +37,9 @@ import { InterventionModule } from '../intervention/intervention.module';
   ],
   declarations: [HomePage, HeaderComponent, TermsOfServiceComponent, ContactComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  exports:[TermsOfServiceComponent]
+  exports:[TermsOfServiceComponent],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'en-EN' }
+  ]
 })
 export class HomePageModule {}

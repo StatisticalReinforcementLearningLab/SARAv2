@@ -9,8 +9,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "no-reload": "ng serve --port=8100 --liveReload=false --open=true"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -58,6 +57,7 @@
     "core-js": "^2.5.4",
     "core-util-is": "^1.0.2",
     "crypto-js": "^3.1.9-1",
+    "ionic2-calendar": "^0.6.9",
     "moment": "^2.24.0",
     "node-forge": "^1.0.0",
     "rxjs": "~6.6.7",

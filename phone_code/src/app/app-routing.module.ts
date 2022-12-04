@@ -35,6 +35,7 @@ import { DogsSurveyComponent } from './survey/dogs-survey/dogs-survey.component'
 import { SleepMonitoringComponent } from './intervention/sleep-monitoring/sleep-monitoring.component';
 import { SleepStudyEveningSurveyComponent } from './survey/sleep-study-evening-survey/sleep-study-evening-survey.component';
 import { SleepSurveyWithPredictionComponent } from './survey/sleep-survey-with-prediction/sleep-survey-with-prediction.component';
+import { MedicationCalendarComponent } from './intervention/medication-calendar/medication-calendar.component';
 
 
 const routes: Routes = [
@@ -80,7 +81,12 @@ const routes: Routes = [
   { path: 'preview/sea', component: SeaComponent, canActivate: [AuthGuard]},
   { path: 'preview/tundra', component: TundraComponent, canActivate: [AuthGuard]},
   { path: 'intervention/sleep-monitoring', component: SleepMonitoringComponent, canActivate: [AuthGuard]},
-  { path: 'preview/rainforest', component: RainforestComponent, canActivate: [AuthGuard]}
+  { path: 'intervention/medication-calendar', component: MedicationCalendarComponent, canActivate: [AuthGuard]},
+  { path: 'preview/rainforest', component: RainforestComponent, canActivate: [AuthGuard]},
+  {
+    path: 'add-event-modal',
+    loadChildren: () => import('./intervention/medication-calendar/add-event-modal/add-event-modal.module').then( m => m.AddEventModalPageModule)
+  }
 
   //{ path: 'incentive/award-memes', component: AwardMemesComponent },
   //{ path: 'incentive/aquariumone', component: DemoAquariumComponent },  

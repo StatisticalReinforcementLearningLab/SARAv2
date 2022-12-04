@@ -1,0 +1,13 @@
+.new-background-color{
+    --background: #005486;
+}
+
+:host ::ng-deep {
+    .monthview-container {
+        height: auto !important;
+    }
+
+    .event-detail-container {
+        display: none;
+    }
+}
