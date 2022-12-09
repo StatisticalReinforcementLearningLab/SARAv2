@@ -1,0 +1,31 @@
+<!--
+<ion-content>
+  <swiper
+  [slidesPerView]="3"
+  [spaceBetween]="50"
+  (swiper)="onSwiper($event)"
+  (slideChange)="onSlideChange()"
+  [keyboard]="true"
+  [navigation]="true"
+  >
+    <ng-template swiperSlide><p>Hip!</p></ng-template>
+    <ng-template swiperSlide>Slide 2</ng-template>
+    <ng-template swiperSlide>Slide 3</ng-template>
+  </swiper>
+</ion-content>
+
+<div>
+  <h4>Slide change</h4>
+<swiper direction="horizontal" (slideChange)="onSlideChange($event)">
+  <ng-template *ngFor="let item of slidesEx" swiperSlide> {{ item }} </ng-template>
+</swiper>
+</div>
+-->
+<swiper #swiper>
+      <ng-template swiperSlide>Slide 1</ng-template>
+      <ng-template swiperSlide>Slide 2</ng-template>
+      <ng-template swiperSlide>Slide 3</ng-template>
+      <ng-template swiperSlide>Slide 4</ng-template>
+      <ng-template swiperSlide>Slide 5</ng-template>
+      <ng-template swiperSlide>Slide 6</ng-template>
+</swiper>

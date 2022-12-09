@@ -11,7 +11,12 @@
 @import '~@ionic/angular/css/flex-utils.css';
 @import './theme/survey-theme.css';
 @import './theme/phaser-fonts.css';
-//@import './theme/ionic-v1.css';
+// @import './theme/ionic-v1.css';
+
+// @import "~swiper/scss";
+// @import "~swiper/scss/navigation";
+// @import "~swiper/scss/pagination";
+@import '~swiper/swiper';
 
 .add-event-modal {
     --height: 80%;

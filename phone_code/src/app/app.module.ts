@@ -31,7 +31,8 @@ import { environment } from '../environments/environment';
 import {EffectsModule} from '@ngrx/effects';
 import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 import { InterventionModule } from './intervention/intervention.module';
-
+// import { SwiperModule } from 'swiper/angular';
+import { BaselineModule } from './baseline/baseline.module';
 
 @NgModule({
   declarations: [AppComponent,CheatpageComponent],
@@ -49,7 +50,9 @@ import { InterventionModule } from './intervention/intervention.module';
     FormsModule,
     UserModule,
     InterventionModule,
+    BaselineModule,
     HomePageModule,
+    //SwiperModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
