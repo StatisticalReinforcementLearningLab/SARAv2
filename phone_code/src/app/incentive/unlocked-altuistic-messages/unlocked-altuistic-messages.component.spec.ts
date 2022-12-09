@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { UnlockedAltuisticMessagesComponent } from './unlocked-altuistic-messages.component';
 
@@ -6,7 +6,7 @@ describe('UnlockedAltuisticMessagesComponent', () => {
   let component: UnlockedAltuisticMessagesComponent;
   let fixture: ComponentFixture<UnlockedAltuisticMessagesComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ UnlockedAltuisticMessagesComponent ]
     })

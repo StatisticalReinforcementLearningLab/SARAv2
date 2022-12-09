@@ -56,7 +56,7 @@ const routes: Routes = [
   { path: 'life-insight/q1lifeinsight', component: Q1MotivatedComponent },
   */
   
-  { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [AuthGuard]},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {path: 'auth', component: AuthComponent}, 
   { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule), canActivate: [AuthGuard]},
   //{ path: 'home', component: DemoAquariumComponent, canActivate: [AuthGuard]},
@@ -138,7 +138,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, relativeLinkResolution: 'legacy' })
   ],
   exports: [RouterModule]
 })

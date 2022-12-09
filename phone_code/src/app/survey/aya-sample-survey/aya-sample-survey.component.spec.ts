@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AyaSampleSurveyComponent } from './aya-sample-survey.component';
 
@@ -7,7 +7,7 @@ describe('AyaSampleSurveyComponent', () => {
   let component: AyaSampleSurveyComponent;
   let fixture: ComponentFixture<AyaSampleSurveyComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AyaSampleSurveyComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],

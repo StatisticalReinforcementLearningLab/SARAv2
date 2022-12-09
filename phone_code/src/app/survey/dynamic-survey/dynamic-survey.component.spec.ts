@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DynamicSurveyComponent } from './dynamic-survey.component';
 
@@ -7,7 +7,7 @@ describe('DynamicSurveyComponent', () => {
   let component: DynamicSurveyComponent;
   let fixture: ComponentFixture<DynamicSurveyComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DynamicSurveyComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AwardMemesComponent } from './award-memes.component';
 
@@ -7,7 +7,7 @@ describe('AwardMemesComponent', () => {
   let component: AwardMemesComponent;
   let fixture: ComponentFixture<AwardMemesComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AwardMemesComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],

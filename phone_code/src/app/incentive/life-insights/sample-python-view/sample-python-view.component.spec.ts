@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SamplePythonViewComponent } from './sample-python-view.component';
 
@@ -6,7 +6,7 @@ describe('SamplePythonViewComponent', () => {
   let component: SamplePythonViewComponent;
   let fixture: ComponentFixture<SamplePythonViewComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SamplePythonViewComponent ]
     })

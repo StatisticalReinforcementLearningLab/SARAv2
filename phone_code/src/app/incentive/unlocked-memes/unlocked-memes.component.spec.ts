@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { UnlockedMemesComponent } from './unlocked-memes.component';
 
@@ -6,7 +6,7 @@ describe('UnlockedMemesComponent', () => {
   let component: UnlockedMemesComponent;
   let fixture: ComponentFixture<UnlockedMemesComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ UnlockedMemesComponent ]
     })
