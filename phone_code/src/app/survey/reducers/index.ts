@@ -4,7 +4,7 @@ import { SurveyActions } from '../action-types';
 import * as moment from 'moment';
 
 export interface SurveyState{
-    surveyTimeLine : SurveyTimeline
+    surveyTimeLine? : SurveyTimeline
 }
 
 

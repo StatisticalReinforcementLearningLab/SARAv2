@@ -4,7 +4,7 @@ import { IncentiveActions } from '../action-types';
 import * as moment from 'moment';
 
 export interface UnlockecIncentiveState{
-    unlockedIncentives : UnlockedIncentives
+    unlockedIncentives? : UnlockedIncentives
 }
 
 export const initialUnlockedIncentiveState: UnlockecIncentiveState = {
