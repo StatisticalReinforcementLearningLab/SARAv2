@@ -11,68 +11,8 @@
 @import '~@ionic/angular/css/flex-utils.css';
 @import './theme/survey-theme.css';
 @import './theme/phaser-fonts.css';
-// @import './theme/ionic-v1.css';
-
-// @import "~swiper/scss";
-// @import "~swiper/scss/navigation";
-// @import "~swiper/scss/pagination";
-// @import '~swiper/swiper';
-
-.add-event-modal {
-    --height: 80%;
-    --border-radius: 10px;
-    padding: 25px;
-}
-
-td.text-muted{
-    visibility: hidden;
-}
-
-.indicator-container {
-    padding-left: 0.5rem;
-    padding-bottom: 0.4rem;
-}
-  
-.event-indicator {
-    background: white;
-    width: 5px;
-    height: 5px;
-    border-radius: 5px;
-    display: table-cell;
-}
-  
-:host ::ng-deep {
-    .monthview-primary-with-event {
-      background-color: white !important;
-    }
-    
-    td.monthview-selected.monthview-current{
-        background-color: white !important;
-        color: black
-    }
-
-    .monthview-datetable {
-        border: 0 !important;
-    
-        td, th {
-          border: 0 !important;
-          padding: 3px!important;
-          background-color: transparent!important;
-        }
-    }
-}
-  
-.with-event {
-    background-color: var(--ion-color-primary);
-    border-radius: 15px;
-}
-
-/*
-td.monthview-current {
-    color: black;
-    background-color: color(green, 'light') !important;
-}
 
 
-
-*/
+@import 'swiper/scss';
+@import "swiper/scss/navigation";
+@import "swiper/scss/pagination";
