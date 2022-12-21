@@ -1,0 +1,60 @@
+<!--
+<ion-content>
+  <swiper
+  [slidesPerView]="3"
+  [spaceBetween]="50"
+  (swiper)="onSwiper($event)"
+  (slideChange)="onSlideChange()"
+  [keyboard]="true"
+  [navigation]="true"
+  >
+    <ng-template swiperSlide><p>Hip!</p></ng-template>
+    <ng-template swiperSlide>Slide 2</ng-template>
+    <ng-template swiperSlide>Slide 3</ng-template>
+  </swiper>
+</ion-content>
+
+<div>
+  <h4>Slide change</h4>
+<swiper direction="horizontal" (slideChange)="onSlideChange($event)">
+  <ng-template *ngFor="let item of slidesEx" swiperSlide> {{ item }} </ng-template>
+</swiper>
+</div>
+
+[initialSlide]="0" [slidesPerView]="1.25" [spaceBetween]="20" [centeredSlides]="true"
+-->
+
+
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-back-button style="color:#fff;" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="color:#fff;">Welcome!!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <swiper
+      [slidesPerView]="1"
+      [spaceBetween]="50"
+      (swiper)="onSwiper($event)"
+      (slideChange)="onSlideChange()"
+      [centeredSlides]="true"
+      [pagination]="pagination"
+      style="background-color: #81d9eb; height: 100%;"
+  >
+      <ng-template swiperSlide *ngFor="let slide of slides; index as i" >
+          <div class="circle-sb">
+              <p [innerHTML]="slide.text" [ngStyle]="{'font-size': slide.font}"></p>
+              <div class="dcircle"></div>
+              <div class="dcircle1"></div>
+          </div>
+          <button style="height:40px;width:40px;border-radius:40px;margin:5px;font-size:24px;color:#157284;background:#81d9eb;position:absolute;right:0;top:0;" 
+          (click)="closeTutorial()">
+              <ion-icon name="close" style="height: 30px;width: 30px;"></ion-icon>
+          </button>
+      
+      </ng-template>
+  </swiper>
+</ion-content>

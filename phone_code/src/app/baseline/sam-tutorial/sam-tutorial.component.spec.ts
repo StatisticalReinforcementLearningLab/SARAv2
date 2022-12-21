@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ModalUnlockedPageComponent } from './modal-unlocked-page.component';
+import { SamTutorialComponent } from './sam-tutorial.component';
 
-describe('ModalUnlockedPageComponent', () => {
-  let component: ModalUnlockedPageComponent;
-  let fixture: ComponentFixture<ModalUnlockedPageComponent>;
+describe('SamTutorialComponent', () => {
+  let component: SamTutorialComponent;
+  let fixture: ComponentFixture<SamTutorialComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModalUnlockedPageComponent ],
+      declarations: [ SamTutorialComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ModalUnlockedPageComponent);
+    fixture = TestBed.createComponent(SamTutorialComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -36,6 +36,7 @@ import { SleepMonitoringComponent } from './intervention/sleep-monitoring/sleep-
 import { SleepStudyEveningSurveyComponent } from './survey/sleep-study-evening-survey/sleep-study-evening-survey.component';
 import { SleepSurveyWithPredictionComponent } from './survey/sleep-survey-with-prediction/sleep-survey-with-prediction.component';
 import { MedicationCalendarComponent } from './intervention/medication-calendar/medication-calendar.component';
+import { SamTutorialComponent } from './baseline/sam-tutorial/sam-tutorial.component';
 
 
 const routes: Routes = [
@@ -55,7 +56,7 @@ const routes: Routes = [
   { path: 'life-insight/q1lifeinsight', component: Q1MotivatedComponent },
   */
   
-  { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [AuthGuard]},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {path: 'auth', component: AuthComponent}, 
   { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule), canActivate: [AuthGuard]},
   //{ path: 'home', component: DemoAquariumComponent, canActivate: [AuthGuard]},
@@ -83,6 +84,7 @@ const routes: Routes = [
   { path: 'intervention/sleep-monitoring', component: SleepMonitoringComponent, canActivate: [AuthGuard]},
   { path: 'intervention/medication-calendar', component: MedicationCalendarComponent, canActivate: [AuthGuard]},
   { path: 'preview/rainforest', component: RainforestComponent, canActivate: [AuthGuard]},
+  { path: 'baseline/tutorial', component: SamTutorialComponent, canActivate: [AuthGuard]},
   {
     path: 'add-event-modal',
     loadChildren: () => import('./intervention/medication-calendar/add-event-modal/add-event-modal.module').then( m => m.AddEventModalPageModule)
@@ -136,7 +138,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules})
   ],
   exports: [RouterModule]
 })
