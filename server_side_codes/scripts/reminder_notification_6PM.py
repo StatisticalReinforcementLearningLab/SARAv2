@@ -19,6 +19,15 @@ import io
 print(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
 
 
+def read_s3_excel(filename):
+    with open('/home/ec2-user/SARATemplate/sara-python-package/sara/config/aws_config.json') as f:
+            s3_connect_object = json.load(f)
+    s3 = create_boto_resource() 
+    content = s3.Object("sara-template-data-storage", "notification_options/" + filename).get()['Body']
+    content = io.BytesIO(content.read())
+    excel_df = pd.read_excel(content, dtype={'body': str, 'heading': str})
+    return excel_df
+
 def getListOfUsersAndOnesignalID():
     """
     Returns a list of current used ids and oneSingalIds
@@ -56,14 +65,16 @@ for user_id, onesignal_id in ids.items():
     #    csv_df = read_s3_csv('cat_notifications.csv')
     #else: 
     #    csv_df = read_s3_csv('dog_notifications.csv')
+    excel_df = read_s3_excel('6pm_reminders.xlsx')
     print("Scheduling notification for {}".format(user_id))
-    
+
     # Randomly pick from csv
+    content = excel_df.iloc[randint(0, excel_df.shape[0] - 1), :] # random notification
     post_body = {
             "user_id":user_id,
             "player_id":onesignal_id,
-            "heading":"Time for evening self-reflection",
-            "body":"Evening self-reflection survey is now open for you.",
+            "heading":content['heading'],
+            "body":content['body'],
             "db_update":"y",
             "image":"sleep.png",
             "time":"18:00"
@@ -72,5 +83,5 @@ for user_id, onesignal_id in ids.items():
     print(post_body)
     
     # Send the message
-    r = requests.post('http://saraapp.org:6000/schedule_message', data = post_body)
-    print("received status {} value {}\n".format(r.status_code, r.text))
+    # r = requests.post('http://saraapp.org:6000/schedule_message', data = post_body)
+    # print("received status {} value {}\n".format(r.status_code, r.text))
