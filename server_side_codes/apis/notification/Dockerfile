@@ -1,8 +1,9 @@
-FROM tiangolo/uwsgi-nginx-flask:python3.6-alpine3.7
+FROM tiangolo/uwsgi-nginx-flask:python3.8-alpine
 RUN apk --update add bash vim gcc g++ python3-dev
 MAINTAINER sarah_rathnam@g.harvard.edu
 ENV STATIC_URL /static
 ENV STATIC_PATH /var/www/app/static
+RUN pip install --upgrade pip
 RUN rm -rf /var/www/notification_flask.py
 COPY ./notification_flask.py /var/www/notification_flask.py
 RUN rm -rf /var/www/notification_reqs.txt
