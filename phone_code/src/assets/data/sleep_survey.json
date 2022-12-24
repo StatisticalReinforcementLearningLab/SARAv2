@@ -8,16 +8,8 @@
       }
     },
     {
-      "name":"Q2",
-      "text":"2. What time did you try to go to sleep? (Record the time that you began “trying” to fall asleep)",
-      "type":"range_time",
-      "extra":{
-        "choices":["8:00<br>PM", "4:00<br>AM",0,8,0.5, "12:00 AM"]
-      }
-    },
-    {
       "name":"Q3",
-      "text":"3. What time did you wake up this morning?",
+      "text":"2. What time did you wake up this morning?",
       "type":"range_time",
       "extra":{
         "choices":["4:00<br>AM", "12:00<br>PM",0,8,0.5, "8:00 AM"]

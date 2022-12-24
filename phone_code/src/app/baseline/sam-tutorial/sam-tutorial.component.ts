@@ -27,11 +27,11 @@ export class SamTutorialComponent implements AfterContentChecked {
             "font": "24px"
         },
         {
-            "text": "I live in Cabot House. <br>I love it here in my little <br> aquarium, but I do wish I <br>could see my students more.",
+            "text": "I live in Cabot House. I love it here in my little aquarium, but I do wish I could see my students more.",
             "font": "20px"
         },
         {
-            "text": "They never seem to be <br> in the room, and they <br> only appear to rest for a <br> short time. Sometimes I see them <br> pulling all-nighters just to get their work done. </br></br> I’m a bit worried about them.",
+            "text": "They never seem to be in the room, and they only appear to rest for a short time. Sometimes I see them pulling all-nighters just to get their work done. </br></br> I’m a bit worried about them.",
             "font": "18px"
         },
         {
@@ -43,7 +43,7 @@ export class SamTutorialComponent implements AfterContentChecked {
             "font": "18px"
         },
         {
-            "text": "Together, we created this  <br> app to help Harvard students  <br> improve the amount and quality <br> of sleep they get. </br></br> This can help supercharge your health, wellbeing, and motivation.",
+            "text": "Together, we created this app to help Harvard students improve the amount and quality of sleep they get. </br></br> This can help supercharge your health, wellbeing, and motivation.",
             "font": "18px"
         },
         {

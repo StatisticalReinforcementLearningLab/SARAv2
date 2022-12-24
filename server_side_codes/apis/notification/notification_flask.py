@@ -10,6 +10,11 @@ from SendOneSignalNotification import SendOneSignalNotification
 
 #log in database
 def load_database_config(dbname):
+    """
+    Loads the database location.
+    The mysql_config.json is in the curent directory
+    where the python script is.
+    """
     config_location = 'mysql_config.json'
     if os.path.isfile(config_location):
         pass
@@ -29,6 +34,9 @@ def load_database_config(dbname):
     )
 
 def storeMessage(userID, oneSignalId, notification_id, authorName, authorImage, quote, timestring = None):
+    """
+    Stores the info for specific user, what notfication was send.
+    """
     db = load_database_config("study")
     cursor = db.cursor()
     insert_stmt = (

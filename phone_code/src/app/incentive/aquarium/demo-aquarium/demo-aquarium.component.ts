@@ -199,6 +199,10 @@ export class DemoAquariumComponent implements OnInit {
     this.router.navigate(['incentive/treasurechest']);
   }
 
+  openBaseline(){
+    this.router.navigate(['baseline/tutorial']);
+  }
+
   
 
   //preload the images

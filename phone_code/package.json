@@ -84,8 +84,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
-    "cordova-android": "^10.1.1",
-    "cordova-ios": "^6.2.0",
+    "cordova-android": "^10.1.2",
     "cordova-plugin-app-version": "^0.1.13",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-inappbrowser": "^5.0.0",
@@ -134,8 +133,7 @@
       "uk.co.workingedge.cordova.plugin.sqliteporter": {}
     },
     "platforms": [
-      "android",
-      "ios"
+      "android"
     ]
   },
   "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"

@@ -65,7 +65,7 @@ for user_id, onesignal_id in ids.items():
     #    csv_df = read_s3_csv('cat_notifications.csv')
     #else: 
     #    csv_df = read_s3_csv('dog_notifications.csv')
-    excel_df = read_s3_excel('6pm_reminders.xlsx')
+    excel_df = read_s3_excel('6PM_reminders.xlsx')
     print("Scheduling notification for {}".format(user_id))
 
     # Randomly pick from csv
@@ -83,5 +83,5 @@ for user_id, onesignal_id in ids.items():
     print(post_body)
     
     # Send the message
-    # r = requests.post('http://saraapp.org:6000/schedule_message', data = post_body)
-    # print("received status {} value {}\n".format(r.status_code, r.text))
+    r = requests.post('http://saraapp.org:6000/schedule_message', data = post_body)
+    print("received status {} value {}\n".format(r.status_code, r.text))
