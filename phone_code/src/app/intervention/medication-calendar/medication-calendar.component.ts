@@ -1,14 +1,16 @@
 import { CalendarComponent } from 'ionic2-calendar';
-import { Component, ViewChild, OnInit, Inject, LOCALE_ID } from '@angular/core';
+import { Component, ViewChild, OnInit, Inject, LOCALE_ID, ViewEncapsulation } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
 import { formatDate } from '@angular/common';
 import { AddEventModalPage } from './add-event-modal/add-event-modal.page';
+import { DateRangeUnit } from 'aws-sdk/clients/securityhub';
 // import { CalModalPage } from '../pages/cal-modal/cal-modal.page';
 
 @Component({
     selector: 'app-medication-calendar',
     templateUrl: './medication-calendar.component.html',
-    styleUrls: ['./medication-calendar.component.css']
+    styleUrls: ['./medication-calendar.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class MedicationCalendarComponent implements OnInit {
 
@@ -41,6 +43,19 @@ export class MedicationCalendarComponent implements OnInit {
     }
 
 
+    diffInDaysFromCurrentDay(date1, date2){
+
+        let diffTime = Math.abs(date2 - date1);
+        let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)); 
+
+        // console.log(date2);
+        // console.log(date1);
+        // console.log(diffDays + " days");
+
+        return diffDays;
+    }
+
+
     createRandomEvents() {
         /*
             Creates a random list of events.
@@ -70,67 +85,97 @@ export class MedicationCalendarComponent implements OnInit {
         var events = [];
         for (var i = 0; i < 50; i += 1) {
             var date = new Date();
-            var eventType = Math.floor(Math.random() * 2);
-            var startDay = Math.floor(Math.random() * 90) - 45;
-            var endDay = Math.floor(Math.random() * 2) + startDay;
-            var startTime;
-            var endTime;
-            if (eventType === 0) {
-                startTime = new Date(
-                    Date.UTC(
-                        date.getUTCFullYear(),
-                        date.getUTCMonth(),
-                        date.getUTCDate() + startDay
-                    )
-                );
-                if (endDay === startDay) {
-                    endDay += 1;
+            var eventType = Math.floor(Math.random() * 2); //0=no survey, 1 survey.
+            var startTime = new Date(
+                Date.UTC(
+                    date.getUTCFullYear(),
+                    date.getUTCMonth(),
+                    date.getUTCDate() - i,
+                    0, //hour
+                    0 //minute
+                )
+            );
+            var endTime = new Date(
+                Date.UTC(
+                    date.getUTCFullYear(),
+                    date.getUTCMonth(),
+                    date.getUTCDate() - i,
+                    0, //hour
+                    1 //minute
+                )
+            );
+
+            if(i > 0) {
+                if(eventType == 1) {
+                    // Survey is completed
+                    
+                    events.push({
+                        title: 'Day -' + i,
+                        startTime: startTime,
+                        endTime: endTime,
+                        allDay: false,
+                        descritpion: "6mp taken",
+                        symbolType: "checkmark"
+                    });
+                } else {
+                    // survey is not completed.
+                    let currentDayMidnightUTC = new Date(
+                        Date.UTC(
+                            date.getUTCFullYear(),
+                            date.getUTCMonth(),
+                            date.getUTCDate(),
+                            0, //hour
+                            0 //minute
+                        )
+                    );
+
+                    if(this.diffInDaysFromCurrentDay(startTime, currentDayMidnightUTC) > 2) {
+                        events.push({
+                            title: 'Day -' + i,
+                            startTime: startTime,
+                            endTime: endTime,
+                            allDay: false,
+                            descritpion: "6mp not taken",
+                            symbolType: "cross"
+                        });
+                    }else{
+                        //Within 3 days, so we still give people
+                        //chance to complete the survey.
+                        events.push({
+                            title: 'Day -' + i,
+                            startTime: startTime,
+                            endTime: endTime,
+                            allDay: false,
+                            descritpion: "6mp add",
+                            symbolType: "add"
+                        });
+                    }
                 }
-                endTime = new Date(
-                    Date.UTC(
-                        date.getUTCFullYear(),
-                        date.getUTCMonth(),
-                        date.getUTCDate() + endDay
-                    )
-                );
-                events.push({
-                    title: 'All Day - ' + i,
-                    startTime: startTime,
-                    endTime: endTime,
-                    allDay: true,
-                });
             } else {
-                var startMinute = Math.floor(Math.random() * 24 * 60);
-                var endMinute = Math.floor(Math.random() * 180) + startMinute;
-                startTime = new Date(
-                    date.getFullYear(),
-                    date.getMonth(),
-                    date.getDate() + startDay,
-                    0,
-                    date.getMinutes() + startMinute
-                );
-                endTime = new Date(
-                    date.getFullYear(),
-                    date.getMonth(),
-                    date.getDate() + endDay,
-                    0,
-                    date.getMinutes() + endMinute
-                );
+                // we will always make the current day as add one.
                 events.push({
-                    title: 'Event - ' + i,
+                    title: 'Day -' + i,
                     startTime: startTime,
                     endTime: endTime,
                     allDay: false,
+                    descritpion: "6mp add",
+                    symbolType: "add"
                 });
             }
         }
         this.eventSource = events;
         console.log(JSON.stringify(events))
     }
+    
 
     removeEvents() {
         this.eventSource = [];
     }
+
+    addMedication(dateStr) {
+        console.log(dateStr);
+    }
+
 
     async openAddEventModal() {
         /*

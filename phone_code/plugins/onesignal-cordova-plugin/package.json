@@ -1,8 +1,8 @@
 {
   "_from": "onesignal-cordova-plugin",
-  "_id": "onesignal-cordova-plugin@3.0.4",
+  "_id": "onesignal-cordova-plugin@3.3.0",
   "_inBundle": false,
-  "_integrity": "sha512-ATcn3MsbHTP5i8eR8hbRAka+WCnd3ZmJ6wsNvhDaKIdzI/9XVBx/f+u/pKKZ7v5CBob3rdcyBNP/gQ3Mv/60rg==",
+  "_integrity": "sha512-lq2FzA636m8vgI5miD8em3O/RGxmDR4UbQMctcZrrrOs5oAYx6ay6NYqUMCVFp5qF/Do+Hx3e7wqbipD4oP60Q==",
   "_location": "/onesignal-cordova-plugin",
   "_phantomChildren": {},
   "_requested": {
@@ -16,13 +16,13 @@
     "fetchSpec": "latest"
   },
   "_requiredBy": [
-    "#DEV:/",
-    "#USER"
+    "#USER",
+    "/"
   ],
-  "_resolved": "https://registry.npmjs.org/onesignal-cordova-plugin/-/onesignal-cordova-plugin-3.0.4.tgz",
-  "_shasum": "c48a9fdc96cda58b3553060c594991bb2a339698",
+  "_resolved": "https://registry.npmjs.org/onesignal-cordova-plugin/-/onesignal-cordova-plugin-3.3.0.tgz",
+  "_shasum": "78ac9f6719fb54967a843eb52a4d89a82e60a36b",
   "_spec": "onesignal-cordova-plugin",
-  "_where": "/Users/mash/Dropbox/codes/ionic_projects/SARAV3/SARA_modular/phone_code",
+  "_where": "/Users/mash/Documents/codes/SARA_modular/phone_code",
   "author": {
     "name": "Josh Kasten, Brad Hesse, Rodrigo Gomez-Palacio"
   },
@@ -80,7 +80,7 @@
     "cordova-amazon-fireos"
   ],
   "license": "MIT",
-  "main": "www/OneSignalPlugin.js",
+  "main": "dist/index.js",
   "name": "onesignal-cordova-plugin",
   "platforms": [
     "android",
@@ -91,6 +91,10 @@
     "type": "git",
     "url": "git+https://github.com/onesignal/OneSignal-Cordova-SDK.git"
   },
-  "typings": "types/index.d.ts",
-  "version": "3.0.4"
+  "scripts": {
+    "build": "tsc",
+    "prepare": "yarn run build"
+  },
+  "types": "dist/index.d.ts",
+  "version": "3.3.0"
 }

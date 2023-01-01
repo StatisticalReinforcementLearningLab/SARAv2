@@ -32,12 +32,13 @@
 
     
 
-    <ion-card>
+    <!-- <ion-card> -->
+       <!-- 
         <ion-card-header>
             <ion-card-title>Medication Calendar</ion-card-title>
-            <!--  <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
+             <ion-card-subtitle>Card Subtitle</ion-card-subtitle> 
         </ion-card-header>
-
+        -->
         <!-- Move back and forther with lelf and right. -->
         <ion-row>
             <!-- Move back one screen of the slides -->
@@ -66,18 +67,29 @@
                 [currentDate]="calendar.currentDate"
                 [showEventDetail]="true"
                 (onTitleChanged)="onViewTitleChanged($event)"
+                step="30"
                 [monthviewDisplayEventTemplate]="template">
             </calendar>
         </ion-card-content>
-    </ion-card>
+    <!-- </ion-card> -->
 </ion-content>
 
 
 <ng-template #template let-view="view" let-row="row" let-col="col">
     <div [class.with-event]="view.dates[row*7+col].events.length">
-      {{view.dates[row*7+col].label}}
+      <p class="datelabel">{{view.dates[row*7+col].label}}</p>
       <div class="indicator-container">
-        <div class="event-indicator" *ngFor="let e of view.dates[row*7+col].events"></div>
+        <div class="event-indicator" *ngFor="let e of view.dates[row*7+col].events"> 
+          <ion-icon name="checkmark-outline" *ngIf="e.symbolType=='checkmark'" 
+          style="color: green; font-size: 16px;"></ion-icon> 
+
+          <ion-icon name="close-outline" *ngIf="e.symbolType=='cross'" 
+          style="color: red; font-size: 16px;"></ion-icon> 
+
+          <ion-icon name="add-circle" *ngIf="e.symbolType=='add'" 
+          (click)="addMedication(e.startTime)" style="color: rebeccapurple; font-size: 25px;"
+          ></ion-icon>
+        </div>
       </div>
     </div>
 </ng-template>

@@ -1,8 +1,10 @@
 # Note we will be using cordova as build tools
 # We are not using capacitor. We haven't tried Capacitor yet.
 
-# Jave 18 is needed to correctly compile
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_321.jdk/Contents/Home
+# Jave 11 is needed to correctly compile
+# Install the arm version.
+# https://www.oracle.com/java/technologies/downloads/#java11-mac
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.17.jdk/Contents/Home
 
 # Android sdk
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk

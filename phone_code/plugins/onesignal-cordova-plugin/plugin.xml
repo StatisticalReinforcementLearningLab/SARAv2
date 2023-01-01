@@ -2,7 +2,7 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="onesignal-cordova-plugin"
-    version="3.0.4">
+    version="3.3.0">
 
   <name>OneSignal Push Notifications</name>
   <author>Josh Kasten, Bradley Hesse, Rodrigo Gomez-Palacio</author>
@@ -13,7 +13,7 @@
 
   <license>MIT</license>
 
-  <js-module src="www/OneSignalPlugin.js" name="OneSignalPlugin">
+  <js-module src="dist/index.js" name="OneSignalPlugin">
     <clobbers target="OneSignal" />
   </js-module>
 
@@ -25,13 +25,12 @@
     <engine name="apple-ios" version=">=7.0.0" />
   </engines>
 
-  <js-module src="www/NotificationReceived.js" name="NotificationReceived" />
-  <js-module src="www/NotificationOpened.js" name="NotificationOpened" />
-  <js-module src="www/InAppMessage.js" name="InAppMessage" />
-  <js-module src="www/Subscription.js" name="Subscription" />
+  <js-module src="dist/NotificationReceivedEvent.js" name="NotificationReceivedEvent" />
+  <js-module src="dist/Subscription.js" name="Subscription" />
+  <js-module src="dist/OSNotification.js" name="OSNotification" />
 
   <platform name="android">
-    <framework src="com.onesignal:OneSignal:4.7.3" />
+    <framework src="com.onesignal:OneSignal:4.8.2" />
     <framework src="build-extras-onesignal.gradle" custom="true" type="gradleReference" />
 
     <config-file target="res/xml/config.xml" parent="/*">
@@ -77,7 +76,7 @@
             <source url="https://cdn.cocoapods.org/"/>
         </config>
         <pods use-frameworks="true">
-            <pod name="OneSignalXCFramework" spec="3.11.1" />
+            <pod name="OneSignalXCFramework" spec="3.12.3" />
         </pods>
     </podspec>
 

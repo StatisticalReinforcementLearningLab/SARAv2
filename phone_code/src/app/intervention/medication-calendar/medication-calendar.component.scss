@@ -1,0 +1,46 @@
+.new-background-color{
+    --background: #005486;
+}
+
+td {
+    padding: 4px !important;
+    height: 60px !important;
+}
+
+.datelabel {
+    font-size: 12px !important;
+    text-align: right !important;
+}
+
+
+.monthview-selected {
+    background-color: rebeccapurple !important;
+}
+
+.monthview-primary-with-event {
+    background-color: transparent !important;
+    color: black !important;
+}
+
+
+:host ::ng-deep {
+    .monthview-container {
+        height: auto !important;
+    }
+
+    .monthview-disabled {
+        color: #fff;
+    }
+
+    .monthview-primary-with-event {
+        background-color: rebeccapurple;
+    }
+
+    .monthview-selected {
+        background-color: rebeccapurple;
+    }
+
+    .event-detail-container {
+        display: none;
+    }
+}
