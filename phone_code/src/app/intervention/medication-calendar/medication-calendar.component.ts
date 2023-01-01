@@ -86,24 +86,9 @@ export class MedicationCalendarComponent implements OnInit {
         for (var i = 0; i < 50; i += 1) {
             var date = new Date();
             var eventType = Math.floor(Math.random() * 2); //0=no survey, 1 survey.
-            var startTime = new Date(
-                Date.UTC(
-                    date.getUTCFullYear(),
-                    date.getUTCMonth(),
-                    date.getUTCDate() - i,
-                    0, //hour
-                    0 //minute
-                )
-            );
-            var endTime = new Date(
-                Date.UTC(
-                    date.getUTCFullYear(),
-                    date.getUTCMonth(),
-                    date.getUTCDate() - i,
-                    0, //hour
-                    1 //minute
-                )
-            );
+            // 
+            var startTime = new Date(new Date().setHours(-1*24*i,1,0,0));
+            var endTime = new Date(new Date().setHours(-1*24*i + 1,1,0,0));
 
             if(i > 0) {
                 if(eventType == 1) {
@@ -119,15 +104,7 @@ export class MedicationCalendarComponent implements OnInit {
                     });
                 } else {
                     // survey is not completed.
-                    let currentDayMidnightUTC = new Date(
-                        Date.UTC(
-                            date.getUTCFullYear(),
-                            date.getUTCMonth(),
-                            date.getUTCDate(),
-                            0, //hour
-                            0 //minute
-                        )
-                    );
+                    let currentDayMidnightUTC = new Date(new Date().setHours(0,1,0,0));
 
                     if(this.diffInDaysFromCurrentDay(startTime, currentDayMidnightUTC) > 2) {
                         events.push({
