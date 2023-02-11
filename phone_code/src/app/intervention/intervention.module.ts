@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { MedicationCalendarComponent } from './medication-calendar/medication-calendar.component';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { AddEventModalPageModule } from './medication-calendar/add-event-modal/add-event-modal.module';
+import { AddMedicationPageModule } from './medication-calendar/add-medication/add-medication.module';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { AddEventModalPageModule } from './medication-calendar/add-event-modal/a
     HarvardArcAppsModule,
     NgCalendarModule,
     AddEventModalPageModule,
+    AddMedicationPageModule,
     IonicModule.forRoot() // have to add this for the backbutton to show.
   ],
   exports: [SleepMonitoringComponent],

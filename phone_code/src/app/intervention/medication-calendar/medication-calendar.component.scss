@@ -21,26 +21,3 @@ td {
     background-color: transparent !important;
     color: black !important;
 }
-
-
-:host ::ng-deep {
-    .monthview-container {
-        height: auto !important;
-    }
-
-    .monthview-disabled {
-        color: #fff;
-    }
-
-    .monthview-primary-with-event {
-        background-color: rebeccapurple;
-    }
-
-    .monthview-selected {
-        background-color: rebeccapurple;
-    }
-
-    .event-detail-container {
-        display: none;
-    }
-}

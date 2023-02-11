@@ -177,9 +177,12 @@ export class DynamicSurveyComponent implements OnInit {
             }
 
             inputchangedRangeTime(question, startTime){
-                
-                //--- console.log('holla: ' + question+" "+JSON.stringify($event.detail));
+                /*
+                    "question" is the question id; Q1, Q2, Q3, etc.
+                    "startTime", is the string when time is starting. Different questions have a different start time.
+                */
 
+                //--- console.log('holla: ' + question+" "+JSON.stringify($event.detail));
                 //
                 startTime = startTime.replace("<br>", " ");
                 var startTimeSplit = startTime.split(" ");
@@ -196,9 +199,15 @@ export class DynamicSurveyComponent implements OnInit {
                 var changedHourAfterInput;
                 var changedMinuteAfterInput;
                 var changedAMPMAfterInput;
-                if((this.surveyAnswersJSONObject[question]*10)%10 == 5){
+                if((this.surveyAnswersJSONObject[question]*100)%100 == 50){
                     changedHourAfterInput = startTimeHour + this.surveyAnswersJSONObject[question] - 0.5;
                     changedMinuteAfterInput = "30";
+                }else if((this.surveyAnswersJSONObject[question]*100)%100 == 25){
+                    changedHourAfterInput = startTimeHour + this.surveyAnswersJSONObject[question] - 0.25;
+                    changedMinuteAfterInput = "15";
+                }else if((this.surveyAnswersJSONObject[question]*100)%100 == 75){
+                    changedHourAfterInput = startTimeHour + this.surveyAnswersJSONObject[question] - 0.75;
+                    changedMinuteAfterInput = "45";
                 }else{
                     changedHourAfterInput = startTimeHour + this.surveyAnswersJSONObject[question];
                     changedMinuteAfterInput = "00";
@@ -829,7 +838,8 @@ export class DynamicSurveyComponent implements OnInit {
 
     process_survey_range_time(obj: any, survey_string: string, i: any): string {
         //throw new Error("Method not implemented.");
-
+        
+        // "i" is the question string, i.e., Q1, Q2, etc.
         //
         var min = obj.extra.choices[2];
         var max = obj.extra.choices[3];
@@ -868,6 +878,7 @@ export class DynamicSurveyComponent implements OnInit {
             */
           
         ].join(" ");
+        console.log("process_survey_range_time" + JSON.stringify(obj));
 
         return survey_string;
     }

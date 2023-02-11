@@ -17,3 +17,24 @@
 @import "swiper/scss/navigation";
 @import "swiper/scss/pagination";
 
+.add-medication {
+  --width: fit-content;
+  --min-width: 250px;
+  --height: fit-content;
+  --border-radius: 6px;
+  --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+}
+
+.add-medication h1 {
+    margin: 20px 20px 10px 20px;
+}
+
+.add-medication .wrapper {
+    margin-bottom: 10px;
+}
+
+.unloacked-incentives {
+    --height: 80%;
+    --border-radius: 10px;
+    padding: 25px;
+}

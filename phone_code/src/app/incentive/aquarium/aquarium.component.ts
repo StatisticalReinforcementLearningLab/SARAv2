@@ -394,7 +394,7 @@ export class AquariumComponent implements OnInit {
         'reinforcements': reinforcements
       },
       //,
-      cssClass: 'my-default-2'
+      cssClass: 'unloacked-incentives'
     });
     return await modal.present();
   }

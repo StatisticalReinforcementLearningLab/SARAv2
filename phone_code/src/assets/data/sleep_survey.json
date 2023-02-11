@@ -4,7 +4,7 @@
     "text":"1. What time did you get into bed? (This may not be the time that you began “trying” to fall asleep.)",
     "type":"range_time",
     "extra":{
-      "choices":["8:00<br>PM", "4:00<br>AM",0,8,0.5, "12:00 AM"]
+      "choices":["8:00<br>PM", "4:00<br>AM",0,8,0.25, "12:00 AM"]
       }
     },
     {
@@ -12,7 +12,7 @@
       "text":"2. What time did you wake up this morning?",
       "type":"range_time",
       "extra":{
-        "choices":["4:00<br>AM", "12:00<br>PM",0,8,0.5, "8:00 AM"]
+        "choices":["4:00<br>AM", "12:00<br>PM",0,8,0.25, "8:00 AM"]
       }
     }
 

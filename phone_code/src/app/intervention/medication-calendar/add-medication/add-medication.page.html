@@ -1,0 +1,21 @@
+
+
+<div class="wrapper">
+  <div class="col text-center">
+    <ion-icon name="medkit" style="text-align: center;font-size: 30px; color: black;"></ion-icon>
+  </div>
+
+  <p style="text-align: center; margin: 0px;">{{dateStr}}</p>
+  <p style="padding: 15px;">Did you take your Mercaptopurine (6-MP) today? </p>
+
+  <div class="col text-center">
+    <ion-icon name="checkmark-circle-outline" style="font-size: 100px;"></ion-icon><br>
+    <ion-radio value="custom"></ion-radio>Medication on hold<br>
+    <ion-button (click)="modal.dismiss()">SAVE</ion-button>
+  </div>
+
+  <button style="height:40px;width:40px;border-radius:40px;margin:5px;font-size:24px;color:#444;background:#fff;position:absolute;right:0;top:0;" 
+  (click)="modal.dismiss()">
+      <ion-icon name="close" style="height: 30px;width: 30px;"></ion-icon>
+  </button>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { NavParams, ModalController } from '@ionic/angular';
 import * as moment from 'moment';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
@@ -8,7 +8,7 @@ import { UserProfileService } from 'src/app/user/user-profile/user-profile.servi
   templateUrl: './modal-unlocked-page.component.html',
   styleUrls: ['./modal-unlocked-page.component.scss'],
 })
-export class ModalUnlockedPageComponent implements OnInit {
+export class ModalUnlockedPageComponent implements AfterViewInit {
 
   // Data passed in by componentProps
   @Input() reinforcements: any;
@@ -21,6 +21,13 @@ export class ModalUnlockedPageComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  modalReady = false;
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+        this.modalReady = true;
+    }, 1);
   }
 
  

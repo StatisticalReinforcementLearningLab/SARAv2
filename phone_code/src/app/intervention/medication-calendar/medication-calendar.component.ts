@@ -4,6 +4,7 @@ import { AlertController, ModalController } from '@ionic/angular';
 import { formatDate } from '@angular/common';
 import { AddEventModalPage } from './add-event-modal/add-event-modal.page';
 import { DateRangeUnit } from 'aws-sdk/clients/securityhub';
+import { AddMedicationPage } from './add-medication/add-medication.page';
 // import { CalModalPage } from '../pages/cal-modal/cal-modal.page';
 
 @Component({
@@ -151,6 +152,8 @@ export class MedicationCalendarComponent implements OnInit {
 
     addMedication(dateStr) {
         console.log(dateStr);
+        //this.openAddEventModal();
+        this.openAddMedicationModal();
     }
 
 
@@ -198,6 +201,27 @@ export class MedicationCalendarComponent implements OnInit {
                 this.myCal.loadEvents();
             }
         });
+    }
+
+    async openAddMedicationModal() {
+        /*
+            Pops up a modal view to manually add events.
+            Events in our case is an event of taking medication.
+        */
+
+        
+        const modal = await this.modalCtrl.create({
+            component: AddMedicationPage,
+            /* 
+               We added a css class in global.scss
+               Note modals lives on top of the application, so
+               We have to uset the global css. 
+            */
+            cssClass: 'add-medication', 
+            backdropDismiss: false
+        });
+
+        await modal.present();
     }
 
 

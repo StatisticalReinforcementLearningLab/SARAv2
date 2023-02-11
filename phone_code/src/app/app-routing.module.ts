@@ -88,6 +88,10 @@ const routes: Routes = [
   {
     path: 'add-event-modal',
     loadChildren: () => import('./intervention/medication-calendar/add-event-modal/add-event-modal.module').then( m => m.AddEventModalPageModule)
+  },
+  {
+    path: 'add-medication',
+    loadChildren: () => import('./intervention/medication-calendar/add-medication/add-medication.module').then( m => m.AddMedicationPageModule)
   }
 
   //{ path: 'incentive/award-memes', component: AwardMemesComponent },

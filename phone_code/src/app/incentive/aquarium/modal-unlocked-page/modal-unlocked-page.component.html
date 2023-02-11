@@ -4,7 +4,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-    <ion-list>
+    <ion-list *ngIf="modalReady">
       <ion-item *ngFor="let reinforcement of reinforcements"> 
         <ion-thumbnail slot="start">
           <img src="{{reinforcement.img}}">
