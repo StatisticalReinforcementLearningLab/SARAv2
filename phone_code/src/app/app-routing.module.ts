@@ -37,6 +37,7 @@ import { SleepStudyEveningSurveyComponent } from './survey/sleep-study-evening-s
 import { SleepSurveyWithPredictionComponent } from './survey/sleep-survey-with-prediction/sleep-survey-with-prediction.component';
 import { MedicationCalendarComponent } from './intervention/medication-calendar/medication-calendar.component';
 import { SamTutorialComponent } from './baseline/sam-tutorial/sam-tutorial.component';
+import { VegaVisComponent } from './incentive/life-insights/vega-vis/vega-vis.component';
 
 
 const routes: Routes = [
@@ -75,6 +76,7 @@ const routes: Routes = [
   { path: 'incentive/award-memes', component: AwardMemesComponent, canActivate: [AuthGuard]},
   { path: 'incentive/award-altruism', component: AwardAltruismComponent, canActivate: [AuthGuard]},
   { path: 'incentive/pythonlifeinsightsammple', component: SamplePythonViewComponent, canActivate: [AuthGuard]},
+  { path: 'incentive/vegalifeinsight', component: VegaVisComponent, canActivate: [AuthGuard]},
   { path: 'contact-study-staff', component: ContactComponent, canActivate: [AuthGuard]},
   { path: 'incentive/infopage', component: InfoPageComponent, canActivate: [AuthGuard]},
   { path: 'incentive/videoinfopage', component: VideoInfoPageComponent, canActivate: [AuthGuard]},

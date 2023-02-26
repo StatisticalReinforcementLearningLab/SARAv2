@@ -11,6 +11,7 @@ import { SampleLifeInsightsComponent } from './sample-life-insights/sample-life-
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { SamplePythonViewComponent } from './sample-python-view/sample-python-view.component';
+import { VegaVisComponent } from './vega-vis/vega-vis.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [Q1MotivatedComponent,SampleLifeInsightsComponent, SamplePythonViewComponent],
+  declarations: [Q1MotivatedComponent,SampleLifeInsightsComponent, SamplePythonViewComponent,VegaVisComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -26,6 +27,6 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  exports:[Q1MotivatedComponent,SampleLifeInsightsComponent]
+  exports:[Q1MotivatedComponent,SampleLifeInsightsComponent,VegaVisComponent]
 })
 export class LifeInsightsModule { }

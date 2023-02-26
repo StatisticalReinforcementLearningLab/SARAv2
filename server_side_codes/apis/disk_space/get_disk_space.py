@@ -13,4 +13,4 @@ path = "./"
   
 # Print disk usage statistics
 print("Disk usage statistics:")
-print(f"{total/1e9} GB, {used/1e9} GB, {free/1e9} GB, {100*free/total}%")
+print(f"Total {total/1e9: 0.2f} GB, Used {used/1e9: 0.2f} GB, Free {free/1e9: 0.2f} GB, Free percentage {100*free/total: 0.2f}%")

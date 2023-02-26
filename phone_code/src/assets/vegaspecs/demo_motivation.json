@@ -1,0 +1,30 @@
+{
+  "config": {
+    "view": {"continuousWidth": 400, "continuousHeight": 300},
+    "axis": {"labelFontSize": 15, "titleFontSize": 15}
+  },
+  "data": {"name": "data-aac2a29e1b23308d5471fb5222ef6c6c"},
+  "mark": "line",
+  "encoding": {
+    "x": {"field": "date", "type": "nominal"},
+    "y": {
+      "field": "motivation",
+      "scale": {"domain": [-0.5, 5.5]},
+      "type": "quantitative"
+    }
+  },
+  "height": 250,
+  "width": 350,
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+  "datasets": {
+    "data-aac2a29e1b23308d5471fb5222ef6c6c": [
+      {"date": "2/15", "motivation": 1},
+      {"date": "2/16", "motivation": 4},
+      {"date": "2/17", "motivation": 4},
+      {"date": "2/18", "motivation": 5},
+      {"date": "2/19", "motivation": 3},
+      {"date": "2/20", "motivation": 3},
+      {"date": "Today", "motivation": 5}
+    ]
+  }
+}

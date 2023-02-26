@@ -203,6 +203,10 @@ export class DemoAquariumComponent implements OnInit {
     this.router.navigate(['baseline/tutorial']);
   }
 
+  openGraphs(){
+    this.router.navigate(['incentive/vegalifeinsight']);
+  }
+
   
 
   //preload the images
