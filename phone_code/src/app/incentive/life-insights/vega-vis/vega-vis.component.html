@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
   <!--
   <iframe
       width="300px"
@@ -16,9 +16,15 @@
       frameborder="0"
       allowfullscreen
   ></iframe>
+  
+  <div class="grid-container">
   -->
-
-  <div id="vis1" style="width: 100%; height: auto;padding: 10px;"></div>
-  <br/><br/><br/>
-  <div id="vis2" style="width: 100%; height: auto;padding: 10px;"></div>
+  <ion-card id="visCard1">
+    <div id="vis1"></div>
+  </ion-card>
+  <ion-card id="visCard2">
+    <div id="vis2"></div>
+  </ion-card>
+  
+  <!-- </div> -->
 </ion-content>

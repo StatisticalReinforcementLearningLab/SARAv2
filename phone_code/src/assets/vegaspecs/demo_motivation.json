@@ -1,15 +1,15 @@
 {
   "config": {
     "view": {"continuousWidth": 400, "continuousHeight": 300},
-    "axis": {"labelFontSize": 15, "titleFontSize": 15}
+    "axis": {"labelFontSize": 12, "titleFontSize": 12}
   },
   "data": {"name": "data-aac2a29e1b23308d5471fb5222ef6c6c"},
-  "mark": "line",
+  "mark": {"type": "line", "color": "#FFAA00", "point": true},
   "encoding": {
     "x": {"field": "date", "type": "nominal"},
     "y": {
       "field": "motivation",
-      "scale": {"domain": [-0.5, 5.5]},
+      "scale": {"domain": [-0.1, 5.2]},
       "type": "quantitative"
     }
   },

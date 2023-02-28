@@ -1,7 +1,7 @@
 {
     "config": {
       "view": {"continuousWidth": 400, "continuousHeight": 300},
-      "axis": {"labelFontSize": 15, "titleFontSize": 15}
+      "axis": {"labelFontSize": 12, "titleFontSize": 12}
     },
     "data": {"name": "data-f5aa8050aacd2455481375b5a5ff3680"},
     "mark": {"type": "bar", "size": 20},

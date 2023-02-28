@@ -390,6 +390,8 @@ class SendOneSignalNotification:
         Sends notification to all users to test APPID and authorization ID
         """
         status_code, response = self.sendOneSignalNotificationsWithID()
+        print(f"status_code {status_code}")
+        print(f"response {response}")
         assert status_code == 200, str(response)
 
 
