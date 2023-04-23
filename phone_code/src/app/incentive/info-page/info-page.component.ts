@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { DatabaseService } from 'src/app/monitor/database.service';
 
@@ -10,7 +11,8 @@ import { DatabaseService } from 'src/app/monitor/database.service';
 export class InfoPageComponent implements OnInit {
 
   constructor(private menuCtrl:MenuController,
-    private appUsageDb: DatabaseService) { }
+    private appUsageDb: DatabaseService,
+    private router: Router) { }
 
   ngOnInit() {
     this.menuCtrl.close();
@@ -36,6 +38,10 @@ export class InfoPageComponent implements OnInit {
     });
     */ 
     this.appUsageDb.saveAppUsageExit("reward_info_page");     
+  }
+
+  openBaseline() {
+    this.router.navigate(['baseline/tutorial']);
   }
 
 }

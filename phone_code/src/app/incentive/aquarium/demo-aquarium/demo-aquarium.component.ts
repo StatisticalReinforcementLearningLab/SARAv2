@@ -596,7 +596,7 @@ export class DemoAquariumComponent implements OnInit {
           role: 'cancel',  
           handler: () => {  
             console.log('Confirm Cancel');  
-          }  
+          }
         },  
         {  
           text: 'Onboard',  
