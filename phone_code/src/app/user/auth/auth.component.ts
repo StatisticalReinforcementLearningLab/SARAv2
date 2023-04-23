@@ -9,8 +9,9 @@ import { environment } from 'src/environments/environment';
 import { UserProfileService } from '../user-profile/user-profile.service';
 import { tap } from 'rxjs/operators';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { Platform } from '@ionic/angular';
 
-@Component({  
+@Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
@@ -22,19 +23,20 @@ export class AuthComponent implements OnInit, OnDestroy {
   private userSub: Subscription;
   private authSub: Subscription;
 
-  constructor(private authService: AuthService, 
+  constructor(private authService: AuthService,
     private router: Router,
     private userProfileService: UserProfileService,
-    private oneSignal: OneSignal){}
+    private platform: Platform,
+    private oneSignal: OneSignal) { }
 
   // was used to switch mode between login and register
   // onSwitchMode(){
   //   this.isLoginMode = !this.isLoginMode;
   // }
 
-  ngOnInit(){
+  ngOnInit() {
     console.log("in auth.component - ngOnInit");
-    if(this.authService.isLoggedIn()){
+    if (this.authService.isLoggedIn()) {
       console.log("auth.component.ts - ngOnInit - is logged in");
       this.router.navigate(['home']);
     }
@@ -42,7 +44,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   }
 
   //login button was clicked
-  onSubmit(form: NgForm){
+  onSubmit(form: NgForm) {
     /*
     This function takes the username and password.
     The calls the authService login, which is a function
@@ -53,7 +55,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     */
 
     console.log("auth.component.ts - onSubmit method - begin");
-    if(!form.valid){
+    if (!form.valid) {
       console.log('invalid');
       return;
     }
@@ -63,49 +65,55 @@ export class AuthComponent implements OnInit, OnDestroy {
 
     this.isLoading = true;
 
-    authObs =  this.authService.login(userName,password);
+    authObs = this.authService.login(userName, password);
     this.authSub = authObs.subscribe(resData => {
-      console.log("auth.component.ts - onSubmit method - authService.login response: "+ JSON.stringify(resData));
-      
-      if(resData.hasOwnProperty('access_token') && resData.hasOwnProperty('refresh_token') ){
+      console.log("auth.component.ts - onSubmit method - authService.login response: " + JSON.stringify(resData));
+
+      if (resData.hasOwnProperty('access_token') && resData.hasOwnProperty('refresh_token')) {
         // the response contains an access token and refresh token
         console.log("auth.component.ts - onSubmit method - has access token");
-        
+
         // Note onesignal player id is initialized right at the start of the app
         // So, we already have the ID stored in the localStorage.
         // Now, that said, we add the app version as well. 
         this.userSub = this.userProfileService.initializeObs()
-        .pipe(
-          tap(
-              ()=>{
+          .pipe(
+            tap(
+              () => {
                 this.userProfileService.addAppVersion();
-                this.userProfileService.addOneSignalPlayerId();
+                // this.userProfileService.addOneSignalPlayerId();
+                this.platform.ready().then(() => {
+                  if (this.platform.is('android') || this.platform.is('ios')) {
+                    this.userProfileService.addOneSignalPlayerId();
+                  } else {
+                    //fallback to browser APIs or
+                    console.log('The platform is not supported');
+                  }
+                });
               }
+            )
           )
-        )
-        .subscribe(
-          ()=>
-          {
-            console.log("in subscribe - got profiles init");
-            this.router.navigate(['home']);
-            console.log("in subscribe - got profiles init - post navigate to home");
-          });
+          .subscribe(
+            () => {
+              console.log("in subscribe - got profiles init");
+              this.router.navigate(['home']);
+              console.log("in subscribe - got profiles init - post navigate to home");
+            });
 
       }
-      else
-      {
+      else {
         console.log("doesn't have access token");
         this.isLoading = false;
         this.authService.loggedInUser.next(null);
-        
-        if(resData.hasOwnProperty('message')){
+
+        if (resData.hasOwnProperty('message')) {
           this.error = resData.message;
         }
-        else{
+        else {
           this.error = "Unknown error\n" + JSON.stringify(resData);
         }
       }
-    }, errorMessage=> {
+    }, errorMessage => {
       console.log(errorMessage);
       this.error = errorMessage;
       this.isLoading = false;
@@ -115,11 +123,11 @@ export class AuthComponent implements OnInit, OnDestroy {
   }
 
 
-  ngOnDestroy(){
-    if(this.userSub){
+  ngOnDestroy() {
+    if (this.userSub) {
       this.userSub.unsubscribe();
     }
-    if(this.authSub){
+    if (this.authSub) {
       this.authSub.unsubscribe();
     }
   }

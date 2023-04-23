@@ -147,6 +147,15 @@ export class AquariumComponent implements OnInit {
         console.log("aqarium.ts --- ionViewDidEnter");
         this.child.loadFunction();
 
+        //
+        const value = window.localStorage.getItem("IsOnboarded");
+        if (typeof value === 'string') {
+            console.log("--- Already onboarded ---");
+        }else{
+            this.child.showBaselineDialog();
+            window.localStorage.setItem('IsOnboarded', "Onboarded");
+        }
+
         //decide if we want to show the modal view with unlockables.
         this.subscribeForModalView();
 
@@ -157,10 +166,6 @@ export class AquariumComponent implements OnInit {
         this.userProfileService.saveToServer();
         this.userProfileService.saveProfileToDevice();
         this.saveDbToAWS();
-
-        
-
-
     }
 
     async loadVegaDemoPlot() {
