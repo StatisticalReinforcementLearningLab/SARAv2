@@ -463,7 +463,7 @@ export class DynamicSurveyComponent implements OnInit {
                 modalObjectNavigationExtras["IsModalShownYet"] = false;
 
 
-                //currentProb = 0.8;
+                currentProb = 0.3; //Always force home page.
                 if (this.fileLink.includes('caregiver') || currentProb <= 0.4) {
                     var reinforcementObj = {};
                     reinforcementObj['ds'] = 1;
@@ -845,6 +845,7 @@ export class DynamicSurveyComponent implements OnInit {
         var max = obj.extra.choices[3];
         var step = obj.extra.choices[4];
         this.surveyQuestionsDict[i + "_modified"] = obj.extra.choices[5]; //"12:00 AM";
+        this.surveyQuestionsDict[i] = min;
         survey_string = [survey_string,
                     '<div class = "row" style="margin-bottom=0px;">',
                         /*
@@ -861,6 +862,7 @@ export class DynamicSurveyComponent implements OnInit {
                     '<div class="item range range-balanced" style="padding:10px;padding-top:1px;border-width:0px;">',
                         '<p style="text-align: center;color: black;">' + obj.extra.choices[0] + "</p>",
                         '<input type="range" min="' + min + '" max="' + max + '" value="' + min + '" step="' + step + '" [(ngModel)]="surveyAnswersJSONObject.' + i + '" name="' + i + '" (ngModelChange)="inputchangedRangeTime(\'' + i + '\',\'' + obj.extra.choices[0] + '\')"' + '>',
+                        //'<input type="range" min="' + min + '" max="' + max + '" value="' + 0 + '" step="' + step + '" [(ngModel)]="surveyAnswersJSONObject.' + i + '" name="' + i + '" (ngModelChange)="inputchangedRangeTime(\'' + i + '\',\'' + obj.extra.choices[0] + '\')"' + '>',
                         //'<input type="range" min="' + min + '" max="' + max + '" value="' + min + '" step="' + step + '" name="' + i + '" (change)="inputchangedRangeTime(\'' + i + '\')"' + '>',
                         '<p style="text-align: center;color:black;">' + obj.extra.choices[1] + "</p>",
                     '</div>', 

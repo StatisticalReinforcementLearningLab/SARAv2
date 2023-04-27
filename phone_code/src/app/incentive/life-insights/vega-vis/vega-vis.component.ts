@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import embed from 'vega-embed';
 import { HttpClient } from '@angular/common/http';
+import moment from 'moment';
 
 @Component({
     selector: 'app-vega-vis',
@@ -12,12 +13,24 @@ export class VegaVisComponent implements OnInit {
     constructor(public httpClient: HttpClient) { }
 
     ngOnInit() {
-        this.loadVegaDemoPlotSleep();
-        this.loadVegaDemoPlotMotivation();
+        var dateArray = this.getDatesForLast7days();
+        this.loadVegaDemoPlotSleep(dateArray);
+        this.loadVegaDemoPlotMotivation(dateArray);
         this.loadVegaDemoPlotSleepBarGraph();
     }
 
-    async loadVegaDemoPlotSleep() {
+    getDatesForLast7days(){
+        var dateArray = [];
+        for (let i = 0; i < 6; i++) {
+            var previousdate = moment().subtract(6-i, "days").format("MM/DD");
+            dateArray.push(previousdate);
+        }
+        dateArray.push("Today");
+        //console.log("=== date array ===: " + date_array);
+        return dateArray;
+    }
+
+    async loadVegaDemoPlotSleep(dateArray) {
 
         //may be have to do pixel 
         let x = window.innerWidth;
@@ -41,11 +54,20 @@ export class VegaVisComponent implements OnInit {
         };
         console.log("===Vega called 2===");
         const spec = "/assets/vegaspecs/demo_sleep.json";
-        const result = await embed('#vis1', spec, opt);
-        console.log(result.view);
+        //const result = await embed('#vis1', spec, opt);
+        this.httpClient.get(spec)
+            .subscribe(async (res: any) => {
+                console.log("==========");
+                for(let i=0; i<7; i++)
+                    res["datasets"]["data-f5aa8050aacd2455481375b5a5ff3680"][i]["date"] = dateArray[i];
+                //console.log(res);
+                const result = await embed('#vis1', res, opt);
+                console.log(result.view);
+            });
+        //console.log(result.view);
     }
 
-    async loadVegaDemoPlotMotivation() {
+    async loadVegaDemoPlotMotivation(dateArray) {
         let x = window.innerWidth;
         let y = Math.ceil((24 / 20) * (x - 390) + 305);
         if (y < 200) {
@@ -71,7 +93,8 @@ export class VegaVisComponent implements OnInit {
         this.httpClient.get(spec)
             .subscribe(async (res: any) => {
                 console.log("==========");
-                res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][0]["date"] = "1/15";
+                for(let i=0; i<7; i++)
+                    res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][i]["date"] = dateArray[i];
                 //console.log(res);
                 const result = await embed('#vis2', res, opt);
                 console.log(result.view);

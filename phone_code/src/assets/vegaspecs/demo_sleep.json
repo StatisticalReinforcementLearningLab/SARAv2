@@ -8,7 +8,7 @@
     "encoding": {
       "x": {"field": "date", "type": "nominal"},
       "y": {
-        "field": "hours slept",
+        "field": "Sleep (hours)",
         "scale": {"domain": [0, 10]},
         "type": "quantitative"
       }
@@ -18,13 +18,13 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "datasets": {
       "data-f5aa8050aacd2455481375b5a5ff3680": [
-        {"date": "2/15", "hours slept": 6.5},
-        {"date": "2/16", "hours slept": 7.1},
-        {"date": "2/17", "hours slept": 6.15},
-        {"date": "2/18", "hours slept": 6},
-        {"date": "2/19", "hours slept": 7.5},
-        {"date": "2/20", "hours slept": 8},
-        {"date": "Today", "hours slept": 6}
+        {"date": "2/15", "Sleep (hours)": 6.5},
+        {"date": "2/16", "Sleep (hours)": 7.1},
+        {"date": "2/17", "Sleep (hours)": 6.15},
+        {"date": "2/18", "Sleep (hours)": 6},
+        {"date": "2/19", "Sleep (hours)": 7.5},
+        {"date": "2/20", "Sleep (hours)": 8},
+        {"date": "Today", "Sleep (hours)": 6}
       ]
     }
   }

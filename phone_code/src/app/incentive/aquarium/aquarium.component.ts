@@ -276,7 +276,7 @@ export class AquariumComponent implements OnInit {
         console.log('start survey');
         var currentTime = moment();
         let startTimeSleep = moment({ hour: 8 });  // 8am
-        let endTimeSleep = moment({ hour: 13, minute: 59 });  // 1:59pm
+        let endTimeSleep = moment({ hour: 17, minute: 59 });  // 1:59pm
         let startTimeEveningReflection = moment({ hour: 18 });  // 6pm
         let endTimeEveningReflection = moment({ hour: 23, minute: 59 });  // 11:59pm
 
@@ -290,7 +290,7 @@ export class AquariumComponent implements OnInit {
         if (!currentTime.isBetween(startTimeSleep, endTimeSleep) &&
             !currentTime.isBetween(startTimeEveningReflection, endTimeEveningReflection) &&
             !firstLogin) {
-            this.presentAlert('We are outside of a time-window to complete surveys. Sleep surveys are open between 8am and 2pm. Evening self-reflections are open between 6pm and midnight.');
+            this.presentAlert('We are outside of a time-window to complete surveys. Sleep surveys are open between 8am and 6pm. Evening self-reflections are open between 6pm and midnight.');
             // } 
             // Disabling the following since we don't have any surveyTakenForCurrentDay for
             // two surveys.

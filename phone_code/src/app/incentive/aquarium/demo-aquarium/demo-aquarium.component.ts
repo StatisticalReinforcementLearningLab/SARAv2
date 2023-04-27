@@ -587,7 +587,7 @@ export class DemoAquariumComponent implements OnInit {
       //header: '<div style="line-height: 25px;padding-bottom:10px;text-align:center">Welcome!!</div>',
       header: "Welcome!",
       //subHeader: "Survey is not avaibable!",
-      message: "SARA is waitng to get you started with the app. Click the onboarding app to get started.",
+      message: "SAM is waitng to get you onboarded. Click 'onboard' to get started.",
       //defined in theme/variables.scss
       //buttons: [{text: 'OK', cssClass: 'secondary'}]
       buttons: [  

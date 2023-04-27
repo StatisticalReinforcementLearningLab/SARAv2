@@ -47,7 +47,11 @@
       <ng-template swiperSlide *ngFor="let slide of slides; index as i" >
           <div class="thought">
               <p [innerHTML]="slide.text" [ngStyle]="{'font-size': slide.font}"></p>
+              
           </div>
+          <img style="width: 50%; text-align: center;" src="/assets/img/baseline_fish.png">
+          
+
           <button style="height:40px;width:40px;border-radius:40px;margin:5px;font-size:24px;color:#157284;background:#81d9eb;position:absolute;right:0;top:0;" 
           (click)="closeTutorial()">
               <ion-icon name="close" style="height: 30px;width: 30px;"></ion-icon>

@@ -16,18 +16,44 @@
       frameborder="0"
       allowfullscreen 
   ></iframe>
-  
   <div class="grid-container">
   -->
   <ion-card id="visCard1">
+    <div style="position: absolute;top:4px;left: 4px;z-index: 20;">
+      <img src="/assets/img/baseline_fish.png" style="width:75px;height:auto;">
+    </div>
+    <div class="item item-avatar" style="background: #ccecff;border-left: 3px solid #0091e6; padding: 10px; padding-left: 90px;">
+      <div style="font-size: 16px; color: black;">How <b>many hours</b> did you <b>sleep</b> this week?</div>
+      <!-- <p>subetext</p> -->
+    </div>
     <div id="vis1"></div>
+    <div
+      style="margin-left:0px; margin-right:0px;margin-top:0px; background:#e6f6ff; padding:5px; padding-left:15px; border-left: 0px solid #004D40; color:black; text-align:center; font-size: 14px;"
+      >
+    </div>
   </ion-card>
+  <br>
+
   <ion-card id="visCard2">
+    <div style="position: absolute;top:4px;left: 4px;z-index: 20;">
+      <img src="/assets/img/baseline_fish.png" style="width:75px;height:auto;">
+    </div>
+    <div class="item item-avatar" style="background: #ccecff;border-left: 3px solid #0091e6; padding: 6px; padding-left: 90px;">
+      <div style="font-size: 16px; color: black;">How was your <b>motivation level</b> this week?</div>
+      <p style="font-size: 14px; color: black;">0=low motivation, 1=high motivation</p>
+    </div>
     <div id="vis2"></div>
+    <div
+      style="margin-left:0px; margin-right:0px;margin-top:0px; background:#e6f6ff; padding:5px; padding-left:15px; border-left: 0px solid #004D40; color:black; text-align:center; font-size: 14px;"
+      ng-show="lifeinsight.showTopBottom" ng-bind-html="lifeinsight.top_message">
+    </div>
   </ion-card>
-  <ion-card id="visCard3">
-    <div id="vis3"></div>
-  </ion-card>
+
   
-  <!-- </div> -->
+
+  <!-- 
+    <ion-card id="visCard3">
+      <div id="vis3"></div>
+    </ion-card> 
+  -->
 </ion-content>

@@ -19,7 +19,7 @@ export class SamTutorialComponent implements AfterContentChecked {
     @ViewChild('swiper') swiper: SwiperComponent;
 
     slides = [{
-            "text": "Welcome! My name is SARA. What’s yours?",
+            "text": "Welcome! My name is SAM. What’s yours?",
             "font": "24px"
         },
         {
