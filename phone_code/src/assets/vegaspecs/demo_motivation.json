@@ -6,7 +6,7 @@
   "data": {"name": "data-aac2a29e1b23308d5471fb5222ef6c6c"},
   "mark": {"type": "line", "color": "#FFAA00", "point": true},
   "encoding": {
-    "x": {"field": "date", "type": "nominal"},
+    "x": {"field": "Date", "type": "nominal"},
     "y": {
       "field": "Motivation",
       "scale": {"domain": [-0.1, 5.2]},
@@ -18,13 +18,13 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
   "datasets": {
     "data-aac2a29e1b23308d5471fb5222ef6c6c": [
-      {"date": "2/15", "Motivation": 1},
-      {"date": "2/16", "Motivation": 4},
-      {"date": "2/17", "Motivation": 4},
-      {"date": "2/18", "Motivation": 5},
-      {"date": "2/19", "Motivation": 3},
-      {"date": "2/20", "Motivation": 3},
-      {"date": "Today", "Motivation": 5}
+      {"Date": "2/15", "Motivation": 1},
+      {"Date": "2/16", "Motivation": 4},
+      {"Date": "2/17", "Motivation": 4},
+      {"Date": "2/18", "Motivation": 5},
+      {"Date": "2/19", "Motivation": 3},
+      {"Date": "2/20", "Motivation": 3},
+      {"Date": "Today", "Motivation": 5}
     ]
   }
 }

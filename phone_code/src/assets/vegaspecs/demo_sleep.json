@@ -6,9 +6,9 @@
     "data": {"name": "data-f5aa8050aacd2455481375b5a5ff3680"},
     "mark": {"type": "bar", "size": 20},
     "encoding": {
-      "x": {"field": "date", "type": "nominal"},
+      "x": {"field": "Date", "type": "nominal"},
       "y": {
-        "field": "Sleep (hours)",
+        "field": "Sleep (hours)",  
         "scale": {"domain": [0, 10]},
         "type": "quantitative"
       }
@@ -18,13 +18,13 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
     "datasets": {
       "data-f5aa8050aacd2455481375b5a5ff3680": [
-        {"date": "2/15", "Sleep (hours)": 6.5},
-        {"date": "2/16", "Sleep (hours)": 7.1},
-        {"date": "2/17", "Sleep (hours)": 6.15},
-        {"date": "2/18", "Sleep (hours)": 6},
-        {"date": "2/19", "Sleep (hours)": 7.5},
-        {"date": "2/20", "Sleep (hours)": 8},
-        {"date": "Today", "Sleep (hours)": 6}
+        {"Date": "2/15", "Sleep (hours)": 6.5},
+        {"Date": "2/16", "Sleep (hours)": 7.1},
+        {"Date": "2/17", "Sleep (hours)": 6.15},
+        {"Date": "2/18", "Sleep (hours)": 6},
+        {"Date": "2/19", "Sleep (hours)": 7.5},
+        {"Date": "2/20", "Sleep (hours)": 8},
+        {"Date": "Today", "Sleep (hours)": 6}
       ]
     }
   }

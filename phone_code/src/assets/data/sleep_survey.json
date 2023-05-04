@@ -8,8 +8,16 @@
       }
     },
     {
+      "name":"Q2",
+      "text":"2. What time did you fall asleep last night?",
+      "type":"range_time",
+      "extra":{
+        "choices":["8:00<br>PM", "4:00<br>AM",0,8,0.25, "8:00 PM"]
+      }
+    },
+    {
       "name":"Q3",
-      "text":"2. What time did you wake up this morning?",
+      "text":"3. What time did you wake up this morning?",
       "type":"range_time",
       "extra":{
         "choices":["4:00<br>AM", "12:00<br>PM",0,8,0.25, "4:00 AM"]

@@ -35,17 +35,29 @@
 
 
       <ion-buttons slot="end">
-          <!-- <font color="white">${{money}}</font> -->
+        <!-- <font color="white">${{money}}</font> -->
 
-          <!-- 
-          <ion-button style="color:#fff;" (click)="startCheatPage()"  *ngIf="!isIOS">
-            <ion-icon name="alert"></ion-icon>
-          </ion-button>
-          -->
           
+        <!-- <ion-button style="color:#fff;" (click)="startCheatPage()"  *ngIf="!isIOS"> -->
+        <ion-button style="color:#fff;" (click)="startCheatPage()">
+            <ion-icon name="alert"></ion-icon>
+        </ion-button>
+          
+        
+        <!-- 
         <ion-button (click)="startSurvey()"   *ngIf="isActive">
           <ion-icon name="create" style="color : white;"></ion-icon>
         </ion-button>
+        -->
+
+        <ion-button (click)="startSurveySleep()"   *ngIf="isActive">
+          <ion-icon name="create" style="color : white;"></ion-icon>
+        </ion-button>
+
+        <ion-button (click)="startSurveyEvening()"   *ngIf="isActive">
+          <ion-icon name="create" style="color : white;"></ion-icon>
+        </ion-button>
+
 
         <!--
             <ion-button (click)="showDogsSurvey()"   *ngIf="isActive">

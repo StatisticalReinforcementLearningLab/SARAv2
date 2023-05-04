@@ -59,7 +59,7 @@ export class VegaVisComponent implements OnInit {
             .subscribe(async (res: any) => {
                 console.log("==========");
                 for(let i=0; i<7; i++)
-                    res["datasets"]["data-f5aa8050aacd2455481375b5a5ff3680"][i]["date"] = dateArray[i];
+                    res["datasets"]["data-f5aa8050aacd2455481375b5a5ff3680"][i]["Date"] = dateArray[i];
                 //console.log(res);
                 const result = await embed('#vis1', res, opt);
                 console.log(result.view);
@@ -94,7 +94,7 @@ export class VegaVisComponent implements OnInit {
             .subscribe(async (res: any) => {
                 console.log("==========");
                 for(let i=0; i<7; i++)
-                    res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][i]["date"] = dateArray[i];
+                    res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][i]["Date"] = dateArray[i];
                 //console.log(res);
                 const result = await embed('#vis2', res, opt);
                 console.log(result.view);
