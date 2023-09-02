@@ -90,6 +90,7 @@
     "cordova-android": "^10.1.2",
     "cordova-ios": "^6.2.0",
     "cordova-plugin-app-version": "^0.1.13",
+    "cordova-plugin-certiscan-ecap": "file:plugins/Cordova-Plugin-CertiScan-eCap-main",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-inappbrowser": "^5.0.0",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
@@ -133,7 +134,10 @@
       "cordova-plugin-whitelist": {},
       "cordova-sqlite-storage": {},
       "phonegap-plugin-mobile-accessibility": {},
-      "uk.co.workingedge.cordova.plugin.sqliteporter": {}
+      "uk.co.workingedge.cordova.plugin.sqliteporter": {},
+      "cordova-plugin-certiscan-ecap": {
+        "NFC_USAGE_DESCRIPTION": "Scans CertiScan eCap pill bottle usage."
+      }
     },
     "platforms": [
       "android"

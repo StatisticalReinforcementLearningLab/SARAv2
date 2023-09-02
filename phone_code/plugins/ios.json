@@ -39,6 +39,10 @@
     },
     "onesignal-cordova-plugin": {
       "PACKAGE_NAME": "edu.harvard.srl.SARA.V2"
+    },
+    "cordova-plugin-certiscan-ecap": {
+      "NFC_USAGE_DESCRIPTION": "Scans CertiScan eCap pill bottle usage.",
+      "PACKAGE_NAME": "edu.harvard.srl.SARA.V4"
     }
   },
   "dependent_plugins": {}

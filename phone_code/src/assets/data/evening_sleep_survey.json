@@ -12,7 +12,7 @@
   {
     "name":"QMood",
     "text":"2. Today, how was your <b>mood</b> overall? ",
-    "type": "moodgrid2"
+    "type": "mood"
   },
   {
     "name":"Q3",
@@ -36,7 +36,7 @@
   },
   {
     "name":"Q5",
-    "text":"5. Today, how much <b>willpower</b> do you feel you had?",
+    "text":"5. Today, to what extent did you feel: <b>motivated</b> (You felt driven to put in effort to achieve your goals.)",
       "type": "radiobutton",
       "extra":{
         "choices": ["Not<br>at all", "Very<br>much"],

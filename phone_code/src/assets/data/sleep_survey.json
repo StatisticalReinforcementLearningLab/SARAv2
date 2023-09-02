@@ -3,25 +3,48 @@
     "name":"Q1",
     "text":"1. What time did you get into bed? (This may not be the time that you began “trying” to fall asleep.)",
     "type":"range_time",
+    "tag": "1",
     "extra":{
       "choices":["8:00<br>PM", "4:00<br>AM",0,8,0.25, "8:00 PM"]
       }
     },
     {
       "name":"Q2",
-      "text":"2. What time did you fall asleep last night?",
+      "text":"2. What time did you wake up this morning?",
       "type":"range_time",
+      "tag": "2",
       "extra":{
-        "choices":["8:00<br>PM", "4:00<br>AM",0,8,0.25, "8:00 PM"]
+        "choices":["4:00<br>AM", "12:00<br>PM",0,8,0.25, "4:00 AM"]
       }
     },
     {
       "name":"Q3",
-      "text":"3. What time did you wake up this morning?",
-      "type":"range_time",
+      "tag": "3",
+      "text":"3. Sometimes people take a while to fall asleep or wake up in the middle of the night. How many hours did you actually sleep last night? (Your best estimate is fine.)",
+      "type":"sleeptextbox"
+    },
+    {
+      "name":"Q4",
+      "text":"4. Last night, how well did you sleep?",
+      "type":"radiobutton",
+      "tag": "4",
       "extra":{
-        "choices":["4:00<br>AM", "12:00<br>PM",0,8,0.25, "4:00 AM"]
+        "choices": ["Very<br>badly", "Very<br>well"],
+        "orientation": "horizontal",
+        "levels": 6
+      }
+    },
+    {
+      "name":"Q5",
+      "text":"5. Did you have difficulty falling or staying asleep?",
+      "type":"radiobutton",
+      "tag": "5",
+      "extra":{
+        "choices":["Yes", 
+          "No"],
+        "orientation": "vertical"
       }
     }
+
 
 ]

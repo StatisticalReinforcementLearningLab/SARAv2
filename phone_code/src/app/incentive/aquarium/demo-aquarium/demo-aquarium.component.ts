@@ -52,6 +52,7 @@ import { environment } from '../../../../environments/environment';
 
 
 declare let Phaser: any;
+declare var cordova: any;
 
 @Component({
   selector: 'app-demo-aquarium',
@@ -215,6 +216,20 @@ export class DemoAquariumComponent implements OnInit {
 
   openBaseline() {
     this.router.navigate(['baseline/tutorial']);
+  }
+
+  addMedication() {
+    console.trace();
+    cordova.plugins.certiscan.scan(function (message: any) {
+          console.log(`Response:\n\n${message}\n`)
+      }, function () {
+          console.log('Error: ')
+
+          for (const argument of arguments) {
+            console.log(argument)
+          }
+          console.log('\n')
+    });
   }
 
   openGraphs() {
@@ -587,7 +602,7 @@ export class DemoAquariumComponent implements OnInit {
       //header: '<div style="line-height: 25px;padding-bottom:10px;text-align:center">Welcome!!</div>',
       header: "Welcome!",
       //subHeader: "Survey is not avaibable!",
-      message: "SAM is waitng to get you onboarded. Click 'onboard' to get started.",
+      message: "SAM is waiting to get you onboarded. Click 'onboard' to get started.",
       //defined in theme/variables.scss
       //buttons: [{text: 'OK', cssClass: 'secondary'}]
       buttons: [  

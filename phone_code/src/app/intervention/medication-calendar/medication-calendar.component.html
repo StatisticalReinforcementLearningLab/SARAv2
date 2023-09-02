@@ -1,95 +1,130 @@
 <ion-header>
-    <ion-toolbar class="new-background-color">
-        <ion-buttons slot="start">
-            <ion-back-button style="color:#fff;" defaultHref="home"></ion-back-button>
-        </ion-buttons>
-        <ion-title style="color:#fff;">Medication calendar</ion-title>
-        <ion-buttons slot="end">
-            <ion-button (click)="openAddEventModal()">
-              <ion-icon name="add" slot="icon-only"></ion-icon>
-            </ion-button>
-        </ion-buttons>
-    </ion-toolbar>
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-back-button style="color:#fff;" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="color:#fff;">Medication calendar</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openAddEventModal()">
+        <ion-icon name="add" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 
 <ion-content [fullscreen]="true">
 
-    <!-- Create some random event -->
+  <ion-segment value="calendar" [(ngModel)]="type" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="calendar">
+      <ion-label>Calendar</ion-label>
+      <ion-icon name="calendar-outline"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="med-list">
+      <ion-label>Medication list</ion-label>
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+
+  <!--
+  <ion-list *ngIf="type == 'calendar'">
+    <ion-thumbnail slot="start">
+      <img src="https://avatars.io/instagram/unknown">
+    </ion-thumbnail>
+    <h6>calendar</h6>
+  </ion-list>
+  -->
+
+  <ion-list *ngIf="type == 'med-list'">
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img src="assets/img/med1.svg">
+      </ion-thumbnail>
+      <h6>med-1</h6>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img src="assets/img/med1.svg">
+      </ion-thumbnail>
+      <h6>med-2</h6>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img src="assets/img/med2.svg">
+      </ion-thumbnail>
+      <h6>med-2</h6>
+    </ion-item>
+    <ion-button>Add medication</ion-button>
+  </ion-list>
+
+
+  <!-- Create some random event -->
+  <div *ngIf="type == 'calendar'">
     <ion-row>
-        <ion-col size="6">
-          <ion-button (click)="createRandomEvents()" expand="block" fill="outline">
-            Add random events
-          </ion-button>
-        </ion-col>
-        <ion-col size="6">
-          <ion-button (click)="removeEvents()" expand="block" fill="outline">
-            Remove all events
-          </ion-button>
-        </ion-col>
+      <ion-col size="6">
+        <ion-button (click)="createRandomEvents()" expand="block" fill="outline">
+          Add random events
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button (click)="removeEvents()" expand="block" fill="outline">
+          Remove all events
+        </ion-button>
+      </ion-col>
     </ion-row>
 
-
-    
-
     <!-- <ion-card> -->
-       <!-- 
+    <!-- 
         <ion-card-header>
             <ion-card-title>Medication Calendar</ion-card-title>
              <ion-card-subtitle>Card Subtitle</ion-card-subtitle> 
         </ion-card-header>
         -->
-        <!-- Move back and forther with lelf and right. -->
-        <ion-row>
-            <!-- Move back one screen of the slides -->
-            <ion-col size="2">
-            <ion-button fill="clear" (click)="back()">
-                <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
-            </ion-button>
-            </ion-col>
-        
-            <ion-col size="8" class="ion-text-center">
-            <h2>{{ viewTitle }}</h2>
-            </ion-col>
-        
-            <!-- Move forward one screen of the slides -->
-            <ion-col size="2">
-            <ion-button fill="clear" (click)="next()">
-                <ion-icon name="arrow-forward" slot="icon-only"></ion-icon>
-            </ion-button>
-            </ion-col>
-        </ion-row>
+    <!-- Move back and forther with lelf and right. -->
+    <ion-row>
+      <!-- Move back one screen of the slides -->
+      <ion-col size="2">
+        <ion-button fill="clear" (click)="back()">
+          <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-col>
 
-        <ion-card-content>
-            <calendar 
-                [eventSource]="eventSource" 
-                [calendarMode]="calendar.mode" 
-                [currentDate]="calendar.currentDate"
-                [showEventDetail]="true"
-                (onTitleChanged)="onViewTitleChanged($event)"
-                step="30"
-                [monthviewDisplayEventTemplate]="template">
-            </calendar>
-        </ion-card-content>
-    <!-- </ion-card> -->
+      <ion-col size="8" class="ion-text-center">
+        <h2>{{ viewTitle }}</h2>
+      </ion-col>
+
+      <!-- Move forward one screen of the slides -->
+      <ion-col size="2">
+        <ion-button fill="clear" (click)="next()">
+          <ion-icon name="arrow-forward" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-card-content>
+      <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
+        [showEventDetail]="true" (onTitleChanged)="onViewTitleChanged($event)" step="30"
+        [monthviewDisplayEventTemplate]="template">
+      </calendar>
+    </ion-card-content>
+  </div>
+  <!-- </ion-card> -->
 </ion-content>
 
 
 <ng-template #template let-view="view" let-row="row" let-col="col">
-    <div [class.with-event]="view.dates[row*7+col].events.length">
-      <p class="datelabel">{{view.dates[row*7+col].label}}</p>
-      <div class="indicator-container">
-        <div class="event-indicator" *ngFor="let e of view.dates[row*7+col].events"> 
-          <ion-icon name="checkmark-outline" *ngIf="e.symbolType=='checkmark'" 
-          style="color: green; font-size: 16px;"></ion-icon> 
+  <div [class.with-event]="view.dates[row*7+col].events.length">
+    <p class="datelabel">{{view.dates[row*7+col].label}}</p>
+    <div class="indicator-container">
+      <div class="event-indicator" *ngFor="let e of view.dates[row*7+col].events">
+        <ion-icon name="checkmark-outline" *ngIf="e.symbolType=='checkmark'" style="color: green; font-size: 16px;">
+        </ion-icon>
 
-          <ion-icon name="close-outline" *ngIf="e.symbolType=='cross'" 
-          style="color: red; font-size: 16px;"></ion-icon> 
+        <ion-icon name="close-outline" *ngIf="e.symbolType=='cross'" style="color: red; font-size: 16px;"></ion-icon>
 
-          <ion-icon name="add-circle" *ngIf="e.symbolType=='add'" 
-          (click)="addMedication(e.startTime)" style="color: rebeccapurple; font-size: 25px;"
-          ></ion-icon>
-        </div>
+        <ion-icon name="add-circle" *ngIf="e.symbolType=='add'" (click)="addMedication(e.startTime)"
+          style="color: rebeccapurple; font-size: 25px;"></ion-icon>
       </div>
     </div>
+  </div>
 </ng-template>
