@@ -156,7 +156,8 @@ export class DynamicSurveyComponent implements OnInit {
 
                 //isQuestionIncomplete list tracks if questions are answered or not.
                 for (var i = 0; i < this.surveyQuestionsInJSONDictFormat.length; i++)
-                    this.isQuestionIncomplete[this.surveyQuestionsInJSONDictFormat[i].name] = { "tag": this.surveyQuestionsInJSONDictFormat[i].tag };
+                    if(this.surveyQuestionsInJSONDictFormat[i].type !== 'sleeptextbox')
+                        this.isQuestionIncomplete[this.surveyQuestionsInJSONDictFormat[i].name] = { "tag": this.surveyQuestionsInJSONDictFormat[i].tag };
 
                 //initialize when different survey questions are clicked
                 this.surveyAnswersJSONObject['onclickTimeForDifferentQuestions'] = {};
@@ -173,6 +174,7 @@ export class DynamicSurveyComponent implements OnInit {
                 this.surveyAnswersJSONObject['onclickTimeForDifferentQuestions'][question].ts = Date.now();
                 this.surveyAnswersJSONObject['onclickTimeForDifferentQuestions'][question].readable_ts = moment().format("MMMM Do YYYY, h:mm:ss a Z");
 
+                //console.log(JSON.stringify(this.surveyAnswersJSONObject));
                 delete this.isQuestionIncomplete[question]; //remove the key from isQuestionIncomplete
             }
 
@@ -463,7 +465,7 @@ export class DynamicSurveyComponent implements OnInit {
                 modalObjectNavigationExtras["IsModalShownYet"] = false;
 
 
-                //currentProb = 0.8;
+                currentProb = 0.3; //Always force home page.
                 if (this.fileLink.includes('caregiver') || currentProb <= 0.4) {
                     var reinforcementObj = {};
                     reinforcementObj['ds'] = 1;
@@ -747,7 +749,47 @@ export class DynamicSurveyComponent implements OnInit {
             //------------------------------------------------------                 
             if (obj.type == "textbox") {
                 //survey_string = this.process_survey_textbox(survey_string, i);
+                /*
+                survey_string = [survey_string,
+                    '<label class="item item-input">',
+                    '<input type="text" style="display:block;" [(ngModel)]="surveyAnswersJSONObject.' + i + '"', 
+                    '(change)="inputchanged(\'' + i + '\')"></label>'
+                ].join(" ");
+                */
+                //return survey_string;
             }
+
+            if (obj.type == "sleeptextbox") {
+                //survey_string = this.process_survey_textbox(survey_string, i);
+                /*
+                survey_string = [survey_string,
+                    '<label class="item item-input">',
+                    '<input type="text" style="display:block;" [(ngModel)]="surveyAnswersJSONObject.' + i + '"', 
+                    '(change)="inputchanged(\'' + i + '\')"></label>'
+                ].join(" ");
+                */
+                survey_string = [survey_string,
+                    '<div class="form-floating" style="margin:0px;">',
+                        '<input type="number" class="form-control" ', 
+                        'style="border-radius:0rem;" id="hours" placeholder="Enter hours" name="hours">', 
+                        '<label for="hours">Hours</label>',
+                    '</div>'
+                ].join(" ");
+                survey_string = [survey_string,
+                    '<div class="form-floating">',
+                        '<select class="form-select" id="minutes" name="minutes" style="border-radius:0rem;">', 
+                            '<option>0</option>',
+                            '<option>15</option>',
+                            '<option>30</option>',
+                            '<option>45</option>',
+                        '</select>',
+                        '<label for="minutes" class="form-label">Minutes</label>',
+                    '</div>'
+                ].join(" ");
+                //return survey_string;
+            }
+
+
 
             //------------------------------------------------------                  
             //time picker
@@ -775,7 +817,7 @@ export class DynamicSurveyComponent implements OnInit {
             //  mood
             //------------------------------------------------------
             if (obj.type == 'mood') {
-                //survey_string = this.process_survey_mood(survey_string, i);
+                survey_string = this.process_survey_mood(obj, survey_string, i);
             }
 
 
@@ -845,6 +887,7 @@ export class DynamicSurveyComponent implements OnInit {
         var max = obj.extra.choices[3];
         var step = obj.extra.choices[4];
         this.surveyQuestionsDict[i + "_modified"] = obj.extra.choices[5]; //"12:00 AM";
+        this.surveyQuestionsDict[i] = min;
         survey_string = [survey_string,
                     '<div class = "row" style="margin-bottom=0px;">',
                         /*
@@ -861,6 +904,7 @@ export class DynamicSurveyComponent implements OnInit {
                     '<div class="item range range-balanced" style="padding:10px;padding-top:1px;border-width:0px;">',
                         '<p style="text-align: center;color: black;">' + obj.extra.choices[0] + "</p>",
                         '<input type="range" min="' + min + '" max="' + max + '" value="' + min + '" step="' + step + '" [(ngModel)]="surveyAnswersJSONObject.' + i + '" name="' + i + '" (ngModelChange)="inputchangedRangeTime(\'' + i + '\',\'' + obj.extra.choices[0] + '\')"' + '>',
+                        //'<input type="range" min="' + min + '" max="' + max + '" value="' + 0 + '" step="' + step + '" [(ngModel)]="surveyAnswersJSONObject.' + i + '" name="' + i + '" (ngModelChange)="inputchangedRangeTime(\'' + i + '\',\'' + obj.extra.choices[0] + '\')"' + '>',
                         //'<input type="range" min="' + min + '" max="' + max + '" value="' + min + '" step="' + step + '" name="' + i + '" (change)="inputchangedRangeTime(\'' + i + '\')"' + '>',
                         '<p style="text-align: center;color:black;">' + obj.extra.choices[1] + "</p>",
                     '</div>', 
@@ -938,6 +982,26 @@ export class DynamicSurveyComponent implements OnInit {
         return survey_string;
     }
 
+    process_survey_mood(obj, survey_string, i) {
+        
+        survey_string = [ survey_string, 
+            '<div class="radioimages" style="display: inline;">',
+            '<label style="display:inline;"><input type="radio" [(ngModel)]="surveyAnswersJSONObject.' + i + '" value="high-sad" (change)="inputchanged(\'' + i + '\')"/><img style="width:18%;" src="assets/img/5.png"></label>',
+            '<label style="display:inline;"><input type="radio" [(ngModel)]="surveyAnswersJSONObject.' + i + '" value="low-sad" (change)="inputchanged(\'' + i + '\')"/><img style="width:18%;" src="assets/img/4.png"></label>',
+            '<label style="display:inline;"><input type="radio" [(ngModel)]="surveyAnswersJSONObject.' + i + '" value="neutral" (change)="inputchanged(\'' + i + '\')"/><img style="width:18%;" src="assets/img/3.png"></label>',
+            '<label style="display:inline;"><input type="radio" [(ngModel)]="surveyAnswersJSONObject.' + i + '" value="low-happy"  (change)="inputchanged(\'' + i + '\')"/><img style="width:18%;" src="assets/img/2.png"></label>',
+            '<label style="display:inline;"><input type="radio" [(ngModel)]="surveyAnswersJSONObject.' + i + '" value="high-happy"  (change)="inputchanged(\'' + i + '\')"/><img style="width:18%;" src="assets/img/1.png"></label>',
+            '</div>'].join(" ");
+        
+        // console.log("before\n" + survey_string)
+        /*
+        survey_string = [ survey_string, 
+            '<img style="width:18%;" src="assets/img/5.png">'].join(" ");
+        */
+        // console.log("after\n" + survey_string)
+        return survey_string;
+    }
+
     process_survey_moodgrid2(survey_string: string): string {
         survey_string = [survey_string,
             '<canvas id="myCanvas" width="310" height="310" style="border:0px solid #000000;padding:10px;">',
@@ -947,6 +1011,8 @@ export class DynamicSurveyComponent implements OnInit {
 
           return survey_string;
     }
+
+    
 
 
 

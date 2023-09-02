@@ -1,4 +1,4 @@
-import sys
+dimport sys
 from flask import Flask
 from flask import send_file
 import altair as alt
@@ -188,8 +188,6 @@ def convert_raw_sleep_data_to_imputed_json(sleep_data):
                     {'date': '07-26', 'start': 0, 'end': 0, 'total_sleep_hours': ''}
                ]
     """
-    
-    hour_labels, y_labels = conv_table_hour_label_to_ylabels()
 
     sleep_data_with_date_key = {}
     for index in range(len(sleep_data)):
@@ -319,8 +317,10 @@ def get_sleep_data_for_last_14_days(user_id):
 
 def draw_sleep_graph(sleep_data):
     """
-    Calls the function to transform raw data to pandas data format. 
-    Then calls altair to draw the plot.
+    Calls the function `convert_raw_sleep_data_to_imputed_json`
+    to transform raw data to pandas data format. 
+    Then calls `create_chart_from_pd` for 
+    altair to draw the plot.
     
     returns:
         altair chart with the sleep graph
@@ -333,11 +333,14 @@ def decrypt_user_string(user_and_sleep_info):
     """
     This function uses the private key stored in the pem file.
     The private_key.pem will be distributed from slack. Request it from mash.
-    Once you have the pem file, then copy it into the app directory
+    Once you have the pem file, then copy it into the app directory.
+
+    This function decrypts the payload when sleep data is requested.
+    This function only does decryption, and nothing else.
     """
-    print(user_and_sleep_info)
+    # print(user_and_sleep_info)
     key = RSA.import_key(open("./private_key.pem").read())
-    print(key)
+    # print(key)
     cipher = PKCS1_OAEP.new(key, hashAlgo=SHA256)
     b64ized = b64decode(user_and_sleep_info)
     decrypted_message = cipher.decrypt(b64ized) # returns a byte literal

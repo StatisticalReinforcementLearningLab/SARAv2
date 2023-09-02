@@ -18,6 +18,13 @@ export class MedicationCalendarComponent implements OnInit {
     eventSource = [];
     viewTitle: string;
 
+    type = 'calendar';
+
+    segmentChanged(ev: any) {
+        console.log('Segment changed', ev.detail["value"]);
+        this.type = ev.detail["value"];
+    }
+
     calendar = {
         mode: 'month',
         currentDate: new Date(),
@@ -44,10 +51,10 @@ export class MedicationCalendarComponent implements OnInit {
     }
 
 
-    diffInDaysFromCurrentDay(date1, date2){
+    diffInDaysFromCurrentDay(date1, date2) {
 
         let diffTime = Math.abs(date2 - date1);
-        let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)); 
+        let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
         // console.log(date2);
         // console.log(date1);
@@ -88,13 +95,13 @@ export class MedicationCalendarComponent implements OnInit {
             var date = new Date();
             var eventType = Math.floor(Math.random() * 2); //0=no survey, 1 survey.
             // 
-            var startTime = new Date(new Date().setHours(-1*24*i,1,0,0));
-            var endTime = new Date(new Date().setHours(-1*24*i + 1,1,0,0));
+            var startTime = new Date(new Date().setHours(-1 * 24 * i, 1, 0, 0));
+            var endTime = new Date(new Date().setHours(-1 * 24 * i + 1, 1, 0, 0));
 
-            if(i > 0) {
-                if(eventType == 1) {
+            if (i > 0) {
+                if (eventType == 1) {
                     // Survey is completed
-                    
+
                     events.push({
                         title: 'Day -' + i,
                         startTime: startTime,
@@ -105,9 +112,9 @@ export class MedicationCalendarComponent implements OnInit {
                     });
                 } else {
                     // survey is not completed.
-                    let currentDayMidnightUTC = new Date(new Date().setHours(0,1,0,0));
+                    let currentDayMidnightUTC = new Date(new Date().setHours(0, 1, 0, 0));
 
-                    if(this.diffInDaysFromCurrentDay(startTime, currentDayMidnightUTC) > 2) {
+                    if (this.diffInDaysFromCurrentDay(startTime, currentDayMidnightUTC) > 2) {
                         events.push({
                             title: 'Day -' + i,
                             startTime: startTime,
@@ -116,7 +123,7 @@ export class MedicationCalendarComponent implements OnInit {
                             descritpion: "6mp not taken",
                             symbolType: "cross"
                         });
-                    }else{
+                    } else {
                         //Within 3 days, so we still give people
                         //chance to complete the survey.
                         events.push({
@@ -144,7 +151,7 @@ export class MedicationCalendarComponent implements OnInit {
         this.eventSource = events;
         console.log(JSON.stringify(events))
     }
-    
+
 
     removeEvents() {
         this.eventSource = [];
@@ -163,7 +170,7 @@ export class MedicationCalendarComponent implements OnInit {
             Events in our case is an event of taking medication.
         */
 
-        
+
         const modal = await this.modalCtrl.create({
             component: AddEventModalPage,
             /* 
@@ -171,7 +178,7 @@ export class MedicationCalendarComponent implements OnInit {
                Note modals lives on top of the application, so
                We have to uset the global css. 
             */
-            cssClass: 'add-event-modal', 
+            cssClass: 'add-event-modal',
             backdropDismiss: false
         });
 
@@ -209,7 +216,7 @@ export class MedicationCalendarComponent implements OnInit {
             Events in our case is an event of taking medication.
         */
 
-        
+
         const modal = await this.modalCtrl.create({
             component: AddMedicationPage,
             /* 
@@ -217,11 +224,18 @@ export class MedicationCalendarComponent implements OnInit {
                Note modals lives on top of the application, so
                We have to uset the global css. 
             */
-            cssClass: 'add-medication', 
+            cssClass: 'add-medication',
             backdropDismiss: false
         });
 
         await modal.present();
+    }
+
+
+    parseEcapBottleData() {
+        const jsonString = '{ "success": true, "command_code": 1, "tag_message": { "tag_id": "100123959-BR1", "scan_time": 1689952593, "event_count": 3, "package_id": "", "patient_id": "", "custom_data_1": "", "versioning": { "model": "eCap Argus-Loc", "firmware_version": "1.1.1.0.1.4.0", "hardware_version": "1.0.0" }, "started": true, "clock_coefficient_correction": true, "tag_events": [ { "timestamp": 1689345543 }, { "timestamp": 1689345603 }, { "timestamp": 1689345663 } ] } }';
+        const obj = JSON.parse(jsonString);
+        console.log(obj);
     }
 
 

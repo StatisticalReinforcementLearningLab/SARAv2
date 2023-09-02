@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="edu.harvard.srl.SARA.V2" version="0.0.83" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="edu.harvard.srl.SARA.V2" version="0.0.90" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>SARAv2</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
@@ -29,6 +29,7 @@
     <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="AndroidExtraFilesystems" value="files,cache, sdcard, cache-external, files-external" />
     <preference name="android-targetSdkVersion" value="31" />
+    <preference name="android-minSdkVersion" value="23" />
     <allow-navigation href="*://*.cnn.com/*" />
     <allow-navigation href="http://localhost:8080/*" />
     <preference name="CordovaWebViewEngine" value="CDVUIWebViewEngine" />

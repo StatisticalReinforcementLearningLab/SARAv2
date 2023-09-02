@@ -3,11 +3,13 @@
     <ion-buttons slot="start">
       <ion-back-button style="color:#fff;" defaultHref="home"></ion-back-button>
     </ion-buttons>
-    <ion-title style="color:#fff;">How the app works?</ion-title>
+    <ion-title style="color:#fff;">How this app works?</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+
+  <ion-button (click)="openBaseline()">Open onboarding</ion-button>
 
   <ion-list>
 
@@ -17,8 +19,8 @@
         <img src="assets/img/survey.png">
       </ion-thumbnail>
       <ion-label text-wrap>
-        <h2>Complete survey and get rewarded</h2>
-        <h3 style="padding-top: 5px; color: #555;">Every day complete a survey between <b>6PM</b> and <b>midnight</b>, and receive a variety of different rewards described below.</h3> 
+        <h2>Complete surveys and get rewarded</h2>
+        <h3 style="padding-top: 5px; color: #555;">Every day complete one survey between 8AM to 2PM, and another survey between <b>6PM</b> and <b>midnight</b>, and receive a variety of different rewards described below.</h3> 
       </ion-label>
     </ion-item>
 
@@ -105,7 +107,7 @@
         </ul>
         <br><p style="padding:10px;font-size: 12px;line-height:15px;color:#5a2d0c;">Streaks for surveys and active tasks are separate. So, if you complete 3-day streaks on both survey and active tasks then you will get 50 cents.<p>
     </div>
-    -->
+    
 
     <div class="card"  style="border-left: 2px solid #263238;border-top: 1px solid #263238;"> 
         <p style="padding:15px;font-size:15px;">You will sometimes get <b>thank you messages</b> or <b>memes</b> for completing the surveys.</p>
@@ -113,6 +115,7 @@
             <img src="assets/memes/4.jpg" style="padding:20px;padding-top:5px;">
         </div>
     </div>
+    -->
 
 
 </div>

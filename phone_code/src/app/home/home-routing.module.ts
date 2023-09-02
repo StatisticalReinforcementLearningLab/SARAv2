@@ -9,6 +9,7 @@ import { AuthGuard } from '../user/auth/auth.guard';
 import { ContactComponent } from './contact/contact.component';
 import { UnlockedInspirationalQuotesComponent } from '../incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component';
 import { SleepMonitoringComponent } from '../intervention/sleep-monitoring/sleep-monitoring.component';
+import { VegaVisComponent } from '../incentive/life-insights/vega-vis/vega-vis.component';
 
 const routes: Routes = [
   {
@@ -31,7 +32,8 @@ const routes: Routes = [
         path: 'contact', component: ContactComponent, canActivate: [AuthGuard]
       },
       {
-        path: 'sleep', component: SleepMonitoringComponent, canActivate: [AuthGuard]
+        path: 'sleep', component: VegaVisComponent, canActivate: [AuthGuard]
+        //path: 'sleep', component: SleepMonitoringComponent, canActivate: [AuthGuard]
       },
       {
         path: '',

@@ -84,7 +84,8 @@ const routes: Routes = [
   { path: 'preview/sea', component: SeaComponent, canActivate: [AuthGuard]},
   { path: 'preview/tundra', component: TundraComponent, canActivate: [AuthGuard]},
   { path: 'intervention/sleep-monitoring', component: SleepMonitoringComponent, canActivate: [AuthGuard]},
-  { path: 'intervention/medication-calendar', component: MedicationCalendarComponent, canActivate: [AuthGuard]},
+  //{ path: 'intervention/medication-calendar', component: MedicationCalendarComponent, canActivate: [AuthGuard]},
+  { path: 'intervention/medication-calendar', component: MedicationCalendarComponent},
   { path: 'preview/rainforest', component: RainforestComponent, canActivate: [AuthGuard]},
   { path: 'baseline/tutorial', component: SamTutorialComponent, canActivate: [AuthGuard]},
   {

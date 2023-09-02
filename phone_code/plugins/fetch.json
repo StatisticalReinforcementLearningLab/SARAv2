@@ -110,5 +110,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-certiscan-ecap": {
+    "source": {
+      "type": "local",
+      "path": "/Users/mash/Documents/codes/SARA_modular/phone_code/node_modules/cordova-plugin-certiscan-ecap"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }
