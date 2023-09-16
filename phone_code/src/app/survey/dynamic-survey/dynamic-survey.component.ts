@@ -466,6 +466,7 @@ export class DynamicSurveyComponent implements OnInit {
 
 
                 currentProb = 0.3; //Always force home page.
+                /*
                 if (this.fileLink.includes('caregiver') || currentProb <= 0.4) {
                     var reinforcementObj = {};
                     reinforcementObj['ds'] = 1;
@@ -489,6 +490,14 @@ export class DynamicSurveyComponent implements OnInit {
                     navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
                     this.router.navigate(['incentive/award-altruism'], navigationExtras);
                 }
+                */
+                if (this.fileLink.includes('caregiver')){
+                    navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
+                    this.router.navigate(['home'], navigationExtras);
+                }else{
+                    this.router.navigate(['intervention/tailored-message'], navigationExtras);
+                }
+
 
 
                 //update unlocked incentive data in ngrx store.
