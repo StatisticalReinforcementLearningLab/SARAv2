@@ -279,6 +279,10 @@ export class AquariumComponent implements OnInit {
         this.navController.navigateRoot(['survey/sleepeveningsurvey']);
     }
 
+    startAYASurvey(){
+        this.navController.navigateRoot(['survey/samplesurvey2']);
+    }
+
 
     startSurvey() {
         console.log('start survey');

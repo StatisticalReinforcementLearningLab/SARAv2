@@ -8,10 +8,11 @@ import { MedicationCalendarComponent } from './medication-calendar/medication-ca
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { AddEventModalPageModule } from './medication-calendar/add-event-modal/add-event-modal.module';
 import { AddMedicationPageModule } from './medication-calendar/add-medication/add-medication.module';
+import { TailoredMessagesComponent } from './tailored-messages/tailored-messages.component';
 
 
 @NgModule({
-  declarations: [SleepMonitoringComponent, MedicationCalendarComponent],
+  declarations: [SleepMonitoringComponent, MedicationCalendarComponent, TailoredMessagesComponent],
   imports: [
     CommonModule,
     HarvardArcAppsModule,

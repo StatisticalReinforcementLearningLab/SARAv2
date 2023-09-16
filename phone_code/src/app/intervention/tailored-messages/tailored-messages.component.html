@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-back-button style="color:#fff;" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="color:#fff;">Therapeutic message</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-text>
+      <h4 style="padding: 15px;">{{message}}</h4>
+    </ion-text>
+  </ion-card>
+
+  
+  <ion-card>
+    <h4>Survey responses</h4>
+    <div *ngFor="let item of survey_responses">
+    -> {{item}}<br />
+    </div>
+  </ion-card>
+
+  
+  <ion-card>
+    <h4>Selected bucket</h4>
+    -> <b>State</b>: {{selected_bucket_id}}<br/>
+    -> <b>Messages</b>:<br/>
+    <div *ngFor="let item2 of selected_bucket_messages">
+    -> {{item2}}<br />
+    </div>
+  </ion-card>
+  
+  
+  <ion-card>
+  <h4>All buckets</h4><br/>
+    <pre>
+      {{all_buckets}}
+    </pre>
+  </ion-card>
+
+  
+  
+</ion-content>
+

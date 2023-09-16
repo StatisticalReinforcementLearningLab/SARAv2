@@ -374,7 +374,7 @@ export class DynamicSurveyComponent implements OnInit {
             saveEncryptedSurveyLocally() {
                 /*
                 Keeps a local copy of the survey in encrypted form.
-                The name of the file same as this.fileLink
+                The name of the key of the survey will be the this.fileLink.
                 */
                 var locallyStoredSurvey = {};
                 if (window.localStorage['localSurvey'] != undefined)
