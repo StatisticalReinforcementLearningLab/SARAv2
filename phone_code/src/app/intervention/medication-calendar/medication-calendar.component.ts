@@ -30,14 +30,51 @@ export class MedicationCalendarComponent implements OnInit {
         currentDate: new Date(),
     };
 
-    @ViewChild(CalendarComponent) myCal: CalendarComponent;
+    @ViewChild(CalendarComponent, null) myCal: CalendarComponent;
 
     constructor(private modalCtrl: ModalController) { }
 
     ngOnInit() { }
 
+    ngAfterViewInit(): void {
+        // console.log("myCal " + this.myCal);
+        // setTimeout(function() {
+        //     console.log("inside time out function");
+        //     //console.log("myCal " + this.myCal);
+        //     if (window.localStorage.getItem("eventSource") === null) {
+        //         console.log("no events found");
+        //         this.createRandomEvents();
+        //     }else{
+        //         console.log("events found");
+        //         let events = JSON.parse(window.localStorage.getItem('eventSource'));
+        //         // console.log(JSON.stringify(events));
+        //         this.eventSource = events;
+        //         this.myCal.loadEvents();
+        //     }
+        // },1000);
+
+        setTimeout(() => {
+            // console.log("inside time out function");
+            // console.log("myCal " + this.myCal);
+            if (window.localStorage.getItem("eventSource") === null) {
+                console.log("no events found");
+                this.createRandomEvents();
+            }else{
+                console.log("events found");
+                let events = JSON.parse(window.localStorage.getItem('eventSource'));
+                var countData = events.length;
+                for (var i = 0; i < countData; i++) {
+                    events[i].startTime = new Date(events[i].startTime);
+                    events[i].endTime = new Date(events[i].endTime);
+                }
+                this.eventSource = events;
+            }
+        }, 1000);
+    }
+
     // Change current month/week/day
     next() {
+        // console.log("myCal " + this.myCal);
         this.myCal.slideNext();
     }
 
@@ -149,7 +186,8 @@ export class MedicationCalendarComponent implements OnInit {
             }
         }
         this.eventSource = events;
-        console.log(JSON.stringify(events))
+        // console.log(JSON.stringify(events));
+        window.localStorage.setItem('eventSource', JSON.stringify(events));
     }
 
 

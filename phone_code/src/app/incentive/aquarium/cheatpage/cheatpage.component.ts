@@ -23,6 +23,13 @@ export class CheatpageComponent implements OnInit {
       this.currentPoints = parseInt(window.localStorage['TotalPoints']);
     */
     this.currentPoints = this.userProfileService.points;
+    /*
+    //set the total points to currentPoints, because
+    // if I press return, then it will set the value to zero
+    this.totalPoints = this.currentPoints;
+    console.log("Current points: " + this.totalPoints);
+    console.log("Total points: " + this.totalPoints);
+    */
   }
 
   logChange(event) {
@@ -31,6 +38,12 @@ export class CheatpageComponent implements OnInit {
   }
 
   resetPoint(){
+
+    if(this.totalPoints == undefined){
+      console.log("Total points not set");
+      return;
+    }
+
 
     console.log("Total points: " + this.totalPoints);
     this.currentPoints = this.totalPoints;

@@ -10,6 +10,9 @@ import * as moment from 'moment';
 export class AddMedicationPage implements AfterViewInit {
 
   modalReady = false;
+  buttonString = "checkmark-circle-outline";
+  medicationTaken = false;
+  isMedicationOnHold = false;
   dateStr = moment().format('MMM D, YYYY');
   constructor(private modalCtrl: ModalController) { }
 
@@ -21,5 +24,30 @@ export class AddMedicationPage implements AfterViewInit {
 
   ngOnInit() {
   }
+
+  changeMedicationTakenPressed(){
+    
+    if(this.buttonString == "checkmark-circle-outline"){
+      console.log("medication not taken");
+      this.buttonString = "checkmark-circle";
+      this.medicationTaken = true;
+    }else{
+      console.log("medication taken");
+      this.buttonString = "checkmark-circle-outline";
+      this.medicationTaken = false;
+    }
+
+  }
+
+  clickedMedHold() {
+    console.log("Checkbox selected? = " + this.isMedicationOnHold);
+  }
+
+  closeModal(){
+    console.log("Medication taken? = " + this.medicationTaken);
+    console.log("Checkbox selected? = " + this.isMedicationOnHold);
+    this.modalCtrl.dismiss();
+  }
+
 
 }

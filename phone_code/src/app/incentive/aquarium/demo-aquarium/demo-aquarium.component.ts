@@ -527,6 +527,7 @@ export class DemoAquariumComponent implements OnInit {
 
       } else {
         //---
+        console.log(this.totalPoints);
         var preLoader = new PreloaderL1();
         preLoader.setGameName(this.pickedGame = "GameOver");
         this.game.state.add('Preloader', preLoader);

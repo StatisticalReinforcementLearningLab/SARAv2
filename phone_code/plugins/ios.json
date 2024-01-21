@@ -29,9 +29,6 @@
     "cordova-plugin-network-information": {
       "PACKAGE_NAME": "edu.harvard.srl.SARA.V2"
     },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "edu.harvard.srl.SARA.V2"
-    },
     "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "edu.harvard.srl.SARA.V2"
     },
@@ -49,6 +46,9 @@
     },
     "uk.co.workingedge.cordova.plugin.sqliteporter": {
       "PACKAGE_NAME": "edu.harvard.srl.SARA.V2"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "edu.harvard.srl.SARA.V4"
     }
   },
   "dependent_plugins": {}

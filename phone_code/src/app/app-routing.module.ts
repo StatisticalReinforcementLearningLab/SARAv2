@@ -39,6 +39,7 @@ import { MedicationCalendarComponent } from './intervention/medication-calendar/
 import { SamTutorialComponent } from './baseline/sam-tutorial/sam-tutorial.component';
 import { VegaVisComponent } from './incentive/life-insights/vega-vis/vega-vis.component';
 import { TailoredMessagesComponent } from './intervention/tailored-messages/tailored-messages.component';
+import { TailoredMessageSingleComponent } from './intervention/tailored-message-single/tailored-message-single.component';
 
 
 const routes: Routes = [
@@ -90,6 +91,7 @@ const routes: Routes = [
   { path: 'preview/rainforest', component: RainforestComponent, canActivate: [AuthGuard]},
   { path: 'baseline/tutorial', component: SamTutorialComponent, canActivate: [AuthGuard]},
   { path: 'intervention/tailored-message', component: TailoredMessagesComponent, canActivate: [AuthGuard]},
+  { path: 'intervention/tailored-message-single', component: TailoredMessageSingleComponent, canActivate: [AuthGuard]},
   {
     path: 'add-event-modal',
     loadChildren: () => import('./intervention/medication-calendar/add-event-modal/add-event-modal.module').then( m => m.AddEventModalPageModule)

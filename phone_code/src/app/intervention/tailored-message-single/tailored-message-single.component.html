@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-button style="color:#fff;" (click)="goHome()">
+        <ion-icon name="arrow-back-outline" style="color : white;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="color:#fff;">Therapeutic message</ion-title>
+    <ion-buttons slot="end">
+      <ion-button style="color:#fff;" (click)="loadTailoredMessage()">
+          <ion-icon name="refresh-outline" style="color : white;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content style="background:#fff;">
+
+  <div style="position: relative;">
+    <h4 style="padding: 15px;">{{message}}</h4>
+  </div>
+  <!--
+  <ion-card *ngIf="!isSurveyDone" style="position: relative;">
+    <ion-text padding>
+      <h4 style="padding: 15px;">Survey not completed for today!!</h4>
+    </ion-text>
+  </ion-card>
+
+  <div *ngIf="isSurveyDone" style="position: relative;">
+    <ion-card>
+      <ion-text padding>
+        <h4 style="padding: 15px;">{{message}}</h4>
+      </ion-text>
+    </ion-card>
+  </div>
+  -->
+</ion-content>
+
+<ion-footer align="center" no-border>
+  <ion-toolbar style="background:#fff;border: 0px solid #fff;height:120px;">
+      <button style="height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:20px;font-size:24px;color:#fff;background:#D32F2F;" 
+      (click)="ratingChanged(0)">
+          <ion-icon name="thumbs-down" style="height: 50px;width: 50px;"></ion-icon>
+      </button>
+      <button style="height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:10px;font-size:24px;color:#fff;background:#33691E;" 
+      (click)="ratingChanged(1)">
+          <ion-icon name="thumbs-up" style="height: 50px;width: 50px;"></ion-icon>
+      </button>
+  </ion-toolbar>
+</ion-footer>
+
+
