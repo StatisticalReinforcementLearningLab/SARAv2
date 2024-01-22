@@ -5,6 +5,8 @@ import { formatDate } from '@angular/common';
 import { AddEventModalPage } from './add-event-modal/add-event-modal.page';
 import { DateRangeUnit } from 'aws-sdk/clients/securityhub';
 import { AddMedicationPage } from './add-medication/add-medication.page';
+import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
+import moment from 'moment';
 // import { CalModalPage } from '../pages/cal-modal/cal-modal.page';
 
 @Component({
@@ -32,7 +34,10 @@ export class MedicationCalendarComponent implements OnInit {
 
     @ViewChild(CalendarComponent, null) myCal: CalendarComponent;
 
-    constructor(private modalCtrl: ModalController) { }
+    constructor(private modalCtrl: ModalController,
+        private userProfileService: UserProfileService) { 
+
+    }
 
     ngOnInit() { }
 
@@ -56,6 +61,10 @@ export class MedicationCalendarComponent implements OnInit {
         setTimeout(() => {
             // console.log("inside time out function");
             // console.log("myCal " + this.myCal);
+
+            // How to handle initial case:
+            // If the medicationEvents is not in the user profile, 
+            // If the medicationEvent is empty 
             if (window.localStorage.getItem("eventSource") === null) {
                 console.log("no events found");
                 this.createRandomEvents();
@@ -66,10 +75,12 @@ export class MedicationCalendarComponent implements OnInit {
                 for (var i = 0; i < countData; i++) {
                     events[i].startTime = new Date(events[i].startTime);
                     events[i].endTime = new Date(events[i].endTime);
+                    events[i].medicationIntakeTime = new Date(events[i].medicationIntakeTime);
                 }
                 this.eventSource = events;
             }
-        }, 1000);
+        }, 100);
+        console.log(JSON.stringify(this.userProfileService.userProfile));
     }
 
     // Change current month/week/day
@@ -143,6 +154,7 @@ export class MedicationCalendarComponent implements OnInit {
                         title: 'Day -' + i,
                         startTime: startTime,
                         endTime: endTime,
+                        medicationIntakeTime: startTime,
                         allDay: false,
                         descritpion: "6mp taken",
                         symbolType: "checkmark"
@@ -156,6 +168,7 @@ export class MedicationCalendarComponent implements OnInit {
                             title: 'Day -' + i,
                             startTime: startTime,
                             endTime: endTime,
+                            medicationIntakeTime: startTime,
                             allDay: false,
                             descritpion: "6mp not taken",
                             symbolType: "cross"
@@ -167,6 +180,7 @@ export class MedicationCalendarComponent implements OnInit {
                             title: 'Day -' + i,
                             startTime: startTime,
                             endTime: endTime,
+                            medicationIntakeTime: startTime,
                             allDay: false,
                             descritpion: "6mp add",
                             symbolType: "add"
@@ -179,6 +193,7 @@ export class MedicationCalendarComponent implements OnInit {
                     title: 'Day -' + i,
                     startTime: startTime,
                     endTime: endTime,
+                    medicationIntakeTime: startTime,
                     allDay: false,
                     descritpion: "6mp add",
                     symbolType: "add"
@@ -187,9 +202,20 @@ export class MedicationCalendarComponent implements OnInit {
         }
         this.eventSource = events;
         // console.log(JSON.stringify(events));
-        window.localStorage.setItem('eventSource', JSON.stringify(events));
+        //window.localStorage.setItem('eventSource', JSON.stringify(events));
+        this.saveMedicationEvents(events);
     }
 
+    saveMedicationEvents(events) {
+
+        window.localStorage.setItem('eventSource', JSON.stringify(events));
+        this.userProfileService.medicationEvents(events);
+        // this.userProfileService.userProfile.medicationEvents = events;
+        // console.log(JSON.stringify(this.userProfileService.userProfile));
+        // this.userProfileService.saveToServer();
+        // this.userProfileService.saveProfileToDevice();
+
+    }
 
     removeEvents() {
         this.eventSource = [];
@@ -198,57 +224,57 @@ export class MedicationCalendarComponent implements OnInit {
     addMedication(dateStr) {
         console.log(dateStr);
         //this.openAddEventModal();
-        this.openAddMedicationModal();
+        this.openAddMedicationModal(dateStr);
     }
 
 
-    async openAddEventModal() {
-        /*
-            Pops up a modal view to manually add events.
-            Events in our case is an event of taking medication.
-        */
+    // async openAddEventModal() {
+    //     /*
+    //         Pops up a modal view to manually add events.
+    //         Events in our case is an event of taking medication.
+    //     */
 
 
-        const modal = await this.modalCtrl.create({
-            component: AddEventModalPage,
-            /* 
-               We added a css class in global.scss
-               Note modals lives on top of the application, so
-               We have to uset the global css. 
-            */
-            cssClass: 'add-event-modal',
-            backdropDismiss: false
-        });
+    //     const modal = await this.modalCtrl.create({
+    //         component: AddEventModalPage,
+    //         /* 
+    //            We added a css class in global.scss
+    //            Note modals lives on top of the application, so
+    //            We have to uset the global css. 
+    //         */
+    //         cssClass: 'add-event-modal',
+    //         backdropDismiss: false
+    //     });
 
-        await modal.present();
+    //     await modal.present();
 
-        modal.onDidDismiss().then((result) => {
-            if (result.data && result.data.event) {
-                let event = result.data.event;
-                if (event.allDay) {
-                    let start = event.startTime;
-                    event.startTime = new Date(
-                        Date.UTC(
-                            start.getUTCFullYear(),
-                            start.getUTCMonth(),
-                            start.getUTCDate()
-                        )
-                    );
-                    event.endTime = new Date(
-                        Date.UTC(
-                            start.getUTCFullYear(),
-                            start.getUTCMonth(),
-                            start.getUTCDate() + 1
-                        )
-                    );
-                }
-                this.eventSource.push(result.data.event);
-                this.myCal.loadEvents();
-            }
-        });
-    }
+    //     modal.onDidDismiss().then((result) => {
+    //         if (result.data && result.data.event) {
+    //             let event = result.data.event;
+    //             if (event.allDay) {
+    //                 let start = event.startTime;
+    //                 event.startTime = new Date(
+    //                     Date.UTC(
+    //                         start.getUTCFullYear(),
+    //                         start.getUTCMonth(),
+    //                         start.getUTCDate()
+    //                     )
+    //                 );
+    //                 event.endTime = new Date(
+    //                     Date.UTC(
+    //                         start.getUTCFullYear(),
+    //                         start.getUTCMonth(),
+    //                         start.getUTCDate() + 1
+    //                     )
+    //                 );
+    //             }
+    //             this.eventSource.push(result.data.event);
+    //             this.myCal.loadEvents();
+    //         }
+    //     });
+    // }
 
-    async openAddMedicationModal() {
+    async openAddMedicationModal(dateStr) {
         /*
             Pops up a modal view to manually add events.
             Events in our case is an event of taking medication.
@@ -257,6 +283,9 @@ export class MedicationCalendarComponent implements OnInit {
 
         const modal = await this.modalCtrl.create({
             component: AddMedicationPage,
+            componentProps: {
+                'data_string': dateStr
+            },
             /* 
                We added a css class in global.scss
                Note modals lives on top of the application, so
@@ -266,7 +295,39 @@ export class MedicationCalendarComponent implements OnInit {
             backdropDismiss: false
         });
 
+        //console.log(dateStr);
+
+        modal.onDidDismiss()
+            .then((data) => {
+                const medicationSelectData = data['data']; // Here's your selected user!
+                console.log(JSON.stringify(medicationSelectData));
+                this.updateMedicationCalendarEvent(medicationSelectData);
+        });
+
         await modal.present();
+    }
+
+    updateMedicationCalendarEvent(medicationSelectData: any) {
+        //
+        let date_string = medicationSelectData["date_string"];
+        let medicationTaken = medicationSelectData["medication_taken"];
+        let isMedicationOnHold = medicationSelectData["is_medication_on_hold"];
+        
+        console.log("medicationTaken " + medicationTaken);
+        if(medicationTaken == true){
+            var dStart;
+            let date_obj = new Date(date_string);
+            for(var i = 49; i >= 0 ; i -= 1) {
+                dStart = this.eventSource[i].startTime;
+                if (date_obj.getTime() === dStart.getTime()){
+                    this.eventSource[i].symbolType = "checkmark";
+                    this.eventSource[i].descritpion = "6mp taken";
+                    break;
+                }
+            }
+            this.myCal.loadEvents();
+            this.saveMedicationEvents(this.eventSource);
+        } 
     }
 
 
@@ -274,6 +335,24 @@ export class MedicationCalendarComponent implements OnInit {
         const jsonString = '{ "success": true, "command_code": 1, "tag_message": { "tag_id": "100123959-BR1", "scan_time": 1689952593, "event_count": 3, "package_id": "", "patient_id": "", "custom_data_1": "", "versioning": { "model": "eCap Argus-Loc", "firmware_version": "1.1.1.0.1.4.0", "hardware_version": "1.0.0" }, "started": true, "clock_coefficient_correction": true, "tag_events": [ { "timestamp": 1689345543 }, { "timestamp": 1689345603 }, { "timestamp": 1689345663 } ] } }';
         const obj = JSON.parse(jsonString);
         console.log(obj);
+    }
+
+    printEvents(events){
+        console.log(JSON.stringify(events));
+        if((events.length == 1) && ("title" in events[0])){
+            var date_clicked = events[0];
+            let date_str = moment(date_clicked["startTime"]).format('MM/DD/YYYY'); 
+            if (date_clicked["symbolType"] == "checkmark"){
+                let time_taken = moment(date_clicked["medicationIntakeTime"]).format('hh:mm A'); 
+                return date_str + " - 6MP taken at " + time_taken;
+            }else if(date_clicked["symbolType"] == "add"){
+                return date_str + " - Record unavailable ";
+            }else{
+                return date_str + " - 6MP likely not taken";;
+            }
+        } else {
+            return "";
+        }
     }
 
 

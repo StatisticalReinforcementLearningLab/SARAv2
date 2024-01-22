@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import * as moment from 'moment';
 
@@ -14,11 +14,18 @@ export class AddMedicationPage implements AfterViewInit {
   medicationTaken = false;
   isMedicationOnHold = false;
   dateStr = moment().format('MMM D, YYYY');
+
+  // Data passed in by componentProps
+  @Input() data_string: any;
+  
   constructor(private modalCtrl: ModalController) { }
 
   ngAfterViewInit(): void {
     setTimeout(() => {
         this.modalReady = true;
+        // events[i].startTime = new Date(events[i].startTime);
+        let data_obj = new Date(this.data_string);
+        this.dateStr = moment(data_obj).format('MMM D, YYYY'); //new Date(this.dateStr);
     }, 0);
   }
 
@@ -45,8 +52,14 @@ export class AddMedicationPage implements AfterViewInit {
 
   closeModal(){
     console.log("Medication taken? = " + this.medicationTaken);
-    console.log("Checkbox selected? = " + this.isMedicationOnHold);
-    this.modalCtrl.dismiss();
+    console.log("OnHold selected? = " + this.isMedicationOnHold);
+    //this.modalController.dismiss(user);
+    let medicationSelectData = {
+      "date_string" : this.data_string,
+      "medication_taken": this.medicationTaken,
+      "is_medication_on_hold": this.isMedicationOnHold
+    };
+    this.modalCtrl.dismiss(medicationSelectData);
   }
 
 

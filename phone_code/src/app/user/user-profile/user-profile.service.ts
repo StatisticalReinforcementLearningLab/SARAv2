@@ -453,4 +453,10 @@ export class UserProfileService {
     localStorage.removeItem('userProfile');
   }
 
+  medicationEvents(events){
+    this.userProfile.medicationEvents = events;
+    this.saveProfileToDevice();
+    this.saveToServer();
+  }
+
 }

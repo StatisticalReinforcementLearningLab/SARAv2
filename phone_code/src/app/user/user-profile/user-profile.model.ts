@@ -33,6 +33,7 @@ export class UserProfile {
     public points: number;
     public badgeCount: number;
     public firstlogin: any;
+    public medicationEvents: any;
 
     // created constructor to initialize UserProfile - early on
     constructor(username: string, 
@@ -49,6 +50,7 @@ export class UserProfile {
         this.readable_ts = readable_ts;
         this.lastuploadprofiletime = lastupdate;
         this.lastuploadprofiletime_ts = readable_ts;
+        this.medicationEvents = [];
     }
 }
     

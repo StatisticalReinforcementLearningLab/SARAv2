@@ -112,7 +112,7 @@
     <ion-card-content>
       <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
         [showEventDetail]="true" (onTitleChanged)="onViewTitleChanged($event)" step="30"
-        [monthviewDisplayEventTemplate]="template">
+        [monthviewDisplayEventTemplate]="template" [monthviewEventDetailTemplate]="monthviewEventDetailTemplate">
       </calendar>
     </ion-card-content>
   </div>
@@ -135,4 +135,8 @@
       </div>
     </div>
   </div>
+</ng-template>
+
+<ng-template #monthviewEventDetailTemplate let-showEventDetail="showEventDetail" let-selectedDate="selectedDate" let-noEventsLabel="noEventsLabel">
+  <calendar-event [events]="selectedDate.events">{{printEvents(selectedDate.events)}}</calendar-event>
 </ng-template>
