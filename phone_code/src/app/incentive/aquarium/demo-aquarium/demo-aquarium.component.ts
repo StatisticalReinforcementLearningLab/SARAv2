@@ -41,7 +41,7 @@ import { GameRainforestL6 } from '../levels/RainforestL6/Game';
 
 import { ActivatedRoute, Router, RouterEvent, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
 //import { PreLoad } from '../../../PreLoad';
-import { Platform, ModalController } from '@ionic/angular';
+import { Platform, ModalController, NavController } from '@ionic/angular';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import * as moment from 'moment';
 import { AlertController } from '@ionic/angular';
@@ -180,6 +180,7 @@ export class DemoAquariumComponent implements OnInit {
     private platform: Platform,
     private route: ActivatedRoute,
     private userProfileService: UserProfileService,
+    public navController: NavController,
     private httpClient: HttpClient) {
     console.log("Constructor called");
 
@@ -216,6 +217,11 @@ export class DemoAquariumComponent implements OnInit {
 
   openBaseline() {
     this.router.navigate(['baseline/tutorial']);
+  }
+
+  showTailoredMesssage() {
+    //this.router.navigate(['intervention/tailored-message']);
+    this.navController.navigateRoot(['intervention/tailored-message']);
   }
 
   addMedication() {
@@ -521,6 +527,7 @@ export class DemoAquariumComponent implements OnInit {
 
       } else {
         //---
+        console.log(this.totalPoints);
         var preLoader = new PreloaderL1();
         preLoader.setGameName(this.pickedGame = "GameOver");
         this.game.state.add('Preloader', preLoader);

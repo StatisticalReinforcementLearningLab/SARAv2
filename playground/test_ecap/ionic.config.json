@@ -1,0 +1,7 @@
+{
+  "name": "test_ecap",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

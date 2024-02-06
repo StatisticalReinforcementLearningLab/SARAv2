@@ -4,11 +4,14 @@
       <ion-back-button style="color:#fff;" defaultHref="home"></ion-back-button>
     </ion-buttons>
     <ion-title style="color:#fff;">Medication calendar</ion-title>
+
+    <!--
     <ion-buttons slot="end">
       <ion-button (click)="openAddEventModal()">
         <ion-icon name="add" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-buttons>
+    -->
   </ion-toolbar>
 </ion-header>
 
@@ -60,6 +63,10 @@
 
   <!-- Create some random event -->
   <div *ngIf="type == 'calendar'">
+
+    <!-- 
+      Kept for testing.
+    -->
     <ion-row>
       <ion-col size="6">
         <ion-button (click)="createRandomEvents()" expand="block" fill="outline">
@@ -72,6 +79,7 @@
         </ion-button>
       </ion-col>
     </ion-row>
+    
 
     <!-- <ion-card> -->
     <!-- 
@@ -104,7 +112,7 @@
     <ion-card-content>
       <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
         [showEventDetail]="true" (onTitleChanged)="onViewTitleChanged($event)" step="30"
-        [monthviewDisplayEventTemplate]="template">
+        [monthviewDisplayEventTemplate]="template" [monthviewEventDetailTemplate]="monthviewEventDetailTemplate">
       </calendar>
     </ion-card-content>
   </div>
@@ -127,4 +135,8 @@
       </div>
     </div>
   </div>
+</ng-template>
+
+<ng-template #monthviewEventDetailTemplate let-showEventDetail="showEventDetail" let-selectedDate="selectedDate" let-noEventsLabel="noEventsLabel">
+  <calendar-event [events]="selectedDate.events">{{showEventDetails(selectedDate.events)}}</calendar-event>
 </ng-template>

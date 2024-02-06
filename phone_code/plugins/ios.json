@@ -10,6 +10,10 @@
     "cordova-plugin-app-version": {
       "PACKAGE_NAME": "edu.harvard.srl.SARA.V2"
     },
+    "cordova-plugin-certiscan-ecap": {
+      "NFC_USAGE_DESCRIPTION": "Scans CertiScan eCap pill bottle usage.",
+      "PACKAGE_NAME": "edu.harvard.srl.SARA.V2"
+    },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "edu.harvard.srl.SARA.V2"
     },
@@ -25,9 +29,6 @@
     "cordova-plugin-network-information": {
       "PACKAGE_NAME": "edu.harvard.srl.SARA.V2"
     },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "edu.harvard.srl.SARA.V2"
-    },
     "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "edu.harvard.srl.SARA.V2"
     },
@@ -40,8 +41,13 @@
     "onesignal-cordova-plugin": {
       "PACKAGE_NAME": "edu.harvard.srl.SARA.V2"
     },
-    "cordova-plugin-certiscan-ecap": {
-      "NFC_USAGE_DESCRIPTION": "Scans CertiScan eCap pill bottle usage.",
+    "phonegap-plugin-mobile-accessibility": {
+      "PACKAGE_NAME": "edu.harvard.srl.SARA.V2"
+    },
+    "uk.co.workingedge.cordova.plugin.sqliteporter": {
+      "PACKAGE_NAME": "edu.harvard.srl.SARA.V2"
+    },
+    "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "edu.harvard.srl.SARA.V4"
     }
   },

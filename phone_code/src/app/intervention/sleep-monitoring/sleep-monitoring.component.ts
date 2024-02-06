@@ -31,7 +31,6 @@ export class SleepMonitoringComponent implements OnInit {
     private userProfileService: UserProfileService,
     private EncrDecr: EncrDecrService,
     private httpClient: HttpClient) { 
-      
   }
 
   
@@ -70,8 +69,7 @@ export class SleepMonitoringComponent implements OnInit {
           this.supportMessages = JSON.stringify(data["support_messages"]);
         },
         error: error => console.error('There was an error!', error)
-    });
-    
+    }); 
   }
 
   encryptWithPublicKey(valueToEncrypt: string): string {

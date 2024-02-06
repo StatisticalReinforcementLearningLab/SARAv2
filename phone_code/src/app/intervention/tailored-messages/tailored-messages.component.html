@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-button style="color:#fff;" (click)="goHome()">
+        <ion-icon name="arrow-back-outline" style="color : white;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="color:#fff;">Therapeutic message</ion-title>
+    <ion-buttons slot="end">
+      <ion-button style="color:#fff;" (click)="loadTailoredMessage()">
+          <ion-icon name="refresh-outline" style="color : white;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+
+  <ion-card *ngIf="!isSurveyDone">
+    <ion-text padding>
+      <h4 style="padding: 15px;">Survey not completed for today!!</h4>
+    </ion-text>
+  </ion-card>
+
+  <div *ngIf="isSurveyDone">
+    <ion-card>
+      <ion-text padding>
+        <h4 style="padding: 15px;">{{message}}</h4>
+      </ion-text>
+    </ion-card>
+
+    
+    <ion-card>
+      <h4>Survey responses</h4>
+      <div *ngFor="let item of survey_responses">
+      -> {{item}}<br /> 
+      </div>
+    </ion-card>
+
+    
+    <ion-card>
+      <h4>Selected bucket</h4>
+      -> <b>State</b>: {{selected_bucket_id}}<br/>
+      -> <b>Messages</b>:<br/>
+      <div *ngFor="let item2 of selected_bucket_messages">
+      -> {{item2}}<br />
+      </div>
+    </ion-card>
+    
+    
+    <ion-card>
+    <h4>All buckets</h4><br/>
+      <pre>
+        {{all_buckets}}
+      </pre>
+    </ion-card>
+  </div>
+
+  
+  
+</ion-content>
+

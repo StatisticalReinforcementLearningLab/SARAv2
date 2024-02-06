@@ -2,4 +2,13 @@
     --background: #005486;
 }
 
+ion-fab-button {
+    --background: #D0F634;
+    --background-activated: #a38e09d8;
+    --background-hover: #a3e681;
+    --box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    --color: #005486;
+    --border-color: white;
+}
+
 

@@ -34,7 +34,7 @@ config.ini
 
 .vscode
 ./server_side_code
-
+./server_side_code/apis/tailored_messaging/flask_docker/env
 
 
 

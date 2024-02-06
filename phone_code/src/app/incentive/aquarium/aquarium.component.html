@@ -3,7 +3,6 @@
 
       <ion-buttons slot="start">
         <ion-menu-button style="color:#fff;" menuId="first"></ion-menu-button>
-
         <!--
         <ion-button style="color:#fff;" (click)="startCheatPage()" *ngIf="isIOS">
           <ion-icon name="alert"></ion-icon>
@@ -35,7 +34,7 @@
 
 
       <ion-buttons slot="end">
-        <!-- <font color="white">${{money}}</font> -->
+        <font color="white">${{money}}</font>
 
           
         <!-- <ion-button style="color:#fff;" (click)="startCheatPage()"  *ngIf="!isIOS"> -->
@@ -48,16 +47,24 @@
         <ion-button (click)="startSurvey()"   *ngIf="isActive">
           <ion-icon name="create" style="color : white;"></ion-icon>
         </ion-button>
-        -->
+        
 
         <ion-button (click)="startSurveySleep()"   *ngIf="isActive">
           <ion-icon name="create" style="color : white;"></ion-icon>
         </ion-button>
+        -->
 
-        <ion-button (click)="startSurveyEvening()"   *ngIf="isActive">
+        <!--
+        Oct 31, 2023, this was the final logic.
+
+        <ion-button (click)="startAYASurvey()"   *ngIf="isActive">
           <ion-icon name="create" style="color : white;"></ion-icon>
         </ion-button>
 
+        <ion-button *ngIf="!isActive" (click)="dispalySurveyPausedMsg()" >
+          <ion-icon name="create" style="color : #e74c3c;"></ion-icon>
+        </ion-button>
+        -->
 
         <!--
             <ion-button (click)="showDogsSurvey()"   *ngIf="isActive">
@@ -71,9 +78,7 @@
           </ion-button>
         --> 
              
-          <ion-button *ngIf="!isActive" (click)="dispalySurveyPausedMsg()" >
-              <ion-icon name="create" style="color : #e74c3c;"></ion-icon>
-          </ion-button>
+          
           <!--
           <ion-button href="{{surveyPath}}" *ngIf="isActive">Start Survey</ion-button> 
           <ion-button style="color:#fff;" (click)="startSurvey()">
@@ -117,6 +122,25 @@
 
     <!-- <ion-button color="primary" (click)="showPythonLifeInsight()">Python life-insight</ion-button> -->
     
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+      <ion-fab-button (click)="startAYASurvey()">
+        <ion-icon name="list"></ion-icon>
+      </ion-fab-button>
+
+      <!--
+      <ion-fab-list side="top">
+        <ion-fab-button>
+          <ion-icon name="document"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button>
+          <ion-icon name="color-palette"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button>
+          <ion-icon name="globe"></ion-icon>
+        </ion-fab-button>
+      </ion-fab-list>
+      -->
+    </ion-fab>
     
   </ion-content>
   

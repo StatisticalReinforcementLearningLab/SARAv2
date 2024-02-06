@@ -232,8 +232,8 @@ export class AquariumComponent implements OnInit {
         */
 
 
-        //this.title = "ADAPTS";
-        this.title = "SARA";
+        this.title = "ADAPTS";
+        //this.title = "SARA";
         console.log("aquarium.component.ts --- start");
         //this.menu.enable(true);
 
@@ -277,6 +277,10 @@ export class AquariumComponent implements OnInit {
 
     startSurveyEvening(){
         this.navController.navigateRoot(['survey/sleepeveningsurvey']);
+    }
+
+    startAYASurvey(){
+        this.navController.navigateRoot(['survey/samplesurvey2']);
     }
 
 
@@ -479,18 +483,18 @@ export class AquariumComponent implements OnInit {
         console.log("computeUnlockedReinforcements: called")
 
         //get if money is awarded.
-        //    if(awardedDollar > 0){
-        //      if(this.isFirstDayInTheStudy())
-        //        //reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'Thanks for being a participant in the study. You earned 2 dollar.'});
-        //       reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for completing your first survey! You earned 2 dollars.'});
-        //      else{
-        //        if(awardedDollar == 1) //hack, 1 dollar is only awarded after a three-day streak.
-        //          reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for surveys three days in a row! You earned 1 dollar.'});
+        if(awardedDollar > 0){
+            if(this.isFirstDayInTheStudy())
+                //reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'Thanks for being a participant in the study. You earned 2 dollar.'});
+                reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for completing your first survey! You earned 2 dollars.'});
+            else{
+                if(awardedDollar == 1) //hack, 1 dollar is only awarded after a three-day streak.
+                    reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for surveys three days in a row! You earned 1 dollar.'});
 
-        //        if(awardedDollar == 2) //hack, 2 dollar is only awarded after a break.
-        //          reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for coming back after a break! You earned 2 dollars.'});
-        //      }
-        //    }
+                if(awardedDollar == 2) //hack, 2 dollar is only awarded after a break.
+                    reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for coming back after a break! You earned 2 dollars.'});
+            }
+        }
 
         //get if fish is alotted
         previousPoints = currentPoints - 60;

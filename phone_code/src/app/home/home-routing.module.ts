@@ -10,6 +10,7 @@ import { ContactComponent } from './contact/contact.component';
 import { UnlockedInspirationalQuotesComponent } from '../incentive/unlocked-inspirational-quotes/unlocked-inspirational-quotes.component';
 import { SleepMonitoringComponent } from '../intervention/sleep-monitoring/sleep-monitoring.component';
 import { VegaVisComponent } from '../incentive/life-insights/vega-vis/vega-vis.component';
+import { MedicationCalendarComponent } from '../intervention/medication-calendar/medication-calendar.component';
 
 const routes: Routes = [
   {
@@ -32,8 +33,11 @@ const routes: Routes = [
         path: 'contact', component: ContactComponent, canActivate: [AuthGuard]
       },
       {
-        path: 'sleep', component: VegaVisComponent, canActivate: [AuthGuard]
+        path: 'insights', component: VegaVisComponent, canActivate: [AuthGuard]
         //path: 'sleep', component: SleepMonitoringComponent, canActivate: [AuthGuard]
+      },
+      {
+        path: 'med_calendar', component: MedicationCalendarComponent, canActivate: [AuthGuard]
       },
       {
         path: '',

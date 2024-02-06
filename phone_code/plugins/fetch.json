@@ -55,14 +55,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-splashscreen": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-splashscreen@6.0.0"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-statusbar": {
     "source": {
       "type": "registry",
@@ -115,6 +107,14 @@
     "source": {
       "type": "local",
       "path": "/Users/mash/Documents/codes/SARA_modular/phone_code/node_modules/cordova-plugin-certiscan-ecap"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-splashscreen": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-splashscreen@6.0.2"
     },
     "is_top_level": true,
     "variables": {}
