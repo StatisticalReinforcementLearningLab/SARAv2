@@ -71,6 +71,35 @@ export class MedicationCalendarComponent implements OnInit {
             }else{
                 console.log("events found");
                 let events = JSON.parse(window.localStorage.getItem('eventSource'));
+                events = [
+                    {
+                        "title": "Day -0",
+                        "startTime": "2024-01-18T08:01:00.000Z",
+                        "endTime": "2024-01-18T09:01:00.000Z",
+                        "medicationIntakeTime": "2024-01-18T08:01:00.000Z",
+                        "allDay": false,
+                        "descritpion": "6mp add",
+                        "symbolType": "add"
+                    }, 
+                    {
+                        "title": "Day -0",
+                        "startTime": "2024-01-20T08:01:00.000Z",
+                        "endTime": "2024-01-20T09:01:00.000Z",
+                        "medicationIntakeTime": "2024-01-20T08:01:00.000Z",
+                        "allDay": false,
+                        "descritpion": "6mp add",
+                        "symbolType": "add"
+                    }, 
+                    {
+                        "title": "Day -0",
+                        "startTime": "2024-01-19T08:01:00.000Z",
+                        "endTime": "2024-01-19T09:01:00.000Z",
+                        "medicationIntakeTime": "2024-01-19T08:01:00.000Z",
+                        "allDay": false,
+                        "descritpion": "6mp add",
+                        "symbolType": "add"
+                    }
+                ]
                 var countData = events.length;
                 for (var i = 0; i < countData; i++) {
                     events[i].startTime = new Date(events[i].startTime);
@@ -78,6 +107,7 @@ export class MedicationCalendarComponent implements OnInit {
                     events[i].medicationIntakeTime = new Date(events[i].medicationIntakeTime);
                 }
                 this.eventSource = events;
+                this.updateMedicationList();
             }
         }, 100);
         console.log(JSON.stringify(this.userProfileService.userProfile));
@@ -337,8 +367,8 @@ export class MedicationCalendarComponent implements OnInit {
         console.log(obj);
     }
 
-    printEvents(events){
-        console.log(JSON.stringify(events));
+    showEventDetails(events){
+        //console.log(JSON.stringify(events));
         if((events.length == 1) && ("title" in events[0])){
             var date_clicked = events[0];
             let date_str = moment(date_clicked["startTime"]).format('MM/DD/YYYY'); 
@@ -346,14 +376,103 @@ export class MedicationCalendarComponent implements OnInit {
                 let time_taken = moment(date_clicked["medicationIntakeTime"]).format('hh:mm A'); 
                 return date_str + " - 6MP taken at " + time_taken;
             }else if(date_clicked["symbolType"] == "add"){
-                return date_str + " - Record unavailable ";
+                return date_str + " - Record unavailable.";
             }else{
-                return date_str + " - 6MP likely not taken";;
+                return date_str + " - 6MP likely not taken.";;
             }
         } else {
             return "";
         }
     }
+
+    //initialize medication list
+    initializeMedicationList(){
+
+    }
+
+    //update medication list
+    updateMedicationList(){
+        /*
+        In this function, we update the "add" for the current to last three day.
+        If medication is not added then we fill them with x.
+        */
+
+        var events = this.eventSource;
+
+        //find the max Date In Events 
+        //Later we will use this fill in + and x signs.
+        var maxDateInEvents = new Date("1970-01-01");
+        for (var i = 0; i < events.length; i += 1){
+            if(maxDateInEvents.getTime() < events[i].startTime.getTime()){
+                maxDateInEvents = events[i].startTime;
+            }
+        }
+
+        let currentDayMidnightUTC = new Date(new Date().setHours(0, 1, 0, 0));
+
+        //Add the + add sign to the last 3 days
+        //Just before "maxDateInEvents" or until 3, whichever comes first.
+        //If current date is "22 Jan 2024" and maxDateInEvents "20 Jan 2024" then we add for 22 and 21.
+        //If current date is "22 Jan 2024" and maxDateInEvents "10 Jan 2024" then we add for 22, 21, 20.
+        var ithDayFromCurrentdayMidnightUTC;
+        for(var i=0; i<3; i++){
+            ithDayFromCurrentdayMidnightUTC = new Date(currentDayMidnightUTC.setHours(-1 * 24 * i, 1, 0, 0));
+            console.log("ithDayFromCurrentdayMidnightUTC " + ithDayFromCurrentdayMidnightUTC + ", i " + i);
+            if(maxDateInEvents.getTime() < ithDayFromCurrentdayMidnightUTC.getTime()){
+                //means we have a new day, we need to "add" symbol.
+                events.push({
+                    title: 'Day -' + i,
+                    startTime: ithDayFromCurrentdayMidnightUTC,
+                    endTime: new Date(ithDayFromCurrentdayMidnightUTC.setHours(1, 1, 0, 0)),
+                    medicationIntakeTime: ithDayFromCurrentdayMidnightUTC,
+                    allDay: false,
+                    descritpion: "6mp add",
+                    symbolType: "add"
+                });
+            }
+        }
+
+
+        //ithDayFromCurrentdayMidnightUTC now the two day. Any existing event with
+        //date less than ithDayFromCurrentdayMidnightUTC with "+/add" sign should be cross now.
+        let twoDayFromCurrentdayMidnightUTC = ithDayFromCurrentdayMidnightUTC;
+        console.log("twoDayFromCurrentdayMidnightUTC " + twoDayFromCurrentdayMidnightUTC);
+        for(var i=0; i<events.length; i++){
+            //if starttime for event is less or equal to ithDayFromCurrentdayMidnightUTC
+            if((events[i].startTime < twoDayFromCurrentdayMidnightUTC) && (events[i].symbolType == "add"))
+                events[i].symbolType = "cross";
+        }
+
+        //Fill in any date that does not exist with a "x". Stop at "maxDateInEvents"
+        for(var i=1; i<100; i++){
+            ithDayFromCurrentdayMidnightUTC = new Date(twoDayFromCurrentdayMidnightUTC.setHours(-1 * 24 * i, 1, 0, 0));
+            if(maxDateInEvents.getTime() < ithDayFromCurrentdayMidnightUTC.getTime()){
+                events.push({
+                    title: 'Day -' + i,
+                    startTime: ithDayFromCurrentdayMidnightUTC,
+                    endTime: new Date(ithDayFromCurrentdayMidnightUTC.setHours(1, 1, 0, 0)),
+                    medicationIntakeTime: ithDayFromCurrentdayMidnightUTC,
+                    allDay: false,
+                    descritpion: "6mp add",
+                    symbolType: "cross"
+                });
+            }else{
+                break; //means we have all the records.
+            }
+        }
+
+        this.eventSource = events;
+        this.saveMedicationEvents(events);
+
+        // for(var i=0; i<100; i++){
+        //     ithDayFromCurrentdayMidnightUTC = new Date(currentDayMidnightUTC.setHours(-1 * 24 * i, 1, 0, 0));
+        //     //Two scenario may happen
+        //     //If we have an add symbol then change to X.
+        //     //
+        // }
+
+    }
+
 
 
 }

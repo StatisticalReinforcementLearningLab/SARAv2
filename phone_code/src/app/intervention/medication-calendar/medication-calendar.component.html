@@ -138,5 +138,5 @@
 </ng-template>
 
 <ng-template #monthviewEventDetailTemplate let-showEventDetail="showEventDetail" let-selectedDate="selectedDate" let-noEventsLabel="noEventsLabel">
-  <calendar-event [events]="selectedDate.events">{{printEvents(selectedDate.events)}}</calendar-event>
+  <calendar-event [events]="selectedDate.events">{{showEventDetails(selectedDate.events)}}</calendar-event>
 </ng-template>
