@@ -20,6 +20,8 @@ export class TailoredMessagesComponent implements OnInit {
   date;
   modalObjectNavigationExtras = {};
   containsNavigationExtras = false;
+  whichImage: string;
+  reinforcements;
 
   constructor(private EncrDecr: EncrDecrService,
     private httpClient: HttpClient,
@@ -31,7 +33,7 @@ export class TailoredMessagesComponent implements OnInit {
     }
 
   ngOnInit() {
-
+    this.whichImage = './assets/altruism/altruism_1.png';
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.containsNavigationExtras = true;
@@ -42,6 +44,11 @@ export class TailoredMessagesComponent implements OnInit {
       }
     }); 
     this.loadTailoredMessage();
+
+    var reinforcements = [];
+    reinforcements.push({ 'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?" });
+    reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned a dollar', 'text': 'Thanks for surveys three days in a row! You earned 1 dollar.' });
+    this.reinforcements = reinforcements;
   }
 
   goHome(){
