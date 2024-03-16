@@ -67,7 +67,8 @@ export class MedicationCalendarComponent implements OnInit {
             // If the medicationEvent is empty 
             if (window.localStorage.getItem("eventSource") === null) {
                 console.log("no events found");
-                this.createRandomEvents();
+                this.eventSource = [];
+                //this.createRandomEvents();
             }else{
                 console.log("events found");
                 let events = JSON.parse(window.localStorage.getItem('eventSource'));
@@ -102,15 +103,16 @@ export class MedicationCalendarComponent implements OnInit {
                 // ]
                 var countData = events.length;
                 for (var i = 0; i < countData; i++) {
-                    //Convert string back to date objects.
+                    //convert string back to date objects.
                     events[i].startTime = new Date(events[i].startTime);
                     events[i].endTime = new Date(events[i].endTime);
                     events[i].medicationIntakeTime = new Date(events[i].medicationIntakeTime);
                 }
                 this.eventSource = events;
                 // console.log(this.eventSource);
-                this.updateMedicationList();
+                //this.updateMedicationList();
             }
+            this.updateMedicationList();
         }, 100);
         // console.log(JSON.stringify(this.userProfileService.userProfile));
     }
@@ -419,7 +421,7 @@ export class MedicationCalendarComponent implements OnInit {
             }
         }
 
-        //If there is not event in events calendar then get the first day in study as maxDateInEvents
+        //If there is no event in events calendar then get the first day in study as maxDateInEvents
         //or set the current date as maxDateInEvents
         // maxDateInEvents = new Date("2024-02-01");
         // events = [];

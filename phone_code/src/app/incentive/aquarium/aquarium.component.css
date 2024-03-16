@@ -11,4 +11,9 @@ ion-fab-button {
     --border-color: white;
 }
 
+ion-card {
+    margin: 5px;
+    border-radius: 0px;
+}
+
 
