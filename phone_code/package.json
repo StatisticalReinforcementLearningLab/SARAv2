@@ -1,5 +1,5 @@
 {
-  "name": "SARAv2",
+  "name": "sarav2",
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
@@ -58,10 +58,10 @@
     "crypto-js": "^3.1.9-1",
     "ionic2-calendar": "^0.6.9",
     "moment": "^2.29.4",
-    "node": "^16.14.2",
+    "node": "^18.13.0",
     "node-forge": "^1.3.1",
     "onesignal-cordova-plugin": "3.3.0",
-    "rxjs": "^7.5.7",
+    "rxjs": "^7.8.1",
     "sharp": "^0.33.2",
     "stacktrace-js": "^2.0.2",
     "swiper": "^8.4.5",
@@ -145,5 +145,7 @@
       "ios"
     ]
   },
-  "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
+  "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
+  "main": "index.js",
+  "license": "ISC"
 }
