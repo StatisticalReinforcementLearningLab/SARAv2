@@ -35,6 +35,20 @@
 </ion-header>
 
 <ion-content>
+  <swiper-container 
+      slides-per-view="1" 
+      speed="500" 
+      loop="true" 
+      css-mode="true" 
+      navigation="true" 
+      pagination="true"
+      scrollbar="true">
+      <swiper-slide *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8]">
+          <img src="https://placehold.co/600x400" />
+      </swiper-slide>
+  </swiper-container>
+
+  <!--
   <swiper
       [slidesPerView]="1"
       [spaceBetween]="50"
@@ -59,4 +73,5 @@
       
       </ng-template>
   </swiper>
+  -->
 </ion-content>

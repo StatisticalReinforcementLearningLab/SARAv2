@@ -42,7 +42,6 @@ const routes: Routes = [
     AwardAltruismComponent
     //VisualizationComponent
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  entryComponents: [ModalUnlockedPageComponent]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class IncentiveModule { }

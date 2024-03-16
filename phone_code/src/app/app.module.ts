@@ -36,7 +36,6 @@ import { BaselineModule } from './baseline/baseline.module';
 
 @NgModule({
   declarations: [AppComponent,CheatpageComponent],
-  entryComponents: [CheatpageComponent],
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 
@@ -61,7 +60,7 @@ import { BaselineModule } from './baseline/baseline.module';
       }
     }),
     //dev tool maxAge 25 versions of the data
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production , connectInZone: true}),
     EffectsModule.forRoot([])
   ],
   providers: [

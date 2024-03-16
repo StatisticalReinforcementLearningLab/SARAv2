@@ -6,7 +6,7 @@ import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 import { OneSignalService } from './notification/one-signal.service';
 
 import { environment } from '../environments/environment';
-import { Router, RouterEvent, RouteConfigLoadStart, RouteConfigLoadEnd, NavigationStart, NavigationEnd } from '@angular/router';
+import { Router, RouterEvent, RouteConfigLoadStart, RouteConfigLoadEnd, NavigationStart, NavigationEnd, Event } from '@angular/router';
 
 import { LoadingController } from '@ionic/angular';
 import { UserProfileService } from './user/user-profile/user-profile.service';
@@ -56,7 +56,7 @@ export class AppComponent {
     this.isAYA = true;
 
     router.events.subscribe(
-			( event: RouterEvent ) : void => {
+			( event: Event ) : void => {
 
         //this.isShowingRouteLoadIndicator = false;
         var asyncLoadCount = 0;
