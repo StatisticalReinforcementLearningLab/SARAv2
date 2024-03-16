@@ -71,46 +71,48 @@ export class MedicationCalendarComponent implements OnInit {
             }else{
                 console.log("events found");
                 let events = JSON.parse(window.localStorage.getItem('eventSource'));
-                events = [
-                    {
-                        "title": "Day -0",
-                        "startTime": "2024-01-18T08:01:00.000Z",
-                        "endTime": "2024-01-18T09:01:00.000Z",
-                        "medicationIntakeTime": "2024-01-18T08:01:00.000Z",
-                        "allDay": false,
-                        "descritpion": "6mp add",
-                        "symbolType": "add"
-                    }, 
-                    {
-                        "title": "Day -0",
-                        "startTime": "2024-01-20T08:01:00.000Z",
-                        "endTime": "2024-01-20T09:01:00.000Z",
-                        "medicationIntakeTime": "2024-01-20T08:01:00.000Z",
-                        "allDay": false,
-                        "descritpion": "6mp add",
-                        "symbolType": "add"
-                    }, 
-                    {
-                        "title": "Day -0",
-                        "startTime": "2024-01-19T08:01:00.000Z",
-                        "endTime": "2024-01-19T09:01:00.000Z",
-                        "medicationIntakeTime": "2024-01-19T08:01:00.000Z",
-                        "allDay": false,
-                        "descritpion": "6mp add",
-                        "symbolType": "add"
-                    }
-                ]
+                // events = [
+                //     {
+                //         "title": "Day -0",
+                //         "startTime": "2024-01-18T08:01:00.000Z",
+                //         "endTime": "2024-01-18T09:01:00.000Z",
+                //         "medicationIntakeTime": "2024-01-18T08:01:00.000Z",
+                //         "allDay": false,
+                //         "descritpion": "6mp add",
+                //         "symbolType": "add"
+                //     }, 
+                //     {
+                //         "title": "Day -0",
+                //         "startTime": "2024-01-20T08:01:00.000Z",
+                //         "endTime": "2024-01-20T09:01:00.000Z",
+                //         "medicationIntakeTime": "2024-01-20T08:01:00.000Z",
+                //         "allDay": false,
+                //         "descritpion": "6mp add",
+                //         "symbolType": "add"
+                //     }, 
+                //     {
+                //         "title": "Day -0",
+                //         "startTime": "2024-01-19T08:01:00.000Z",
+                //         "endTime": "2024-01-19T09:01:00.000Z",
+                //         "medicationIntakeTime": "2024-01-19T08:01:00.000Z",
+                //         "allDay": false,
+                //         "descritpion": "6mp add",
+                //         "symbolType": "add"
+                //     }
+                // ]
                 var countData = events.length;
                 for (var i = 0; i < countData; i++) {
+                    //Convert string back to date objects.
                     events[i].startTime = new Date(events[i].startTime);
                     events[i].endTime = new Date(events[i].endTime);
                     events[i].medicationIntakeTime = new Date(events[i].medicationIntakeTime);
                 }
                 this.eventSource = events;
+                // console.log(this.eventSource);
                 this.updateMedicationList();
             }
         }, 100);
-        console.log(JSON.stringify(this.userProfileService.userProfile));
+        // console.log(JSON.stringify(this.userProfileService.userProfile));
     }
 
     // Change current month/week/day
@@ -170,11 +172,18 @@ export class MedicationCalendarComponent implements OnInit {
         */
         var events = [];
         for (var i = 0; i < 50; i += 1) {
+            // Date behavior
+            // Date() call gives current time in the current time zone.
+            // If I call to string, then it will save current time plus 8 (for pacific).
+            // Thus time is saved in GMT
+            // So, if I set the time at current Date and set minutes to 1 then
+            // Then save string will save hours as 8 and minutes as 1. 
+            // So, when I load from string again, would it mess up the date??
             var date = new Date();
-            var eventType = Math.floor(Math.random() * 2); //0=no survey, 1 survey.
-            // 
             var startTime = new Date(new Date().setHours(-1 * 24 * i, 1, 0, 0));
             var endTime = new Date(new Date().setHours(-1 * 24 * i + 1, 1, 0, 0));
+
+            var eventType = Math.floor(Math.random() * 2); //0=no survey, 1 survey.
 
             if (i > 0) {
                 if (eventType == 1) {
@@ -346,14 +355,14 @@ export class MedicationCalendarComponent implements OnInit {
         console.log("medicationTaken " + medicationTaken);
         if(medicationTaken == true){
             var dStart;
-            let date_obj = new Date(date_string);
-            for(var i = 49; i >= 0 ; i -= 1) {
+            let date_obj = new Date(date_string); //Time of the 
+            for(var i = this.eventSource.length-1; i >= 0 ; i -= 1) {
                 dStart = this.eventSource[i].startTime;
                 if (date_obj.getTime() === dStart.getTime()){
                     this.eventSource[i].symbolType = "checkmark";
                     this.eventSource[i].descritpion = "6mp taken";
                     break;
-                }
+                 }
             }
             this.myCal.loadEvents();
             this.saveMedicationEvents(this.eventSource);
@@ -401,12 +410,40 @@ export class MedicationCalendarComponent implements OnInit {
 
         //find the max Date In Events 
         //Later we will use this fill in + and x signs.
+        //Ideally we have to fill until the maxDateInEvents
+        //because before everything is already filled.
         var maxDateInEvents = new Date("1970-01-01");
         for (var i = 0; i < events.length; i += 1){
             if(maxDateInEvents.getTime() < events[i].startTime.getTime()){
                 maxDateInEvents = events[i].startTime;
             }
         }
+
+        //If there is not event in events calendar then get the first day in study as maxDateInEvents
+        //or set the current date as maxDateInEvents
+        // maxDateInEvents = new Date("2024-02-01");
+        // events = [];
+        if(events.length == 0){
+            //get first day of survey as set as maxDateInEvents
+            var dailySurveyHistory = this.userProfileService.userProfile.survey_data.daily_survey;
+            if(Object.keys(dailySurveyHistory).length > 0){//Survey is not empty
+                var firstDateSurveyIsCompleted = moment().format('YYYYMMDD');
+                var timestampeForFirstDataSurveyIsCompleted = moment(firstDateSurveyIsCompleted, "YYYYMMDD");
+                var timestampDateForASurveyCompleted;
+                for (var dateForASurveyCompleted in dailySurveyHistory) {
+                    timestampDateForASurveyCompleted = moment(dateForASurveyCompleted,"YYYYMMDD");
+                    if (timestampDateForASurveyCompleted < timestampeForFirstDataSurveyIsCompleted) {
+                        firstDateSurveyIsCompleted = dateForASurveyCompleted;
+                        timestampeForFirstDataSurveyIsCompleted = moment(firstDateSurveyIsCompleted,"YYYYMMDD");
+                    }
+                }
+                maxDateInEvents = new Date(moment(firstDateSurveyIsCompleted, "YYYYMMDD").toDate().setHours(1, 1, 0, 0));
+            }else{
+                maxDateInEvents = new Date(new Date().setHours(0, 1, 0, 0));
+            }
+            //else set current date as maxDateInEvents; this is first day in study
+        }
+        console.log("maxDateInEvents: " + firstDateSurveyIsCompleted);
 
         let currentDayMidnightUTC = new Date(new Date().setHours(0, 1, 0, 0));
 
@@ -416,9 +453,9 @@ export class MedicationCalendarComponent implements OnInit {
         //If current date is "22 Jan 2024" and maxDateInEvents "10 Jan 2024" then we add for 22, 21, 20.
         var ithDayFromCurrentdayMidnightUTC;
         for(var i=0; i<3; i++){
-            ithDayFromCurrentdayMidnightUTC = new Date(currentDayMidnightUTC.setHours(-1 * 24 * i, 1, 0, 0));
+            ithDayFromCurrentdayMidnightUTC = new Date(new Date().setHours(-1 * 24 * i, 1, 0, 0));
             console.log("ithDayFromCurrentdayMidnightUTC " + ithDayFromCurrentdayMidnightUTC + ", i " + i);
-            if(maxDateInEvents.getTime() < ithDayFromCurrentdayMidnightUTC.getTime()){
+            if(maxDateInEvents.getTime() <= ithDayFromCurrentdayMidnightUTC.getTime()){
                 //means we have a new day, we need to "add" symbol.
                 events.push({
                     title: 'Day -' + i,
@@ -433,8 +470,8 @@ export class MedicationCalendarComponent implements OnInit {
         }
 
 
-        //ithDayFromCurrentdayMidnightUTC now the two day. Any existing event with
-        //date less than ithDayFromCurrentdayMidnightUTC with "+/add" sign should be cross now.
+        // //ithDayFromCurrentdayMidnightUTC now the two day. Any existing event with
+        // //date less than ithDayFromCurrentdayMidnightUTC with "+/add" sign should be cross now.
         let twoDayFromCurrentdayMidnightUTC = ithDayFromCurrentdayMidnightUTC;
         console.log("twoDayFromCurrentdayMidnightUTC " + twoDayFromCurrentdayMidnightUTC);
         for(var i=0; i<events.length; i++){
@@ -443,15 +480,21 @@ export class MedicationCalendarComponent implements OnInit {
                 events[i].symbolType = "cross";
         }
 
-        //Fill in any date that does not exist with a "x". Stop at "maxDateInEvents"
+        // //Fill in any date that does not exist with a "x". Stop at "maxDateInEvents"
+        console.log("Before: " + JSON.stringify(events));
+        var ithDayFromTwoDayFromCurrentdayMidnightUTC;
+        var dayToAdjustFrom;
         for(var i=1; i<100; i++){
-            ithDayFromCurrentdayMidnightUTC = new Date(twoDayFromCurrentdayMidnightUTC.setHours(-1 * 24 * i, 1, 0, 0));
-            if(maxDateInEvents.getTime() < ithDayFromCurrentdayMidnightUTC.getTime()){
+            //We have to reset everytime, because set hours changes the date for the future
+            dayToAdjustFrom = new Date("" + twoDayFromCurrentdayMidnightUTC); 
+            ithDayFromTwoDayFromCurrentdayMidnightUTC = new Date(dayToAdjustFrom.setHours(-1 * 24 * i, 1, 0, 0));
+            console.log("ithDayFromTwoDayFromCurrentdayMidnightUTC " + ithDayFromTwoDayFromCurrentdayMidnightUTC + ", i " + i);
+            if(maxDateInEvents.getTime() < ithDayFromTwoDayFromCurrentdayMidnightUTC.getTime()){
                 events.push({
                     title: 'Day -' + i,
-                    startTime: ithDayFromCurrentdayMidnightUTC,
-                    endTime: new Date(ithDayFromCurrentdayMidnightUTC.setHours(1, 1, 0, 0)),
-                    medicationIntakeTime: ithDayFromCurrentdayMidnightUTC,
+                    startTime: ithDayFromTwoDayFromCurrentdayMidnightUTC,
+                    endTime: new Date(ithDayFromTwoDayFromCurrentdayMidnightUTC.setHours(1, 1, 0, 0)),
+                    medicationIntakeTime: ithDayFromTwoDayFromCurrentdayMidnightUTC,
                     allDay: false,
                     descritpion: "6mp add",
                     symbolType: "cross"
@@ -460,6 +503,7 @@ export class MedicationCalendarComponent implements OnInit {
                 break; //means we have all the records.
             }
         }
+        console.log("After: " + JSON.stringify(events));
 
         this.eventSource = events;
         this.saveMedicationEvents(events);
