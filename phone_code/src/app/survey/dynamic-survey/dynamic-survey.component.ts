@@ -256,10 +256,28 @@ export class DynamicSurveyComponent implements OnInit {
                 this.inputchanged(question);
             }
 
-            inputChangedForCheckBox(question, item, $event) {
-                //console.log('holla: ' + question+" "+JSON.stringify($event.detail));
+            inputChangedForCheckBox2(question, item, $event) {
+                /*
+                Currently not used
+                */
+                console.log('holla: ' + question+" "+JSON.stringify($event.detail));
                 this.surveyAnswersJSONObject[item] = $event.detail.checked;
                 //console.log(JSON.stringify(this.surveyAnswersJSONObject));
+
+                //this.processExtraCondition(question);
+            }
+
+            inputChangedForCheckBox(question, item, value, event) {
+                console.log('holla: ' + question+", "+item + ", " + value);
+                this.inputchanged(question);
+                console.log('holla: ' + question+" "+JSON.stringify(event));
+                if(""+this.surveyAnswersJSONObject[item]=='true')
+                    this.surveyAnswersJSONObject[item + "_value"] = value;
+                else{
+                    delete this.surveyAnswersJSONObject[item];
+                    delete this.surveyAnswersJSONObject[item + "_value"];
+                }
+                console.log(JSON.stringify(this.surveyAnswersJSONObject));
 
                 //this.processExtraCondition(question);
             }
@@ -417,6 +435,11 @@ export class DynamicSurveyComponent implements OnInit {
 
             provideIncentives() {
 
+                if (this.fileLink.includes('baseline')){
+                    //navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
+                    this.router.navigate(['home']);
+                }
+
                 // incremenet point. Points automatically update the aquarium.
                 this.awardANdUpdatePoints();
 
@@ -494,6 +517,9 @@ export class DynamicSurveyComponent implements OnInit {
                 if (this.fileLink.includes('caregiver')){
                     navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
                     this.router.navigate(['home'], navigationExtras);
+                }else if (this.fileLink.includes('baseline')){
+                        navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
+                        this.router.navigate(['home'], navigationExtras);
                 }else{
                     this.router.navigate(['intervention/tailored-message'], navigationExtras);
                 }
@@ -880,10 +906,58 @@ export class DynamicSurveyComponent implements OnInit {
             //------------------------------------------------------                 
             if (obj.type == "checkbox") {
                 //survey_string = this.process_survey_checkbox(obj, survey_string, i);
+                survey_string = this.process_survey_checkbox(obj, survey_string, i);
             }
 
             survey_string = survey_string + '</div>';
         }
+        return survey_string;
+    }
+
+    process_survey_checkbox(obj: any, survey_string: string, i: any): string {
+        // survey_string = survey_string + '<div class="radiovertical"><ul>';
+        // /*
+        // survey_string = [survey_string,
+        //         '<li><input type="radio" id="option' + i + "I" + j + '" name="' + i + '" [(ngModel)]="surveyAnswersJSONObject.' + i + '" value=" ' + obj.extra.choices[j] + '" (change)="inputchanged(\'' + i + '\')">',
+        //         '<label for="option' + i + "I" + j + '">' + obj.extra.choices[j] + '</label>',
+        //         '<div class="check"></div></li>'
+        //     ].join(" ");
+        // */
+        // for (var j = 0; j < obj.extra.choices.length; j++) {
+        //     //survey_string = [survey_string, '<ion-checkbox style="border-color:#fff;border-width: 0px;" ng-model="survey.' + i + 'O' + j + '" ng-change="inputchanged(\'' + i + '\')"' + '>' + obj.extra.choices[j] + '</ion-checkbox>'].join(" ");
+        //     //survey_string = [survey_string, '<ion-checkbox labelPlacement="end" [(ngModel)]="surveyAnswersJSONObject.' + i + 'O' + j + '"  (change)="inputChangedForCheckBox(\'' + i + '\')"' + '>' + obj.extra.choices[j] + '</ion-checkbox>'].join(" ");
+        //     survey_string = [survey_string, 
+        //         '<li><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"><label for="vehicle1">' + obj.extra.choices[j] + '</label></li><br>'
+        //     ].join(" ");
+        // }
+        // survey_string = survey_string + '</ul></div>';
+
+        survey_string = survey_string + '<div class="checkboxvertical"><ul>';
+
+        for (var j = 0; j < obj.extra.choices.length; j++) {
+            survey_string = [survey_string,
+                '<li><input type="checkbox" id="option' + i + "I" + j + '" name="' + i + 'O' + j + '" [(ngModel)]="surveyAnswersJSONObject.' + i + 'I' + j, 
+                '" value=" ' + obj.extra.choices[j] + '" (change)="inputChangedForCheckBox(\'' + i + '\',\'' + i + 'I' + j + '\',\'' + obj.extra.choices[j] + '\', $event)">',
+                '<label for="option' + i + "I" + j + '">' + obj.extra.choices[j] + '</label>',
+                '<div class="checkb"></div></li>'
+            ].join(" ");
+        }
+
+        // for (var j = 0; j < obj.extra.choices.length; j++) {
+        //     survey_string = [survey_string,
+        //         // '<input type="checkbox" id="option' + i + "I" + j + '" name="' + i + 'O' + j + '" [(ngModel)]="surveyAnswersJSONObject.' + i + 'O' + j + '" value=" ' + obj.extra.choices[j] + '" (change)="inputchanged(\'' + i + '\')">',
+        //         // '<label for="option' + i + "I" + j + '">' + obj.extra.choices[j] + '</label>',
+        //         // '<div class="checkb">',
+        //         '<input type="checkbox">',
+        //         '<label>',
+        //             obj.extra.choices[j],
+        //         '</label>'
+        //     ].join(" ");
+        // }
+
+        survey_string = survey_string + '</ul></div>';
+
+
         return survey_string;
     }
 

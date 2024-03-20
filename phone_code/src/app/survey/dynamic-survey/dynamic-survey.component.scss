@@ -1,0 +1,19 @@
+.label-check input {  display:none; }
+
+.label-check label::before {
+  width: 1.4em;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  color: black;
+  transition: color .3s ease;
+  text-shadow: 0px 0px 1px #cccccc;
+}
+.label-check label:hover::before {
+  text-shadow: 0px 0px 1px #6286d0;
+}
+.label-check [type='checkbox']:checked + label::before,
+
+
+.label-check [type='checkbox']         + label::before { content: "\2610";}
+.label-check [type='checkbox']:checked + label::before { content: "\2611";}

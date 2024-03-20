@@ -22,6 +22,7 @@ import { SleepSurveyComponent } from './sleep-survey/sleep-survey.component';
 import { DogsSurveyComponent } from './dogs-survey/dogs-survey.component';
 import { SleepStudyEveningSurveyComponent } from './sleep-study-evening-survey/sleep-study-evening-survey.component';
 import { SleepSurveyWithPredictionComponent } from './sleep-survey-with-prediction/sleep-survey-with-prediction.component';
+import { BaselineSurveyComponent } from './baseline-survey/baseline-survey.component';
 
 const routes: Routes = [
     { path: 'samplesurvey', component: SampleSurveyComponent }
@@ -36,7 +37,9 @@ const routes: Routes = [
     SleepSurveyComponent,
     DogsSurveyComponent,
     SleepStudyEveningSurveyComponent,
-    SleepSurveyWithPredictionComponent],
+    SleepSurveyWithPredictionComponent,
+    BaselineSurveyComponent
+  ],
   imports: [
     CommonModule,
     IonicModule.forRoot(),
@@ -53,7 +56,8 @@ const routes: Routes = [
     AyaSampleSurveyComponent,
     //HarvardSurveyComponent,
     SleepSurveyComponent,
-    DogsSurveyComponent
+    DogsSurveyComponent,
+    BaselineSurveyComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

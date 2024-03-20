@@ -40,6 +40,7 @@ import { SamTutorialComponent } from './baseline/sam-tutorial/sam-tutorial.compo
 import { VegaVisComponent } from './incentive/life-insights/vega-vis/vega-vis.component';
 import { TailoredMessagesComponent } from './intervention/tailored-messages/tailored-messages.component';
 import { TailoredMessageSingleComponent } from './intervention/tailored-message-single/tailored-message-single.component';
+import { BaselineSurveyComponent } from './survey/baseline-survey/baseline-survey.component';
 
 
 const routes: Routes = [
@@ -73,6 +74,7 @@ const routes: Routes = [
   { path: 'survey/sleepeveningsurvey', component: SleepStudyEveningSurveyComponent, canActivate: [AuthGuard]},
   { path: 'survey/sleepsurveywithprediction', component: SleepSurveyWithPredictionComponent, canActivate: [AuthGuard]},
   { path: 'survey/dogssurvey', component: DogsSurveyComponent, canActivate: [AuthGuard]},
+  { path: 'survey/baselinesurvey', component: BaselineSurveyComponent, canActivate: [AuthGuard]},
   { path: 'intervention/arcappsfrontpage', component: FrontPageComponent, canActivate: [AuthGuard]}, 
   { path: 'incentive/aquariumone', component: DemoAquariumComponent, canActivate: [AuthGuard]},
   { path: 'incentive/award-memes', component: AwardMemesComponent, canActivate: [AuthGuard]},
