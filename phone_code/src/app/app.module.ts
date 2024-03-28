@@ -33,6 +33,7 @@ import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 import { InterventionModule } from './intervention/intervention.module';
 // import { SwiperModule } from 'swiper/angular';
 import { BaselineModule } from './baseline/baseline.module';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
   declarations: [AppComponent,CheatpageComponent],
@@ -76,7 +77,8 @@ import { BaselineModule } from './baseline/baseline.module';
     //,
     //{provide: ErrorHandler, useClass: GlobalErrorHandler}
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
 export class AppModule {

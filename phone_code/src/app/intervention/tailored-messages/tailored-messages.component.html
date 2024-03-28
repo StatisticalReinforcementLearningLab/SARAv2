@@ -8,7 +8,7 @@
     <ion-title style="color:#fff;">Messages and rewards</ion-title>
     <ion-buttons slot="end">
       <ion-button style="color:#fff;" (click)="loadTailoredMessage()">
-          <ion-icon name="refresh-outline" style="color : white;"></ion-icon>
+        <ion-icon name="refresh-outline" style="color : white;"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -19,14 +19,47 @@
 
   <ion-card *ngIf="!isSurveyDone" style="height: 50%;">
     <ion-text padding>
-      <h4 class="vertical-center" style="width: 100%; padding: 15px; text-align: center;">Survey not completed for today!!</h4>
+      <h4 class="vertical-center" style="width: 100%; padding: 15px; text-align: center;">Survey not completed for
+        today!!</h4>
     </ion-text>
   </ion-card>
 
 
 
-  <div *ngIf="isSurveyDone" >
-    <!--
+
+  <swiper-container [pagination]="true" *ngIf="isSurveyDone">
+    <swiper-slide>
+      <h4 style="width: 100%; padding: 15px; padding-top: 120px; padding-bottom: 120px; text-align: center;">{{message}}
+      </h4>
+    </swiper-slide>
+
+    <swiper-slide>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Today's rewards</ion-card-subtitle>
+        </ion-card-header>
+        <ion-text padding>
+          <p style="padding: 18px; padding-top: 0px; font-size: 16px;">You also unlocked a thank you message, a dollar and a fish for the aquarium.</p>
+        </ion-text>
+        <img style="padding: 18px;" [src]="whichImage" *ngIf="whichImage"/>
+        <ion-list>
+          <ion-item *ngFor="let reinforcement of reinforcements"> 
+            <ion-thumbnail slot="start">
+              <img src="{{reinforcement.img}}">
+            </ion-thumbnail>
+            <ion-label text-wrap>
+              <h2>{{reinforcement.header}}</h2>
+              <h3>{{reinforcement.text}}</h3>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+    </swiper-slide>
+
+  </swiper-container>
+
+
+  <!--
     <ion-card style="height: 500px;">
       <ion-text padding>
         <h4 class="vertical-center" style="width: 100%; padding: 15px; text-align: center;">{{message}}</h4>
@@ -34,6 +67,7 @@
     </ion-card>
     -->
 
+  <!--
     <ion-card>
       <ion-card-header>
         <ion-card-subtitle>Today's message</ion-card-subtitle>
@@ -66,8 +100,9 @@
     </ion-card>
 
     <ion-button expand="full" style="margin: 15px;">Return home</ion-button>
-    
-    <!--
+    -->
+
+  <!--
     <ion-card>
       <h4>Survey responses</h4>
       <div *ngFor="let item of survey_responses">
@@ -93,9 +128,8 @@
       </pre>
     </ion-card>
     -->
-  </div>
 
-  
-  
+
+
+
 </ion-content>
-

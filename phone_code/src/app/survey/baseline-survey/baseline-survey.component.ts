@@ -45,7 +45,6 @@ export class BaselineSurveyComponent implements OnInit {
     */    
     this.mobileAccessibility.usePreferredTextZoom(true);
     this.appUsageDb.saveAppUsageExit("baseline_survey_page");
-  
  }
 
 }

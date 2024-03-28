@@ -12,6 +12,8 @@ import { LoadingController } from '@ionic/angular';
 import { UserProfileService } from './user/user-profile/user-profile.service';
 import { AuthService } from './user/auth/auth.service';
 import { Subscription } from 'rxjs';
+import { register } from 'swiper/element/bundle';
+register();
 
 @Component({
   selector: 'app-root',
