@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { UserProfileService } from '../user-profile/user-profile.service';
 import { tap } from 'rxjs/operators';
-import { OneSignal } from '@ionic-native/onesignal/ngx';
+// import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { Platform } from '@ionic/angular';
 
 @Component({
@@ -26,8 +26,8 @@ export class AuthComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService,
     private router: Router,
     private userProfileService: UserProfileService,
-    private platform: Platform,
-    private oneSignal: OneSignal) { }
+    private platform: Platform) { }
+    // private oneSignal: OneSignal) { }
 
   // was used to switch mode between login and register
   // onSwitchMode(){
@@ -75,7 +75,7 @@ export class AuthComponent implements OnInit, OnDestroy {
 
         // Note onesignal player id is initialized right at the start of the app
         // So, we already have the ID stored in the localStorage.
-        // Now, that said, we add the app version as well. 
+        // Now, that said, we add the app version as well.
         this.userSub = this.userProfileService.initializeObs()
           .pipe(
             tap(

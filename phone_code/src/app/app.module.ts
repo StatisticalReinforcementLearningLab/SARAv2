@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@awesome-cordova-plugins/splash-screen/ngx';
 import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
-import { OneSignal } from '@ionic-native/onesignal/ngx';
+// import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { Injector } from '@angular/core';
 import { SQLitePorter } from '@awesome-cordova-plugins/sqlite-porter/ngx';
 import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';
@@ -29,7 +29,7 @@ import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import {EffectsModule} from '@ngrx/effects';
-import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
+// import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 import { InterventionModule } from './intervention/intervention.module';
 // import { SwiperModule } from 'swiper/angular';
 import { BaselineModule } from './baseline/baseline.module';
@@ -38,8 +38,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 @NgModule({
   declarations: [AppComponent,CheatpageComponent],
   imports: [
-    BrowserModule, 
-    IonicModule.forRoot(), 
+    BrowserModule,
+    IonicModule.forRoot(),
     AppRoutingModule,
     SurveyModule,
     IncentiveModule,
@@ -67,10 +67,10 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   providers: [
     StatusBar,
     SplashScreen,
-    OneSignal,
+    // OneSignal,
     AwardDollarService,
     AppVersion,
-    MobileAccessibility,
+    // MobileAccessibility,
     SQLite,
     SQLitePorter,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
