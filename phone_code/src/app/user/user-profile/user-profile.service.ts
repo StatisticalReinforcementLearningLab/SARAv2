@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 import { BehaviorSubject, forkJoin, Subscription } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import * as moment from 'moment';
-import { OneSignal } from '@ionic-native/onesignal/ngx';
+// import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { NetworkService, ConnectionStatus } from '../../storage/network.service';
 import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
 
@@ -22,15 +22,15 @@ export class UserProfileService {
 
   constructor(private http: HttpClient,
               private networkSvc: NetworkService,
-              private appVersion: AppVersion,
-              private oneSignal: OneSignal) { }
+              private appVersion: AppVersion) { }
+              // private oneSignal: OneSignal) { }
 
-  //returns Observable that we can subscribed to so as to trigger an action after 
+  //returns Observable that we can subscribed to so as to trigger an action after
   //user profiles have been initialized
   initializeObs(){
     //get profiles from server
     console.log("user-profile.service.ts - initializeObs method");
-    let getProfile = this.http.post<any>(environment.userServer+'/userinfo',{"empty":"empty"}); 
+    let getProfile = this.http.post<any>(environment.userServer+'/userinfo',{"empty":"empty"});
     let getProfileFixed = this.http.get<any>(environment.userServer+'/userinfofixed');
 
     // forkJoin will return an observable that waits till both http requests have received responses
@@ -71,7 +71,7 @@ export class UserProfileService {
   fetchUserProfile(){
     //get userProfile from server
     console.log("user-profile.service.ts - fetchUserProfile method");
-    let getProfile = this.http.post<any>(environment.userServer+'/userinfo',{"empty":"empty"}); 
+    let getProfile = this.http.post<any>(environment.userServer+'/userinfo',{"empty":"empty"});
 
     return getProfile
       .pipe(tap(
@@ -93,7 +93,7 @@ export class UserProfileService {
           }
           else{
             serverCopyNewer = false;
-          }         
+          }
           return { "serverCopyNewer": serverCopyNewer}
         }
       ));
@@ -123,13 +123,13 @@ export class UserProfileService {
   }
 
   addOneSignalPlayerId(){
-    this.oneSignal.getIds().then(async (id) =>  {
+    /* this.oneSignal.getIds().then(async (id) =>  {
       const playerId = id.userId;
       this.userProfile.oneSignalPlayerId = id.userId;
       console.log("onesignal player id: " + id);
       this.saveProfileToDevice();
       this.saveToServer();
-    });
+    }); */
   }
 
   addAppVersion(){
@@ -141,10 +141,10 @@ export class UserProfileService {
         console.log(err);
     });
   }
-  /* 
+  /*
   addReinforcementData returns true if successful at adding the element (it doesn't already exist for the given date)
   date is a string of the format YYYYMMDD (e.g. "20170430")
-  
+
   reinforcementObj is an object of the form:
   {
       "ds": 1, //means participants completed the survey
@@ -188,13 +188,13 @@ export class UserProfileService {
           // reset
           previousDate = new Date("1970-01-01");  //set previousDate to 1970-01-01
           streak = 1;
-        } 
+        }
       }else{
         //reset
         streak =1;
       }
       previousDate = currentDate;
-    }  
+    }
     console.log("numStreaks: " + numStreaks);
     this.userProfile.dollars= numStreaks;
   }
@@ -204,12 +204,12 @@ export class UserProfileService {
     return this.userProfileFixed.isActive;
   }
   get isParent(){
-    console.log("user-profile.service.ts - isParent getter - begin");  
+    console.log("user-profile.service.ts - isParent getter - begin");
     return this.userProfileFixed.isParent;
   }
   get points(){
     console.log("user-profile.service.ts - points getter - begin");
- 
+
     if(this.userProfile==undefined)
       this.loadProfileFromDevice();
     return this.userProfile.points;
@@ -220,7 +220,7 @@ export class UserProfileService {
 
     if(this.userProfile==undefined)
       this.loadProfileFromDevice();
-    
+
     if(this.userProfile == null)
       return "new user"
     else
@@ -249,16 +249,16 @@ export class UserProfileService {
     return this.userProfile.oneSignalPlayerId;
   }
 
-  saveToServer(){ 
+  saveToServer(){
     this.saveToServerRequestInQueue = true;
     if(this.networkSvc.getCurrentNetworkStatus() == ConnectionStatus.Online){
 
-      this.loadProfileFromDevice(); 
+      this.loadProfileFromDevice();
       const currenttime:Date = new Date();
       const dateString: string = moment(currenttime).format('MMMM Do YYYY, h:mm:ss a Z');
       this.userProfile.lastuploadprofiletime = currenttime.getTime();
       this.userProfile.lastuploadprofiletime_ts = dateString;
-      
+
       const userProfile: UserProfile = this.userProfile;
 
       this.http
@@ -272,14 +272,14 @@ export class UserProfileService {
     else{
        this.saveToServerSub = this.networkSvc.onNetworkChange().subscribe(()=>{
           if(this.networkSvc.getCurrentNetworkStatus() == ConnectionStatus.Online){
-            this.loadProfileFromDevice(); 
+            this.loadProfileFromDevice();
             const currenttime:Date = new Date();
             const dateString: string = moment(currenttime).format('MMMM Do YYYY, h:mm:ss a Z');
             this.userProfile.lastuploadprofiletime = currenttime.getTime();
             this.userProfile.lastuploadprofiletime_ts = dateString;
 
             const userProfile: UserProfile = this.userProfile;
-      
+
             this.http
               .post(environment.userServer+'/setuserinfo',userProfile)
               .subscribe(response =>{
@@ -295,7 +295,7 @@ export class UserProfileService {
 
 
       // console.log("saveToServer userProfile: " + JSON.stringify(userProfile));
-  } 
+  }
 
   retrieve(userID: string){
   }
@@ -313,7 +313,7 @@ export class UserProfileService {
 
   saveProfileToDevice(){
       localStorage.setItem('userProfile', JSON.stringify(this.userProfile));
-      
+
       // maybe use this logic in case it's undefined:  https://stackoverflow.com/questions/37417012/unexpected-token-u-in-json-at-position-0
       localStorage.setItem('userProfileFixed', JSON.stringify(this.userProfileFixed));
 
@@ -364,7 +364,7 @@ export class UserProfileService {
       try{
         this.userProfile.dollars = JSON.parse(localStorage.getItem("AwardDollar"));
       }catch(error){
-        window.localStorage.setItem("AwardDollar", ""+0); 
+        window.localStorage.setItem("AwardDollar", ""+0);
         this.userProfile.dollars = 0;
       }
       this.saveProfileToDevice();
@@ -374,7 +374,7 @@ export class UserProfileService {
 
   get stringCurrenDate(){
     console.log("user-profile.service.ts - stringCurrenDate getter - begin");
-    
+
     //shift hours back by 2, so that 2am, will register as 12am
     const hoursShift: number = 2;
     const currentDateTime : Date = new Date();
@@ -382,10 +382,10 @@ export class UserProfileService {
     //now, set hours, min, sec to zero
     currentDateTime.setHours(0,0,0,0);
     return currentDateTime.getFullYear()
-            + "" + ('0' + (currentDateTime.getMonth()+1)).slice(-2) 
+            + "" + ('0' + (currentDateTime.getMonth()+1)).slice(-2)
             + "" + ('0' + currentDateTime.getDate()).slice(-2);
  }
-  
+
   get numericCurrenDateTime(){
     console.log("user-profile.service.ts - numericCurrenDateTime getter - begin");
 
@@ -413,7 +413,7 @@ export class UserProfileService {
     console.log("user-profile.service.ts - surveyTakenForCurrentDay method - begin");
 
     this.loadProfileFromDevice();
-    //check if date already exists in dict of dates, otherwise add the date to dict    
+    //check if date already exists in dict of dates, otherwise add the date to dict
     // var hasMatch = false;
     if( this.stringCurrenDate in this.userProfile.survey_data.daily_survey){
       return true;
@@ -432,7 +432,7 @@ export class UserProfileService {
 
   addPoints(points: number){
     console.log("user-profile.service.ts - addPoints method - begin");
-    
+
     this.userProfile.points += points;
     this.userProfile.survey_data.points += points;
     this.saveProfileToDevice();

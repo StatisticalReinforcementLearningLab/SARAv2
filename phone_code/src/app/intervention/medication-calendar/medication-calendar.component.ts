@@ -9,6 +9,8 @@ import { UserProfileService } from 'src/app/user/user-profile/user-profile.servi
 import moment from 'moment';
 // import { CalModalPage } from '../pages/cal-modal/cal-modal.page';
 
+declare var certiscan: any
+
 @Component({
     selector: 'app-medication-calendar',
     templateUrl: './medication-calendar.component.html',
@@ -35,7 +37,7 @@ export class MedicationCalendarComponent implements OnInit {
     @ViewChild(CalendarComponent, null) myCal: CalendarComponent;
 
     constructor(private modalCtrl: ModalController,
-        private userProfileService: UserProfileService) { 
+        private userProfileService: UserProfileService) {
 
     }
 
@@ -63,8 +65,8 @@ export class MedicationCalendarComponent implements OnInit {
             // console.log("myCal " + this.myCal);
 
             // How to handle initial case:
-            // If the medicationEvents is not in the user profile, 
-            // If the medicationEvent is empty 
+            // If the medicationEvents is not in the user profile,
+            // If the medicationEvent is empty
             if (window.localStorage.getItem("eventSource") === null) {
                 console.log("no events found");
                 this.eventSource = [];
@@ -81,7 +83,7 @@ export class MedicationCalendarComponent implements OnInit {
                 //         "allDay": false,
                 //         "descritpion": "6mp add",
                 //         "symbolType": "add"
-                //     }, 
+                //     },
                 //     {
                 //         "title": "Day -0",
                 //         "startTime": "2024-01-20T08:01:00.000Z",
@@ -90,7 +92,7 @@ export class MedicationCalendarComponent implements OnInit {
                 //         "allDay": false,
                 //         "descritpion": "6mp add",
                 //         "symbolType": "add"
-                //     }, 
+                //     },
                 //     {
                 //         "title": "Day -0",
                 //         "startTime": "2024-01-19T08:01:00.000Z",
@@ -168,7 +170,7 @@ export class MedicationCalendarComponent implements OnInit {
                     "allDay": true
                 }
             ]
-            
+
             Note: I can probably add more to the event. See the documentation.
 
         */
@@ -179,7 +181,7 @@ export class MedicationCalendarComponent implements OnInit {
             // If I call to string, then it will save current time plus 8 (for pacific).
             // Thus time is saved in GMT
             // So, if I set the time at current Date and set minutes to 1 then
-            // Then save string will save hours as 8 and minutes as 1. 
+            // Then save string will save hours as 8 and minutes as 1.
             // So, when I load from string again, would it mess up the date??
             var date = new Date();
             var startTime = new Date(new Date().setHours(-1 * 24 * i, 1, 0, 0));
@@ -278,10 +280,10 @@ export class MedicationCalendarComponent implements OnInit {
 
     //     const modal = await this.modalCtrl.create({
     //         component: AddEventModalPage,
-    //         /* 
+    //         /*
     //            We added a css class in global.scss
     //            Note modals lives on top of the application, so
-    //            We have to uset the global css. 
+    //            We have to uset the global css.
     //         */
     //         cssClass: 'add-event-modal',
     //         backdropDismiss: false
@@ -327,10 +329,10 @@ export class MedicationCalendarComponent implements OnInit {
             componentProps: {
                 'data_string': dateStr
             },
-            /* 
+            /*
                We added a css class in global.scss
                Note modals lives on top of the application, so
-               We have to uset the global css. 
+               We have to uset the global css.
             */
             cssClass: 'add-medication',
             backdropDismiss: false
@@ -353,11 +355,11 @@ export class MedicationCalendarComponent implements OnInit {
         let date_string = medicationSelectData["date_string"];
         let medicationTaken = medicationSelectData["medication_taken"];
         let isMedicationOnHold = medicationSelectData["is_medication_on_hold"];
-        
+
         console.log("medicationTaken " + medicationTaken);
         if(medicationTaken == true){
             var dStart;
-            let date_obj = new Date(date_string); //Time of the 
+            let date_obj = new Date(date_string); //Time of the
             for(var i = this.eventSource.length-1; i >= 0 ; i -= 1) {
                 dStart = this.eventSource[i].startTime;
                 if (date_obj.getTime() === dStart.getTime()){
@@ -368,7 +370,7 @@ export class MedicationCalendarComponent implements OnInit {
             }
             this.myCal.loadEvents();
             this.saveMedicationEvents(this.eventSource);
-        } 
+        }
     }
 
 
@@ -382,9 +384,9 @@ export class MedicationCalendarComponent implements OnInit {
         //console.log(JSON.stringify(events));
         if((events.length == 1) && ("title" in events[0])){
             var date_clicked = events[0];
-            let date_str = moment(date_clicked["startTime"]).format('MM/DD/YYYY'); 
+            let date_str = moment(date_clicked["startTime"]).format('MM/DD/YYYY');
             if (date_clicked["symbolType"] == "checkmark"){
-                let time_taken = moment(date_clicked["medicationIntakeTime"]).format('hh:mm A'); 
+                let time_taken = moment(date_clicked["medicationIntakeTime"]).format('hh:mm A');
                 return date_str + " - 6MP taken at " + time_taken;
             }else if(date_clicked["symbolType"] == "add"){
                 return date_str + " - Record unavailable.";
@@ -410,7 +412,7 @@ export class MedicationCalendarComponent implements OnInit {
 
         var events = this.eventSource;
 
-        //find the max Date In Events 
+        //find the max Date In Events
         //Later we will use this fill in + and x signs.
         //Ideally we have to fill until the maxDateInEvents
         //because before everything is already filled.
@@ -488,7 +490,7 @@ export class MedicationCalendarComponent implements OnInit {
         var dayToAdjustFrom;
         for(var i=1; i<100; i++){
             //We have to reset everytime, because set hours changes the date for the future
-            dayToAdjustFrom = new Date("" + twoDayFromCurrentdayMidnightUTC); 
+            dayToAdjustFrom = new Date("" + twoDayFromCurrentdayMidnightUTC);
             ithDayFromTwoDayFromCurrentdayMidnightUTC = new Date(dayToAdjustFrom.setHours(-1 * 24 * i, 1, 0, 0));
             console.log("ithDayFromTwoDayFromCurrentdayMidnightUTC " + ithDayFromTwoDayFromCurrentdayMidnightUTC + ", i " + i);
             if(maxDateInEvents.getTime() < ithDayFromTwoDayFromCurrentdayMidnightUTC.getTime()){
@@ -519,6 +521,9 @@ export class MedicationCalendarComponent implements OnInit {
 
     }
 
-
-
+    openEcap() {
+        certiscan.scan(function(responseTxt) {
+            alert(responseTxt)
+        })
+    }
 }

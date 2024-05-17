@@ -5,13 +5,18 @@
     </ion-buttons>
     <ion-title style="color:#fff;">Medication calendar</ion-title>
 
-    <!--
-    <ion-buttons slot="end">
+    <!-- <ion-buttons slot="end">
       <ion-button (click)="openAddEventModal()">
         <ion-icon name="add" slot="icon-only"></ion-icon>
       </ion-button>
+    </ion-buttons> -->
+
+    <ion-buttons  slot="end">
+      <ion-button style="color:#fff;" (click)="openEcap()">
+        eCap
+      </ion-button>
     </ion-buttons>
-    -->
+
   </ion-toolbar>
 </ion-header>
 
@@ -64,7 +69,7 @@
   <!-- Create some random event -->
   <div *ngIf="type == 'calendar'">
 
-    <!-- 
+    <!--
       Kept for testing.
     -->
     <ion-row>
@@ -79,13 +84,13 @@
         </ion-button>
       </ion-col>
     </ion-row>
-    
+
 
     <!-- <ion-card> -->
-    <!-- 
+    <!--
         <ion-card-header>
             <ion-card-title>Medication Calendar</ion-card-title>
-             <ion-card-subtitle>Card Subtitle</ion-card-subtitle> 
+             <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
         </ion-card-header>
         -->
     <!-- Move back and forther with lelf and right. -->

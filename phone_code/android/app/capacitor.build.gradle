@@ -13,10 +13,11 @@ dependencies {
     implementation project(':capacitor-haptics')
     implementation project(':capacitor-keyboard')
     implementation project(':capacitor-status-bar')
+    implementation "androidx.webkit:webkit:1.4.0"
     implementation "com.onesignal:OneSignal:4.8.2"
 }
 apply from: "../../node_modules/onesignal-cordova-plugin/build-extras-onesignal.gradle"
-apply from: "../../plugins/Cordova-Plugin-CertiScan-eCap-main/src/android/build.gradle"
+apply from: "../../node_modules/cordova-plugin-certiscan-ecap/src/android/build.gradle"
 
 if (hasProperty('postBuildExtras')) {
   postBuildExtras()
