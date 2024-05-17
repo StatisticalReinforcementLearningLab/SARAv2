@@ -12,7 +12,8 @@ export class ModalUnlockedPageComponent implements AfterViewInit {
 
   // Data passed in by componentProps
   @Input() reinforcements: any;
-
+  whichImage;
+  
   constructor(navParams: NavParams, public modalCtrl: ModalController, private userProfileService: UserProfileService) {
     // componentProps can also be accessed at construction time using NavParams
     console.log(navParams.get('firstName'));
@@ -20,7 +21,7 @@ export class ModalUnlockedPageComponent implements AfterViewInit {
   }
 
   ngOnInit() {
-
+    this.whichImage = './assets/altruism/altruism_1.png';
   }
 
   modalReady = false;

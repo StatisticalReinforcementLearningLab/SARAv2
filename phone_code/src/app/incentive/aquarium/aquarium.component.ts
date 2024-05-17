@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, ElementRef } from '@angular/core';
 import { DemoAquariumComponent } from '../../incentive/aquarium/demo-aquarium/demo-aquarium.component';
 import { Platform, AlertController, ModalController, NavController, MenuController } from '@ionic/angular';
 import * as moment from 'moment';
@@ -16,6 +16,8 @@ import { unlockedScreenShownAlready } from '../incentive.actions';
 import { DatabaseService } from 'src/app/monitor/database.service';
 import { AwsS3Service } from '../../storage/aws-s3.service';
 import embed from 'vega-embed';
+import { Swiper } from 'swiper/types';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-aquarium',
@@ -37,6 +39,9 @@ export class AquariumComponent implements OnInit {
     title = "";
     isIOS = false;
     navigate: any;
+    weeklyMed: any;
+
+    @ViewChild('swiperContainer') swiperRefRewards: ElementRef | undefined;
 
 
     get isActive() {
@@ -68,7 +73,8 @@ export class AquariumComponent implements OnInit {
         private menu: MenuController,
         private appUsageDb: DatabaseService,
         private awsS3Service: AwsS3Service,
-        private userProfileService: UserProfileService) {
+        private userProfileService: UserProfileService,
+        public httpClient: HttpClient) {
         console.log("Constructor called");
         this.sub1$ = this.platform.pause.subscribe(() => {
             console.log('****UserdashboardPage PAUSED****');
@@ -96,6 +102,52 @@ export class AquariumComponent implements OnInit {
         }
 
         this.sideMenu();
+
+        //
+        this.weeklyMed = [
+            {
+                day: "Tu",
+                date: 30,
+                icon: "checkmark-circle",
+                color: "green",
+            },
+            {
+                day: "W",
+                date: 1,
+                icon: "checkmark-circle",
+                color: "green",
+            },
+            {
+                day: "Th",
+                date: 2,
+                icon: "close-circle",
+                color: "red",
+            },
+            {
+                day: "F",
+                date: 3,
+                icon: "checkmark-circle",
+                color: "green",
+            },
+            {
+                day: "Sa",
+                date: 4,
+                icon: "checkmark-circle",
+                color: "green",
+            },
+            {
+                day: "Su",
+                date: 5,
+                icon: "checkmark-circle",
+                color: "green",
+            },
+            {
+                day: "Today",
+                date: 6,
+                icon: "add-circle",
+                color: "rebeccapurple",
+            },
+        ];
 
     }
 
@@ -166,6 +218,13 @@ export class AquariumComponent implements OnInit {
         this.userProfileService.saveToServer();
         this.userProfileService.saveProfileToDevice();
         this.saveDbToAWS();
+
+        
+
+        new Swiper(this.swiperRefRewards.nativeElement, {
+            // Swiper options
+            pagination: true
+        });
     }
 
     async loadVegaDemoPlot() {
@@ -239,8 +298,65 @@ export class AquariumComponent implements OnInit {
 
         //load vega demo plot (test)
         console.log("===Vega called 1===");
-        this.loadVegaDemoPlot();
+        //this.loadVegaDemoPlot();
 
+        var dateArray = this.getDatesForLast7days();
+        this.loadVegaDemoPlotMotivation(dateArray);
+
+    }
+
+    async loadVegaDemoPlotMotivation(dateArray) {
+        let x = window.innerWidth;
+        let y = Math.ceil((24 / 20) * (x - 390) + 305);
+        if (y < 200) {
+            //this means the height is higher. The canvas will be skewed.
+            y = y + 30;
+        }
+        if (y < 300) {
+            //this means the width is lower than 300. The canvas will be skewed.
+            y = y + 30;
+        }
+        console.log("width:x " + x);
+        console.log("width:y " + y);
+        console.log("window.devicePixelRatio " + window.devicePixelRatio);
+
+        var opt = {
+            actions: false,
+            width: y + 10,
+            height: 100
+        };
+
+        console.log("===Vega called 2===");
+        const spec = "/assets/vegaspecs/demo_motivation.json";
+        this.httpClient.get(spec)
+            .subscribe(async (res: any) => {
+                console.log("==========");
+                for(let i=0; i<7; i++)
+                    res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][i]["Date"] = dateArray[i];
+                //console.log(res);
+                const result = await embed('#vis2', res, opt);
+                console.log(result.view);
+            });
+    }
+
+    ngAfterViewInit(): void {
+        // var swiper = new Swiper(this.swiperRefRewards?.nativeElement, {
+        //     effect: "coverflow",
+        //     grabCursor: true,
+        //     centeredSlides: true,
+        //     slidesPerView: "auto",
+        //     coverflowEffect: {
+        //       rotate: 50,
+        //       stretch: 0,
+        //       depth: 100,
+        //       modifier: 1,
+        //       slideShadows: true,
+        //     },
+        //     pagination: {
+        //       el: ".swiper-pagination",
+        //     },
+        //   });
+        
     }
 
     ngOnDestroy() {
@@ -398,6 +514,17 @@ export class AquariumComponent implements OnInit {
         //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
         //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
         this.presentModal(reinforcements);
+    }
+
+    getDatesForLast7days(){
+        var dateArray = [];
+        for (let i = 0; i < 6; i++) {
+            var previousdate = moment().subtract(6-i, "days").format("MM/DD");
+            dateArray.push(previousdate);
+        }
+        dateArray.push("Today");
+        //console.log("=== date array ===: " + date_array);
+        return dateArray;
     }
 
 
