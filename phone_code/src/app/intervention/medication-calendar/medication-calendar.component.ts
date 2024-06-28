@@ -7,6 +7,7 @@ import { DateRangeUnit } from 'aws-sdk/clients/securityhub';
 import { AddMedicationPage } from './add-medication/add-medication.page';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import moment from 'moment';
+import { HttpClient } from '@angular/common/http';
 // import { CalModalPage } from '../pages/cal-modal/cal-modal.page';
 
 declare var certiscan: any
@@ -37,7 +38,8 @@ export class MedicationCalendarComponent implements OnInit {
     @ViewChild(CalendarComponent, null) myCal: CalendarComponent;
 
     constructor(private modalCtrl: ModalController,
-        private userProfileService: UserProfileService) {
+        private userProfileService: UserProfileService,
+        public httpClient: HttpClient) {
 
     }
 
@@ -113,10 +115,100 @@ export class MedicationCalendarComponent implements OnInit {
                 this.eventSource = events;
                 // console.log(this.eventSource);
                 //this.updateMedicationList();
+
+                
             }
-            this.updateMedicationList();
+            // this.updateMedicationList();
         }, 100);
         // console.log(JSON.stringify(this.userProfileService.userProfile));
+
+        //print prior ecap record if exists:
+        // Retrieve the object from storage
+        if(window.localStorage.hasOwnProperty('ecap_response')){
+            let retrievedObject = window.localStorage.getItem('ecap_response');
+            console.log('ecap_record: ', JSON.parse(retrievedObject));
+        }else{
+            console.log('ecap_record: no record');
+        }
+
+        //Here we are taking data from the demo.
+        const spec = "/assets/data/ecaps_demo_data.json";
+        this.httpClient.get(spec)
+            .subscribe(async (res: any) => {
+                console.log("==========");
+                // res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][i]["Date"]
+                console.log(res);
+                let events = this.formatEcapData(res);
+                this.eventSource = events;
+                this.updateMedicationList();// also save
+            });
+        
+    }  
+    
+    //format ecap data
+    formatEcapData(ecapJSONData){
+        let isSuccess = ecapJSONData['success'];
+        let ecapScanDates = [];
+        let ecapScanDateStrings = [];
+        if(isSuccess == true){
+            let scanTime = ecapJSONData['tag_message']['scan_time'];
+            console.log("ecap_record:: scanTime: " + scanTime + ", " + moment.unix(scanTime).format("DD-MM-YYYY HH:mm:ss a"));
+            let eventCount = ecapJSONData['tag_message']['event_count'];
+            if(eventCount > 0){
+                //means there is a tag message
+                let timestamps = ecapJSONData['tag_message']['tag_events'];
+                for (const timestamp of timestamps) {
+                    // This conversion is giving the local timezone.
+                    // console.log("ecap_record:: timestamp: " + timestamp["timestamp"] + ", " + moment.unix(timestamp["timestamp"]).format("MM-DD-YYYY HH:mm:ss a"));
+                    ecapScanDates.push(moment.unix(timestamp["timestamp"]).toDate());
+                    ecapScanDateStrings.push(moment.unix(timestamp["timestamp"]).format("MM-DD-YYYY"));
+                }
+            }
+        }
+
+        // What we do is we take all the dates from first day of the ecap records.
+        // Then we add all scan dates as green. And rest as x.
+        var events = [];
+        let maxDateInEcap = new Date(Math.max.apply(null,ecapScanDates));
+        let maxDateInEcapString = moment(maxDateInEcap).format("MM-DD-YYYY");
+        let minDateInEcap = new Date(Math.min.apply(null,ecapScanDates));
+        // console.log(maxDateInEcap);
+        // console.log(minDateInEcap);
+        // console.log(ecapScanDates);
+        let runningDateTime = minDateInEcap;
+        var i = 0;
+        while(true){
+            let runningDateTimeStr = moment(runningDateTime).format("MM-DD-YYYY");
+            if(ecapScanDateStrings.includes(runningDateTimeStr)){
+                events.push({
+                    title: 'Day-' + i,
+                    medicationIntakeTime: new Date(runningDateTime),
+                    startTime: new Date(runningDateTime.setHours(1, 0, 0, 0)),
+                    endTime: new Date(runningDateTime.setHours(1, 1, 0, 0)),
+                    allDay: false,
+                    descritpion: "6mp taken",
+                    symbolType: "checkmark"
+                });
+            }else{
+                events.push({
+                    title: 'Day-' + i,
+                    medicationIntakeTime: new Date(runningDateTime),
+                    startTime: new Date(runningDateTime.setHours(1, 0, 0, 0)),
+                    endTime: new Date(runningDateTime.setHours(1, 1, 0, 0)),
+                    allDay: false,
+                    descritpion: "6mp taken",
+                    symbolType: "cross"
+                });
+            }
+            //runningDateTime.setHours(24, 1, 0, 0);
+            runningDateTime.setDate(runningDateTime.getDate() + 1);
+            //console.log(runningDateTime);
+            i = i + 1;
+            if(runningDateTimeStr == maxDateInEcapString)
+                break;
+        }
+        //console.log(events);
+        return events;
     }
 
     // Change current month/week/day
@@ -244,7 +336,7 @@ export class MedicationCalendarComponent implements OnInit {
             }
         }
         this.eventSource = events;
-        // console.log(JSON.stringify(events));
+        console.log(JSON.stringify(events));
         //window.localStorage.setItem('eventSource', JSON.stringify(events));
         this.saveMedicationEvents(events);
     }
@@ -348,7 +440,7 @@ export class MedicationCalendarComponent implements OnInit {
         });
 
         await modal.present();
-    }
+    } 
 
     updateMedicationCalendarEvent(medicationSelectData: any) {
         //
@@ -366,7 +458,7 @@ export class MedicationCalendarComponent implements OnInit {
                     this.eventSource[i].symbolType = "checkmark";
                     this.eventSource[i].descritpion = "6mp taken";
                     break;
-                 }
+                }
             }
             this.myCal.loadEvents();
             this.saveMedicationEvents(this.eventSource);
@@ -523,7 +615,9 @@ export class MedicationCalendarComponent implements OnInit {
 
     openEcap() {
         certiscan.scan(function(responseTxt) {
-            alert(responseTxt)
+            alert(responseTxt);
+            // Put the object into storage
+            window.localStorage.setItem('ecap_response', JSON.stringify(responseTxt));
         })
     }
 }

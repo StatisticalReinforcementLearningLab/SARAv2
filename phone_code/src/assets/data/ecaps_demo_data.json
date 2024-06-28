@@ -1,0 +1,75 @@
+{
+    "success": true,
+    "command_code": 1,
+    "tag_message": {
+        "tag_id": "100123959-BR1",
+        "scan_time": 1718046733,
+        "event_count": 17,
+        "package_id": "",
+        "patient_id": "",
+        "custom_data_1": "",
+        "versioning": {
+            "model": "eCap Argus-Loc",
+            "firmware_version": "1.1.1.0.1.4.0",
+            "hardware_version": "1.0.0"
+        },
+        "started": true,
+        "clock_coefficient_correction": true,
+        "tag_events": [
+            {
+                "timestamp": 1689345511
+            },
+            {
+                "timestamp": 1689345571
+            },
+            {
+                "timestamp": 1689345631
+            },
+            {
+                "timestamp": 1689952588
+            },
+            {
+                "timestamp": 1690564105
+            },
+            {
+                "timestamp": 1690564885
+            },
+            {
+                "timestamp": 1693249992
+            },
+            {
+                "timestamp": 1693250052
+            },
+            {
+                "timestamp": 1693250052
+            },
+            {
+                "timestamp": 1693250052
+            },
+            {
+                "timestamp": 1693250412
+            },
+            {
+                "timestamp": 1693250412
+            },
+            {
+                "timestamp": 1693250472
+            },
+            {
+                "timestamp": 1693250532
+            },
+            {
+                "timestamp": 1693250532
+            },
+            {
+                "timestamp": 1693250592
+            },
+            {
+                "timestamp": 1709655653
+            },
+            {
+                "timestamp": 1718376663
+            }
+        ]
+    }
+}
