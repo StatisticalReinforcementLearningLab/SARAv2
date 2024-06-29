@@ -378,6 +378,9 @@ export class AquariumComponent implements OnInit {
                     var unlockedIncentive: UnlockedIncentive = params;
                     //computeUnlockedReinforcements(currentPoints, previousPoints, awardedDollar)
 
+                    if(unlockedIncentive['isBaselineSurvey'] == true)
+                        return; //we will not be giving any reinforcement. Nor, will we say, isUnlockedViewShown is true;
+
                     if (unlockedIncentive["isUnlockedViewShown"] == false)
                         this.computeUnlockedReinforcements(unlockedIncentive["current_point"],
                             unlockedIncentive["current_point"] - unlockedIncentive["unlocked_points"],

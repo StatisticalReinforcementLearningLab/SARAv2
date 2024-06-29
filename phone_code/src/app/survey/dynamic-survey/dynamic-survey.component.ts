@@ -435,13 +435,18 @@ export class DynamicSurveyComponent implements OnInit {
 
             provideIncentives() {
 
-                if (this.fileLink.includes('baseline')){
-                    //navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
-                    this.router.navigate(['home']);
-                }
+                // if (this.fileLink.includes('baseline')){
+                //     //navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
+                //     this.router.navigate(['home']);
+                // }
 
                 // incremenet point. Points automatically update the aquarium.
-                this.awardANdUpdatePoints();
+                if (this.fileLink.includes('baseline')){
+                    this.awardANdUpdatePoints(0);
+                }else{
+                    this.awardANdUpdatePoints(60);
+                }
+                
 
 
                 //compute new money and store it in local storage.
@@ -453,8 +458,6 @@ export class DynamicSurveyComponent implements OnInit {
 
                 //TODO: needs to add fix from Liying.
                 this.lifeInsightCodesUnfinished();
-
-
 
                 //navigate to award-memes/award-altruism with equal probability after submit survey
                 var currentProb = Math.random();
@@ -529,10 +532,15 @@ export class DynamicSurveyComponent implements OnInit {
                 //update unlocked incentive data in ngrx store.
                 //This ngrx store state is used to show unlocked incentives at
                 //the start of aquarium reload
-                this.updataUnlockedIncentiveInNgrxStore(awardedTotalDollarAfterCurrentSurvey - pastTotalDollars);
+                if(this.fileLink.includes('baseline')){
+                    //we will be giving zero money for the baseline survey
+                    this.updataUnlockedIncentiveInNgrxStore(0, true);
+                }else{
+                    this.updataUnlockedIncentiveInNgrxStore(awardedTotalDollarAfterCurrentSurvey - pastTotalDollars, false);
+                }
             }
 
-            awardANdUpdatePoints() {
+            awardANdUpdatePoints(points) {
                 //get current points from local storage, update, and store it back.
                 //TODO: rather than storage use the Ngrx store to store points and update.
                 if (window.localStorage['TotalPoints'] == undefined)
@@ -540,7 +548,7 @@ export class DynamicSurveyComponent implements OnInit {
                 else
                     this.totalPoints = parseInt(window.localStorage['TotalPoints']);
 
-                this.totalPoints = this.totalPoints + 60; //
+                this.totalPoints = this.totalPoints + points; //
                 window.localStorage.setItem("TotalPoints", "" + this.totalPoints);
             }
 
@@ -555,15 +563,20 @@ export class DynamicSurveyComponent implements OnInit {
 
             }
 
-            updataUnlockedIncentiveInNgrxStore(unlockedMoney) {
+            updataUnlockedIncentiveInNgrxStore(unlockedMoney, isBaselineSurvey) {
+                var unlockedPoints = 60;
+                if(isBaselineSurvey == true)
+                    unlockedPoints = 0;
+
                 var payload: Object = {
                     user_id: this.userProfileService.username,
                     last_date: moment().format('YYYYMMDD'),
-                    unlocked_points: 60,
+                    unlocked_points: unlockedPoints,
                     unlocked_money: unlockedMoney,
                     current_point: this.userProfileService.points,
                     date: moment().format('YYYYMMDD'),
-                    isUnlockedViewShown: false
+                    isUnlockedViewShown: false,
+                    isBaselineSurvey: isBaselineSurvey
                 };
                 this.store.dispatch(surveyCompletedRegisterUnlocked({ payload }));
             }
