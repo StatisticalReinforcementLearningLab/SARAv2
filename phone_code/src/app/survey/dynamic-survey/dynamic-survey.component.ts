@@ -382,11 +382,27 @@ export class DynamicSurveyComponent implements OnInit {
                 //--- save an encrypted copy of the survey
                 this.saveEncryptedSurveyLocally();
 
+                //--save sensitive data locally
+                this.saveSensitiveDataLocally();
+
                 //-- store survey completed into ngrx to send to server and any other listener.
                 this.storeToNgrxAndUpdateState();
 
                 //start giving all the incentives from here
                 this.provideIncentives();
+            }
+
+            saveSensitiveDataLocally(){
+                //local store
+                var locallyStoredSensitiveData = {};
+                if(window.localStorage['locallyStoredSensitiveData'] != undefined)
+                    locallyStoredSensitiveData = JSON.parse(window.localStorage.getItem('locallyStoredSensitiveData'));
+                else{
+                    locallyStoredSensitiveData["survey"] = [];
+                    locallyStoredSensitiveData["medication_data"] = [];
+                }
+                locallyStoredSensitiveData["survey"].push({"date": moment().format('YYYYMMDD'), "survey_type": this.fileLink,"survey_data": this.surveyAnswersJSONObject});
+                window.localStorage.setItem('locallyStoredSensitiveData', JSON.stringify(locallyStoredSensitiveData));
             }
 
             saveEncryptedSurveyLocally() {

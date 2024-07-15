@@ -22,6 +22,7 @@ export class TailoredMessagesComponent implements OnInit {
   containsNavigationExtras = false;
   whichImage: string;
   reinforcements;
+  interventionImage: string;
 
   constructor(private EncrDecr: EncrDecrService,
     private httpClient: HttpClient,
@@ -84,6 +85,7 @@ export class TailoredMessagesComponent implements OnInit {
             // console.log(JSON.stringify(data));
             console.log("==response==" + JSON.stringify(data));
             this.message = data["sampled_message"]
+            this.interventionImage = this.loadInterventionImage(data);
 
             //populate the rest of the view
             this.survey_responses = [];
@@ -103,6 +105,9 @@ export class TailoredMessagesComponent implements OnInit {
           error: error => console.error('There was an error!', error)
       }); 
     }
+  }
+  loadInterventionImage(data: Object): string {
+    return './assets/intervention_messages/Generic_3.jpg'; //ask kevin to put a transparnt image.
   }
 
   getTodaysSurveyData() {
@@ -124,6 +129,33 @@ export class TailoredMessagesComponent implements OnInit {
     }
     console.log("requestDataJson: " + JSON.stringify(requestDataJson));
     return requestDataJson;
+  }
+
+  ratingChanged(rating){
+    /*
+    if(rating==0) {
+      //console.log("thumbs down");
+      this.reinforcementObj['Like'] = "No";
+      this.reinforcement_data['Like'] = "No";
+      window.localStorage.setItem("Like", "No");
+      this.awsS3Service.upload('reinforcement_data', this.reinforcement_data); 
+    } else {
+      //console.log("thumbs up");
+      this.reinforcementObj['Like'] = "Yes";
+      this.reinforcement_data['Like'] = "Yes";
+      window.localStorage.setItem("Like", "Yes");
+      this.awsS3Service.upload('reinforcement_data', this.reinforcement_data); 
+    }
+    
+    this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);
+    
+    let navigationExtras: NavigationExtras = {
+      state: {
+        modalObjectNavigationExtras: this.modalObjectNavigationExtras
+      }
+    };
+    */
+    this.router.navigate(['home']);
   }
 
 }

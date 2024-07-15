@@ -350,6 +350,21 @@ export class MedicationCalendarComponent implements OnInit {
         // this.userProfileService.saveToServer();
         // this.userProfileService.saveProfileToDevice();
 
+        //Record for medication
+        this.saveSensitiveDataLocally(events);
+    }
+
+    saveSensitiveDataLocally(events){
+        //local store
+        var locallyStoredSensitiveData = {};
+        if(window.localStorage['locallyStoredSensitiveData'] != undefined)
+            locallyStoredSensitiveData = JSON.parse(window.localStorage.getItem('locallyStoredSensitiveData'));
+        else{
+            locallyStoredSensitiveData["survey"] = [];
+            locallyStoredSensitiveData["medication_data"] = [];
+        }
+        locallyStoredSensitiveData["medication_data"] = events;
+        window.localStorage.setItem('locallyStoredSensitiveData', JSON.stringify(locallyStoredSensitiveData));
     }
 
     removeEvents() {

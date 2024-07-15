@@ -103,6 +103,55 @@ export class AquariumComponent implements OnInit {
 
         this.sideMenu();
 
+        // //
+        // this.weeklyMed = [
+        //     {
+        //         day: "Tue",
+        //         date: 30,
+        //         icon: "checkmark-circle",
+        //         color: "green",
+        //     },
+        //     {
+        //         day: "Wed",
+        //         date: 1,
+        //         icon: "checkmark-circle",
+        //         color: "green",
+        //     },
+        //     {
+        //         day: "Thu",
+        //         date: 2,
+        //         icon: "close-circle",
+        //         color: "red",
+        //     },
+        //     {
+        //         day: "Fri",
+        //         date: 3,
+        //         icon: "checkmark-circle",
+        //         color: "green",
+        //     },
+        //     {
+        //         day: "Sat",
+        //         date: 4,
+        //         icon: "checkmark-circle",
+        //         color: "green",
+        //     },
+        //     {
+        //         day: "Sun",
+        //         date: 5,
+        //         icon: "checkmark-circle",
+        //         color: "green",
+        //     },
+        //     {
+        //         day: "Today",
+        //         date: 6,
+        //         icon: "add-circle",
+        //         color: "rebeccapurple",
+        //     },
+        // ];
+    }
+
+    fillMedicationWidget(){
+        /*
         //
         this.weeklyMed = [
             {
@@ -148,8 +197,108 @@ export class AquariumComponent implements OnInit {
                 color: "rebeccapurple",
             },
         ];
+        */
+        var events = [];
+        var eventDateStrings = [];
+        var eventDateIntakeStatus = [];
+        
+        // var lowestDate = 
+        if (window.localStorage.getItem("eventSource") === null) {
+            console.log("no events found");
+            events = [];
+            //this.createRandomEvents();
+            console.log("--events: []");
+        }else{
+            console.log("events found");
+            let events = JSON.parse(window.localStorage.getItem('eventSource'));
+            var countData = events.length;
+            for (var i = 0; i < countData; i++) {
+                //convert string back to date objects.
+                events[i].startTime = new Date(events[i].startTime);
+                events[i].endTime = new Date(events[i].endTime);
+                events[i].medicationIntakeTime = new Date(events[i].medicationIntakeTime);
+                eventDateStrings.push(moment(events[i].endTime).format("YYYYMMDD"));
+                eventDateIntakeStatus.push(events[i].symbolType);
+            }
+            console.log("--events: " + JSON.stringify(events[0]));
+            console.log("--eventDateStrings: " + eventDateStrings);
+            console.log("--eventDateIntakeStatus: " + eventDateIntakeStatus);
+            //this.updateMedicationList();
+        }
 
+        //We will fill until the maxDateInEvents
+        var maxDateInEvents = new Date("1970-01-01");
+        for (var i = 0; i < events.length; i += 1){
+            if(maxDateInEvents.getTime() < events[i].startTime.getTime()){
+                maxDateInEvents = events[i].startTime;
+            }
+        }
+        if(events.length == 0){
+            //get first day of survey as set as maxDateInEvents
+            var dailySurveyHistory = this.userProfileService.userProfile.survey_data.daily_survey;
+            if(Object.keys(dailySurveyHistory).length > 0){//Survey is not empty
+                var firstDateSurveyIsCompleted = moment().format('YYYYMMDD');
+                var timestampeForFirstDataSurveyIsCompleted = moment(firstDateSurveyIsCompleted, "YYYYMMDD");
+                var timestampDateForASurveyCompleted;
+                for (var dateForASurveyCompleted in dailySurveyHistory) {
+                    timestampDateForASurveyCompleted = moment(dateForASurveyCompleted,"YYYYMMDD");
+                    if (timestampDateForASurveyCompleted < timestampeForFirstDataSurveyIsCompleted) {
+                        firstDateSurveyIsCompleted = dateForASurveyCompleted;
+                        timestampeForFirstDataSurveyIsCompleted = moment(firstDateSurveyIsCompleted,"YYYYMMDD");
+                    }
+                }
+                maxDateInEvents = new Date(moment(firstDateSurveyIsCompleted, "YYYYMMDD").toDate().setHours(1, 1, 0, 0));
+            }else{
+                maxDateInEvents = new Date(new Date().setHours(0, 1, 0, 0));
+            }
+            //else set current date as maxDateInEvents; this is first day in study
+        }
+        console.log("--maxDateInEvents: " + maxDateInEvents);
+
+        this.weeklyMed = []
+        var ithDayFromCurrentdayMidnightUTC;
+        let dayName = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        for(var i=6; i>=0; i--){
+            ithDayFromCurrentdayMidnightUTC = new Date(new Date().setHours(-1 * 24 * i, 1, 0, 0));
+            // console.log(ithDayFromCurrentdayMidnightUTC + ", " + ithDayFromCurrentdayMidnightUTC.getDate());
+            // getDay()
+            var med_obj = {
+                day: dayName[ithDayFromCurrentdayMidnightUTC.getDay()],
+                date: ithDayFromCurrentdayMidnightUTC.getDate(),
+                icon: "ellipse",
+                color: "gainsboro",
+            };
+            if(i==0)
+                med_obj['day'] = "Today";
+            if(ithDayFromCurrentdayMidnightUTC > maxDateInEvents){
+                med_obj['icon'] = "close-circle";
+                med_obj['color'] = "red";
+            }
+            if(i<=2){
+                //ToDo: Handle study start day
+                med_obj['icon'] = "add-circle";
+                med_obj['color'] = "rebeccapurple";
+            }
+            let todaysDateString = moment(ithDayFromCurrentdayMidnightUTC).format("YYYYMMDD"); //ithDayFromCurrentdayMidnightUTC
+            var elementPos = eventDateStrings.indexOf(todaysDateString);// eventDateStrings.map(function(x) {return x.id; }).indexOf(todaysDateString);
+            //will return -1, if elementPos is not found.
+            console.log("-- date to search: " + todaysDateString + ", " + elementPos);
+            if(elementPos !=-1){
+                console.log("-- date found: " + todaysDateString);
+                let typeOfMark = eventDateIntakeStatus[elementPos];
+                if(typeOfMark == 'checkmark'){
+                    med_obj['icon'] = "checkmark-circle";
+                    med_obj['color'] = "green";
+                }
+                if(typeOfMark == 'cross'){
+                    med_obj['icon'] = "close-circle";
+                    med_obj['color'] = "red";
+                }
+            }
+            this.weeklyMed.push(med_obj);
+        }
     }
+
 
     sideMenu() {
         this.navigate =
@@ -200,24 +349,24 @@ export class AquariumComponent implements OnInit {
         this.child.loadFunction();
 
         //
-        const value = window.localStorage.getItem("IsOnboarded");
-        if (typeof value === 'string') {
-            console.log("--- Already onboarded ---");
-        }else{
-            this.child.showBaselineDialog();
-            window.localStorage.setItem('IsOnboarded', "Onboarded");
-        }
+        // const value = window.localStorage.getItem("IsOnboarded");
+        // if (typeof value === 'string') {
+        //     console.log("--- Already onboarded ---");
+        // }else{
+        //     this.child.showBaselineDialog();
+        //     window.localStorage.setItem('IsOnboarded', "Onboarded");
+        // }
 
         //decide if we want to show the modal view with unlockables.
         this.subscribeForModalView();
 
         //If "Enter Aquarium" is already tracked in demo-aquarium, duplication?
         this.appUsageDb.saveAppUsageEnter("aquarium_tab");
-
+        this.fillMedicationWidget();
         //
         this.userProfileService.saveToServer();
         this.userProfileService.saveProfileToDevice();
-        this.saveDbToAWS();
+        this.saveDbToAWS();//This call is failing
 
         
 
@@ -225,6 +374,8 @@ export class AquariumComponent implements OnInit {
             // Swiper options
             pagination: true
         });
+
+        
     }
 
     async loadVegaDemoPlot() {
