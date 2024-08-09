@@ -122,8 +122,8 @@ export class MedicationCalendarComponent implements OnInit {
         }, 100);
         // console.log(JSON.stringify(this.userProfileService.userProfile));
 
-        //print prior ecap record if exists:
-        // Retrieve the object from storage
+        // print prior ecap record if exists:
+        // ----Retrieve the object from storage
         if(window.localStorage.hasOwnProperty('ecap_response')){
             let retrievedObject = window.localStorage.getItem('ecap_response');
             console.log('ecap_record: ', JSON.parse(retrievedObject));
@@ -131,8 +131,10 @@ export class MedicationCalendarComponent implements OnInit {
             console.log('ecap_record: no record');
         }
 
-        //Here we are taking data from the demo.
-        const spec = "/assets/data/ecaps_demo_data.json";
+        //Here, we are taking data from the demo.
+        //----
+        //const spec = "/assets/data/ecaps_demo_data.json";
+        const spec = "/assets/data/ecaps_demo_data_2.json";
         this.httpClient.get(spec)
             .subscribe(async (res: any) => {
                 console.log("==========");

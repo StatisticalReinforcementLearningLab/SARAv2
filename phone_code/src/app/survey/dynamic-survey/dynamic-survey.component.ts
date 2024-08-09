@@ -475,27 +475,61 @@ export class DynamicSurveyComponent implements OnInit {
                 //TODO: needs to add fix from Liying.
                 this.lifeInsightCodesUnfinished();
 
+
+                //todo
+                //-- 1. Compute probability of reinforcement
                 //navigate to award-memes/award-altruism with equal probability after submit survey
-                var currentProb = Math.random();
-                window.localStorage.setItem("Prob", "" + currentProb);
+                var reinforcementRandomizationProb = Math.random();
+                window.localStorage.setItem("Prob", "" + reinforcementRandomizationProb);
                 var currentDate = moment().format('YYYYMMDD');
                 let navigationExtras: NavigationExtras = {
                     state: {
                         date: currentDate,
-                        prob: currentProb
+                        prob: reinforcementRandomizationProb
                     }
                 };
-
                 //prepare reinforcement data to upload to AWS S3
                 var reinforcement_data = {};
                 reinforcement_data['userName'] = this.userProfileService.username;
                 reinforcement_data['appVersion'] = this.versionNumber;
-                reinforcement_data['Prob'] = currentProb;
+                reinforcement_data['Prob'] = reinforcementRandomizationProb;
                 reinforcement_data['day_count'] = Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;
                 reinforcement_data['isRandomized'] = 1;//what is this one??
                 reinforcement_data['unix_ts'] = new Date().getTime();
                 reinforcement_data['readable_ts'] = moment().format('MMMM Do YYYY, h:mm:ss a Z');
                 reinforcement_data['date'] = currentDate;
+                reinforcement_data['randomization_prob'] = reinforcementRandomizationProb;
+
+
+                //
+                reinforcementRandomizationProb = 0.7;
+                if(reinforcementRandomizationProb >=0.4){
+                    // randomly pick an incentive
+                    // select between life-insight, meme, thank you
+                    // save for today. Do not save for caregiver or baseline.
+                    let select_reward = 'meme';
+
+                    if(select_reward == 'meme'){
+                        fetch('./assets/memes/memefile.json').then(async res => {
+                            var meme_data = await res.json();
+                            reinforcement_data['type_of_rewards'] = 'meme';
+                            meme_data = this.shuffle(meme_data);//will do a shuffle unless it is already shufffled before
+                            // this.showmemes();
+                            var picked_meme = this.pick_meme(meme_data); // for the shuffled, pick the top. Remove from the shuffled list
+                            // this.whichImage = "./assets/memes/"+picked_meme[0]["filename"];
+                            reinforcement_data['reward_file_link'] = "./assets/memes/"+picked_meme[0]["filename"];
+                            window.localStorage['reinforcement_data'] = JSON.stringify(reinforcement_data);
+                        });  
+                    }
+
+                }else{
+                    //otherwise do nothing.
+                    reinforcement_data['type_of_rewards'] = 'No reward';
+                    reinforcement_data['reward_file_link'] = '';
+                    window.localStorage['reinforcement_data'] = JSON.stringify(reinforcement_data);
+                }
+                
+
 
 
                 //add for the  modal object
@@ -506,8 +540,10 @@ export class DynamicSurveyComponent implements OnInit {
                 modalObjectNavigationExtras["AwardedDollar"] = awardedTotalDollarAfterCurrentSurvey - pastTotalDollars;
                 modalObjectNavigationExtras["IsModalShownYet"] = false;
 
+                
 
-                currentProb = 0.3; //Always force home page.
+                //-- 2. Compute probability of tailored message
+
                 /*
                 if (this.fileLink.includes('caregiver') || currentProb <= 0.4) {
                     var reinforcementObj = {};
@@ -533,12 +569,16 @@ export class DynamicSurveyComponent implements OnInit {
                     this.router.navigate(['incentive/award-altruism'], navigationExtras);
                 }
                 */
+                
+
                 if (this.fileLink.includes('caregiver')){
+                    //20240715: Caregiver receives no incentive or message.
                     navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
                     this.router.navigate(['home'], navigationExtras);
                 }else if (this.fileLink.includes('baseline')){
-                        navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
-                        this.router.navigate(['home'], navigationExtras);
+                    //20240715: Is the baseline survey available?
+                    navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
+                    this.router.navigate(['home'], navigationExtras);
                 }else{
                     this.router.navigate(['intervention/tailored-message'], navigationExtras);
                 }
@@ -554,6 +594,46 @@ export class DynamicSurveyComponent implements OnInit {
                 }else{
                     this.updataUnlockedIncentiveInNgrxStore(awardedTotalDollarAfterCurrentSurvey - pastTotalDollars, false);
                 }
+            }
+
+            /**
+             * Shuffles array in place if it is not already shuffled
+             * @param {Array} a items An array containing the items.
+             */
+            pick_meme(a) {
+                var picked_meme = a.splice(0,1);
+                a.push(picked_meme[0]);
+                window.localStorage['meme_shuffle6'] = JSON.stringify(a);
+                return picked_meme;
+            }
+            
+            /**
+             * Shuffles array in place if it is not already shuffled
+             * @param {Array} a items An array containing the items.
+             */
+            shuffle(a) {
+
+                //
+                //console.log(window.localStorage['meme_shuffle5']);
+                if(window.localStorage['meme_shuffle6'] == undefined){
+                    //
+                    var j: number, x: number, i: number;
+                    for (i = a.length - 1; i > 0; i--) {
+                        j = Math.floor(Math.random() * (i + 1));
+                        x = a[i];
+                        a[i] = a[j];
+                        a[j] = x;
+                        //console.log(JSON.stringify(a[i][0]) + "," + JSON.stringify(a[j][0]));
+                        //console.log('Meme data: ' + i + ", " + JSON.stringify(a));
+                    }
+                    //
+                    window.localStorage['meme_shuffle6'] = JSON.stringify(a);
+                    return a;
+                }else{
+                    a  = JSON.parse(window.localStorage['meme_shuffle6']);
+                    return a;
+                }
+
             }
 
             awardANdUpdatePoints(points) {

@@ -150,7 +150,7 @@ export class AquariumComponent implements OnInit {
         // ];
     }
 
-    fillMedicationWidget(){
+    fillMedicationWidget() {
         /*
         //
         this.weeklyMed = [
@@ -201,14 +201,14 @@ export class AquariumComponent implements OnInit {
         var events = [];
         var eventDateStrings = [];
         var eventDateIntakeStatus = [];
-        
+
         // var lowestDate = 
         if (window.localStorage.getItem("eventSource") === null) {
             console.log("no events found");
             events = [];
             //this.createRandomEvents();
             console.log("--events: []");
-        }else{
+        } else {
             console.log("events found");
             let events = JSON.parse(window.localStorage.getItem('eventSource'));
             var countData = events.length;
@@ -228,27 +228,27 @@ export class AquariumComponent implements OnInit {
 
         //We will fill until the maxDateInEvents
         var maxDateInEvents = new Date("1970-01-01");
-        for (var i = 0; i < events.length; i += 1){
-            if(maxDateInEvents.getTime() < events[i].startTime.getTime()){
+        for (var i = 0; i < events.length; i += 1) {
+            if (maxDateInEvents.getTime() < events[i].startTime.getTime()) {
                 maxDateInEvents = events[i].startTime;
             }
         }
-        if(events.length == 0){
+        if (events.length == 0) {
             //get first day of survey as set as maxDateInEvents
             var dailySurveyHistory = this.userProfileService.userProfile.survey_data.daily_survey;
-            if(Object.keys(dailySurveyHistory).length > 0){//Survey is not empty
+            if (Object.keys(dailySurveyHistory).length > 0) {//Survey is not empty
                 var firstDateSurveyIsCompleted = moment().format('YYYYMMDD');
                 var timestampeForFirstDataSurveyIsCompleted = moment(firstDateSurveyIsCompleted, "YYYYMMDD");
                 var timestampDateForASurveyCompleted;
                 for (var dateForASurveyCompleted in dailySurveyHistory) {
-                    timestampDateForASurveyCompleted = moment(dateForASurveyCompleted,"YYYYMMDD");
+                    timestampDateForASurveyCompleted = moment(dateForASurveyCompleted, "YYYYMMDD");
                     if (timestampDateForASurveyCompleted < timestampeForFirstDataSurveyIsCompleted) {
                         firstDateSurveyIsCompleted = dateForASurveyCompleted;
-                        timestampeForFirstDataSurveyIsCompleted = moment(firstDateSurveyIsCompleted,"YYYYMMDD");
+                        timestampeForFirstDataSurveyIsCompleted = moment(firstDateSurveyIsCompleted, "YYYYMMDD");
                     }
                 }
                 maxDateInEvents = new Date(moment(firstDateSurveyIsCompleted, "YYYYMMDD").toDate().setHours(1, 1, 0, 0));
-            }else{
+            } else {
                 maxDateInEvents = new Date(new Date().setHours(0, 1, 0, 0));
             }
             //else set current date as maxDateInEvents; this is first day in study
@@ -258,7 +258,7 @@ export class AquariumComponent implements OnInit {
         this.weeklyMed = []
         var ithDayFromCurrentdayMidnightUTC;
         let dayName = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-        for(var i=6; i>=0; i--){
+        for (var i = 6; i >= 0; i--) {
             ithDayFromCurrentdayMidnightUTC = new Date(new Date().setHours(-1 * 24 * i, 1, 0, 0));
             // console.log(ithDayFromCurrentdayMidnightUTC + ", " + ithDayFromCurrentdayMidnightUTC.getDate());
             // getDay()
@@ -268,13 +268,13 @@ export class AquariumComponent implements OnInit {
                 icon: "ellipse",
                 color: "gainsboro",
             };
-            if(i==0)
+            if (i == 0)
                 med_obj['day'] = "Today";
-            if(ithDayFromCurrentdayMidnightUTC > maxDateInEvents){
+            if (ithDayFromCurrentdayMidnightUTC > maxDateInEvents) {
                 med_obj['icon'] = "close-circle";
                 med_obj['color'] = "red";
             }
-            if(i<=2){
+            if (i <= 2) {
                 //ToDo: Handle study start day
                 med_obj['icon'] = "add-circle";
                 med_obj['color'] = "rebeccapurple";
@@ -283,14 +283,14 @@ export class AquariumComponent implements OnInit {
             var elementPos = eventDateStrings.indexOf(todaysDateString);// eventDateStrings.map(function(x) {return x.id; }).indexOf(todaysDateString);
             //will return -1, if elementPos is not found.
             console.log("-- date to search: " + todaysDateString + ", " + elementPos);
-            if(elementPos !=-1){
+            if (elementPos != -1) {
                 console.log("-- date found: " + todaysDateString);
                 let typeOfMark = eventDateIntakeStatus[elementPos];
-                if(typeOfMark == 'checkmark'){
+                if (typeOfMark == 'checkmark') {
                     med_obj['icon'] = "checkmark-circle";
                     med_obj['color'] = "green";
                 }
-                if(typeOfMark == 'cross'){
+                if (typeOfMark == 'cross') {
                     med_obj['icon'] = "close-circle";
                     med_obj['color'] = "red";
                 }
@@ -368,14 +368,14 @@ export class AquariumComponent implements OnInit {
         this.userProfileService.saveProfileToDevice();
         this.saveDbToAWS();//This call is failing
 
-        
+
 
         new Swiper(this.swiperRefRewards.nativeElement, {
             // Swiper options
             pagination: true
         });
 
-        
+
     }
 
     async loadVegaDemoPlot() {
@@ -482,7 +482,7 @@ export class AquariumComponent implements OnInit {
         this.httpClient.get(spec)
             .subscribe(async (res: any) => {
                 console.log("==========");
-                for(let i=0; i<7; i++)
+                for (let i = 0; i < 7; i++)
                     res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][i]["Date"] = dateArray[i];
                 //console.log(res);
                 const result = await embed('#vis2', res, opt);
@@ -507,7 +507,7 @@ export class AquariumComponent implements OnInit {
         //       el: ".swiper-pagination",
         //     },
         //   });
-        
+
     }
 
     ngOnDestroy() {
@@ -529,7 +529,7 @@ export class AquariumComponent implements OnInit {
                     var unlockedIncentive: UnlockedIncentive = params;
                     //computeUnlockedReinforcements(currentPoints, previousPoints, awardedDollar)
 
-                    if(unlockedIncentive['isBaselineSurvey'] == true)
+                    if (unlockedIncentive['isBaselineSurvey'] == true)
                         return; //we will not be giving any reinforcement. Nor, will we say, isUnlockedViewShown is true;
 
                     if (unlockedIncentive["isUnlockedViewShown"] == false)
@@ -541,15 +541,15 @@ export class AquariumComponent implements OnInit {
             );
     }
 
-    startSurveySleep(){
+    startSurveySleep() {
         this.navController.navigateRoot(['survey/sleepsurvey']);
     }
 
-    startSurveyEvening(){
+    startSurveyEvening() {
         this.navController.navigateRoot(['survey/sleepeveningsurvey']);
     }
 
-    startAYASurvey(){
+    startAYASurvey() {
         this.navController.navigateRoot(['survey/samplesurvey2']);
     }
 
@@ -667,13 +667,20 @@ export class AquariumComponent implements OnInit {
         //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
         //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
         //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+        reinforcements.push(
+            {
+                'img': './assets/altruism/message_3.png',
+                'header': 'reinforcement_data',
+                'text': 'This is the meme/life-insight/thank you message data.'
+            }
+        );
         this.presentModal(reinforcements);
     }
 
-    getDatesForLast7days(){
+    getDatesForLast7days() {
         var dateArray = [];
         for (let i = 0; i < 6; i++) {
-            var previousdate = moment().subtract(6-i, "days").format("MM/DD");
+            var previousdate = moment().subtract(6 - i, "days").format("MM/DD");
             dateArray.push(previousdate);
         }
         dateArray.push("Today");
@@ -761,20 +768,33 @@ export class AquariumComponent implements OnInit {
         //var previousPoints = this.modalObjectNavigationExtras["PreviousPoints"];
         //var awardedDollar = this.modalObjectNavigationExtras["AwardedDollar"];
         var reinforcements = [];
-        console.log("computeUnlockedReinforcements: called")
+        console.log("computeUnlockedReinforcements: called");
 
         //get if money is awarded.
-        if(awardedDollar > 0){
-            if(this.isFirstDayInTheStudy())
+        if (awardedDollar > 0) {
+            if (this.isFirstDayInTheStudy())
                 //reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'Thanks for being a participant in the study. You earned 2 dollar.'});
-                reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for completing your first survey! You earned 2 dollars.'});
-            else{
-                if(awardedDollar == 1) //hack, 1 dollar is only awarded after a three-day streak.
-                    reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for surveys three days in a row! You earned 1 dollar.'});
+                reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for completing your first survey! You earned 2 dollars.' });
+            else {
+                if (awardedDollar == 1) //hack, 1 dollar is only awarded after a three-day streak.
+                    reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for surveys three days in a row! You earned 1 dollar.' });
 
-                if(awardedDollar == 2) //hack, 2 dollar is only awarded after a break.
-                    reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for coming back after a break! You earned 2 dollars.'});
+                if (awardedDollar == 2) //hack, 2 dollar is only awarded after a break.
+                    reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for coming back after a break! You earned 2 dollars.' });
             }
+        }
+
+        //get reinforcement data
+        var reinforcementData = JSON.parse(window.localStorage['reinforcement_data']);
+        let currentDate = moment().format('YYYYMMDD');
+        if ((currentDate == reinforcementData["date"]) && (reinforcementData['type_of_rewards'] != 'No reward')) {
+            reinforcements.push(
+                {
+                    'img': reinforcementData['reward_file_link'],
+                    'header': 'reinforcement_data',
+                    'text': 'This is the meme/life-insight/thank you message data.'
+                }
+            );
         }
 
         //get if fish is alotted

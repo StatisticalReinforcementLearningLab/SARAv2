@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import * as moment from 'moment';
+import { tap } from 'rxjs/operators';
 import { EncrDecrService } from 'src/app/storage/encrdecrservice.service';
 import { environment } from 'src/environments/environment';
 
@@ -27,6 +28,7 @@ export class TailoredMessagesComponent implements OnInit {
   constructor(private EncrDecr: EncrDecrService,
     private httpClient: HttpClient,
     private route: ActivatedRoute, 
+    private http: HttpClient,
     private router: Router) { 
       this.message="loading..";
       this.survey_responses = ["loading", "loading"];
@@ -50,6 +52,8 @@ export class TailoredMessagesComponent implements OnInit {
     reinforcements.push({ 'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?" });
     reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned a dollar', 'text': 'Thanks for surveys three days in a row! You earned 1 dollar.' });
     this.reinforcements = reinforcements;
+
+    this.refreshToken();
   }
 
   goHome(){
@@ -157,6 +161,46 @@ export class TailoredMessagesComponent implements OnInit {
     */
     this.router.navigate(['home']);
   }
+
+  refreshToken() {
+    console.log("tailored_messages.component.ts - refreshToken method - begin");
+    const token = this.getRefreshToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      })
+    };
+
+    return this.http.post<any>(`${environment.userServer}/token/refresh`, {
+      'refreshToken': this.getRefreshToken() 
+    },httpOptions ).pipe(tap((
+        resData: {
+          "access_token": string, 
+          "access_expires": string}) => {
+        console.log("====refreshed token====");
+        console.log(resData);
+        this.storeAccessToken(resData.access_token, resData.access_expires);
+    }));
+  }
+
+  private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
+  private getRefreshToken() {
+    console.log("tailored_messages.component.ts - getRefreshToken method - begin " + localStorage.getItem(this.REFRESH_TOKEN));
+    return localStorage.getItem(this.REFRESH_TOKEN);
+  }
+
+  private readonly ACCESS_TOKEN = 'ACCESS_TOKEN';
+  private storeAccessToken(token: string, expires: string) {
+    console.log("tailored_messages.component.ts - storeAccessToken method - begin");
+    localStorage.setItem(this.ACCESS_TOKEN, token);
+    const expirationDate = new Date(new Date().getTime() + +expires * 1000);
+    localStorage.ACCESS_TOKEN_EXPIRATION = expirationDate;
+  }
+  getAccessToken() {
+    console.log("auth.service.ts - getAccessToken method - begin");
+    return localStorage.getItem(this.ACCESS_TOKEN);
+  }
+
 
 }
 

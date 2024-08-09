@@ -1,0 +1,105 @@
+{
+    "success": true,
+    "command_code": 1,
+    "tag_message": {
+        "tag_id": "100123959-BR1",
+        "scan_time": 1722282544,
+        "event_count": 28,
+        "package_id": "",
+        "patient_id": "",
+        "custom_data_1": "",
+        "versioning": {
+            "model": "eCap Argus-Loc",
+            "firmware_version": "1.1.1.0.1.4.0",
+            "hardware_version": "1.0.0"
+        },
+        "started": true,
+        "clock_coefficient_correction": true,
+        "tag_events": [
+            {
+                "timestamp": 1689345511
+            },
+            {
+                "timestamp": 1689345571
+            },
+            {
+                "timestamp": 1689345631
+            },
+            {
+                "timestamp": 1689952589
+            },
+            {
+                "timestamp": 1690564106
+            },
+            {
+                "timestamp": 1690564886
+            },
+            {
+                "timestamp": 1693249994
+            },
+            {
+                "timestamp": 1693250054
+            },
+            {
+                "timestamp": 1693250054
+            },
+            {
+                "timestamp": 1693250054
+            },
+            {
+                "timestamp": 1693250414
+            },
+            {
+                "timestamp": 1693250414
+            },
+            {
+                "timestamp": 1693250474
+            },
+            {
+                "timestamp": 1693250534
+            },
+            {
+                "timestamp": 1693250534
+            },
+            {
+                "timestamp": 1693250594
+            },
+            {
+                "timestamp": 1709655660
+            },
+            {
+                "timestamp": 1720818551
+            },
+            {
+                "timestamp": 1720818551
+            },
+            {
+                "timestamp": 1721141949
+            },
+            {
+                "timestamp": 1721165349
+            },
+            {
+                "timestamp": 1721165589
+            },
+            {
+                "timestamp": 1722036545
+            },
+            {
+                "timestamp": 1722036545
+            },
+            {
+                "timestamp": 1722036545
+            },
+            {
+                "timestamp": 1722036605
+            },
+            {
+                "timestamp": 1722133685
+            },
+            {
+                "timestamp": 1722213484
+            }
+        ]
+    }
+}
