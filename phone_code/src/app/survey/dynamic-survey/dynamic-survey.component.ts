@@ -502,18 +502,20 @@ export class DynamicSurveyComponent implements OnInit {
 
 
                 //
-                reinforcementRandomizationProb = 0.7;
+                // reinforcementRandomizationProb = 0.7;
                 if(reinforcementRandomizationProb >=0.4){
                     // randomly pick an incentive
                     // select between life-insight, meme, thank you
                     // save for today. Do not save for caregiver or baseline.
-                    let select_reward = 'meme';
+                    var select_reward = 'meme';
+                    if(reinforcementRandomizationProb >=0.7)
+                        select_reward = 'altruistic_message';
 
                     if(select_reward == 'meme'){
                         fetch('./assets/memes/memefile.json').then(async res => {
                             var meme_data = await res.json();
                             reinforcement_data['type_of_rewards'] = 'meme';
-                            meme_data = this.shuffle(meme_data);//will do a shuffle unless it is already shufffled before
+                            meme_data = this.shuffle_meme(meme_data);//will do a shuffle unless it is already shufffled before
                             // this.showmemes();
                             var picked_meme = this.pick_meme(meme_data); // for the shuffled, pick the top. Remove from the shuffled list
                             // this.whichImage = "./assets/memes/"+picked_meme[0]["filename"];
@@ -522,15 +524,26 @@ export class DynamicSurveyComponent implements OnInit {
                         });  
                     }
 
+                    if(select_reward == 'altruistic_message'){
+                        fetch('./assets/altruism/altruism_list.json').then(async res => {
+                            var altruism_data = await res.json();
+                            reinforcement_data['type_of_rewards'] = 'altruistic_message';
+                            altruism_data = this.shuffle_altruistic_msg(altruism_data);//will do a shuffle unless it is already shufffled before
+                            // this.showmemes();
+                            var picked_alt_msg = this.pick_alt_msg(altruism_data); // for the shuffled, pick the top. Remove from the shuffled list
+                            // this.whichImage = "./assets/memes/"+picked_meme[0]["filename"];
+                            reinforcement_data['reward_file_link'] = "./assets/altruism/"+picked_alt_msg[0]["filename"];
+                            window.localStorage['reinforcement_data'] = JSON.stringify(reinforcement_data);
+                        });  
+                    }
+
+
                 }else{
                     //otherwise do nothing.
                     reinforcement_data['type_of_rewards'] = 'No reward';
                     reinforcement_data['reward_file_link'] = '';
                     window.localStorage['reinforcement_data'] = JSON.stringify(reinforcement_data);
                 }
-                
-
-
 
                 //add for the  modal object
                 var modalObjectNavigationExtras = {};
@@ -596,6 +609,36 @@ export class DynamicSurveyComponent implements OnInit {
                 }
             }
 
+            shuffle_altruistic_msg(a): any {
+                //
+                //console.log(window.localStorage['meme_shuffle5']);
+                if(window.localStorage['alt_msg6'] == undefined){
+                    //
+                    var j: number, x: number, i: number;
+                    for (i = a.length - 1; i > 0; i--) {
+                        j = Math.floor(Math.random() * (i + 1));
+                        x = a[i];
+                        a[i] = a[j];
+                        a[j] = x;
+                        //console.log(JSON.stringify(a[i][0]) + "," + JSON.stringify(a[j][0]));
+                        //console.log('Meme data: ' + i + ", " + JSON.stringify(a));
+                    }
+                    //
+                    window.localStorage['alt_msg6'] = JSON.stringify(a);
+                    return a;
+                }else{
+                    a  = JSON.parse(window.localStorage['alt_msg6']);
+                    return a;
+                }
+            }
+
+            pick_alt_msg(a) {
+                var picked_alt_msg = a.splice(0,1);
+                a.push(picked_alt_msg[0]);
+                window.localStorage['alt_msg6'] = JSON.stringify(a);
+                return picked_alt_msg;
+            }
+
             /**
              * Shuffles array in place if it is not already shuffled
              * @param {Array} a items An array containing the items.
@@ -611,7 +654,7 @@ export class DynamicSurveyComponent implements OnInit {
              * Shuffles array in place if it is not already shuffled
              * @param {Array} a items An array containing the items.
              */
-            shuffle(a) {
+            shuffle_meme(a) {
 
                 //
                 //console.log(window.localStorage['meme_shuffle5']);
