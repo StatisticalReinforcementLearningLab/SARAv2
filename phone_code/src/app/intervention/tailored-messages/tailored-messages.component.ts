@@ -46,7 +46,7 @@ export class TailoredMessagesComponent implements OnInit {
         this.containsNavigationExtras = false;
       }
     }); 
-    this.loadTailoredMessage();
+    
 
     var reinforcements = [];
     reinforcements.push({ 'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?" });
@@ -80,17 +80,27 @@ export class TailoredMessagesComponent implements OnInit {
 
     }else{
       this.isSurveyDone = true;
-      
+      const token = this.getAccessToken();
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        })
+      };
+
       //
-      let requestDataJson = ayaSurvey;
-      let flaskServerAPIEndpoint = environment.flaskServerForTailoredInterventions; //'http://ec2-18-205-212-4.compute-1.amazonaws.com:5002';
-      this.httpClient.post(flaskServerAPIEndpoint + '/get_message', requestDataJson).subscribe({
+      console.log("==ayaSurvey===" + JSON.stringify(ayaSurvey));
+      let requestDataJson = {}; //ayaSurvey;
+      //let flaskServerAPIEndpoint = environment.flaskServerForTailoredInterventions; //'http://ec2-18-205-212-4.compute-1.amazonaws.com:5002';
+      let flaskServerAPIEndpoint = "https://adapts.fsm.northwestern.edu/tailored-messages/get-message.json";
+      this.httpClient.post(flaskServerAPIEndpoint, requestDataJson, httpOptions).subscribe({
           next: data => {
             // console.log(JSON.stringify(data));
             console.log("==response==" + JSON.stringify(data));
-            this.message = data["sampled_message"]
-            this.interventionImage = this.loadInterventionImage(data);
-
+            this.message = data["sampled_message"];
+            this.interventionImage = data["sampled_message_image"];//this.loadInterventionImage(data);
+            
+            /*
             //populate the rest of the view
             this.survey_responses = [];
             for (const key in data["survey_processed"]){
@@ -103,6 +113,7 @@ export class TailoredMessagesComponent implements OnInit {
 
             //
             this.all_buckets = JSON.stringify(data['all_relevant_buckets'], null, 2);
+            */
 
 
           },
@@ -171,16 +182,51 @@ export class TailoredMessagesComponent implements OnInit {
       })
     };
 
-    return this.http.post<any>(`${environment.userServer}/token/refresh`, {
+    // this.httpClient.post(flaskServerAPIEndpoint + '/get_message', requestDataJson).subscribe({
+    //       next: data => {
+    //         // console.log(JSON.stringify(data));
+    //         console.log("==response==" + JSON.stringify(data));
+    //         this.message = data["sampled_message"]
+    //         this.interventionImage = this.loadInterventionImage(data);
+
+    //         //populate the rest of the view
+    //         this.survey_responses = [];
+    //         for (const key in data["survey_processed"]){
+    //           // console.log("" + key + ": " + data["survey_processed"][key]);
+    //           this.survey_responses.push("" + key + ": " + data["survey_processed"][key]);
+    //         }
+
+    //         this.selected_bucket_id = data['sampled_bucket']['message_bucket_id'];
+    //         this.selected_bucket_messages = data['sampled_bucket']['messages'];
+
+    //         //
+    //         this.all_buckets = JSON.stringify(data['all_relevant_buckets'], null, 2);
+
+
+    //       },
+    //       error: error => console.error('There was an error!', error)
+    //   }); 
+    // }
+    let me = this;
+    this.http.post<any>(`${environment.userServer}/token/refresh`, { 
       'refreshToken': this.getRefreshToken() 
-    },httpOptions ).pipe(tap((
-        resData: {
-          "access_token": string, 
-          "access_expires": string}) => {
-        console.log("====refreshed token====");
-        console.log(resData);
-        this.storeAccessToken(resData.access_token, resData.access_expires);
-    }));
+    }, httpOptions).subscribe(data => {
+        console.log(JSON.stringify(data));
+        me.storeAccessToken(data.access_token, data.access_expires);
+    });  
+
+    // return this.http.post<any>(`${environment.userServer}/token/refresh`, {
+    //   'refreshToken': this.getRefreshToken() 
+    // },httpOptions ).pipe(tap((
+    //     resData: {
+    //       "access_token": string, 
+    //       "access_expires": string}) => {
+    //     console.log("====refreshed token====");
+    //     console.log(resData);
+    //     this.storeAccessToken(resData.access_token, resData.access_expires);
+    // }));
+
+
   }
 
   private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
@@ -195,6 +241,7 @@ export class TailoredMessagesComponent implements OnInit {
     localStorage.setItem(this.ACCESS_TOKEN, token);
     const expirationDate = new Date(new Date().getTime() + +expires * 1000);
     localStorage.ACCESS_TOKEN_EXPIRATION = expirationDate;
+    this.loadTailoredMessage();
   }
   getAccessToken() {
     console.log("auth.service.ts - getAccessToken method - begin");

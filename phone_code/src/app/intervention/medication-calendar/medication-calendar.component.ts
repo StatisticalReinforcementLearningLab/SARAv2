@@ -8,6 +8,7 @@ import { AddMedicationPage } from './add-medication/add-medication.page';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import moment from 'moment';
 import { HttpClient } from '@angular/common/http';
+import { Capacitor } from '@capacitor/core';
 // import { CalModalPage } from '../pages/cal-modal/cal-modal.page';
 
 declare var certiscan: any
@@ -122,28 +123,7 @@ export class MedicationCalendarComponent implements OnInit {
         }, 100);
         // console.log(JSON.stringify(this.userProfileService.userProfile));
 
-        // print prior ecap record if exists:
-        // ----Retrieve the object from storage
-        if(window.localStorage.hasOwnProperty('ecap_response')){
-            let retrievedObject = window.localStorage.getItem('ecap_response');
-            console.log('ecap_record: ', JSON.parse(retrievedObject));
-        }else{
-            console.log('ecap_record: no record');
-        }
-
-        //Here, we are taking data from the demo.
-        //----
-        //const spec = "/assets/data/ecaps_demo_data.json";
-        const spec = "/assets/data/ecaps_demo_data_2.json";
-        this.httpClient.get(spec)
-            .subscribe(async (res: any) => {
-                console.log("==========");
-                // res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][i]["Date"]
-                console.log(res);
-                let events = this.formatEcapData(res);
-                this.eventSource = events;
-                this.updateMedicationList();// also save
-            });
+        this.getEcapsMedicationList();
         
     }  
     
@@ -631,10 +611,51 @@ export class MedicationCalendarComponent implements OnInit {
     }
 
     openEcap() {
+        let me = this;
         certiscan.scan(function(responseTxt) {
             alert(responseTxt);
             // Put the object into storage
             window.localStorage.setItem('ecap_response', JSON.stringify(responseTxt));
+            console.log("--- ecap_response" + responseTxt);
+            me.getEcapsMedicationList();
         })
     }
+
+    getEcapsMedicationList() {
+        // print prior ecap record if exists:
+        // ----Retrieve the object from storage
+        if(window.localStorage.hasOwnProperty('ecap_response')){
+            let retrievedObject = window.localStorage.getItem('ecap_response');
+            console.log("--- ecap_response 2" + retrievedObject);
+            console.log('ecap_record: ', JSON.parse(retrievedObject));
+            let res = JSON.parse(retrievedObject);
+            let events = this.formatEcapData(res);
+            this.eventSource = events;
+            this.updateMedicationList();// also save
+        }else{
+            console.log('ecap_record: no record');
+        }
+
+        //if (Capacitor.isNativePlatform()) {
+        if (Capacitor.isNativePlatform() == false) {
+            // do something
+            //Here, we are taking data from the demo.
+            //----
+            //const spec = "/assets/data/ecaps_demo_data.json";
+            const spec = "/assets/data/ecaps_demo_data_2.json";
+            this.httpClient.get(spec)
+                .subscribe(async (res: any) => {
+                    console.log("==========");
+                    // res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][i]["Date"]
+                    console.log(res);
+                    let events = this.formatEcapData(res);
+                    this.eventSource = events;
+                    this.updateMedicationList();// also save
+                });
+        }
+    
+        
+    }
 }
+
+
