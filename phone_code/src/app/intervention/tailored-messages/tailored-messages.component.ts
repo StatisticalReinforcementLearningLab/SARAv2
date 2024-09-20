@@ -76,8 +76,6 @@ export class TailoredMessagesComponent implements OnInit {
 
     if(ayaSurvey == undefined){
       this.isSurveyDone = false;
-
-
     }else{
       this.isSurveyDone = true;
       const token = this.getAccessToken();
@@ -90,7 +88,7 @@ export class TailoredMessagesComponent implements OnInit {
 
       //
       console.log("==ayaSurvey===" + JSON.stringify(ayaSurvey));
-      let requestDataJson = {}; //ayaSurvey;
+      let requestDataJson = ayaSurvey;
       //let flaskServerAPIEndpoint = environment.flaskServerForTailoredInterventions; //'http://ec2-18-205-212-4.compute-1.amazonaws.com:5002';
       let flaskServerAPIEndpoint = "https://adapts.fsm.northwestern.edu/tailored-messages/get-message.json";
       this.httpClient.post(flaskServerAPIEndpoint, requestDataJson, httpOptions).subscribe({
@@ -99,7 +97,24 @@ export class TailoredMessagesComponent implements OnInit {
             console.log("==response==" + JSON.stringify(data));
             this.message = data["sampled_message"];
             this.interventionImage = data["sampled_message_image"];//this.loadInterventionImage(data);
-            
+
+            // save the intervention image for future
+            var already_shown_intervention_messages = window.localStorage["already_shown_intervention_messages"];
+            if(already_shown_intervention_messages == undefined){
+                already_shown_intervention_messages = {
+                    "last_updated": Date.now(),
+                    "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
+                    "unlocked_messages":[]
+                };
+            }
+            else
+                already_shown_intervention_messages = JSON.parse(already_shown_intervention_messages);
+
+            already_shown_intervention_messages["last_updated"] = Date.now();
+            already_shown_intervention_messages["last_updated_readable_ts"] = moment().format("MMMM Do YYYY, h:mm:ss a Z");
+            already_shown_intervention_messages["unlocked_messages"].push({"filename": this.interventionImage, "unlock_date": moment().format('MM/DD/YYYY')});
+            window.localStorage["already_shown_intervention_messages"] = JSON.stringify(already_shown_intervention_messages);
+        
             /*
             //populate the rest of the view
             this.survey_responses = [];

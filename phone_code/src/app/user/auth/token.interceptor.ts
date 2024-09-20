@@ -28,6 +28,17 @@ export class TokenInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(catchError(error => {
       if (error instanceof HttpErrorResponse && error.status === 401) {
+
+        // if(error.error instanceof Blob) {
+        //   error.error.text().then(text => {
+        //       let error_msg = (JSON.parse(text).message);
+        //       console.log(error_msg)
+        //     });
+        // } else {
+        //     //handle regular json error - useful if you are offline
+        // } 
+
+        // console.log("Error message:" + JSON.stringify(error));
         return this.handle401Error(request, next);
       }
        else {

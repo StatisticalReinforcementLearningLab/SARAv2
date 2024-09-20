@@ -123,30 +123,38 @@ export class MedicationCalendarComponent implements OnInit {
         }, 100);
         // console.log(JSON.stringify(this.userProfileService.userProfile));
 
-        this.getEcapsMedicationList();
+        this.getEcapsMedicationList(undefined);
         
     }  
     
     //format ecap data
-    formatEcapData(ecapJSONData){
-        let isSuccess = ecapJSONData['success'];
+    formatEcapData(ecapJSONData: any){
+        // let isSuccess = ecapJSONData['success'];
         let ecapScanDates = [];
         let ecapScanDateStrings = [];
-        if(isSuccess == true){
-            let scanTime = ecapJSONData['tag_message']['scan_time'];
-            console.log("ecap_record:: scanTime: " + scanTime + ", " + moment.unix(scanTime).format("DD-MM-YYYY HH:mm:ss a"));
-            let eventCount = ecapJSONData['tag_message']['event_count'];
-            if(eventCount > 0){
-                //means there is a tag message
-                let timestamps = ecapJSONData['tag_message']['tag_events'];
-                for (const timestamp of timestamps) {
-                    // This conversion is giving the local timezone.
-                    // console.log("ecap_record:: timestamp: " + timestamp["timestamp"] + ", " + moment.unix(timestamp["timestamp"]).format("MM-DD-YYYY HH:mm:ss a"));
-                    ecapScanDates.push(moment.unix(timestamp["timestamp"]).toDate());
-                    ecapScanDateStrings.push(moment.unix(timestamp["timestamp"]).format("MM-DD-YYYY"));
-                }
+        // if(isSuccess == true){
+        console.log('ecap_record: formatEcapData: ', typeof(ecapJSONData));
+        if (typeof ecapJSONData === 'string')
+            ecapJSONData = JSON.parse(ecapJSONData);
+
+        console.log('ecap_record: formatEcapData: ', ecapJSONData);
+        if("tag_message" in ecapJSONData){
+            ecapJSONData = ecapJSONData["tag_message"];
+        }
+        // let scanTime = ecapJSONData['scan_time'];
+        // console.log("ecap_record:: scanTime: " + scanTime + ", " + moment.unix(scanTime).format("DD-MM-YYYY HH:mm:ss a"));
+        let eventCount = ecapJSONData['event_count'];
+        if(eventCount > 0){
+            //means there is a tag message
+            let timestamps = ecapJSONData['tag_events'];
+            for (const timestamp of timestamps) {
+                // This conversion is giving the local timezone.
+                // console.log("ecap_record:: timestamp: " + timestamp["timestamp"] + ", " + moment.unix(timestamp["timestamp"]).format("MM-DD-YYYY HH:mm:ss a"));
+                ecapScanDates.push(moment.unix(timestamp["timestamp"]).toDate());11
+                ecapScanDateStrings.push(moment.unix(timestamp["timestamp"]).format("MM-DD-YYYY"));
             }
         }
+        //}
 
         // What we do is we take all the dates from first day of the ecap records.
         // Then we add all scan dates as green. And rest as x.
@@ -596,10 +604,11 @@ export class MedicationCalendarComponent implements OnInit {
                 break; //means we have all the records.
             }
         }
-        console.log("After: " + JSON.stringify(events));
+        //console.log("After: " + JSON.stringify(events, null, 4));
 
         this.eventSource = events;
         this.saveMedicationEvents(events);
+        console.log('===ecap_scanned===' + JSON.stringify(events, null, 4));
 
         // for(var i=0; i<100; i++){
         //     ithDayFromCurrentdayMidnightUTC = new Date(currentDayMidnightUTC.setHours(-1 * 24 * i, 1, 0, 0));
@@ -617,20 +626,25 @@ export class MedicationCalendarComponent implements OnInit {
             // Put the object into storage
             window.localStorage.setItem('ecap_response', JSON.stringify(responseTxt));
             console.log("--- ecap_response" + responseTxt);
-            me.getEcapsMedicationList();
+            me.getEcapsMedicationList(responseTxt);
         })
     }
 
-    getEcapsMedicationList() {
+    getEcapsMedicationList(responseTxt) {
         // print prior ecap record if exists:
         // ----Retrieve the object from storage
         if(window.localStorage.hasOwnProperty('ecap_response')){
             let retrievedObject = window.localStorage.getItem('ecap_response');
             console.log("--- ecap_response 2" + retrievedObject);
-            console.log('ecap_record: ', JSON.parse(retrievedObject));
-            let res = JSON.parse(retrievedObject);
+            //console.log('ecap_record: ', JSON.parse(retrievedObject));
+            var res;
+            if(responseTxt == undefined)
+                res = JSON.parse(retrievedObject);
+            else
+                res = responseTxt;
             let events = this.formatEcapData(res);
             this.eventSource = events;
+            console.log('===ecap_scanned===' + JSON.stringify(events));
             this.updateMedicationList();// also save
         }else{
             console.log('ecap_record: no record');
@@ -642,7 +656,7 @@ export class MedicationCalendarComponent implements OnInit {
             //Here, we are taking data from the demo.
             //----
             //const spec = "/assets/data/ecaps_demo_data.json";
-            const spec = "/assets/data/ecaps_demo_data_2.json";
+            const spec = "/assets/data/ecaps_demo_data.json";
             this.httpClient.get(spec)
                 .subscribe(async (res: any) => {
                     console.log("==========");

@@ -40,6 +40,8 @@ export class AquariumComponent implements OnInit {
     isIOS = false;
     navigate: any;
     weeklyMed: any;
+    altMsgsImages: any;
+    memeImages: any;
 
     @ViewChild('swiperContainer') swiperRefRewards: ElementRef | undefined;
 
@@ -454,6 +456,62 @@ export class AquariumComponent implements OnInit {
         var dateArray = this.getDatesForLast7days();
         this.loadVegaDemoPlotMotivation(dateArray);
 
+        //here load the memes and altruistic messages
+        this.showAltMsgSwiper();
+        this.showMemeSwiper();
+
+    }
+
+    showAltMsgSwiper() {
+        
+        var already_shown = window.localStorage["already_shown_alt_msg4"];
+        if(already_shown == undefined){
+            already_shown = {
+                "last_updated": Date.now(),
+                "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
+                "unlocked_alt_msgs":[{"filename": "assets/altruism/altruism_1.png", "unlock_date": moment().format('MM/DD/YYYY')}]
+            };
+            window.localStorage["already_shown_alt_msg4"] = JSON.stringify(already_shown);
+        }
+        else
+            already_shown = JSON.parse(window.localStorage["already_shown_alt_msg4"]);
+
+        this.altMsgsImages = [];
+        for(var i=0; i < already_shown['unlocked_alt_msgs'].length; i++){
+            this.altMsgsImages.push(already_shown['unlocked_alt_msgs'][i]["filename"]);
+        }
+        if(already_shown['unlocked_alt_msgs'].length < 2){
+            this.altMsgsImages.push("assets/img/less_alt_msg.png");
+        } 
+
+        // Write a for loop, add images, if short of 2 message then ask to complete more self-reports
+        //this.altMsgsImages = ["./assets/memes/1.jpg", "./assets/memes/2.png", "./assets/memes/3.png", "./assets/memes/4.jpg"];
+        
+    }
+
+    showMemeSwiper() {
+        
+        var already_shown = window.localStorage["already_shown_memes4"];
+        if(already_shown == undefined)
+            already_shown = {
+                "last_updated": Date.now(),
+                "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
+                "unlocked_memes":[{"filename": "assets/memes/4.jpg", "unlock_date": moment().format('MM/DD/YYYY')}]
+            };
+        else
+            already_shown = JSON.parse(window.localStorage["already_shown_memes4"]);
+
+        this.memeImages = [];
+        for(var i=0; i < already_shown['unlocked_memes'].length; i++){
+            this.memeImages.push(already_shown['unlocked_memes'][i]["filename"]);
+        }
+        if(already_shown['unlocked_memes'].length < 2){
+            this.memeImages.push("assets/img/less_memes.png");
+        } 
+
+        // Write a for loop, add images, if short of 2 message then ask to complete more self-reports
+        //this.altMsgsImages = ["./assets/memes/1.jpg", "./assets/memes/2.png", "./assets/memes/3.png", "./assets/memes/4.jpg"];
+        
     }
 
     async loadVegaDemoPlotMotivation(dateArray) {

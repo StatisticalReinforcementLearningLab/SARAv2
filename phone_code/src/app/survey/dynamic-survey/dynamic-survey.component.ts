@@ -521,6 +521,26 @@ export class DynamicSurveyComponent implements OnInit {
                             // this.whichImage = "./assets/memes/"+picked_meme[0]["filename"];
                             reinforcement_data['reward_file_link'] = "./assets/memes/"+picked_meme[0]["filename"];
                             window.localStorage['reinforcement_data'] = JSON.stringify(reinforcement_data);
+
+                            // save to already shown memes
+
+                            var already_shown = window.localStorage["already_shown_memes4"];
+
+                            //we are always adding "assets/memes/4.jpg to the list. Move this code for the initialize meme list.
+                            if(already_shown == undefined)
+                                already_shown = {
+                                    "last_updated": Date.now(),
+                                    "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
+                                    "unlocked_memes":[{"filename": "assets/memes/4.jpg", "unlock_date": moment().format('MM/DD/YYYY')}]
+                                };
+                            else
+                                already_shown = JSON.parse(window.localStorage["already_shown_memes4"]);
+
+                            console.log("already_shown: " + already_shown);
+                            already_shown["last_updated"] = Date.now();
+                            already_shown["last_updated_readable_ts"] = moment().format("MMMM Do YYYY, h:mm:ss a Z");
+                            already_shown["unlocked_memes"].push({"filename": "assets/memes/"+picked_meme[0]["filename"], "unlock_date": moment().format('MM/DD/YYYY')});
+                            window.localStorage["already_shown_memes4"] = JSON.stringify(already_shown);
                         });  
                     }
 
@@ -534,6 +554,22 @@ export class DynamicSurveyComponent implements OnInit {
                             // this.whichImage = "./assets/memes/"+picked_meme[0]["filename"];
                             reinforcement_data['reward_file_link'] = "./assets/altruism/"+picked_alt_msg[0]["filename"];
                             window.localStorage['reinforcement_data'] = JSON.stringify(reinforcement_data);
+
+                            var already_shown = window.localStorage["already_shown_alt_msg4"];
+                            if(already_shown == undefined)
+                                already_shown = {
+                                    "last_updated": Date.now(),
+                                    "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
+                                    "unlocked_alt_msgs":[{"filename": "assets/altruism/altruism_1.png", "unlock_date": moment().format('MM/DD/YYYY')}]
+                                };
+                            else
+                                already_shown = JSON.parse(window.localStorage["already_shown_alt_msg4"]);
+
+                            console.log("already_shown: " + already_shown);
+                            already_shown["last_updated"] = Date.now();
+                            already_shown["last_updated_readable_ts"] = moment().format("MMMM Do YYYY, h:mm:ss a Z");
+                            already_shown["unlocked_alt_msgs"].push({"filename": "assets/altruism/"+picked_alt_msg[0]["filename"], "unlock_date": moment().format('MM/DD/YYYY')});
+                            window.localStorage["already_shown_alt_msg4"] = JSON.stringify(already_shown);
                         });  
                     }
 

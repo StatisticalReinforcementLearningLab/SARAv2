@@ -157,10 +157,12 @@
       [coverflowEffect]="{rotate: 0, stretch: 4, depth: 10, scale: .8, modifier: 1, slideShadows: true}"
       [slidesPerView]="1.5"
     >
-        <swiper-slide><img src="./assets/altruism/altruism_1.png" /></swiper-slide>
+        <!-- <swiper-slide><img src="./assets/altruism/altruism_1.png" /></swiper-slide>
         <swiper-slide><img src="./assets/altruism/altruism_2.png" /></swiper-slide>
         <swiper-slide><img src="./assets/altruism/message_1.png" /></swiper-slide>
-        <swiper-slide><img src="./assets/altruism/message_2.png" /></swiper-slide>
+        <swiper-slide><img src="./assets/altruism/message_2.png" /></swiper-slide> -->
+        
+        <swiper-slide *ngFor="let altMsgsImage of altMsgsImages;"><img src={{altMsgsImage}}/></swiper-slide>
     </swiper-container>
 
     <h2 style="margin-left: 5px;">Memes</h2>
@@ -177,10 +179,11 @@
       [slidesPerView]="1.5"
     > -->
     <swiper-container [pagination]="true" [spaceBetween]="5" [slidesPerView]="1.2">
-        <swiper-slide><img src="./assets/memes/1.jpg" style="border-width: 1px; border-color: #86b9b0;"/></swiper-slide>
+        <!-- <swiper-slide><img src="./assets/memes/1.jpg" style="border-width: 1px; border-color: #86b9b0;"/></swiper-slide>
         <swiper-slide><img src="./assets/memes/2.png" style="border-width: 1px; border-color: #86b9b0;"/></swiper-slide>
         <swiper-slide><img src="./assets/memes/3.png" style="border-width: 1px; border-color: #86b9b0;"/></swiper-slide>
-        <swiper-slide><img src="./assets/memes/4.jpg" style="border-width: 1px; border-color: #86b9b0;"/></swiper-slide>
+        <swiper-slide><img src="./assets/memes/4.jpg" style="border-width: 1px; border-color: #86b9b0;"/></swiper-slide> -->
+        <swiper-slide *ngFor="let memeImage of memeImages;"><img src={{memeImage}}/></swiper-slide>
     </swiper-container>
 
       <!-- <swiper-container 
