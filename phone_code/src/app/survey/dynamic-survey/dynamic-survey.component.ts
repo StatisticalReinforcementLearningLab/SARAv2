@@ -46,6 +46,7 @@ export class DynamicSurveyComponent implements OnInit {
     surveyQuestionsDict = {};
     surveyQuestionsInJSONDictFormat: any;
     versionNumber;
+    isAYA;
 
     @ViewChild('vc', { read: ViewContainerRef }) vc: ViewContainerRef;
 
@@ -74,6 +75,10 @@ export class DynamicSurveyComponent implements OnInit {
 
         //initiate the life-insight object
         //this.lifeInsightsProfileService.importLifeInsightProfile(this.jsonFileLinkForSurvey);
+        this.isAYA = true;
+        if(this.userProfileService.isParent == true)
+            this.isAYA = false;
+
     }
 
 
@@ -449,6 +454,8 @@ export class DynamicSurveyComponent implements OnInit {
             }
 
 
+
+
             provideIncentives() {
 
                 // if (this.fileLink.includes('baseline')){
@@ -503,82 +510,85 @@ export class DynamicSurveyComponent implements OnInit {
 
                 //
                 // reinforcementRandomizationProb = 0.7;
-                if(reinforcementRandomizationProb >=0.4){
-                    // randomly pick an incentive
-                    // select between life-insight, meme, thank you
-                    // save for today. Do not save for caregiver or baseline.
-                    var select_reward = 'meme';
-                    if(reinforcementRandomizationProb >=0.7)
-                        select_reward = 'altruistic_message';
+                if(!(this.fileLink.includes('caregiver') || this.fileLink.includes('baseline'))){
+                    console.log("Not caregiver or baseline version of the survey");
+                    if(reinforcementRandomizationProb >=0.4){
+                        // randomly pick an incentive
+                        // select between life-insight, meme, thank you
+                        // save for today. Do not save for caregiver or baseline.
+                        var select_reward = 'meme';
+                        if(reinforcementRandomizationProb >=0.7)
+                            select_reward = 'altruistic_message';
 
-                    if(select_reward == 'meme'){
-                        fetch('./assets/memes/memefile.json').then(async res => {
-                            var meme_data = await res.json();
-                            reinforcement_data['type_of_rewards'] = 'meme';
-                            meme_data = this.shuffle_meme(meme_data);//will do a shuffle unless it is already shufffled before
-                            // this.showmemes();
-                            var picked_meme = this.pick_meme(meme_data); // for the shuffled, pick the top. Remove from the shuffled list
-                            // this.whichImage = "./assets/memes/"+picked_meme[0]["filename"];
-                            reinforcement_data['reward_file_link'] = "./assets/memes/"+picked_meme[0]["filename"];
-                            window.localStorage['reinforcement_data'] = JSON.stringify(reinforcement_data);
+                        if(select_reward == 'meme'){
+                            fetch('./assets/memes/memefile.json').then(async res => {
+                                var meme_data = await res.json();
+                                reinforcement_data['type_of_rewards'] = 'meme';
+                                meme_data = this.shuffle_meme(meme_data);//will do a shuffle unless it is already shufffled before
+                                // this.showmemes();
+                                var picked_meme = this.pick_meme(meme_data); // for the shuffled, pick the top. Remove from the shuffled list
+                                // this.whichImage = "./assets/memes/"+picked_meme[0]["filename"];
+                                reinforcement_data['reward_file_link'] = "./assets/memes/"+picked_meme[0]["filename"];
+                                window.localStorage['reinforcement_data'] = JSON.stringify(reinforcement_data);
 
-                            // save to already shown memes
+                                // save to already shown memes
 
-                            var already_shown = window.localStorage["already_shown_memes4"];
+                                var already_shown = window.localStorage["already_shown_memes4"];
 
-                            //we are always adding "assets/memes/4.jpg to the list. Move this code for the initialize meme list.
-                            if(already_shown == undefined)
-                                already_shown = {
-                                    "last_updated": Date.now(),
-                                    "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
-                                    "unlocked_memes":[{"filename": "assets/memes/4.jpg", "unlock_date": moment().format('MM/DD/YYYY')}]
-                                };
-                            else
-                                already_shown = JSON.parse(window.localStorage["already_shown_memes4"]);
+                                //we are always adding "assets/memes/4.jpg to the list. Move this code for the initialize meme list.
+                                if(already_shown == undefined)
+                                    already_shown = {
+                                        "last_updated": Date.now(),
+                                        "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
+                                        "unlocked_memes":[{"filename": "assets/memes/4.jpg", "unlock_date": moment().format('MM/DD/YYYY')}]
+                                    };
+                                else
+                                    already_shown = JSON.parse(window.localStorage["already_shown_memes4"]);
 
-                            console.log("already_shown: " + already_shown);
-                            already_shown["last_updated"] = Date.now();
-                            already_shown["last_updated_readable_ts"] = moment().format("MMMM Do YYYY, h:mm:ss a Z");
-                            already_shown["unlocked_memes"].push({"filename": "assets/memes/"+picked_meme[0]["filename"], "unlock_date": moment().format('MM/DD/YYYY')});
-                            window.localStorage["already_shown_memes4"] = JSON.stringify(already_shown);
-                        });  
+                                console.log("already_shown: " + already_shown);
+                                already_shown["last_updated"] = Date.now();
+                                already_shown["last_updated_readable_ts"] = moment().format("MMMM Do YYYY, h:mm:ss a Z");
+                                already_shown["unlocked_memes"].push({"filename": "assets/memes/"+picked_meme[0]["filename"], "unlock_date": moment().format('MM/DD/YYYY')});
+                                window.localStorage["already_shown_memes4"] = JSON.stringify(already_shown);
+                            });  
+                        }
+
+                        if(select_reward == 'altruistic_message'){
+                            fetch('./assets/altruism/altruism_list.json').then(async res => {
+                                var altruism_data = await res.json();
+                                reinforcement_data['type_of_rewards'] = 'altruistic_message';
+                                altruism_data = this.shuffle_altruistic_msg(altruism_data);//will do a shuffle unless it is already shufffled before
+                                // this.showmemes();
+                                var picked_alt_msg = this.pick_alt_msg(altruism_data); // for the shuffled, pick the top. Remove from the shuffled list
+                                // this.whichImage = "./assets/memes/"+picked_meme[0]["filename"];
+                                reinforcement_data['reward_file_link'] = "./assets/altruism/"+picked_alt_msg[0]["filename"];
+                                window.localStorage['reinforcement_data'] = JSON.stringify(reinforcement_data);
+
+                                var already_shown = window.localStorage["already_shown_alt_msg4"];
+                                if(already_shown == undefined)
+                                    already_shown = {
+                                        "last_updated": Date.now(),
+                                        "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
+                                        "unlocked_alt_msgs":[{"filename": "assets/altruism/altruism_1.png", "unlock_date": moment().format('MM/DD/YYYY')}]
+                                    };
+                                else
+                                    already_shown = JSON.parse(window.localStorage["already_shown_alt_msg4"]);
+
+                                console.log("already_shown: " + already_shown);
+                                already_shown["last_updated"] = Date.now();
+                                already_shown["last_updated_readable_ts"] = moment().format("MMMM Do YYYY, h:mm:ss a Z");
+                                already_shown["unlocked_alt_msgs"].push({"filename": "assets/altruism/"+picked_alt_msg[0]["filename"], "unlock_date": moment().format('MM/DD/YYYY')});
+                                window.localStorage["already_shown_alt_msg4"] = JSON.stringify(already_shown);
+                            });  
+                        }
+
+
+                    }else{
+                        //otherwise do nothing.
+                        reinforcement_data['type_of_rewards'] = 'No reward';
+                        reinforcement_data['reward_file_link'] = '';
+                        window.localStorage['reinforcement_data'] = JSON.stringify(reinforcement_data);
                     }
-
-                    if(select_reward == 'altruistic_message'){
-                        fetch('./assets/altruism/altruism_list.json').then(async res => {
-                            var altruism_data = await res.json();
-                            reinforcement_data['type_of_rewards'] = 'altruistic_message';
-                            altruism_data = this.shuffle_altruistic_msg(altruism_data);//will do a shuffle unless it is already shufffled before
-                            // this.showmemes();
-                            var picked_alt_msg = this.pick_alt_msg(altruism_data); // for the shuffled, pick the top. Remove from the shuffled list
-                            // this.whichImage = "./assets/memes/"+picked_meme[0]["filename"];
-                            reinforcement_data['reward_file_link'] = "./assets/altruism/"+picked_alt_msg[0]["filename"];
-                            window.localStorage['reinforcement_data'] = JSON.stringify(reinforcement_data);
-
-                            var already_shown = window.localStorage["already_shown_alt_msg4"];
-                            if(already_shown == undefined)
-                                already_shown = {
-                                    "last_updated": Date.now(),
-                                    "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
-                                    "unlocked_alt_msgs":[{"filename": "assets/altruism/altruism_1.png", "unlock_date": moment().format('MM/DD/YYYY')}]
-                                };
-                            else
-                                already_shown = JSON.parse(window.localStorage["already_shown_alt_msg4"]);
-
-                            console.log("already_shown: " + already_shown);
-                            already_shown["last_updated"] = Date.now();
-                            already_shown["last_updated_readable_ts"] = moment().format("MMMM Do YYYY, h:mm:ss a Z");
-                            already_shown["unlocked_alt_msgs"].push({"filename": "assets/altruism/"+picked_alt_msg[0]["filename"], "unlock_date": moment().format('MM/DD/YYYY')});
-                            window.localStorage["already_shown_alt_msg4"] = JSON.stringify(already_shown);
-                        });  
-                    }
-
-
-                }else{
-                    //otherwise do nothing.
-                    reinforcement_data['type_of_rewards'] = 'No reward';
-                    reinforcement_data['reward_file_link'] = '';
-                    window.localStorage['reinforcement_data'] = JSON.stringify(reinforcement_data);
                 }
 
                 //add for the  modal object
