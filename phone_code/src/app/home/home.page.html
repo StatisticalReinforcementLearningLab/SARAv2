@@ -24,14 +24,14 @@
     </ion-tab-button>
     -->
 
-    <ion-tab-button tab="thankyous" style="background: #005486;"  class=“ion-no-padding”>
+    <ion-tab-button tab="thankyous" style="background: #005486;"  class=“ion-no-padding” *ngIf="isAYA">
       <!-- <ion-icon src="/assets/img/star-circle.svg" style="color: #fff;"></ion-icon>-->
       <ion-icon name="star"></ion-icon>
       <ion-label style="color: #fff;">Rewards</ion-label>
     </ion-tab-button>
     
 
-    <ion-tab-button tab="insights" style="background: #005486;"  class=“ion-no-padding”>
+    <ion-tab-button tab="insights" style="background: #005486;"  class=“ion-no-padding” *ngIf="isAYA">
       <!-- <ion-icon src="/assets/img/367814.svg"></ion-icon> -->
       <ion-icon name="bulb"></ion-icon>
       <ion-label style="color: #fff;">Insights</ion-label>

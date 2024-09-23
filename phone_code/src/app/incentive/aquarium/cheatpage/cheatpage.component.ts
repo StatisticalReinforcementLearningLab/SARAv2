@@ -11,6 +11,7 @@ export class CheatpageComponent implements OnInit {
   public totalPoints;
   public currentPoints;
   public myInput: string;
+  public isCareGiverVersion;
 
   constructor(private userProfileService: UserProfileService) { }
 
@@ -30,6 +31,7 @@ export class CheatpageComponent implements OnInit {
     console.log("Current points: " + this.totalPoints);
     console.log("Total points: " + this.totalPoints);
     */
+    this.isCareGiverVersion = this.userProfileService.isParent;
   }
 
   logChange(event) {
@@ -59,6 +61,13 @@ export class CheatpageComponent implements OnInit {
     //this.totalPoints = 700;//this.totalPoints + 100;
     //window.localStorage.setItem("TotalPoints", ""+this.totalPoints); 
     this.userProfileService.cheatPoints(this.totalPoints);
+  }
+
+  changeCaregiverValue(event){
+    var isChecked = event.detail.checked;
+    console.log("Is caregiver: " + isChecked);
+    console.log("Is caregiver 2: " + this.isCareGiverVersion);
+    window.localStorage.setItem("isCareGiverCheated", ""+isChecked);
   }
 
   returnToAquarium(){

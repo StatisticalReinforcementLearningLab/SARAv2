@@ -102,15 +102,15 @@
       <ion-button href="/incentive/award-memes" >Incentive: meme</ion-button> <br>
       <ion-button href="/incentive/visualization">Incentive: Life-inisight</ion-button> <br>
     </div-->
-    <h2 style="margin-left: 5px;">Messages</h2>
-    <swiper-container [spaceBetween]="5" [slidesPerView]="1.2">
+    <h2 style="margin-left: 5px;" *ngIf="isAYA">Messages</h2>
+    <swiper-container [spaceBetween]="5" [slidesPerView]="1.2" *ngIf="isAYA">
         <swiper-slide style="padding: 10px;">What is one thing that puts a smile on your face? Try to engage with that now! Confession: ours is petting any cute fluffy animal.</swiper-slide>
         <swiper-slide style="padding: 10px;">The most important thing is to take 6-MP every day, even if it is not exactly at the same time.</swiper-slide>
         <swiper-slide style="padding: 10px;">When you are tired, make a list, check it twice (don't forget to add "take meds today")</swiper-slide>
     </swiper-container>
 
-    <h2 style="margin-left: 5px;">Medication</h2>
-    <ion-card>
+    <h2 style="margin-left: 5px;" *ngIf="isAYA">Medication</h2>
+    <ion-card *ngIf="isAYA">
       <ion-grid>
         <ion-row>
           <ion-col *ngFor="let dayMed of weeklyMed;">
@@ -132,19 +132,17 @@
       </ion-grid>
     </ion-card>
 
-    <h2 style="margin-left: 5px;">Insight</h2>
-    <ion-card>
+    <h2 style="margin-left: 5px;" *ngIf="isAYA">Insight</h2>
+    <ion-card *ngIf="isAYA">
       <div id="vis2"></div>
     </ion-card>
 
     
 
-    <h2 style="margin-left: 5px;">Aquarium</h2>
-    <ion-card>
-      <app-demo-aquarium isPreview="false"></app-demo-aquarium>
-    </ion-card>
+    <h2 style="margin-left: 5px;" *ngIf="isAYA">Aquarium</h2>
+    <app-demo-aquarium isPreview="false" ></app-demo-aquarium>
 
-    <h2 style="margin-left: 5px;">Thank yous</h2>
+    <h2 style="margin-left: 5px;" *ngIf="isAYA">Thank yous</h2>
     
     <swiper-container 
       [effect]="'coverflow'"
@@ -156,6 +154,7 @@
 			[parallax]="true"
       [coverflowEffect]="{rotate: 0, stretch: 4, depth: 10, scale: .8, modifier: 1, slideShadows: true}"
       [slidesPerView]="1.5"
+      *ngIf="isAYA"
     >
         <!-- <swiper-slide><img src="./assets/altruism/altruism_1.png" /></swiper-slide>
         <swiper-slide><img src="./assets/altruism/altruism_2.png" /></swiper-slide>
@@ -165,7 +164,7 @@
         <swiper-slide *ngFor="let altMsgsImage of altMsgsImages;"><img src={{altMsgsImage}}/></swiper-slide>
     </swiper-container>
 
-    <h2 style="margin-left: 5px;">Memes</h2>
+    <h2 style="margin-left: 5px;" *ngIf="isAYA">Memes</h2>
     <!-- <swiper-container 
       [effect]="'coverflow'"
       [spaceBetween]="0"
@@ -178,7 +177,7 @@
       [pagination]='{el: ".swiper-pagination"}'
       [slidesPerView]="1.5"
     > -->
-    <swiper-container [pagination]="true" [spaceBetween]="5" [slidesPerView]="1.2">
+    <swiper-container [pagination]="true" [spaceBetween]="5" [slidesPerView]="1.2" *ngIf="isAYA">
         <!-- <swiper-slide><img src="./assets/memes/1.jpg" style="border-width: 1px; border-color: #86b9b0;"/></swiper-slide>
         <swiper-slide><img src="./assets/memes/2.png" style="border-width: 1px; border-color: #86b9b0;"/></swiper-slide>
         <swiper-slide><img src="./assets/memes/3.png" style="border-width: 1px; border-color: #86b9b0;"/></swiper-slide>
@@ -249,7 +248,7 @@
     <!-- <ion-button color="primary" (click)="showPythonLifeInsight()">Python life-insight</ion-button> -->
     
     <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-      <ion-fab-button (click)="startAYASurvey()">
+      <ion-fab-button (click)="startSurveyTimeUnrestricted()">
         <ion-icon name="list"></ion-icon>
       </ion-fab-button>
 

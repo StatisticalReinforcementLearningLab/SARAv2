@@ -657,6 +657,7 @@ export class MedicationCalendarComponent implements OnInit {
             //----
             //const spec = "/assets/data/ecaps_demo_data.json";
             const spec = "/assets/data/ecaps_demo_data.json";
+            let me = this;
             this.httpClient.get(spec)
                 .subscribe(async (res: any) => {
                     console.log("==========");
@@ -665,6 +666,9 @@ export class MedicationCalendarComponent implements OnInit {
                     let events = this.formatEcapData(res);
                     this.eventSource = events;
                     this.updateMedicationList();// also save
+
+                    //save the medication to server as private data
+                    me.userProfileService.savePrivateData('medication_data', events);
                 });
         }
     

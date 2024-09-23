@@ -46,4 +46,9 @@ swiper-slide{
     font-size: 20px;
 }
 
+/* https://stackoverflow.com/questions/44802333/changing-css-class-properties-based-on-condition-ngif-in-angular-2 */
+.aquarium-class             { padding: 1px;}
+.aquarium-class.caregiver   { padding: 0px; }
+.aquarium-class.aya         { padding: 5px; }
+
 

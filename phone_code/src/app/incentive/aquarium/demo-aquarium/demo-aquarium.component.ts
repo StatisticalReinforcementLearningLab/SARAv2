@@ -72,6 +72,7 @@ export class DemoAquariumComponent implements OnInit {
   fishFunFactListViewItems = [];
   @Input() isPreview: string;
   debugText: String;
+  isAYA;
 
   // totalPoints = 0;
   get totalPoints() {
@@ -196,6 +197,10 @@ export class DemoAquariumComponent implements OnInit {
     this.survey_text = "Start Survey";
     this.debugText = "";
     //this.username = "test";
+
+    this.isAYA = true;
+    if(this.userProfileService.isParent == true)
+        this.isAYA = false;
   }
 
 

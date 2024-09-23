@@ -31,7 +31,7 @@
           &nbsp; How this app works
         </ion-item>
 
-        <ion-item [routerLink]="['/survey/baselinesurvey']">
+        <ion-item [routerLink]="['/survey/baselinesurvey']" *ngIf="isAYA"> 
           <ion-icon name="reader-outline"></ion-icon>
           &nbsp; Baseline survey
         </ion-item>

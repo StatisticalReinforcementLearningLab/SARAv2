@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UserProfile, UserProfileFixed } from './user-profile.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 //import * as firebase from 'firebase';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject, forkJoin, Subscription } from 'rxjs';
@@ -9,6 +9,8 @@ import * as moment from 'moment';
 // import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { NetworkService, ConnectionStatus } from '../../storage/network.service';
 import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
+import * as Forge from 'node-forge';
+import { EncrDecrService } from 'src/app/storage/encrdecrservice.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +24,7 @@ export class UserProfileService {
 
   constructor(private http: HttpClient,
               private networkSvc: NetworkService,
+              private EncrDecr: EncrDecrService,
               private appVersion: AppVersion) { }
               // private oneSignal: OneSignal) { }
 
@@ -205,7 +208,13 @@ export class UserProfileService {
   }
   get isParent(){
     console.log("user-profile.service.ts - isParent getter - begin");
-    return this.userProfileFixed.isParent;
+    var isParent = this.userProfileFixed.isParent;
+
+    //change the following in production.
+    if(window.localStorage['isCareGiverCheated'] != undefined)
+        isParent = (window.localStorage['isCareGiverCheated'] == 'true');
+    
+    return isParent;
   }
   get points(){
     console.log("user-profile.service.ts - points getter - begin");
@@ -296,6 +305,8 @@ export class UserProfileService {
 
       // console.log("saveToServer userProfile: " + JSON.stringify(userProfile));
   }
+
+
 
   retrieve(userID: string){
   }
@@ -457,6 +468,129 @@ export class UserProfileService {
     this.userProfile.medicationEvents = events;
     this.saveProfileToDevice();
     this.saveToServer();
+  }
+
+  savePrivateData(dataTypeName, dataAsJSON){
+    var privateUserData;
+
+    //save the private data as a field.
+    if(window.localStorage['PrivateUserData'] == undefined)
+      privateUserData = {};
+    else
+      privateUserData = JSON.parse(window.localStorage['PrivateUserData']);
+    privateUserData[dataTypeName] = dataAsJSON;
+    window.localStorage['PrivateUserData'] = JSON.stringify(privateUserData);
+
+    //encrypt the data, with public/private key
+    // reference
+    // Http client
+    //    https://www.tektutorialshub.com/angular/angular-http-get-example-using-httpclient/
+    // RSA examples in Forge:
+    //    https://medium.com/@DannyAziz97/rsa-encryption-with-js-python-7e031cbb66bb
+    //    https://github.com/digitalbazaar/forge/blob/master/README.md#rsa
+
+    //let requestDataJson = {"user_id": this.userProfileService.username, "sleep_data": {"report_date": "20210907", "start": "1:30", "end": "07:30"}}
+
+    var encrypted = this.EncrDecr.encrypt(JSON.stringify(privateUserData), environment.encyptString);
+    console.log("Private encrypted data: " + encrypted);
+
+    //We upload, start with refreshToken.
+    //refreshToken will find a refresh token,
+    //then call storeRefreshToken. storeRefreshToken
+    //will then call, savePrivateDataToServer.
+    //savePrivateDataToServer will call the private
+    //data point to upload the data.
+
+    this.refreshToken();//
+  }
+
+  encryptWithPublicKey(valueToEncrypt: string): string {
+    const rsa = Forge.pki.publicKeyFromPem(environment.publicKey);
+    var encrypted = rsa.encrypt(valueToEncrypt, "RSA-OAEP", {
+                        md: Forge.md.sha256.create()
+                    });
+    // console.log("Encrypted (btoa): " + window.btoa(encrypted));
+    // console.log("Encrypted (forge): " + Forge.util.encode64(encrypted));
+    return window.btoa(encrypted);
+  }
+
+  savePrivateDataToServer(){
+      var privateUserData = JSON.parse(window.localStorage['PrivateUserData']);
+      const currenttime:Date = new Date();
+      const dateString: string = moment(currenttime).format('MMMM Do YYYY, h:mm:ss a Z');
+      privateUserData["lastuploadprofiletime"] = currenttime.getTime();
+      privateUserData["lastuploadprofiletime_ts"] = dateString;
+      // const userProfile: UserProfile = this.userProfile;
+
+      //json string to encrypt
+
+      const token = this.getAccessToken();
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        })
+      };
+      let flaskServerAPIEndpoint = environment.privateDataUploadEndpoint;
+      this.http
+        .post(flaskServerAPIEndpoint, privateUserData, httpOptions)
+        .subscribe(response =>{
+          console.log("---userprofile: privateUserData upload response----");
+          console.log(response);
+          //this.saveToServerRequestInQueue = false;
+        });
+  }
+
+  //save private data
+  savePrivateDataToServerConnectionAware(){
+    this.saveToServerRequestInQueue = true;
+    if(this.networkSvc.getCurrentNetworkStatus() == ConnectionStatus.Online){
+        this.savePrivateDataToServer();      
+    }
+    else{
+       this.saveToServerSub = this.networkSvc.onNetworkChange().subscribe(()=>{
+          if(this.networkSvc.getCurrentNetworkStatus() == ConnectionStatus.Online){
+            this.savePrivateDataToServer();
+          }
+      });
+    }
+  }
+
+  private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
+  private getRefreshToken() {
+    console.log("tailored_messages.component.ts - getRefreshToken method - begin " + localStorage.getItem(this.REFRESH_TOKEN));
+    return localStorage.getItem(this.REFRESH_TOKEN);
+  }
+
+  private readonly ACCESS_TOKEN = 'ACCESS_TOKEN';
+  private storeAccessToken(token: string, expires: string) {
+    console.log("tailored_messages.component.ts - storeAccessToken method - begin");
+    localStorage.setItem(this.ACCESS_TOKEN, token);
+    const expirationDate = new Date(new Date().getTime() + +expires * 1000);
+    localStorage.ACCESS_TOKEN_EXPIRATION = expirationDate;
+    //this.loadTailoredMessage();
+    this.savePrivateDataToServerConnectionAware();//Here we are storing private data.
+  }
+  getAccessToken() {
+    console.log("auth.service.ts - getAccessToken method - begin");
+    return localStorage.getItem(this.ACCESS_TOKEN);
+  }
+
+  refreshToken() {
+    console.log("tailored_messages.component.ts - refreshToken method - begin");
+    const token = this.getRefreshToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      })
+    };
+    let me = this;
+    this.http.post<any>(`${environment.userServer}/token/refresh`, { 
+      'refreshToken': this.getRefreshToken() 
+    }, httpOptions).subscribe(data => {
+        console.log(JSON.stringify(data));
+        me.storeAccessToken(data.access_token, data.access_expires);//we try to store the token
+    });  
   }
 
 }

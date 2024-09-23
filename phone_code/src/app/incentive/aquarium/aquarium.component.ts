@@ -42,6 +42,7 @@ export class AquariumComponent implements OnInit {
     weeklyMed: any;
     altMsgsImages: any;
     memeImages: any;
+    isAYA = true;
 
     @ViewChild('swiperContainer') swiperRefRewards: ElementRef | undefined;
 
@@ -102,6 +103,10 @@ export class AquariumComponent implements OnInit {
         if (this.platform.is('ios')) {
             this.isIOS = true;
         }
+
+        this.isAYA = true;
+        if(this.userProfileService.isParent == true)
+            this.isAYA = false;
 
         this.sideMenu();
 
@@ -611,8 +616,41 @@ export class AquariumComponent implements OnInit {
         this.navController.navigateRoot(['survey/samplesurvey2']);
     }
 
-
     startSurvey() {
+        console.log('start survey');
+        var currentTime = moment();
+        var startTime = moment({ hour: 18 });  // 6pm
+        var endTime = moment({ hour: 23, minute: 59 });  // 11:59pm
+        var firstLogin = this.userProfileService.userProfile.firstlogin;
+        if (firstLogin == undefined) firstLogin = true;
+        this.userProfileService.userProfile.firstlogin = false;
+        this.userProfileService.saveProfileToDevice();
+        this.userProfileService.saveToServer();
+        if (!currentTime.isBetween(startTime, endTime) && !firstLogin) {
+            this.presentAlert('Please come back between 6 PM and midnight');
+        } else if (this.userProfileService.surveyTakenForCurrentDay()) {
+            this.presentAlert('You have already completed the survey for the day.');
+        } else {
+            if (this.userProfileService.isParent) {
+                this.navController.navigateRoot(['survey/samplesurvey']);  //caregiversurvey
+            } else {
+                this.navController.navigateRoot(['survey/samplesurvey2']);  //aya
+            }
+
+        }
+    }
+
+    startSurveyTimeUnrestricted() {
+        if (this.userProfileService.isParent) {
+            this.navController.navigateRoot(['survey/samplesurvey']);  //caregiversurvey
+        } else {
+            this.navController.navigateRoot(['survey/samplesurvey2']);  //aya
+        }
+    }
+
+
+
+    startSleepSurvey() {
         console.log('start survey');
         var currentTime = moment();
         let startTimeSleep = moment({ hour: 8 });  // 8am
