@@ -492,7 +492,7 @@ export class UserProfileService {
     //let requestDataJson = {"user_id": this.userProfileService.username, "sleep_data": {"report_date": "20210907", "start": "1:30", "end": "07:30"}}
 
     var encrypted = this.EncrDecr.encrypt(JSON.stringify(privateUserData), environment.encyptString);
-    console.log("Private encrypted data: " + encrypted);
+    //console.log("Private encrypted data: " + encrypted);
 
     //We upload, start with refreshToken.
     //refreshToken will find a refresh token,
@@ -531,9 +531,15 @@ export class UserProfileService {
           'Content-Type': 'application/json'
         })
       };
+
+      var fake_object = {"isThisFake":"yes"};
+      //var encrypted = this.EncrDecr.encrypt(JSON.stringify(privateUserData), environment.encyptString);
+      var encrypted = this.EncrDecr.encrypt(JSON.stringify(fake_object), environment.encyptString);
+      console.log("Private encrypted data: " + encrypted);
+
       let flaskServerAPIEndpoint = environment.privateDataUploadEndpoint;
       this.http
-        .post(flaskServerAPIEndpoint, privateUserData, httpOptions)
+        .post(flaskServerAPIEndpoint, '"' + encrypted + '"', httpOptions)
         .subscribe(response =>{
           console.log("---userprofile: privateUserData upload response----");
           console.log(response);
