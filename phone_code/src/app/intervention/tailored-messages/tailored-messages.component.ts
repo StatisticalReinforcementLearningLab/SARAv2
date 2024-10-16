@@ -4,6 +4,7 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import * as moment from 'moment';
 import { tap } from 'rxjs/operators';
 import { EncrDecrService } from 'src/app/storage/encrdecrservice.service';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -29,6 +30,7 @@ export class TailoredMessagesComponent implements OnInit {
     private httpClient: HttpClient,
     private route: ActivatedRoute, 
     private http: HttpClient,
+    private uploadService: UploadserviceService,
     private router: Router) { 
       this.message="loading..";
       this.survey_responses = ["loading", "loading"];
@@ -53,7 +55,11 @@ export class TailoredMessagesComponent implements OnInit {
     reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned a dollar', 'text': 'Thanks for surveys three days in a row! You earned 1 dollar.' });
     this.reinforcements = reinforcements;
 
-    this.refreshToken();
+    //this.uploadService.executeCallbackFunction(this.loadTailoredMessage);
+    // const accessToken$ = 
+    this.uploadService.getAccessToken().subscribe(
+      accessToken => this.loadTailoredMessage(accessToken)
+    );
   }
 
   goHome(){
@@ -70,7 +76,15 @@ export class TailoredMessagesComponent implements OnInit {
     }
   }
 
-  loadTailoredMessage() {
+  loadTailoredMessage2(){
+    //I can callback function
+    console.log("Call back function called");
+  }
+  loadTailoredMessage(accessToken) {
+
+    //this is not returning in the call back
+    //Note we will not address the 
+
     let ayaSurvey = this.getTodaysSurveyData();
     console.log("==survey==" + JSON.stringify(ayaSurvey));
 
@@ -78,7 +92,11 @@ export class TailoredMessagesComponent implements OnInit {
       this.isSurveyDone = false;
     }else{
       this.isSurveyDone = true;
-      const token = this.getAccessToken();
+      if(accessToken==undefined)
+        accessToken = localStorage.getItem('ACCESS_TOKEN');//If this expires we can't do anything
+      // const token = this.uploadService.getRefreshToken();
+      console.log("AccessToken: " + accessToken);
+      const token = accessToken;
       const httpOptions = {
         headers: new HttpHeaders({
           'Authorization': `Bearer ${token}`,
@@ -188,80 +206,80 @@ export class TailoredMessagesComponent implements OnInit {
     this.router.navigate(['home']);
   }
 
-  refreshToken() {
-    console.log("tailored_messages.component.ts - refreshToken method - begin");
-    const token = this.getRefreshToken();
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': `Bearer ${token}`
-      })
-    };
+  // refreshToken() {
+  //   console.log("tailored_messages.component.ts - refreshToken method - begin");
+  //   const token = this.getRefreshToken();
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Authorization': `Bearer ${token}`
+  //     })
+  //   };
 
-    // this.httpClient.post(flaskServerAPIEndpoint + '/get_message', requestDataJson).subscribe({
-    //       next: data => {
-    //         // console.log(JSON.stringify(data));
-    //         console.log("==response==" + JSON.stringify(data));
-    //         this.message = data["sampled_message"]
-    //         this.interventionImage = this.loadInterventionImage(data);
+  //   // this.httpClient.post(flaskServerAPIEndpoint + '/get_message', requestDataJson).subscribe({
+  //   //       next: data => {
+  //   //         // console.log(JSON.stringify(data));
+  //   //         console.log("==response==" + JSON.stringify(data));
+  //   //         this.message = data["sampled_message"]
+  //   //         this.interventionImage = this.loadInterventionImage(data);
 
-    //         //populate the rest of the view
-    //         this.survey_responses = [];
-    //         for (const key in data["survey_processed"]){
-    //           // console.log("" + key + ": " + data["survey_processed"][key]);
-    //           this.survey_responses.push("" + key + ": " + data["survey_processed"][key]);
-    //         }
+  //   //         //populate the rest of the view
+  //   //         this.survey_responses = [];
+  //   //         for (const key in data["survey_processed"]){
+  //   //           // console.log("" + key + ": " + data["survey_processed"][key]);
+  //   //           this.survey_responses.push("" + key + ": " + data["survey_processed"][key]);
+  //   //         }
 
-    //         this.selected_bucket_id = data['sampled_bucket']['message_bucket_id'];
-    //         this.selected_bucket_messages = data['sampled_bucket']['messages'];
+  //   //         this.selected_bucket_id = data['sampled_bucket']['message_bucket_id'];
+  //   //         this.selected_bucket_messages = data['sampled_bucket']['messages'];
 
-    //         //
-    //         this.all_buckets = JSON.stringify(data['all_relevant_buckets'], null, 2);
-
-
-    //       },
-    //       error: error => console.error('There was an error!', error)
-    //   }); 
-    // }
-    let me = this;
-    this.http.post<any>(`${environment.userServer}/token/refresh`, { 
-      'refreshToken': this.getRefreshToken() 
-    }, httpOptions).subscribe(data => {
-        console.log(JSON.stringify(data));
-        me.storeAccessToken(data.access_token, data.access_expires);
-    });  
-
-    // return this.http.post<any>(`${environment.userServer}/token/refresh`, {
-    //   'refreshToken': this.getRefreshToken() 
-    // },httpOptions ).pipe(tap((
-    //     resData: {
-    //       "access_token": string, 
-    //       "access_expires": string}) => {
-    //     console.log("====refreshed token====");
-    //     console.log(resData);
-    //     this.storeAccessToken(resData.access_token, resData.access_expires);
-    // }));
+  //   //         //
+  //   //         this.all_buckets = JSON.stringify(data['all_relevant_buckets'], null, 2);
 
 
-  }
+  //   //       },
+  //   //       error: error => console.error('There was an error!', error)
+  //   //   }); 
+  //   // }
+  //   let me = this;
+  //   this.http.post<any>(`${environment.userServer}/token/refresh`, { 
+  //     'refreshToken': this.getRefreshToken() 
+  //   }, httpOptions).subscribe(data => {
+  //       console.log(JSON.stringify(data));
+  //       me.storeAccessToken(data.access_token, data.access_expires);
+  //   });  
 
-  private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
-  private getRefreshToken() {
-    console.log("tailored_messages.component.ts - getRefreshToken method - begin " + localStorage.getItem(this.REFRESH_TOKEN));
-    return localStorage.getItem(this.REFRESH_TOKEN);
-  }
+  //   // return this.http.post<any>(`${environment.userServer}/token/refresh`, {
+  //   //   'refreshToken': this.getRefreshToken() 
+  //   // },httpOptions ).pipe(tap((
+  //   //     resData: {
+  //   //       "access_token": string, 
+  //   //       "access_expires": string}) => {
+  //   //     console.log("====refreshed token====");
+  //   //     console.log(resData);
+  //   //     this.storeAccessToken(resData.access_token, resData.access_expires);
+  //   // }));
 
-  private readonly ACCESS_TOKEN = 'ACCESS_TOKEN';
-  private storeAccessToken(token: string, expires: string) {
-    console.log("tailored_messages.component.ts - storeAccessToken method - begin");
-    localStorage.setItem(this.ACCESS_TOKEN, token);
-    const expirationDate = new Date(new Date().getTime() + +expires * 1000);
-    localStorage.ACCESS_TOKEN_EXPIRATION = expirationDate;
-    this.loadTailoredMessage();
-  }
-  getAccessToken() {
-    console.log("auth.service.ts - getAccessToken method - begin");
-    return localStorage.getItem(this.ACCESS_TOKEN);
-  }
+
+  // }
+
+  // private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
+  // private getRefreshToken() {
+  //   console.log("tailored_messages.component.ts - getRefreshToken method - begin " + localStorage.getItem(this.REFRESH_TOKEN));
+  //   return localStorage.getItem(this.REFRESH_TOKEN);
+  // }
+
+  // private readonly ACCESS_TOKEN = 'ACCESS_TOKEN';
+  // private storeAccessToken(token: string, expires: string) {
+  //   console.log("tailored_messages.component.ts - storeAccessToken method - begin");
+  //   localStorage.setItem(this.ACCESS_TOKEN, token);
+  //   const expirationDate = new Date(new Date().getTime() + +expires * 1000);
+  //   localStorage.ACCESS_TOKEN_EXPIRATION = expirationDate;
+  //   this.loadTailoredMessage();
+  // }
+  // getAccessToken() {
+  //   console.log("auth.service.ts - getAccessToken method - begin");
+  //   return localStorage.getItem(this.ACCESS_TOKEN);
+  // }
 
 
 }

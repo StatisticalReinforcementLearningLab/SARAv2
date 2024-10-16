@@ -27,6 +27,8 @@ import { SurveyTimeline } from '../model/surveyTimeline';
 import { UnlockedIncentives } from '../../incentive/model/unlocked-incentives';
 import { surveyCompletedRegisterUnlocked } from 'src/app/incentive/incentive.actions';
 import { JSONOutput } from 'aws-sdk/clients/s3';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
+import { UploadItem } from 'src/app/storage/queue';
 
 @Component({
     selector: 'app-dynamic-survey',
@@ -55,6 +57,7 @@ export class DynamicSurveyComponent implements OnInit {
         private _m: NgModuleRef<any>,
         private awsS3Service: AwsS3Service,
         private EncrDecr: EncrDecrService,
+        private uploadService: UploadserviceService,
         private router: Router,
         private changeDetector: ChangeDetectorRef,
         private appVersion: AppVersion,
@@ -78,6 +81,8 @@ export class DynamicSurveyComponent implements OnInit {
         this.isAYA = true;
         if(this.userProfileService.isParent == true)
             this.isAYA = false;
+
+        //this.uploadService.refreshToken();
 
     }
 
@@ -144,6 +149,7 @@ export class DynamicSurveyComponent implements OnInit {
             surveyQuestionsInJSONDictFormat = [];
             alertCtrl;
             store: Store<AppState>;
+            uploadService: UploadserviceService;
 
             constructor() {
             }
@@ -382,7 +388,7 @@ export class DynamicSurveyComponent implements OnInit {
                 this.addMetaTagsToSurvey();
 
                 //--- encrypt the survey and upload it to S3.
-                this.enycryptSurveyDataAndUploadToS3();
+                this.enycryptSurveyDataAndUploadToServer();
 
                 //--- save an encrypted copy of the survey
                 this.saveEncryptedSurveyLocally();
@@ -435,12 +441,23 @@ export class DynamicSurveyComponent implements OnInit {
                 this.surveyAnswersJSONObject['appVersion'] = this.versionNumber;
             }
 
-            enycryptSurveyDataAndUploadToS3() {
+            enycryptSurveyDataAndUploadToServer() {
                 var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.surveyAnswersJSONObject), environment.encyptString);
                 var surveyEncrypted = {};
                 surveyEncrypted['encrypted'] = encrypted;
                 this.surveyAnswersJSONObject['encrypted'] = encrypted;
-                this.awsS3Service.upload(this.fileLink, surveyEncrypted);
+                //this.awsS3Service.upload(this.fileLink, surveyEncrypted);
+                //this.uploadService.refreshToken();
+                
+                // var item = {};
+                // item['data'] = this.surveyAnswersJSONObject;
+                // item['typeOfData'] = 'daily_survey';
+                var item = new UploadItem();
+                item.isEncrypted = true;
+                item.data = this.surveyAnswersJSONObject;
+                item.typeOfData = 'daily_survey';
+                item.uploadURLLocation = '';
+                this.uploadService.addToUploadQueue(item);
             }
 
             storeToNgrxAndUpdateState() {
@@ -589,6 +606,14 @@ export class DynamicSurveyComponent implements OnInit {
                         reinforcement_data['reward_file_link'] = '';
                         window.localStorage['reinforcement_data'] = JSON.stringify(reinforcement_data);
                     }
+
+                    //reinforcement data is upload
+                    var item = new UploadItem();
+                    item.isEncrypted = true;
+                    item.data = reinforcement_data;
+                    item.typeOfData = 'reinforcement';
+                    item.uploadURLLocation = '';
+                    this.uploadService.addToUploadQueue(item);
                 }
 
                 //add for the  modal object
@@ -943,6 +968,7 @@ export class DynamicSurveyComponent implements OnInit {
                 cmpRef.instance.alertCtrl = this.alertCtrl;
                 cmpRef.instance.userProfileService = this.userProfileService;
                 cmpRef.instance.awardDollarService = this.awardDollarService;
+                cmpRef.instance.uploadService = this.uploadService;
                 cmpRef.instance.EncrDecr = this.EncrDecr;
                 cmpRef.instance.plt = this.plt;
                 cmpRef.instance.router = this.router;// Router,

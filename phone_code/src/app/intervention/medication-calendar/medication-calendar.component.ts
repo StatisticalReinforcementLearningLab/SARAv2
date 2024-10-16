@@ -123,7 +123,7 @@ export class MedicationCalendarComponent implements OnInit {
         }, 100);
         // console.log(JSON.stringify(this.userProfileService.userProfile));
 
-        this.getEcapsMedicationList(undefined);
+        this.getEcapsMedicationList(undefined, this);
         
     }  
     
@@ -622,15 +622,15 @@ export class MedicationCalendarComponent implements OnInit {
     openEcap() {
         let me = this;
         certiscan.scan(function(responseTxt) {
-            alert(responseTxt);
+            // alert(responseTxt);
             // Put the object into storage
             window.localStorage.setItem('ecap_response', JSON.stringify(responseTxt));
             console.log("--- ecap_response" + responseTxt);
-            me.getEcapsMedicationList(responseTxt);
+            me.getEcapsMedicationList(responseTxt, me);
         })
     }
 
-    getEcapsMedicationList(responseTxt) {
+    getEcapsMedicationList(responseTxt, me) {
         // print prior ecap record if exists:
         // ----Retrieve the object from storage
         if(window.localStorage.hasOwnProperty('ecap_response')){
@@ -643,9 +643,16 @@ export class MedicationCalendarComponent implements OnInit {
             else
                 res = responseTxt;
             let events = this.formatEcapData(res);
-            this.eventSource = events;
-            console.log('===ecap_scanned===' + JSON.stringify(events));
-            this.updateMedicationList();// also save
+            me.eventSource = events;
+            console.log('===ecap_scanned: events===' + JSON.stringify(events.reverse()));
+            console.log('===ecap_scanned: eventsource===' + JSON.stringify(me.eventSource));
+            //let me = this;
+            setTimeout(() => {
+                me.updateMedicationList();// also save
+                console.log('===ecap_scanned 2===' + JSON.stringify(events));
+                console.log('===ecap_scanned 2===' + JSON.stringify(me.eventSource));
+                me.myCal.loadEvents();
+            }, 100);
         }else{
             console.log('ecap_record: no record');
         }
