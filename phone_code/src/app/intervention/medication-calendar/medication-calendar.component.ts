@@ -9,6 +9,7 @@ import { UserProfileService } from 'src/app/user/user-profile/user-profile.servi
 import moment from 'moment';
 import { HttpClient } from '@angular/common/http';
 import { Capacitor } from '@capacitor/core';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
 // import { CalModalPage } from '../pages/cal-modal/cal-modal.page';
 
 declare var certiscan: any
@@ -40,6 +41,7 @@ export class MedicationCalendarComponent implements OnInit {
 
     constructor(private modalCtrl: ModalController,
         private userProfileService: UserProfileService,
+        private uploadService: UploadserviceService,
         public httpClient: HttpClient) {
 
     }
@@ -124,6 +126,9 @@ export class MedicationCalendarComponent implements OnInit {
         // console.log(JSON.stringify(this.userProfileService.userProfile));
 
         this.getEcapsMedicationList(undefined, this);
+
+        console.log("---get private data----");
+        this.uploadService.getPrivateUserData();
         
     }  
     
@@ -488,7 +493,7 @@ export class MedicationCalendarComponent implements OnInit {
             }else if(date_clicked["symbolType"] == "add"){
                 return date_str + " - Record unavailable.";
             }else{
-                return date_str + " - 6MP likely not taken.";;
+                return date_str + " - 6MP likely not taken.";
             }
         } else {
             return "";
@@ -662,8 +667,8 @@ export class MedicationCalendarComponent implements OnInit {
             // do something
             //Here, we are taking data from the demo.
             //----
+            const spec = "/assets/data/ecaps_demo_data_2.json";
             //const spec = "/assets/data/ecaps_demo_data.json";
-            const spec = "/assets/data/ecaps_demo_data.json";
             let me = this;
             this.httpClient.get(spec)
                 .subscribe(async (res: any) => {
@@ -675,7 +680,21 @@ export class MedicationCalendarComponent implements OnInit {
                     this.updateMedicationList();// also save
 
                     //save the medication to server as private data
-                    me.userProfileService.savePrivateData('medication_data', events);
+                    //me.userProfileService.savePrivateData('medication_data', events);
+
+                    //upload to private data here
+                    //mock private upload
+                    //this.uploadService.uploadPrivateData({'mock': "mock private data"});
+                    //this.uploadService.getPrivateUserData();
+                    let privateUserDataStr = window.localStorage.getItem('private_user_data');
+                    var privateUserData = {}
+                    console.log("privateUserDataStr: " + privateUserDataStr);
+                    if(privateUserDataStr != "undefined")
+                        privateUserData = JSON.parse(privateUserDataStr);
+                    privateUserData['medication_data'] = events;
+                    console.log("---Uploading medication data----");
+                    me.uploadService.uploadPrivateData(privateUserData);
+                    window.localStorage.setItem('private_user_data', JSON.stringify(responseTxt));
                 });
         }
     

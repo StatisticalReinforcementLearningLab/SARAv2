@@ -4,6 +4,7 @@ import { UserProfileService } from 'src/app/user/user-profile/user-profile.servi
 import { AwsS3Service } from 'src/app/storage/aws-s3.service';
 import * as moment from 'moment';
 import { DatabaseService } from 'src/app/monitor/database.service';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
 
 @Component({
   selector: 'app-award-memes',
@@ -34,7 +35,7 @@ export class AwardMemesComponent implements OnInit {
     private route: ActivatedRoute,   
     private userProfileService: UserProfileService,  
     private awsS3Service: AwsS3Service,
-    private appUsageDb: DatabaseService,
+    private uploadService: UploadserviceService,
     private router: Router) {
       this.reinforcementObj['ds'] = 1;
       this.reinforcementObj['reward'] = 1;
@@ -77,7 +78,7 @@ export class AwardMemesComponent implements OnInit {
      }
     });
     */
-    this.appUsageDb.saveAppUsageEnter("award_meme");  
+    this.uploadService.saveAppUsageEnter("award_meme");  
   }  
 
   ionViewDidLeave(){
@@ -88,7 +89,7 @@ export class AwardMemesComponent implements OnInit {
       }
     });
     */ 
-    this.appUsageDb.saveAppUsageExit("award_meme");     
+    this.uploadService.saveAppUsageExit("award_meme");     
   }
 
 

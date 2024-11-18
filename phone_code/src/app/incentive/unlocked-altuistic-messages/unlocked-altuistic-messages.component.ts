@@ -4,6 +4,7 @@ import { UserProfileService } from 'src/app/user/user-profile/user-profile.servi
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { DatabaseService } from 'src/app/monitor/database.service';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
 
 @Component({
   selector: 'app-unlocked-altuistic-messages',
@@ -17,7 +18,7 @@ export class UnlockedAltuisticMessagesComponent implements OnInit {
 
   constructor(private userProfileService: UserProfileService,
     private httpClient: HttpClient,
-    private appUsageDb: DatabaseService) { }
+    private uploadService: UploadserviceService) { }
 
   get username(){
     if(this.userProfileService == undefined)
@@ -60,7 +61,7 @@ export class UnlockedAltuisticMessagesComponent implements OnInit {
     this.downloadAndUpdateUnlockedAltsMsgsList();
 
     //
-    this.appUsageDb.saveAppUsageEnter("unlocked_altruism_message_tab");  
+    this.uploadService.saveAppUsageEnter("unlocked_altruism_message_tab");  
   }
 
   ionViewDidLeave(){
@@ -71,7 +72,7 @@ export class UnlockedAltuisticMessagesComponent implements OnInit {
       }
     });
     */ 
-    this.appUsageDb.saveAppUsageExit("unlocked_altruism_message_tab");     
+    this.uploadService.saveAppUsageExit("unlocked_altruism_message_tab");     
   }
 
   async downloadAndUpdateUnlockedAltsMsgsList() {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 // import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 import { MenuController } from '@ionic/angular';
 import { DatabaseService } from 'src/app/monitor/database.service';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class BaselineSurveyComponent implements OnInit {
   constructor(
     private userProfileService: UserProfileService,
     // private mobileAccessibility: MobileAccessibility,
-    private appUsageDb: DatabaseService,
+    private uploadService: UploadserviceService,
     private menuCtrl:MenuController) { }
 
   ngOnInit() {
@@ -31,7 +32,7 @@ export class BaselineSurveyComponent implements OnInit {
     });
     */
     console.log("Entered baseline survey");
-    this.appUsageDb.saveAppUsageEnter("baseline_survey_page");
+    this.uploadService.saveAppUsageEnter("baseline_survey_page");
  }
 
  ionViewDidLeave(){
@@ -44,7 +45,7 @@ export class BaselineSurveyComponent implements OnInit {
     });
     */
     // this.mobileAccessibility.usePreferredTextZoom(true);
-    this.appUsageDb.saveAppUsageExit("baseline_survey_page");
+    this.uploadService.saveAppUsageExit("baseline_survey_page");
  }
 
 }

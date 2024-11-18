@@ -1,10 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
 import * as moment from 'moment';
 import { tap } from 'rxjs/operators';
 import { EncrDecrService } from 'src/app/storage/encrdecrservice.service';
+import { UploadItem } from 'src/app/storage/queue';
 import { UploadserviceService } from 'src/app/storage/uploadservice.service';
+import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -25,17 +28,21 @@ export class TailoredMessagesComponent implements OnInit {
   whichImage: string;
   reinforcements;
   interventionImage: string;
+  interventionProbability;
+  intervention_data;
 
   constructor(private EncrDecr: EncrDecrService,
     private httpClient: HttpClient,
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private http: HttpClient,
     private uploadService: UploadserviceService,
-    private router: Router) { 
-      this.message="loading..";
-      this.survey_responses = ["loading", "loading"];
-      this.all_buckets = "Loading";
-    }
+    private userProfileService: UserProfileService,
+    private appVersion: AppVersion,
+    private router: Router) {
+    this.message = "loading..";
+    this.survey_responses = ["loading", "loading"];
+    this.all_buckets = "Loading";
+  }
 
   ngOnInit() {
     this.whichImage = './assets/altruism/altruism_1.png';
@@ -44,11 +51,24 @@ export class TailoredMessagesComponent implements OnInit {
         this.containsNavigationExtras = true;
         this.date = this.router.getCurrentNavigation().extras.state.date;
         this.modalObjectNavigationExtras = this.router.getCurrentNavigation().extras.state.modalObjectNavigationExtras;
-      }else{
+        this.interventionProbability = this.router.getCurrentNavigation().extras.state.interventionRandomizationProb;
+      } else {
         this.containsNavigationExtras = false;
       }
-    }); 
+    });
     
+    this.intervention_data = {};
+    var intervention_data = {};
+    intervention_data['userName'] = this.userProfileService.username;
+    //intervention_data['appVersion'] = this.versionNumber;
+    intervention_data['Prob'] = this.interventionProbability;
+    intervention_data['day_count'] = Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;
+    intervention_data['unix_ts'] = new Date().getTime();
+    intervention_data['readable_ts'] = moment().format('MMMM Do YYYY, h:mm:ss a Z');
+    intervention_data['date'] = moment().format('YYYYMMDD');
+    intervention_data['interventionGiven'] = 1;
+    // intervention_data['data'] = data;
+    this.intervention_data = intervention_data;
 
     var reinforcements = [];
     reinforcements.push({ 'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?" });
@@ -62,21 +82,21 @@ export class TailoredMessagesComponent implements OnInit {
     );
   }
 
-  goHome(){
-    if(this.containsNavigationExtras == true){
+  goHome() {
+    if (this.containsNavigationExtras == true) {
       let navigationExtras: NavigationExtras = {
         state: {
           modalObjectNavigationExtras: this.modalObjectNavigationExtras
         }
       };
       this.router.navigate(['home'], navigationExtras);
-    }else{
+    } else {
       //this.router.navigate(['home']);
       this.router.navigate(['home']);
     }
   }
 
-  loadTailoredMessage2(){
+  loadTailoredMessage2() {
     //I can callback function
     console.log("Call back function called");
   }
@@ -88,11 +108,11 @@ export class TailoredMessagesComponent implements OnInit {
     let ayaSurvey = this.getTodaysSurveyData();
     console.log("==survey==" + JSON.stringify(ayaSurvey));
 
-    if(ayaSurvey == undefined){
+    if (ayaSurvey == undefined) {
       this.isSurveyDone = false;
-    }else{
+    } else {
       this.isSurveyDone = true;
-      if(accessToken==undefined)
+      if (accessToken == undefined)
         accessToken = localStorage.getItem('ACCESS_TOKEN');//If this expires we can't do anything
       // const token = this.uploadService.getRefreshToken();
       console.log("AccessToken: " + accessToken);
@@ -110,48 +130,47 @@ export class TailoredMessagesComponent implements OnInit {
       //let flaskServerAPIEndpoint = environment.flaskServerForTailoredInterventions; //'http://ec2-18-205-212-4.compute-1.amazonaws.com:5002';
       let flaskServerAPIEndpoint = "https://adapts.fsm.northwestern.edu/tailored-messages/get-message.json";
       this.httpClient.post(flaskServerAPIEndpoint, requestDataJson, httpOptions).subscribe({
-          next: data => {
-            // console.log(JSON.stringify(data));
-            console.log("==response==" + JSON.stringify(data));
-            this.message = data["sampled_message"];
-            this.interventionImage = data["sampled_message_image"];//this.loadInterventionImage(data);
+        next: data => {
+          // console.log(JSON.stringify(data));
+          console.log("==response==" + JSON.stringify(data));
+          this.message = data["sampled_message"];
+          this.interventionImage = data["sampled_message_image"];//this.loadInterventionImage(data);
 
-            // save the intervention image for future
-            var already_shown_intervention_messages = window.localStorage["already_shown_intervention_messages"];
-            if(already_shown_intervention_messages == undefined){
-                already_shown_intervention_messages = {
-                    "last_updated": Date.now(),
-                    "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
-                    "unlocked_messages":[]
-                };
-            }
-            else
-                already_shown_intervention_messages = JSON.parse(already_shown_intervention_messages);
+          // save the intervention image for future
+          var already_shown_intervention_messages = window.localStorage["already_shown_intervention_messages"];
+          if (already_shown_intervention_messages == undefined) {
+            already_shown_intervention_messages = {
+              "last_updated": Date.now(),
+              "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
+              "unlocked_messages": []
+            };
+          }
+          else
+            already_shown_intervention_messages = JSON.parse(already_shown_intervention_messages);
 
-            already_shown_intervention_messages["last_updated"] = Date.now();
-            already_shown_intervention_messages["last_updated_readable_ts"] = moment().format("MMMM Do YYYY, h:mm:ss a Z");
-            already_shown_intervention_messages["unlocked_messages"].push({"filename": this.interventionImage, "unlock_date": moment().format('MM/DD/YYYY')});
-            window.localStorage["already_shown_intervention_messages"] = JSON.stringify(already_shown_intervention_messages);
-        
-            /*
-            //populate the rest of the view
-            this.survey_responses = [];
-            for (const key in data["survey_processed"]){
-              // console.log("" + key + ": " + data["survey_processed"][key]);
-              this.survey_responses.push("" + key + ": " + data["survey_processed"][key]);
-            }
+          already_shown_intervention_messages["last_updated"] = Date.now();
+          already_shown_intervention_messages["last_updated_readable_ts"] = moment().format("MMMM Do YYYY, h:mm:ss a Z");
+          already_shown_intervention_messages["unlocked_messages"].push({ "filename": this.interventionImage, "unlock_date": moment().format('MM/DD/YYYY') });
+          window.localStorage["already_shown_intervention_messages"] = JSON.stringify(already_shown_intervention_messages);
 
-            this.selected_bucket_id = data['sampled_bucket']['message_bucket_id'];
-            this.selected_bucket_messages = data['sampled_bucket']['messages'];
+          /*
+          //populate the rest of the view
+          this.survey_responses = [];
+          for (const key in data["survey_processed"]){
+            // console.log("" + key + ": " + data["survey_processed"][key]);
+            this.survey_responses.push("" + key + ": " + data["survey_processed"][key]);
+          }
 
-            //
-            this.all_buckets = JSON.stringify(data['all_relevant_buckets'], null, 2);
-            */
+          this.selected_bucket_id = data['sampled_bucket']['message_bucket_id'];
+          this.selected_bucket_messages = data['sampled_bucket']['messages'];
 
-
-          },
-          error: error => console.error('There was an error!', error)
-      }); 
+          //
+          this.all_buckets = JSON.stringify(data['all_relevant_buckets'], null, 2);
+          */
+          this.intervention_data['data'] = data;
+        },
+        error: error => console.error('There was an error!', error)
+      });
     }
   }
   loadInterventionImage(data: Object): string {
@@ -164,46 +183,66 @@ export class TailoredMessagesComponent implements OnInit {
     Otherwise, return the same object
     */
     var requestDataJson = undefined;
-    if (window.localStorage['localSurvey'] != undefined){
-        let locallyStoredSurvey = JSON.parse(window.localStorage.getItem('localSurvey'));
-        if (locallyStoredSurvey.hasOwnProperty('alex_survey_aya')) {
-          if(locallyStoredSurvey['alex_survey_aya']["date"] == moment().format('YYYYMMDD')){
-            //decrypt the data and add to the requestDataJson
-            var decrypted = this.EncrDecr.decrypt(locallyStoredSurvey['alex_survey_aya']["encrypted"], environment.encyptString);
-            let decryptedAYASurvey = JSON.parse(decrypted);
-            requestDataJson = decryptedAYASurvey;
-          } 
+    if (window.localStorage['localSurvey'] != undefined) {
+      let locallyStoredSurvey = JSON.parse(window.localStorage.getItem('localSurvey'));
+      if (locallyStoredSurvey.hasOwnProperty('alex_survey_aya')) {
+        if (locallyStoredSurvey['alex_survey_aya']["date"] == moment().format('YYYYMMDD')) {
+          //decrypt the data and add to the requestDataJson
+          var decrypted = this.EncrDecr.decrypt(locallyStoredSurvey['alex_survey_aya']["encrypted"], environment.encyptString);
+          let decryptedAYASurvey = JSON.parse(decrypted);
+          requestDataJson = decryptedAYASurvey;
         }
+      }
     }
     console.log("requestDataJson: " + JSON.stringify(requestDataJson));
     return requestDataJson;
   }
 
-  ratingChanged(rating){
-    /*
-    if(rating==0) {
+  ratingChanged(rating) {
+
+    if (rating == 0) {
       //console.log("thumbs down");
-      this.reinforcementObj['Like'] = "No";
-      this.reinforcement_data['Like'] = "No";
-      window.localStorage.setItem("Like", "No");
-      this.awsS3Service.upload('reinforcement_data', this.reinforcement_data); 
-    } else {
+      this.intervention_data['data']['Like'] = "No";
+      // window.localStorage.setItem("Like", "No");
+      //this.awsS3Service.upload('reinforcement_data', this.reinforcement_data);
+    } 
+    if (rating == 1) {
       //console.log("thumbs up");
-      this.reinforcementObj['Like'] = "Yes";
-      this.reinforcement_data['Like'] = "Yes";
-      window.localStorage.setItem("Like", "Yes");
-      this.awsS3Service.upload('reinforcement_data', this.reinforcement_data); 
+      this.intervention_data['data']['Like'] = "Yes";
+      //window.localStorage.setItem("Like", "Yes");
+      //this.awsS3Service.upload('reinforcement_data', this.reinforcement_data);
     }
-    
-    this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);
-    
+    if (rating == 2) {
+      //console.log("thumbs up");
+      this.intervention_data['data']['Like'] = "Favorited";
+      //window.localStorage.setItem("Like", "Yes");
+      //this.awsS3Service.upload('reinforcement_data', this.reinforcement_data);
+    }
+
+    // this.userProfileService.addReinforcementData(this.date, this.reinforcementObj);
+
+    // let navigationExtras: NavigationExtras = {
+    //   state: {
+    //     modalObjectNavigationExtras: this.modalObjectNavigationExtras
+    //   }
+    // };
+
+
+    //reinforcement data upload
+    var item = new UploadItem();
+    item.isEncrypted = true;
+    item.data = this.intervention_data;
+    item.typeOfData = 'intervention_data';
+    item.uploadURLLocation = '';
+    this.uploadService.addToUploadQueue(item);
+
+    // this.router.navigate(['home']);
     let navigationExtras: NavigationExtras = {
       state: {
         modalObjectNavigationExtras: this.modalObjectNavigationExtras
       }
     };
-    */
-    this.router.navigate(['home']);
+    this.router.navigate(['home'], navigationExtras);
   }
 
   // refreshToken() {

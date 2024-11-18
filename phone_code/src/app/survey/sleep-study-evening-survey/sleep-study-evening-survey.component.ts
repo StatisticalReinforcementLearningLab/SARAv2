@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 // import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
-import { DatabaseService } from 'src/app/monitor/database.service';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
 
 @Component({
   selector: 'app-sleep-study-evening-survey',
@@ -14,7 +14,7 @@ export class SleepStudyEveningSurveyComponent implements OnInit {
 
   constructor(private userProfileService: UserProfileService,
     // private mobileAccessibility: MobileAccessibility,
-    private appUsageDb: DatabaseService) { }
+    private uploadService: UploadserviceService) { }
 
   ngOnInit() {
     // this.mobileAccessibility.usePreferredTextZoom(false);
@@ -29,7 +29,7 @@ export class SleepStudyEveningSurveyComponent implements OnInit {
      }
     });
     */
-    this.appUsageDb.saveAppUsageEnter("sleep_evening_survey_page");
+    this.uploadService.saveAppUsageEnter("sleep_evening_survey_page");
   }
 
   ionViewDidLeave(){
@@ -43,6 +43,6 @@ export class SleepStudyEveningSurveyComponent implements OnInit {
       */
 
       // this.mobileAccessibility.usePreferredTextZoom(true);
-      this.appUsageDb.saveAppUsageExit("sleep_evening_survey_page");
+      this.uploadService.saveAppUsageExit("sleep_evening_survey_page");
   }
 }

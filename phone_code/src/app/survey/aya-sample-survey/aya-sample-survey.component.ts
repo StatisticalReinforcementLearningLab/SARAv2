@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from 'src/app/monitor/database.service';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 // import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 
@@ -13,7 +14,7 @@ export class AyaSampleSurveyComponent implements OnInit {
   constructor(
     private userProfileService: UserProfileService,
     // private mobileAccessibility: MobileAccessibility,
-    private appUsageDb: DatabaseService) { }
+    private uploadService: UploadserviceService) { }
 
   ngOnInit() {
     // this.mobileAccessibility.usePreferredTextZoom(false);
@@ -27,7 +28,8 @@ export class AyaSampleSurveyComponent implements OnInit {
      }
     });
     */
-    this.appUsageDb.saveAppUsageEnter("aya_survey_page");
+    this.uploadService.saveAppUsageEnter("aya_survey_page");
+
  }
 
  ionViewDidLeave(){
@@ -40,7 +42,7 @@ export class AyaSampleSurveyComponent implements OnInit {
     });
     */
     // this.mobileAccessibility.usePreferredTextZoom(true);
-    this.appUsageDb.saveAppUsageExit("aya_survey_page");
+    this.uploadService.saveAppUsageExit("aya_survey_page");
 
  }
 

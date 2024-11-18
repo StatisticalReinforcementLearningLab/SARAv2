@@ -455,7 +455,10 @@ export class DynamicSurveyComponent implements OnInit {
                 var item = new UploadItem();
                 item.isEncrypted = true;
                 item.data = this.surveyAnswersJSONObject;
-                item.typeOfData = 'daily_survey';
+                if(this.fileLink.includes('baseline'))
+                    item.typeOfData = 'baseline_survey';
+                else
+                    item.typeOfData = 'daily_survey';
                 item.uploadURLLocation = '';
                 this.uploadService.addToUploadQueue(item);
             }
@@ -607,7 +610,7 @@ export class DynamicSurveyComponent implements OnInit {
                         window.localStorage['reinforcement_data'] = JSON.stringify(reinforcement_data);
                     }
 
-                    //reinforcement data is upload
+                    //reinforcement data upload
                     var item = new UploadItem();
                     item.isEncrypted = true;
                     item.data = reinforcement_data;
@@ -664,7 +667,36 @@ export class DynamicSurveyComponent implements OnInit {
                     navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
                     this.router.navigate(['home'], navigationExtras);
                 }else{
-                    this.router.navigate(['intervention/tailored-message'], navigationExtras);
+                    var interventionRandomizationProb = Math.random();
+                    if(interventionRandomizationProb >=0.0){
+                        //if(interventionRandomizationProb >=1.1){
+                        navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
+                        navigationExtras['state']['interventionRandomizationProb'] = interventionRandomizationProb;
+                        navigationExtras['state']['interventionGiven'] = 1;
+                        this.router.navigate(['intervention/tailored-message'], navigationExtras);
+                    }else{
+                        //upload intervention data
+                        var intervention_data = {};
+                        intervention_data['userName'] = this.userProfileService.username;
+                        intervention_data['appVersion'] = this.versionNumber;
+                        intervention_data['Prob'] = interventionRandomizationProb;
+                        intervention_data['day_count'] = Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;
+                        intervention_data['unix_ts'] = new Date().getTime();
+                        intervention_data['readable_ts'] = moment().format('MMMM Do YYYY, h:mm:ss a Z');
+                        intervention_data['date'] = currentDate;
+                        intervention_data['interventionGiven'] = 0;
+                        //reinforcement data upload
+                        var item = new UploadItem();
+                        item.isEncrypted = true;
+                        item.data = intervention_data;
+                        item.typeOfData = 'intervention_data';
+                        item.uploadURLLocation = '';
+                        this.uploadService.addToUploadQueue(item);
+
+                        navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
+                        this.router.navigate(['home'], navigationExtras);
+                    }
+
                 }
 
 

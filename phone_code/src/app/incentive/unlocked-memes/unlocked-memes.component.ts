@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 import { HttpClient } from '@angular/common/http';
 import { DatabaseService } from 'src/app/monitor/database.service';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
 
 @Component({
   selector: 'app-unlocked-memes',
@@ -17,7 +18,7 @@ export class UnlockedMemesComponent implements OnInit {
 
   constructor(private userProfileService: UserProfileService,
     private httpClient: HttpClient,
-    private appUsageDb: DatabaseService) { 
+    private uploadService: UploadserviceService) { 
   }
 
   get username(){
@@ -70,7 +71,7 @@ export class UnlockedMemesComponent implements OnInit {
     this.downloadAndUpdateUnlockedMemeList();
 
     //
-    this.appUsageDb.saveAppUsageEnter("unlocked_meme_tab"); 
+    this.uploadService.saveAppUsageEnter("unlocked_meme_tab"); 
   }
 
   ionViewDidLeave(){
@@ -81,7 +82,7 @@ export class UnlockedMemesComponent implements OnInit {
       }
     });
     */ 
-    this.appUsageDb.saveAppUsageExit("unlocked_meme_tab");     
+    this.uploadService.saveAppUsageExit("unlocked_meme_tab");     
   }
 
   

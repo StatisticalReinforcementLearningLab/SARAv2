@@ -1,4 +1,4 @@
-dimport sys
+import sys
 from flask import Flask
 from flask import send_file
 import altair as alt

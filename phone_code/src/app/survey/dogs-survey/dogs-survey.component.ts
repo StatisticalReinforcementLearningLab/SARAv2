@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 // import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 import { DatabaseService } from 'src/app/monitor/database.service';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
 
 @Component({
   selector: 'app-dogs-survey',
@@ -16,7 +17,7 @@ export class DogsSurveyComponent implements OnInit {
 
   constructor(private userProfileService: UserProfileService,
     // private mobileAccessibility: MobileAccessibility,
-    private appUsageDb: DatabaseService) { }
+    private uploadService: UploadserviceService) { }
 
     ngOnInit() {
       // this.mobileAccessibility.usePreferredTextZoom(false);
@@ -33,7 +34,7 @@ export class DogsSurveyComponent implements OnInit {
       });
       */
 
-      this.appUsageDb.saveAppUsageEnter("dogs_survey_page");
+      this.uploadService.saveAppUsageEnter("dogs_survey_page");
 
    }
 
@@ -48,7 +49,7 @@ export class DogsSurveyComponent implements OnInit {
       */
 
       // this.mobileAccessibility.usePreferredTextZoom(true);
-      this.appUsageDb.saveAppUsageExit("dogs_survey_page");
+      this.uploadService.saveAppUsageExit("dogs_survey_page");
 
    }
 

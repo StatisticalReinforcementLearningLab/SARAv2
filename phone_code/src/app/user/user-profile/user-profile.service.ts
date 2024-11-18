@@ -33,7 +33,8 @@ export class UserProfileService {
   initializeObs(){
     //get profiles from server
     console.log("user-profile.service.ts - initializeObs method");
-    let getProfile = this.http.post<any>(environment.userServer+'/userinfo',{"empty":"empty"});
+    //let getProfile = this.http.post<any>(environment.userServer+'/userinfo',{"empty":"empty"});
+    let getProfile = this.http.get<any>(environment.userServer+'/userinfo');
     let getProfileFixed = this.http.get<any>(environment.userServer+'/userinfofixed');
 
     // forkJoin will return an observable that waits till both http requests have received responses
@@ -74,7 +75,8 @@ export class UserProfileService {
   fetchUserProfile(){
     //get userProfile from server
     console.log("user-profile.service.ts - fetchUserProfile method");
-    let getProfile = this.http.post<any>(environment.userServer+'/userinfo',{"empty":"empty"});
+    //let getProfile = this.http.post<any>(environment.userServer+'/userinfo',{"empty":"empty"});
+    let getProfile = this.http.get<any>(environment.userServer+'/userinfo');
 
     return getProfile
       .pipe(tap(

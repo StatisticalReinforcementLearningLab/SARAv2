@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 //import { PreLoad } from '../../PreLoad';
 import { DatabaseService } from 'src/app/monitor/database.service';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
 // import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 
@@ -17,7 +18,7 @@ export class SampleSurveyComponent implements OnInit {
   constructor(
     private userProfileService: UserProfileService,
     // private mobileAccessibility: MobileAccessibility,
-    private appUsageDb: DatabaseService
+    private uploadService: UploadserviceService
   ) { }
 
   ngOnInit() {
@@ -26,14 +27,14 @@ export class SampleSurveyComponent implements OnInit {
 
   ionViewDidEnter(){
     //
-    this.appUsageDb.saveAppUsageEnter("cg_survey_page");
+    this.uploadService.saveAppUsageEnter("cg_survey_page");
 
  }
 
  ionViewDidLeave(){
     //
     // this.mobileAccessibility.usePreferredTextZoom(true);
-    this.appUsageDb.saveAppUsageExit("cg_survey_page");
+    this.uploadService.saveAppUsageExit("cg_survey_page");
 
  }
 

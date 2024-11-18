@@ -18,6 +18,7 @@ import { AwsS3Service } from '../../storage/aws-s3.service';
 import embed from 'vega-embed';
 import { Swiper } from 'swiper/types';
 import { HttpClient } from '@angular/common/http';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
 
 @Component({
     selector: 'app-aquarium',
@@ -74,7 +75,7 @@ export class AquariumComponent implements OnInit {
         private store: Store<AppState>,
         public navController: NavController,
         private menu: MenuController,
-        private appUsageDb: DatabaseService,
+        private uploadService: UploadserviceService,
         private awsS3Service: AwsS3Service,
         private userProfileService: UserProfileService,
         public httpClient: HttpClient) {
@@ -109,6 +110,11 @@ export class AquariumComponent implements OnInit {
             this.isAYA = false;
 
         this.sideMenu();
+
+        //
+        console.log("---UserProfile---");
+        console.log(JSON.stringify(this.userProfileService.userProfile));
+        console.log(JSON.stringify(this.userProfileService.userProfileFixed));
 
         // //
         // this.weeklyMed = [
@@ -347,7 +353,7 @@ export class AquariumComponent implements OnInit {
         this.ionViewDidLeaveFunction();
 
         //If "Leave Aquarium" is already tracked in demo-aquarium, duplication?
-        this.appUsageDb.saveAppUsageExit("aquarium_tab");
+        this.uploadService.saveAppUsageExit("aquarium_tab");
     }
 
     ionViewDidEnter() {
@@ -368,7 +374,12 @@ export class AquariumComponent implements OnInit {
         this.subscribeForModalView();
 
         //If "Enter Aquarium" is already tracked in demo-aquarium, duplication?
-        this.appUsageDb.saveAppUsageEnter("aquarium_tab");
+        this.uploadService.saveAppUsageEnter("aquarium_tab");
+
+        //mock private upload
+        //this.uploadService.uploadPrivateData({'mock': "mock private data"});
+        //this.uploadService.getPrivateUserData();
+
         this.fillMedicationWidget();
         //
         this.userProfileService.saveToServer();
@@ -401,26 +412,26 @@ export class AquariumComponent implements OnInit {
     // --- Moving to ionViewDidEnter()
     //
     saveDbToAWS() {
-        this.appUsageDb.isTableEmpty().then(tableEmpty => {
-            console.log("tableEmpty: " + tableEmpty);
-            if (!tableEmpty) {
-                this.exportDatabase();
-            }
-        }).catch(e => {
-            console.log("In ionViewWillEnter at Aqarium:" + e);
-        });
+        // this.appUsageDb.isTableEmpty().then(tableEmpty => {
+        //     console.log("tableEmpty: " + tableEmpty);
+        //     if (!tableEmpty) {
+        //         this.exportDatabase();
+        //     }
+        // }).catch(e => {
+        //     console.log("In ionViewWillEnter at Aqarium:" + e);
+        // });
     }
 
     exportDatabase() {
-        console.log("exportTable at Aquarium Page!");
-        this.appUsageDb.exportDatabaseToJson().then((res) => {
-            console.log("upload to AWS at Aquarium Page: " + JSON.stringify(res));
-            this.awsS3Service.upload("Tracking", res);
+        // console.log("exportTable at Aquarium Page!");
+        // this.appUsageDb.exportDatabaseToJson().then((res) => {
+        //     console.log("upload to AWS at Aquarium Page: " + JSON.stringify(res));
+        //     this.awsS3Service.upload("Tracking", res);
 
-            //Empty table to prepare another round of tracking
-            this.appUsageDb.emptyTable();
+        //     //Empty table to prepare another round of tracking
+        //     this.appUsageDb.emptyTable();
 
-        });
+        // });
     }
 
     ionViewWillUnload() {

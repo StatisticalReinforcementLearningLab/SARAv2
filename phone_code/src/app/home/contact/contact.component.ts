@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { DatabaseService } from 'src/app/monitor/database.service';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
 // import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 
 @Component({
@@ -12,7 +13,7 @@ export class ContactComponent implements OnInit {
 
   constructor(private menuCtrl:MenuController,
     // private mobileAccessibility: MobileAccessibility,
-    private appUsageDb: DatabaseService) { }
+    private uploadService: UploadserviceService) { }
 
   ngOnInit() {
     //this.mobileAccessibility.usePreferredTextZoom(false);
@@ -27,7 +28,7 @@ export class ContactComponent implements OnInit {
      }
     });
     */
-    this.appUsageDb.saveAppUsageEnter("study_contact_info_page");
+    this.uploadService.saveAppUsageEnter("study_contact_info_page");
   }
 
   ionViewDidLeave(){
@@ -39,7 +40,7 @@ export class ContactComponent implements OnInit {
     });
     */
     //this.mobileAccessibility.usePreferredTextZoom(true);
-    this.appUsageDb.saveAppUsageExit("study_contact_info_page");
+    this.uploadService.saveAppUsageExit("study_contact_info_page");
   }
 
 }

@@ -4,6 +4,7 @@ import { UserProfileService } from 'src/app/user/user-profile/user-profile.servi
 import { AwsS3Service } from 'src/app/storage/aws-s3.service';
 import * as moment from 'moment';
 import { DatabaseService } from 'src/app/monitor/database.service';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
 
 @Component({
   selector: 'app-award-altruism',
@@ -24,7 +25,7 @@ export class AwardAltruismComponent implements OnInit {
     private route: ActivatedRoute, 
     private userProfileService: UserProfileService,
     private awsS3Service: AwsS3Service,
-    private appUsageDb: DatabaseService,
+    private uploadService: UploadserviceService,
     private router: Router) { 
       this.reinforcementObj['ds'] = 1;
       this.reinforcementObj['reward'] = 2;
@@ -60,7 +61,7 @@ export class AwardAltruismComponent implements OnInit {
      }
    });
    */
-   this.appUsageDb.saveAppUsageEnter("award_altruism_msg"); 
+   this.uploadService.saveAppUsageEnter("award_altruism_msg"); 
  }  
  
  ionViewDidLeave(){
@@ -71,7 +72,7 @@ export class AwardAltruismComponent implements OnInit {
       }
     }); 
     */
-    this.appUsageDb.saveAppUsageExit("award_altruism_msg");    
+    this.uploadService.saveAppUsageExit("award_altruism_msg");    
   }
 
   showaltruism(){

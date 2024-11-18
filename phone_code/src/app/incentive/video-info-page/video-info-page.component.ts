@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { DatabaseService } from 'src/app/monitor/database.service';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
 
 @Component({
   selector: 'app-video-info-page',
@@ -10,7 +11,7 @@ import { DatabaseService } from 'src/app/monitor/database.service';
 export class VideoInfoPageComponent implements OnInit {
 
   constructor(private menuCtrl:MenuController,
-    private appUsageDb: DatabaseService) { }
+    private uploadService: UploadserviceService) { }
 
   ngOnInit() {
     this.menuCtrl.close();
@@ -24,7 +25,7 @@ export class VideoInfoPageComponent implements OnInit {
      }
     });
     */
-    this.appUsageDb.saveAppUsageEnter("reward_video_info_page");  
+    this.uploadService.saveAppUsageEnter("reward_video_info_page");  
   }  
 
   ionViewDidLeave(){
@@ -35,7 +36,7 @@ export class VideoInfoPageComponent implements OnInit {
       }
     });
     */ 
-    this.appUsageDb.saveAppUsageExit("reward_video_info_page");     
+    this.uploadService.saveAppUsageExit("reward_video_info_page");     
   }
 
 }
