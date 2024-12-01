@@ -668,7 +668,8 @@ export class DynamicSurveyComponent implements OnInit {
                     this.router.navigate(['home'], navigationExtras);
                 }else{
                     var interventionRandomizationProb = Math.random();
-                    if(interventionRandomizationProb >=0.0){
+                    //if(interventionRandomizationProb >=0.0){
+                    if(interventionRandomizationProb >=0.4){
                         //if(interventionRandomizationProb >=1.1){
                         navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
                         navigationExtras['state']['interventionRandomizationProb'] = interventionRandomizationProb;

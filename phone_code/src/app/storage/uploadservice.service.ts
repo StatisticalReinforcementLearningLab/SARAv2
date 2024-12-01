@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { firstValueFrom, map, Observable, of } from 'rxjs';
+import { firstValueFrom, map, Observable, of, switchMap } from 'rxjs';
 // import { Queue } from '/queue.ts';
 import { Queue, UploadItem } from './queue';
 import { EncrDecrService } from './encrdecrservice.service';
@@ -201,10 +201,14 @@ export class UploadserviceService {
 
     }
 
-    getPrivateUserData(){
-        this.getAccessToken().subscribe(
-            accessToken => {
+    //getPrivateUserData(): Observable<any>{
+    getPrivateUserData(): Observable<any>{
 
+        //we consider the payload to be unencrypted.
+        //We will encrypt the payload and send it.
+
+        return this.getAccessToken().pipe(
+            switchMap((accessToken) => {
                 // get bearer token
                 const token = accessToken;
                 console.log("Access token: " + accessToken);
@@ -215,25 +219,62 @@ export class UploadserviceService {
                     })
                 };
 
-                // var decrypted = this.EncrDecr.decrypt(locallyStoredSurvey['alex_survey_aya']["encrypted"], environment.encyptString);
                 let flaskServerAPIEndpoint = "https://adapts.fsm.northwestern.edu/api/private.json";
-                this.http.get(flaskServerAPIEndpoint, httpOptions).subscribe({
-                    next: data => console.log('Returned private data', this.EncrDecr.decrypt(data, environment.encyptString)),
-                    error: error => console.error('There was an error!', error)
-                });
+                //let me = this;
+                return this.http.get(flaskServerAPIEndpoint, httpOptions)
+                    .pipe(
+                        map(data => {
+                            //me.storeAccessToken(res.access_token, res.access_expires);
+                            return data;
+                        })
+                    );
 
-                // let flaskServerAPIEndpoint2 = "https://adapts.fsm.northwestern.edu/api/userinfo";
-                // unencrypted_payload['mock'] = "Mock user data";
-                // let payload2 = unencrypted_payload; //this.EncrDecr.encrypt(JSON.stringify(unencrypted_payload), environment.encyptString);
-                // console.log(JSON.stringify(payload));
-                // this.http.post(flaskServerAPIEndpoint2, payload2, httpOptions).subscribe({
-                //     next: data => console.log('Uplaod data (userinfo)', data),
-                //     error: error => console.error('There was an error!', error)
-                // });
-
-
-            }//end of accessToken call back
+            }),
+            map((data) => this.EncrDecr.decrypt(data, environment.encyptString))
+            //currently no error handling??
         );
+
+
+        // this.getAccessToken().subscribe(
+        //     accessToken => {
+
+        //         // get bearer token
+        //         const token = accessToken;
+        //         console.log("Access token: " + accessToken);
+        //         const httpOptions = {
+        //             headers: new HttpHeaders({
+        //                 'Authorization': `Bearer ${token}`,
+        //                 'Content-Type': 'application/json'
+        //             })
+        //         };
+
+        //         // var decrypted = this.EncrDecr.decrypt(locallyStoredSurvey['alex_survey_aya']["encrypted"], environment.encyptString);
+        //         let flaskServerAPIEndpoint = "https://adapts.fsm.northwestern.edu/api/private.json";
+        //         //return this.http.get(flaskServerAPIEndpoint, httpOptions).subscribe({
+        //         this.http.get(flaskServerAPIEndpoint, httpOptions).subscribe({
+        //             //next: data => console.log('Returned private data', this.EncrDecr.decrypt(data, environment.encyptString)),
+        //             next: data => {
+        //                 //return this.EncrDecr.decrypt(data, environment.encyptString);
+        //                 console.log('Returned private data', this.EncrDecr.decrypt(data, environment.encyptString));
+        //             },
+        //             error: error => {
+        //                 //return {'msg': "There was an error", "error": error};
+        //                 console.log('There was an error',error);
+        //             }
+        //         });
+
+        //         // let flaskServerAPIEndpoint2 = "https://adapts.fsm.northwestern.edu/api/userinfo";
+        //         // unencrypted_payload['mock'] = "Mock user data";
+        //         // let payload2 = unencrypted_payload; //this.EncrDecr.encrypt(JSON.stringify(unencrypted_payload), environment.encyptString);
+        //         // console.log(JSON.stringify(payload));
+        //         // this.http.post(flaskServerAPIEndpoint2, payload2, httpOptions).subscribe({
+        //         //     next: data => console.log('Uplaod data (userinfo)', data),
+        //         //     error: error => console.error('There was an error!', error)
+        //         // });
+
+
+        //     }//end of accessToken call back
+        // );
     }
 
 
