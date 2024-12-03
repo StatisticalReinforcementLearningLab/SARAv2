@@ -54,90 +54,13 @@ export class MedicationCalendarComponent implements OnInit {
     ngOnInit() { }
 
     ngAfterViewInit(): void {
-        // console.log("myCal " + this.myCal);
-        // setTimeout(function() {
-        //     console.log("inside time out function");
-        //     //console.log("myCal " + this.myCal);
-        //     if (window.localStorage.getItem("eventSource") === null) {
-        //         console.log("no events found");
-        //         this.createRandomEvents();
-        //     }else{
-        //         console.log("events found");
-        //         let events = JSON.parse(window.localStorage.getItem('eventSource'));
-        //         // console.log(JSON.stringify(events));
-        //         this.eventSource = events;
-        //         this.myCal.loadEvents();
-        //     }
-        // },1000);
-
-        // setTimeout(() => {
-        //     // console.log("inside time out function");
-        //     // console.log("myCal " + this.myCal);
-
-        //     // How to handle initial case:
-        //     // If the medicationEvents is not in the user profile,
-        //     // If the medicationEvent is empty
-        //     if (window.localStorage.getItem("eventSource") === null) {
-        //         console.log("no events found");
-        //         this.eventSource = [];
-        //         //this.createRandomEvents();
-        //     }else{
-        //         console.log("events found");
-        //         let events = JSON.parse(window.localStorage.getItem('eventSource'));
-        //         // events = [
-        //         //     {
-        //         //         "title": "Day -0",
-        //         //         "startTime": "2024-01-18T08:01:00.000Z",
-        //         //         "endTime": "2024-01-18T09:01:00.000Z",
-        //         //         "medicationIntakeTime": "2024-01-18T08:01:00.000Z",
-        //         //         "allDay": false,
-        //         //         "descritpion": "6mp add",
-        //         //         "symbolType": "add"
-        //         //     },
-        //         //     {
-        //         //         "title": "Day -0",
-        //         //         "startTime": "2024-01-20T08:01:00.000Z",
-        //         //         "endTime": "2024-01-20T09:01:00.000Z",
-        //         //         "medicationIntakeTime": "2024-01-20T08:01:00.000Z",
-        //         //         "allDay": false,
-        //         //         "descritpion": "6mp add",
-        //         //         "symbolType": "add"
-        //         //     },
-        //         //     {
-        //         //         "title": "Day -0",
-        //         //         "startTime": "2024-01-19T08:01:00.000Z",
-        //         //         "endTime": "2024-01-19T09:01:00.000Z",
-        //         //         "medicationIntakeTime": "2024-01-19T08:01:00.000Z",
-        //         //         "allDay": false,
-        //         //         "descritpion": "6mp add",
-        //         //         "symbolType": "add"
-        //         //     }
-        //         // ]
-        //         var countData = events.length;
-        //         for (var i = 0; i < countData; i++) {
-        //             //convert string back to date objects.
-        //             events[i].startTime = new Date(events[i].startTime);
-        //             events[i].endTime = new Date(events[i].endTime);
-        //             events[i].medicationIntakeTime = new Date(events[i].medicationIntakeTime);
-        //         }
-        //         this.eventSource = events;
-        //         // console.log(this.eventSource);
-        //         //this.updateMedicationList();
-
-                
-        //     }
-        //     // this.updateMedicationList();
-        // }, 100);
-        // // console.log(JSON.stringify(this.userProfileService.userProfile));
-
-        // this.getEcapsMedicationList(undefined, this);
-
         console.log("---get private data----");
-        //this.uploadService.getPrivateUserData();
 
         this.medicationListChanged$.subscribe(events => {
             console.log("Length of private data: ", events.length);
             console.log("Recieved Private Value: ", JSON.stringify(events));
+            events = this.updateMedicationList(events);
+            this.eventSource=[];
             this.eventSource=events;
             this.myCal.loadEvents();
         });
@@ -154,6 +77,8 @@ export class MedicationCalendarComponent implements OnInit {
             //this.eventSource = events;
             this.medicationListChanged$.next(events);
         });
+
+        //subscribe to an observable in a service, 
     }  
     
     //format ecap data
@@ -179,7 +104,7 @@ export class MedicationCalendarComponent implements OnInit {
             for (const timestamp of timestamps) {
                 // This conversion is giving the local timezone.
                 // console.log("ecap_record:: timestamp: " + timestamp["timestamp"] + ", " + moment.unix(timestamp["timestamp"]).format("MM-DD-YYYY HH:mm:ss a"));
-                ecapScanDates.push(moment.unix(timestamp["timestamp"]).toDate());11
+                ecapScanDates.push(moment.unix(timestamp["timestamp"]).toDate());
                 ecapScanDateStrings.push(moment.unix(timestamp["timestamp"]).format("MM-DD-YYYY"));
             }
         }
@@ -394,20 +319,7 @@ export class MedicationCalendarComponent implements OnInit {
         // this.userProfileService.saveProfileToDevice();
 
         //Record for medication
-        this.saveSensitiveDataLocally(events);
-    }
-
-    saveSensitiveDataLocally(events){
-        //local store
-        var locallyStoredSensitiveData = {};
-        if(window.localStorage['locallyStoredSensitiveData'] != undefined)
-            locallyStoredSensitiveData = JSON.parse(window.localStorage.getItem('locallyStoredSensitiveData'));
-        else{
-            locallyStoredSensitiveData["survey"] = [];
-            locallyStoredSensitiveData["medication_data"] = [];
-        }
-        locallyStoredSensitiveData["medication_data"] = events;
-        window.localStorage.setItem('locallyStoredSensitiveData', JSON.stringify(locallyStoredSensitiveData));
+        //this.saveSensitiveDataLocally(events);
     }
 
     removeEvents() {
@@ -419,53 +331,6 @@ export class MedicationCalendarComponent implements OnInit {
         //this.openAddEventModal();
         this.openAddMedicationModal(dateStr);
     }
-
-
-    // async openAddEventModal() {
-    //     /*
-    //         Pops up a modal view to manually add events.
-    //         Events in our case is an event of taking medication.
-    //     */
-
-
-    //     const modal = await this.modalCtrl.create({
-    //         component: AddEventModalPage,
-    //         /*
-    //            We added a css class in global.scss
-    //            Note modals lives on top of the application, so
-    //            We have to uset the global css.
-    //         */
-    //         cssClass: 'add-event-modal',
-    //         backdropDismiss: false
-    //     });
-
-    //     await modal.present();
-
-    //     modal.onDidDismiss().then((result) => {
-    //         if (result.data && result.data.event) {
-    //             let event = result.data.event;
-    //             if (event.allDay) {
-    //                 let start = event.startTime;
-    //                 event.startTime = new Date(
-    //                     Date.UTC(
-    //                         start.getUTCFullYear(),
-    //                         start.getUTCMonth(),
-    //                         start.getUTCDate()
-    //                     )
-    //                 );
-    //                 event.endTime = new Date(
-    //                     Date.UTC(
-    //                         start.getUTCFullYear(),
-    //                         start.getUTCMonth(),
-    //                         start.getUTCDate() + 1
-    //                     )
-    //                 );
-    //             }
-    //             this.eventSource.push(result.data.event);
-    //             this.myCal.loadEvents();
-    //         }
-    //     });
-    // }
 
     async openAddMedicationModal(dateStr) {
         /*
@@ -555,13 +420,13 @@ export class MedicationCalendarComponent implements OnInit {
     }
 
     //update medication list
-    updateMedicationList(){
+    updateMedicationList(events){
         /*
         In this function, we update the "add" for the current to last three day.
         If medication is not added then we fill them with x.
         */
 
-        var events = this.eventSource;
+        //var events = this.eventSource;
 
         //find the max Date In Events
         //Later we will use this fill in + and x signs.
@@ -612,6 +477,9 @@ export class MedicationCalendarComponent implements OnInit {
             console.log("ithDayFromCurrentdayMidnightUTC " + ithDayFromCurrentdayMidnightUTC + ", i " + i);
             if(maxDateInEvents.getTime() <= ithDayFromCurrentdayMidnightUTC.getTime()){
                 //means we have a new day, we need to "add" symbol.
+                //Nov 30, 2024: We only add "+" if the data is higher than maxDate
+                //Also, note for the day, the time ithDayFromCurrentdayMidnightUTC is 1am in the morning. So,
+                //for the current day, it won't be adding a "+" if there is a medication in the current day.
                 events.push({
                     title: 'Day -' + i,
                     startTime: ithDayFromCurrentdayMidnightUTC,
@@ -627,6 +495,7 @@ export class MedicationCalendarComponent implements OnInit {
 
         // //ithDayFromCurrentdayMidnightUTC now the two day. Any existing event with
         // //date less than ithDayFromCurrentdayMidnightUTC with "+/add" sign should be cross now.
+        // Nov 30, 2024: this line is correcting any previous "add" symbol in events.
         let twoDayFromCurrentdayMidnightUTC = ithDayFromCurrentdayMidnightUTC;
         console.log("twoDayFromCurrentdayMidnightUTC " + twoDayFromCurrentdayMidnightUTC);
         for(var i=0; i<events.length; i++){
@@ -636,6 +505,7 @@ export class MedicationCalendarComponent implements OnInit {
         }
 
         // //Fill in any date that does not exist with a "x". Stop at "maxDateInEvents"
+        // This will only add x, since we had last record.
         console.log("Before: " + JSON.stringify(events));
         var ithDayFromTwoDayFromCurrentdayMidnightUTC;
         var dayToAdjustFrom;
@@ -660,9 +530,9 @@ export class MedicationCalendarComponent implements OnInit {
         }
         //console.log("After: " + JSON.stringify(events, null, 4));
 
-        this.eventSource = events;
-        this.saveMedicationEvents(events);
-        console.log('===ecap_scanned===' + JSON.stringify(events, null, 4));
+        //this.eventSource = events;
+        //this.saveMedicationEvents(events);
+        //console.log('===ecap_scanned===' + JSON.stringify(events, null, 4));
 
         // for(var i=0; i<100; i++){
         //     ithDayFromCurrentdayMidnightUTC = new Date(currentDayMidnightUTC.setHours(-1 * 24 * i, 1, 0, 0));
@@ -670,6 +540,7 @@ export class MedicationCalendarComponent implements OnInit {
         //     //If we have an add symbol then change to X.
         //     //
         // }
+        return events;
 
     }
 
@@ -684,6 +555,20 @@ export class MedicationCalendarComponent implements OnInit {
         })
     }
 
+    insertCalendarDataFromLocal(){
+        const spec = "/assets/data/ecaps_data_12032024.json";
+        //const spec = "/assets/data/ecaps_demo_data.json";
+        let me = this;
+        this.httpClient.get(spec)
+            .subscribe(async (res: any) => {
+                console.log("==========");
+                // res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][i]["Date"]
+                console.log(res);
+                window.localStorage.setItem('ecap_response', JSON.stringify(res));
+                me.getEcapsMedicationList(res);
+            });
+    }
+
     getEcapsMedicationList(responseTxt) {
         // print prior ecap record if exists:
         // ----Retrieve the object from storage
@@ -696,9 +581,11 @@ export class MedicationCalendarComponent implements OnInit {
                 res = JSON.parse(retrievedObject);
             else
                 res = responseTxt;
-            let events = this.formatEcapData(res); // Formats eCap to events,  
-            
+            var events = this.formatEcapData(res); // Formats eCap to events. This will fill in any missing value between first and last scan.  
+            events = this.updateMedicationList(events); // This will add anything since last scan to today.
+
             //me.eventSource = events;
+            this.saveMedicationEvents(events);
             this.medicationListChanged$.next(events);
 
             // console.log('===ecap_scanned: events===' + JSON.stringify(events.reverse()));
@@ -715,40 +602,40 @@ export class MedicationCalendarComponent implements OnInit {
         }
 
         //if (Capacitor.isNativePlatform()) {
-        if (Capacitor.isNativePlatform() == false) {
-            // do something
-            //Here, we are taking data from the demo.
-            //----
-            const spec = "/assets/data/ecaps_demo_data_2.json";
-            //const spec = "/assets/data/ecaps_demo_data.json";
-            let me = this;
-            this.httpClient.get(spec)
-                .subscribe(async (res: any) => {
-                    console.log("==========");
-                    // res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][i]["Date"]
-                    console.log(res);
-                    let events = this.formatEcapData(res);
-                    this.eventSource = events;
-                    this.updateMedicationList();// also save
+        // if (Capacitor.isNativePlatform() == false) {
+        //     // do something
+        //     //Here, we are taking data from the demo.
+        //     //----
+        //     const spec = "/assets/data/ecaps_demo_data_2.json";
+        //     //const spec = "/assets/data/ecaps_demo_data.json";
+        //     let me = this;
+        //     this.httpClient.get(spec)
+        //         .subscribe(async (res: any) => {
+        //             console.log("==========");
+        //             // res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][i]["Date"]
+        //             console.log(res);
+        //             let events = this.formatEcapData(res);
+        //             //this.eventSource = events;
+        //             this.eventSource = this.updateMedicationList(events);// also save
 
-                    //save the medication to server as private data
-                    //me.userProfileService.savePrivateData('medication_data', events);
+        //             //save the medication to server as private data
+        //             //me.userProfileService.savePrivateData('medication_data', events);
 
-                    //upload to private data here
-                    //mock private upload
-                    //this.uploadService.uploadPrivateData({'mock': "mock private data"});
-                    //this.uploadService.getPrivateUserData();
-                    // let privateUserDataStr = window.localStorage.getItem('private_user_data');
-                    // var privateUserData = {}
-                    // console.log("privateUserDataStr: " + privateUserDataStr);
-                    // if(privateUserDataStr != "undefined")
-                    //     privateUserData = JSON.parse(privateUserDataStr);
-                    // privateUserData['medication_data'] = events;
-                    // console.log("---Uploading medication data----");
-                    // me.uploadService.uploadPrivateData(privateUserData);
-                    // window.localStorage.setItem('private_user_data', JSON.stringify(responseTxt));
-                });
-        }
+        //             //upload to private data here
+        //             //mock private upload
+        //             //this.uploadService.uploadPrivateData({'mock': "mock private data"});
+        //             //this.uploadService.getPrivateUserData();
+        //             // let privateUserDataStr = window.localStorage.getItem('private_user_data');
+        //             // var privateUserData = {}
+        //             // console.log("privateUserDataStr: " + privateUserDataStr);
+        //             // if(privateUserDataStr != "undefined")
+        //             //     privateUserData = JSON.parse(privateUserDataStr);
+        //             // privateUserData['medication_data'] = events;
+        //             // console.log("---Uploading medication data----");
+        //             // me.uploadService.uploadPrivateData(privateUserData);
+        //             // window.localStorage.setItem('private_user_data', JSON.stringify(responseTxt));
+        //         });
+        // }
     
         
     }
