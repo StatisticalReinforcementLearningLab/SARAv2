@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { firstValueFrom, map, Observable, of, switchMap } from 'rxjs';
+import { firstValueFrom, map, Observable, of, Subject, switchMap } from 'rxjs';
 // import { Queue } from '/queue.ts';
 import { Queue, UploadItem } from './queue';
 import { EncrDecrService } from './encrdecrservice.service';
@@ -21,6 +21,7 @@ export class UploadserviceService {
     //-- Only uses accesstoken for follow up communication: get intervention messages, get memes/altruism/intervention messages
     //-- Upload from a queue. I do not need any feedback. App usage, survey upload, intervetion/reinforcement randomization upload.
     //---- What does the queue need: data, location, type, encrypt or not.
+    privateUploadCompleted$ = new Subject<any>();
 
     constructor(private http: HttpClient, private EncrDecr: EncrDecrService) {
 
@@ -182,7 +183,10 @@ export class UploadserviceService {
                 let payload = '"' + this.EncrDecr.encrypt(JSON.stringify(unencrypted_payload), environment.encyptString) + '"';
                 console.log("Encrypted payload" + JSON.stringify(payload));
                 this.http.post(flaskServerAPIEndpoint, payload, httpOptions).subscribe({
-                    next: data => console.log('Uplaod data', data),
+                    next: data => {
+                        this.privateUploadCompleted$.next("private data uploaded");
+                        console.log('Uplaod data', data)
+                    },
                     error: error => console.error('There was an error!', error)
                 });
 

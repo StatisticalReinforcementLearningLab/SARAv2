@@ -25,8 +25,8 @@ export class MedicationCalendarComponent implements OnInit {
 
     eventSource = [];
     viewTitle: string;
-
     type = 'calendar';
+    isMedicationListRefreashing = false;
 
     segmentChanged(ev: any) {
         console.log('Segment changed', ev.detail["value"]);
@@ -40,7 +40,7 @@ export class MedicationCalendarComponent implements OnInit {
 
     //
     medicationListChanged$ = new Subject<any>();
-
+    privateUploadListner: any;
     @ViewChild(CalendarComponent, null) myCal: CalendarComponent;
 
     constructor(private modalCtrl: ModalController,
@@ -62,24 +62,108 @@ export class MedicationCalendarComponent implements OnInit {
             events = this.updateMedicationList(events);
             this.eventSource=[];
             this.eventSource=events;
-            this.myCal.loadEvents();
+            //this.myCal.loadEvents();
+
+            if(this.isMedicationListRefreashing == true){
+                //means we disabled the calendar
+                //we need to enable again.
+                this.isMedicationListRefreashing = false;
+            }
         });
         
+        this.fetchPrivateDataFromWeb();
+
+        //subscribe to an observable in a service, 
+        if(this.privateUploadListner){
+            this.privateUploadListner.unsubscribe();
+        }else{
+            this.privateUploadListner = this.uploadService.privateUploadCompleted$;
+            this.privateUploadListner.subscribe(message => {
+                console.log("Message: ", message);
+                this.fetchPrivateDataFromWeb();
+            });
+        }
+    } 
+    
+    fetchPrivateDataFromWeb(){
         //this.uploadService.getPrivateUserData().subscribe((d) => console.log("Recieved Private Value", d));
         this.uploadService.getPrivateUserData().subscribe((d) =>  {
-            var events = JSON.parse(d)["medication_data"]['events'];
+
+            var events = [];
+            var eventDateStrings = [];
+            var eventDateIntakeStatus = [];
+            let privateUserData_web = JSON.parse(d); // Add medication data.
+            console.log("====Private data web: " + privateUserData_web);
+
+            var events_web_ts = -1;
+            var events_web = [];
+            if(d !== null){
+                //Here we only process once the web call is done.
+                //Otherwise, we retain the local copy at the start.
+                if("medication_data" in privateUserData_web){
+                    var medication_data_web = privateUserData_web['medication_data'];
+                    events_web = medication_data_web['events'];
+                    events_web_ts = medication_data_web['ts'];
+                }
+            }
+
+            var events_local_ts = -1;
+            var events_local = [];
+            let privateUserData_local = JSON.parse(window.localStorage.getItem('private_user_data')); 
+            console.log("====Private data local: " + privateUserData_local);
+            if((window.localStorage.getItem("private_user_data") !== null) 
+                && ("medication_data" in privateUserData_local)){
+                var medication_data_local = privateUserData_local['medication_data'];
+                events_local = medication_data_local['events'];
+                events_local_ts = medication_data_local['ts'];
+            }
+
+            //take one with higher timestamp, as it is newer
+            events = events_local;
+            if(events_local_ts < events_web_ts){
+                events = events_web;
+                //if web copy is newer, we can save the web data to local data.
+                window.localStorage.setItem('private_user_data', JSON.stringify(privateUserData_web));
+                console.log("using web copy; web:" + events_web_ts + " local:"+events_local_ts);
+            }else{
+                //console.log("using local copy");
+                console.log("using local copy; web:" + events_web_ts + " local:"+events_local_ts);
+            }
+
+            //Implications and corner case considerations
+            //If web version is newer (i.e., higher ts value), we take that version
+            //-- If no web data on medication exist, then events_web_ts = -1 
+            //   and events_local_ts has a value. We retain the events_local copy as events. (ToDo, probably upload local copy)
+            //-- If no local data on medication exist, then events_local_ts = -1 and events_web_ts has a value. 
+            //   We retain the web copy of the events.
+            //-- If no local or web data on medication exist, then 
+            //   events_local_ts < events_web_ts is false, we retain the copy of events_local, which is [].
+
+            //Other corner case handling:
+            //If web data is older, then we upload the local copy to the web
+            //Corner case is if events_web_ts=-1, i.e., no web data exist. Then this will upload the local copy. 
+            if(events_web_ts < events_local_ts){
+                this.uploadService.uploadPrivateData(privateUserData_local);
+            }
+
+            //if events is empty, then we don't update anything as events.length is zero.
             for (var i = 0; i < events.length; i++) {
                 //convert string back to date objects.
                 events[i].startTime = new Date(events[i].startTime);
                 events[i].endTime = new Date(events[i].endTime);
                 events[i].medicationIntakeTime = new Date(events[i].medicationIntakeTime);
             }
+
+            
+
             //this.eventSource = events;
             this.medicationListChanged$.next(events);
         });
+    }
 
-        //subscribe to an observable in a service, 
-    }  
+    reloadCalendarDataOnly(){
+        this.myCal.loadEvents();
+    }
     
     //format ecap data
     formatEcapData(ecapJSONData: any){
@@ -170,6 +254,10 @@ export class MedicationCalendarComponent implements OnInit {
         this.viewTitle = title;
     }
 
+    ionViewDidEnter() {
+        console.log("medicationCalendar.ts --- ionViewDidEnter");
+        //this.child.loadFunction();
+    }
 
     diffInDaysFromCurrentDay(date1, date2) {
 
@@ -549,6 +637,7 @@ export class MedicationCalendarComponent implements OnInit {
         certiscan.scan(function(responseTxt) {
             // alert(responseTxt);
             // Put the object into storage
+            me.isMedicationListRefreashing = true;
             window.localStorage.setItem('ecap_response', JSON.stringify(responseTxt));
             console.log("--- ecap_response" + responseTxt);
             me.getEcapsMedicationList(responseTxt);

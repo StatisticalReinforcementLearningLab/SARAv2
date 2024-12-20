@@ -117,11 +117,15 @@
     <ion-card-content>
       <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
         [showEventDetail]="true" (onTitleChanged)="onViewTitleChanged($event)" step="30"
-        [monthviewDisplayEventTemplate]="template" [monthviewEventDetailTemplate]="monthviewEventDetailTemplate">
+        [monthviewDisplayEventTemplate]="template" [monthviewEventDetailTemplate]="monthviewEventDetailTemplate"
+        *ngIf="!isMedicationListRefreashing">
       </calendar>
     </ion-card-content>
     <ion-button (click)="insertCalendarDataFromLocal()" expand="block" fill="outline">
       Insert data
+    </ion-button>
+    <ion-button (click)="reloadCalendarDataOnly()" expand="block" fill="outline">
+      Reload data
     </ion-button>
   </div>
   <!-- </ion-card> -->

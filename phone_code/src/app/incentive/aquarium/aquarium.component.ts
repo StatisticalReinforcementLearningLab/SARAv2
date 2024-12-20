@@ -163,7 +163,25 @@ export class AquariumComponent implements OnInit {
         // ];
     }
 
-    fillMedicationWidget() {
+    fetchPrivateDataFromWeb(){
+        //this.uploadService.getPrivateUserData().subscribe((d) => console.log("Recieved Private Value", d));
+        let me = this;
+        console.log("Fetched medication data from web");
+        this.uploadService.getPrivateUserData().subscribe((d) =>  {
+            // var events = JSON.parse(d)["medication_data"]['events'];
+            // for (var i = 0; i < events.length; i++) {
+            //     //convert string back to date objects.
+            //     events[i].startTime = new Date(events[i].startTime);
+            //     events[i].endTime = new Date(events[i].endTime);
+            //     events[i].medicationIntakeTime = new Date(events[i].medicationIntakeTime);
+            // }
+            //this.eventSource = events;
+            //this.medicationListChanged$.next(events);
+            me.fillMedicationWidget(d);
+        });
+    }
+
+    fillMedicationWidget(d) {
         /*
         //
         this.weeklyMed = [
@@ -214,16 +232,70 @@ export class AquariumComponent implements OnInit {
         var events = [];
         var eventDateStrings = [];
         var eventDateIntakeStatus = [];
+        let privateUserData_web = JSON.parse(d); // Add medication data.
+        console.log("====Private data web: " + privateUserData_web);
+
+        var events_web_ts = -1;
+        var events_web = [];
+        if(d !== null){
+            //Here we only process once the web call is done.
+            //Otherwise, we retain the local copy at the start.
+            if("medication_data" in privateUserData_web){
+                var medication_data_web = privateUserData_web['medication_data'];
+                events_web = medication_data_web['events'];
+                events_web_ts = medication_data_web['ts'];
+            }
+        }
+
+        var events_local_ts = -1;
+        var events_local = [];
+        let privateUserData_local = JSON.parse(window.localStorage.getItem('private_user_data')); 
+        console.log("====Private data local: " + privateUserData_local);
+        if((window.localStorage.getItem("private_user_data") !== null) 
+            && ("medication_data" in privateUserData_local)){
+            var medication_data_local = privateUserData_local['medication_data'];
+            events_local = medication_data_local['events'];
+            events_local_ts = medication_data_local['ts'];
+        }
+
+        //take one with higher timestamp, as it is newer
+        events = events_local;
+        if(events_local_ts < events_web_ts){
+            events = events_web;
+            //if web copy is newer, we can save the web data to local data.
+            window.localStorage.setItem('private_user_data', JSON.stringify(privateUserData_web));
+            console.log("using web copy; web:" + events_web_ts + " local:"+events_local_ts);
+        }else{
+            //console.log("using local copy");
+            console.log("using local copy; web:" + events_web_ts + " local:"+events_local_ts);
+        }
+
+        //Implications and corner case considerations
+        //If web version is newer (i.e., higher ts value), we take that version
+        //-- If no web data on medication exist, then events_web_ts = -1 
+        //   and events_local_ts has a value. We retain the events_local copy as events. (ToDo, probably upload local copy)
+        //-- If no local data on medication exist, then events_local_ts = -1 and events_web_ts has a value. 
+        //   We retain the web copy of the events.
+        //-- If no local or web data on medication exist, then 
+        //   events_local_ts < events_web_ts is false, we retain the copy of events_local, which is [].
+
+        //Other corner case handling:
+        //If web data is older, then we upload the local copy to the web
+        //Corner case is if events_web_ts=-1, i.e., no web data exist. Then this will upload the local copy. 
+        if(events_web_ts < events_local_ts){
+            this.uploadService.uploadPrivateData(privateUserData_local);
+        }
 
         // var lowestDate = 
-        if (window.localStorage.getItem("eventSource") === null) {
-            console.log("no events found");
-            events = [];
-            //this.createRandomEvents();
-            console.log("--events: []");
-        } else {
+        // if (window.localStorage.getItem("eventSource") === null) {
+        //     console.log("no events found");
+        //     events = [];
+        //     //this.createRandomEvents();
+        //     console.log("--events: []");
+        // } else {
+        if(events.length > 0){
             console.log("events found");
-            let events = JSON.parse(window.localStorage.getItem('eventSource'));
+            //let events = JSON.parse(window.localStorage.getItem('eventSource'));
             var countData = events.length;
             for (var i = 0; i < countData; i++) {
                 //convert string back to date objects.
@@ -295,10 +367,11 @@ export class AquariumComponent implements OnInit {
             let todaysDateString = moment(ithDayFromCurrentdayMidnightUTC).format("YYYYMMDD"); //ithDayFromCurrentdayMidnightUTC
             var elementPos = eventDateStrings.indexOf(todaysDateString);// eventDateStrings.map(function(x) {return x.id; }).indexOf(todaysDateString);
             //will return -1, if elementPos is not found.
+            
             console.log("-- date to search: " + todaysDateString + ", " + elementPos);
             if (elementPos != -1) {
-                console.log("-- date found: " + todaysDateString);
                 let typeOfMark = eventDateIntakeStatus[elementPos];
+                console.log("-- date found: " + todaysDateString + ", " + typeOfMark);
                 if (typeOfMark == 'checkmark') {
                     med_obj['icon'] = "checkmark-circle";
                     med_obj['color'] = "green";
@@ -307,9 +380,17 @@ export class AquariumComponent implements OnInit {
                     med_obj['icon'] = "close-circle";
                     med_obj['color'] = "red";
                 }
+                if ((typeOfMark == 'add') ) {
+                    //some times add symbols are added from history. 
+                    if (i > 2){ //means add is older than 3 days. They should be a cross.
+                        med_obj['icon'] = "close-circle";
+                        med_obj['color'] = "red";
+                    } 
+                }    
             }
             this.weeklyMed.push(med_obj);
         }
+        console.log(JSON.stringify(this.weeklyMed));
     }
 
 
@@ -380,7 +461,8 @@ export class AquariumComponent implements OnInit {
         //this.uploadService.uploadPrivateData({'mock': "mock private data"});
         //this.uploadService.getPrivateUserData();
 
-        this.fillMedicationWidget();
+        this.fillMedicationWidget(null);
+        this.fetchPrivateDataFromWeb();
         //
         this.userProfileService.saveToServer();
         this.userProfileService.saveProfileToDevice();
