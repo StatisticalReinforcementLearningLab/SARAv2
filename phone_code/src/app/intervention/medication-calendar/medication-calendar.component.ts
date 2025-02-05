@@ -27,6 +27,9 @@ export class MedicationCalendarComponent implements OnInit {
     viewTitle: string;
     type = 'calendar';
     isMedicationListRefreashing = false;
+    medication_list = [];
+    alertButtons = [];
+    alertInputs = [];
 
     segmentChanged(ev: any) {
         console.log('Segment changed', ev.detail["value"]);
@@ -80,9 +83,96 @@ export class MedicationCalendarComponent implements OnInit {
             this.privateUploadListner = this.uploadService.privateUploadCompleted$;
             this.privateUploadListner.subscribe(message => {
                 console.log("Message: ", message);
-                this.fetchPrivateDataFromWeb();
+                //this.fetchPrivateDataFromWeb();
             });
         }
+        this.myCal.lockSwipes = true;
+
+
+        
+
+        if(window.localStorage.hasOwnProperty('medication_list')){
+            console.log("Medication list: Medication list loaded from storage");
+            this.medication_list = JSON.parse(window.localStorage.getItem('medication_list')); 
+        }else{
+            console.log("Medication list: Medication list not available in storage");
+            this.medication_list = [
+                {
+                    "img": "assets/img/med1.svg",
+                    "name": "6MP",
+                    "dosage": "once daily"
+                }
+            ];
+            window.localStorage.setItem('medication_list', JSON.stringify(this.medication_list));
+        }
+        // this.medication_list = [
+        //     {
+        //         "img": "assets/img/med1.svg",
+        //         "name": "med-1",
+        //         "dosage": "two times a day"
+        //     },
+        //     {  
+        //         "img": "assets/img/med2.svg",
+        //         "name": "med-2",
+        //         "dosage": "three time a day"
+        //     }
+
+        // ];
+
+        //alert buttons/input
+        this.alertButtons = [
+            {
+              text: 'Cancel',
+              role: 'cancel',
+              handler: () => {
+                console.log('Alert canceled');
+              },
+            },
+            {
+              text: 'OK',
+              role: 'confirm',
+              handler: (alertData) => { //takes the data 
+
+                console.log(JSON.stringify(alertData));
+                let new_medication = {
+                    "img": "assets/img/med1.svg",
+                    "name": alertData.med_name,
+                    "dosage": alertData.dosage
+                };
+                this.medication_list.push(new_medication);
+                //this.medication_list = [];
+                window.localStorage.setItem('medication_list', JSON.stringify(this.medication_list));
+                this.saveMedicationList(this.medication_list);
+              },
+            },
+        ];
+        //
+        this.alertInputs = [
+            {
+              placeholder: 'Medication name',
+              name: 'med_name',
+            },
+            {
+                placeholder: 'Dosage',
+                name: 'dosage',
+            },
+            // {
+            //   placeholder: 'Nickname (max 8 characters)',
+            //   attributes: {
+            //     maxlength: 8,
+            //   },
+            // },
+            // {
+            //   type: 'number',
+            //   placeholder: 'Age',
+            //   min: 1,
+            //   max: 100,
+            // },
+            // {
+            //   type: 'textarea',
+            //   placeholder: 'A little about yourself',
+            // },
+        ];
     } 
     
     fetchPrivateDataFromWeb(){
@@ -154,11 +244,70 @@ export class MedicationCalendarComponent implements OnInit {
                 events[i].medicationIntakeTime = new Date(events[i].medicationIntakeTime);
             }
 
-            
+            //load medication list
+            //Here, we do something simple, we merge the list
+            //from online and offline, create a longer list
+            var medication_list_to_merge = [];
+            if((window.localStorage.getItem("private_user_data") !== null) 
+                && ("medication_list" in privateUserData_web) && ("medication_list" in privateUserData_web['medication_list'])){
+                medication_list_to_merge = privateUserData_web['medication_list']['medication_list']; //this is already parsed as JSON object
+            }
+            console.log("medication_list_to_merge: " + JSON.stringify(medication_list_to_merge));
+            console.log("this.medication_list: " + JSON.stringify(this.medication_list));
+            // this.medication_list = [...new Set([...this.medication_list, ...medication_list_to_merge])];
+            // this.saveMedicationList(this.medication_list);
+            this.medication_list = this.mergeTwoMedicationsList(this.medication_list, medication_list_to_merge);
+            console.log("Medication list: Saving medication list after merging web and local");
+            window.localStorage.setItem('medication_list', JSON.stringify(this.medication_list));
 
             //this.eventSource = events;
             this.medicationListChanged$.next(events);
         });
+    }
+
+    mergeTwoMedicationsList(medication_list1, medication_list2){
+        // medication_list1 = [{"img":"assets/img/med1.svg","name":"6MP","dosage":"once daily"}];
+        // medication_list2 = [{"img":"assets/img/med1.svg","name":"6MP2","dosage":"once daily"}];
+
+        var medication_list_union = [];
+        var medication_list1Length = medication_list1.length;
+        var medication_names = [];
+        for (var i = 0; i < medication_list1Length; i++) {
+            medication_list_union.push(medication_list1[i]);
+            medication_names.push(medication_list1[i]['name']);
+        }
+
+        var medication_list2Length = medication_list2.length;
+        for (var i = 0; i < medication_list2Length; i++) {
+            //medication_list_union.push(medication_list1[i]);
+            let temp_name = medication_list2[i]['name'];
+            var index2 = medication_names.indexOf(temp_name);
+            if(index2 == -1){ 
+                //means the medication does not exist in the new list
+                medication_names.push(medication_list2[i]['name']);
+                medication_list_union.push(medication_list2[i]);
+            }
+        }
+
+        console.log("medication_list_union: " + JSON.stringify(medication_list_union));
+        console.log("medication_names: " + JSON.stringify(medication_names));
+        return medication_list_union;
+
+        // var tmp1 = medication_list1.map(function(obj) {
+        //     return obj.name;
+        //   });
+        // var tmp2 = medication_list2.map(function(obj) {
+        //     return obj.name;
+        //   });
+
+        // console.log("tmp1: " + JSON.stringify(tmp1));
+        // console.log("tmp2: " + JSON.stringify(tmp2));
+        // tmp1.forEach(function(id1, index1) {
+        //     var index2 = tmp2.indexOf(id1);
+        //     if (index2 == -1) {
+        //         //means we found an element in tmp1 that does not exist in tmp2
+        //     }
+        // });
     }
 
     reloadCalendarDataOnly(){
@@ -373,6 +522,25 @@ export class MedicationCalendarComponent implements OnInit {
         this.saveMedicationEvents(events);
     }
 
+    saveMedicationList(medication_list){
+        let privateUserDataStr = window.localStorage.getItem('private_user_data');
+        var privateUserData = {}
+        console.log("privateUserDataStr: " + privateUserDataStr);
+        if((privateUserDataStr != "undefined") && (privateUserDataStr != null))
+            privateUserData = JSON.parse(privateUserDataStr);
+
+
+        var medicationLocalUpdateTime = new Date().getTime();
+        var medications = {};
+        medications['medication_list'] = medication_list;
+        medications['ts'] = medicationLocalUpdateTime;
+        privateUserData['medication_list'] = medications;
+
+        console.log("---Uploading medication data----");
+        this.uploadService.uploadPrivateData(privateUserData); //here we are uploading data.
+        window.localStorage.setItem('private_user_data', JSON.stringify(privateUserData));
+    }
+
     saveMedicationEvents(events) {
 
         // we will be to stopping saving to userprofile from now on
@@ -398,7 +566,7 @@ export class MedicationCalendarComponent implements OnInit {
         privateUserData['medication_data'] = medication_data;
 
         console.log("---Uploading medication data----");
-        this.uploadService.uploadPrivateData(privateUserData);
+        this.uploadService.uploadPrivateData(privateUserData); //here we are uploading data.
         window.localStorage.setItem('private_user_data', JSON.stringify(privateUserData));
 
         // this.userProfileService.userProfile.medicationEvents = events;
@@ -657,6 +825,19 @@ export class MedicationCalendarComponent implements OnInit {
                 me.getEcapsMedicationList(res);
             });
     }
+
+    getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
+
+    // insertMedicationIntoList(){
+    //     let new_medication = {
+    //         "img": "assets/img/med1.svg",
+    //         "name": "med-" + this.getRandomInt(100),
+    //         "dosage": "once a day"
+    //     };
+    //     this.medication_list.push(new_medication);
+    // }
 
     getEcapsMedicationList(responseTxt) {
         // print prior ecap record if exists:

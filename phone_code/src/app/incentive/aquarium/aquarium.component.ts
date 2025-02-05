@@ -43,6 +43,7 @@ export class AquariumComponent implements OnInit {
     weeklyMed: any;
     altMsgsImages: any;
     memeImages: any;
+    interventionImages: any;
     isAYA = true;
 
     @ViewChild('swiperContainer') swiperRefRewards: ElementRef | undefined;
@@ -557,6 +558,7 @@ export class AquariumComponent implements OnInit {
         //here load the memes and altruistic messages
         this.showAltMsgSwiper();
         this.showMemeSwiper();
+        this.showInterventionMessagesSwiper();
 
     }
 
@@ -605,6 +607,36 @@ export class AquariumComponent implements OnInit {
         }
         if(already_shown['unlocked_memes'].length < 2){
             this.memeImages.push("assets/img/less_memes.png");
+        } 
+
+        // Write a for loop, add images, if short of 2 message then ask to complete more self-reports
+        //this.altMsgsImages = ["./assets/memes/1.jpg", "./assets/memes/2.png", "./assets/memes/3.png", "./assets/memes/4.jpg"];
+        
+    }
+
+    showInterventionMessagesSwiper() {
+        
+        var already_shown = window.localStorage["already_shown_intervention_messages"];
+        if(already_shown == undefined)
+            already_shown = {
+                "last_updated": Date.now(),
+                "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
+                "unlocked_messages":[
+                    {"filename": "assets/intervention_messages/Generic_1.jpg", "unlock_date": moment().format('MM/DD/YYYY')},
+                ]
+            };
+        else
+            already_shown = JSON.parse(window.localStorage["already_shown_intervention_messages"]);
+
+        this.interventionImages = [];
+        for(var i=0; i < already_shown['unlocked_messages'].length; i++){
+            this.interventionImages.push(already_shown['unlocked_messages'][i]["filename"]);
+        }
+        //we are making it 10 for now
+        //if(already_shown['unlocked_messages'].length < 2){
+        if(already_shown['unlocked_messages'].length < 10){
+            this.interventionImages.push("assets/intervention_messages/Generic_2.jpg");
+            this.interventionImages.push("assets/intervention_messages/Generic_3.jpg");
         } 
 
         // Write a for loop, add images, if short of 2 message then ask to complete more self-reports

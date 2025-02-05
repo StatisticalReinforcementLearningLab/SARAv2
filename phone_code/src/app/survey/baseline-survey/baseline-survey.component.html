@@ -10,8 +10,14 @@
 <ion-content>
 
   <!-- <app-dynamic-survey fileLink="alex_survey"></app-dynamic-survey> -->
+  <ion-card *ngIf="previousDataAvailable">
+    <ion-text> <ion-icon name="information-circle-outline"></ion-icon> Your past response to this question on <b>{{pastSurveyDate}}</b> was <b>{{response}}</b>
+    </ion-text>
+  </ion-card>
+
   <app-dynamic-survey jsonFileLinkForSurvey="baseline_survey"></app-dynamic-survey>
   <!--
   <app-dynamic-survey fileLink="temp_survey"></app-dynamic-survey>
   -->
+  
 </ion-content>
