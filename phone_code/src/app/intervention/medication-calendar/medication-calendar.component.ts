@@ -545,16 +545,17 @@ export class MedicationCalendarComponent implements OnInit {
 
         // we will be to stopping saving to userprofile from now on
         window.localStorage.setItem('eventSource', JSON.stringify(events));
-        this.userProfileService.medicationEvents(events);
+        //this.userProfileService.medicationEvents(events);
+        this.userProfileService.medicationEvents([]);// we save nothing on the profile for now.
 
         //encrypt and send it to private end of the server.
-
-
         let privateUserDataStr = window.localStorage.getItem('private_user_data');
-        var privateUserData = {}
+        var privateUserData = {};
         console.log("privateUserDataStr: " + privateUserDataStr);
         if((privateUserDataStr != "undefined") && (privateUserDataStr != null))
             privateUserData = JSON.parse(privateUserDataStr);
+        
+        //
         var medication_data = {};
         medication_data['events'] = events;
         var readableSurveyEndTime = moment().format('MMMM Do YYYY, h:mm:ss a Z');

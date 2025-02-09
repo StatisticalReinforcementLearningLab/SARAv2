@@ -570,6 +570,7 @@ export class DynamicSurveyComponent implements OnInit {
                                 already_shown["last_updated_readable_ts"] = moment().format("MMMM Do YYYY, h:mm:ss a Z");
                                 already_shown["unlocked_memes"].push({"filename": "assets/memes/"+picked_meme[0]["filename"], "unlock_date": moment().format('MM/DD/YYYY')});
                                 window.localStorage["already_shown_memes4"] = JSON.stringify(already_shown);
+                                this.userProfileService.updateNonPrivateData();
                             });  
                         }
 
@@ -599,6 +600,7 @@ export class DynamicSurveyComponent implements OnInit {
                                 already_shown["last_updated_readable_ts"] = moment().format("MMMM Do YYYY, h:mm:ss a Z");
                                 already_shown["unlocked_alt_msgs"].push({"filename": "assets/altruism/"+picked_alt_msg[0]["filename"], "unlock_date": moment().format('MM/DD/YYYY')});
                                 window.localStorage["already_shown_alt_msg4"] = JSON.stringify(already_shown);
+                                this.userProfileService.updateNonPrivateData();
                             });  
                         }
 

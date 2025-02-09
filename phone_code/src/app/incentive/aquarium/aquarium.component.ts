@@ -556,6 +556,7 @@ export class AquariumComponent implements OnInit {
         this.loadVegaDemoPlotMotivation(dateArray);
 
         //here load the memes and altruistic messages
+        this.userProfileService.updateNonPrivateData();
         this.showAltMsgSwiper();
         this.showMemeSwiper();
         this.showInterventionMessagesSwiper();
@@ -577,7 +578,8 @@ export class AquariumComponent implements OnInit {
             already_shown = JSON.parse(window.localStorage["already_shown_alt_msg4"]);
 
         this.altMsgsImages = [];
-        for(var i=0; i < already_shown['unlocked_alt_msgs'].length; i++){
+        // for(var i=0; i < already_shown['unlocked_alt_msgs'].length; i++){
+        for(var i=already_shown['unlocked_alt_msgs'].length-1; i >= 0; i--){
             this.altMsgsImages.push(already_shown['unlocked_alt_msgs'][i]["filename"]);
         }
         if(already_shown['unlocked_alt_msgs'].length < 2){
@@ -602,7 +604,8 @@ export class AquariumComponent implements OnInit {
             already_shown = JSON.parse(window.localStorage["already_shown_memes4"]);
 
         this.memeImages = [];
-        for(var i=0; i < already_shown['unlocked_memes'].length; i++){
+        // for(var i=0; i < already_shown['unlocked_memes'].length; i++){
+        for(var i=already_shown['unlocked_memes'].length - 1; i >= 0; i--){
             this.memeImages.push(already_shown['unlocked_memes'][i]["filename"]);
         }
         if(already_shown['unlocked_memes'].length < 2){
@@ -629,7 +632,8 @@ export class AquariumComponent implements OnInit {
             already_shown = JSON.parse(window.localStorage["already_shown_intervention_messages"]);
 
         this.interventionImages = [];
-        for(var i=0; i < already_shown['unlocked_messages'].length; i++){
+        //for(var i=0; i < already_shown['unlocked_messages'].length; i++){
+        for(var i=already_shown['unlocked_messages'].length-1; i >= 0; i--){
             this.interventionImages.push(already_shown['unlocked_messages'][i]["filename"]);
         }
         //we are making it 10 for now
@@ -637,7 +641,7 @@ export class AquariumComponent implements OnInit {
         if(already_shown['unlocked_messages'].length < 10){
             this.interventionImages.push("assets/intervention_messages/Generic_2.jpg");
             this.interventionImages.push("assets/intervention_messages/Generic_3.jpg");
-        } 
+        }
 
         // Write a for loop, add images, if short of 2 message then ask to complete more self-reports
         //this.altMsgsImages = ["./assets/memes/1.jpg", "./assets/memes/2.png", "./assets/memes/3.png", "./assets/memes/4.jpg"];

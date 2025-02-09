@@ -11,6 +11,7 @@ import { UnlockedInspirationalQuotesComponent } from '../incentive/unlocked-insp
 import { SleepMonitoringComponent } from '../intervention/sleep-monitoring/sleep-monitoring.component';
 import { VegaVisComponent } from '../incentive/life-insights/vega-vis/vega-vis.component';
 import { MedicationCalendarComponent } from '../intervention/medication-calendar/medication-calendar.component';
+import { UnlockedRewardsComponent } from '../incentive/unlocked-rewards/unlocked-rewards.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,9 @@ const routes: Routes = [
       },
       {
         path: 'thankyous', component: UnlockedAltuisticMessagesComponent, canActivate: [AuthGuard]
+      },
+      {
+        path: 'rewards', component: UnlockedRewardsComponent, canActivate: [AuthGuard]
       },
       {
         path: 'contact', component: ContactComponent, canActivate: [AuthGuard]

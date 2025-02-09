@@ -1,28 +1,69 @@
 <ion-header>
-  <ion-toolbar class="new-background-color">
-    <ion-buttons slot="start">
-      <ion-back-button style="color:#fff;" defaultHref="home"></ion-back-button>
-    </ion-buttons>
-    <ion-title style="color:#fff;">Thank you messages</ion-title>
-  </ion-toolbar>
+    <ion-toolbar class="new-background-color">
+        <ion-buttons slot="start">
+            <ion-back-button style="color:#fff;" defaultHref="home"></ion-back-button>
+        </ion-buttons>
+        <ion-title style="color:#fff;">Unlocked rewards</ion-title>
+    </ion-toolbar>
 </ion-header>
-  
+
 <ion-content [fullscreen]="true">
 
-    <ion-card>
+    <ion-segment value="memes" [(ngModel)]="type" (ionChange)="segmentChanged($event)">
+        <ion-segment-button value="memes">
+            <ion-label>Memes</ion-label>
+            <ion-icon name="happy-outline"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="thankyous">
+            <ion-label>Thank yous</ion-label>
+            <ion-icon src="assets/img/praying-icon.svg"></ion-icon>
+        </ion-segment-button>
+    </ion-segment>
+
+    <ion-list *ngIf="type == 'memes'">
+        <ion-card>
+            <ion-card-content>
+              <ion-card-title style="color:black;">{{unlockedMemeCount}} out of 31 memes unlocked</ion-card-title>
+            </ion-card-content>
+        </ion-card>
+        <ion-card *ngFor="let x of list_of_meme_to_display;">
+            <img src="{{x.filename}}" />
+            <!--
+            <ion-card-content>
+                <b>Unlock date:</b> {{x.unlock_date}}    
+            </ion-card-content>
+            -->
+        </ion-card>
+    </ion-list>
+
+    <ion-list *ngIf="type == 'thankyous'">
+        <ion-card>
+            <ion-card-content>
+                <ion-card-title style="color:black;">{{unlockedAltMessagesCount}} out of 21 thank you messages unlocked
+                </ion-card-title>
+            </ion-card-content>
+        </ion-card>
+        <ion-card *ngFor="let x of list_of_alt_msg_to_display;">
+            <img src="{{x.filename}}" />
+            <!--
+        <ion-card-content>
+            <b>Unlock date:</b> {{x.unlock_date}}    
+        </ion-card-content>
+        -->
+        </ion-card>
+    </ion-list>
+    <!-- <ion-card>
         <ion-card-content>
             <ion-card-title style="color:black;">{{unlockedAltMessagesCount}} out of 21 thank you messages unlocked</ion-card-title>
         </ion-card-content>
     </ion-card>
     <ion-card *ngFor="let x of list_of_alt_msg_to_display;">
         <img src="{{x.filename}}" />
-        <!--
         <ion-card-content>
             <b>Unlock date:</b> {{x.unlock_date}}    
         </ion-card-content>
-        -->
-    </ion-card>
-  
+    </ion-card> -->
+
     <!--
     <ion-card>
       <img src="./assets/cnn_billgates.png" />
@@ -49,5 +90,4 @@
       </ion-card-content>
     </ion-card>
     -->
-  </ion-content>
-  
+</ion-content>
