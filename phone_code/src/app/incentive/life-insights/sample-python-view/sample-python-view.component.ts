@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
-import { DatabaseService } from 'src/app/monitor/database.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
 
 @Component({
   selector: 'app-sample-python-view',
@@ -13,7 +13,7 @@ export class SamplePythonViewComponent implements OnInit {
   whichImage;
 
   constructor(private menuCtrl:MenuController,
-    private appUsageDb: DatabaseService,
+    private uploadService: UploadserviceService,
     private sanitizer: DomSanitizer) { 
 
   }
@@ -51,7 +51,7 @@ export class SamplePythonViewComponent implements OnInit {
      }
     });
     */
-    this.appUsageDb.saveAppUsageEnter("python_life_insight_page_sample");  
+    this.uploadService.saveAppUsageEnter("python_life_insight_page_sample");  
   }  
 
   ionViewDidLeave(){
@@ -62,7 +62,7 @@ export class SamplePythonViewComponent implements OnInit {
       }
     });
     */ 
-    this.appUsageDb.saveAppUsageExit("python_life_insight_page_sample");     
+    this.uploadService.saveAppUsageExit("python_life_insight_page_sample");     
   }
 
 }

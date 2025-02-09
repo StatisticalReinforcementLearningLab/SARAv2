@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import * as moment from 'moment';
 import { DatabaseService } from 'src/app/monitor/database.service';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
 
 @Component({
   selector: 'app-unlocked-inspirational-quotes',
@@ -17,7 +18,7 @@ export class UnlockedInspirationalQuotesComponent implements OnInit {
   constructor(
     private userProfileService: UserProfileService,
     private httpClient: HttpClient,
-    private appUsageDb: DatabaseService
+    private uploadService: UploadserviceService
   ) { }
 
 
@@ -39,7 +40,7 @@ export class UnlockedInspirationalQuotesComponent implements OnInit {
     this.getInspirationalQuotes();
 
     //
-    this.appUsageDb.saveAppUsageEnter("unlocked_inspirational_quote_tab"); 
+    this.uploadService.saveAppUsageEnter("unlocked_inspirational_quote_tab"); 
   }
 
   ionViewDidLeave(){
@@ -50,7 +51,7 @@ export class UnlockedInspirationalQuotesComponent implements OnInit {
       }
     });
     */ 
-    this.appUsageDb.saveAppUsageExit("unlocked_inspirational_quote_tab");     
+    this.uploadService.saveAppUsageExit("unlocked_inspirational_quote_tab");     
   }
 
 

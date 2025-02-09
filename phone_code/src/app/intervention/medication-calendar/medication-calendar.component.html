@@ -5,13 +5,18 @@
     </ion-buttons>
     <ion-title style="color:#fff;">Medication calendar</ion-title>
 
-    <!--
-    <ion-buttons slot="end">
+    <!-- <ion-buttons slot="end">
       <ion-button (click)="openAddEventModal()">
         <ion-icon name="add" slot="icon-only"></ion-icon>
       </ion-button>
+    </ion-buttons> -->
+
+    <ion-buttons  slot="end">
+      <ion-button style="color:#fff;" (click)="openEcap()">
+        eCap
+      </ion-button>
     </ion-buttons>
-    -->
+
   </ion-toolbar>
 </ion-header>
 
@@ -39,13 +44,20 @@
   -->
 
   <ion-list *ngIf="type == 'med-list'">
-    <ion-item>
+
+    
+
+    <ion-item *ngFor="let med of medication_list;">
       <ion-thumbnail slot="start">
-        <img src="assets/img/med1.svg">
+        <img src={{med.img}}>
       </ion-thumbnail>
-      <h6>med-1</h6>
+      <!-- <h6>{{med.name}}</h6> -->
+      <ion-label text-wrap style="padding-left: 10px;">
+        <h3>{{med.name}}</h3>
+        <p>{{med.dosage}}</p>
+      </ion-label>
     </ion-item>
-    <ion-item>
+    <!-- <ion-item>
       <ion-thumbnail slot="start">
         <img src="assets/img/med1.svg">
       </ion-thumbnail>
@@ -56,18 +68,27 @@
         <img src="assets/img/med2.svg">
       </ion-thumbnail>
       <h6>med-2</h6>
-    </ion-item>
-    <ion-button>Add medication</ion-button>
+    </ion-item> --> 
+
+    <!-- <ion-button (click)="insertMedicationIntoList()"> Add medication</ion-button> -->
+    <ion-button id="add-med-alert">Add medication</ion-button>
+    <ion-alert
+      trigger="add-med-alert"
+      header="Add new medication"
+      [buttons]="alertButtons"
+      [inputs]="alertInputs"
+    ></ion-alert>    
+
   </ion-list>
 
 
   <!-- Create some random event -->
   <div *ngIf="type == 'calendar'">
 
-    <!-- 
+    <!--
       Kept for testing.
     -->
-    <ion-row>
+    <!-- <ion-row>
       <ion-col size="6">
         <ion-button (click)="createRandomEvents()" expand="block" fill="outline">
           Add random events
@@ -78,14 +99,14 @@
           Remove all events
         </ion-button>
       </ion-col>
-    </ion-row>
-    
+    </ion-row> -->
+
 
     <!-- <ion-card> -->
-    <!-- 
+    <!--
         <ion-card-header>
             <ion-card-title>Medication Calendar</ion-card-title>
-             <ion-card-subtitle>Card Subtitle</ion-card-subtitle> 
+             <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
         </ion-card-header>
         -->
     <!-- Move back and forther with lelf and right. -->
@@ -112,9 +133,22 @@
     <ion-card-content>
       <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
         [showEventDetail]="true" (onTitleChanged)="onViewTitleChanged($event)" step="30"
-        [monthviewDisplayEventTemplate]="template" [monthviewEventDetailTemplate]="monthviewEventDetailTemplate">
+        [monthviewDisplayEventTemplate]="template" [monthviewEventDetailTemplate]="monthviewEventDetailTemplate"
+        [lockSwipes]="lockSwipes"
+        *ngIf="!isMedicationListRefreashing">
       </calendar>
+      <ion-card *ngIf="isMedicationListRefreashing" style="height: 50%;">
+        <ion-text padding>
+          <h4 class="vertical-center" style="width: 100%; padding: 15px; text-align: center;">Loading....</h4>
+        </ion-text>
+      </ion-card>
     </ion-card-content>
+    <ion-button (click)="insertCalendarDataFromLocal()" expand="block" fill="outline">
+      Local data to test scan
+    </ion-button>
+    <!-- <ion-button (click)="reloadCalendarDataOnly()" expand="block" fill="outline">
+      Reload data
+    </ion-button> -->
   </div>
   <!-- </ion-card> -->
 </ion-content>

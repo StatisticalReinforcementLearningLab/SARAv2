@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from 'src/app/monitor/database.service';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
 import { UserProfileService } from 'src/app/user/user-profile/user-profile.service';
-import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
+// import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 
 @Component({
   selector: 'app-aya-sample-survey',
@@ -12,36 +13,37 @@ export class AyaSampleSurveyComponent implements OnInit {
 
   constructor(
     private userProfileService: UserProfileService,
-    private mobileAccessibility: MobileAccessibility,
-    private appUsageDb: DatabaseService) { }
+    // private mobileAccessibility: MobileAccessibility,
+    private uploadService: UploadserviceService) { }
 
   ngOnInit() {
-    this.mobileAccessibility.usePreferredTextZoom(false);
+    // this.mobileAccessibility.usePreferredTextZoom(false);
   }
 
   ionViewDidEnter(){
     /*
     this.db.getDatabaseState().subscribe(rdy => {
-     if (rdy) {     
-       this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
+     if (rdy) {
+       this.db.addTrack(this.pageTitle, "Enter", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
      }
     });
     */
-    this.appUsageDb.saveAppUsageEnter("aya_survey_page");
- }  
+    this.uploadService.saveAppUsageEnter("aya_survey_page");
+
+ }
 
  ionViewDidLeave(){
     /*
     console.log(this.pageTitle+": ionViewDidLeave");
     this.db.getDatabaseState().subscribe(rdy => {
-      if (rdy) {     
-        this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length); 
+      if (rdy) {
+        this.db.addTrack(this.pageTitle, "Leave", this.userProfileService.username, Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length);
       }
     });
-    */    
-    this.mobileAccessibility.usePreferredTextZoom(true);
-    this.appUsageDb.saveAppUsageExit("aya_survey_page");
-  
+    */
+    // this.mobileAccessibility.usePreferredTextZoom(true);
+    this.uploadService.saveAppUsageExit("aya_survey_page");
+
  }
- 
+
 }

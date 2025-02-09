@@ -121,7 +121,7 @@ export class DatabaseService {
       });
     }
 
-    saveAppUsageEnter(pageName){
+    saveAppUsageEnter2(pageName){
       this.getDatabaseState().subscribe(rdy => {
         if (rdy) { 
           var day_count = Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;    
@@ -130,7 +130,7 @@ export class DatabaseService {
       }); 
     }
 
-    saveAppUsageExit(pageName){
+    saveAppUsageExit2(pageName){
       this.getDatabaseState().subscribe(rdy => {
         if (rdy) {  
           var day_count = Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;    

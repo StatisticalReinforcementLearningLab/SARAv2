@@ -47,7 +47,9 @@ export class AwsS3Service extends StoreBaseService {
       params: {Bucket: this.bucketName}
     });  
 
-    /*const myS3Credentials = {
+    /*
+    
+    const myS3Credentials = {
       accessKeyId: accessKeyId,
       secretAcccessKey: secretAccessKey,
     };
@@ -57,7 +59,9 @@ export class AwsS3Service extends StoreBaseService {
       params: {Bucket: bucketName},
       accessKeyId: accessKeyId,
       secretAccessKey: secretAccessKey
-    });  */
+    });  
+    
+    */
 
     //create a file from result passed as a JSONObject
     var fileName = "result_" + (new Date().getTime()) + "_" + this.EncrDecr.getSHA256(localStorage.getItem('loggedInUser')) + ".json";

@@ -37,4 +37,4 @@ config.ini
 ./server_side_code/apis/tailored_messaging/flask_docker/env
 
 
-
+.DS_Store

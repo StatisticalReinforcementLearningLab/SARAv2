@@ -1,22 +1,25 @@
-import { AfterContentChecked, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { SwiperComponent } from "swiper/angular";
+import { AfterContentChecked, Component, OnInit, ViewChild, ViewEncapsulation, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+// import { SwiperComponent } from "swiper/element";
 // import Swiper core and required modules
-import SwiperCore, { Pagination } from "swiper";
+// import SwiperCore, { Pagination } from "swiper";
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 // install Swiper modules
-SwiperCore.use([Pagination]);
+// SwiperCore.use([Pagination]);
 
 @Component({
     selector: 'app-sam-tutorial',
+    standalone: true,
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    imports: [CommonModule],
     templateUrl: './sam-tutorial.component.html',
     styleUrls: ['./sam-tutorial.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
 
-export class SamTutorialComponent implements AfterContentChecked {
+export class SamTutorialComponent implements OnInit {
 
-    @ViewChild('swiper') swiper: SwiperComponent;
 
     slides = [{
             "text": "Welcome! My name is SAM. What’s yours?",
@@ -60,14 +63,16 @@ export class SamTutorialComponent implements AfterContentChecked {
 
     constructor(private router: Router) { }
     ngAfterContentChecked() {
-        if (this.swiper) {
-            this.swiper.updateSwiper({});
-        }
+        // if (this.swiper) {
+        //     this.swiper.updateSwiper({});
+        // }
     }
 
     onSwiper([swiper]) {
         console.log(swiper);
     }
+
+    ngOnInit() {}
 
     onSlideChange() {
         console.log('slide change');

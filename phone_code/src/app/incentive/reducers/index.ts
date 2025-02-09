@@ -40,6 +40,7 @@ export const _incentiveReducer = createReducer(
                      current_point: payload_data["current_point"],
                      date: moment().format('YYYYMMDD'),
                      isUnlockedViewShown: payload_data["isUnlockedViewShown"],
+                     isBaselineSurvey: payload_data['isBaselineSurvey'],
                     }
         currentIncentiveTimeline[key] = value;
         new_state["timeline"] = currentIncentiveTimeline;

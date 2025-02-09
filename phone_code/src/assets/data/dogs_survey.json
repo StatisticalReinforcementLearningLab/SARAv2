@@ -14,8 +14,16 @@
       "type":"radiobutton",
       "extra":{
         "choices":["Strongly prefer dogs","Strongly prefer cats"],
-	"orientation":"horizontal",
-	"levels":5
+        "orientation":"horizontal",
+        "levels":5
+      }
+    },
+    {
+      "name":"Q42",
+      "text":"Pick the top reason(s) why you drank last week:",
+      "type":"checkbox",
+      "extra":{
+        "choices":["To enjoy the feeling", "To avoid feeling left out", "To feel less depressed, anxious or angry", "To make social gatherings more fun","Other"]
       }
     }
 

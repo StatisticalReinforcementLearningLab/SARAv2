@@ -22,6 +22,10 @@
     <br><br>
     <ion-button color="primary" (click)="resetPoint()">Cheat</ion-button>
     <br><br>
+    <br>
+    <ion-checkbox labelPlacement="end" [(ngModel)]="isCareGiverVersion" (ionChange)="changeCaregiverValue($event)">Caregiver version</ion-checkbox>
+    <br>
+    <br><br>
     <ion-button color="primary" (click)="returnToAquarium()">Return</ion-button>
     
 </ion-content>

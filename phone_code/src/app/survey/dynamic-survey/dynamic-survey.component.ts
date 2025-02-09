@@ -27,6 +27,8 @@ import { SurveyTimeline } from '../model/surveyTimeline';
 import { UnlockedIncentives } from '../../incentive/model/unlocked-incentives';
 import { surveyCompletedRegisterUnlocked } from 'src/app/incentive/incentive.actions';
 import { JSONOutput } from 'aws-sdk/clients/s3';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
+import { UploadItem } from 'src/app/storage/queue';
 
 @Component({
     selector: 'app-dynamic-survey',
@@ -46,6 +48,7 @@ export class DynamicSurveyComponent implements OnInit {
     surveyQuestionsDict = {};
     surveyQuestionsInJSONDictFormat: any;
     versionNumber;
+    isAYA;
 
     @ViewChild('vc', { read: ViewContainerRef }) vc: ViewContainerRef;
 
@@ -54,6 +57,7 @@ export class DynamicSurveyComponent implements OnInit {
         private _m: NgModuleRef<any>,
         private awsS3Service: AwsS3Service,
         private EncrDecr: EncrDecrService,
+        private uploadService: UploadserviceService,
         private router: Router,
         private changeDetector: ChangeDetectorRef,
         private appVersion: AppVersion,
@@ -74,6 +78,12 @@ export class DynamicSurveyComponent implements OnInit {
 
         //initiate the life-insight object
         //this.lifeInsightsProfileService.importLifeInsightProfile(this.jsonFileLinkForSurvey);
+        this.isAYA = true;
+        if(this.userProfileService.isParent == true)
+            this.isAYA = false;
+
+        //this.uploadService.refreshToken();
+
     }
 
 
@@ -139,6 +149,7 @@ export class DynamicSurveyComponent implements OnInit {
             surveyQuestionsInJSONDictFormat = [];
             alertCtrl;
             store: Store<AppState>;
+            uploadService: UploadserviceService;
 
             constructor() {
             }
@@ -256,10 +267,28 @@ export class DynamicSurveyComponent implements OnInit {
                 this.inputchanged(question);
             }
 
-            inputChangedForCheckBox(question, item, $event) {
-                //console.log('holla: ' + question+" "+JSON.stringify($event.detail));
+            inputChangedForCheckBox2(question, item, $event) {
+                /*
+                Currently not used
+                */
+                console.log('holla: ' + question+" "+JSON.stringify($event.detail));
                 this.surveyAnswersJSONObject[item] = $event.detail.checked;
                 //console.log(JSON.stringify(this.surveyAnswersJSONObject));
+
+                //this.processExtraCondition(question);
+            }
+
+            inputChangedForCheckBox(question, item, value, event) {
+                console.log('holla: ' + question+", "+item + ", " + value);
+                this.inputchanged(question);
+                console.log('holla: ' + question+" "+JSON.stringify(event));
+                if(""+this.surveyAnswersJSONObject[item]=='true')
+                    this.surveyAnswersJSONObject[item + "_value"] = value;
+                else{
+                    delete this.surveyAnswersJSONObject[item];
+                    delete this.surveyAnswersJSONObject[item + "_value"];
+                }
+                console.log(JSON.stringify(this.surveyAnswersJSONObject));
 
                 //this.processExtraCondition(question);
             }
@@ -359,16 +388,32 @@ export class DynamicSurveyComponent implements OnInit {
                 this.addMetaTagsToSurvey();
 
                 //--- encrypt the survey and upload it to S3.
-                this.enycryptSurveyDataAndUploadToS3();
+                this.enycryptSurveyDataAndUploadToServer();
 
                 //--- save an encrypted copy of the survey
                 this.saveEncryptedSurveyLocally();
+
+                //--save sensitive data locally
+                this.saveSensitiveDataLocally();
 
                 //-- store survey completed into ngrx to send to server and any other listener.
                 this.storeToNgrxAndUpdateState();
 
                 //start giving all the incentives from here
                 this.provideIncentives();
+            }
+
+            saveSensitiveDataLocally(){
+                //local store
+                var locallyStoredSensitiveData = {};
+                if(window.localStorage['locallyStoredSensitiveData'] != undefined)
+                    locallyStoredSensitiveData = JSON.parse(window.localStorage.getItem('locallyStoredSensitiveData'));
+                else{
+                    locallyStoredSensitiveData["survey"] = [];
+                    locallyStoredSensitiveData["medication_data"] = [];
+                }
+                locallyStoredSensitiveData["survey"].push({"date": moment().format('YYYYMMDD'), "survey_type": this.fileLink,"survey_data": this.surveyAnswersJSONObject});
+                window.localStorage.setItem('locallyStoredSensitiveData', JSON.stringify(locallyStoredSensitiveData));
             }
 
             saveEncryptedSurveyLocally() {
@@ -396,12 +441,26 @@ export class DynamicSurveyComponent implements OnInit {
                 this.surveyAnswersJSONObject['appVersion'] = this.versionNumber;
             }
 
-            enycryptSurveyDataAndUploadToS3() {
+            enycryptSurveyDataAndUploadToServer() {
                 var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.surveyAnswersJSONObject), environment.encyptString);
                 var surveyEncrypted = {};
                 surveyEncrypted['encrypted'] = encrypted;
                 this.surveyAnswersJSONObject['encrypted'] = encrypted;
-                this.awsS3Service.upload(this.fileLink, surveyEncrypted);
+                //this.awsS3Service.upload(this.fileLink, surveyEncrypted);
+                //this.uploadService.refreshToken();
+                
+                // var item = {};
+                // item['data'] = this.surveyAnswersJSONObject;
+                // item['typeOfData'] = 'daily_survey';
+                var item = new UploadItem();
+                item.isEncrypted = true;
+                item.data = this.surveyAnswersJSONObject;
+                if(this.fileLink.includes('baseline'))
+                    item.typeOfData = 'baseline_survey';
+                else
+                    item.typeOfData = 'daily_survey';
+                item.uploadURLLocation = '';
+                this.uploadService.addToUploadQueue(item);
             }
 
             storeToNgrxAndUpdateState() {
@@ -415,10 +474,22 @@ export class DynamicSurveyComponent implements OnInit {
             }
 
 
+
+
             provideIncentives() {
 
+                // if (this.fileLink.includes('baseline')){
+                //     //navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
+                //     this.router.navigate(['home']);
+                // }
+
                 // incremenet point. Points automatically update the aquarium.
-                this.awardANdUpdatePoints();
+                if (this.fileLink.includes('baseline')){
+                    this.awardANdUpdatePoints(0);
+                }else{
+                    this.awardANdUpdatePoints(60);
+                }
+                
 
 
                 //compute new money and store it in local storage.
@@ -432,29 +503,123 @@ export class DynamicSurveyComponent implements OnInit {
                 this.lifeInsightCodesUnfinished();
 
 
-
+                //todo
+                //-- 1. Compute probability of reinforcement
                 //navigate to award-memes/award-altruism with equal probability after submit survey
-                var currentProb = Math.random();
-                window.localStorage.setItem("Prob", "" + currentProb);
+                var reinforcementRandomizationProb = Math.random();
+                window.localStorage.setItem("Prob", "" + reinforcementRandomizationProb);
                 var currentDate = moment().format('YYYYMMDD');
                 let navigationExtras: NavigationExtras = {
                     state: {
                         date: currentDate,
-                        prob: currentProb
+                        prob: reinforcementRandomizationProb
                     }
                 };
-
                 //prepare reinforcement data to upload to AWS S3
                 var reinforcement_data = {};
                 reinforcement_data['userName'] = this.userProfileService.username;
                 reinforcement_data['appVersion'] = this.versionNumber;
-                reinforcement_data['Prob'] = currentProb;
+                reinforcement_data['Prob'] = reinforcementRandomizationProb;
                 reinforcement_data['day_count'] = Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;
                 reinforcement_data['isRandomized'] = 1;//what is this one??
                 reinforcement_data['unix_ts'] = new Date().getTime();
                 reinforcement_data['readable_ts'] = moment().format('MMMM Do YYYY, h:mm:ss a Z');
                 reinforcement_data['date'] = currentDate;
+                reinforcement_data['randomization_prob'] = reinforcementRandomizationProb;
 
+
+                //
+                // reinforcementRandomizationProb = 0.7;
+                if(!(this.fileLink.includes('caregiver') || this.fileLink.includes('baseline'))){
+                    console.log("Not caregiver or baseline version of the survey");
+                    if(reinforcementRandomizationProb >=0.4){
+                        // randomly pick an incentive
+                        // select between life-insight, meme, thank you
+                        // save for today. Do not save for caregiver or baseline.
+                        var select_reward = 'meme';
+                        if(reinforcementRandomizationProb >=0.7)
+                            select_reward = 'altruistic_message';
+
+                        if(select_reward == 'meme'){
+                            fetch('./assets/memes/memefile.json').then(async res => {
+                                var meme_data = await res.json();
+                                reinforcement_data['type_of_rewards'] = 'meme';
+                                meme_data = this.shuffle_meme(meme_data);//will do a shuffle unless it is already shufffled before
+                                // this.showmemes();
+                                var picked_meme = this.pick_meme(meme_data); // for the shuffled, pick the top. Remove from the shuffled list
+                                // this.whichImage = "./assets/memes/"+picked_meme[0]["filename"];
+                                reinforcement_data['reward_file_link'] = "./assets/memes/"+picked_meme[0]["filename"];
+                                window.localStorage['reinforcement_data'] = JSON.stringify(reinforcement_data);
+
+                                // save to already shown memes
+
+                                var already_shown = window.localStorage["already_shown_memes4"];
+
+                                //we are always adding "assets/memes/4.jpg to the list. Move this code for the initialize meme list.
+                                if(already_shown == undefined)
+                                    already_shown = {
+                                        "last_updated": Date.now(),
+                                        "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
+                                        "unlocked_memes":[{"filename": "assets/memes/4.jpg", "unlock_date": moment().format('MM/DD/YYYY')}]
+                                    };
+                                else
+                                    already_shown = JSON.parse(window.localStorage["already_shown_memes4"]);
+
+                                console.log("already_shown: " + already_shown);
+                                already_shown["last_updated"] = Date.now();
+                                already_shown["last_updated_readable_ts"] = moment().format("MMMM Do YYYY, h:mm:ss a Z");
+                                already_shown["unlocked_memes"].push({"filename": "assets/memes/"+picked_meme[0]["filename"], "unlock_date": moment().format('MM/DD/YYYY')});
+                                window.localStorage["already_shown_memes4"] = JSON.stringify(already_shown);
+                                this.userProfileService.updateNonPrivateData();
+                            });  
+                        }
+
+                        if(select_reward == 'altruistic_message'){
+                            fetch('./assets/altruism/altruism_list.json').then(async res => {
+                                var altruism_data = await res.json();
+                                reinforcement_data['type_of_rewards'] = 'altruistic_message';
+                                altruism_data = this.shuffle_altruistic_msg(altruism_data);//will do a shuffle unless it is already shufffled before
+                                // this.showmemes();
+                                var picked_alt_msg = this.pick_alt_msg(altruism_data); // for the shuffled, pick the top. Remove from the shuffled list
+                                // this.whichImage = "./assets/memes/"+picked_meme[0]["filename"];
+                                reinforcement_data['reward_file_link'] = "./assets/altruism/"+picked_alt_msg[0]["filename"];
+                                window.localStorage['reinforcement_data'] = JSON.stringify(reinforcement_data);
+
+                                var already_shown = window.localStorage["already_shown_alt_msg4"];
+                                if(already_shown == undefined)
+                                    already_shown = {
+                                        "last_updated": Date.now(),
+                                        "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
+                                        "unlocked_alt_msgs":[{"filename": "assets/altruism/altruism_1.png", "unlock_date": moment().format('MM/DD/YYYY')}]
+                                    };
+                                else
+                                    already_shown = JSON.parse(window.localStorage["already_shown_alt_msg4"]);
+
+                                console.log("already_shown: " + already_shown);
+                                already_shown["last_updated"] = Date.now();
+                                already_shown["last_updated_readable_ts"] = moment().format("MMMM Do YYYY, h:mm:ss a Z");
+                                already_shown["unlocked_alt_msgs"].push({"filename": "assets/altruism/"+picked_alt_msg[0]["filename"], "unlock_date": moment().format('MM/DD/YYYY')});
+                                window.localStorage["already_shown_alt_msg4"] = JSON.stringify(already_shown);
+                                this.userProfileService.updateNonPrivateData();
+                            });  
+                        }
+
+
+                    }else{
+                        //otherwise do nothing.
+                        reinforcement_data['type_of_rewards'] = 'No reward';
+                        reinforcement_data['reward_file_link'] = '';
+                        window.localStorage['reinforcement_data'] = JSON.stringify(reinforcement_data);
+                    }
+
+                    //reinforcement data upload
+                    var item = new UploadItem();
+                    item.isEncrypted = true;
+                    item.data = reinforcement_data;
+                    item.typeOfData = 'reinforcement';
+                    item.uploadURLLocation = '';
+                    this.uploadService.addToUploadQueue(item);
+                }
 
                 //add for the  modal object
                 var modalObjectNavigationExtras = {};
@@ -464,8 +629,10 @@ export class DynamicSurveyComponent implements OnInit {
                 modalObjectNavigationExtras["AwardedDollar"] = awardedTotalDollarAfterCurrentSurvey - pastTotalDollars;
                 modalObjectNavigationExtras["IsModalShownYet"] = false;
 
+                
 
-                currentProb = 0.3; //Always force home page.
+                //-- 2. Compute probability of tailored message
+
                 /*
                 if (this.fileLink.includes('caregiver') || currentProb <= 0.4) {
                     var reinforcementObj = {};
@@ -491,11 +658,48 @@ export class DynamicSurveyComponent implements OnInit {
                     this.router.navigate(['incentive/award-altruism'], navigationExtras);
                 }
                 */
+                
+
                 if (this.fileLink.includes('caregiver')){
+                    //20240715: Caregiver receives no incentive or message.
+                    navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
+                    this.router.navigate(['home'], navigationExtras);
+                }else if (this.fileLink.includes('baseline')){
+                    //20240715: Is the baseline survey available?
                     navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
                     this.router.navigate(['home'], navigationExtras);
                 }else{
-                    this.router.navigate(['intervention/tailored-message'], navigationExtras);
+                    var interventionRandomizationProb = Math.random();
+                    //if(interventionRandomizationProb >=0.0){
+                    if(interventionRandomizationProb >=0.4){
+                        //if(interventionRandomizationProb >=1.1){
+                        navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
+                        navigationExtras['state']['interventionRandomizationProb'] = interventionRandomizationProb;
+                        navigationExtras['state']['interventionGiven'] = 1;
+                        this.router.navigate(['intervention/tailored-message'], navigationExtras);
+                    }else{
+                        //upload intervention data
+                        var intervention_data = {};
+                        intervention_data['userName'] = this.userProfileService.username;
+                        intervention_data['appVersion'] = this.versionNumber;
+                        intervention_data['Prob'] = interventionRandomizationProb;
+                        intervention_data['day_count'] = Object.keys(this.userProfileService.userProfile.survey_data.daily_survey).length;
+                        intervention_data['unix_ts'] = new Date().getTime();
+                        intervention_data['readable_ts'] = moment().format('MMMM Do YYYY, h:mm:ss a Z');
+                        intervention_data['date'] = currentDate;
+                        intervention_data['interventionGiven'] = 0;
+                        //reinforcement data upload
+                        var item = new UploadItem();
+                        item.isEncrypted = true;
+                        item.data = intervention_data;
+                        item.typeOfData = 'intervention_data';
+                        item.uploadURLLocation = '';
+                        this.uploadService.addToUploadQueue(item);
+
+                        navigationExtras['state']['modalObjectNavigationExtras'] = modalObjectNavigationExtras;
+                        this.router.navigate(['home'], navigationExtras);
+                    }
+
                 }
 
 
@@ -503,10 +707,85 @@ export class DynamicSurveyComponent implements OnInit {
                 //update unlocked incentive data in ngrx store.
                 //This ngrx store state is used to show unlocked incentives at
                 //the start of aquarium reload
-                this.updataUnlockedIncentiveInNgrxStore(awardedTotalDollarAfterCurrentSurvey - pastTotalDollars);
+                if(this.fileLink.includes('baseline')){
+                    //we will be giving zero money for the baseline survey
+                    this.updataUnlockedIncentiveInNgrxStore(0, true);
+                }else{
+                    this.updataUnlockedIncentiveInNgrxStore(awardedTotalDollarAfterCurrentSurvey - pastTotalDollars, false);
+                }
             }
 
-            awardANdUpdatePoints() {
+            shuffle_altruistic_msg(a): any {
+                //
+                //console.log(window.localStorage['meme_shuffle5']);
+                if(window.localStorage['alt_msg6'] == undefined){
+                    //
+                    var j: number, x: number, i: number;
+                    for (i = a.length - 1; i > 0; i--) {
+                        j = Math.floor(Math.random() * (i + 1));
+                        x = a[i];
+                        a[i] = a[j];
+                        a[j] = x;
+                        //console.log(JSON.stringify(a[i][0]) + "," + JSON.stringify(a[j][0]));
+                        //console.log('Meme data: ' + i + ", " + JSON.stringify(a));
+                    }
+                    //
+                    window.localStorage['alt_msg6'] = JSON.stringify(a);
+                    return a;
+                }else{
+                    a  = JSON.parse(window.localStorage['alt_msg6']);
+                    return a;
+                }
+            }
+
+            pick_alt_msg(a) {
+                var picked_alt_msg = a.splice(0,1);
+                a.push(picked_alt_msg[0]);
+                window.localStorage['alt_msg6'] = JSON.stringify(a);
+                return picked_alt_msg;
+            }
+
+            /**
+             * Shuffles array in place if it is not already shuffled
+             * @param {Array} a items An array containing the items.
+             */
+            pick_meme(a) {
+                var picked_meme = a.splice(0,1);
+                a.push(picked_meme[0]);
+                window.localStorage['meme_shuffle6'] = JSON.stringify(a);
+                return picked_meme;
+            }
+            
+            /**
+             * Shuffles array in place if it is not already shuffled
+             * @param {Array} a items An array containing the items.
+             */
+            shuffle_meme(a) {
+
+                //
+                //console.log(window.localStorage['meme_shuffle5']);
+                if(window.localStorage['meme_shuffle6'] == undefined){
+                    //
+                    var j: number, x: number, i: number;
+                    for (i = a.length - 1; i > 0; i--) {
+                        j = Math.floor(Math.random() * (i + 1));
+                        x = a[i];
+                        a[i] = a[j];
+                        a[j] = x;
+                        //console.log(JSON.stringify(a[i][0]) + "," + JSON.stringify(a[j][0]));
+                        //console.log('Meme data: ' + i + ", " + JSON.stringify(a));
+                    }
+                    //
+                    window.localStorage['meme_shuffle6'] = JSON.stringify(a);
+                    return a;
+                }else{
+                    a  = JSON.parse(window.localStorage['meme_shuffle6']);
+                    return a;
+                }
+
+            }
+
+            awardANdUpdatePoints(points) {
                 //get current points from local storage, update, and store it back.
                 //TODO: rather than storage use the Ngrx store to store points and update.
                 if (window.localStorage['TotalPoints'] == undefined)
@@ -514,7 +793,7 @@ export class DynamicSurveyComponent implements OnInit {
                 else
                     this.totalPoints = parseInt(window.localStorage['TotalPoints']);
 
-                this.totalPoints = this.totalPoints + 60; //
+                this.totalPoints = this.totalPoints + points; //
                 window.localStorage.setItem("TotalPoints", "" + this.totalPoints);
             }
 
@@ -529,15 +808,20 @@ export class DynamicSurveyComponent implements OnInit {
 
             }
 
-            updataUnlockedIncentiveInNgrxStore(unlockedMoney) {
+            updataUnlockedIncentiveInNgrxStore(unlockedMoney, isBaselineSurvey) {
+                var unlockedPoints = 60;
+                if(isBaselineSurvey == true)
+                    unlockedPoints = 0;
+
                 var payload: Object = {
                     user_id: this.userProfileService.username,
                     last_date: moment().format('YYYYMMDD'),
-                    unlocked_points: 60,
+                    unlocked_points: unlockedPoints,
                     unlocked_money: unlockedMoney,
                     current_point: this.userProfileService.points,
                     date: moment().format('YYYYMMDD'),
-                    isUnlockedViewShown: false
+                    isUnlockedViewShown: false,
+                    isBaselineSurvey: isBaselineSurvey
                 };
                 this.store.dispatch(surveyCompletedRegisterUnlocked({ payload }));
             }
@@ -719,6 +1003,7 @@ export class DynamicSurveyComponent implements OnInit {
                 cmpRef.instance.alertCtrl = this.alertCtrl;
                 cmpRef.instance.userProfileService = this.userProfileService;
                 cmpRef.instance.awardDollarService = this.awardDollarService;
+                cmpRef.instance.uploadService = this.uploadService;
                 cmpRef.instance.EncrDecr = this.EncrDecr;
                 cmpRef.instance.plt = this.plt;
                 cmpRef.instance.router = this.router;// Router,
@@ -880,10 +1165,58 @@ export class DynamicSurveyComponent implements OnInit {
             //------------------------------------------------------                 
             if (obj.type == "checkbox") {
                 //survey_string = this.process_survey_checkbox(obj, survey_string, i);
+                survey_string = this.process_survey_checkbox(obj, survey_string, i);
             }
 
             survey_string = survey_string + '</div>';
         }
+        return survey_string;
+    }
+
+    process_survey_checkbox(obj: any, survey_string: string, i: any): string {
+        // survey_string = survey_string + '<div class="radiovertical"><ul>';
+        // /*
+        // survey_string = [survey_string,
+        //         '<li><input type="radio" id="option' + i + "I" + j + '" name="' + i + '" [(ngModel)]="surveyAnswersJSONObject.' + i + '" value=" ' + obj.extra.choices[j] + '" (change)="inputchanged(\'' + i + '\')">',
+        //         '<label for="option' + i + "I" + j + '">' + obj.extra.choices[j] + '</label>',
+        //         '<div class="check"></div></li>'
+        //     ].join(" ");
+        // */
+        // for (var j = 0; j < obj.extra.choices.length; j++) {
+        //     //survey_string = [survey_string, '<ion-checkbox style="border-color:#fff;border-width: 0px;" ng-model="survey.' + i + 'O' + j + '" ng-change="inputchanged(\'' + i + '\')"' + '>' + obj.extra.choices[j] + '</ion-checkbox>'].join(" ");
+        //     //survey_string = [survey_string, '<ion-checkbox labelPlacement="end" [(ngModel)]="surveyAnswersJSONObject.' + i + 'O' + j + '"  (change)="inputChangedForCheckBox(\'' + i + '\')"' + '>' + obj.extra.choices[j] + '</ion-checkbox>'].join(" ");
+        //     survey_string = [survey_string, 
+        //         '<li><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"><label for="vehicle1">' + obj.extra.choices[j] + '</label></li><br>'
+        //     ].join(" ");
+        // }
+        // survey_string = survey_string + '</ul></div>';
+
+        survey_string = survey_string + '<div class="checkboxvertical"><ul>';
+
+        for (var j = 0; j < obj.extra.choices.length; j++) {
+            survey_string = [survey_string,
+                '<li><input type="checkbox" id="option' + i + "I" + j + '" name="' + i + 'O' + j + '" [(ngModel)]="surveyAnswersJSONObject.' + i + 'I' + j, 
+                '" value=" ' + obj.extra.choices[j] + '" (change)="inputChangedForCheckBox(\'' + i + '\',\'' + i + 'I' + j + '\',\'' + obj.extra.choices[j] + '\', $event)">',
+                '<label for="option' + i + "I" + j + '">' + obj.extra.choices[j] + '</label>',
+                '<div class="checkb"></div></li>'
+            ].join(" ");
+        }
+
+        // for (var j = 0; j < obj.extra.choices.length; j++) {
+        //     survey_string = [survey_string,
+        //         // '<input type="checkbox" id="option' + i + "I" + j + '" name="' + i + 'O' + j + '" [(ngModel)]="surveyAnswersJSONObject.' + i + 'O' + j + '" value=" ' + obj.extra.choices[j] + '" (change)="inputchanged(\'' + i + '\')">',
+        //         // '<label for="option' + i + "I" + j + '">' + obj.extra.choices[j] + '</label>',
+        //         // '<div class="checkb">',
+        //         '<input type="checkbox">',
+        //         '<label>',
+        //             obj.extra.choices[j],
+        //         '</label>'
+        //     ].join(" ");
+        // }
+
+        survey_string = survey_string + '</ul></div>';
+
+
         return survey_string;
     }
 

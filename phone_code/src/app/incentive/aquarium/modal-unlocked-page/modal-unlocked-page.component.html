@@ -1,9 +1,10 @@
 
 <ion-header>
-    <ion-list-header>Congratulations!!!</ion-list-header>
+    <h2 style="padding: 5px; padding-left: 10px; padding-right: 10px;">Here is something for completing the survey</h2>
 </ion-header>
 
 <ion-content class="ion-padding">
+    <img style="padding: 5px;" [src]="whichImage" *ngIf="whichImage"/>
     <ion-list *ngIf="modalReady">
       <ion-item *ngFor="let reinforcement of reinforcements"> 
         <ion-thumbnail slot="start">

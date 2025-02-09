@@ -3,15 +3,17 @@ import { Component } from '@angular/core';
 import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@awesome-cordova-plugins/splash-screen/ngx';
 import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
-import { OneSignalService } from './notification/one-signal.service';
+// import { OneSignalService } from './notification/one-signal.service';
 
 import { environment } from '../environments/environment';
-import { Router, RouterEvent, RouteConfigLoadStart, RouteConfigLoadEnd, NavigationStart, NavigationEnd } from '@angular/router';
+import { Router, RouterEvent, RouteConfigLoadStart, RouteConfigLoadEnd, NavigationStart, NavigationEnd, Event } from '@angular/router';
 
 import { LoadingController } from '@ionic/angular';
 import { UserProfileService } from './user/user-profile/user-profile.service';
 import { AuthService } from './user/auth/auth.service';
 import { Subscription } from 'rxjs';
+import { register } from 'swiper/element/bundle';
+register();
 
 @Component({
   selector: 'app-root',
@@ -41,11 +43,11 @@ export class AppComponent {
   }
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private oneSignalService: OneSignalService,
+    // private oneSignalService: OneSignalService,
     private authService: AuthService,
     private userProfileService: UserProfileService,
     public loadingController: LoadingController,
@@ -56,12 +58,12 @@ export class AppComponent {
     this.isAYA = true;
 
     router.events.subscribe(
-			( event: RouterEvent ) : void => {
+			( event: Event ) : void => {
 
         //this.isShowingRouteLoadIndicator = false;
         var asyncLoadCount = 0;
 
-        
+
 				if ( event instanceof RouteConfigLoadStart ) {
           asyncLoadCount++;
           console.log("Routing started");
@@ -144,7 +146,7 @@ export class AppComponent {
         }
       });
 
-      // fetch a copy from server of userProfile to see if it's newer 
+      // fetch a copy from server of userProfile to see if it's newer
       this.userProfileService.fetchUserProfile().subscribe(response=>{
         if(response.serverCopyNewer){
           // the server copy of the userProfile was newer (and has been updated locally)
@@ -176,12 +178,12 @@ export class AppComponent {
       }
 
       this.splashScreen.hide();
-      this.oneSignalService.initOneSignal();
+      // this.oneSignalService.initOneSignal();
 
       //sidebar update.
       if((this.userProfileService != undefined)  && (this.userProfileService.isParent == true))
           this.isAYA = false;
-      
+
 
     });
     //window.localStorage.setItem("TotalPoints", "0");

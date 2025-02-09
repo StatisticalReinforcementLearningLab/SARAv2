@@ -11,5 +11,6 @@ export interface UnlockedIncentive {
     current_point: number;
     date: string;
     isUnlockedViewShown: boolean;
+    isBaselineSurvey: boolean; //note we will use this to distinguish, if we don't provide incentives for baseline survey.
 }
 

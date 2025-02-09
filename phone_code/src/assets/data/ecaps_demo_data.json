@@ -1,0 +1,146 @@
+{
+    "tag_id": "100123959-BR1",
+    "scan_time": 1723357902,
+    "event_count": 43,
+    "package_id": "",
+    "patient_id": "",
+    "custom_data_1": "",
+    "versioning": {
+        "model": "eCap Argus-Loc",
+        "firmware_version": "1.1.1.0.1.4.0",
+        "hardware_version": "1.0.0"
+    },
+    "started": true,
+    "clock_coefficient_correction": true,
+    "tag_events": [
+        {
+            "timestamp": 1689345511
+        },
+        {
+            "timestamp": 1689345571
+        },
+        {
+            "timestamp": 1689345631
+        },
+        {
+            "timestamp": 1689952588
+        },
+        {
+            "timestamp": 1690564105
+        },
+        {
+            "timestamp": 1690564885
+        },
+        {
+            "timestamp": 1693249992
+        },
+        {
+            "timestamp": 1693250052
+        },
+        {
+            "timestamp": 1693250052
+        },
+        {
+            "timestamp": 1693250052
+        },
+        {
+            "timestamp": 1693250412
+        },
+        {
+            "timestamp": 1693250412
+        },
+        {
+            "timestamp": 1693250472
+        },
+        {
+            "timestamp": 1693250532
+        },
+        {
+            "timestamp": 1693250532
+        },
+        {
+            "timestamp": 1693250592
+        },
+        {
+            "timestamp": 1709655650
+        },
+        {
+            "timestamp": 1720818535
+        },
+        {
+            "timestamp": 1720818535
+        },
+        {
+            "timestamp": 1721141933
+        },
+        {
+            "timestamp": 1721165333
+        },
+        {
+            "timestamp": 1721165573
+        },
+        {
+            "timestamp": 1722036529
+        },
+        {
+            "timestamp": 1722036529
+        },
+        {
+            "timestamp": 1722036529
+        },
+        {
+            "timestamp": 1722036589
+        },
+        {
+            "timestamp": 1722133668
+        },
+        {
+            "timestamp": 1722213468
+        },
+        {
+            "timestamp": 1722295067
+        },
+        {
+            "timestamp": 1722379127
+        },
+        {
+            "timestamp": 1722476026
+        },
+        {
+            "timestamp": 1722551446
+        },
+        {
+            "timestamp": 1722551506
+        },
+        {
+            "timestamp": 1722643846
+        },
+        {
+            "timestamp": 1722726825
+        },
+        {
+            "timestamp": 1722823845
+        },
+        {
+            "timestamp": 1722895484
+        },
+        {
+            "timestamp": 1722989324
+        },
+        {
+            "timestamp": 1723070863
+        },
+        {
+            "timestamp": 1723159063
+        },
+        {
+            "timestamp": 1723180663
+        },
+        {
+            "timestamp": 1723249603
+        },
+        {
+            "timestamp": 1723332642
+        }
+    ]
+}

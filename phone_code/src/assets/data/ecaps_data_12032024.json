@@ -1,0 +1,396 @@
+{
+    "command_code": 1,
+    "success": true,
+    "tag_message": {
+        "patient_id": "",
+        "tag_id": "100123959-BR1",
+        "clock_coefficient_correction": true,
+        "scan_time": 1733208572,
+        "event_count": 125,
+        "started": true,
+        "custom_data_1": "",
+        "package_id": "",
+        "tag_events": [
+            {
+                "timestamp": 1689345512
+            },
+            {
+                "timestamp": 1689345572
+            },
+            {
+                "timestamp": 1689345632
+            },
+            {
+                "timestamp": 1689952589
+            },
+            {
+                "timestamp": 1690564107
+            },
+            {
+                "timestamp": 1690564887
+            },
+            {
+                "timestamp": 1693249996
+            },
+            {
+                "timestamp": 1693250056
+            },
+            {
+                "timestamp": 1693250056
+            },
+            {
+                "timestamp": 1693250056
+            },
+            {
+                "timestamp": 1693250416
+            },
+            {
+                "timestamp": 1693250416
+            },
+            {
+                "timestamp": 1693250476
+            },
+            {
+                "timestamp": 1693250536
+            },
+            {
+                "timestamp": 1693250536
+            },
+            {
+                "timestamp": 1693250596
+            },
+            {
+                "timestamp": 1709655668
+            },
+            {
+                "timestamp": 1720818563
+            },
+            {
+                "timestamp": 1720818563
+            },
+            {
+                "timestamp": 1721141961
+            },
+            {
+                "timestamp": 1721165361
+            },
+            {
+                "timestamp": 1721165601
+            },
+            {
+                "timestamp": 1722036558
+            },
+            {
+                "timestamp": 1722036558
+            },
+            {
+                "timestamp": 1722036558
+            },
+            {
+                "timestamp": 1722036618
+            },
+            {
+                "timestamp": 1722133697
+            },
+            {
+                "timestamp": 1722213497
+            },
+            {
+                "timestamp": 1722295097
+            },
+            {
+                "timestamp": 1722379156
+            },
+            {
+                "timestamp": 1722476056
+            },
+            {
+                "timestamp": 1722551476
+            },
+            {
+                "timestamp": 1722551536
+            },
+            {
+                "timestamp": 1722643875
+            },
+            {
+                "timestamp": 1722726855
+            },
+            {
+                "timestamp": 1722823875
+            },
+            {
+                "timestamp": 1722895514
+            },
+            {
+                "timestamp": 1722989354
+            },
+            {
+                "timestamp": 1723070893
+            },
+            {
+                "timestamp": 1723159093
+            },
+            {
+                "timestamp": 1723180693
+            },
+            {
+                "timestamp": 1723249633
+            },
+            {
+                "timestamp": 1723332672
+            },
+            {
+                "timestamp": 1723430592
+            },
+            {
+                "timestamp": 1723515492
+            },
+            {
+                "timestamp": 1723607531
+            },
+            {
+                "timestamp": 1723679891
+            },
+            {
+                "timestamp": 1723763051
+            },
+            {
+                "timestamp": 1723852150
+            },
+            {
+                "timestamp": 1723943290
+            },
+            {
+                "timestamp": 1724020150
+            },
+            {
+                "timestamp": 1724107809
+            },
+            {
+                "timestamp": 1724197029
+            },
+            {
+                "timestamp": 1724288949
+            },
+            {
+                "timestamp": 1724338388
+            },
+            {
+                "timestamp": 1724390888
+            },
+            {
+                "timestamp": 1724456828
+            },
+            {
+                "timestamp": 1724537707
+            },
+            {
+                "timestamp": 1724640487
+            },
+            {
+                "timestamp": 1724716087
+            },
+            {
+                "timestamp": 1724798526
+            },
+            {
+                "timestamp": 1724886006
+            },
+            {
+                "timestamp": 1724971866
+            },
+            {
+                "timestamp": 1725082505
+            },
+            {
+                "timestamp": 1725770462
+            },
+            {
+                "timestamp": 1725845222
+            },
+            {
+                "timestamp": 1725872702
+            },
+            {
+                "timestamp": 1725872702
+            },
+            {
+                "timestamp": 1725930062
+            },
+            {
+                "timestamp": 1725930662
+            },
+            {
+                "timestamp": 1725930722
+            },
+            {
+                "timestamp": 1726002361
+            },
+            {
+                "timestamp": 1726113241
+            },
+            {
+                "timestamp": 1726176421
+            },
+            {
+                "timestamp": 1726269720
+            },
+            {
+                "timestamp": 1726362480
+            },
+            {
+                "timestamp": 1726437600
+            },
+            {
+                "timestamp": 1726525739
+            },
+            {
+                "timestamp": 1726611959
+            },
+            {
+                "timestamp": 1726699859
+            },
+            {
+                "timestamp": 1726711319
+            },
+            {
+                "timestamp": 1726711319
+            },
+            {
+                "timestamp": 1726785718
+            },
+            {
+                "timestamp": 1726870138
+            },
+            {
+                "timestamp": 1726956478
+            },
+            {
+                "timestamp": 1726977118
+            },
+            {
+                "timestamp": 1726977178
+            },
+            {
+                "timestamp": 1727051037
+            },
+            {
+                "timestamp": 1727130237
+            },
+            {
+                "timestamp": 1727224256
+            },
+            {
+                "timestamp": 1727300636
+            },
+            {
+                "timestamp": 1727391596
+            },
+            {
+                "timestamp": 1727814894
+            },
+            {
+                "timestamp": 1727825574
+            },
+            {
+                "timestamp": 1727912754
+            },
+            {
+                "timestamp": 1727994293
+            },
+            {
+                "timestamp": 1728094193
+            },
+            {
+                "timestamp": 1728172853
+            },
+            {
+                "timestamp": 1728253432
+            },
+            {
+                "timestamp": 1728344212
+            },
+            {
+                "timestamp": 1728423472
+            },
+            {
+                "timestamp": 1728514971
+            },
+            {
+                "timestamp": 1728594411
+            },
+            {
+                "timestamp": 1728687231
+            },
+            {
+                "timestamp": 1728775010
+            },
+            {
+                "timestamp": 1728859310
+            },
+            {
+                "timestamp": 1728943549
+            },
+            {
+                "timestamp": 1729033909
+            },
+            {
+                "timestamp": 1729116709
+            },
+            {
+                "timestamp": 1729207248
+            },
+            {
+                "timestamp": 1729293948
+            },
+            {
+                "timestamp": 1729380288
+            },
+            {
+                "timestamp": 1729462907
+            },
+            {
+                "timestamp": 1729554827
+            },
+            {
+                "timestamp": 1729640147
+            },
+            {
+                "timestamp": 1729720426
+            },
+            {
+                "timestamp": 1729810066
+            },
+            {
+                "timestamp": 1729904146
+            },
+            {
+                "timestamp": 1731952417
+            },
+            {
+                "timestamp": 1731952777
+            },
+            {
+                "timestamp": 1732918173
+            },
+            {
+                "timestamp": 1732930533
+            },
+            {
+                "timestamp": 1733011113
+            },
+            {
+                "timestamp": 1733096192
+            },
+            {
+                "timestamp": 1733180732
+            }
+        ],
+        "versioning": {
+            "hardware_version": "1.0.0",
+            "firmware_version": "1.1.1.0.1.4.0",
+            "model": "eCap Argus-Loc"
+        }
+    }
+}

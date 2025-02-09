@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { DatabaseService } from 'src/app/monitor/database.service';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
 
 @Component({
   selector: 'app-info-page',
@@ -11,7 +12,7 @@ import { DatabaseService } from 'src/app/monitor/database.service';
 export class InfoPageComponent implements OnInit {
 
   constructor(private menuCtrl:MenuController,
-    private appUsageDb: DatabaseService,
+    private uploadService: UploadserviceService,
     private router: Router) { }
 
   ngOnInit() {
@@ -26,7 +27,7 @@ export class InfoPageComponent implements OnInit {
      }
     });
     */
-    this.appUsageDb.saveAppUsageEnter("reward_info_page");  
+    this.uploadService.saveAppUsageEnter("reward_info_page");  
   }  
 
   ionViewDidLeave(){
@@ -37,7 +38,7 @@ export class InfoPageComponent implements OnInit {
       }
     });
     */ 
-    this.appUsageDb.saveAppUsageExit("reward_info_page");     
+    this.uploadService.saveAppUsageExit("reward_info_page");     
   }
 
   openBaseline() {

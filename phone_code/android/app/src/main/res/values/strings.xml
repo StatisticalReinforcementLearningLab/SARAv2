@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">sarav2</string>
+    <string name="title_activity_main">sarav2</string>
+    <string name="package_name">edu.harvard.srl.SARA.V2</string>
+    <string name="custom_url_scheme">edu.harvard.srl.SARA.V2</string>
+</resources>

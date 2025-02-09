@@ -5,32 +5,116 @@
         <ion-icon name="arrow-back-outline" style="color : white;"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title style="color:#fff;">Therapeutic message</ion-title>
+    <ion-title style="color:#fff;">Message</ion-title>
     <ion-buttons slot="end">
       <ion-button style="color:#fff;" (click)="loadTailoredMessage()">
-          <ion-icon name="refresh-outline" style="color : white;"></ion-icon>
+        <ion-icon name="refresh-outline" style="color : white;"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 
-<ion-content [fullscreen]="true">
+<ion-content style="background:#fff">
 
-  <ion-card *ngIf="!isSurveyDone">
+  <ion-card *ngIf="!isSurveyDone" style="height: 50%;">
     <ion-text padding>
-      <h4 style="padding: 15px;">Survey not completed for today!!</h4>
+      <h4 class="vertical-center" style="width: 100%; padding: 15px; text-align: center;">Loading....</h4>
     </ion-text>
   </ion-card>
 
-  <div *ngIf="isSurveyDone">
-    <ion-card>
+  <!-- 
+  <ion-card *ngIf="isSurveyDone" style="height: 80%;">
+    <ion-text padding>
+      <h4 class="vertical-center" style="width: 100%; padding: 15px; text-align: center;">{{message}}</h4>
+    </ion-text>
+    <img src="{{interventionImage}}">
+  </ion-card> 
+  -->
+  
+
+  <div style="position: relative;" *ngIf="isSurveyDone">
+    <img [src]="interventionImage" style="height: auto;width: 100%;padding-top:0px; border: 0px solid #fff;position: absolute;"/>
+    <canvas id="hearts_canvas" width="100%" height="100%" style="box-sizing: border-box; position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
+  </div>
+
+
+  <!-- <swiper-container [pagination]="true" *ngIf="isSurveyDone">
+    <swiper-slide>
+      <h4 style="width: 100%; padding: 15px; padding-top: 120px; padding-bottom: 120px; text-align: center;">{{message}}
+      </h4>
+    </swiper-slide>
+
+    <swiper-slide>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Today's rewards</ion-card-subtitle>
+        </ion-card-header>
+        <ion-text padding>
+          <p style="padding: 18px; padding-top: 0px; font-size: 16px;">You also unlocked a thank you message, a dollar and a fish for the aquarium.</p>
+        </ion-text>
+        <img style="padding: 18px;" [src]="whichImage" *ngIf="whichImage"/>
+        <ion-list>
+          <ion-item *ngFor="let reinforcement of reinforcements"> 
+            <ion-thumbnail slot="start">
+              <img src="{{reinforcement.img}}">
+            </ion-thumbnail>
+            <ion-label text-wrap>
+              <h2>{{reinforcement.header}}</h2>
+              <h3>{{reinforcement.text}}</h3>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+    </swiper-slide>
+
+  </swiper-container> -->
+
+
+  <!--
+    <ion-card style="height: 500px;">
       <ion-text padding>
-        <h4 style="padding: 15px;">{{message}}</h4>
+        <h4 class="vertical-center" style="width: 100%; padding: 15px; text-align: center;">{{message}}</h4>
       </ion-text>
     </ion-card>
+    -->
 
-    
+  <!--
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Today's message</ion-card-subtitle>
+      </ion-card-header>
+      <ion-text padding>
+        <h4 style="width: 100%; padding: 15px; padding-top: 120px; padding-bottom: 120px; text-align: center;">{{message}}</h4>
+      </ion-text>
+      <ion-button fill="clear">Like</ion-button>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Today's rewards</ion-card-subtitle>
+      </ion-card-header>
+      <ion-text padding>
+        <p style="padding: 18px; padding-top: 0px; font-size: 16px;">You also unlocked a thank you message, a dollar and a fish for the aquarium.</p>
+      </ion-text>
+      <img style="padding: 18px;" [src]="whichImage" *ngIf="whichImage"/>
+      <ion-list>
+        <ion-item *ngFor="let reinforcement of reinforcements"> 
+          <ion-thumbnail slot="start">
+            <img src="{{reinforcement.img}}">
+          </ion-thumbnail>
+          <ion-label text-wrap>
+            <h2>{{reinforcement.header}}</h2>
+            <h3>{{reinforcement.text}}</h3>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+    <ion-button expand="full" style="margin: 15px;">Return home</ion-button>
+    -->
+
+  <!--
     <ion-card>
       <h4>Survey responses</h4>
       <div *ngFor="let item of survey_responses">
@@ -55,9 +139,24 @@
         {{all_buckets}}
       </pre>
     </ion-card>
-  </div>
-
-  
-  
+    -->
 </ion-content>
 
+<ion-footer align="center" class="ion-no-border" *ngIf="isSurveyDone">
+  <!--<ion-icon name="star-outline"></ion-icon>-->
+  <ion-toolbar style="background:#fff;border: 0px solid #fff;height:120px;">
+      <button style="height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:20px;font-size:24px;color:#fff;background:#D32F2F;" 
+      (click)="ratingChanged(0)">
+          <ion-icon name="thumbs-down" style="height: 50px;width: 50px;"></ion-icon>
+      </button>
+      <button style="height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:20px;font-size:24px;color:#fff;background:#7F00FF;" 
+      (click)="ratingChanged(2)">
+          <ion-icon name="star-outline" style="height: 50px;width: 50px;"></ion-icon>
+      </button>
+      <button style="height: 100px;width: 100px;border-radius:70px;border: 1px solid #fff;margin-right:10px;font-size:24px;color:#fff;background:#33691E;" 
+      (click)="ratingChanged(1)">
+          <ion-icon name="thumbs-up" style="height: 50px;width: 50px;"></ion-icon>
+      </button>
+      
+  </ion-toolbar>
+</ion-footer>

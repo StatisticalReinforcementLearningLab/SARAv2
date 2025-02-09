@@ -13,7 +13,7 @@ import { AwardAltruismComponent } from './award-altruism/award-altruism.componen
 import { ModalUnlockedPageComponent } from './aquarium/modal-unlocked-page/modal-unlocked-page.component';
 import { InfoPageComponent } from './info-page/info-page.component';
 import { StoreModule } from '@ngrx/store';
-import {incentiveReducer} from './reducers';
+import { incentiveReducer } from './reducers';
 import { UnlockedMemesComponent } from './unlocked-memes/unlocked-memes.component';
 import { UnlockedAltuisticMessagesComponent } from './unlocked-altuistic-messages/unlocked-altuistic-messages.component';
 import { FishbowlComponent } from './aquarium/previews/fishbowl/fishbowl.component';
@@ -21,28 +21,28 @@ import { SeaComponent } from './aquarium/previews/sea/sea.component';
 import { TundraComponent } from './aquarium/previews/tundra/tundra.component';
 import { UnlockedInspirationalQuotesComponent } from './unlocked-inspirational-quotes/unlocked-inspirational-quotes.component';
 import { VideoInfoPageComponent } from './video-info-page/video-info-page.component';
+import { UnlockedRewardsComponent } from './unlocked-rewards/unlocked-rewards.component';
 
 const routes: Routes = [
-//  { path: 'award', component: AwardComponent },
+  //  { path: 'award', component: AwardComponent },
   { path: 'award-memes', component: AwardMemesComponent },
-//  { path: 'visualization', component: VisualizationComponent }
+  //  { path: 'visualization', component: VisualizationComponent }
 ];
 
 @NgModule({
-  declarations: [AwardMemesComponent, AwardAltruismComponent, TreasurechestComponent, ModalUnlockedPageComponent,InfoPageComponent, UnlockedMemesComponent, UnlockedAltuisticMessagesComponent, FishbowlComponent, SeaComponent, TundraComponent, UnlockedInspirationalQuotesComponent, VideoInfoPageComponent],
+  declarations: [AwardMemesComponent, AwardAltruismComponent, TreasurechestComponent, ModalUnlockedPageComponent, InfoPageComponent, UnlockedMemesComponent, UnlockedAltuisticMessagesComponent, FishbowlComponent, SeaComponent, TundraComponent, UnlockedInspirationalQuotesComponent, VideoInfoPageComponent, UnlockedRewardsComponent],
   imports: [
     CommonModule,
     IonicModule.forRoot(),
     RouterModule.forChild(routes),
     StoreModule.forFeature('incentive', incentiveReducer)
   ],
-  exports:[
+  exports: [
     //AwardComponent, 
-    AwardMemesComponent, 
+    AwardMemesComponent,
     AwardAltruismComponent
     //VisualizationComponent
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  entryComponents: [ModalUnlockedPageComponent]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class IncentiveModule { }

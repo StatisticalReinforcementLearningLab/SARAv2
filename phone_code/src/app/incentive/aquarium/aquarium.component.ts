@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, ElementRef } from '@angular/core';
 import { DemoAquariumComponent } from '../../incentive/aquarium/demo-aquarium/demo-aquarium.component';
 import { Platform, AlertController, ModalController, NavController, MenuController } from '@ionic/angular';
 import * as moment from 'moment';
@@ -16,6 +16,9 @@ import { unlockedScreenShownAlready } from '../incentive.actions';
 import { DatabaseService } from 'src/app/monitor/database.service';
 import { AwsS3Service } from '../../storage/aws-s3.service';
 import embed from 'vega-embed';
+import { Swiper } from 'swiper/types';
+import { HttpClient } from '@angular/common/http';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
 
 @Component({
     selector: 'app-aquarium',
@@ -37,6 +40,13 @@ export class AquariumComponent implements OnInit {
     title = "";
     isIOS = false;
     navigate: any;
+    weeklyMed: any;
+    altMsgsImages: any;
+    memeImages: any;
+    interventionImages: any;
+    isAYA = true;
+
+    @ViewChild('swiperContainer') swiperRefRewards: ElementRef | undefined;
 
 
     get isActive() {
@@ -66,9 +76,10 @@ export class AquariumComponent implements OnInit {
         private store: Store<AppState>,
         public navController: NavController,
         private menu: MenuController,
-        private appUsageDb: DatabaseService,
+        private uploadService: UploadserviceService,
         private awsS3Service: AwsS3Service,
-        private userProfileService: UserProfileService) {
+        private userProfileService: UserProfileService,
+        public httpClient: HttpClient) {
         console.log("Constructor called");
         this.sub1$ = this.platform.pause.subscribe(() => {
             console.log('****UserdashboardPage PAUSED****');
@@ -95,9 +106,294 @@ export class AquariumComponent implements OnInit {
             this.isIOS = true;
         }
 
+        this.isAYA = true;
+        if(this.userProfileService.isParent == true)
+            this.isAYA = false;
+
         this.sideMenu();
 
+        //
+        console.log("---UserProfile---");
+        console.log(JSON.stringify(this.userProfileService.userProfile));
+        console.log(JSON.stringify(this.userProfileService.userProfileFixed));
+
+        // //
+        // this.weeklyMed = [
+        //     {
+        //         day: "Tue",
+        //         date: 30,
+        //         icon: "checkmark-circle",
+        //         color: "green",
+        //     },
+        //     {
+        //         day: "Wed",
+        //         date: 1,
+        //         icon: "checkmark-circle",
+        //         color: "green",
+        //     },
+        //     {
+        //         day: "Thu",
+        //         date: 2,
+        //         icon: "close-circle",
+        //         color: "red",
+        //     },
+        //     {
+        //         day: "Fri",
+        //         date: 3,
+        //         icon: "checkmark-circle",
+        //         color: "green",
+        //     },
+        //     {
+        //         day: "Sat",
+        //         date: 4,
+        //         icon: "checkmark-circle",
+        //         color: "green",
+        //     },
+        //     {
+        //         day: "Sun",
+        //         date: 5,
+        //         icon: "checkmark-circle",
+        //         color: "green",
+        //     },
+        //     {
+        //         day: "Today",
+        //         date: 6,
+        //         icon: "add-circle",
+        //         color: "rebeccapurple",
+        //     },
+        // ];
     }
+
+    fetchPrivateDataFromWeb(){
+        //this.uploadService.getPrivateUserData().subscribe((d) => console.log("Recieved Private Value", d));
+        let me = this;
+        console.log("Fetched medication data from web");
+        this.uploadService.getPrivateUserData().subscribe((d) =>  {
+            // var events = JSON.parse(d)["medication_data"]['events'];
+            // for (var i = 0; i < events.length; i++) {
+            //     //convert string back to date objects.
+            //     events[i].startTime = new Date(events[i].startTime);
+            //     events[i].endTime = new Date(events[i].endTime);
+            //     events[i].medicationIntakeTime = new Date(events[i].medicationIntakeTime);
+            // }
+            //this.eventSource = events;
+            //this.medicationListChanged$.next(events);
+            me.fillMedicationWidget(d);
+        });
+    }
+
+    fillMedicationWidget(d) {
+        /*
+        //
+        this.weeklyMed = [
+            {
+                day: "Tu",
+                date: 30,
+                icon: "checkmark-circle",
+                color: "green",
+            },
+            {
+                day: "W",
+                date: 1,
+                icon: "checkmark-circle",
+                color: "green",
+            },
+            {
+                day: "Th",
+                date: 2,
+                icon: "close-circle",
+                color: "red",
+            },
+            {
+                day: "F",
+                date: 3,
+                icon: "checkmark-circle",
+                color: "green",
+            },
+            {
+                day: "Sa",
+                date: 4,
+                icon: "checkmark-circle",
+                color: "green",
+            },
+            {
+                day: "Su",
+                date: 5,
+                icon: "checkmark-circle",
+                color: "green",
+            },
+            {
+                day: "Today",
+                date: 6,
+                icon: "add-circle",
+                color: "rebeccapurple",
+            },
+        ];
+        */
+        var events = [];
+        var eventDateStrings = [];
+        var eventDateIntakeStatus = [];
+        let privateUserData_web = JSON.parse(d); // Add medication data.
+        console.log("====Private data web: " + privateUserData_web);
+
+        var events_web_ts = -1;
+        var events_web = [];
+        if(d !== null){
+            //Here we only process once the web call is done.
+            //Otherwise, we retain the local copy at the start.
+            if("medication_data" in privateUserData_web){
+                var medication_data_web = privateUserData_web['medication_data'];
+                events_web = medication_data_web['events'];
+                events_web_ts = medication_data_web['ts'];
+            }
+        }
+
+        var events_local_ts = -1;
+        var events_local = [];
+        let privateUserData_local = JSON.parse(window.localStorage.getItem('private_user_data')); 
+        console.log("====Private data local: " + privateUserData_local);
+        if((window.localStorage.getItem("private_user_data") !== null) 
+            && ("medication_data" in privateUserData_local)){
+            var medication_data_local = privateUserData_local['medication_data'];
+            events_local = medication_data_local['events'];
+            events_local_ts = medication_data_local['ts'];
+        }
+
+        //take one with higher timestamp, as it is newer
+        events = events_local;
+        if(events_local_ts < events_web_ts){
+            events = events_web;
+            //if web copy is newer, we can save the web data to local data.
+            window.localStorage.setItem('private_user_data', JSON.stringify(privateUserData_web));
+            console.log("using web copy; web:" + events_web_ts + " local:"+events_local_ts);
+        }else{
+            //console.log("using local copy");
+            console.log("using local copy; web:" + events_web_ts + " local:"+events_local_ts);
+        }
+
+        //Implications and corner case considerations
+        //If web version is newer (i.e., higher ts value), we take that version
+        //-- If no web data on medication exist, then events_web_ts = -1 
+        //   and events_local_ts has a value. We retain the events_local copy as events. (ToDo, probably upload local copy)
+        //-- If no local data on medication exist, then events_local_ts = -1 and events_web_ts has a value. 
+        //   We retain the web copy of the events.
+        //-- If no local or web data on medication exist, then 
+        //   events_local_ts < events_web_ts is false, we retain the copy of events_local, which is [].
+
+        //Other corner case handling:
+        //If web data is older, then we upload the local copy to the web
+        //Corner case is if events_web_ts=-1, i.e., no web data exist. Then this will upload the local copy. 
+        if(events_web_ts < events_local_ts){
+            this.uploadService.uploadPrivateData(privateUserData_local);
+        }
+
+        // var lowestDate = 
+        // if (window.localStorage.getItem("eventSource") === null) {
+        //     console.log("no events found");
+        //     events = [];
+        //     //this.createRandomEvents();
+        //     console.log("--events: []");
+        // } else {
+        if(events.length > 0){
+            console.log("events found");
+            //let events = JSON.parse(window.localStorage.getItem('eventSource'));
+            var countData = events.length;
+            for (var i = 0; i < countData; i++) {
+                //convert string back to date objects.
+                events[i].startTime = new Date(events[i].startTime);
+                events[i].endTime = new Date(events[i].endTime);
+                events[i].medicationIntakeTime = new Date(events[i].medicationIntakeTime);
+                eventDateStrings.push(moment(events[i].endTime).format("YYYYMMDD"));
+                eventDateIntakeStatus.push(events[i].symbolType);
+            }
+            console.log("--events: " + JSON.stringify(events[0]));
+            console.log("--eventDateStrings: " + eventDateStrings);
+            console.log("--eventDateIntakeStatus: " + eventDateIntakeStatus);
+            //this.updateMedicationList();
+        }
+
+        //We will fill until the maxDateInEvents
+        var maxDateInEvents = new Date("1970-01-01");
+        for (var i = 0; i < events.length; i += 1) {
+            if (maxDateInEvents.getTime() < events[i].startTime.getTime()) {
+                maxDateInEvents = events[i].startTime;
+            }
+        }
+        if (events.length == 0) {
+            //get first day of survey as set as maxDateInEvents
+            var dailySurveyHistory = this.userProfileService.userProfile.survey_data.daily_survey;
+            if (Object.keys(dailySurveyHistory).length > 0) {//Survey is not empty
+                var firstDateSurveyIsCompleted = moment().format('YYYYMMDD');
+                var timestampeForFirstDataSurveyIsCompleted = moment(firstDateSurveyIsCompleted, "YYYYMMDD");
+                var timestampDateForASurveyCompleted;
+                for (var dateForASurveyCompleted in dailySurveyHistory) {
+                    timestampDateForASurveyCompleted = moment(dateForASurveyCompleted, "YYYYMMDD");
+                    if (timestampDateForASurveyCompleted < timestampeForFirstDataSurveyIsCompleted) {
+                        firstDateSurveyIsCompleted = dateForASurveyCompleted;
+                        timestampeForFirstDataSurveyIsCompleted = moment(firstDateSurveyIsCompleted, "YYYYMMDD");
+                    }
+                }
+                maxDateInEvents = new Date(moment(firstDateSurveyIsCompleted, "YYYYMMDD").toDate().setHours(1, 1, 0, 0));
+            } else {
+                maxDateInEvents = new Date(new Date().setHours(0, 1, 0, 0));
+            }
+            //else set current date as maxDateInEvents; this is first day in study
+        }
+        console.log("--maxDateInEvents: " + maxDateInEvents);
+
+        this.weeklyMed = []
+        var ithDayFromCurrentdayMidnightUTC;
+        let dayName = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        for (var i = 6; i >= 0; i--) {
+            ithDayFromCurrentdayMidnightUTC = new Date(new Date().setHours(-1 * 24 * i, 1, 0, 0));
+            // console.log(ithDayFromCurrentdayMidnightUTC + ", " + ithDayFromCurrentdayMidnightUTC.getDate());
+            // getDay()
+            var med_obj = {
+                day: dayName[ithDayFromCurrentdayMidnightUTC.getDay()],
+                date: ithDayFromCurrentdayMidnightUTC.getDate(),
+                icon: "ellipse",
+                color: "gainsboro",
+            };
+            if (i == 0)
+                med_obj['day'] = "Today";
+            if (ithDayFromCurrentdayMidnightUTC > maxDateInEvents) {
+                med_obj['icon'] = "close-circle";
+                med_obj['color'] = "red";
+            }
+            if (i <= 2) {
+                //ToDo: Handle study start day
+                med_obj['icon'] = "add-circle";
+                med_obj['color'] = "rebeccapurple";
+            }
+            let todaysDateString = moment(ithDayFromCurrentdayMidnightUTC).format("YYYYMMDD"); //ithDayFromCurrentdayMidnightUTC
+            var elementPos = eventDateStrings.indexOf(todaysDateString);// eventDateStrings.map(function(x) {return x.id; }).indexOf(todaysDateString);
+            //will return -1, if elementPos is not found.
+            
+            console.log("-- date to search: " + todaysDateString + ", " + elementPos);
+            if (elementPos != -1) {
+                let typeOfMark = eventDateIntakeStatus[elementPos];
+                console.log("-- date found: " + todaysDateString + ", " + typeOfMark);
+                if (typeOfMark == 'checkmark') {
+                    med_obj['icon'] = "checkmark-circle";
+                    med_obj['color'] = "green";
+                }
+                if (typeOfMark == 'cross') {
+                    med_obj['icon'] = "close-circle";
+                    med_obj['color'] = "red";
+                }
+                if ((typeOfMark == 'add') ) {
+                    //some times add symbols are added from history. 
+                    if (i > 2){ //means add is older than 3 days. They should be a cross.
+                        med_obj['icon'] = "close-circle";
+                        med_obj['color'] = "red";
+                    } 
+                }    
+            }
+            this.weeklyMed.push(med_obj);
+        }
+        console.log(JSON.stringify(this.weeklyMed));
+    }
+
 
     sideMenu() {
         this.navigate =
@@ -139,7 +435,7 @@ export class AquariumComponent implements OnInit {
         this.ionViewDidLeaveFunction();
 
         //If "Leave Aquarium" is already tracked in demo-aquarium, duplication?
-        this.appUsageDb.saveAppUsageExit("aquarium_tab");
+        this.uploadService.saveAppUsageExit("aquarium_tab");
     }
 
     ionViewDidEnter() {
@@ -148,24 +444,39 @@ export class AquariumComponent implements OnInit {
         this.child.loadFunction();
 
         //
-        const value = window.localStorage.getItem("IsOnboarded");
-        if (typeof value === 'string') {
-            console.log("--- Already onboarded ---");
-        }else{
-            this.child.showBaselineDialog();
-            window.localStorage.setItem('IsOnboarded', "Onboarded");
-        }
+        // const value = window.localStorage.getItem("IsOnboarded");
+        // if (typeof value === 'string') {
+        //     console.log("--- Already onboarded ---");
+        // }else{
+        //     this.child.showBaselineDialog();
+        //     window.localStorage.setItem('IsOnboarded', "Onboarded");
+        // }
 
         //decide if we want to show the modal view with unlockables.
         this.subscribeForModalView();
 
         //If "Enter Aquarium" is already tracked in demo-aquarium, duplication?
-        this.appUsageDb.saveAppUsageEnter("aquarium_tab");
+        this.uploadService.saveAppUsageEnter("aquarium_tab");
 
+        //mock private upload
+        //this.uploadService.uploadPrivateData({'mock': "mock private data"});
+        //this.uploadService.getPrivateUserData();
+
+        this.fillMedicationWidget(null);
+        this.fetchPrivateDataFromWeb();
         //
         this.userProfileService.saveToServer();
         this.userProfileService.saveProfileToDevice();
-        this.saveDbToAWS();
+        this.saveDbToAWS();//This call is failing
+
+
+
+        new Swiper(this.swiperRefRewards.nativeElement, {
+            // Swiper options
+            pagination: true
+        });
+
+
     }
 
     async loadVegaDemoPlot() {
@@ -184,26 +495,26 @@ export class AquariumComponent implements OnInit {
     // --- Moving to ionViewDidEnter()
     //
     saveDbToAWS() {
-        this.appUsageDb.isTableEmpty().then(tableEmpty => {
-            console.log("tableEmpty: " + tableEmpty);
-            if (!tableEmpty) {
-                this.exportDatabase();
-            }
-        }).catch(e => {
-            console.log("In ionViewWillEnter at Aqarium:" + e);
-        });
+        // this.appUsageDb.isTableEmpty().then(tableEmpty => {
+        //     console.log("tableEmpty: " + tableEmpty);
+        //     if (!tableEmpty) {
+        //         this.exportDatabase();
+        //     }
+        // }).catch(e => {
+        //     console.log("In ionViewWillEnter at Aqarium:" + e);
+        // });
     }
 
     exportDatabase() {
-        console.log("exportTable at Aquarium Page!");
-        this.appUsageDb.exportDatabaseToJson().then((res) => {
-            console.log("upload to AWS at Aquarium Page: " + JSON.stringify(res));
-            this.awsS3Service.upload("Tracking", res);
+        // console.log("exportTable at Aquarium Page!");
+        // this.appUsageDb.exportDatabaseToJson().then((res) => {
+        //     console.log("upload to AWS at Aquarium Page: " + JSON.stringify(res));
+        //     this.awsS3Service.upload("Tracking", res);
 
-            //Empty table to prepare another round of tracking
-            this.appUsageDb.emptyTable();
+        //     //Empty table to prepare another round of tracking
+        //     this.appUsageDb.emptyTable();
 
-        });
+        // });
     }
 
     ionViewWillUnload() {
@@ -239,7 +550,155 @@ export class AquariumComponent implements OnInit {
 
         //load vega demo plot (test)
         console.log("===Vega called 1===");
-        this.loadVegaDemoPlot();
+        //this.loadVegaDemoPlot();
+
+        var dateArray = this.getDatesForLast7days();
+        this.loadVegaDemoPlotMotivation(dateArray);
+
+        //here load the memes and altruistic messages
+        this.userProfileService.updateNonPrivateData();
+        this.showAltMsgSwiper();
+        this.showMemeSwiper();
+        this.showInterventionMessagesSwiper();
+
+    }
+
+    showAltMsgSwiper() {
+        
+        var already_shown = window.localStorage["already_shown_alt_msg4"];
+        if(already_shown == undefined){
+            already_shown = {
+                "last_updated": Date.now(),
+                "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
+                "unlocked_alt_msgs":[{"filename": "assets/altruism/altruism_1.png", "unlock_date": moment().format('MM/DD/YYYY')}]
+            };
+            window.localStorage["already_shown_alt_msg4"] = JSON.stringify(already_shown);
+        }
+        else
+            already_shown = JSON.parse(window.localStorage["already_shown_alt_msg4"]);
+
+        this.altMsgsImages = [];
+        // for(var i=0; i < already_shown['unlocked_alt_msgs'].length; i++){
+        for(var i=already_shown['unlocked_alt_msgs'].length-1; i >= 0; i--){
+            this.altMsgsImages.push(already_shown['unlocked_alt_msgs'][i]["filename"]);
+        }
+        if(already_shown['unlocked_alt_msgs'].length < 2){
+            this.altMsgsImages.push("assets/img/less_alt_msg.png");
+        } 
+
+        // Write a for loop, add images, if short of 2 message then ask to complete more self-reports
+        //this.altMsgsImages = ["./assets/memes/1.jpg", "./assets/memes/2.png", "./assets/memes/3.png", "./assets/memes/4.jpg"];
+        
+    }
+
+    showMemeSwiper() {
+        
+        var already_shown = window.localStorage["already_shown_memes4"];
+        if(already_shown == undefined)
+            already_shown = {
+                "last_updated": Date.now(),
+                "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
+                "unlocked_memes":[{"filename": "assets/memes/4.jpg", "unlock_date": moment().format('MM/DD/YYYY')}]
+            };
+        else
+            already_shown = JSON.parse(window.localStorage["already_shown_memes4"]);
+
+        this.memeImages = [];
+        // for(var i=0; i < already_shown['unlocked_memes'].length; i++){
+        for(var i=already_shown['unlocked_memes'].length - 1; i >= 0; i--){
+            this.memeImages.push(already_shown['unlocked_memes'][i]["filename"]);
+        }
+        if(already_shown['unlocked_memes'].length < 2){
+            this.memeImages.push("assets/img/less_memes.png");
+        } 
+
+        // Write a for loop, add images, if short of 2 message then ask to complete more self-reports
+        //this.altMsgsImages = ["./assets/memes/1.jpg", "./assets/memes/2.png", "./assets/memes/3.png", "./assets/memes/4.jpg"];
+        
+    }
+
+    showInterventionMessagesSwiper() {
+        
+        var already_shown = window.localStorage["already_shown_intervention_messages"];
+        if(already_shown == undefined)
+            already_shown = {
+                "last_updated": Date.now(),
+                "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
+                "unlocked_messages":[
+                    {"filename": "assets/intervention_messages/Generic_1.jpg", "unlock_date": moment().format('MM/DD/YYYY')},
+                ]
+            };
+        else
+            already_shown = JSON.parse(window.localStorage["already_shown_intervention_messages"]);
+
+        this.interventionImages = [];
+        //for(var i=0; i < already_shown['unlocked_messages'].length; i++){
+        for(var i=already_shown['unlocked_messages'].length-1; i >= 0; i--){
+            this.interventionImages.push(already_shown['unlocked_messages'][i]["filename"]);
+        }
+        //we are making it 10 for now
+        //if(already_shown['unlocked_messages'].length < 2){
+        if(already_shown['unlocked_messages'].length < 10){
+            this.interventionImages.push("assets/intervention_messages/Generic_2.jpg");
+            this.interventionImages.push("assets/intervention_messages/Generic_3.jpg");
+        }
+
+        // Write a for loop, add images, if short of 2 message then ask to complete more self-reports
+        //this.altMsgsImages = ["./assets/memes/1.jpg", "./assets/memes/2.png", "./assets/memes/3.png", "./assets/memes/4.jpg"];
+        
+    }
+
+    async loadVegaDemoPlotMotivation(dateArray) {
+        let x = window.innerWidth;
+        let y = Math.ceil((24 / 20) * (x - 390) + 305);
+        if (y < 200) {
+            //this means the height is higher. The canvas will be skewed.
+            y = y + 30;
+        }
+        if (y < 300) {
+            //this means the width is lower than 300. The canvas will be skewed.
+            y = y + 30;
+        }
+        console.log("width:x " + x);
+        console.log("width:y " + y);
+        console.log("window.devicePixelRatio " + window.devicePixelRatio);
+
+        var opt = {
+            actions: false,
+            width: y + 10,
+            height: 100
+        };
+
+        console.log("===Vega called 2===");
+        const spec = "/assets/vegaspecs/demo_motivation.json";
+        this.httpClient.get(spec)
+            .subscribe(async (res: any) => {
+                console.log("==========");
+                for (let i = 0; i < 7; i++)
+                    res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][i]["Date"] = dateArray[i];
+                //console.log(res);
+                const result = await embed('#vis2', res, opt);
+                console.log(result.view);
+            });
+    }
+
+    ngAfterViewInit(): void {
+        // var swiper = new Swiper(this.swiperRefRewards?.nativeElement, {
+        //     effect: "coverflow",
+        //     grabCursor: true,
+        //     centeredSlides: true,
+        //     slidesPerView: "auto",
+        //     coverflowEffect: {
+        //       rotate: 50,
+        //       stretch: 0,
+        //       depth: 100,
+        //       modifier: 1,
+        //       slideShadows: true,
+        //     },
+        //     pagination: {
+        //       el: ".swiper-pagination",
+        //     },
+        //   });
 
     }
 
@@ -262,6 +721,9 @@ export class AquariumComponent implements OnInit {
                     var unlockedIncentive: UnlockedIncentive = params;
                     //computeUnlockedReinforcements(currentPoints, previousPoints, awardedDollar)
 
+                    if (unlockedIncentive['isBaselineSurvey'] == true)
+                        return; //we will not be giving any reinforcement. Nor, will we say, isUnlockedViewShown is true;
+
                     if (unlockedIncentive["isUnlockedViewShown"] == false)
                         this.computeUnlockedReinforcements(unlockedIncentive["current_point"],
                             unlockedIncentive["current_point"] - unlockedIncentive["unlocked_points"],
@@ -271,20 +733,53 @@ export class AquariumComponent implements OnInit {
             );
     }
 
-    startSurveySleep(){
+    startSurveySleep() {
         this.navController.navigateRoot(['survey/sleepsurvey']);
     }
 
-    startSurveyEvening(){
+    startSurveyEvening() {
         this.navController.navigateRoot(['survey/sleepeveningsurvey']);
     }
 
-    startAYASurvey(){
+    startAYASurvey() {
         this.navController.navigateRoot(['survey/samplesurvey2']);
     }
 
-
     startSurvey() {
+        console.log('start survey');
+        var currentTime = moment();
+        var startTime = moment({ hour: 18 });  // 6pm
+        var endTime = moment({ hour: 23, minute: 59 });  // 11:59pm
+        var firstLogin = this.userProfileService.userProfile.firstlogin;
+        if (firstLogin == undefined) firstLogin = true;
+        this.userProfileService.userProfile.firstlogin = false;
+        this.userProfileService.saveProfileToDevice();
+        this.userProfileService.saveToServer();
+        if (!currentTime.isBetween(startTime, endTime) && !firstLogin) {
+            this.presentAlert('Please come back between 6 PM and midnight');
+        } else if (this.userProfileService.surveyTakenForCurrentDay()) {
+            this.presentAlert('You have already completed the survey for the day.');
+        } else {
+            if (this.userProfileService.isParent) {
+                this.navController.navigateRoot(['survey/samplesurvey']);  //caregiversurvey
+            } else {
+                this.navController.navigateRoot(['survey/samplesurvey2']);  //aya
+            }
+
+        }
+    }
+
+    startSurveyTimeUnrestricted() {
+        if (this.userProfileService.isParent) {
+            this.navController.navigateRoot(['survey/samplesurvey']);  //caregiversurvey
+        } else {
+            this.navController.navigateRoot(['survey/samplesurvey2']);  //aya
+        }
+    }
+
+
+
+    startSleepSurvey() {
         console.log('start survey');
         var currentTime = moment();
         let startTimeSleep = moment({ hour: 8 });  // 8am
@@ -397,7 +892,25 @@ export class AquariumComponent implements OnInit {
         //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
         //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
         //reinforcements.push({'img': "assets/img/" + "nemo" + '_tn.jpg', 'header': 'Nemo', 'text': "Do you know the animators of \"Finding nemo\" studied dogs’ facial expressions and eyes to animate the fishes’ expressions?"});
+        reinforcements.push(
+            {
+                'img': './assets/altruism/message_3.png',
+                'header': 'reinforcement_data',
+                'text': 'This is the meme/life-insight/thank you message data.'
+            }
+        );
         this.presentModal(reinforcements);
+    }
+
+    getDatesForLast7days() {
+        var dateArray = [];
+        for (let i = 0; i < 6; i++) {
+            var previousdate = moment().subtract(6 - i, "days").format("MM/DD");
+            dateArray.push(previousdate);
+        }
+        dateArray.push("Today");
+        //console.log("=== date array ===: " + date_array);
+        return dateArray;
     }
 
 
@@ -480,20 +993,33 @@ export class AquariumComponent implements OnInit {
         //var previousPoints = this.modalObjectNavigationExtras["PreviousPoints"];
         //var awardedDollar = this.modalObjectNavigationExtras["AwardedDollar"];
         var reinforcements = [];
-        console.log("computeUnlockedReinforcements: called")
+        console.log("computeUnlockedReinforcements: called");
 
         //get if money is awarded.
-        if(awardedDollar > 0){
-            if(this.isFirstDayInTheStudy())
+        if (awardedDollar > 0) {
+            if (this.isFirstDayInTheStudy())
                 //reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'Thanks for being a participant in the study. You earned 2 dollar.'});
-                reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for completing your first survey! You earned 2 dollars.'});
-            else{
-                if(awardedDollar == 1) //hack, 1 dollar is only awarded after a three-day streak.
-                    reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for surveys three days in a row! You earned 1 dollar.'});
+                reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for completing your first survey! You earned 2 dollars.' });
+            else {
+                if (awardedDollar == 1) //hack, 1 dollar is only awarded after a three-day streak.
+                    reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for surveys three days in a row! You earned 1 dollar.' });
 
-                if(awardedDollar == 2) //hack, 2 dollar is only awarded after a break.
-                    reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for coming back after a break! You earned 2 dollars.'});
+                if (awardedDollar == 2) //hack, 2 dollar is only awarded after a break.
+                    reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for coming back after a break! You earned 2 dollars.' });
             }
+        }
+
+        //get reinforcement data
+        var reinforcementData = JSON.parse(window.localStorage['reinforcement_data']);
+        let currentDate = moment().format('YYYYMMDD');
+        if ((currentDate == reinforcementData["date"]) && (reinforcementData['type_of_rewards'] != 'No reward')) {
+            reinforcements.push(
+                {
+                    'img': reinforcementData['reward_file_link'],
+                    'header': 'reinforcement_data',
+                    'text': 'This is the meme/life-insight/thank you message data.'
+                }
+            );
         }
 
         //get if fish is alotted

@@ -4,12 +4,13 @@ import { environment } from '../../environments/environment';
 import { EncrDecrService } from './encrdecrservice.service';
 import { AwsS3Service } from './aws-s3.service';
 import { Network } from '@awesome-cordova-plugins/network/ngx';
+import { UploadserviceService } from './uploadservice.service';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule
   ],
-  providers: [ EncrDecrService, AwsS3Service, Network]
+  providers: [ EncrDecrService, AwsS3Service, UploadserviceService, Network]
 })
 export class StorageModule { }

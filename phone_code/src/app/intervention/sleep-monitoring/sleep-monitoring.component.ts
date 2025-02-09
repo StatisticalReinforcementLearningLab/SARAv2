@@ -9,6 +9,7 @@ import { UserProfileService } from 'src/app/user/user-profile/user-profile.servi
 import { environment } from 'src/environments/environment';
 import * as moment from 'moment';
 import { EncrDecrService } from 'src/app/storage/encrdecrservice.service';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
 
 @Component({
   selector: 'app-sleep-monitoring',
@@ -27,7 +28,7 @@ export class SleepMonitoringComponent implements OnInit {
   publicKey: string;
 
   constructor(private menuCtrl:MenuController,
-    private appUsageDb: DatabaseService,
+    private uploadService: UploadserviceService,
     private userProfileService: UserProfileService,
     private EncrDecr: EncrDecrService,
     private httpClient: HttpClient) { 
@@ -83,11 +84,11 @@ export class SleepMonitoringComponent implements OnInit {
   }
 
   ionViewDidEnter(){
-    this.appUsageDb.saveAppUsageEnter("sleep_self_monitoring");  
+    this.uploadService.saveAppUsageEnter("sleep_self_monitoring");  
   }  
 
   ionViewDidLeave(){
-    this.appUsageDb.saveAppUsageExit("sleep_self_monitoring");     
+    this.uploadService.saveAppUsageExit("sleep_self_monitoring");     
   }
 
   getImage(imageUrl: string): Observable<Blob> {

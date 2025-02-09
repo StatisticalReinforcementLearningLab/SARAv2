@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from 'src/app/monitor/database.service';
+import { UploadserviceService } from 'src/app/storage/uploadservice.service';
 
 @Component({
   selector: 'app-treasurechest',
@@ -13,7 +14,7 @@ export class TreasurechestComponent implements OnInit {
   pointsdata = [];
 
 
-  constructor(private appUsageDb: DatabaseService) { 
+  constructor(private uploadService: UploadserviceService) { 
   }
 
   ngOnInit() {
@@ -119,11 +120,11 @@ export class TreasurechestComponent implements OnInit {
 
   ionViewDidEnter() {
     //
-    this.appUsageDb.saveAppUsageEnter("treasure_chest"); 
+    this.uploadService.saveAppUsageEnter("treasure_chest"); 
   }
 
   ionViewDidLeave(){
-    this.appUsageDb.saveAppUsageExit("treasure_chest");     
+    this.uploadService.saveAppUsageExit("treasure_chest");     
   }
 
 }

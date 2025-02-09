@@ -1,20 +1,19 @@
 <div id="gameDiv"></div>
 
+ <!--
 <ion-button (click)="addMedication()">Add medication</ion-button>
 <ion-button (click)="showTailoredMesssage()">Show message</ion-button>
- <!--
+
 <ion-button (click)="openBaseline()">Baseline</ion-button>
 <ion-button (click)="openGraphs()">Graphs</ion-button>
 <ion-button (click)="showBaselineDialog()">Onboard</ion-button>
  -->
  
-<ion-list padding>
+
+<ion-list *ngIf="!isAYA" padding>
   <ion-list-header lines="inset">
     <ion-label><h2><br>You unlocked the following animals in this level so far</h2><br></ion-label>
   </ion-list-header>
-  <!--
-  {{debugText}}
-  -->
   <ion-item *ngFor="let item of fishFunFactListViewItems">
     <ion-thumbnail item-left>
       <img [src]="item.image"/>
@@ -25,6 +24,8 @@
     </ion-label>
   </ion-item>
 </ion-list> 
+
+
  <!--
 <p style="padding: 15px;">{{oneSignalId}}</p>
  -->

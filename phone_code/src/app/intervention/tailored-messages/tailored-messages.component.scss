@@ -1,12 +1,67 @@
-.new-background-color{
+.new-background-color {
     --background: #005486;
 }
 
 pre {
-overflow-x: auto;
-white-space: pre-wrap;
-white-space: -moz-pre-wrap;
-white-space: -pre-wrap;
-white-space: -o-pre-wrap;
-word-wrap: break-word;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
 }
+
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    border: 2px solid black; 
+    top: 85px;
+    position: absolute;      
+    width:350px;
+    margin:5px;
+}
+
+#container {
+    position: relative;    
+}
+
+#link {
+   position: absolute;
+   top: 10px;
+   left: 10px; 
+}
+
+
+#drawing_canvas {
+    position: absolute;
+    margin: auto;
+    width: 512px;
+    height: 350px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+ion-toolbar {
+    --background: #fff;
+  }
+

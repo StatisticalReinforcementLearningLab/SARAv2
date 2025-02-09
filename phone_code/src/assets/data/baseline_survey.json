@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Q42",
+        "text": "What are some reason you miss taking your medications? (Check all that apply)",
+        "type": "checkbox",
+        "extra": {
+            "choices": [
+                "Don’t miss/Not applicable",
+                "Interferes with activity",
+                "Hard to swallow pills",
+                "Hate the taste",
+                "Just forget",
+                "Not feeling well physically",
+                "Not feeling well emotionally",
+                "Lack of motivation",
+                "Don’t like the side effects",
+                "Wasn’t home",
+                "Family stress",
+                "Ran out/don’t fill",
+                "Refuse to/defiant",
+                "Can’t afford",
+                "Don’t think necessary",
+                "Other"
+            ]
+        }
+    }
+]
