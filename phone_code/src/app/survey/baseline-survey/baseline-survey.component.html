@@ -11,7 +11,13 @@
 
   <!-- <app-dynamic-survey fileLink="alex_survey"></app-dynamic-survey> -->
   <ion-card *ngIf="previousDataAvailable">
-    <ion-text> <ion-icon name="information-circle-outline"></ion-icon> Your past response to this question on <b>{{pastSurveyDate}}</b> was <b>{{response}}</b>
+    <ion-text *ngIf="responseCount == 1"> 
+      <ion-icon name="information-circle-outline"></ion-icon> 
+      Your previously responded to this survey on <b>{{pastSurveyDate}}</b>.  One reason to miss medication was <b>{{response}}</b>
+    </ion-text>
+    <ion-text *ngIf="responseCount > 1"> 
+      <ion-icon name="information-circle-outline"></ion-icon> 
+      Your previously responded to this survey on <b>{{pastSurveyDate}}</b>.  Some reasons to miss medications were <b>{{response}}</b>
     </ion-text>
   </ion-card>
 

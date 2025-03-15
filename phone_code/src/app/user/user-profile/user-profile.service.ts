@@ -469,6 +469,9 @@ export class UserProfileService {
     }
 
     saveNonPrivateData(fieldName) {
+        /*
+            Here we save the data in the userProfile object.
+        */
 
         if (fieldName != 'just_sync') {
             //save update time
@@ -491,9 +494,6 @@ export class UserProfileService {
 
         }
         this.updateNonPrivateData();
-
-
-
     }
 
     updateNonPrivateData() {
@@ -578,7 +578,7 @@ export class UserProfileService {
                 "last_updated": Date.now(),
                 "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
                 "unlocked_memes": this.mergeTwoLists(
-                    this.userProfile.nonPrivateData["already_shown_memes4"]["unlocked_memes"], //note we already some data 
+                    this.userProfile.nonPrivateData["already_shown_memes4"]["unlocked_memes"], //note we already some data; web will be first.
                     already_shown_memes4['unlocked_memes']
                 )
             };

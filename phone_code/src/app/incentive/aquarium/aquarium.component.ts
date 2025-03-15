@@ -238,6 +238,8 @@ export class AquariumComponent implements OnInit {
 
         var events_web_ts = -1;
         var events_web = [];
+
+        //Step 1: Get the web version of private data.
         if(d !== null){
             //Here we only process once the web call is done.
             //Otherwise, we retain the local copy at the start.
@@ -248,6 +250,7 @@ export class AquariumComponent implements OnInit {
             }
         }
 
+        //Step 2: Get the local version of private data.
         var events_local_ts = -1;
         var events_local = [];
         let privateUserData_local = JSON.parse(window.localStorage.getItem('private_user_data')); 
@@ -286,6 +289,8 @@ export class AquariumComponent implements OnInit {
         if(events_web_ts < events_local_ts){
             this.uploadService.uploadPrivateData(privateUserData_local);
         }
+
+        //what ever is the local is accurate now, so we can use the local going forward.
 
         // var lowestDate = 
         // if (window.localStorage.getItem("eventSource") === null) {

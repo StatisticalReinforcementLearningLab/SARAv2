@@ -16,6 +16,7 @@ export class BaselineSurveyComponent implements OnInit {
 
   pastSurveyDate;
   response;
+  responseCount;
   previousDataAvailable;
 
   constructor(
@@ -27,6 +28,7 @@ export class BaselineSurveyComponent implements OnInit {
 
       this.pastSurveyDate = "2025-02-03"; 
       this.response = "response";
+      this.responseCount = 0;
       this.previousDataAvailable = false;      
   }
 
@@ -34,6 +36,7 @@ export class BaselineSurveyComponent implements OnInit {
     this.menuCtrl.close();
     // this.mobileAccessibility.usePreferredTextZoom(false);
 
+    //ToDo: load from private data here. So, that we get the stored copy.
     let localSurvey = JSON.parse(window.localStorage.getItem('localSurvey'));
     if((window.localStorage.getItem("localSurvey") !== null) 
         && ("baseline_survey" in localSurvey)){
@@ -50,13 +53,15 @@ export class BaselineSurveyComponent implements OnInit {
           this.pastSurveyDate = decryptedBaselineSurvey['ts'].split(",")[0];
 
           for (const key of keys) {
-            if(key.includes("_value"))
-              this.response = this.response + decryptedBaselineSurvey[key] + ", "; 
+            if(key.includes("_value")){
+              this.response = this.response + "'" + decryptedBaselineSurvey[key] + "', "; 
+              this.responseCount = this.responseCount  + 1;
+            }
           }
           if(this.response == ""){
             this.previousDataAvailable = false;//there was no response. 
           }else{
-            this.response = this.response.substring(0, this.response.length - 2);
+            this.response = this.response.substring(0, this.response.length - 2) + '.'; //remove the last ', ' 
             this.response = this.response.toLowerCase();
           }
     }

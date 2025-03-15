@@ -393,6 +393,9 @@ export class DynamicSurveyComponent implements OnInit {
                 //--- save an encrypted copy of the survey
                 this.saveEncryptedSurveyLocally();
 
+                //ToDo: Save encrypted in the web in private user data.
+                //ToDo: In aquarium.ts, update localData with latest [No].
+
                 //--save sensitive data locally
                 this.saveSensitiveDataLocally();
 
@@ -425,6 +428,7 @@ export class DynamicSurveyComponent implements OnInit {
                 if (window.localStorage['localSurvey'] != undefined)
                     locallyStoredSurvey = JSON.parse(window.localStorage.getItem('localSurvey'));
 
+                locallyStoredSurvey["ts"] = new Date().getTime(); //save the last record time.
                 locallyStoredSurvey[this.fileLink] = {}
                 locallyStoredSurvey[this.fileLink]["encrypted"] = this.surveyAnswersJSONObject['encrypted'];
                 locallyStoredSurvey[this.fileLink]["date"] = moment().format('YYYYMMDD');
