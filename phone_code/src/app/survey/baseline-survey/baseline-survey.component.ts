@@ -39,12 +39,11 @@ export class BaselineSurveyComponent implements OnInit {
     //ToDo: load from private data here. So, that we get the stored copy.
     let localSurvey = JSON.parse(window.localStorage.getItem('localSurvey'));
     if((window.localStorage.getItem("localSurvey") !== null) 
-        && ("baseline_survey" in localSurvey)){
+        && ("baseline_survey" in localSurvey)
+        && ("encrypted" in localSurvey["baseline_survey"])){
           this.previousDataAvailable = true; 
 
           //this.pastSurveyDate = localSurvey["baseline_survey"]["date"];
-          
-
           var decryptedBaselineSurvey = JSON.parse(this.EncrDecr.decrypt(localSurvey["baseline_survey"]['encrypted'], environment.encyptString));
           console.log("decrypted " + JSON.stringify(decryptedBaselineSurvey));
           const keys = Object.keys(decryptedBaselineSurvey);

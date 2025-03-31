@@ -179,7 +179,114 @@ export class AquariumComponent implements OnInit {
             //this.eventSource = events;
             //this.medicationListChanged$.next(events);
             me.fillMedicationWidget(d);
+            //update survey data
+            me.updateSurveyData(d);
         });
+    }
+
+    union(list1, list2) {
+        return [...new Set([...list1, ...list2])];
+    }
+
+    updateSurveyData(d){
+        console.log("======== updateSurveyData =======");
+        let privateUserData_web = JSON.parse(d); 
+        let privateUserData_local = JSON.parse(window.localStorage.getItem('private_user_data')); 
+
+        //local survey
+        //if local survey does not contain survey, then we take from the localSurvey storage.
+        var survey_local = {};
+        var survey_local_keys = [];
+        if('survey' in privateUserData_local){
+            survey_local = privateUserData_local['survey'];
+            survey_local_keys = Object.keys(survey_local);
+        }else{
+            //means if there is local data,
+            //copy any data available locally
+            var locallyStoredSurvey = {};
+            if (window.localStorage['localSurvey'] != undefined)
+                locallyStoredSurvey = JSON.parse(window.localStorage.getItem('localSurvey'));
+
+            privateUserData_local['survey'] = locallyStoredSurvey;
+            survey_local = locallyStoredSurvey;
+            survey_local_keys = Object.keys(survey_local);
+        }
+
+        //web survey
+        var survey_web = {};
+        var survey_web_keys = [];
+        if('survey' in privateUserData_web){
+            survey_web = privateUserData_web['survey'];
+            survey_web_keys = Object.keys(survey_web);
+        }else{
+            //i.e., not survey in privateUserData_web
+            //we will add an empty one
+            survey_web = {};
+            survey_web_keys = Object.keys(survey_web);
+        }
+
+        //merge local and web survey
+        let survey_keys = this.union(survey_local_keys, survey_web_keys);
+        console.log("survey_web" + JSON.stringify(survey_web));
+        console.log("survey_local" + JSON.stringify(survey_local));
+        console.log("survey_keys: " + survey_keys);
+        var newSurveysInPrivateData = {};
+        for (const survey_key of survey_keys) {
+            // set local as history.
+            //ignore ts:
+            if("ts" == survey_key){ 
+                newSurveysInPrivateData['ts'] = new Date().getTime();//survey_local[survey_key];
+                continue;
+            }
+
+            var survey_history = [];
+            if("history" in survey_local[survey_key])
+                survey_history = survey_local[survey_key]["history"];
+
+            // get local dates.
+            var survey_dates = [];
+            for(let i=0; i< survey_history.length; i++)
+                survey_dates.push(survey_history[i]["date"]);
+
+            if("history" in survey_web[survey_key]){
+                for(let i=0; i< survey_web[survey_key]["history"].length; i++){
+                    //ignore if date already exists
+                    if(survey_dates.includes(survey_web[survey_key]["history"][i]["date"]))
+                        continue;
+                    survey_dates.push(survey_web[survey_key][i]["date"]);
+                    survey_history.push(survey_web[survey_key][i]);
+                }
+            }
+
+            //get the latest survey from the list
+            var max_ts = -1;
+            var max_encrypted_survey = "";
+            var max_date_str = "";
+            //for(const survey in survey_history)
+            for(let i=0; i < survey_history.length; i++){
+                let survey = survey_history[i];
+                if(survey['ts'] > max_ts){
+                    max_ts = survey['ts'];
+                    max_encrypted_survey = survey['encrypted'];
+                    max_date_str = survey['date'];
+                }
+            }
+            console.log("----" + survey_key + JSON.stringify(survey_history));
+            newSurveysInPrivateData[survey_key] = {};
+            newSurveysInPrivateData[survey_key]["history"] = survey_history;
+            newSurveysInPrivateData[survey_key]["ts"] = max_ts;
+            newSurveysInPrivateData[survey_key]["encrypted"] = max_encrypted_survey;
+            newSurveysInPrivateData[survey_key]["date"] = max_date_str;
+        }
+
+        // currently privateUserData_local and privateUserData_web are synced for medication
+        privateUserData_local['survey'] = newSurveysInPrivateData;
+        privateUserData_web['survey'] = newSurveysInPrivateData;
+        // update the latest survey
+        window.localStorage.setItem('localSurvey', JSON.stringify(newSurveysInPrivateData));
+        window.localStorage.setItem('private_user_data', JSON.stringify(privateUserData_local));
+        // privateUserData_web
+        this.uploadService.uploadPrivateData(privateUserData_web);
     }
 
     fillMedicationWidget(d) {
@@ -267,7 +374,21 @@ export class AquariumComponent implements OnInit {
         if(events_local_ts < events_web_ts){
             events = events_web;
             //if web copy is newer, we can save the web data to local data.
-            window.localStorage.setItem('private_user_data', JSON.stringify(privateUserData_web));
+
+            //local medication data is old and needs updating
+            var privateUserData_local2 = privateUserData_local;
+            // 
+            // if(!privateUserData_local2.includes('medication_data'))
+            //     privateUserData_local2  = {}
+            if(privateUserData_local2 == undefined){
+                //means there is some data in privateUserData_web, because events_web_ts is greater than 1
+                privateUserData_local2  = privateUserData_web;
+            }
+            else
+                privateUserData_local2['medication_data'] = privateUserData_web["medication_data"];
+            // if(!privateUserData_local2.includes('medication_data')
+            //     privateUserData_local2  = {
+            window.localStorage.setItem('private_user_data', JSON.stringify(privateUserData_local2));
             console.log("using web copy; web:" + events_web_ts + " local:"+events_local_ts);
         }else{
             //console.log("using local copy");
@@ -286,8 +407,17 @@ export class AquariumComponent implements OnInit {
         //Other corner case handling:
         //If web data is older, then we upload the local copy to the web
         //Corner case is if events_web_ts=-1, i.e., no web data exist. Then this will upload the local copy. 
+        console.log("events_web_ts: " + events_web_ts + ", events_local_ts: " + events_local_ts);
+        console.log("privateUserData_web2: " + privateUserData_web2);
         if(events_web_ts < events_local_ts){
-            this.uploadService.uploadPrivateData(privateUserData_local);
+            // web medication data is old and needs updating from local
+            var privateUserData_web2 = privateUserData_web;
+            // 
+            if(privateUserData_web2 == undefined) //|| !privateUserData_web2.includes('medication_data'))
+                privateUserData_web2  = {};
+            privateUserData_web2['medication_data'] = privateUserData_local["medication_data"];
+            if(d!=null)//note the first call will be with null, don't update null to the web
+                this.uploadService.uploadPrivateData(privateUserData_web2);
         }
 
         //what ever is the local is accurate now, so we can use the local going forward.

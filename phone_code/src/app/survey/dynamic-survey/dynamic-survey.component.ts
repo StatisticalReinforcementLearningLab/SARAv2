@@ -399,6 +399,9 @@ export class DynamicSurveyComponent implements OnInit {
                 //--save sensitive data locally
                 this.saveSensitiveDataLocally();
 
+                //--upload private data
+                this.saveEncryptedSurveyInPrivateData();
+
                 //-- store survey completed into ngrx to send to server and any other listener.
                 this.storeToNgrxAndUpdateState();
 
@@ -429,10 +432,42 @@ export class DynamicSurveyComponent implements OnInit {
                     locallyStoredSurvey = JSON.parse(window.localStorage.getItem('localSurvey'));
 
                 locallyStoredSurvey["ts"] = new Date().getTime(); //save the last record time.
+                //history
+                var survey_history = [];
+                if((this.fileLink in locallyStoredSurvey) && ("history" in locallyStoredSurvey[this.fileLink]))
+                    survey_history = locallyStoredSurvey[this.fileLink]["history"];
+
                 locallyStoredSurvey[this.fileLink] = {}
                 locallyStoredSurvey[this.fileLink]["encrypted"] = this.surveyAnswersJSONObject['encrypted'];
                 locallyStoredSurvey[this.fileLink]["date"] = moment().format('YYYYMMDD');
+                locallyStoredSurvey[this.fileLink]["ts"] = new Date().getTime();
+                survey_history.push(
+                    {
+                        "encrypted": this.surveyAnswersJSONObject['encrypted'],
+                        "date": moment().format('YYYYMMDD'),
+                        "ts": new Date().getTime()
+                    }
+                );
+                locallyStoredSurvey[this.fileLink]["history"] = survey_history;
                 window.localStorage.setItem('localSurvey', JSON.stringify(locallyStoredSurvey));
+            }
+
+            saveEncryptedSurveyInPrivateData() {
+                //private data is up-to-date. We load private on first sdreen. And after med
+                let privateUserData_local = JSON.parse(window.localStorage.getItem('private_user_data'));
+                
+                //
+                // if(!privateUserData_local.hasOwnProperty("survey_data")){
+                //     privateUserData_local['survey'] = {};
+                // }
+
+                var locallyStoredSurvey = {};
+                if (window.localStorage['localSurvey'] != undefined)
+                    locallyStoredSurvey = JSON.parse(window.localStorage.getItem('localSurvey'));
+                
+                privateUserData_local['survey'] = locallyStoredSurvey;
+                window.localStorage.setItem('private_user_data', JSON.stringify(privateUserData_local));
+                this.uploadService.uploadPrivateData(privateUserData_local);
             }
 
             addMetaTagsToSurvey() {
