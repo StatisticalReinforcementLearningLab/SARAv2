@@ -138,7 +138,7 @@ export class UploadserviceService {
             }
         }
 
-        const token = this.getRefreshToken();
+        const token = this.getRefreshToken(); //getting the refresh token from storage.
         const httpOptions = {
             headers: new HttpHeaders({
                 'Authorization': `Bearer ${token}`
@@ -150,7 +150,11 @@ export class UploadserviceService {
         }, httpOptions)
             .pipe(
                 map(res => {
+                    //eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0NjcxODYzMCwianRpIjoiODA3MTQ0ZTUzMjdmNDlmNmI5NzkwYzRhNzkzYWRmM2UiLCJ1c2VyX2lkIjozfQ.l3AjLe6mVK54Z5chQU_uK_iDxwhBndZz4EabGX5AVqg
+                    //eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0NjcxODYzMCwianRpIjoiODA3MTQ0ZTUzMjdmNDlmNmI5NzkwYzRhNzkzYWRmM2UiLCJ1c2VyX2lkIjozfQ.l3AjLe6mVK54Z5chQU_uK_iDxwhBndZz4EabGX5AVqg 
+                    //console.log("uploadservice.ts - /token/refresh return value " + JSON.stringify(res));
                     me.storeAccessToken(res.access_token, res.access_expires);
+                    me.storeRefreshToken(res.refresh_token, res.refresh_expires);
                     return res['access_token'];
                 })
             );
@@ -336,10 +340,24 @@ export class UploadserviceService {
         // this.loadTailoredMessage();
     }
 
+    private storeRefreshToken(token: string, expires: string) {
+        console.log("uploadservice.ts - storeRefreshToken method - begin");
+        localStorage.setItem(this.REFRESH_TOKEN, token);
+        let h = parseInt(expires.split(":")[0]);
+        const expirationDate = new Date(new Date().getTime() + (h * 60 * 60 * 1000)); //which data the token will expire.
+        localStorage.REFRESH_TOKEN_EXPIRATION = expirationDate;
+
+        //
+        console.log("refresh token: " + token);
+        console.log("refresh token expiration: " + expirationDate);
+
+        // this.loadTailoredMessage();
+    }
+
 
     //in this service we will manage both syncing private
     //and non-private data with local storage;
-    
+
 
 
 
