@@ -30,6 +30,7 @@ export class TailoredMessagesComponent implements OnInit {
   interventionImage: string;
   interventionProbability;
   intervention_data;
+  bucket_name_message = "";
 
   constructor(private EncrDecr: EncrDecrService,
     private httpClient: HttpClient,
@@ -131,10 +132,31 @@ export class TailoredMessagesComponent implements OnInit {
       let flaskServerAPIEndpoint = "https://adapts.fsm.northwestern.edu/tailored-messages/get-message.json";
       this.httpClient.post(flaskServerAPIEndpoint, requestDataJson, httpOptions).subscribe({
         next: data => {
-          // console.log(JSON.stringify(data));
+          console.log(JSON.stringify(data));
           console.log("==response==" + JSON.stringify(data));
           this.message = data["sampled_message"];
           this.interventionImage = data["sampled_message_image"];//this.loadInterventionImage(data);
+          let sampled_bucket = data["sampled_bucket"];//sampled bucket.
+
+          //sample bucket names
+          var bucket_names = {
+            "positive-mood": "positive mood", 
+            "negative-mood": "negative mood",
+            "nausea": "nausea",
+            "motivation": "motivation",
+            "fatigue": "fatigue", 
+            "location-away-from-home": "location (home)", 
+            "disagreement": "easiness to talk to your parents", 
+            "company-with-friends": "company (friends)", 
+            "company-alone": "company (alone)", 
+            "weekend": "weekend"
+          };
+
+          if(sampled_bucket == "weekend" ){
+            this.bucket_name_message = "You got this message because it is a weekend";
+          }else{
+            this.bucket_name_message = "This message pertains to your response to the <b>" + bucket_names[sampled_bucket] + "</b> question";
+          }
 
           // save the intervention image for future
           var already_shown_intervention_messages = window.localStorage["already_shown_intervention_messages"];
@@ -150,7 +172,7 @@ export class TailoredMessagesComponent implements OnInit {
 
           already_shown_intervention_messages["last_updated"] = Date.now();
           already_shown_intervention_messages["last_updated_readable_ts"] = moment().format("MMMM Do YYYY, h:mm:ss a Z");
-          already_shown_intervention_messages["unlocked_messages"].push({ "filename": this.interventionImage, "unlock_date": moment().format('MM/DD/YYYY') });
+          already_shown_intervention_messages["unlocked_messages"].push({ "filename": this.interventionImage, "unlock_date": moment().format('MM/DD/YYYY'), "bucket_name":  sampled_bucket});
           window.localStorage["already_shown_intervention_messages"] = JSON.stringify(already_shown_intervention_messages);
 
           /*

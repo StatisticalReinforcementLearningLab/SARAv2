@@ -19,6 +19,8 @@ export class UnlockedRewardsComponent implements OnInit {
 
   constructor() {
     this.type = "memes";
+
+    
   }
 
   segmentChanged(ev: any) {

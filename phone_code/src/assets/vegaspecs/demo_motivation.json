@@ -21,7 +21,7 @@
       {"Date": "2/15", "Motivation": 1},
       {"Date": "2/16", "Motivation": 4},
       {"Date": "2/17", "Motivation": 4},
-      {"Date": "2/18", "Motivation": 5},
+      {"Date": "2/18", "Motivation": null},
       {"Date": "2/19", "Motivation": 3},
       {"Date": "2/20", "Motivation": 3},
       {"Date": "Today", "Motivation": 5}

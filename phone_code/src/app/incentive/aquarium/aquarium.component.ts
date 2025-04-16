@@ -19,6 +19,9 @@ import embed from 'vega-embed';
 import { Swiper } from 'swiper/types';
 import { HttpClient } from '@angular/common/http';
 import { UploadserviceService } from 'src/app/storage/uploadservice.service';
+import { EncrDecrService } from 'src/app/storage/encrdecrservice.service';
+import { environment } from 'src/environments/environment';
+import { ComputeServiceService } from '../life-insights/compute-service/compute-service.service';
 
 @Component({
     selector: 'app-aquarium',
@@ -45,6 +48,7 @@ export class AquariumComponent implements OnInit {
     memeImages: any;
     interventionImages: any;
     isAYA = true;
+    insightHeaderText = "";
 
     @ViewChild('swiperContainer') swiperRefRewards: ElementRef | undefined;
 
@@ -79,6 +83,8 @@ export class AquariumComponent implements OnInit {
         private uploadService: UploadserviceService,
         private awsS3Service: AwsS3Service,
         private userProfileService: UserProfileService,
+        private EncrDecr: EncrDecrService,
+        private ComputeServ: ComputeServiceService,
         public httpClient: HttpClient) {
         console.log("Constructor called");
         this.sub1$ = this.platform.pause.subscribe(() => {
@@ -599,6 +605,15 @@ export class AquariumComponent implements OnInit {
 
         this.fillMedicationWidget(null);
         this.fetchPrivateDataFromWeb();
+
+        //var dateArray = this.getDatesForLast7days();
+
+        if(Math.random() > 0.5)
+            this.loadVegaDemoPlotMotivation();
+        else
+            this.loadVegaDemoPlotPositive();
+
+
         //
         this.userProfileService.saveToServer();
         this.userProfileService.saveProfileToDevice();
@@ -687,8 +702,7 @@ export class AquariumComponent implements OnInit {
         console.log("===Vega called 1===");
         //this.loadVegaDemoPlot();
 
-        var dateArray = this.getDatesForLast7days();
-        this.loadVegaDemoPlotMotivation(dateArray);
+        
 
         //here load the memes and altruistic messages
         this.userProfileService.updateNonPrivateData();
@@ -760,7 +774,7 @@ export class AquariumComponent implements OnInit {
                 "last_updated": Date.now(),
                 "last_updated_readable_ts": moment().format("MMMM Do YYYY, h:mm:ss a Z"),
                 "unlocked_messages":[
-                    {"filename": "assets/intervention_messages/Generic_1.jpg", "unlock_date": moment().format('MM/DD/YYYY')},
+                    {"filename": "assets/intervention_messages/Generic_1.jpg", "unlock_date": moment().format('MM/DD/YYYY'), "bucket_name":  undefined},
                 ]
             };
         else
@@ -769,13 +783,34 @@ export class AquariumComponent implements OnInit {
         this.interventionImages = [];
         //for(var i=0; i < already_shown['unlocked_messages'].length; i++){
         for(var i=already_shown['unlocked_messages'].length-1; i >= 0; i--){
-            this.interventionImages.push(already_shown['unlocked_messages'][i]["filename"]);
+
+            if((already_shown['unlocked_messages'][i].hasOwnProperty("bucket_name")) && (already_shown['unlocked_messages'][i]["bucket_name"] != undefined)){
+                this.interventionImages.push({
+                    "img": already_shown['unlocked_messages'][i]["filename"],
+                    "bucket": already_shown['unlocked_messages'][i]["bucket_name"],
+                    "bucket_exist": true
+                });
+            }else{
+                this.interventionImages.push({
+                    "img": already_shown['unlocked_messages'][i]["filename"],
+                    "bucket": "",
+                    "bucket_exist": false
+                });
+            }
         }
         //we are making it 10 for now
         //if(already_shown['unlocked_messages'].length < 2){
         if(already_shown['unlocked_messages'].length < 10){
-            this.interventionImages.push("assets/intervention_messages/Generic_2.jpg");
-            this.interventionImages.push("assets/intervention_messages/Generic_3.jpg");
+            this.interventionImages.push({
+                "img": "assets/intervention_messages/Generic_2.jpg",
+                "bucket": "",
+                "bucket_exist": false
+            });
+            this.interventionImages.push({
+                "img": "assets/intervention_messages/Generic_3.jpg",
+                "bucket": "",
+                "bucket_exist": false
+            });
         }
 
         // Write a for loop, add images, if short of 2 message then ask to complete more self-reports
@@ -783,7 +818,69 @@ export class AquariumComponent implements OnInit {
         
     }
 
-    async loadVegaDemoPlotMotivation(dateArray) {
+    getSurveyData() {
+        let dateArray = this.ComputeServ.getDatesForLast7days();
+        let sevenDaySurveyDataFromatted = this.ComputeServ.getSurveyData();
+
+
+        // var locallyStoredSurvey = {};
+        // if (window.localStorage['localSurvey'] != undefined)
+        //     locallyStoredSurvey = JSON.parse(window.localStorage.getItem('localSurvey'));
+
+        // var dateArray2 = [];
+        // for (let i = 0; i < 7; i++) {
+        //     var previousdate = moment().subtract(6 - i, "days").format("YYYYMMDD");
+        //     dateArray2.push(previousdate);
+        // }
+        // console.log("----vega-viz: dateArray2 ", dateArray2);
+        
+        // var sevenDaySurveyDataFromatted = {};
+        
+        // sevenDaySurveyDataFromatted['pain'] = {"dateArray": dateArray, "data": [null, null, null, null, null, null, null]};
+        // sevenDaySurveyDataFromatted['fatigue'] = {"dateArray": dateArray, "data": [null, null, null, null, null, null, null]};
+        // sevenDaySurveyDataFromatted['nausea'] = {"dateArray": dateArray, "data": [null, null, null, null, null, null, null]};
+        // sevenDaySurveyDataFromatted['positive'] = {"dateArray": dateArray, "data": [null, null, null, null, null, null, null]};
+        // sevenDaySurveyDataFromatted['lonely'] = {"dateArray": dateArray, "data": [null, null, null, null, null, null, null]};
+        // sevenDaySurveyDataFromatted['motivation'] = {"dateArray": dateArray, "data": [null, null, null, null, null, null, null]};
+
+        // if("alex_survey_aya" in locallyStoredSurvey){
+        //     var surveyData = {};
+        //     //unencrypt dictionaries
+        //     for(let i=0; i<locallyStoredSurvey['alex_survey_aya']['history'].length; i++){
+        //         let surveyHistoryI = locallyStoredSurvey['alex_survey_aya']['history'][i];
+        //         surveyData[surveyHistoryI['date']] = JSON.parse(this.EncrDecr.decrypt(surveyHistoryI['encrypted'], environment.encyptString)); //decrypted
+        //     }
+        //     // console.log("----vega-viz: ", JSON.stringify(surveyData));
+        //     // console.log("----vega-viz: keys ", Object.keys(surveyData));
+        //     // console.log("----vega-viz: ", JSON.stringify(locallyStoredSurvey['alex_survey_aya']));
+
+        //     //
+            
+
+        //     for(let i=0; i< dateArray2.length; i++){
+        //         let dateStr = dateArray2[i];
+        //         // console.log("----vega-viz: ", dateStr + ", " + Object.keys(surveyData));
+        //         if(Object.keys(surveyData).includes(dateStr)){
+        //             sevenDaySurveyDataFromatted['pain']['data'][i] = parseInt(surveyData[dateStr]["Q3"]);
+        //             sevenDaySurveyDataFromatted['fatigue']['data'][i] = parseInt(surveyData[dateStr]["Q4"]);
+        //             sevenDaySurveyDataFromatted['nausea']['data'][i] = parseInt(surveyData[dateStr]["Q5"]);
+        //             sevenDaySurveyDataFromatted['positive']['data'][i] = parseInt(surveyData[dateStr]["Q6"]);
+        //             sevenDaySurveyDataFromatted['lonely']['data'][i] = parseInt(surveyData[dateStr]["Q8"]);
+        //             sevenDaySurveyDataFromatted['motivation']['data'][i] = parseInt(surveyData[dateStr]["Q9"]);
+        //         }
+        //     }
+        //     console.log("----vega-viz: ", JSON.stringify(sevenDaySurveyDataFromatted));
+        // }
+        // window.localStorage['sevenDaySurveyDataFromatted'] = JSON.stringify(sevenDaySurveyDataFromatted);
+        return sevenDaySurveyDataFromatted;
+
+    }
+
+    async loadVegaDemoPlotMotivation() {
+        let dateArray = this.ComputeServ.getDatesForLast7days();
+        //
+        let sevenDaySurveyDataFromatted = this.getSurveyData();
+
         let x = window.innerWidth;
         let y = Math.ceil((24 / 20) * (x - 390) + 305);
         if (y < 200) {
@@ -806,11 +903,71 @@ export class AquariumComponent implements OnInit {
 
         console.log("===Vega called 2===");
         const spec = "/assets/vegaspecs/demo_motivation.json";
+        //let me = this;
+        this.insightHeaderText = "Motivation level in last 7 days (0=low, 4=high)";
         this.httpClient.get(spec)
             .subscribe(async (res: any) => {
                 console.log("==========");
-                for (let i = 0; i < 7; i++)
+                res["encoding"]["y"]["scale"] = {"domain": [-0.7, 4.7]};
+                for (let i = 0; i < 7; i++){
                     res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][i]["Date"] = dateArray[i];
+                    //motivation
+                    res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][i]["Motivation"] = sevenDaySurveyDataFromatted['motivation']['data'][i];
+                }
+                //console.log(res);
+                const result = await embed('#vis2', res, opt);
+                console.log(result.view);
+            });
+    }
+
+    async loadVegaDemoPlotPositive() {
+
+        let dateArray = this.ComputeServ.getDatesForLast7days();
+        let sevenDaySurveyDataFromatted = this.getSurveyData();
+
+        //
+        let x = window.innerWidth;
+        let y = Math.ceil((24 / 20) * (x - 390) + 305);
+        if (y < 200) {
+            //this means the height is higher. The canvas will be skewed.
+            y = y + 30;
+        }
+        if (y < 300) {
+            //this means the width is lower than 300. The canvas will be skewed.
+            y = y + 30;
+        }
+        console.log("width:x " + x);
+        console.log("width:y " + y);
+        console.log("window.devicePixelRatio " + window.devicePixelRatio);
+
+        var opt = {
+            actions: false,
+            width: y + 10,
+            height: 100
+        };
+
+        console.log("===Vega called 2===");
+        const spec = "/assets/vegaspecs/demo_bar.json";
+        this.insightHeaderText = "Level of positivity in last 7 days (0=low, 4=high)";
+        this.httpClient.get(spec)
+            .subscribe(async (res: any) => {
+                console.log("==========");
+
+                res["encoding"]["y"]["field"] = "Positive";
+                res["encoding"]["y"]["scale"] = {"domain": [-0.0, 4.5]};
+
+                for(let i=0; i<7; i++){
+                    res["datasets"]["data-f5aa8050aacd2455481375b5a5ff3680"][i]["Date"] = dateArray[i];
+                    //motivation
+                    let x = sevenDaySurveyDataFromatted['positive']['data'][i];
+                    if(x == null)
+                        res["datasets"]["data-f5aa8050aacd2455481375b5a5ff3680"][i]["Positive"] = 0;
+                    else if(x == 0)
+                        res["datasets"]["data-f5aa8050aacd2455481375b5a5ff3680"][i]["Positive"] = 0.1;
+                    else
+                        res["datasets"]["data-f5aa8050aacd2455481375b5a5ff3680"][i]["Positive"] = x;
+                }
+                // res["datasets"]["data-f5aa8050aacd2455481375b5a5ff3680"][0]["Positive"] = undefined;
                 //console.log(res);
                 const result = await embed('#vis2', res, opt);
                 console.log(result.view);
@@ -942,7 +1099,7 @@ export class AquariumComponent implements OnInit {
             if (currentTime.isBetween(startTimeSleep, endTimeSleep)) {
                 this.navController.navigateRoot(['survey/sleepsurvey']);
                 //this.navController.navigateRoot(['survey/sleepeveningsurvey']);
-                //this.navController.navigateRoot(['survey/sleepsurveywithprediction']);
+                //this.navController.navigateRoot(['survey/sleepsurveywithprediction']); 
             } else if (currentTime.isBetween(startTimeEveningReflection, endTimeEveningReflection)) {
                 this.navController.navigateRoot(['survey/sleepeveningsurvey']);
             } else {

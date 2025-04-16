@@ -12,6 +12,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { SamplePythonViewComponent } from './sample-python-view/sample-python-view.component';
 import { VegaVisComponent } from './vega-vis/vega-vis.component';
+import { ComputeServiceService } from './compute-service/compute-service.service';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  exports:[Q1MotivatedComponent,SampleLifeInsightsComponent,VegaVisComponent]
+  exports:[Q1MotivatedComponent,SampleLifeInsightsComponent,VegaVisComponent],
+  providers: [ ComputeServiceService ]
 })
 export class LifeInsightsModule { }

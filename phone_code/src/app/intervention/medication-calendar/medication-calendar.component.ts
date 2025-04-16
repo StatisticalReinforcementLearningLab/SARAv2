@@ -356,10 +356,12 @@ export class MedicationCalendarComponent implements OnInit {
         var i = 0;
         while(true){
             let runningDateTimeStr = moment(runningDateTime).format("MM-DD-YYYY");
-            if(ecapScanDateStrings.includes(runningDateTimeStr)){
+            let indexOfDateString = ecapScanDateStrings.indexOf(runningDateTimeStr);
+            //if(ecapScanDateStrings.includes(runningDateTimeStr)){
+            if(indexOfDateString > -1){
                 events.push({
                     title: 'Day-' + i,
-                    medicationIntakeTime: new Date(runningDateTime),
+                    medicationIntakeTime: new Date(ecapScanDates[indexOfDateString]),
                     startTime: new Date(runningDateTime.setHours(1, 0, 0, 0)),
                     endTime: new Date(runningDateTime.setHours(1, 1, 0, 0)),
                     allDay: false,

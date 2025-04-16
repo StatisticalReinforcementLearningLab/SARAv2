@@ -480,7 +480,7 @@ export class DynamicSurveyComponent implements OnInit {
                 this.surveyAnswersJSONObject['appVersion'] = this.versionNumber;
             }
 
-            enycryptSurveyDataAndUploadToServer() {
+            enycryptSurveyDataAndUploadToServer() { 
                 var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.surveyAnswersJSONObject), environment.encyptString);
                 var surveyEncrypted = {};
                 surveyEncrypted['encrypted'] = encrypted;

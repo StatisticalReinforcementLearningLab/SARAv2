@@ -1,0 +1,43 @@
+{
+    "config": {
+        "view": {"continuousWidth": 400, "continuousHeight": 300},
+        "axis": {"labelFontSize": 12, "titleFontSize": 12}
+    },
+    "data": {"name": "data-b0fe595546d47c5085f225c35730172c"},
+    "mark": {"type": "line", "point": true},
+    "encoding": {
+      "color": {"field": "symbol", "type": "nominal","legend": {
+          "orient": "none",
+          "direction": "horizontal",
+          "legendX": 20,
+          "legendY": -30,
+          "title": null
+        }},
+      "x": {"field": "Date", "type": "nominal"},
+      "y": {"field": "value",
+        "scale": {"domain": [-0.1, 5.2]},
+        "type": "quantitative"
+      }
+    },
+    "height": 250,
+    "width": 350,
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json",
+    "datasets": {
+      "data-b0fe595546d47c5085f225c35730172c": [
+        {"symbol": "MSFT", "Date": "2/15", "value": 1},
+        {"symbol": "MSFT", "Date": "2/16", "value": 4},
+        {"symbol": "MSFT", "Date": "2/17", "value": 4},
+        {"symbol": "MSFT", "Date": "2/18", "value": null},
+        {"symbol": "MSFT", "Date": "2/19", "value": 3},
+        {"symbol": "MSFT", "Date": "2/20", "value": 3},
+        {"symbol": "MSFT", "Date": "Today", "value": 5},
+        {"symbol": "AAPL", "Date": "2/18", "value": null},
+        {"symbol": "AAPL", "Date": "2/19", "value": 3},
+        {"symbol": "AAPL", "Date": "2/20", "value": 3},
+        {"symbol": "AAPL", "Date": "2/15", "value": 1},
+        {"symbol": "AAPL", "Date": "2/16", "value": 4},
+        {"symbol": "AAPL", "Date": "2/17", "value": 4},
+        {"symbol": "AAPL", "Date": "Today", "value": 5}
+      ]
+    }
+  }
