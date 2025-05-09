@@ -1,15 +1,37 @@
 
 <ion-header>
-    <h2 style="padding: 5px; padding-left: 10px; padding-right: 10px;">Here is something for completing the survey</h2>
+    <h4 style="padding: 0px; padding-left: 10px; padding-right: 10px;text-align: center;">
+      Rewards for survey completion
+    </h4>
 </ion-header>
 
-<ion-content class="ion-padding">
-    <img style="padding: 5px;" [src]="whichImage" *ngIf="whichImage"/>
+<ion-content class="ion-padding" style="padding-top: 0px;">
+
+    <!-- <h4 style="margin-left: 5px;margin: 0px;"> Money </h4>
+    <ion-list style="margin-bottom: 20px;">
+      <ion-item >
+        <ion-thumbnail slot="start">
+          <img src="assets/img/1dollar.jpg">
+        </ion-thumbnail>
+        <ion-label text-wrap>
+          <h2>You earned money</h2>
+          <h3>Thanks for surveys three days in a row! You earned 1 dollar.</h3>
+        </ion-label>
+      </ion-item>
+    </ion-list> -->
+
+    <h4 style="margin-left: 5px;margin: 0px;" *ngIf="whichImage"> {{whichImageText}} </h4>
+    <img style="padding: 0px; margin-bottom: 20px;" [src]="whichImage" *ngIf="whichImage"/>
+
+
+    <h4 style="margin-left: 5px;margin: 0px;" *ngIf="whichImage"> Other rewards </h4>
     <ion-list *ngIf="modalReady">
       <ion-item *ngFor="let reinforcement of reinforcements"> 
+        
         <ion-thumbnail slot="start">
           <img src="{{reinforcement.img}}">
         </ion-thumbnail>
+
         <ion-label text-wrap>
           <h2>{{reinforcement.header}}</h2>
           <h3>{{reinforcement.text}}</h3>

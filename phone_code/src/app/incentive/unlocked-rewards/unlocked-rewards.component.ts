@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 
 @Component({
@@ -8,7 +9,7 @@ import * as moment from 'moment';
 })
 export class UnlockedRewardsComponent implements OnInit {
 
-  type = 'memes';
+  type = "memes";
   already_shown_altruism_msgs: any;
   unlockedAltMessagesCount: number;
   list_of_alt_msg_to_display: any;
@@ -17,10 +18,23 @@ export class UnlockedRewardsComponent implements OnInit {
   list_of_meme_to_display: any;
   unlockedMemeCount: number;
 
-  constructor() {
-    this.type = "memes";
+  constructor(private route: ActivatedRoute) {
+    let me = this;
+    //this.type = "memes";
+    if(Math.random() > 0.5)
+      this.type = "memes";
+    else
+      this.type = "thankyous";
 
-    
+    this.route.queryParams
+      .subscribe(params => {
+          console.log(params); // { brand: "bmw" }
+          let brand = params.brand;
+          console.log(brand); // bmw
+          if(brand != null)
+            me.type = brand;
+        }
+      );  
   }
 
   segmentChanged(ev: any) {
@@ -30,6 +44,8 @@ export class UnlockedRewardsComponent implements OnInit {
 
 
   ionViewDidEnter() {
+    //let brand = this.route.snapshot.paramMap.get('brand');
+    //console.log("brand " + brand);
 
     //alturistic message
     this.already_shown_altruism_msgs = window.localStorage["already_shown_alt_msg4"];
@@ -55,7 +71,7 @@ export class UnlockedRewardsComponent implements OnInit {
 
     this.unlockedAltMessagesCount = this.already_shown_altruism_msgs.unlocked_alt_msgs.length;
     this.list_of_alt_msg_to_display = this.already_shown_altruism_msgs["unlocked_alt_msgs"];
-    //this.list_of_alt_msg_to_display.reverse();
+    this.list_of_alt_msg_to_display.reverse();
     console.log("already_shown_altruism_msgs " + this.already_shown_altruism_msgs);
 
 
@@ -90,7 +106,7 @@ export class UnlockedRewardsComponent implements OnInit {
     //console.log("unlockedMemeUnorderDateList " + JSON.stringify(unlockedMemeUnorderDateList.reverse()));
           
     this.list_of_meme_to_display = this.already_shown_memes["unlocked_memes"];
-    //this.list_of_meme_to_display.reverse();
+    this.list_of_meme_to_display.reverse();
     console.log("already_shown_memes " + JSON.stringify(this.already_shown_memes));
 
   }

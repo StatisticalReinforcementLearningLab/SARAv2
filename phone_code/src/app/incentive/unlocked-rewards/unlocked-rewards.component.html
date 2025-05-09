@@ -9,7 +9,7 @@
 
 <ion-content [fullscreen]="true">
 
-    <ion-segment value="memes" [(ngModel)]="type" (ionChange)="segmentChanged($event)">
+    <ion-segment value={{type}} [(ngModel)]="type" (ionChange)="segmentChanged($event)">
         <ion-segment-button value="memes">
             <ion-label>Memes</ion-label>
             <ion-icon name="happy-outline"></ion-icon>

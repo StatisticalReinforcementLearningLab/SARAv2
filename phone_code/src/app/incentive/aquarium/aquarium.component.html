@@ -102,7 +102,7 @@
       <ion-button href="/incentive/award-memes" >Incentive: meme</ion-button> <br>
       <ion-button href="/incentive/visualization">Incentive: Life-inisight</ion-button> <br>
     </div-->
-    <h2 style="margin-left: 5px;" *ngIf="isAYA">Messages</h2>
+    <h2 style="margin-left: 5px;margin-bottom: 0px;margin-top: 5px;" *ngIf="isAYA">Messages</h2>
     <!-- <swiper-container [spaceBetween]="5" [slidesPerView]="1.2" *ngIf="isAYA">
         <swiper-slide style="padding: 10px;">What is one thing that puts a smile on your face? Try to engage with that now! Confession: ours is petting any cute fluffy animal.</swiper-slide>
         <swiper-slide style="padding: 10px;">The most important thing is to take 6-MP every day, even if it is not exactly at the same time.</swiper-slide>
@@ -120,7 +120,18 @@
         </swiper-slide>
     </swiper-container>
 
-    <h2 style="margin-left: 5px;" *ngIf="isAYA">Medication</h2>
+    <!-- <h2 style="margin-left: 5px;" *ngIf="isAYA">
+      Medication
+      <span style="float:right;font-size: 16px;padding: 10px;">
+        More
+      </span>
+    </h2> -->
+    <div style="display: flex; justify-content: space-between;" *ngIf="isAYA">
+        <h2 style="margin-left: 5px;margin-bottom: 0px;"> Medication </h2>
+        <p style="font-size: 16px;padding: 0px;padding-top: 20px;margin: 0px;padding-right: 10px;">
+          <a href="/home/med_calendar" style="text-decoration:none; color: #B8B8B8;">More</a>
+        </p>
+    </div>
     <ion-card *ngIf="isAYA">
       <ion-grid>
         <ion-row>
@@ -130,6 +141,9 @@
             <span style="font-weight:150;font-size: 18px; color:rgb(73, 72, 72)">{{dayMed.date}}</span>
             <br>
             <ion-icon name={{dayMed.icon}} style="font-weight:bold; padding-top: 5px;font-size: 30px; color: {{dayMed.color}}"></ion-icon>
+            <!-- <ion-icon name={{dayMed.icon}} style="font-weight:bold; padding-top: 5px;font-size: 30px; color: {{dayMed.color}}" *ngIf="dayMed.color!='green'"></ion-icon> -->
+            <!-- <img src="assets/img/output.png" style="width: 25px; padding-top: 8px;" *ngIf="dayMed.color=='green'"/> -->
+            <!-- <ion-icon [src]="svgSrc" style="zoom: 0.5;"></ion-icon> -->
           </ion-col>
           <!-- <ion-col>
             W<br>1<br><ion-icon name="close-outline"></ion-icon>
@@ -143,7 +157,12 @@
       </ion-grid>
     </ion-card>
 
-    <h2 style="margin-left: 5px;" *ngIf="isAYA">Insight</h2>
+    <div style="display: flex; justify-content: space-between;" *ngIf="isAYA">
+      <h2 style="margin-left: 5px;margin-bottom: 0px;"> Insight </h2>
+      <p style="font-size: 18px;padding: 0px;padding-top: 20px;margin: 0px;padding-right: 10px;">
+        <a href="/home/insights" style="text-decoration:none; color: #B8B8B8;">More</a>
+      </p>
+    </div>
     <ion-card *ngIf="isAYA">
       <p style="padding-top: 5px; font-size: 16px; text-align: center;">{{insightHeaderText}}</p>
       <div id="vis2"></div>
@@ -152,11 +171,15 @@
 
     
 
-    <h2 style="margin-left: 5px;" *ngIf="isAYA">Aquarium</h2>
+    <h2 style="margin-left: 5px;" *ngIf="isAYA" style="margin-bottom: 0px;padding-left: 5px;">Aquarium</h2>
     <app-demo-aquarium isPreview="false" ></app-demo-aquarium>
 
-    <h2 style="margin-left: 5px;" *ngIf="isAYA">Thank yous</h2>
-    
+    <div style="display: flex; justify-content: space-between;" *ngIf="isAYA">
+      <h2 style="margin-left: 5px;margin-bottom: 0px;"> Thank yous </h2>
+      <p style="font-size: 18px;padding: 0px;padding-top: 20px;margin: 0px;padding-right: 10px;">
+        <a href="home/rewards?brand=thankyous" style="text-decoration:none; color: #B8B8B8;">More</a>
+      </p>
+    </div>
     <swiper-container 
       [effect]="'coverflow'"
       [spaceBetween]="0"
@@ -177,7 +200,7 @@
         <swiper-slide *ngFor="let altMsgsImage of altMsgsImages;"><img src={{altMsgsImage}}/></swiper-slide>
     </swiper-container>
 
-    <h2 style="margin-left: 5px;" *ngIf="isAYA">Memes</h2>
+    
     <!-- <swiper-container 
       [effect]="'coverflow'"
       [spaceBetween]="0"
@@ -190,6 +213,13 @@
       [pagination]='{el: ".swiper-pagination"}'
       [slidesPerView]="1.5"
     > -->
+
+    <div style="display: flex; justify-content: space-between; " *ngIf="isAYA">
+      <h2 style="margin-left: 5px;"> Memes </h2>
+      <p style="font-size: 18px;padding: 0px;padding-top: 20px;margin: 0px;padding-right: 10px;">
+        <a href="home/rewards?brand=memes" style="text-decoration:none; color: #B8B8B8;">More</a>
+      </p>
+    </div>
     <swiper-container [pagination]="true" [spaceBetween]="5" [slidesPerView]="1.2" *ngIf="isAYA">
         <!-- <swiper-slide><img src="./assets/memes/1.jpg" style="border-width: 1px; border-color: #86b9b0;"/></swiper-slide>
         <swiper-slide><img src="./assets/memes/2.png" style="border-width: 1px; border-color: #86b9b0;"/></swiper-slide>

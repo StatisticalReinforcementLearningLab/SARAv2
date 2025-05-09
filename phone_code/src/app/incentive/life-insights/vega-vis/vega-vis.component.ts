@@ -3,6 +3,7 @@ import embed from 'vega-embed';
 import { HttpClient } from '@angular/common/http';
 import moment from 'moment';
 import { ComputeServiceService } from '../compute-service/compute-service.service';
+import * as $ from "jquery";
 
 @Component({
     selector: 'app-vega-vis',
@@ -19,6 +20,13 @@ export class VegaVisComponent implements OnInit {
     }
 
     ionViewDidEnter() {
+        var cards = $(".gallerycard");
+        for(var i = 0; i < cards.length; i++){
+            var target = Math.floor(Math.random() * cards.length -1) + 1;
+            var target2 = Math.floor(Math.random() * cards.length -1) +1;
+            cards.eq(target).before(cards.eq(target2));
+        }
+
         var dateArray = this.getDatesForLast7days();
         let sevenDaySurveyDataFromatted = this.ComputeServ.getSurveyData(); //This will save the new data
         //this.loadVegaDemoPlotSleep(dateArray);

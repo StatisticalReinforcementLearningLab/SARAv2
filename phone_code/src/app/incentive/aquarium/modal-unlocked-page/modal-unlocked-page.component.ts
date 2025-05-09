@@ -13,6 +13,7 @@ export class ModalUnlockedPageComponent implements AfterViewInit {
     // Data passed in by componentProps
     @Input() reinforcements: any;
     whichImage;
+    whichImageText;
     isAYA;
 
     constructor(navParams: NavParams, public modalCtrl: ModalController, private userProfileService: UserProfileService) {
@@ -27,15 +28,31 @@ export class ModalUnlockedPageComponent implements AfterViewInit {
     }
 
     ngOnInit() {
+
+        //money
+
         for(let i = 0; i < this.reinforcements.length; i++){
-            if(this.reinforcements[i]['header'] == 'reinforcement_data'){
+            if(this.reinforcements[i]['header'] == 'reinforcement_data_meme'){
                 // if isAYA, we will skip the image
-                if(this.isAYA)
+                if(this.isAYA){
                     this.whichImage = this.reinforcements[i]['img'];
+                    this.whichImageText = "Meme";
+                }
+                this.reinforcements.splice(i, 1); //we will delete the reinforcement image.
+                break;
+            }
+
+            if(this.reinforcements[i]['header'] == 'reinforcement_data_alt_msg'){
+                // if isAYA, we will skip the image
+                if(this.isAYA){
+                    this.whichImage = this.reinforcements[i]['img'];
+                    this.whichImageText = "A thank you message";
+                }
                 this.reinforcements.splice(i, 1); //we will delete the reinforcement image.
                 break;
             }
         } 
+        //this.whichImage = undefined;
     }
 
     modalReady = false;

@@ -159,10 +159,11 @@
     <p class="datelabel">{{view.dates[row*7+col].label}}</p>
     <div class="indicator-container">
       <div class="event-indicator" *ngFor="let e of view.dates[row*7+col].events">
-        <ion-icon name="checkmark-outline" *ngIf="e.symbolType=='checkmark'" style="color: green; font-size: 16px;">
-        </ion-icon>
+        <!-- <ion-icon name="checkmark-outline" *ngIf="e.symbolType=='checkmark'" style="color: green; font-size: 16px;">
+        </ion-icon> -->
+        <img src={{e.img}} style="width: 22px; padding-top: 1px;" *ngIf="e.symbolType=='checkmark'"/>
 
-        <ion-icon name="close-outline" *ngIf="e.symbolType=='cross'" style="color: red; font-size: 16px;"></ion-icon>
+        <ion-icon name="close-circle" *ngIf="e.symbolType=='cross'" style="color: red; font-size: 25px;"></ion-icon>
 
         <ion-icon name="add-circle" *ngIf="e.symbolType=='add'" (click)="addMedication(e.startTime)"
           style="color: rebeccapurple; font-size: 25px;"></ion-icon>

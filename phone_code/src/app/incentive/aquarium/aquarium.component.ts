@@ -35,6 +35,7 @@ export class AquariumComponent implements OnInit {
     money = 0;
     modalObjectNavigationExtras = {};
     pageTitle = "Aquarium";
+    svgSrc = "assets/img/clock-svgrepo-com.svg";
 
     @ViewChild(DemoAquariumComponent, { static: true }) child;
 
@@ -49,6 +50,7 @@ export class AquariumComponent implements OnInit {
     interventionImages: any;
     isAYA = true;
     insightHeaderText = "";
+    probToShowWhatInsight = 0.1;
 
     @ViewChild('swiperContainer') swiperRefRewards: ElementRef | undefined;
 
@@ -197,6 +199,7 @@ export class AquariumComponent implements OnInit {
     updateSurveyData(d){
         console.log("======== updateSurveyData =======");
         let privateUserData_web = JSON.parse(d); 
+        // 'private_user_data' should already exist, as medication calendar should populate this already
         let privateUserData_local = JSON.parse(window.localStorage.getItem('private_user_data')); 
 
         //local survey
@@ -215,7 +218,7 @@ export class AquariumComponent implements OnInit {
 
             privateUserData_local['survey'] = locallyStoredSurvey;
             survey_local = locallyStoredSurvey;
-            survey_local_keys = Object.keys(survey_local);
+            survey_local_keys = Object.keys(survey_local); //This is this one: ts,alex_survey_aya,baseline_survey
         }
 
         //web survey
@@ -257,12 +260,17 @@ export class AquariumComponent implements OnInit {
             if("history" in survey_web[survey_key]){
                 for(let i=0; i< survey_web[survey_key]["history"].length; i++){
                     //ignore if date already exists
+                    //console.log("survey_web[survey_key][history][i]====" + JSON.stringify(survey_web[survey_key]["history"][i]));
                     if(survey_dates.includes(survey_web[survey_key]["history"][i]["date"]))
                         continue;
-                    survey_dates.push(survey_web[survey_key][i]["date"]);
-                    survey_history.push(survey_web[survey_key][i]);
+                    survey_dates.push(survey_web[survey_key]["history"][i]["date"]);
+                    survey_history.push(survey_web[survey_key]["history"][i]);
                 }
             }
+
+            console.log("survey_key: " + survey_key);
+            console.log("survey_dates" + JSON.stringify(survey_dates));
+            console.log("survey_history" + JSON.stringify(survey_history));
 
             //get the latest survey from the list
             var max_ts = -1;
@@ -277,7 +285,7 @@ export class AquariumComponent implements OnInit {
                     max_date_str = survey['date'];
                 }
             }
-            console.log("----" + survey_key + JSON.stringify(survey_history));
+            console.log("survey_----" + survey_key + JSON.stringify(survey_history));
             newSurveysInPrivateData[survey_key] = {};
             newSurveysInPrivateData[survey_key]["history"] = survey_history;
             newSurveysInPrivateData[survey_key]["ts"] = max_ts;
@@ -288,11 +296,17 @@ export class AquariumComponent implements OnInit {
         // currently privateUserData_local and privateUserData_web are synced for medication
         privateUserData_local['survey'] = newSurveysInPrivateData;
         privateUserData_web['survey'] = newSurveysInPrivateData;
+        console.log("survey_newSurveysInPrivateData: " + JSON.stringify(newSurveysInPrivateData));
         // update the latest survey
         window.localStorage.setItem('localSurvey', JSON.stringify(newSurveysInPrivateData));
         window.localStorage.setItem('private_user_data', JSON.stringify(privateUserData_local));
         // privateUserData_web
         this.uploadService.uploadPrivateData(privateUserData_web);
+
+        if(this.probToShowWhatInsight > 0.5)
+            this.loadVegaDemoPlotMotivation();
+        else
+            this.loadVegaDemoPlotPositive();
     }
 
     fillMedicationWidget(d) {
@@ -607,8 +621,8 @@ export class AquariumComponent implements OnInit {
         this.fetchPrivateDataFromWeb();
 
         //var dateArray = this.getDatesForLast7days();
-
-        if(Math.random() > 0.5)
+        this.probToShowWhatInsight = Math.random();
+        if(this.probToShowWhatInsight > 0.5)
             this.loadVegaDemoPlotMotivation();
         else
             this.loadVegaDemoPlotPositive();
@@ -813,10 +827,15 @@ export class AquariumComponent implements OnInit {
             });
         }
 
+        if(this.interventionImages.length > 15)
+            this.interventionImages = this.interventionImages.slice(0, 15);
         // Write a for loop, add images, if short of 2 message then ask to complete more self-reports
         //this.altMsgsImages = ["./assets/memes/1.jpg", "./assets/memes/2.png", "./assets/memes/3.png", "./assets/memes/4.jpg"];
         
+
     }
+
+
 
     getSurveyData() {
         let dateArray = this.ComputeServ.getDatesForLast7days();
@@ -1187,7 +1206,7 @@ export class AquariumComponent implements OnInit {
         reinforcements.push(
             {
                 'img': './assets/altruism/message_3.png',
-                'header': 'reinforcement_data',
+                'header': 'reinforcement_data_alt_msg',
                 'text': 'This is the meme/life-insight/thank you message data.'
             }
         );
@@ -1305,10 +1324,15 @@ export class AquariumComponent implements OnInit {
         var reinforcementData = JSON.parse(window.localStorage['reinforcement_data']);
         let currentDate = moment().format('YYYYMMDD');
         if ((currentDate == reinforcementData["date"]) && (reinforcementData['type_of_rewards'] != 'No reward')) {
+            
+            var type_of_reinforcement = "reinforcement_data_meme";
+            if(reinforcementData['reward_file_link'].includes("message_"))
+                type_of_reinforcement = "reinforcement_data_alt_msg";
+            
             reinforcements.push(
                 {
                     'img': reinforcementData['reward_file_link'],
-                    'header': 'reinforcement_data',
+                    'header': type_of_reinforcement,
                     'text': 'This is the meme/life-insight/thank you message data.'
                 }
             );

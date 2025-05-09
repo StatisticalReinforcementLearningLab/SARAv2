@@ -64,6 +64,28 @@ export class MedicationCalendarComponent implements OnInit {
             console.log("Recieved Private Value: ", JSON.stringify(events));
             events = this.updateMedicationList(events);
             this.eventSource=[];
+
+            //add images
+            for(var i=0; i<events.length; i++){
+                if(events[i]["symbolType"] == "checkmark"){
+                    //console.log(JSON.stringify(events[i]));
+                    //
+                    let mediationTakeDtObj = new Date(events[i].medicationIntakeTime);
+                    let minutes = mediationTakeDtObj.getMinutes();
+                    //round to nearest 15 minute
+                    let minutesRounded = Math.round(minutes/15)*15%60; 
+                    var hour = mediationTakeDtObj.getHours();
+                    if(Math.round(minutes/15) == 4)
+                        hour = hour + 1;
+                    hour = hour%12;
+                    if(hour == 0)
+                        hour = 12;
+                    events[i]["img"] = "assets/img/clocks/output-" + hour + "-" + minutesRounded + ".png";
+                    //console.log("" + hour + ":" + minutes + ", " + minutesRounded);
+                    //let time_taken = moment(events[i]["medicationIntakeTime"]).format('hh:mm A');
+                }
+            }
+
             this.eventSource=events;
             //this.myCal.loadEvents();
 
@@ -72,9 +94,23 @@ export class MedicationCalendarComponent implements OnInit {
                 //we need to enable again.
                 this.isMedicationListRefreashing = false;
             }
+            
+            //this.myCal.lockSwipes = true;
+            var meCal = this.myCal;
+            setTimeout(function() {
+                meCal.lockSwipes = true;
+            },100);
         });
         
         this.fetchPrivateDataFromWeb();
+
+        let privateUserData_local = JSON.parse(window.localStorage.getItem('private_user_data')); 
+        if((window.localStorage.getItem("private_user_data") !== null) 
+                && ("medication_data" in privateUserData_local)){
+            var medication_data_local = privateUserData_local['medication_data'];
+            this.eventSource = medication_data_local['events'];
+            //events_local_ts = medication_data_local['ts'];
+        }
 
         //subscribe to an observable in a service, 
         if(this.privateUploadListner){
@@ -86,7 +122,12 @@ export class MedicationCalendarComponent implements OnInit {
                 //this.fetchPrivateDataFromWeb();
             });
         }
-        this.myCal.lockSwipes = true;
+
+        var meCal = this.myCal;
+        setTimeout(function() {
+            meCal.lockSwipes = true;
+        },100);
+        //this.myCal.lockSwipes = true;
 
 
         

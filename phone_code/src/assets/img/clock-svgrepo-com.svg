@@ -1,0 +1,12 @@
+<svg width="100" height="100">
+    <g>
+        <circle id="circle" style="stroke: #FFF; stroke-width: 0px; fill:#20B7AF" cx="50" cy="50" r="50"></circle>
+    </g>
+    <g>
+        <line x1="50" y1="50" x2="50" y2="20" transform="rotate(0 50 50)" style="stroke-width: 5px; stroke: #fffbf9;" id="hourhand">
+        </line>
+        <line x1="50" y1="50" x2="50" y2="5" transform="rotate(160 50 50)" style="stroke-width: 2px; stroke: #fdfdfd;" id="minutehand">
+        </line>
+    </g>
+    <circle id="center" style="fill:#128A86; stroke: #C1EFED; stroke-width: 2px;" cx="50" cy="50" r="3"></circle>
+</svg>
