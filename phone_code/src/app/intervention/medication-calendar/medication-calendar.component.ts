@@ -11,6 +11,9 @@ import { HttpClient } from '@angular/common/http';
 import { Capacitor } from '@capacitor/core';
 import { UploadserviceService } from 'src/app/storage/uploadservice.service';
 import { Subject } from 'rxjs';
+import { EncrDecrService } from 'src/app/storage/encrdecrservice.service';
+import { environment } from 'src/environments/environment';
+import { UploadItem } from 'src/app/storage/queue';
 // import { CalModalPage } from '../pages/cal-modal/cal-modal.page';
 
 declare var certiscan: any
@@ -49,6 +52,7 @@ export class MedicationCalendarComponent implements OnInit {
     constructor(private modalCtrl: ModalController,
         private userProfileService: UserProfileService,
         private uploadService: UploadserviceService,
+        private EncrDecr: EncrDecrService,
         public plt: Platform,
         public httpClient: HttpClient) {
 
@@ -100,6 +104,8 @@ export class MedicationCalendarComponent implements OnInit {
             setTimeout(function() {
                 meCal.lockSwipes = true;
             },100);
+
+            //this.uploadMedicationScanToDataUploadEndPoint("{}");
         });
         
         this.fetchPrivateDataFromWeb();
@@ -852,6 +858,7 @@ export class MedicationCalendarComponent implements OnInit {
             me.isMedicationListRefreashing = true;
             window.localStorage.setItem('ecap_response', JSON.stringify(responseTxt));
             console.log("--- ecap_response" + responseTxt);
+            me.uploadMedicationScanToDataUploadEndPoint(responseTxt);
             me.getEcapsMedicationList(responseTxt);
         })
     }
@@ -866,6 +873,7 @@ export class MedicationCalendarComponent implements OnInit {
                 // res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][i]["Date"]
                 console.log(res);
                 window.localStorage.setItem('ecap_response', JSON.stringify(res));
+                
                 me.getEcapsMedicationList(res);
             });
     }
@@ -883,7 +891,30 @@ export class MedicationCalendarComponent implements OnInit {
     //     this.medication_list.push(new_medication);
     // }
 
+    uploadMedicationScanToDataUploadEndPoint(responseTxt) {
+        //var encrypted = this.EncrDecr.encrypt(JSON.stringify(responseTxt), environment.encyptString);
+        
+        var item = new UploadItem();
+        item.isEncrypted = true;
+        
+
+        let typeOfresponseTxt = typeof responseTxt;
+        console.log("responseTxt: " + typeOfresponseTxt);
+        var responseTxtJSON = responseTxt;
+        if(typeOfresponseTxt === "string")
+            responseTxtJSON = JSON.parse(responseTxt)
+
+        item.data = responseTxtJSON;
+        item.typeOfData = 'medication_scan';
+        item.uploadURLLocation = '';//this is not used...
+        this.uploadService.addToUploadQueue(item);
+    }
+
     getEcapsMedicationList(responseTxt) {
+
+
+
+
         // print prior ecap record if exists:
         // ----Retrieve the object from storage
         if(window.localStorage.hasOwnProperty('ecap_response')){

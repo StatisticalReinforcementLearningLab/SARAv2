@@ -458,7 +458,16 @@ export class AquariumComponent implements OnInit {
                 events[i].startTime = new Date(events[i].startTime);
                 events[i].endTime = new Date(events[i].endTime);
                 events[i].medicationIntakeTime = new Date(events[i].medicationIntakeTime);
-                eventDateStrings.push(moment(events[i].endTime).format("YYYYMMDD"));
+                
+                //which dates are 
+                let medicationTakenHour = events[i].medicationIntakeTime.getHours();
+                if(medicationTakenHour >= 4)  
+                    eventDateStrings.push(moment(events[i].endTime).format("YYYYMMDD"));
+                else{
+                    let previousDate = moment(events[i].endTime).subtract(1, "days").format("YYYYMMDD");
+                    eventDateStrings.push(previousDate);
+                }
+
                 eventDateIntakeStatus.push(events[i].symbolType);
             }
             console.log("--events: " + JSON.stringify(events[0]));
@@ -921,17 +930,32 @@ export class AquariumComponent implements OnInit {
         };
 
         console.log("===Vega called 2===");
-        const spec = "/assets/vegaspecs/demo_motivation.json";
+        //const spec = "/assets/vegaspecs/demo_motivation.json";
+        const spec = "/assets/vegaspecs/demo_bar.json";
         //let me = this;
         this.insightHeaderText = "Motivation level in last 7 days (0=low, 4=high)";
         this.httpClient.get(spec)
             .subscribe(async (res: any) => {
                 console.log("==========");
-                res["encoding"]["y"]["scale"] = {"domain": [-0.7, 4.7]};
+                // res["encoding"]["y"]["scale"] = {"domain": [-0.7, 4.7]};
+                res["encoding"]["y"]["field"] = "Motivation";
+                res["encoding"]["y"]["scale"] = {"domain": [-0.0, 4.5]};
+                res["encoding"]["color"] = {"value": "green"};
+
                 for (let i = 0; i < 7; i++){
-                    res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][i]["Date"] = dateArray[i];
+                    res["datasets"]["data-f5aa8050aacd2455481375b5a5ff3680"][i]["Date"] = dateArray[i];
+                    
                     //motivation
-                    res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][i]["Motivation"] = sevenDaySurveyDataFromatted['motivation']['data'][i];
+                    // res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][i]["Motivation"] = sevenDaySurveyDataFromatted['motivation']['data'][i];
+
+                    //motivation
+                    let x = sevenDaySurveyDataFromatted['motivation']['data'][i];
+                    if(x == null)
+                        res["datasets"]["data-f5aa8050aacd2455481375b5a5ff3680"][i]["Motivation"] = 0;
+                    else if(x == 0)
+                        res["datasets"]["data-f5aa8050aacd2455481375b5a5ff3680"][i]["Motivation"] = 0.1;
+                    else
+                        res["datasets"]["data-f5aa8050aacd2455481375b5a5ff3680"][i]["Motivation"] = x;
                 }
                 //console.log(res);
                 const result = await embed('#vis2', res, opt);
@@ -977,7 +1001,7 @@ export class AquariumComponent implements OnInit {
 
                 for(let i=0; i<7; i++){
                     res["datasets"]["data-f5aa8050aacd2455481375b5a5ff3680"][i]["Date"] = dateArray[i];
-                    //motivation
+
                     let x = sevenDaySurveyDataFromatted['positive']['data'][i];
                     if(x == null)
                         res["datasets"]["data-f5aa8050aacd2455481375b5a5ff3680"][i]["Positive"] = 0;

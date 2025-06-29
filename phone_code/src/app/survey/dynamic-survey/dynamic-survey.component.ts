@@ -357,7 +357,7 @@ export class DynamicSurveyComponent implements OnInit {
 
                 if (this.isEmpty(this.isQuestionIncomplete)) //--- means all questions has been completed
                     this.storeData();
-                else { //--- means all questions has been completed
+                else { //--- means all questions has not been completed
                     var incompleteQuestions = "";
                     for (var incompleteQuestion in this.isQuestionIncomplete)
                         incompleteQuestions = incompleteQuestions + " " + this.isQuestionIncomplete[incompleteQuestion]["tag"] + ",";
@@ -411,6 +411,7 @@ export class DynamicSurveyComponent implements OnInit {
 
             saveSensitiveDataLocally(){
                 //local store
+                //here we are storing both survey and medication data.
                 var locallyStoredSensitiveData = {};
                 if(window.localStorage['locallyStoredSensitiveData'] != undefined)
                     locallyStoredSensitiveData = JSON.parse(window.localStorage.getItem('locallyStoredSensitiveData'));
@@ -418,7 +419,11 @@ export class DynamicSurveyComponent implements OnInit {
                     locallyStoredSensitiveData["survey"] = [];
                     locallyStoredSensitiveData["medication_data"] = [];
                 }
-                locallyStoredSensitiveData["survey"].push({"date": moment().format('YYYYMMDD'), "survey_type": this.fileLink,"survey_data": this.surveyAnswersJSONObject});
+                locallyStoredSensitiveData["survey"].push({
+                    "date": moment().format('YYYYMMDD'), //todo: midnight??
+                    "survey_type": this.fileLink,
+                    "survey_data": this.surveyAnswersJSONObject
+                });
                 window.localStorage.setItem('locallyStoredSensitiveData', JSON.stringify(locallyStoredSensitiveData));
             }
 
@@ -439,17 +444,35 @@ export class DynamicSurveyComponent implements OnInit {
 
                 locallyStoredSurvey[this.fileLink] = {}
                 locallyStoredSurvey[this.fileLink]["encrypted"] = this.surveyAnswersJSONObject['encrypted'];
-                locallyStoredSurvey[this.fileLink]["date"] = moment().format('YYYYMMDD');
+                locallyStoredSurvey[this.fileLink]["date"] = moment().format('YYYYMMDD'); // we are using this date for lifeinsights,
+                locallyStoredSurvey[this.fileLink]["date_actual"] = moment().format('YYYYMMDD'); 
                 locallyStoredSurvey[this.fileLink]["ts"] = new Date().getTime();
+                locallyStoredSurvey[this.fileLink]["readable_ts"] = moment().format('MMMM Do YYYY, h:mm:ss a Z');
+
+                //if the time is before 4am, we will add the previous date??
+                var currentDate = new Date();
+                let currentHour = currentDate.getHours(); //An integer, between 0 and 23
+                var currentDateStr = moment().format('YYYYMMDD');
+
+                if(currentHour < 4){
+                    let previousDate = moment().subtract(1, "days").format("YYYYMMDD");
+                    currentDateStr = previousDate;
+                    locallyStoredSurvey[this.fileLink]["date"] = currentDateStr;
+                }else
+                    locallyStoredSurvey[this.fileLink]["date"] = currentDateStr;
+
                 survey_history.push(
                     {
                         "encrypted": this.surveyAnswersJSONObject['encrypted'],
-                        "date": moment().format('YYYYMMDD'),
-                        "ts": new Date().getTime()
+                        "date": currentDateStr, //todo: midnight
+                        "ts": new Date().getTime(),
+                        "date_actual": moment().format('YYYYMMDD'),
+                        "readable_actual_ts": moment().format('MMMM Do YYYY, h:mm:ss a Z')
                     }
                 );
-                locallyStoredSurvey[this.fileLink]["history"] = survey_history;
-                window.localStorage.setItem('localSurvey', JSON.stringify(locallyStoredSurvey));
+
+                locallyStoredSurvey[this.fileLink]["history"] = survey_history; //this is the survey history
+                window.localStorage.setItem('localSurvey', JSON.stringify(locallyStoredSurvey)); //this is the last survey, and history
             }
 
             saveEncryptedSurveyInPrivateData() {
@@ -481,10 +504,10 @@ export class DynamicSurveyComponent implements OnInit {
             }
 
             enycryptSurveyDataAndUploadToServer() { 
-                var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.surveyAnswersJSONObject), environment.encyptString);
-                var surveyEncrypted = {};
-                surveyEncrypted['encrypted'] = encrypted;
-                this.surveyAnswersJSONObject['encrypted'] = encrypted;
+                // var encrypted = this.EncrDecr.encrypt(JSON.stringify(this.surveyAnswersJSONObject), environment.encyptString);
+                // var surveyEncrypted = {};
+                // surveyEncrypted['encrypted'] = encrypted;
+                //this.surveyAnswersJSONObject['encrypted'] = encrypted;
                 //this.awsS3Service.upload(this.fileLink, surveyEncrypted);
                 //this.uploadService.refreshToken();
                 
@@ -507,7 +530,11 @@ export class DynamicSurveyComponent implements OnInit {
                 //update survey timeline in ngrx store.
                 let surveyTimeline: SurveyTimeline = {
                     user_id: this.userProfileService.username,
-                    timeline: [{ dateOfCompletion: moment().format('YYYYMMDD'), timestamp: new Date().getTime(), readableTimestamp: moment().format('MMMM Do YYYY, h:mm:ss a Z') }]
+                    timeline: [{ 
+                        dateOfCompletion: moment().format('YYYYMMDD'), //todo: midnight
+                        timestamp: new Date().getTime(), 
+                        readableTimestamp: moment().format('MMMM Do YYYY, h:mm:ss a Z') 
+                    }]
                 };
                 this.store.dispatch(surveyCompleted({ surveyTimeline }));
             }

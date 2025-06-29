@@ -153,7 +153,7 @@ export class TailoredMessagesComponent implements OnInit {
           };
 
           if(sampled_bucket == "weekend" ){
-            this.bucket_name_message = "You got this message because it is a weekend";
+            this.bucket_name_message = "You got this message because today is a weekend";
           }else{
             this.bucket_name_message = "This message pertains to your response to the <b>" + bucket_names[sampled_bucket] + "</b> question";
           }

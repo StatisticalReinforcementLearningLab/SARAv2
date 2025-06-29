@@ -23,14 +23,15 @@ export class UserProfile {
     public survey_data = {
         'daily_survey':{}, 
         'points': 0,
-        'weekly_survey':{}
+        'weekly_survey':{},
+        "daily_survey_augmented": {}
     };
 
     
     public username: string;
     public versionNumber: string;
     public datesTaken: string[];
-    public points: number;
+    public points: number;s
     public badgeCount: number;
     public firstlogin: any;
     public medicationEvents: any;

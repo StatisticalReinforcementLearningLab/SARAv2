@@ -354,7 +354,8 @@ export class UserProfileService {
         const username = localStorage.getItem('loggedInUser'); //this.authService.loggedInUser.getValue()
         // check if survey has already been take for the current day or admin is contained in the username
         // console.log('surveyCompleted - before if loop');
-        if (!this.surveyTakenForCurrentDay() || username.indexOf('admin') >= 0) {
+        //if (!this.surveyTakenForCurrentDay() || username.indexOf('admin') >= 0) {
+        if (!this.surveyTakenForCurrentDay() || username.indexOf('mashfiqui') >= 0) {
             // console.log('surveyCompleted - in if loop');
             this.addDateTaken();
             this.addSurveyPoints();
@@ -414,6 +415,20 @@ export class UserProfileService {
         const stringCurrenDate = this.stringCurrenDate;
         this.userProfile.datesTaken.push(stringCurrenDate);
         this.userProfile.survey_data.daily_survey[stringCurrenDate] = 1;
+
+        // //if the time is before 4am, we will add the previous date??
+        var currentDate = new Date();
+        let currentHour = currentDate.getHours(); //An integer, between 0 and 23
+        if(!this.userProfile.survey_data.hasOwnProperty("daily_survey_augmented"))
+            this.userProfile.survey_data["daily_survey_augmented"] = {};
+
+        if(currentHour < 4){
+            let previousdate = moment().subtract(1, "days").format("YYYYMMDD");
+            this.userProfile.survey_data["daily_survey_augmented"][previousdate] = 1;
+        }else
+            this.userProfile.survey_data["daily_survey_augmented"][stringCurrenDate] = 1;
+        console.log("survey----: " + JSON.stringify(this.userProfile));
+
         this.saveProfileToDevice();
     }
 

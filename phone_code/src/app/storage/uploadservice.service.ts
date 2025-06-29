@@ -51,7 +51,6 @@ export class UploadserviceService {
         item.typeOfData = 'app_usage';
         item.uploadURLLocation = '';
         this.addToUploadQueue(item);
-
     }
 
     //item has the follow the following format

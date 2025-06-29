@@ -56,7 +56,7 @@ export class ComputeServiceService {
           // console.log("----vega-viz: ", JSON.stringify(surveyData));
           // console.log("----vega-viz: keys ", Object.keys(surveyData));
           // console.log("----vega-viz: ", JSON.stringify(locallyStoredSurvey['alex_survey_aya']));
-
+ 
           //
           
 

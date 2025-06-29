@@ -72,17 +72,30 @@ export class VegaVisComponent implements OnInit {
         };
 
         console.log("===Vega called 2===");
-        const spec = "/assets/vegaspecs/demo_motivation.json";
+        //const spec = "/assets/vegaspecs/demo_motivation.json";
+        const spec = "/assets/vegaspecs/demo_bar.json";
         this.httpClient.get(spec)
             .subscribe(async (res: any) => {
                 console.log("==========");
 
-                res["encoding"]["y"]["scale"] = {"domain": [-0.5, 4.5]};
+                // res["encoding"]["y"]["scale"] = {"domain": [-0.5, 4.5]};
+                res["encoding"]["y"]["field"] = "Motivation";
+                res["encoding"]["y"]["scale"] = {"domain": [-0.0, 4.5]};
+                res["encoding"]["color"] = {"value": "green"};
 
                 for(let i=0; i<7; i++){
-                    res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][i]["Date"] = dateArray[i];
+                    //res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][i]["Date"] = dateArray[i];
+                    res["datasets"]["data-f5aa8050aacd2455481375b5a5ff3680"][i]["Date"] = dateArray[i];
                     //motivation
-                    res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][i]["Motivation"] = sevenDaySurveyDataFromatted['motivation']['data'][i];
+                    //res["datasets"]["data-aac2a29e1b23308d5471fb5222ef6c6c"][i]["Motivation"] = sevenDaySurveyDataFromatted['motivation']['data'][i];
+                    let x = sevenDaySurveyDataFromatted['motivation']['data'][i];
+                    if(x == null)
+                        res["datasets"]["data-f5aa8050aacd2455481375b5a5ff3680"][i]["Motivation"] = 0;
+                    else if(x == 0)
+                        res["datasets"]["data-f5aa8050aacd2455481375b5a5ff3680"][i]["Motivation"] = 0.1;
+                    else
+                        res["datasets"]["data-f5aa8050aacd2455481375b5a5ff3680"][i]["Motivation"] = x;
+                
                 }
                 //console.log(res);
                 const result = await embed('#vis4', res, opt);
@@ -165,7 +178,9 @@ export class VegaVisComponent implements OnInit {
         };
 
         console.log("===Vega called 2===");
-        const spec = "/assets/vegaspecs/demo_multigraph.json";
+        // const spec = "/assets/vegaspecs/demo_multigraph.json";
+        const spec = "/assets/vegaspecs/demo_multibar.json";
+        
         this.httpClient.get(spec)
             .subscribe(async (res: any) => {
                 console.log("==========");
