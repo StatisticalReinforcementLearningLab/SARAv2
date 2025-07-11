@@ -197,8 +197,18 @@ export class VegaVisComponent implements OnInit {
                         // res["datasets"]["data-b0fe595546d47c5085f225c35730172c"][i]["Date"] = dateArray[i-7*j];
                         // res["datasets"]["data-b0fe595546d47c5085f225c35730172c"][i]["symbol"] = dataTypes[j];
                         // res["datasets"]["data-b0fe595546d47c5085f225c35730172c"][i]["value"] = sevenDaySurveyDataFromatted[dataTypes[j]]['data'][i-7*j];
-                        if(sevenDaySurveyDataFromatted[dataTypes[j]]['data'][i-7*j] != null)
-                            sevenDaySurveyDataFromatted[dataTypes[j]]['data'][i-7*j] = sevenDaySurveyDataFromatted[dataTypes[j]]['data'][i-7*j] + 0;
+                        
+                        // if(sevenDaySurveyDataFromatted[dataTypes[j]]['data'][i-7*j] != null)
+                        //    sevenDaySurveyDataFromatted[dataTypes[j]]['data'][i-7*j] = sevenDaySurveyDataFromatted[dataTypes[j]]['data'][i-7*j];
+
+
+                        let x = sevenDaySurveyDataFromatted[dataTypes[j]]['data'][i-7*j];
+                        if(x == null)
+                            sevenDaySurveyDataFromatted[dataTypes[j]]['data'][i-7*j] = 0;
+                        else if(x == 0)
+                            sevenDaySurveyDataFromatted[dataTypes[j]]['data'][i-7*j] = 0.1;
+                        else
+                            sevenDaySurveyDataFromatted[dataTypes[j]]['data'][i-7*j] = x;
 
                         res["datasets"]["data-b0fe595546d47c5085f225c35730172c"].push({
                             "Date": dateArray[i-7*j],

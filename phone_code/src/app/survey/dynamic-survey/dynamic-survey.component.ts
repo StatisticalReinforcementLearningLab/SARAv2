@@ -442,8 +442,9 @@ export class DynamicSurveyComponent implements OnInit {
                 if((this.fileLink in locallyStoredSurvey) && ("history" in locallyStoredSurvey[this.fileLink]))
                     survey_history = locallyStoredSurvey[this.fileLink]["history"];
 
-                locallyStoredSurvey[this.fileLink] = {}
-                locallyStoredSurvey[this.fileLink]["encrypted"] = this.surveyAnswersJSONObject['encrypted'];
+                locallyStoredSurvey[this.fileLink] = {};
+                let encrypted = this.EncrDecr.encrypt(JSON.stringify(this.surveyAnswersJSONObject), environment.encyptString);
+                locallyStoredSurvey[this.fileLink]["encrypted"] = encrypted;
                 locallyStoredSurvey[this.fileLink]["date"] = moment().format('YYYYMMDD'); // we are using this date for lifeinsights,
                 locallyStoredSurvey[this.fileLink]["date_actual"] = moment().format('YYYYMMDD'); 
                 locallyStoredSurvey[this.fileLink]["ts"] = new Date().getTime();
@@ -463,7 +464,7 @@ export class DynamicSurveyComponent implements OnInit {
 
                 survey_history.push(
                     {
-                        "encrypted": this.surveyAnswersJSONObject['encrypted'],
+                        "encrypted": encrypted,
                         "date": currentDateStr, //todo: midnight
                         "ts": new Date().getTime(),
                         "date_actual": moment().format('YYYYMMDD'),
