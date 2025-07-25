@@ -477,7 +477,7 @@ export class DynamicSurveyComponent implements OnInit {
             }
 
             saveEncryptedSurveyInPrivateData() {
-                //private data is up-to-date. We load private on first sdreen. And after med
+                //private data is up-to-date. We load private on first screen. And after med
                 let privateUserData_local = JSON.parse(window.localStorage.getItem('private_user_data'));
                 
                 //

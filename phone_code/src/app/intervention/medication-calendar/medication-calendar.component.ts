@@ -87,7 +87,30 @@ export class MedicationCalendarComponent implements OnInit {
                     events[i]["img"] = "assets/img/clocks/output-" + hour + "-" + minutesRounded + ".png";
                     //console.log("" + hour + ":" + minutes + ", " + minutesRounded);
                     //let time_taken = moment(events[i]["medicationIntakeTime"]).format('hh:mm A');
+
+                    //We will create a fake medicationIntakeTime for now
+                    //if events is empty, then we don't update anything as events.length is zero.
+                    // for (var i = 0; i < events.length; i++) {
+                    //convert string back to date objects.
+                    //Jul25: 
+                    // --- Note faking only applies for medication Taken days (i.e., events[i]["symbolType"] == "checkmark")
+                    // --- 
+                    events[i].startTime = new Date(events[i].startTime);
+                    events[i].endTime = new Date(events[i].endTime);
+                    events[i].medicationIntakeTime = new Date(events[i].medicationIntakeTime);
+
+                    events[i].medicationIntakeActual = new Date(events[i].medicationIntakeTime);
+                    events[i].startTimeActual = new Date(events[i].startTime);
+                    events[i].endTimeActual = new Date(events[i].endTime);
+                    
+                    let medicationTakenHour = events[i].medicationIntakeTime.getHours();
+                    if(medicationTakenHour <4){
+                        events[i].startTime.setDate(events[i].startTime.getDate() - 1);
+                        events[i].endTime.setDate(events[i].endTime.getDate() - 1);
+                        events[i].medicationIntakeTime.setDate(events[i].medicationIntakeTime.getDate() - 1);
+                    }
                 }
+            // }
             }
 
             this.eventSource=events;
@@ -114,7 +137,10 @@ export class MedicationCalendarComponent implements OnInit {
         if((window.localStorage.getItem("private_user_data") !== null) 
                 && ("medication_data" in privateUserData_local)){
             var medication_data_local = privateUserData_local['medication_data'];
-            this.eventSource = medication_data_local['events'];
+            //this.eventSource = medication_data_local['events']; //ToDo:  should call the 
+            //this.eventSource = events;
+            let events1 = medication_data_local['events'];
+            this.medicationListChanged$.next(events1);
             //events_local_ts = medication_data_local['ts'];
         }
 
@@ -306,6 +332,8 @@ export class MedicationCalendarComponent implements OnInit {
             this.medication_list = this.mergeTwoMedicationsList(this.medication_list, medication_list_to_merge);
             console.log("Medication list: Saving medication list after merging web and local");
             window.localStorage.setItem('medication_list', JSON.stringify(this.medication_list));
+
+            
 
             //this.eventSource = events;
             this.medicationListChanged$.next(events);

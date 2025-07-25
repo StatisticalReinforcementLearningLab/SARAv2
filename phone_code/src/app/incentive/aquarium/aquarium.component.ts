@@ -249,22 +249,25 @@ export class AquariumComponent implements OnInit {
             }
 
             var survey_history = [];
-            if("history" in survey_local[survey_key])
-                survey_history = survey_local[survey_key]["history"];
-
-            // get local dates.
             var survey_dates = [];
-            for(let i=0; i< survey_history.length; i++)
-                survey_dates.push(survey_history[i]["date"]);
 
-            if("history" in survey_web[survey_key]){
-                for(let i=0; i< survey_web[survey_key]["history"].length; i++){
-                    //ignore if date already exists
-                    //console.log("survey_web[survey_key][history][i]====" + JSON.stringify(survey_web[survey_key]["history"][i]));
-                    if(survey_dates.includes(survey_web[survey_key]["history"][i]["date"]))
-                        continue;
-                    survey_dates.push(survey_web[survey_key]["history"][i]["date"]);
-                    survey_history.push(survey_web[survey_key]["history"][i]);
+            if(survey_key in survey_local){
+                if("history" in survey_local[survey_key])
+                    survey_history = survey_local[survey_key]["history"];            
+                for(let i=0; i< survey_history.length; i++)
+                    survey_dates.push(survey_history[i]["date"]);
+            }
+
+            if(survey_key in survey_web){
+                if("history" in survey_web[survey_key]){
+                    for(let i=0; i< survey_web[survey_key]["history"].length; i++){
+                        //ignore if date already exists
+                        //console.log("survey_web[survey_key][history][i]====" + JSON.stringify(survey_web[survey_key]["history"][i]));
+                        if(survey_dates.includes(survey_web[survey_key]["history"][i]["date"]))
+                            continue;
+                        survey_dates.push(survey_web[survey_key]["history"][i]["date"]);
+                        survey_history.push(survey_web[survey_key]["history"][i]);
+                    }
                 }
             }
 
@@ -361,7 +364,7 @@ export class AquariumComponent implements OnInit {
         var eventDateStrings = [];
         var eventDateIntakeStatus = [];
         let privateUserData_web = JSON.parse(d); // Add medication data.
-        console.log("====Private data web: " + privateUserData_web);
+        console.log("====Private data web: " + JSON.stringify(privateUserData_web));
 
         var events_web_ts = -1;
         var events_web = [];
@@ -427,7 +430,7 @@ export class AquariumComponent implements OnInit {
         //Other corner case handling:
         //If web data is older, then we upload the local copy to the web
         //Corner case is if events_web_ts=-1, i.e., no web data exist. Then this will upload the local copy. 
-        console.log("events_web_ts: " + events_web_ts + ", events_local_ts: " + events_local_ts);
+        // console.log("events_web_ts: " + events_web_ts + ", events_local_ts: " + events_local_ts);
         console.log("privateUserData_web2: " + privateUserData_web2);
         if(events_web_ts < events_local_ts){
             // web medication data is old and needs updating from local
@@ -439,7 +442,15 @@ export class AquariumComponent implements OnInit {
             if(d!=null)//note the first call will be with null, don't update null to the web
                 this.uploadService.uploadPrivateData(privateUserData_web2);
         }
-
+        console.log("using web copy; web:" + events_web_ts + " local:"+events_local_ts);
+        
+        if((events_web_ts == events_local_ts) && (events_web_ts == -1)){
+            //here the webcopy of privateUserData_web is {}
+            //the local copy of privateUserData_local may not exist or be {}
+            if(window.localStorage.getItem("private_user_data") == null) 
+                window.localStorage.setItem('private_user_data', "{}");
+        }
+        
         //what ever is the local is accurate now, so we can use the local going forward.
 
         // var lowestDate = 
@@ -459,7 +470,9 @@ export class AquariumComponent implements OnInit {
                 events[i].endTime = new Date(events[i].endTime);
                 events[i].medicationIntakeTime = new Date(events[i].medicationIntakeTime);
                 
-                //which dates are 
+                //If medicationTakenHour is less than 4AM, then we are using the previous date
+                //If eventDateStrings has duplicated dates then what will happen? We do a check if 
+                //date exists. So, duplicates won't be an issue.
                 let medicationTakenHour = events[i].medicationIntakeTime.getHours();
                 if(medicationTakenHour >= 4)  
                     eventDateStrings.push(moment(events[i].endTime).format("YYYYMMDD"));
@@ -476,13 +489,14 @@ export class AquariumComponent implements OnInit {
             //this.updateMedicationList();
         }
 
-        //We will fill until the maxDateInEvents
+        //We will fill until the maxDateInEvents. maxDateInEvents is the lowest date in the medication events
         var maxDateInEvents = new Date("1970-01-01");
         for (var i = 0; i < events.length; i += 1) {
             if (maxDateInEvents.getTime() < events[i].startTime.getTime()) {
                 maxDateInEvents = events[i].startTime;
             }
         }
+        //if no medication events exist, we will get the first date from surveys
         if (events.length == 0) {
             //get first day of survey as set as maxDateInEvents
             var dailySurveyHistory = this.userProfileService.userProfile.survey_data.daily_survey;
@@ -512,23 +526,37 @@ export class AquariumComponent implements OnInit {
             ithDayFromCurrentdayMidnightUTC = new Date(new Date().setHours(-1 * 24 * i, 1, 0, 0));
             // console.log(ithDayFromCurrentdayMidnightUTC + ", " + ithDayFromCurrentdayMidnightUTC.getDate());
             // getDay()
+            // var med_obj = {
+            //     day: dayName[ithDayFromCurrentdayMidnightUTC.getDay()],
+            //     date: ithDayFromCurrentdayMidnightUTC.getDate(),
+            //     icon: "ellipse",
+            //     color: "gainsboro", //I should use red always??
+            // };
+
             var med_obj = {
                 day: dayName[ithDayFromCurrentdayMidnightUTC.getDay()],
                 date: ithDayFromCurrentdayMidnightUTC.getDate(),
-                icon: "ellipse",
-                color: "gainsboro",
+                icon: "close-circle",
+                color: "red", //I should use red always??
             };
+
             if (i == 0)
                 med_obj['day'] = "Today";
+            
+            //Fill in with red first
             if (ithDayFromCurrentdayMidnightUTC > maxDateInEvents) {
                 med_obj['icon'] = "close-circle";
                 med_obj['color'] = "red";
             }
+
+            //Add purple plus sign
             if (i <= 2) {
                 //ToDo: Handle study start day
                 med_obj['icon'] = "add-circle";
                 med_obj['color'] = "rebeccapurple";
             }
+
+
             let todaysDateString = moment(ithDayFromCurrentdayMidnightUTC).format("YYYYMMDD"); //ithDayFromCurrentdayMidnightUTC
             var elementPos = eventDateStrings.indexOf(todaysDateString);// eventDateStrings.map(function(x) {return x.id; }).indexOf(todaysDateString);
             //will return -1, if elementPos is not found.
