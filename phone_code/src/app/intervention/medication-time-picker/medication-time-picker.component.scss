@@ -1,0 +1,23 @@
+.new-background-color{
+    --background: #005486;
+}
+
+ion-toolbar {
+    --background: #fff;
+}
+
+// ion-datetime {
+//     --background: #000; /* Replace with your desired color */
+// }
+
+
+
+ion-datetime  {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    --background: #fff1f2;
+    --background-rgb: 255, 255, 255;
+
+}

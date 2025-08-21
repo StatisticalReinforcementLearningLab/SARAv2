@@ -36,6 +36,7 @@ export class UserProfile {
     public firstlogin: any;
     public medicationEvents: any;
     public nonPrivateData: any;
+    public medicationTime: any;
 
     // created constructor to initialize UserProfile - early on
     constructor(username: string, 

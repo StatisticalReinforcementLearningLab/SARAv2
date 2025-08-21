@@ -41,6 +41,7 @@ import { VegaVisComponent } from './incentive/life-insights/vega-vis/vega-vis.co
 import { TailoredMessagesComponent } from './intervention/tailored-messages/tailored-messages.component';
 import { TailoredMessageSingleComponent } from './intervention/tailored-message-single/tailored-message-single.component';
 import { BaselineSurveyComponent } from './survey/baseline-survey/baseline-survey.component';
+import { MedicationTimePickerComponent } from './intervention/medication-time-picker/medication-time-picker.component';
 
 
 const routes: Routes = [
@@ -76,6 +77,7 @@ const routes: Routes = [
   { path: 'survey/dogssurvey', component: DogsSurveyComponent, canActivate: [AuthGuard]},
   { path: 'survey/baselinesurvey', component: BaselineSurveyComponent, canActivate: [AuthGuard]},
   { path: 'intervention/arcappsfrontpage', component: FrontPageComponent, canActivate: [AuthGuard]}, 
+  { path: 'intervention/medication-time-picker', component: MedicationTimePickerComponent, canActivate: [AuthGuard]}, 
   { path: 'incentive/aquariumone', component: DemoAquariumComponent, canActivate: [AuthGuard]},
   { path: 'incentive/award-memes', component: AwardMemesComponent, canActivate: [AuthGuard]},
   { path: 'incentive/award-altruism', component: AwardAltruismComponent, canActivate: [AuthGuard]},

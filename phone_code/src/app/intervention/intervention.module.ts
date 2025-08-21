@@ -10,16 +10,23 @@ import { AddEventModalPageModule } from './medication-calendar/add-event-modal/a
 import { AddMedicationPageModule } from './medication-calendar/add-medication/add-medication.module';
 import { TailoredMessagesComponent } from './tailored-messages/tailored-messages.component';
 import { TailoredMessageSingleComponent } from './tailored-message-single/tailored-message-single.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [SleepMonitoringComponent, MedicationCalendarComponent, TailoredMessagesComponent, TailoredMessageSingleComponent],
+  declarations: [SleepMonitoringComponent, 
+    MedicationCalendarComponent, 
+    TailoredMessagesComponent, 
+    TailoredMessageSingleComponent,
+    MedicationCalendarComponent
+  ],
   imports: [
     CommonModule,
     HarvardArcAppsModule,
     NgCalendarModule,
     AddEventModalPageModule,
     AddMedicationPageModule,
+    FormsModule,
     IonicModule.forRoot() // have to add this for the backbutton to show.
   ],
   exports: [SleepMonitoringComponent],

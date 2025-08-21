@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-button style="color:#fff;" (click)="goHome()">
+        <ion-icon name="arrow-back-outline" style="color : white;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="color:#fff;">Medication time picker</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+
+  <!-- <ion-card>
+    <ion-text> 
+      <ion-icon name="information-circle-outline"></ion-icon> 
+      
+    </ion-text>
+  </ion-card> -->
+
+
+  <center><h4> Current medication time is </h4> </center>
+  <center><h1> {{medTimeStr}}</h1></center>
+
+  <ion-datetime
+    #medDateTime
+    displayFormat="hh:mm A"
+    [minuteValues]="['0']" 
+    presentation="time" 
+    size="cover"
+    id="dat" 
+    [value]="medTime"
+    (ionChange)="onDateChange($event)">
+  </ion-datetime>
+
+
+  <!-- displayFormat="h:mm A"  [hourValues]="availableHours" -->
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="full" (click)="goHome()" color="danger">
+      Cancel
+    </ion-button>
+    <ion-button expand="full" (click)="mySaveFunction()">
+      Save
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
