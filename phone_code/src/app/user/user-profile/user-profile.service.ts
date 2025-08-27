@@ -385,8 +385,8 @@ export class UserProfileService {
     get stringCurrenDate() {
         console.log("user-profile.service.ts - stringCurrenDate getter - begin");
 
-        //shift hours back by 2, so that 2am, will register as 12am
-        const hoursShift: number = 2;
+        //shift hours back by 4, so that anything before 4am, will register before 12am (i.e., the prior day)
+        const hoursShift: number = 4;
         const currentDateTime: Date = new Date();
         currentDateTime.setHours(currentDateTime.getHours() - hoursShift);
         //now, set hours, min, sec to zero
@@ -399,8 +399,8 @@ export class UserProfileService {
     get numericCurrenDateTime() {
         console.log("user-profile.service.ts - numericCurrenDateTime getter - begin");
 
-        //shift hours back by 2, so that 2am, will register as 12am
-        const hoursShift: number = 2;
+        //shift hours back by 4, so that anything before 4am, will register before 12am (i.e., the prior day)
+        const hoursShift: number = 4;
         const currentDateTime: Date = new Date();
         currentDateTime.setHours(currentDateTime.getHours() - hoursShift);
         //now, set hours, min, sec to zero

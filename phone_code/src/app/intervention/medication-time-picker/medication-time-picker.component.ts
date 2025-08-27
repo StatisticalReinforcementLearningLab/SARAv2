@@ -84,7 +84,10 @@ export class MedicationTimePickerComponent implements OnInit {
         let hour = selectedTime.getHours();
         if(hour >= 12){ //PM
             //this.availableHours = [6, 7, 8, 9, 10, 11];
-            this.medTimeStr = "" + (hour-12) + ":00 pm";
+            if(hour == 12)
+                this.medTimeStr = "12:00 pm";
+            else
+                this.medTimeStr = "" + (hour-12) + ":00 pm";
         }else{ //AM
             //this.availableHours = [0, 1, 2, 3, 4];
             if(hour == 0)
@@ -117,7 +120,10 @@ export class MedicationTimePickerComponent implements OnInit {
 
         if(hour >= 12){ //PM
             //this.availableHours = [6, 7, 8, 9, 10, 11];
-            this.medTimeStrChanged = "" + (hour-12) + ":00 pm";
+            if(hour == 12)
+                this.medTimeStrChanged = "12:00 pm";
+            else
+                this.medTimeStrChanged = "" + (hour-12) + ":00 pm";
         }else{ //AM
             //this.availableHours = [0, 1, 2, 3, 4];
             if(hour == 0)

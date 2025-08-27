@@ -73,9 +73,9 @@ export class AwardDollarService {
         
         // If today is the first day then award 2 dollars for survey completion; 
         //  else load the last day, current amout user earned
-        var todaysDate = moment().format('YYYYMMDD');
+        var todaysDate = moment().format('YYYYMMDD'); //Todo: will I adjust for 12am, no??
         if(todaysDate == firstDateSurveyIsCompleted){
-            this.usersCurrentDollars = 2;
+            this.usersCurrentDollars = 1; //2;
             //save the dollar ammount in local storage
             window.localStorage.setItem("AwardDollar", ""+this.usersCurrentDollars); 
             return this.usersCurrentDollars;

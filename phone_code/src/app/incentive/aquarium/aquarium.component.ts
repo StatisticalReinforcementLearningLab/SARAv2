@@ -761,6 +761,56 @@ export class AquariumComponent implements OnInit {
         this.showMemeSwiper();
         this.showInterventionMessagesSwiper();
 
+        // this.checkStartEndTimes(20);
+        // this.checkStartEndTimes(18);
+        // this.checkStartEndTimes(0);
+        // this.checkStartEndTimes(2);
+    }
+
+    checkStartEndTimes(medicationTimeHour){
+
+        //
+        //medicationTimeHour=20 or 8PM, start will be 6PM and end will be 12am next day
+        //medicationTimeHour=18 or 6PM, start will be 4PM and end will be 10pm today
+        //medicationTimeHour=0 or 12am, start will be 10PM and end will be 4am today
+        //medicationTimeHour=2 or 2am, start will be 12am and end will be 6am today
+        //
+        var surveyStartDayOffset = 0;
+        var surveyStartHour = medicationTimeHour - 2;
+        if(surveyStartHour < 0){
+            surveyStartDayOffset = -1;//prior day
+            surveyStartHour = 24 + surveyStartHour;
+        }
+
+        var surveyEndHour = medicationTimeHour + 4;
+        var surveyEndDayOffset = 0;
+        if(surveyEndHour >= 24){
+            surveyEndDayOffset = 1;//next day
+            surveyEndHour = surveyEndHour - 24;
+        }
+        
+        //var startTime = moment({ hour: 18 });  // 6pm
+        //var endTime = moment({ hour: 23, minute: 59 });  // 11:59pm
+        var startTime = moment({ hour: surveyStartHour });  // 6pm
+        startTime = startTime.add(surveyStartDayOffset, "days");
+        var endTime = moment({ hour: surveyEndHour});  // 11:59pm
+        endTime = endTime.add(surveyEndDayOffset, "days");
+
+        console.log("==========================");
+        console.log("medicationTimeHour: " + medicationTimeHour);
+        console.log("surveyStartHour: " + surveyStartHour);
+        console.log("surveyStartDayOffset: " + surveyStartDayOffset);
+        console.log("surveyEndHour: " + surveyEndHour);
+        console.log("surveyEndDayOffset: " + surveyEndDayOffset);
+
+        //move the startTime and endTime 1 day behind and add 1 day
+        startTime = startTime.add(-2, "days");
+        endTime = endTime.add(-2, "days");
+        for(var i=0; i<3; i++){
+            console.log("startTime: " + startTime.add(1, "days").format('MMMM Do YYYY, h:mm:ss a Z'));
+            console.log("endTime: " + endTime.add(1, "days").format('MMMM Do YYYY, h:mm:ss a Z'));
+        }
+
     }
 
     showAltMsgSwiper() {
@@ -1129,6 +1179,95 @@ export class AquariumComponent implements OnInit {
                 this.navController.navigateRoot(['survey/samplesurvey2']);  //aya
             }
 
+        }
+    }
+
+
+    
+
+    startSurveyCustomTime() {
+        var medicationTimeString = "20";//default
+        if(this.userProfileService.userProfile.medicationTime !== undefined)
+            medicationTimeString = this.userProfileService.userProfile.medicationTime;
+        //convert to int
+        let medicationTimeHour = parseInt(medicationTimeString);
+
+        //
+        var surveyStartDayOffset = 0;
+        var surveyStartHour = medicationTimeHour - 2;
+        if(surveyStartHour < 0){
+            surveyStartDayOffset = -1;//prior day
+            surveyStartHour = 24 + surveyStartHour;
+        }
+
+
+        var surveyEndHour = medicationTimeHour + 4;
+        var surveyEndDayOffset = 0;
+        if(surveyEndHour >= 24){
+            surveyEndDayOffset = 1;//next day
+            surveyEndHour = surveyEndHour - 24;
+        }
+
+        //var startTime = moment({ hour: 18 });  // 6pm
+        //var endTime = moment({ hour: 23, minute: 59 });  // 11:59pm
+        var startTime = moment({ hour: surveyStartHour });  // 6pm
+        startTime = startTime.add(surveyStartDayOffset, "days");
+        var endTime = moment({ hour: surveyEndHour});  // 11:59pm
+        endTime = endTime.add(surveyEndDayOffset, "days");
+
+
+        //
+        var currentTimeInBetween = false;
+        //move the startTime and endTime 1 day behind and add 1 day
+        startTime = startTime.add(-2, "days");
+        endTime = endTime.add(-2, "days");
+        var currentTime = moment();
+        for(var i=0; i<3; i++){
+            currentTimeInBetween = currentTime.isBetween(startTime, endTime);
+
+            console.log("startTime: " + startTime.add(1, "days").format('MMMM Do YYYY, h:mm:ss a Z'));
+            console.log("endTime: " + endTime.add(1, "days").format('MMMM Do YYYY, h:mm:ss a Z'));
+            console.log("currentTimeInBetween: " + currentTimeInBetween);
+
+            if(currentTimeInBetween == true)
+                break;
+        }
+
+
+        console.log('start survey');
+        
+        var firstLogin = this.userProfileService.userProfile.firstlogin;
+        if (firstLogin == undefined) firstLogin = true;
+        this.userProfileService.userProfile.firstlogin = false;
+        this.userProfileService.saveProfileToDevice();
+        this.userProfileService.saveToServer();
+        if (!currentTimeInBetween && !firstLogin) {
+            this.presentAlert('Please come back between ' + this.getHourString(surveyStartHour) +  ' and ' + this.getHourString(surveyEndHour));
+        } else if (this.userProfileService.surveyTakenForCurrentDay()) {
+            this.presentAlert('You have already completed the survey for today.');
+        } else {
+            if (this.userProfileService.isParent) {
+                this.navController.navigateRoot(['survey/samplesurvey']);  //caregiversurvey
+            } else {
+                this.navController.navigateRoot(['survey/samplesurvey2']);  //aya
+            }
+
+        }
+    }
+
+    getHourString(hour){
+        if(hour >= 12){ //PM
+            //this.availableHours = [6, 7, 8, 9, 10, 11];
+            if(hour == 12)
+                return "12:00pm";
+            else
+                return "" + (hour-12) + ":00pm";
+        }else{ //AM
+            //this.availableHours = [0, 1, 2, 3, 4];
+            if(hour == 0)
+                return "midnight";
+            else
+                return "" + (hour) + ":00am";
         }
     }
 
