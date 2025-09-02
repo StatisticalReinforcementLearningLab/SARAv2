@@ -1495,13 +1495,18 @@ export class AquariumComponent implements OnInit {
         //var previousPoints = this.modalObjectNavigationExtras["PreviousPoints"];
         //var awardedDollar = this.modalObjectNavigationExtras["AwardedDollar"];
         var reinforcements = [];
+        
         console.log("computeUnlockedReinforcements: called");
+        console.log("currentPoints: " + currentPoints);
+        console.log("previousPoints: " + previousPoints);
+        console.log("awardedDollar: " + awardedDollar);
+        
 
         //get if money is awarded.
         if (awardedDollar > 0) {
             if (this.isFirstDayInTheStudy())
                 //reinforcements.push({'img': 'assets/img/1dollar.jpg', 'header': 'You earned ' + awardedDollar + ' dollar(s)', 'text': 'Thanks for being a participant in the study. You earned 2 dollar.'});
-                reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for completing your first survey! You earned 2 dollars.' });
+                reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for completing your first survey! You earned 1 dollar.' });
             else {
                 if (awardedDollar == 1) //hack, 1 dollar is only awarded after a three-day streak.
                     reinforcements.push({ 'img': 'assets/img/1dollar.jpg', 'header': 'You earned money', 'text': 'Thanks for surveys three days in a row! You earned 1 dollar.' });
@@ -1512,26 +1517,34 @@ export class AquariumComponent implements OnInit {
         }
 
         //get reinforcement data
-        var reinforcementData = JSON.parse(window.localStorage['reinforcement_data']);
         let currentDate = moment().format('YYYYMMDD');
-        if ((currentDate == reinforcementData["date"]) && (reinforcementData['type_of_rewards'] != 'No reward')) {
-            
-            var type_of_reinforcement = "reinforcement_data_meme";
-            if(reinforcementData['reward_file_link'].includes("message_"))
-                type_of_reinforcement = "reinforcement_data_alt_msg";
-            
-            reinforcements.push(
-                {
-                    'img': reinforcementData['reward_file_link'],
-                    'header': type_of_reinforcement,
-                    'text': 'This is the meme/life-insight/thank you message data.'
-                }
-            );
+        let reinforcementDataStr = window.localStorage['reinforcement_data'];
+        console.log("reinforcementDataStr: " + reinforcementDataStr);
+        if(reinforcementDataStr !== undefined){
+            //undefined check is needed as, reinforcement_data does not
+            //exist for caregiver.
+            var reinforcementData = JSON.parse(reinforcementDataStr);
+            console.log("reinforcements: " + JSON.stringify(reinforcements));
+            if ((currentDate == reinforcementData["date"]) && (reinforcementData['type_of_rewards'] != 'No reward')) {
+                
+                var type_of_reinforcement = "reinforcement_data_meme";
+                if(reinforcementData['reward_file_link'].includes("message_"))
+                    type_of_reinforcement = "reinforcement_data_alt_msg";
+                
+                reinforcements.push(
+                    {
+                        'img': reinforcementData['reward_file_link'],
+                        'header': type_of_reinforcement,
+                        'text': 'This is the meme/life-insight/thank you message data.'
+                    }
+                );
+            }
         }
-
+        //http://localhost:8100/survey/samplesurvey
         //get if fish is alotted
         previousPoints = currentPoints - 60;
         console.log(currentPoints + ", " + previousPoints);
+        console.log("reinforcements: " + JSON.stringify(reinforcements));
 
         fetch('../../../assets/game/fishpoints.json').then(async res => {
             //console.log("Fishes: " + data);

@@ -679,6 +679,8 @@ export class DynamicSurveyComponent implements OnInit {
                         window.localStorage['reinforcement_data'] = JSON.stringify(reinforcement_data);
                     }
 
+                    //the callback may not have returned.
+
                     //reinforcement data upload
                     var item = new UploadItem();
                     item.isEncrypted = true;
