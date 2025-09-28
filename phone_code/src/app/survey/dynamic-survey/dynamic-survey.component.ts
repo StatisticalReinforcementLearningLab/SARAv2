@@ -551,19 +551,22 @@ export class DynamicSurveyComponent implements OnInit {
                 // }
 
                 // incremenet point. Points automatically update the aquarium.
+                var awardedTotalDollarAfterCurrentSurvey;
+                var pastTotalDollars;
                 if (this.fileLink.includes('baseline')){
                     this.awardANdUpdatePoints(0);
+                    //no change is needed in the userProfile object in terms of points
+                    pastTotalDollars = this.awardDollarService.getCurrentlyEarnedDollars();
+                    awardedTotalDollarAfterCurrentSurvey = pastTotalDollars;
                 }else{
                     this.awardANdUpdatePoints(60);
+                    // ToDo: change this. Dan is saving user profile here to save the money to server.
+                    this.userProfileService.surveyCompleted(); //this adds points, add date taken to daily survey, update money.
+                    //compute new money and store it in local storage.
+                    let x_1 = this.awardAndUpdateMoney();
+                    pastTotalDollars = x_1["pastTotalDollars"];
+                    awardedTotalDollarAfterCurrentSurvey = x_1["awardedTotalDollarAfterCurrentSurvey"];
                 }
-                
-
-
-                //compute new money and store it in local storage.
-                let { pastTotalDollars, awardedTotalDollarAfterCurrentSurvey } = this.awardAndUpdateMoney();
-
-                // ToDo: change this. Dan is saving user profile here to save the money to server.
-                this.userProfileService.surveyCompleted();
 
 
                 //TODO: needs to add fix from Liying.
@@ -876,8 +879,8 @@ export class DynamicSurveyComponent implements OnInit {
                 let pastTotalDollars = this.awardDollarService.getCurrentlyEarnedDollars();
                 let awardedTotalDollarAfterCurrentSurvey = this.awardDollarService.giveDollars();
                 return {
-                    pastTotalDollars,
-                    awardedTotalDollarAfterCurrentSurvey
+                    "pastTotalDollars": pastTotalDollars,
+                    "awardedTotalDollarAfterCurrentSurvey": awardedTotalDollarAfterCurrentSurvey
                 };
 
             }
